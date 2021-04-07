@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "vsphere_tag_category" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

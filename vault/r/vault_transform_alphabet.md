@@ -64,9 +64,12 @@ variable "path" {
 
 ```terraform
 resource "vault_transform_alphabet" "this" {
+  # alphabet - (optional) is a type of string
   alphabet = var.alphabet
-  name     = var.name
-  path     = var.path
+  # name - (required) is a type of string
+  name = var.name
+  # path - (required) is a type of string
+  path = var.path
 }
 ```
 

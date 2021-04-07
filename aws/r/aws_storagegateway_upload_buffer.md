@@ -65,8 +65,11 @@ variable "gateway_arn" {
 
 ```terraform
 resource "aws_storagegateway_upload_buffer" "this" {
-  disk_id     = var.disk_id
-  disk_path   = var.disk_path
+  # disk_id - (optional) is a type of string
+  disk_id = var.disk_id
+  # disk_path - (optional) is a type of string
+  disk_path = var.disk_path
+  # gateway_arn - (required) is a type of string
   gateway_arn = var.gateway_arn
 }
 ```

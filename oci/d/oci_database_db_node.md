@@ -49,6 +49,7 @@ variable "db_node_id" {
 
 ```terraform
 data "oci_database_db_node" "this" {
+  # db_node_id - (required) is a type of string
   db_node_id = var.db_node_id
 }
 ```

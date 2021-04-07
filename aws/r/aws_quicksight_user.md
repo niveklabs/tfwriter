@@ -103,14 +103,22 @@ variable "user_role" {
 
 ```terraform
 resource "aws_quicksight_user" "this" {
+  # aws_account_id - (optional) is a type of string
   aws_account_id = var.aws_account_id
-  email          = var.email
-  iam_arn        = var.iam_arn
-  identity_type  = var.identity_type
-  namespace      = var.namespace
-  session_name   = var.session_name
-  user_name      = var.user_name
-  user_role      = var.user_role
+  # email - (required) is a type of string
+  email = var.email
+  # iam_arn - (optional) is a type of string
+  iam_arn = var.iam_arn
+  # identity_type - (required) is a type of string
+  identity_type = var.identity_type
+  # namespace - (optional) is a type of string
+  namespace = var.namespace
+  # session_name - (optional) is a type of string
+  session_name = var.session_name
+  # user_name - (optional) is a type of string
+  user_name = var.user_name
+  # user_role - (required) is a type of string
+  user_role = var.user_role
 }
 ```
 

@@ -110,23 +110,31 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_imagebuilder_image" "this" {
-  distribution_configuration_arn   = var.distribution_configuration_arn
-  enhanced_image_metadata_enabled  = var.enhanced_image_metadata_enabled
-  image_recipe_arn                 = var.image_recipe_arn
+  # distribution_configuration_arn - (optional) is a type of string
+  distribution_configuration_arn = var.distribution_configuration_arn
+  # enhanced_image_metadata_enabled - (optional) is a type of bool
+  enhanced_image_metadata_enabled = var.enhanced_image_metadata_enabled
+  # image_recipe_arn - (required) is a type of string
+  image_recipe_arn = var.image_recipe_arn
+  # infrastructure_configuration_arn - (required) is a type of string
   infrastructure_configuration_arn = var.infrastructure_configuration_arn
-  tags                             = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "image_tests_configuration" {
     for_each = var.image_tests_configuration
     content {
+      # image_tests_enabled - (optional) is a type of bool
       image_tests_enabled = image_tests_configuration.value["image_tests_enabled"]
-      timeout_minutes     = image_tests_configuration.value["timeout_minutes"]
+      # timeout_minutes - (optional) is a type of number
+      timeout_minutes = image_tests_configuration.value["timeout_minutes"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

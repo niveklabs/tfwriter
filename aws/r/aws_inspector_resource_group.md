@@ -49,6 +49,7 @@ variable "tags" {
 
 ```terraform
 resource "aws_inspector_resource_group" "this" {
+  # tags - (required) is a type of map of string
   tags = var.tags
 }
 ```

@@ -110,14 +110,19 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_apigatewayv2_domain_name" "this" {
+  # domain_name - (required) is a type of string
   domain_name = var.domain_name
-  tags        = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "domain_name_configuration" {
     for_each = var.domain_name_configuration
     content {
+      # certificate_arn - (required) is a type of string
       certificate_arn = domain_name_configuration.value["certificate_arn"]
-      endpoint_type   = domain_name_configuration.value["endpoint_type"]
+      # endpoint_type - (required) is a type of string
+      endpoint_type = domain_name_configuration.value["endpoint_type"]
+      # security_policy - (required) is a type of string
       security_policy = domain_name_configuration.value["security_policy"]
     }
   }
@@ -125,7 +130,9 @@ resource "aws_apigatewayv2_domain_name" "this" {
   dynamic "mutual_tls_authentication" {
     for_each = var.mutual_tls_authentication
     content {
-      truststore_uri     = mutual_tls_authentication.value["truststore_uri"]
+      # truststore_uri - (required) is a type of string
+      truststore_uri = mutual_tls_authentication.value["truststore_uri"]
+      # truststore_version - (optional) is a type of string
       truststore_version = mutual_tls_authentication.value["truststore_version"]
     }
   }
@@ -133,7 +140,9 @@ resource "aws_apigatewayv2_domain_name" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

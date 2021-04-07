@@ -112,19 +112,29 @@ variable "timeouts" {
 
 ```terraform
 resource "google_service_usage_consumer_quota_override" "this" {
-  dimensions     = var.dimensions
-  force          = var.force
-  limit          = var.limit
-  metric         = var.metric
+  # dimensions - (optional) is a type of map of string
+  dimensions = var.dimensions
+  # force - (optional) is a type of bool
+  force = var.force
+  # limit - (required) is a type of string
+  limit = var.limit
+  # metric - (required) is a type of string
+  metric = var.metric
+  # override_value - (required) is a type of string
   override_value = var.override_value
-  project        = var.project
-  service        = var.service
+  # project - (optional) is a type of string
+  project = var.project
+  # service - (required) is a type of string
+  service = var.service
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

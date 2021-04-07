@@ -65,9 +65,12 @@ variable "tags" {
 
 ```terraform
 resource "aws_service_discovery_http_namespace" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  tags        = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

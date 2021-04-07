@@ -50,6 +50,7 @@ variable "alias" {
 
 ```terraform
 resource "aws_prometheus_workspace" "this" {
+  # alias - (optional) is a type of string
   alias = var.alias
 }
 ```

@@ -222,50 +222,80 @@ variable "timeouts" {
 
 ```terraform
 resource "oraclepaas_mysql_service_instance" "this" {
+  # availability_domain - (optional) is a type of string
   availability_domain = var.availability_domain
-  backup_destination  = var.backup_destination
-  description         = var.description
-  ip_network          = var.ip_network
-  metering_frequency  = var.metering_frequency
-  name                = var.name
-  notification_email  = var.notification_email
-  region              = var.region
-  shape               = var.shape
-  ssh_public_key      = var.ssh_public_key
-  subnet              = var.subnet
-  vm_user             = var.vm_user
+  # backup_destination - (optional) is a type of string
+  backup_destination = var.backup_destination
+  # description - (optional) is a type of string
+  description = var.description
+  # ip_network - (optional) is a type of string
+  ip_network = var.ip_network
+  # metering_frequency - (optional) is a type of string
+  metering_frequency = var.metering_frequency
+  # name - (required) is a type of string
+  name = var.name
+  # notification_email - (optional) is a type of string
+  notification_email = var.notification_email
+  # region - (optional) is a type of string
+  region = var.region
+  # shape - (required) is a type of string
+  shape = var.shape
+  # ssh_public_key - (required) is a type of string
+  ssh_public_key = var.ssh_public_key
+  # subnet - (optional) is a type of string
+  subnet = var.subnet
+  # vm_user - (optional) is a type of string
+  vm_user = var.vm_user
 
   dynamic "backups" {
     for_each = var.backups
     content {
+      # cloud_storage_container - (required) is a type of string
       cloud_storage_container = backups.value["cloud_storage_container"]
-      cloud_storage_password  = backups.value["cloud_storage_password"]
-      cloud_storage_username  = backups.value["cloud_storage_username"]
-      create_if_missing       = backups.value["create_if_missing"]
+      # cloud_storage_password - (optional) is a type of string
+      cloud_storage_password = backups.value["cloud_storage_password"]
+      # cloud_storage_username - (optional) is a type of string
+      cloud_storage_username = backups.value["cloud_storage_username"]
+      # create_if_missing - (optional) is a type of bool
+      create_if_missing = backups.value["create_if_missing"]
     }
   }
 
   dynamic "mysql_configuration" {
     for_each = var.mysql_configuration
     content {
-      db_name             = mysql_configuration.value["db_name"]
-      db_storage          = mysql_configuration.value["db_storage"]
-      mysql_charset       = mysql_configuration.value["mysql_charset"]
-      mysql_collation     = mysql_configuration.value["mysql_collation"]
-      mysql_password      = mysql_configuration.value["mysql_password"]
-      mysql_port          = mysql_configuration.value["mysql_port"]
-      mysql_username      = mysql_configuration.value["mysql_username"]
-      snapshot_name       = mysql_configuration.value["snapshot_name"]
+      # db_name - (optional) is a type of string
+      db_name = mysql_configuration.value["db_name"]
+      # db_storage - (optional) is a type of number
+      db_storage = mysql_configuration.value["db_storage"]
+      # mysql_charset - (optional) is a type of string
+      mysql_charset = mysql_configuration.value["mysql_charset"]
+      # mysql_collation - (optional) is a type of string
+      mysql_collation = mysql_configuration.value["mysql_collation"]
+      # mysql_password - (optional) is a type of string
+      mysql_password = mysql_configuration.value["mysql_password"]
+      # mysql_port - (optional) is a type of number
+      mysql_port = mysql_configuration.value["mysql_port"]
+      # mysql_username - (optional) is a type of string
+      mysql_username = mysql_configuration.value["mysql_username"]
+      # snapshot_name - (optional) is a type of string
+      snapshot_name = mysql_configuration.value["snapshot_name"]
+      # source_service_name - (optional) is a type of string
       source_service_name = mysql_configuration.value["source_service_name"]
 
       dynamic "enterprise_monitor_configuration" {
         for_each = mysql_configuration.value.enterprise_monitor_configuration
         content {
+          # em_agent_password - (optional) is a type of string
           em_agent_password = enterprise_monitor_configuration.value["em_agent_password"]
+          # em_agent_username - (optional) is a type of string
           em_agent_username = enterprise_monitor_configuration.value["em_agent_username"]
-          em_password       = enterprise_monitor_configuration.value["em_password"]
-          em_port           = enterprise_monitor_configuration.value["em_port"]
-          em_username       = enterprise_monitor_configuration.value["em_username"]
+          # em_password - (optional) is a type of string
+          em_password = enterprise_monitor_configuration.value["em_password"]
+          # em_port - (optional) is a type of number
+          em_port = enterprise_monitor_configuration.value["em_port"]
+          # em_username - (optional) is a type of string
+          em_username = enterprise_monitor_configuration.value["em_username"]
         }
       }
 
@@ -275,7 +305,9 @@ resource "oraclepaas_mysql_service_instance" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

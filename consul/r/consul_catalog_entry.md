@@ -94,19 +94,28 @@ variable "service" {
 
 ```terraform
 resource "consul_catalog_entry" "this" {
-  address    = var.address
+  # address - (required) is a type of string
+  address = var.address
+  # datacenter - (optional) is a type of string
   datacenter = var.datacenter
-  node       = var.node
-  token      = var.token
+  # node - (required) is a type of string
+  node = var.node
+  # token - (optional) is a type of string
+  token = var.token
 
   dynamic "service" {
     for_each = var.service
     content {
+      # address - (optional) is a type of string
       address = service.value["address"]
-      id      = service.value["id"]
-      name    = service.value["name"]
-      port    = service.value["port"]
-      tags    = service.value["tags"]
+      # id - (optional) is a type of string
+      id = service.value["id"]
+      # name - (required) is a type of string
+      name = service.value["name"]
+      # port - (optional) is a type of number
+      port = service.value["port"]
+      # tags - (optional) is a type of set of string
+      tags = service.value["tags"]
     }
   }
 

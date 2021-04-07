@@ -138,22 +138,35 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_config_organization_managed_rule" "this" {
-  description                 = var.description
-  excluded_accounts           = var.excluded_accounts
-  input_parameters            = var.input_parameters
+  # description - (optional) is a type of string
+  description = var.description
+  # excluded_accounts - (optional) is a type of set of string
+  excluded_accounts = var.excluded_accounts
+  # input_parameters - (optional) is a type of string
+  input_parameters = var.input_parameters
+  # maximum_execution_frequency - (optional) is a type of string
   maximum_execution_frequency = var.maximum_execution_frequency
-  name                        = var.name
-  resource_id_scope           = var.resource_id_scope
-  resource_types_scope        = var.resource_types_scope
-  rule_identifier             = var.rule_identifier
-  tag_key_scope               = var.tag_key_scope
-  tag_value_scope             = var.tag_value_scope
+  # name - (required) is a type of string
+  name = var.name
+  # resource_id_scope - (optional) is a type of string
+  resource_id_scope = var.resource_id_scope
+  # resource_types_scope - (optional) is a type of set of string
+  resource_types_scope = var.resource_types_scope
+  # rule_identifier - (required) is a type of string
+  rule_identifier = var.rule_identifier
+  # tag_key_scope - (optional) is a type of string
+  tag_key_scope = var.tag_key_scope
+  # tag_value_scope - (optional) is a type of string
+  tag_value_scope = var.tag_value_scope
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

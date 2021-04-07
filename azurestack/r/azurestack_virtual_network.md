@@ -104,18 +104,27 @@ variable "subnet" {
 
 ```terraform
 resource "azurestack_virtual_network" "this" {
-  address_space       = var.address_space
-  dns_servers         = var.dns_servers
-  location            = var.location
-  name                = var.name
+  # address_space - (required) is a type of list of string
+  address_space = var.address_space
+  # dns_servers - (optional) is a type of list of string
+  dns_servers = var.dns_servers
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  tags                = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "subnet" {
     for_each = var.subnet
     content {
+      # address_prefix - (required) is a type of string
       address_prefix = subnet.value["address_prefix"]
-      name           = subnet.value["name"]
+      # name - (required) is a type of string
+      name = subnet.value["name"]
+      # security_group - (optional) is a type of string
       security_group = subnet.value["security_group"]
     }
   }

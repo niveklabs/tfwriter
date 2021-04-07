@@ -49,6 +49,7 @@ variable "path" {
 
 ```terraform
 data "vsphere_folder" "this" {
+  # path - (required) is a type of string
   path = var.path
 }
 ```

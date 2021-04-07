@@ -72,9 +72,13 @@ variable "zone" {
 
 ```terraform
 resource "dns_txt_record_set" "this" {
+  # name - (optional) is a type of string
   name = var.name
-  ttl  = var.ttl
-  txt  = var.txt
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
+  # txt - (required) is a type of set of string
+  txt = var.txt
+  # zone - (required) is a type of string
   zone = var.zone
 }
 ```

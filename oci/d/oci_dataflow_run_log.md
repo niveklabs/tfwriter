@@ -64,9 +64,12 @@ variable "run_id" {
 
 ```terraform
 data "oci_dataflow_run_log" "this" {
+  # base64_encode_content - (optional) is a type of bool
   base64_encode_content = var.base64_encode_content
-  name                  = var.name
-  run_id                = var.run_id
+  # name - (required) is a type of string
+  name = var.name
+  # run_id - (required) is a type of string
+  run_id = var.run_id
 }
 ```
 

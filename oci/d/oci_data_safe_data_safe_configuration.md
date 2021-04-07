@@ -49,6 +49,7 @@ variable "compartment_id" {
 
 ```terraform
 data "oci_data_safe_data_safe_configuration" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
 }
 ```

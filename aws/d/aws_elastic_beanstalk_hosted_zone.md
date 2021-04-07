@@ -50,6 +50,7 @@ variable "region" {
 
 ```terraform
 data "aws_elastic_beanstalk_hosted_zone" "this" {
+  # region - (optional) is a type of string
   region = var.region
 }
 ```

@@ -202,21 +202,33 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_api_management_diagnostic" "this" {
-  always_log_errors         = var.always_log_errors
-  api_management_logger_id  = var.api_management_logger_id
-  api_management_name       = var.api_management_name
-  enabled                   = var.enabled
+  # always_log_errors - (optional) is a type of bool
+  always_log_errors = var.always_log_errors
+  # api_management_logger_id - (required) is a type of string
+  api_management_logger_id = var.api_management_logger_id
+  # api_management_name - (required) is a type of string
+  api_management_name = var.api_management_name
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # http_correlation_protocol - (optional) is a type of string
   http_correlation_protocol = var.http_correlation_protocol
-  identifier                = var.identifier
-  log_client_ip             = var.log_client_ip
-  resource_group_name       = var.resource_group_name
-  sampling_percentage       = var.sampling_percentage
-  verbosity                 = var.verbosity
+  # identifier - (required) is a type of string
+  identifier = var.identifier
+  # log_client_ip - (optional) is a type of bool
+  log_client_ip = var.log_client_ip
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # sampling_percentage - (optional) is a type of number
+  sampling_percentage = var.sampling_percentage
+  # verbosity - (optional) is a type of string
+  verbosity = var.verbosity
 
   dynamic "backend_request" {
     for_each = var.backend_request
     content {
-      body_bytes     = backend_request.value["body_bytes"]
+      # body_bytes - (optional) is a type of number
+      body_bytes = backend_request.value["body_bytes"]
+      # headers_to_log - (optional) is a type of set of string
       headers_to_log = backend_request.value["headers_to_log"]
     }
   }
@@ -224,7 +236,9 @@ resource "azurerm_api_management_diagnostic" "this" {
   dynamic "backend_response" {
     for_each = var.backend_response
     content {
-      body_bytes     = backend_response.value["body_bytes"]
+      # body_bytes - (optional) is a type of number
+      body_bytes = backend_response.value["body_bytes"]
+      # headers_to_log - (optional) is a type of set of string
       headers_to_log = backend_response.value["headers_to_log"]
     }
   }
@@ -232,7 +246,9 @@ resource "azurerm_api_management_diagnostic" "this" {
   dynamic "frontend_request" {
     for_each = var.frontend_request
     content {
-      body_bytes     = frontend_request.value["body_bytes"]
+      # body_bytes - (optional) is a type of number
+      body_bytes = frontend_request.value["body_bytes"]
+      # headers_to_log - (optional) is a type of set of string
       headers_to_log = frontend_request.value["headers_to_log"]
     }
   }
@@ -240,7 +256,9 @@ resource "azurerm_api_management_diagnostic" "this" {
   dynamic "frontend_response" {
     for_each = var.frontend_response
     content {
-      body_bytes     = frontend_response.value["body_bytes"]
+      # body_bytes - (optional) is a type of number
+      body_bytes = frontend_response.value["body_bytes"]
+      # headers_to_log - (optional) is a type of set of string
       headers_to_log = frontend_response.value["headers_to_log"]
     }
   }
@@ -248,9 +266,13 @@ resource "azurerm_api_management_diagnostic" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

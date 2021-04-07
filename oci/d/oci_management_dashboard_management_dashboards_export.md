@@ -49,6 +49,7 @@ variable "export_dashboard_id" {
 
 ```terraform
 data "oci_management_dashboard_management_dashboards_export" "this" {
+  # export_dashboard_id - (required) is a type of string
   export_dashboard_id = var.export_dashboard_id
 }
 ```

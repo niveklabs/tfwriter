@@ -56,7 +56,9 @@ variable "log_group_name" {
 
 ```terraform
 resource "aws_directory_service_log_subscription" "this" {
-  directory_id   = var.directory_id
+  # directory_id - (required) is a type of string
+  directory_id = var.directory_id
+  # log_group_name - (required) is a type of string
   log_group_name = var.log_group_name
 }
 ```

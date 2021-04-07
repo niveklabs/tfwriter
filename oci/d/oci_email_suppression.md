@@ -49,6 +49,7 @@ variable "suppression_id" {
 
 ```terraform
 data "oci_email_suppression" "this" {
+  # suppression_id - (required) is a type of string
   suppression_id = var.suppression_id
 }
 ```

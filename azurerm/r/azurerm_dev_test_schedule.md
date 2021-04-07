@@ -181,18 +181,27 @@ variable "weekly_recurrence" {
 
 ```terraform
 resource "azurerm_dev_test_schedule" "this" {
-  lab_name            = var.lab_name
-  location            = var.location
-  name                = var.name
+  # lab_name - (required) is a type of string
+  lab_name = var.lab_name
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  status              = var.status
-  tags                = var.tags
-  task_type           = var.task_type
-  time_zone_id        = var.time_zone_id
+  # status - (optional) is a type of string
+  status = var.status
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # task_type - (required) is a type of string
+  task_type = var.task_type
+  # time_zone_id - (required) is a type of string
+  time_zone_id = var.time_zone_id
 
   dynamic "daily_recurrence" {
     for_each = var.daily_recurrence
     content {
+      # time - (required) is a type of string
       time = daily_recurrence.value["time"]
     }
   }
@@ -200,6 +209,7 @@ resource "azurerm_dev_test_schedule" "this" {
   dynamic "hourly_recurrence" {
     for_each = var.hourly_recurrence
     content {
+      # minute - (required) is a type of number
       minute = hourly_recurrence.value["minute"]
     }
   }
@@ -207,18 +217,25 @@ resource "azurerm_dev_test_schedule" "this" {
   dynamic "notification_settings" {
     for_each = var.notification_settings
     content {
-      status          = notification_settings.value["status"]
+      # status - (optional) is a type of string
+      status = notification_settings.value["status"]
+      # time_in_minutes - (optional) is a type of number
       time_in_minutes = notification_settings.value["time_in_minutes"]
-      webhook_url     = notification_settings.value["webhook_url"]
+      # webhook_url - (optional) is a type of string
+      webhook_url = notification_settings.value["webhook_url"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -226,7 +243,9 @@ resource "azurerm_dev_test_schedule" "this" {
   dynamic "weekly_recurrence" {
     for_each = var.weekly_recurrence
     content {
-      time      = weekly_recurrence.value["time"]
+      # time - (required) is a type of string
+      time = weekly_recurrence.value["time"]
+      # week_days - (optional) is a type of list of string
       week_days = weekly_recurrence.value["week_days"]
     }
   }

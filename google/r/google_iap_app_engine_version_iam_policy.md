@@ -78,11 +78,16 @@ variable "version_id" {
 
 ```terraform
 resource "google_iap_app_engine_version_iam_policy" "this" {
-  app_id      = var.app_id
+  # app_id - (required) is a type of string
+  app_id = var.app_id
+  # policy_data - (required) is a type of string
   policy_data = var.policy_data
-  project     = var.project
-  service     = var.service
-  version_id  = var.version_id
+  # project - (optional) is a type of string
+  project = var.project
+  # service - (required) is a type of string
+  service = var.service
+  # version_id - (required) is a type of string
+  version_id = var.version_id
 }
 ```
 

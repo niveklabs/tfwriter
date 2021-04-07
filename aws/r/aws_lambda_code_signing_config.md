@@ -77,11 +77,13 @@ variable "policies" {
 
 ```terraform
 resource "aws_lambda_code_signing_config" "this" {
+  # description - (optional) is a type of string
   description = var.description
 
   dynamic "allowed_publishers" {
     for_each = var.allowed_publishers
     content {
+      # signing_profile_version_arns - (required) is a type of set of string
       signing_profile_version_arns = allowed_publishers.value["signing_profile_version_arns"]
     }
   }
@@ -89,6 +91,7 @@ resource "aws_lambda_code_signing_config" "this" {
   dynamic "policies" {
     for_each = var.policies
     content {
+      # untrusted_artifact_on_deployment - (required) is a type of string
       untrusted_artifact_on_deployment = policies.value["untrusted_artifact_on_deployment"]
     }
   }

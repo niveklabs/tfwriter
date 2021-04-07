@@ -193,9 +193,12 @@ variable "transfer_spec" {
 
 ```terraform
 resource "google_storage_transfer_job" "this" {
+  # description - (required) is a type of string
   description = var.description
-  project     = var.project
-  status      = var.status
+  # project - (optional) is a type of string
+  project = var.project
+  # status - (optional) is a type of string
+  status = var.status
 
   dynamic "schedule" {
     for_each = var.schedule
@@ -204,27 +207,37 @@ resource "google_storage_transfer_job" "this" {
       dynamic "schedule_end_date" {
         for_each = schedule.value.schedule_end_date
         content {
-          day   = schedule_end_date.value["day"]
+          # day - (required) is a type of number
+          day = schedule_end_date.value["day"]
+          # month - (required) is a type of number
           month = schedule_end_date.value["month"]
-          year  = schedule_end_date.value["year"]
+          # year - (required) is a type of number
+          year = schedule_end_date.value["year"]
         }
       }
 
       dynamic "schedule_start_date" {
         for_each = schedule.value.schedule_start_date
         content {
-          day   = schedule_start_date.value["day"]
+          # day - (required) is a type of number
+          day = schedule_start_date.value["day"]
+          # month - (required) is a type of number
           month = schedule_start_date.value["month"]
-          year  = schedule_start_date.value["year"]
+          # year - (required) is a type of number
+          year = schedule_start_date.value["year"]
         }
       }
 
       dynamic "start_time_of_day" {
         for_each = schedule.value.start_time_of_day
         content {
-          hours   = start_time_of_day.value["hours"]
+          # hours - (required) is a type of number
+          hours = start_time_of_day.value["hours"]
+          # minutes - (required) is a type of number
           minutes = start_time_of_day.value["minutes"]
-          nanos   = start_time_of_day.value["nanos"]
+          # nanos - (required) is a type of number
+          nanos = start_time_of_day.value["nanos"]
+          # seconds - (required) is a type of number
           seconds = start_time_of_day.value["seconds"]
         }
       }
@@ -239,12 +252,15 @@ resource "google_storage_transfer_job" "this" {
       dynamic "aws_s3_data_source" {
         for_each = transfer_spec.value.aws_s3_data_source
         content {
+          # bucket_name - (required) is a type of string
           bucket_name = aws_s3_data_source.value["bucket_name"]
 
           dynamic "aws_access_key" {
             for_each = aws_s3_data_source.value.aws_access_key
             content {
-              access_key_id     = aws_access_key.value["access_key_id"]
+              # access_key_id - (required) is a type of string
+              access_key_id = aws_access_key.value["access_key_id"]
+              # secret_access_key - (required) is a type of string
               secret_access_key = aws_access_key.value["secret_access_key"]
             }
           }
@@ -255,6 +271,7 @@ resource "google_storage_transfer_job" "this" {
       dynamic "gcs_data_sink" {
         for_each = transfer_spec.value.gcs_data_sink
         content {
+          # bucket_name - (required) is a type of string
           bucket_name = gcs_data_sink.value["bucket_name"]
         }
       }
@@ -262,6 +279,7 @@ resource "google_storage_transfer_job" "this" {
       dynamic "gcs_data_source" {
         for_each = transfer_spec.value.gcs_data_source
         content {
+          # bucket_name - (required) is a type of string
           bucket_name = gcs_data_source.value["bucket_name"]
         }
       }
@@ -269,6 +287,7 @@ resource "google_storage_transfer_job" "this" {
       dynamic "http_data_source" {
         for_each = transfer_spec.value.http_data_source
         content {
+          # list_url - (required) is a type of string
           list_url = http_data_source.value["list_url"]
         }
       }
@@ -276,9 +295,13 @@ resource "google_storage_transfer_job" "this" {
       dynamic "object_conditions" {
         for_each = transfer_spec.value.object_conditions
         content {
-          exclude_prefixes                         = object_conditions.value["exclude_prefixes"]
-          include_prefixes                         = object_conditions.value["include_prefixes"]
+          # exclude_prefixes - (optional) is a type of list of string
+          exclude_prefixes = object_conditions.value["exclude_prefixes"]
+          # include_prefixes - (optional) is a type of list of string
+          include_prefixes = object_conditions.value["include_prefixes"]
+          # max_time_elapsed_since_last_modification - (optional) is a type of string
           max_time_elapsed_since_last_modification = object_conditions.value["max_time_elapsed_since_last_modification"]
+          # min_time_elapsed_since_last_modification - (optional) is a type of string
           min_time_elapsed_since_last_modification = object_conditions.value["min_time_elapsed_since_last_modification"]
         }
       }
@@ -286,8 +309,11 @@ resource "google_storage_transfer_job" "this" {
       dynamic "transfer_options" {
         for_each = transfer_spec.value.transfer_options
         content {
-          delete_objects_from_source_after_transfer  = transfer_options.value["delete_objects_from_source_after_transfer"]
-          delete_objects_unique_in_sink              = transfer_options.value["delete_objects_unique_in_sink"]
+          # delete_objects_from_source_after_transfer - (optional) is a type of bool
+          delete_objects_from_source_after_transfer = transfer_options.value["delete_objects_from_source_after_transfer"]
+          # delete_objects_unique_in_sink - (optional) is a type of bool
+          delete_objects_unique_in_sink = transfer_options.value["delete_objects_unique_in_sink"]
+          # overwrite_objects_already_existing_in_sink - (optional) is a type of bool
           overwrite_objects_already_existing_in_sink = transfer_options.value["overwrite_objects_already_existing_in_sink"]
         }
       }

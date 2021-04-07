@@ -72,13 +72,17 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_vpc_endpoint_subnet_association" "this" {
-  subnet_id       = var.subnet_id
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
+  # vpc_endpoint_id - (required) is a type of string
   vpc_endpoint_id = var.vpc_endpoint_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

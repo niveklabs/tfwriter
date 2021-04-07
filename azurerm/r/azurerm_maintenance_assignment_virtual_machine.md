@@ -81,16 +81,22 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_maintenance_assignment_virtual_machine" "this" {
-  location                     = var.location
+  # location - (required) is a type of string
+  location = var.location
+  # maintenance_configuration_id - (required) is a type of string
   maintenance_configuration_id = var.maintenance_configuration_id
-  virtual_machine_id           = var.virtual_machine_id
+  # virtual_machine_id - (required) is a type of string
+  virtual_machine_id = var.virtual_machine_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

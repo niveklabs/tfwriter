@@ -63,9 +63,12 @@ variable "type" {
 
 ```terraform
 data "vsphere_content_library_item" "this" {
+  # library_id - (required) is a type of string
   library_id = var.library_id
-  name       = var.name
-  type       = var.type
+  # name - (required) is a type of string
+  name = var.name
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

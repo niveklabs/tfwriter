@@ -118,20 +118,31 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_golden_gate_deployment_backup" "this" {
-  bucket         = var.bucket
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  defined_tags   = var.defined_tags
-  deployment_id  = var.deployment_id
-  display_name   = var.display_name
-  freeform_tags  = var.freeform_tags
-  namespace      = var.namespace
-  object         = var.object
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # deployment_id - (required) is a type of string
+  deployment_id = var.deployment_id
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # namespace - (required) is a type of string
+  namespace = var.namespace
+  # object - (required) is a type of string
+  object = var.object
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

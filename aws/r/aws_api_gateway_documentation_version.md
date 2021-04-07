@@ -64,9 +64,12 @@ variable "version" {
 
 ```terraform
 resource "aws_api_gateway_documentation_version" "this" {
+  # description - (optional) is a type of string
   description = var.description
+  # rest_api_id - (required) is a type of string
   rest_api_id = var.rest_api_id
-  version     = var.version
+  # version - (required) is a type of string
+  version = var.version
 }
 ```
 

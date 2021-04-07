@@ -134,21 +134,29 @@ variable "stage" {
 
 ```terraform
 resource "aws_codepipeline" "this" {
-  name     = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # role_arn - (required) is a type of string
   role_arn = var.role_arn
-  tags     = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "artifact_store" {
     for_each = var.artifact_store
     content {
+      # location - (required) is a type of string
       location = artifact_store.value["location"]
-      region   = artifact_store.value["region"]
-      type     = artifact_store.value["type"]
+      # region - (optional) is a type of string
+      region = artifact_store.value["region"]
+      # type - (required) is a type of string
+      type = artifact_store.value["type"]
 
       dynamic "encryption_key" {
         for_each = artifact_store.value.encryption_key
         content {
-          id   = encryption_key.value["id"]
+          # id - (required) is a type of string
+          id = encryption_key.value["id"]
+          # type - (required) is a type of string
           type = encryption_key.value["type"]
         }
       }
@@ -159,23 +167,36 @@ resource "aws_codepipeline" "this" {
   dynamic "stage" {
     for_each = var.stage
     content {
+      # name - (required) is a type of string
       name = stage.value["name"]
 
       dynamic "action" {
         for_each = stage.value.action
         content {
-          category         = action.value["category"]
-          configuration    = action.value["configuration"]
-          input_artifacts  = action.value["input_artifacts"]
-          name             = action.value["name"]
-          namespace        = action.value["namespace"]
+          # category - (required) is a type of string
+          category = action.value["category"]
+          # configuration - (optional) is a type of map of string
+          configuration = action.value["configuration"]
+          # input_artifacts - (optional) is a type of list of string
+          input_artifacts = action.value["input_artifacts"]
+          # name - (required) is a type of string
+          name = action.value["name"]
+          # namespace - (optional) is a type of string
+          namespace = action.value["namespace"]
+          # output_artifacts - (optional) is a type of list of string
           output_artifacts = action.value["output_artifacts"]
-          owner            = action.value["owner"]
-          provider         = action.value["provider"]
-          region           = action.value["region"]
-          role_arn         = action.value["role_arn"]
-          run_order        = action.value["run_order"]
-          version          = action.value["version"]
+          # owner - (required) is a type of string
+          owner = action.value["owner"]
+          # provider - (required) is a type of string
+          provider = action.value["provider"]
+          # region - (optional) is a type of string
+          region = action.value["region"]
+          # role_arn - (optional) is a type of string
+          role_arn = action.value["role_arn"]
+          # run_order - (optional) is a type of number
+          run_order = action.value["run_order"]
+          # version - (required) is a type of string
+          version = action.value["version"]
         }
       }
 

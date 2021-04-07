@@ -74,14 +74,19 @@ variable "filter" {
 
 ```terraform
 data "oci_kms_key_versions" "this" {
-  key_id              = var.key_id
+  # key_id - (required) is a type of string
+  key_id = var.key_id
+  # management_endpoint - (required) is a type of string
   management_endpoint = var.management_endpoint
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

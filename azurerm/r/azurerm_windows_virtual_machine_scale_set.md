@@ -661,40 +661,71 @@ variable "winrm_listener" {
 
 ```terraform
 resource "azurerm_windows_virtual_machine_scale_set" "this" {
-  admin_password                                    = var.admin_password
-  admin_username                                    = var.admin_username
-  computer_name_prefix                              = var.computer_name_prefix
-  custom_data                                       = var.custom_data
+  # admin_password - (required) is a type of string
+  admin_password = var.admin_password
+  # admin_username - (required) is a type of string
+  admin_username = var.admin_username
+  # computer_name_prefix - (optional) is a type of string
+  computer_name_prefix = var.computer_name_prefix
+  # custom_data - (optional) is a type of string
+  custom_data = var.custom_data
+  # do_not_run_extensions_on_overprovisioned_machines - (optional) is a type of bool
   do_not_run_extensions_on_overprovisioned_machines = var.do_not_run_extensions_on_overprovisioned_machines
-  enable_automatic_updates                          = var.enable_automatic_updates
-  encryption_at_host_enabled                        = var.encryption_at_host_enabled
-  eviction_policy                                   = var.eviction_policy
-  extensions_time_budget                            = var.extensions_time_budget
-  health_probe_id                                   = var.health_probe_id
-  instances                                         = var.instances
-  license_type                                      = var.license_type
-  location                                          = var.location
-  max_bid_price                                     = var.max_bid_price
-  name                                              = var.name
-  overprovision                                     = var.overprovision
-  platform_fault_domain_count                       = var.platform_fault_domain_count
-  priority                                          = var.priority
-  provision_vm_agent                                = var.provision_vm_agent
-  proximity_placement_group_id                      = var.proximity_placement_group_id
-  resource_group_name                               = var.resource_group_name
-  scale_in_policy                                   = var.scale_in_policy
-  single_placement_group                            = var.single_placement_group
-  sku                                               = var.sku
-  source_image_id                                   = var.source_image_id
-  tags                                              = var.tags
-  timezone                                          = var.timezone
-  upgrade_mode                                      = var.upgrade_mode
-  zone_balance                                      = var.zone_balance
-  zones                                             = var.zones
+  # enable_automatic_updates - (optional) is a type of bool
+  enable_automatic_updates = var.enable_automatic_updates
+  # encryption_at_host_enabled - (optional) is a type of bool
+  encryption_at_host_enabled = var.encryption_at_host_enabled
+  # eviction_policy - (optional) is a type of string
+  eviction_policy = var.eviction_policy
+  # extensions_time_budget - (optional) is a type of string
+  extensions_time_budget = var.extensions_time_budget
+  # health_probe_id - (optional) is a type of string
+  health_probe_id = var.health_probe_id
+  # instances - (required) is a type of number
+  instances = var.instances
+  # license_type - (optional) is a type of string
+  license_type = var.license_type
+  # location - (required) is a type of string
+  location = var.location
+  # max_bid_price - (optional) is a type of number
+  max_bid_price = var.max_bid_price
+  # name - (required) is a type of string
+  name = var.name
+  # overprovision - (optional) is a type of bool
+  overprovision = var.overprovision
+  # platform_fault_domain_count - (optional) is a type of number
+  platform_fault_domain_count = var.platform_fault_domain_count
+  # priority - (optional) is a type of string
+  priority = var.priority
+  # provision_vm_agent - (optional) is a type of bool
+  provision_vm_agent = var.provision_vm_agent
+  # proximity_placement_group_id - (optional) is a type of string
+  proximity_placement_group_id = var.proximity_placement_group_id
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # scale_in_policy - (optional) is a type of string
+  scale_in_policy = var.scale_in_policy
+  # single_placement_group - (optional) is a type of bool
+  single_placement_group = var.single_placement_group
+  # sku - (required) is a type of string
+  sku = var.sku
+  # source_image_id - (optional) is a type of string
+  source_image_id = var.source_image_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # timezone - (optional) is a type of string
+  timezone = var.timezone
+  # upgrade_mode - (optional) is a type of string
+  upgrade_mode = var.upgrade_mode
+  # zone_balance - (optional) is a type of bool
+  zone_balance = var.zone_balance
+  # zones - (optional) is a type of list of string
+  zones = var.zones
 
   dynamic "additional_capabilities" {
     for_each = var.additional_capabilities
     content {
+      # ultra_ssd_enabled - (optional) is a type of bool
       ultra_ssd_enabled = additional_capabilities.value["ultra_ssd_enabled"]
     }
   }
@@ -702,7 +733,9 @@ resource "azurerm_windows_virtual_machine_scale_set" "this" {
   dynamic "additional_unattend_content" {
     for_each = var.additional_unattend_content
     content {
+      # content - (required) is a type of string
       content = additional_unattend_content.value["content"]
+      # setting - (required) is a type of string
       setting = additional_unattend_content.value["setting"]
     }
   }
@@ -710,7 +743,9 @@ resource "azurerm_windows_virtual_machine_scale_set" "this" {
   dynamic "automatic_instance_repair" {
     for_each = var.automatic_instance_repair
     content {
-      enabled      = automatic_instance_repair.value["enabled"]
+      # enabled - (required) is a type of bool
+      enabled = automatic_instance_repair.value["enabled"]
+      # grace_period - (optional) is a type of string
       grace_period = automatic_instance_repair.value["grace_period"]
     }
   }
@@ -718,7 +753,9 @@ resource "azurerm_windows_virtual_machine_scale_set" "this" {
   dynamic "automatic_os_upgrade_policy" {
     for_each = var.automatic_os_upgrade_policy
     content {
-      disable_automatic_rollback  = automatic_os_upgrade_policy.value["disable_automatic_rollback"]
+      # disable_automatic_rollback - (required) is a type of bool
+      disable_automatic_rollback = automatic_os_upgrade_policy.value["disable_automatic_rollback"]
+      # enable_automatic_os_upgrade - (required) is a type of bool
       enable_automatic_os_upgrade = automatic_os_upgrade_policy.value["enable_automatic_os_upgrade"]
     }
   }
@@ -726,6 +763,7 @@ resource "azurerm_windows_virtual_machine_scale_set" "this" {
   dynamic "boot_diagnostics" {
     for_each = var.boot_diagnostics
     content {
+      # storage_account_uri - (optional) is a type of string
       storage_account_uri = boot_diagnostics.value["storage_account_uri"]
     }
   }
@@ -733,14 +771,23 @@ resource "azurerm_windows_virtual_machine_scale_set" "this" {
   dynamic "data_disk" {
     for_each = var.data_disk
     content {
-      caching                   = data_disk.value["caching"]
-      create_option             = data_disk.value["create_option"]
-      disk_encryption_set_id    = data_disk.value["disk_encryption_set_id"]
-      disk_iops_read_write      = data_disk.value["disk_iops_read_write"]
-      disk_mbps_read_write      = data_disk.value["disk_mbps_read_write"]
-      disk_size_gb              = data_disk.value["disk_size_gb"]
-      lun                       = data_disk.value["lun"]
-      storage_account_type      = data_disk.value["storage_account_type"]
+      # caching - (required) is a type of string
+      caching = data_disk.value["caching"]
+      # create_option - (optional) is a type of string
+      create_option = data_disk.value["create_option"]
+      # disk_encryption_set_id - (optional) is a type of string
+      disk_encryption_set_id = data_disk.value["disk_encryption_set_id"]
+      # disk_iops_read_write - (optional) is a type of number
+      disk_iops_read_write = data_disk.value["disk_iops_read_write"]
+      # disk_mbps_read_write - (optional) is a type of number
+      disk_mbps_read_write = data_disk.value["disk_mbps_read_write"]
+      # disk_size_gb - (required) is a type of number
+      disk_size_gb = data_disk.value["disk_size_gb"]
+      # lun - (required) is a type of number
+      lun = data_disk.value["lun"]
+      # storage_account_type - (required) is a type of string
+      storage_account_type = data_disk.value["storage_account_type"]
+      # write_accelerator_enabled - (optional) is a type of bool
       write_accelerator_enabled = data_disk.value["write_accelerator_enabled"]
     }
   }
@@ -748,60 +795,91 @@ resource "azurerm_windows_virtual_machine_scale_set" "this" {
   dynamic "extension" {
     for_each = var.extension
     content {
+      # auto_upgrade_minor_version - (optional) is a type of bool
       auto_upgrade_minor_version = extension.value["auto_upgrade_minor_version"]
-      force_update_tag           = extension.value["force_update_tag"]
-      name                       = extension.value["name"]
-      protected_settings         = extension.value["protected_settings"]
+      # force_update_tag - (optional) is a type of string
+      force_update_tag = extension.value["force_update_tag"]
+      # name - (required) is a type of string
+      name = extension.value["name"]
+      # protected_settings - (optional) is a type of string
+      protected_settings = extension.value["protected_settings"]
+      # provision_after_extensions - (optional) is a type of list of string
       provision_after_extensions = extension.value["provision_after_extensions"]
-      publisher                  = extension.value["publisher"]
-      settings                   = extension.value["settings"]
-      type                       = extension.value["type"]
-      type_handler_version       = extension.value["type_handler_version"]
+      # publisher - (required) is a type of string
+      publisher = extension.value["publisher"]
+      # settings - (optional) is a type of string
+      settings = extension.value["settings"]
+      # type - (required) is a type of string
+      type = extension.value["type"]
+      # type_handler_version - (required) is a type of string
+      type_handler_version = extension.value["type_handler_version"]
     }
   }
 
   dynamic "identity" {
     for_each = var.identity
     content {
+      # identity_ids - (optional) is a type of set of string
       identity_ids = identity.value["identity_ids"]
-      type         = identity.value["type"]
+      # type - (required) is a type of string
+      type = identity.value["type"]
     }
   }
 
   dynamic "network_interface" {
     for_each = var.network_interface
     content {
-      dns_servers                   = network_interface.value["dns_servers"]
+      # dns_servers - (optional) is a type of list of string
+      dns_servers = network_interface.value["dns_servers"]
+      # enable_accelerated_networking - (optional) is a type of bool
       enable_accelerated_networking = network_interface.value["enable_accelerated_networking"]
-      enable_ip_forwarding          = network_interface.value["enable_ip_forwarding"]
-      name                          = network_interface.value["name"]
-      network_security_group_id     = network_interface.value["network_security_group_id"]
-      primary                       = network_interface.value["primary"]
+      # enable_ip_forwarding - (optional) is a type of bool
+      enable_ip_forwarding = network_interface.value["enable_ip_forwarding"]
+      # name - (required) is a type of string
+      name = network_interface.value["name"]
+      # network_security_group_id - (optional) is a type of string
+      network_security_group_id = network_interface.value["network_security_group_id"]
+      # primary - (optional) is a type of bool
+      primary = network_interface.value["primary"]
 
       dynamic "ip_configuration" {
         for_each = network_interface.value.ip_configuration
         content {
+          # application_gateway_backend_address_pool_ids - (optional) is a type of set of string
           application_gateway_backend_address_pool_ids = ip_configuration.value["application_gateway_backend_address_pool_ids"]
-          application_security_group_ids               = ip_configuration.value["application_security_group_ids"]
-          load_balancer_backend_address_pool_ids       = ip_configuration.value["load_balancer_backend_address_pool_ids"]
-          load_balancer_inbound_nat_rules_ids          = ip_configuration.value["load_balancer_inbound_nat_rules_ids"]
-          name                                         = ip_configuration.value["name"]
-          primary                                      = ip_configuration.value["primary"]
-          subnet_id                                    = ip_configuration.value["subnet_id"]
-          version                                      = ip_configuration.value["version"]
+          # application_security_group_ids - (optional) is a type of set of string
+          application_security_group_ids = ip_configuration.value["application_security_group_ids"]
+          # load_balancer_backend_address_pool_ids - (optional) is a type of set of string
+          load_balancer_backend_address_pool_ids = ip_configuration.value["load_balancer_backend_address_pool_ids"]
+          # load_balancer_inbound_nat_rules_ids - (optional) is a type of set of string
+          load_balancer_inbound_nat_rules_ids = ip_configuration.value["load_balancer_inbound_nat_rules_ids"]
+          # name - (required) is a type of string
+          name = ip_configuration.value["name"]
+          # primary - (optional) is a type of bool
+          primary = ip_configuration.value["primary"]
+          # subnet_id - (optional) is a type of string
+          subnet_id = ip_configuration.value["subnet_id"]
+          # version - (optional) is a type of string
+          version = ip_configuration.value["version"]
 
           dynamic "public_ip_address" {
             for_each = ip_configuration.value.public_ip_address
             content {
-              domain_name_label       = public_ip_address.value["domain_name_label"]
+              # domain_name_label - (optional) is a type of string
+              domain_name_label = public_ip_address.value["domain_name_label"]
+              # idle_timeout_in_minutes - (optional) is a type of number
               idle_timeout_in_minutes = public_ip_address.value["idle_timeout_in_minutes"]
-              name                    = public_ip_address.value["name"]
-              public_ip_prefix_id     = public_ip_address.value["public_ip_prefix_id"]
+              # name - (required) is a type of string
+              name = public_ip_address.value["name"]
+              # public_ip_prefix_id - (optional) is a type of string
+              public_ip_prefix_id = public_ip_address.value["public_ip_prefix_id"]
 
               dynamic "ip_tag" {
                 for_each = public_ip_address.value.ip_tag
                 content {
-                  tag  = ip_tag.value["tag"]
+                  # tag - (required) is a type of string
+                  tag = ip_tag.value["tag"]
+                  # type - (required) is a type of string
                   type = ip_tag.value["type"]
                 }
               }
@@ -818,15 +896,21 @@ resource "azurerm_windows_virtual_machine_scale_set" "this" {
   dynamic "os_disk" {
     for_each = var.os_disk
     content {
-      caching                   = os_disk.value["caching"]
-      disk_encryption_set_id    = os_disk.value["disk_encryption_set_id"]
-      disk_size_gb              = os_disk.value["disk_size_gb"]
-      storage_account_type      = os_disk.value["storage_account_type"]
+      # caching - (required) is a type of string
+      caching = os_disk.value["caching"]
+      # disk_encryption_set_id - (optional) is a type of string
+      disk_encryption_set_id = os_disk.value["disk_encryption_set_id"]
+      # disk_size_gb - (optional) is a type of number
+      disk_size_gb = os_disk.value["disk_size_gb"]
+      # storage_account_type - (required) is a type of string
+      storage_account_type = os_disk.value["storage_account_type"]
+      # write_accelerator_enabled - (optional) is a type of bool
       write_accelerator_enabled = os_disk.value["write_accelerator_enabled"]
 
       dynamic "diff_disk_settings" {
         for_each = os_disk.value.diff_disk_settings
         content {
+          # option - (required) is a type of string
           option = diff_disk_settings.value["option"]
         }
       }
@@ -837,8 +921,11 @@ resource "azurerm_windows_virtual_machine_scale_set" "this" {
   dynamic "plan" {
     for_each = var.plan
     content {
-      name      = plan.value["name"]
-      product   = plan.value["product"]
+      # name - (required) is a type of string
+      name = plan.value["name"]
+      # product - (required) is a type of string
+      product = plan.value["product"]
+      # publisher - (required) is a type of string
       publisher = plan.value["publisher"]
     }
   }
@@ -846,23 +933,30 @@ resource "azurerm_windows_virtual_machine_scale_set" "this" {
   dynamic "rolling_upgrade_policy" {
     for_each = var.rolling_upgrade_policy
     content {
-      max_batch_instance_percent              = rolling_upgrade_policy.value["max_batch_instance_percent"]
-      max_unhealthy_instance_percent          = rolling_upgrade_policy.value["max_unhealthy_instance_percent"]
+      # max_batch_instance_percent - (required) is a type of number
+      max_batch_instance_percent = rolling_upgrade_policy.value["max_batch_instance_percent"]
+      # max_unhealthy_instance_percent - (required) is a type of number
+      max_unhealthy_instance_percent = rolling_upgrade_policy.value["max_unhealthy_instance_percent"]
+      # max_unhealthy_upgraded_instance_percent - (required) is a type of number
       max_unhealthy_upgraded_instance_percent = rolling_upgrade_policy.value["max_unhealthy_upgraded_instance_percent"]
-      pause_time_between_batches              = rolling_upgrade_policy.value["pause_time_between_batches"]
+      # pause_time_between_batches - (required) is a type of string
+      pause_time_between_batches = rolling_upgrade_policy.value["pause_time_between_batches"]
     }
   }
 
   dynamic "secret" {
     for_each = var.secret
     content {
+      # key_vault_id - (required) is a type of string
       key_vault_id = secret.value["key_vault_id"]
 
       dynamic "certificate" {
         for_each = secret.value.certificate
         content {
+          # store - (required) is a type of string
           store = certificate.value["store"]
-          url   = certificate.value["url"]
+          # url - (required) is a type of string
+          url = certificate.value["url"]
         }
       }
 
@@ -872,17 +966,23 @@ resource "azurerm_windows_virtual_machine_scale_set" "this" {
   dynamic "source_image_reference" {
     for_each = var.source_image_reference
     content {
-      offer     = source_image_reference.value["offer"]
+      # offer - (required) is a type of string
+      offer = source_image_reference.value["offer"]
+      # publisher - (required) is a type of string
       publisher = source_image_reference.value["publisher"]
-      sku       = source_image_reference.value["sku"]
-      version   = source_image_reference.value["version"]
+      # sku - (required) is a type of string
+      sku = source_image_reference.value["sku"]
+      # version - (required) is a type of string
+      version = source_image_reference.value["version"]
     }
   }
 
   dynamic "terminate_notification" {
     for_each = var.terminate_notification
     content {
+      # enabled - (required) is a type of bool
       enabled = terminate_notification.value["enabled"]
+      # timeout - (optional) is a type of string
       timeout = terminate_notification.value["timeout"]
     }
   }
@@ -890,9 +990,13 @@ resource "azurerm_windows_virtual_machine_scale_set" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -900,8 +1004,10 @@ resource "azurerm_windows_virtual_machine_scale_set" "this" {
   dynamic "winrm_listener" {
     for_each = var.winrm_listener
     content {
+      # certificate_url - (optional) is a type of string
       certificate_url = winrm_listener.value["certificate_url"]
-      protocol        = winrm_listener.value["protocol"]
+      # protocol - (required) is a type of string
+      protocol = winrm_listener.value["protocol"]
     }
   }
 

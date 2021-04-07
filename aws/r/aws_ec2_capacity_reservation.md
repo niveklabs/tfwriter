@@ -126,17 +126,28 @@ variable "tenancy" {
 
 ```terraform
 resource "aws_ec2_capacity_reservation" "this" {
-  availability_zone       = var.availability_zone
-  ebs_optimized           = var.ebs_optimized
-  end_date                = var.end_date
-  end_date_type           = var.end_date_type
-  ephemeral_storage       = var.ephemeral_storage
-  instance_count          = var.instance_count
+  # availability_zone - (required) is a type of string
+  availability_zone = var.availability_zone
+  # ebs_optimized - (optional) is a type of bool
+  ebs_optimized = var.ebs_optimized
+  # end_date - (optional) is a type of string
+  end_date = var.end_date
+  # end_date_type - (optional) is a type of string
+  end_date_type = var.end_date_type
+  # ephemeral_storage - (optional) is a type of bool
+  ephemeral_storage = var.ephemeral_storage
+  # instance_count - (required) is a type of number
+  instance_count = var.instance_count
+  # instance_match_criteria - (optional) is a type of string
   instance_match_criteria = var.instance_match_criteria
-  instance_platform       = var.instance_platform
-  instance_type           = var.instance_type
-  tags                    = var.tags
-  tenancy                 = var.tenancy
+  # instance_platform - (required) is a type of string
+  instance_platform = var.instance_platform
+  # instance_type - (required) is a type of string
+  instance_type = var.instance_type
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # tenancy - (optional) is a type of string
+  tenancy = var.tenancy
 }
 ```
 

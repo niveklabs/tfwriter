@@ -83,17 +83,24 @@ variable "srv" {
 
 ```terraform
 resource "dns_srv_record_set" "this" {
+  # name - (required) is a type of string
   name = var.name
-  ttl  = var.ttl
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
+  # zone - (required) is a type of string
   zone = var.zone
 
   dynamic "srv" {
     for_each = var.srv
     content {
-      port     = srv.value["port"]
+      # port - (required) is a type of number
+      port = srv.value["port"]
+      # priority - (required) is a type of number
       priority = srv.value["priority"]
-      target   = srv.value["target"]
-      weight   = srv.value["weight"]
+      # target - (required) is a type of string
+      target = srv.value["target"]
+      # weight - (required) is a type of number
+      weight = srv.value["weight"]
     }
   }
 

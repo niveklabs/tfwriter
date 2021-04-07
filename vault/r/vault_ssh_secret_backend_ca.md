@@ -74,10 +74,14 @@ variable "public_key" {
 
 ```terraform
 resource "vault_ssh_secret_backend_ca" "this" {
-  backend              = var.backend
+  # backend - (optional) is a type of string
+  backend = var.backend
+  # generate_signing_key - (optional) is a type of bool
   generate_signing_key = var.generate_signing_key
-  private_key          = var.private_key
-  public_key           = var.public_key
+  # private_key - (optional) is a type of string
+  private_key = var.private_key
+  # public_key - (optional) is a type of string
+  public_key = var.public_key
 }
 ```
 

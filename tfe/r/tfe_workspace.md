@@ -172,28 +172,46 @@ variable "vcs_repo" {
 
 ```terraform
 resource "tfe_workspace" "this" {
-  agent_pool_id         = var.agent_pool_id
-  allow_destroy_plan    = var.allow_destroy_plan
-  auto_apply            = var.auto_apply
-  execution_mode        = var.execution_mode
+  # agent_pool_id - (optional) is a type of string
+  agent_pool_id = var.agent_pool_id
+  # allow_destroy_plan - (optional) is a type of bool
+  allow_destroy_plan = var.allow_destroy_plan
+  # auto_apply - (optional) is a type of bool
+  auto_apply = var.auto_apply
+  # execution_mode - (optional) is a type of string
+  execution_mode = var.execution_mode
+  # file_triggers_enabled - (optional) is a type of bool
   file_triggers_enabled = var.file_triggers_enabled
-  name                  = var.name
-  operations            = var.operations
-  organization          = var.organization
-  queue_all_runs        = var.queue_all_runs
-  speculative_enabled   = var.speculative_enabled
-  ssh_key_id            = var.ssh_key_id
-  terraform_version     = var.terraform_version
-  trigger_prefixes      = var.trigger_prefixes
-  working_directory     = var.working_directory
+  # name - (required) is a type of string
+  name = var.name
+  # operations - (optional) is a type of bool
+  operations = var.operations
+  # organization - (required) is a type of string
+  organization = var.organization
+  # queue_all_runs - (optional) is a type of bool
+  queue_all_runs = var.queue_all_runs
+  # speculative_enabled - (optional) is a type of bool
+  speculative_enabled = var.speculative_enabled
+  # ssh_key_id - (optional) is a type of string
+  ssh_key_id = var.ssh_key_id
+  # terraform_version - (optional) is a type of string
+  terraform_version = var.terraform_version
+  # trigger_prefixes - (optional) is a type of list of string
+  trigger_prefixes = var.trigger_prefixes
+  # working_directory - (optional) is a type of string
+  working_directory = var.working_directory
 
   dynamic "vcs_repo" {
     for_each = var.vcs_repo
     content {
-      branch             = vcs_repo.value["branch"]
-      identifier         = vcs_repo.value["identifier"]
+      # branch - (optional) is a type of string
+      branch = vcs_repo.value["branch"]
+      # identifier - (required) is a type of string
+      identifier = vcs_repo.value["identifier"]
+      # ingress_submodules - (optional) is a type of bool
       ingress_submodules = vcs_repo.value["ingress_submodules"]
-      oauth_token_id     = vcs_repo.value["oauth_token_id"]
+      # oauth_token_id - (required) is a type of string
+      oauth_token_id = vcs_repo.value["oauth_token_id"]
     }
   }
 

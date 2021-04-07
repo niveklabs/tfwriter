@@ -64,9 +64,12 @@ variable "vars" {
 
 ```terraform
 resource "template_dir" "this" {
+  # destination_dir - (required) is a type of string
   destination_dir = var.destination_dir
-  source_dir      = var.source_dir
-  vars            = var.vars
+  # source_dir - (required) is a type of string
+  source_dir = var.source_dir
+  # vars - (optional) is a type of map of string
+  vars = var.vars
 }
 ```
 

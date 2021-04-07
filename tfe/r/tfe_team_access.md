@@ -86,17 +86,25 @@ variable "permissions" {
 
 ```terraform
 resource "tfe_team_access" "this" {
-  access       = var.access
-  team_id      = var.team_id
+  # access - (optional) is a type of string
+  access = var.access
+  # team_id - (required) is a type of string
+  team_id = var.team_id
+  # workspace_id - (required) is a type of string
   workspace_id = var.workspace_id
 
   dynamic "permissions" {
     for_each = var.permissions
     content {
-      runs              = permissions.value["runs"]
-      sentinel_mocks    = permissions.value["sentinel_mocks"]
-      state_versions    = permissions.value["state_versions"]
-      variables         = permissions.value["variables"]
+      # runs - (required) is a type of string
+      runs = permissions.value["runs"]
+      # sentinel_mocks - (required) is a type of string
+      sentinel_mocks = permissions.value["sentinel_mocks"]
+      # state_versions - (required) is a type of string
+      state_versions = permissions.value["state_versions"]
+      # variables - (required) is a type of string
+      variables = permissions.value["variables"]
+      # workspace_locking - (required) is a type of bool
       workspace_locking = permissions.value["workspace_locking"]
     }
   }

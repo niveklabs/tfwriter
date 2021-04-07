@@ -121,16 +121,23 @@ variable "exclusions" {
 
 ```terraform
 resource "google_logging_billing_account_sink" "this" {
+  # billing_account - (required) is a type of string
   billing_account = var.billing_account
-  description     = var.description
-  destination     = var.destination
-  disabled        = var.disabled
-  filter          = var.filter
-  name            = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # destination - (required) is a type of string
+  destination = var.destination
+  # disabled - (optional) is a type of bool
+  disabled = var.disabled
+  # filter - (optional) is a type of string
+  filter = var.filter
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "bigquery_options" {
     for_each = var.bigquery_options
     content {
+      # use_partitioned_tables - (required) is a type of bool
       use_partitioned_tables = bigquery_options.value["use_partitioned_tables"]
     }
   }
@@ -138,10 +145,14 @@ resource "google_logging_billing_account_sink" "this" {
   dynamic "exclusions" {
     for_each = var.exclusions
     content {
+      # description - (optional) is a type of string
       description = exclusions.value["description"]
-      disabled    = exclusions.value["disabled"]
-      filter      = exclusions.value["filter"]
-      name        = exclusions.value["name"]
+      # disabled - (optional) is a type of bool
+      disabled = exclusions.value["disabled"]
+      # filter - (required) is a type of string
+      filter = exclusions.value["filter"]
+      # name - (required) is a type of string
+      name = exclusions.value["name"]
     }
   }
 

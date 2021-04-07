@@ -81,11 +81,16 @@ variable "role_defaults" {
 
 ```terraform
 resource "consul_namespace" "this" {
-  description     = var.description
-  meta            = var.meta
-  name            = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # meta - (optional) is a type of map of string
+  meta = var.meta
+  # name - (required) is a type of string
+  name = var.name
+  # policy_defaults - (optional) is a type of list of string
   policy_defaults = var.policy_defaults
-  role_defaults   = var.role_defaults
+  # role_defaults - (optional) is a type of list of string
+  role_defaults = var.role_defaults
 }
 ```
 

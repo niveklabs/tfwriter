@@ -133,28 +133,42 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_eventhub" "this" {
-  message_retention   = var.message_retention
-  name                = var.name
-  namespace_name      = var.namespace_name
-  partition_count     = var.partition_count
+  # message_retention - (required) is a type of number
+  message_retention = var.message_retention
+  # name - (required) is a type of string
+  name = var.name
+  # namespace_name - (required) is a type of string
+  namespace_name = var.namespace_name
+  # partition_count - (required) is a type of number
+  partition_count = var.partition_count
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
 
   dynamic "capture_description" {
     for_each = var.capture_description
     content {
-      enabled             = capture_description.value["enabled"]
-      encoding            = capture_description.value["encoding"]
+      # enabled - (required) is a type of bool
+      enabled = capture_description.value["enabled"]
+      # encoding - (required) is a type of string
+      encoding = capture_description.value["encoding"]
+      # interval_in_seconds - (optional) is a type of number
       interval_in_seconds = capture_description.value["interval_in_seconds"]
+      # size_limit_in_bytes - (optional) is a type of number
       size_limit_in_bytes = capture_description.value["size_limit_in_bytes"]
+      # skip_empty_archives - (optional) is a type of bool
       skip_empty_archives = capture_description.value["skip_empty_archives"]
 
       dynamic "destination" {
         for_each = capture_description.value.destination
         content {
+          # archive_name_format - (required) is a type of string
           archive_name_format = destination.value["archive_name_format"]
+          # blob_container_name - (required) is a type of string
           blob_container_name = destination.value["blob_container_name"]
-          name                = destination.value["name"]
-          storage_account_id  = destination.value["storage_account_id"]
+          # name - (required) is a type of string
+          name = destination.value["name"]
+          # storage_account_id - (required) is a type of string
+          storage_account_id = destination.value["storage_account_id"]
         }
       }
 
@@ -164,9 +178,13 @@ resource "azurerm_eventhub" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

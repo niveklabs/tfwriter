@@ -49,6 +49,7 @@ variable "autonomous_container_database_id" {
 
 ```terraform
 data "oci_database_autonomous_container_database" "this" {
+  # autonomous_container_database_id - (required) is a type of string
   autonomous_container_database_id = var.autonomous_container_database_id
 }
 ```

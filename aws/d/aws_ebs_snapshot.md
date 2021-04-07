@@ -98,16 +98,23 @@ variable "filter" {
 
 ```terraform
 data "aws_ebs_snapshot" "this" {
-  most_recent            = var.most_recent
-  owners                 = var.owners
+  # most_recent - (optional) is a type of bool
+  most_recent = var.most_recent
+  # owners - (optional) is a type of list of string
+  owners = var.owners
+  # restorable_by_user_ids - (optional) is a type of list of string
   restorable_by_user_ids = var.restorable_by_user_ids
-  snapshot_ids           = var.snapshot_ids
-  tags                   = var.tags
+  # snapshot_ids - (optional) is a type of list of string
+  snapshot_ids = var.snapshot_ids
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

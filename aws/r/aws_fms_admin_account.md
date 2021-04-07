@@ -50,6 +50,7 @@ variable "account_id" {
 
 ```terraform
 resource "aws_fms_admin_account" "this" {
+  # account_id - (optional) is a type of string
   account_id = var.account_id
 }
 ```

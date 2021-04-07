@@ -90,12 +90,18 @@ variable "vpc" {
 
 ```terraform
 data "aws_neptune_orderable_db_instance" "this" {
-  engine                     = var.engine
-  engine_version             = var.engine_version
-  instance_class             = var.instance_class
-  license_model              = var.license_model
+  # engine - (optional) is a type of string
+  engine = var.engine
+  # engine_version - (optional) is a type of string
+  engine_version = var.engine_version
+  # instance_class - (optional) is a type of string
+  instance_class = var.instance_class
+  # license_model - (optional) is a type of string
+  license_model = var.license_model
+  # preferred_instance_classes - (optional) is a type of list of string
   preferred_instance_classes = var.preferred_instance_classes
-  vpc                        = var.vpc
+  # vpc - (optional) is a type of bool
+  vpc = var.vpc
 }
 ```
 

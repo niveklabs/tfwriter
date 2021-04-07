@@ -119,22 +119,31 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_lex_bot_alias" "this" {
-  bot_name    = var.bot_name
+  # bot_name - (required) is a type of string
+  bot_name = var.bot_name
+  # bot_version - (required) is a type of string
   bot_version = var.bot_version
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "conversation_logs" {
     for_each = var.conversation_logs
     content {
+      # iam_role_arn - (required) is a type of string
       iam_role_arn = conversation_logs.value["iam_role_arn"]
 
       dynamic "log_settings" {
         for_each = conversation_logs.value.log_settings
         content {
-          destination  = log_settings.value["destination"]
-          kms_key_arn  = log_settings.value["kms_key_arn"]
-          log_type     = log_settings.value["log_type"]
+          # destination - (required) is a type of string
+          destination = log_settings.value["destination"]
+          # kms_key_arn - (optional) is a type of string
+          kms_key_arn = log_settings.value["kms_key_arn"]
+          # log_type - (required) is a type of string
+          log_type = log_settings.value["log_type"]
+          # resource_arn - (required) is a type of string
           resource_arn = log_settings.value["resource_arn"]
         }
       }
@@ -145,8 +154,11 @@ resource "aws_lex_bot_alias" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

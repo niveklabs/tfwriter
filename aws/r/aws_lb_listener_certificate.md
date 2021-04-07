@@ -56,8 +56,10 @@ variable "listener_arn" {
 
 ```terraform
 resource "aws_lb_listener_certificate" "this" {
+  # certificate_arn - (required) is a type of string
   certificate_arn = var.certificate_arn
-  listener_arn    = var.listener_arn
+  # listener_arn - (required) is a type of string
+  listener_arn = var.listener_arn
 }
 ```
 

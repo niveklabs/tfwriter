@@ -72,10 +72,14 @@ variable "service" {
 
 ```terraform
 resource "google_cloud_run_service_iam_policy" "this" {
-  location    = var.location
+  # location - (optional) is a type of string
+  location = var.location
+  # policy_data - (required) is a type of string
   policy_data = var.policy_data
-  project     = var.project
-  service     = var.service
+  # project - (optional) is a type of string
+  project = var.project
+  # service - (required) is a type of string
+  service = var.service
 }
 ```
 

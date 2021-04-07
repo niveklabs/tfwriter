@@ -282,21 +282,36 @@ variable "timeouts" {
 
 ```terraform
 resource "azuread_application" "this" {
-  app_role                   = var.app_role
+  # app_role - (optional) is a type of set of object
+  app_role = var.app_role
+  # available_to_other_tenants - (optional) is a type of bool
   available_to_other_tenants = var.available_to_other_tenants
-  display_name               = var.display_name
-  group_membership_claims    = var.group_membership_claims
-  homepage                   = var.homepage
-  identifier_uris            = var.identifier_uris
-  logout_url                 = var.logout_url
-  name                       = var.name
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # group_membership_claims - (optional) is a type of string
+  group_membership_claims = var.group_membership_claims
+  # homepage - (optional) is a type of string
+  homepage = var.homepage
+  # identifier_uris - (optional) is a type of list of string
+  identifier_uris = var.identifier_uris
+  # logout_url - (optional) is a type of string
+  logout_url = var.logout_url
+  # name - (optional) is a type of string
+  name = var.name
+  # oauth2_allow_implicit_flow - (optional) is a type of bool
   oauth2_allow_implicit_flow = var.oauth2_allow_implicit_flow
-  oauth2_permissions         = var.oauth2_permissions
-  owners                     = var.owners
-  prevent_duplicate_names    = var.prevent_duplicate_names
-  public_client              = var.public_client
-  reply_urls                 = var.reply_urls
-  type                       = var.type
+  # oauth2_permissions - (optional) is a type of set of object
+  oauth2_permissions = var.oauth2_permissions
+  # owners - (optional) is a type of set of string
+  owners = var.owners
+  # prevent_duplicate_names - (optional) is a type of bool
+  prevent_duplicate_names = var.prevent_duplicate_names
+  # public_client - (optional) is a type of bool
+  public_client = var.public_client
+  # reply_urls - (optional) is a type of set of string
+  reply_urls = var.reply_urls
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "optional_claims" {
     for_each = var.optional_claims
@@ -305,20 +320,28 @@ resource "azuread_application" "this" {
       dynamic "access_token" {
         for_each = optional_claims.value.access_token
         content {
+          # additional_properties - (optional) is a type of list of string
           additional_properties = access_token.value["additional_properties"]
-          essential             = access_token.value["essential"]
-          name                  = access_token.value["name"]
-          source                = access_token.value["source"]
+          # essential - (optional) is a type of bool
+          essential = access_token.value["essential"]
+          # name - (required) is a type of string
+          name = access_token.value["name"]
+          # source - (optional) is a type of string
+          source = access_token.value["source"]
         }
       }
 
       dynamic "id_token" {
         for_each = optional_claims.value.id_token
         content {
+          # additional_properties - (optional) is a type of list of string
           additional_properties = id_token.value["additional_properties"]
-          essential             = id_token.value["essential"]
-          name                  = id_token.value["name"]
-          source                = id_token.value["source"]
+          # essential - (optional) is a type of bool
+          essential = id_token.value["essential"]
+          # name - (required) is a type of string
+          name = id_token.value["name"]
+          # source - (optional) is a type of string
+          source = id_token.value["source"]
         }
       }
 
@@ -328,12 +351,15 @@ resource "azuread_application" "this" {
   dynamic "required_resource_access" {
     for_each = var.required_resource_access
     content {
+      # resource_app_id - (required) is a type of string
       resource_app_id = required_resource_access.value["resource_app_id"]
 
       dynamic "resource_access" {
         for_each = required_resource_access.value.resource_access
         content {
-          id   = resource_access.value["id"]
+          # id - (required) is a type of string
+          id = resource_access.value["id"]
+          # type - (required) is a type of string
           type = resource_access.value["type"]
         }
       }
@@ -344,9 +370,13 @@ resource "azuread_application" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -81,15 +81,21 @@ variable "filter" {
 
 ```terraform
 data "oci_audit_events" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  end_time       = var.end_time
-  start_time     = var.start_time
+  # end_time - (required) is a type of string
+  end_time = var.end_time
+  # start_time - (required) is a type of string
+  start_time = var.start_time
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

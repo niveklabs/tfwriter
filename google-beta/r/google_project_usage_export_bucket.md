@@ -81,14 +81,19 @@ variable "timeouts" {
 
 ```terraform
 resource "google_project_usage_export_bucket" "this" {
+  # bucket_name - (required) is a type of string
   bucket_name = var.bucket_name
-  prefix      = var.prefix
-  project     = var.project
+  # prefix - (optional) is a type of string
+  prefix = var.prefix
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

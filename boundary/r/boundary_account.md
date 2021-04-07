@@ -88,12 +88,18 @@ variable "type" {
 
 ```terraform
 resource "boundary_account" "this" {
+  # auth_method_id - (required) is a type of string
   auth_method_id = var.auth_method_id
-  description    = var.description
-  login_name     = var.login_name
-  name           = var.name
-  password       = var.password
-  type           = var.type
+  # description - (optional) is a type of string
+  description = var.description
+  # login_name - (optional) is a type of string
+  login_name = var.login_name
+  # name - (optional) is a type of string
+  name = var.name
+  # password - (optional) is a type of string
+  password = var.password
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

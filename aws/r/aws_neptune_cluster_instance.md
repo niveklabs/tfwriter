@@ -194,29 +194,49 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_neptune_cluster_instance" "this" {
-  apply_immediately            = var.apply_immediately
-  auto_minor_version_upgrade   = var.auto_minor_version_upgrade
-  availability_zone            = var.availability_zone
-  cluster_identifier           = var.cluster_identifier
-  engine                       = var.engine
-  engine_version               = var.engine_version
-  identifier                   = var.identifier
-  identifier_prefix            = var.identifier_prefix
-  instance_class               = var.instance_class
+  # apply_immediately - (optional) is a type of bool
+  apply_immediately = var.apply_immediately
+  # auto_minor_version_upgrade - (optional) is a type of bool
+  auto_minor_version_upgrade = var.auto_minor_version_upgrade
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # cluster_identifier - (required) is a type of string
+  cluster_identifier = var.cluster_identifier
+  # engine - (optional) is a type of string
+  engine = var.engine
+  # engine_version - (optional) is a type of string
+  engine_version = var.engine_version
+  # identifier - (optional) is a type of string
+  identifier = var.identifier
+  # identifier_prefix - (optional) is a type of string
+  identifier_prefix = var.identifier_prefix
+  # instance_class - (required) is a type of string
+  instance_class = var.instance_class
+  # neptune_parameter_group_name - (optional) is a type of string
   neptune_parameter_group_name = var.neptune_parameter_group_name
-  neptune_subnet_group_name    = var.neptune_subnet_group_name
-  port                         = var.port
-  preferred_backup_window      = var.preferred_backup_window
+  # neptune_subnet_group_name - (optional) is a type of string
+  neptune_subnet_group_name = var.neptune_subnet_group_name
+  # port - (optional) is a type of number
+  port = var.port
+  # preferred_backup_window - (optional) is a type of string
+  preferred_backup_window = var.preferred_backup_window
+  # preferred_maintenance_window - (optional) is a type of string
   preferred_maintenance_window = var.preferred_maintenance_window
-  promotion_tier               = var.promotion_tier
-  publicly_accessible          = var.publicly_accessible
-  tags                         = var.tags
+  # promotion_tier - (optional) is a type of number
+  promotion_tier = var.promotion_tier
+  # publicly_accessible - (optional) is a type of bool
+  publicly_accessible = var.publicly_accessible
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

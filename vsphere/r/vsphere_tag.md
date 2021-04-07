@@ -64,9 +64,12 @@ variable "name" {
 
 ```terraform
 resource "vsphere_tag" "this" {
+  # category_id - (required) is a type of string
   category_id = var.category_id
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

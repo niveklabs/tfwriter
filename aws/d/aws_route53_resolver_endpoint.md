@@ -66,12 +66,15 @@ variable "filter" {
 
 ```terraform
 data "aws_route53_resolver_endpoint" "this" {
+  # resolver_endpoint_id - (optional) is a type of string
   resolver_endpoint_id = var.resolver_endpoint_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

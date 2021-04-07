@@ -65,8 +65,11 @@ variable "member_entity_ids" {
 
 ```terraform
 resource "vault_identity_group_member_entity_ids" "this" {
-  exclusive         = var.exclusive
-  group_id          = var.group_id
+  # exclusive - (optional) is a type of bool
+  exclusive = var.exclusive
+  # group_id - (required) is a type of string
+  group_id = var.group_id
+  # member_entity_ids - (optional) is a type of set of string
   member_entity_ids = var.member_entity_ids
 }
 ```

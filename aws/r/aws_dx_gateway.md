@@ -72,13 +72,17 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_dx_gateway" "this" {
+  # amazon_side_asn - (required) is a type of string
   amazon_side_asn = var.amazon_side_asn
-  name            = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

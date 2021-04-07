@@ -354,43 +354,77 @@ variable "set_sensitive" {
 
 ```terraform
 resource "helm_release" "this" {
-  atomic                     = var.atomic
-  chart                      = var.chart
-  cleanup_on_fail            = var.cleanup_on_fail
-  create_namespace           = var.create_namespace
-  dependency_update          = var.dependency_update
-  description                = var.description
-  devel                      = var.devel
-  disable_crd_hooks          = var.disable_crd_hooks
+  # atomic - (optional) is a type of bool
+  atomic = var.atomic
+  # chart - (required) is a type of string
+  chart = var.chart
+  # cleanup_on_fail - (optional) is a type of bool
+  cleanup_on_fail = var.cleanup_on_fail
+  # create_namespace - (optional) is a type of bool
+  create_namespace = var.create_namespace
+  # dependency_update - (optional) is a type of bool
+  dependency_update = var.dependency_update
+  # description - (optional) is a type of string
+  description = var.description
+  # devel - (optional) is a type of bool
+  devel = var.devel
+  # disable_crd_hooks - (optional) is a type of bool
+  disable_crd_hooks = var.disable_crd_hooks
+  # disable_openapi_validation - (optional) is a type of bool
   disable_openapi_validation = var.disable_openapi_validation
-  disable_webhooks           = var.disable_webhooks
-  force_update               = var.force_update
-  keyring                    = var.keyring
-  lint                       = var.lint
-  max_history                = var.max_history
-  name                       = var.name
-  namespace                  = var.namespace
-  recreate_pods              = var.recreate_pods
-  render_subchart_notes      = var.render_subchart_notes
-  replace                    = var.replace
-  repository                 = var.repository
-  repository_ca_file         = var.repository_ca_file
-  repository_cert_file       = var.repository_cert_file
-  repository_key_file        = var.repository_key_file
-  repository_password        = var.repository_password
-  repository_username        = var.repository_username
-  reset_values               = var.reset_values
-  reuse_values               = var.reuse_values
-  skip_crds                  = var.skip_crds
-  timeout                    = var.timeout
-  values                     = var.values
-  verify                     = var.verify
-  version                    = var.version
-  wait                       = var.wait
+  # disable_webhooks - (optional) is a type of bool
+  disable_webhooks = var.disable_webhooks
+  # force_update - (optional) is a type of bool
+  force_update = var.force_update
+  # keyring - (optional) is a type of string
+  keyring = var.keyring
+  # lint - (optional) is a type of bool
+  lint = var.lint
+  # max_history - (optional) is a type of number
+  max_history = var.max_history
+  # name - (required) is a type of string
+  name = var.name
+  # namespace - (optional) is a type of string
+  namespace = var.namespace
+  # recreate_pods - (optional) is a type of bool
+  recreate_pods = var.recreate_pods
+  # render_subchart_notes - (optional) is a type of bool
+  render_subchart_notes = var.render_subchart_notes
+  # replace - (optional) is a type of bool
+  replace = var.replace
+  # repository - (optional) is a type of string
+  repository = var.repository
+  # repository_ca_file - (optional) is a type of string
+  repository_ca_file = var.repository_ca_file
+  # repository_cert_file - (optional) is a type of string
+  repository_cert_file = var.repository_cert_file
+  # repository_key_file - (optional) is a type of string
+  repository_key_file = var.repository_key_file
+  # repository_password - (optional) is a type of string
+  repository_password = var.repository_password
+  # repository_username - (optional) is a type of string
+  repository_username = var.repository_username
+  # reset_values - (optional) is a type of bool
+  reset_values = var.reset_values
+  # reuse_values - (optional) is a type of bool
+  reuse_values = var.reuse_values
+  # skip_crds - (optional) is a type of bool
+  skip_crds = var.skip_crds
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
+  # values - (optional) is a type of list of string
+  values = var.values
+  # verify - (optional) is a type of bool
+  verify = var.verify
+  # version - (optional) is a type of string
+  version = var.version
+  # wait - (optional) is a type of bool
+  wait = var.wait
 
   dynamic "postrender" {
     for_each = var.postrender
     content {
+      # binary_path - (required) is a type of string
       binary_path = postrender.value["binary_path"]
     }
   }
@@ -398,8 +432,11 @@ resource "helm_release" "this" {
   dynamic "set" {
     for_each = var.set
     content {
-      name  = set.value["name"]
-      type  = set.value["type"]
+      # name - (required) is a type of string
+      name = set.value["name"]
+      # type - (optional) is a type of string
+      type = set.value["type"]
+      # value - (required) is a type of string
       value = set.value["value"]
     }
   }
@@ -407,8 +444,11 @@ resource "helm_release" "this" {
   dynamic "set_sensitive" {
     for_each = var.set_sensitive
     content {
-      name  = set_sensitive.value["name"]
-      type  = set_sensitive.value["type"]
+      # name - (required) is a type of string
+      name = set_sensitive.value["name"]
+      # type - (optional) is a type of string
+      type = set_sensitive.value["type"]
+      # value - (required) is a type of string
       value = set_sensitive.value["value"]
     }
   }

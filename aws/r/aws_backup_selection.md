@@ -89,16 +89,23 @@ variable "selection_tag" {
 
 ```terraform
 resource "aws_backup_selection" "this" {
+  # iam_role_arn - (required) is a type of string
   iam_role_arn = var.iam_role_arn
-  name         = var.name
-  plan_id      = var.plan_id
-  resources    = var.resources
+  # name - (required) is a type of string
+  name = var.name
+  # plan_id - (required) is a type of string
+  plan_id = var.plan_id
+  # resources - (optional) is a type of set of string
+  resources = var.resources
 
   dynamic "selection_tag" {
     for_each = var.selection_tag
     content {
-      key   = selection_tag.value["key"]
-      type  = selection_tag.value["type"]
+      # key - (required) is a type of string
+      key = selection_tag.value["key"]
+      # type - (required) is a type of string
+      type = selection_tag.value["type"]
+      # value - (required) is a type of string
       value = selection_tag.value["value"]
     }
   }

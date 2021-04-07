@@ -78,13 +78,17 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_network_service_tags" "this" {
-  location        = var.location
+  # location - (required) is a type of string
+  location = var.location
+  # location_filter - (optional) is a type of string
   location_filter = var.location_filter
-  service         = var.service
+  # service - (required) is a type of string
+  service = var.service
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

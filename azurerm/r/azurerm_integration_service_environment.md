@@ -113,20 +113,31 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_integration_service_environment" "this" {
-  access_endpoint_type       = var.access_endpoint_type
-  location                   = var.location
-  name                       = var.name
-  resource_group_name        = var.resource_group_name
-  sku_name                   = var.sku_name
-  tags                       = var.tags
+  # access_endpoint_type - (required) is a type of string
+  access_endpoint_type = var.access_endpoint_type
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # sku_name - (optional) is a type of string
+  sku_name = var.sku_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # virtual_network_subnet_ids - (required) is a type of set of string
   virtual_network_subnet_ids = var.virtual_network_subnet_ids
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

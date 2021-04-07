@@ -99,10 +99,14 @@ variable "spec" {
 
 ```terraform
 resource "aws_appmesh_virtual_router" "this" {
-  mesh_name  = var.mesh_name
+  # mesh_name - (required) is a type of string
+  mesh_name = var.mesh_name
+  # mesh_owner - (optional) is a type of string
   mesh_owner = var.mesh_owner
-  name       = var.name
-  tags       = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "spec" {
     for_each = var.spec
@@ -115,7 +119,9 @@ resource "aws_appmesh_virtual_router" "this" {
           dynamic "port_mapping" {
             for_each = listener.value.port_mapping
             content {
-              port     = port_mapping.value["port"]
+              # port - (required) is a type of number
+              port = port_mapping.value["port"]
+              # protocol - (required) is a type of string
               protocol = port_mapping.value["protocol"]
             }
           }

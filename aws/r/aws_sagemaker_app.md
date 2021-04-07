@@ -94,16 +94,23 @@ variable "resource_spec" {
 
 ```terraform
 resource "aws_sagemaker_app" "this" {
-  app_name          = var.app_name
-  app_type          = var.app_type
-  domain_id         = var.domain_id
-  tags              = var.tags
+  # app_name - (required) is a type of string
+  app_name = var.app_name
+  # app_type - (required) is a type of string
+  app_type = var.app_type
+  # domain_id - (required) is a type of string
+  domain_id = var.domain_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # user_profile_name - (required) is a type of string
   user_profile_name = var.user_profile_name
 
   dynamic "resource_spec" {
     for_each = var.resource_spec
     content {
-      instance_type       = resource_spec.value["instance_type"]
+      # instance_type - (optional) is a type of string
+      instance_type = resource_spec.value["instance_type"]
+      # sagemaker_image_arn - (optional) is a type of string
       sagemaker_image_arn = resource_spec.value["sagemaker_image_arn"]
     }
   }

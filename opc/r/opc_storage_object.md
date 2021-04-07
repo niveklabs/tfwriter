@@ -136,18 +136,30 @@ variable "transfer_encoding" {
 
 ```terraform
 resource "opc_storage_object" "this" {
-  container           = var.container
-  content             = var.content
+  # container - (required) is a type of string
+  container = var.container
+  # content - (optional) is a type of string
+  content = var.content
+  # content_disposition - (optional) is a type of string
   content_disposition = var.content_disposition
-  content_encoding    = var.content_encoding
-  content_type        = var.content_type
-  copy_from           = var.copy_from
-  delete_at           = var.delete_at
-  etag                = var.etag
-  file                = var.file
-  metadata            = var.metadata
-  name                = var.name
-  transfer_encoding   = var.transfer_encoding
+  # content_encoding - (optional) is a type of string
+  content_encoding = var.content_encoding
+  # content_type - (optional) is a type of string
+  content_type = var.content_type
+  # copy_from - (optional) is a type of string
+  copy_from = var.copy_from
+  # delete_at - (optional) is a type of number
+  delete_at = var.delete_at
+  # etag - (optional) is a type of string
+  etag = var.etag
+  # file - (optional) is a type of string
+  file = var.file
+  # metadata - (optional) is a type of map of string
+  metadata = var.metadata
+  # name - (required) is a type of string
+  name = var.name
+  # transfer_encoding - (optional) is a type of string
+  transfer_encoding = var.transfer_encoding
 }
 ```
 

@@ -78,13 +78,17 @@ variable "timeouts" {
 
 ```terraform
 data "hcs_cluster" "this" {
-  cluster_name             = var.cluster_name
+  # cluster_name - (optional) is a type of string
+  cluster_name = var.cluster_name
+  # managed_application_name - (required) is a type of string
   managed_application_name = var.managed_application_name
-  resource_group_name      = var.resource_group_name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

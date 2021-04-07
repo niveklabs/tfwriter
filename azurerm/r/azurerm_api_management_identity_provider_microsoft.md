@@ -90,17 +90,25 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_api_management_identity_provider_microsoft" "this" {
+  # api_management_name - (required) is a type of string
   api_management_name = var.api_management_name
-  client_id           = var.client_id
-  client_secret       = var.client_secret
+  # client_id - (required) is a type of string
+  client_id = var.client_id
+  # client_secret - (required) is a type of string
+  client_secret = var.client_secret
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

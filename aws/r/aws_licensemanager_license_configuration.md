@@ -96,13 +96,20 @@ variable "tags" {
 
 ```terraform
 resource "aws_licensemanager_license_configuration" "this" {
-  description              = var.description
-  license_count            = var.license_count
+  # description - (optional) is a type of string
+  description = var.description
+  # license_count - (optional) is a type of number
+  license_count = var.license_count
+  # license_count_hard_limit - (optional) is a type of bool
   license_count_hard_limit = var.license_count_hard_limit
-  license_counting_type    = var.license_counting_type
-  license_rules            = var.license_rules
-  name                     = var.name
-  tags                     = var.tags
+  # license_counting_type - (required) is a type of string
+  license_counting_type = var.license_counting_type
+  # license_rules - (optional) is a type of list of string
+  license_rules = var.license_rules
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

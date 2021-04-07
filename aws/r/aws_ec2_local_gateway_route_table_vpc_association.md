@@ -64,9 +64,12 @@ variable "vpc_id" {
 
 ```terraform
 resource "aws_ec2_local_gateway_route_table_vpc_association" "this" {
+  # local_gateway_route_table_id - (required) is a type of string
   local_gateway_route_table_id = var.local_gateway_route_table_id
-  tags                         = var.tags
-  vpc_id                       = var.vpc_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

@@ -224,31 +224,47 @@ variable "virtual_network_configuration" {
 
 ```terraform
 resource "azurerm_kusto_cluster" "this" {
+  # double_encryption_enabled - (optional) is a type of bool
   double_encryption_enabled = var.double_encryption_enabled
-  enable_disk_encryption    = var.enable_disk_encryption
-  enable_purge              = var.enable_purge
-  enable_streaming_ingest   = var.enable_streaming_ingest
-  engine                    = var.engine
-  language_extensions       = var.language_extensions
-  location                  = var.location
-  name                      = var.name
-  resource_group_name       = var.resource_group_name
-  tags                      = var.tags
-  trusted_external_tenants  = var.trusted_external_tenants
-  zones                     = var.zones
+  # enable_disk_encryption - (optional) is a type of bool
+  enable_disk_encryption = var.enable_disk_encryption
+  # enable_purge - (optional) is a type of bool
+  enable_purge = var.enable_purge
+  # enable_streaming_ingest - (optional) is a type of bool
+  enable_streaming_ingest = var.enable_streaming_ingest
+  # engine - (optional) is a type of string
+  engine = var.engine
+  # language_extensions - (optional) is a type of list of string
+  language_extensions = var.language_extensions
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # trusted_external_tenants - (optional) is a type of list of string
+  trusted_external_tenants = var.trusted_external_tenants
+  # zones - (optional) is a type of list of string
+  zones = var.zones
 
   dynamic "identity" {
     for_each = var.identity
     content {
+      # identity_ids - (optional) is a type of set of string
       identity_ids = identity.value["identity_ids"]
-      type         = identity.value["type"]
+      # type - (required) is a type of string
+      type = identity.value["type"]
     }
   }
 
   dynamic "optimized_auto_scale" {
     for_each = var.optimized_auto_scale
     content {
+      # maximum_instances - (required) is a type of number
       maximum_instances = optimized_auto_scale.value["maximum_instances"]
+      # minimum_instances - (required) is a type of number
       minimum_instances = optimized_auto_scale.value["minimum_instances"]
     }
   }
@@ -256,17 +272,23 @@ resource "azurerm_kusto_cluster" "this" {
   dynamic "sku" {
     for_each = var.sku
     content {
+      # capacity - (optional) is a type of number
       capacity = sku.value["capacity"]
-      name     = sku.value["name"]
+      # name - (required) is a type of string
+      name = sku.value["name"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -274,9 +296,12 @@ resource "azurerm_kusto_cluster" "this" {
   dynamic "virtual_network_configuration" {
     for_each = var.virtual_network_configuration
     content {
+      # data_management_public_ip_id - (required) is a type of string
       data_management_public_ip_id = virtual_network_configuration.value["data_management_public_ip_id"]
-      engine_public_ip_id          = virtual_network_configuration.value["engine_public_ip_id"]
-      subnet_id                    = virtual_network_configuration.value["subnet_id"]
+      # engine_public_ip_id - (required) is a type of string
+      engine_public_ip_id = virtual_network_configuration.value["engine_public_ip_id"]
+      # subnet_id - (required) is a type of string
+      subnet_id = virtual_network_configuration.value["subnet_id"]
     }
   }
 

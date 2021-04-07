@@ -98,18 +98,27 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_digital_twins_endpoint_eventhub" "this" {
-  dead_letter_storage_secret           = var.dead_letter_storage_secret
-  digital_twins_id                     = var.digital_twins_id
-  eventhub_primary_connection_string   = var.eventhub_primary_connection_string
+  # dead_letter_storage_secret - (optional) is a type of string
+  dead_letter_storage_secret = var.dead_letter_storage_secret
+  # digital_twins_id - (required) is a type of string
+  digital_twins_id = var.digital_twins_id
+  # eventhub_primary_connection_string - (required) is a type of string
+  eventhub_primary_connection_string = var.eventhub_primary_connection_string
+  # eventhub_secondary_connection_string - (required) is a type of string
   eventhub_secondary_connection_string = var.eventhub_secondary_connection_string
-  name                                 = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

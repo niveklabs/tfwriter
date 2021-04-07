@@ -73,9 +73,13 @@ variable "token_version" {
 
 ```terraform
 data "oci_containerengine_cluster_kube_config" "this" {
-  cluster_id    = var.cluster_id
-  endpoint      = var.endpoint
-  expiration    = var.expiration
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # endpoint - (optional) is a type of string
+  endpoint = var.endpoint
+  # expiration - (optional) is a type of number
+  expiration = var.expiration
+  # token_version - (optional) is a type of string
   token_version = var.token_version
 }
 ```

@@ -56,7 +56,9 @@ variable "member_object_id" {
 
 ```terraform
 resource "azuread_group_member" "this" {
-  group_object_id  = var.group_object_id
+  # group_object_id - (required) is a type of string
+  group_object_id = var.group_object_id
+  # member_object_id - (required) is a type of string
   member_object_id = var.member_object_id
 }
 ```

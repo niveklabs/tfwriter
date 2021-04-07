@@ -142,12 +142,18 @@ variable "timeouts" {
 
 ```terraform
 resource "google_container_analysis_note" "this" {
-  expiration_time    = var.expiration_time
-  long_description   = var.long_description
-  name               = var.name
-  project            = var.project
+  # expiration_time - (optional) is a type of string
+  expiration_time = var.expiration_time
+  # long_description - (optional) is a type of string
+  long_description = var.long_description
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # related_note_names - (optional) is a type of set of string
   related_note_names = var.related_note_names
-  short_description  = var.short_description
+  # short_description - (optional) is a type of string
+  short_description = var.short_description
 
   dynamic "attestation_authority" {
     for_each = var.attestation_authority
@@ -156,6 +162,7 @@ resource "google_container_analysis_note" "this" {
       dynamic "hint" {
         for_each = attestation_authority.value.hint
         content {
+          # human_readable_name - (required) is a type of string
           human_readable_name = hint.value["human_readable_name"]
         }
       }
@@ -166,16 +173,21 @@ resource "google_container_analysis_note" "this" {
   dynamic "related_url" {
     for_each = var.related_url
     content {
+      # label - (optional) is a type of string
       label = related_url.value["label"]
-      url   = related_url.value["url"]
+      # url - (required) is a type of string
+      url = related_url.value["url"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

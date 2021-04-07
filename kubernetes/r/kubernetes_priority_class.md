@@ -92,17 +92,24 @@ variable "metadata" {
 
 ```terraform
 resource "kubernetes_priority_class" "this" {
-  description    = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # global_default - (optional) is a type of bool
   global_default = var.global_default
-  value          = var.value
+  # value - (required) is a type of number
+  value = var.value
 
   dynamic "metadata" {
     for_each = var.metadata
     content {
-      annotations   = metadata.value["annotations"]
+      # annotations - (optional) is a type of map of string
+      annotations = metadata.value["annotations"]
+      # generate_name - (optional) is a type of string
       generate_name = metadata.value["generate_name"]
-      labels        = metadata.value["labels"]
-      name          = metadata.value["name"]
+      # labels - (optional) is a type of map of string
+      labels = metadata.value["labels"]
+      # name - (optional) is a type of string
+      name = metadata.value["name"]
     }
   }
 

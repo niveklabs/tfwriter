@@ -122,27 +122,39 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_nosql_table" "this" {
-  compartment_id      = var.compartment_id
-  ddl_statement       = var.ddl_statement
-  defined_tags        = var.defined_tags
-  freeform_tags       = var.freeform_tags
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # ddl_statement - (required) is a type of string
+  ddl_statement = var.ddl_statement
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # is_auto_reclaimable - (optional) is a type of bool
   is_auto_reclaimable = var.is_auto_reclaimable
-  name                = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "table_limits" {
     for_each = var.table_limits
     content {
-      max_read_units     = table_limits.value["max_read_units"]
+      # max_read_units - (required) is a type of number
+      max_read_units = table_limits.value["max_read_units"]
+      # max_storage_in_gbs - (required) is a type of number
       max_storage_in_gbs = table_limits.value["max_storage_in_gbs"]
-      max_write_units    = table_limits.value["max_write_units"]
+      # max_write_units - (required) is a type of number
+      max_write_units = table_limits.value["max_write_units"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

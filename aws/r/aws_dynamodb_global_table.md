@@ -80,11 +80,13 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_dynamodb_global_table" "this" {
+  # name - (required) is a type of string
   name = var.name
 
   dynamic "replica" {
     for_each = var.replica
     content {
+      # region_name - (required) is a type of string
       region_name = replica.value["region_name"]
     }
   }
@@ -92,8 +94,11 @@ resource "aws_dynamodb_global_table" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

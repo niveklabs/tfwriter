@@ -146,19 +146,32 @@ variable "ttl" {
 
 ```terraform
 resource "vault_nomad_secret_backend" "this" {
-  address                   = var.address
-  backend                   = var.backend
-  ca_cert                   = var.ca_cert
-  client_cert               = var.client_cert
-  client_key                = var.client_key
+  # address - (optional) is a type of string
+  address = var.address
+  # backend - (optional) is a type of string
+  backend = var.backend
+  # ca_cert - (optional) is a type of string
+  ca_cert = var.ca_cert
+  # client_cert - (optional) is a type of string
+  client_cert = var.client_cert
+  # client_key - (optional) is a type of string
+  client_key = var.client_key
+  # default_lease_ttl_seconds - (optional) is a type of number
   default_lease_ttl_seconds = var.default_lease_ttl_seconds
-  description               = var.description
-  local                     = var.local
-  max_lease_ttl_seconds     = var.max_lease_ttl_seconds
-  max_token_name_length     = var.max_token_name_length
-  max_ttl                   = var.max_ttl
-  token                     = var.token
-  ttl                       = var.ttl
+  # description - (optional) is a type of string
+  description = var.description
+  # local - (optional) is a type of bool
+  local = var.local
+  # max_lease_ttl_seconds - (optional) is a type of number
+  max_lease_ttl_seconds = var.max_lease_ttl_seconds
+  # max_token_name_length - (optional) is a type of number
+  max_token_name_length = var.max_token_name_length
+  # max_ttl - (optional) is a type of number
+  max_ttl = var.max_ttl
+  # token - (optional) is a type of string
+  token = var.token
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
 }
 ```
 

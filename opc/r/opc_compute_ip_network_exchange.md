@@ -65,9 +65,12 @@ variable "tags" {
 
 ```terraform
 resource "opc_compute_ip_network_exchange" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  tags        = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of list of string
+  tags = var.tags
 }
 ```
 

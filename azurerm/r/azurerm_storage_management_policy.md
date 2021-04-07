@@ -121,13 +121,16 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_storage_management_policy" "this" {
+  # storage_account_id - (required) is a type of string
   storage_account_id = var.storage_account_id
 
   dynamic "rule" {
     for_each = var.rule
     content {
+      # enabled - (required) is a type of bool
       enabled = rule.value["enabled"]
-      name    = rule.value["name"]
+      # name - (required) is a type of string
+      name = rule.value["name"]
 
       dynamic "actions" {
         for_each = rule.value.actions
@@ -136,15 +139,19 @@ resource "azurerm_storage_management_policy" "this" {
           dynamic "base_blob" {
             for_each = actions.value.base_blob
             content {
-              delete_after_days_since_modification_greater_than          = base_blob.value["delete_after_days_since_modification_greater_than"]
+              # delete_after_days_since_modification_greater_than - (optional) is a type of number
+              delete_after_days_since_modification_greater_than = base_blob.value["delete_after_days_since_modification_greater_than"]
+              # tier_to_archive_after_days_since_modification_greater_than - (optional) is a type of number
               tier_to_archive_after_days_since_modification_greater_than = base_blob.value["tier_to_archive_after_days_since_modification_greater_than"]
-              tier_to_cool_after_days_since_modification_greater_than    = base_blob.value["tier_to_cool_after_days_since_modification_greater_than"]
+              # tier_to_cool_after_days_since_modification_greater_than - (optional) is a type of number
+              tier_to_cool_after_days_since_modification_greater_than = base_blob.value["tier_to_cool_after_days_since_modification_greater_than"]
             }
           }
 
           dynamic "snapshot" {
             for_each = actions.value.snapshot
             content {
+              # delete_after_days_since_creation_greater_than - (optional) is a type of number
               delete_after_days_since_creation_greater_than = snapshot.value["delete_after_days_since_creation_greater_than"]
             }
           }
@@ -155,7 +162,9 @@ resource "azurerm_storage_management_policy" "this" {
       dynamic "filters" {
         for_each = rule.value.filters
         content {
-          blob_types   = filters.value["blob_types"]
+          # blob_types - (optional) is a type of set of string
+          blob_types = filters.value["blob_types"]
+          # prefix_match - (optional) is a type of set of string
           prefix_match = filters.value["prefix_match"]
         }
       }
@@ -166,9 +175,13 @@ resource "azurerm_storage_management_policy" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

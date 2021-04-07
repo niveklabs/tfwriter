@@ -110,16 +110,23 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_eks_fargate_profile" "this" {
-  cluster_name           = var.cluster_name
-  fargate_profile_name   = var.fargate_profile_name
+  # cluster_name - (required) is a type of string
+  cluster_name = var.cluster_name
+  # fargate_profile_name - (required) is a type of string
+  fargate_profile_name = var.fargate_profile_name
+  # pod_execution_role_arn - (required) is a type of string
   pod_execution_role_arn = var.pod_execution_role_arn
-  subnet_ids             = var.subnet_ids
-  tags                   = var.tags
+  # subnet_ids - (optional) is a type of set of string
+  subnet_ids = var.subnet_ids
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "selector" {
     for_each = var.selector
     content {
-      labels    = selector.value["labels"]
+      # labels - (optional) is a type of map of string
+      labels = selector.value["labels"]
+      # namespace - (required) is a type of string
       namespace = selector.value["namespace"]
     }
   }
@@ -127,7 +134,9 @@ resource "aws_eks_fargate_profile" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

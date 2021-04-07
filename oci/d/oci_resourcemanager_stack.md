@@ -49,6 +49,7 @@ variable "stack_id" {
 
 ```terraform
 data "oci_resourcemanager_stack" "this" {
+  # stack_id - (required) is a type of string
   stack_id = var.stack_id
 }
 ```

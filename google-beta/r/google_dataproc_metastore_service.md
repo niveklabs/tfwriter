@@ -165,29 +165,41 @@ variable "timeouts" {
 
 ```terraform
 resource "google_dataproc_metastore_service" "this" {
-  labels     = var.labels
-  location   = var.location
-  network    = var.network
-  port       = var.port
-  project    = var.project
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # location - (optional) is a type of string
+  location = var.location
+  # network - (optional) is a type of string
+  network = var.network
+  # port - (optional) is a type of number
+  port = var.port
+  # project - (optional) is a type of string
+  project = var.project
+  # service_id - (required) is a type of string
   service_id = var.service_id
-  tier       = var.tier
+  # tier - (optional) is a type of string
+  tier = var.tier
 
   dynamic "hive_metastore_config" {
     for_each = var.hive_metastore_config
     content {
+      # config_overrides - (optional) is a type of map of string
       config_overrides = hive_metastore_config.value["config_overrides"]
-      version          = hive_metastore_config.value["version"]
+      # version - (required) is a type of string
+      version = hive_metastore_config.value["version"]
 
       dynamic "kerberos_config" {
         for_each = hive_metastore_config.value.kerberos_config
         content {
+          # krb5_config_gcs_uri - (required) is a type of string
           krb5_config_gcs_uri = kerberos_config.value["krb5_config_gcs_uri"]
-          principal           = kerberos_config.value["principal"]
+          # principal - (required) is a type of string
+          principal = kerberos_config.value["principal"]
 
           dynamic "keytab" {
             for_each = kerberos_config.value.keytab
             content {
+              # cloud_secret - (required) is a type of string
               cloud_secret = keytab.value["cloud_secret"]
             }
           }
@@ -201,7 +213,9 @@ resource "google_dataproc_metastore_service" "this" {
   dynamic "maintenance_window" {
     for_each = var.maintenance_window
     content {
+      # day_of_week - (required) is a type of string
       day_of_week = maintenance_window.value["day_of_week"]
+      # hour_of_day - (required) is a type of number
       hour_of_day = maintenance_window.value["hour_of_day"]
     }
   }
@@ -209,8 +223,11 @@ resource "google_dataproc_metastore_service" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

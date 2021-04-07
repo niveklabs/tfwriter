@@ -49,6 +49,7 @@ variable "log_saved_search_id" {
 
 ```terraform
 data "oci_logging_log_saved_search" "this" {
+  # log_saved_search_id - (required) is a type of string
   log_saved_search_id = var.log_saved_search_id
 }
 ```

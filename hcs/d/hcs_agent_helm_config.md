@@ -93,15 +93,21 @@ variable "timeouts" {
 
 ```terraform
 data "hcs_agent_helm_config" "this" {
-  aks_cluster_name         = var.aks_cluster_name
-  aks_resource_group       = var.aks_resource_group
-  expose_gossip_ports      = var.expose_gossip_ports
+  # aks_cluster_name - (required) is a type of string
+  aks_cluster_name = var.aks_cluster_name
+  # aks_resource_group - (optional) is a type of string
+  aks_resource_group = var.aks_resource_group
+  # expose_gossip_ports - (optional) is a type of bool
+  expose_gossip_ports = var.expose_gossip_ports
+  # managed_application_name - (required) is a type of string
   managed_application_name = var.managed_application_name
-  resource_group_name      = var.resource_group_name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

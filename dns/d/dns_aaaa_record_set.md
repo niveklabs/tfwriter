@@ -49,6 +49,7 @@ variable "host" {
 
 ```terraform
 data "dns_aaaa_record_set" "this" {
+  # host - (required) is a type of string
   host = var.host
 }
 ```

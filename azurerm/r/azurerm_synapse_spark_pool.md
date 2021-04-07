@@ -176,19 +176,29 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_synapse_spark_pool" "this" {
-  name                 = var.name
-  node_count           = var.node_count
-  node_size            = var.node_size
-  node_size_family     = var.node_size_family
-  spark_events_folder  = var.spark_events_folder
-  spark_log_folder     = var.spark_log_folder
-  spark_version        = var.spark_version
+  # name - (required) is a type of string
+  name = var.name
+  # node_count - (optional) is a type of number
+  node_count = var.node_count
+  # node_size - (required) is a type of string
+  node_size = var.node_size
+  # node_size_family - (required) is a type of string
+  node_size_family = var.node_size_family
+  # spark_events_folder - (optional) is a type of string
+  spark_events_folder = var.spark_events_folder
+  # spark_log_folder - (optional) is a type of string
+  spark_log_folder = var.spark_log_folder
+  # spark_version - (optional) is a type of string
+  spark_version = var.spark_version
+  # synapse_workspace_id - (required) is a type of string
   synapse_workspace_id = var.synapse_workspace_id
-  tags                 = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "auto_pause" {
     for_each = var.auto_pause
     content {
+      # delay_in_minutes - (required) is a type of number
       delay_in_minutes = auto_pause.value["delay_in_minutes"]
     }
   }
@@ -196,7 +206,9 @@ resource "azurerm_synapse_spark_pool" "this" {
   dynamic "auto_scale" {
     for_each = var.auto_scale
     content {
+      # max_node_count - (required) is a type of number
       max_node_count = auto_scale.value["max_node_count"]
+      # min_node_count - (required) is a type of number
       min_node_count = auto_scale.value["min_node_count"]
     }
   }
@@ -204,7 +216,9 @@ resource "azurerm_synapse_spark_pool" "this" {
   dynamic "library_requirement" {
     for_each = var.library_requirement
     content {
-      content  = library_requirement.value["content"]
+      # content - (required) is a type of string
+      content = library_requirement.value["content"]
+      # filename - (required) is a type of string
       filename = library_requirement.value["filename"]
     }
   }
@@ -212,9 +226,13 @@ resource "azurerm_synapse_spark_pool" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -49,6 +49,7 @@ variable "software_source_id" {
 
 ```terraform
 data "oci_osmanagement_software_source" "this" {
+  # software_source_id - (required) is a type of string
   software_source_id = var.software_source_id
 }
 ```

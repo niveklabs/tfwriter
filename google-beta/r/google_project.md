@@ -124,21 +124,33 @@ variable "timeouts" {
 
 ```terraform
 resource "google_project" "this" {
+  # auto_create_network - (optional) is a type of bool
   auto_create_network = var.auto_create_network
-  billing_account     = var.billing_account
-  folder_id           = var.folder_id
-  labels              = var.labels
-  name                = var.name
-  org_id              = var.org_id
-  project_id          = var.project_id
-  skip_delete         = var.skip_delete
+  # billing_account - (optional) is a type of string
+  billing_account = var.billing_account
+  # folder_id - (optional) is a type of string
+  folder_id = var.folder_id
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # org_id - (optional) is a type of string
+  org_id = var.org_id
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # skip_delete - (optional) is a type of bool
+  skip_delete = var.skip_delete
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

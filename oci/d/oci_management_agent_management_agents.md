@@ -107,18 +107,27 @@ variable "filter" {
 
 ```terraform
 data "oci_management_agent_management_agents" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  display_name   = var.display_name
-  platform_type  = var.platform_type
-  plugin_name    = var.plugin_name
-  state          = var.state
-  version        = var.version
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # platform_type - (optional) is a type of string
+  platform_type = var.platform_type
+  # plugin_name - (optional) is a type of string
+  plugin_name = var.plugin_name
+  # state - (optional) is a type of string
+  state = var.state
+  # version - (optional) is a type of string
+  version = var.version
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

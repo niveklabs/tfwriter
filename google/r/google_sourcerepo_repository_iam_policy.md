@@ -64,9 +64,12 @@ variable "repository" {
 
 ```terraform
 resource "google_sourcerepo_repository_iam_policy" "this" {
+  # policy_data - (required) is a type of string
   policy_data = var.policy_data
-  project     = var.project
-  repository  = var.repository
+  # project - (optional) is a type of string
+  project = var.project
+  # repository - (required) is a type of string
+  repository = var.repository
 }
 ```
 

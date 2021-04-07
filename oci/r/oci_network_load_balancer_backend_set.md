@@ -120,32 +120,49 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_network_load_balancer_backend_set" "this" {
-  is_preserve_source       = var.is_preserve_source
-  name                     = var.name
+  # is_preserve_source - (optional) is a type of bool
+  is_preserve_source = var.is_preserve_source
+  # name - (required) is a type of string
+  name = var.name
+  # network_load_balancer_id - (required) is a type of string
   network_load_balancer_id = var.network_load_balancer_id
-  policy                   = var.policy
+  # policy - (required) is a type of string
+  policy = var.policy
 
   dynamic "health_checker" {
     for_each = var.health_checker
     content {
-      interval_in_millis  = health_checker.value["interval_in_millis"]
-      port                = health_checker.value["port"]
-      protocol            = health_checker.value["protocol"]
-      request_data        = health_checker.value["request_data"]
+      # interval_in_millis - (optional) is a type of number
+      interval_in_millis = health_checker.value["interval_in_millis"]
+      # port - (optional) is a type of number
+      port = health_checker.value["port"]
+      # protocol - (required) is a type of string
+      protocol = health_checker.value["protocol"]
+      # request_data - (optional) is a type of string
+      request_data = health_checker.value["request_data"]
+      # response_body_regex - (optional) is a type of string
       response_body_regex = health_checker.value["response_body_regex"]
-      response_data       = health_checker.value["response_data"]
-      retries             = health_checker.value["retries"]
-      return_code         = health_checker.value["return_code"]
-      timeout_in_millis   = health_checker.value["timeout_in_millis"]
-      url_path            = health_checker.value["url_path"]
+      # response_data - (optional) is a type of string
+      response_data = health_checker.value["response_data"]
+      # retries - (optional) is a type of number
+      retries = health_checker.value["retries"]
+      # return_code - (optional) is a type of number
+      return_code = health_checker.value["return_code"]
+      # timeout_in_millis - (optional) is a type of number
+      timeout_in_millis = health_checker.value["timeout_in_millis"]
+      # url_path - (optional) is a type of string
+      url_path = health_checker.value["url_path"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

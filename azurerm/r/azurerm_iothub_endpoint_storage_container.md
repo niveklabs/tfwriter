@@ -129,22 +129,35 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_iothub_endpoint_storage_container" "this" {
+  # batch_frequency_in_seconds - (optional) is a type of number
   batch_frequency_in_seconds = var.batch_frequency_in_seconds
-  connection_string          = var.connection_string
-  container_name             = var.container_name
-  encoding                   = var.encoding
-  file_name_format           = var.file_name_format
-  iothub_name                = var.iothub_name
-  max_chunk_size_in_bytes    = var.max_chunk_size_in_bytes
-  name                       = var.name
-  resource_group_name        = var.resource_group_name
+  # connection_string - (required) is a type of string
+  connection_string = var.connection_string
+  # container_name - (required) is a type of string
+  container_name = var.container_name
+  # encoding - (optional) is a type of string
+  encoding = var.encoding
+  # file_name_format - (optional) is a type of string
+  file_name_format = var.file_name_format
+  # iothub_name - (required) is a type of string
+  iothub_name = var.iothub_name
+  # max_chunk_size_in_bytes - (optional) is a type of number
+  max_chunk_size_in_bytes = var.max_chunk_size_in_bytes
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

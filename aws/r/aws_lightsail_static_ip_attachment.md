@@ -56,7 +56,9 @@ variable "static_ip_name" {
 
 ```terraform
 resource "aws_lightsail_static_ip_attachment" "this" {
-  instance_name  = var.instance_name
+  # instance_name - (required) is a type of string
+  instance_name = var.instance_name
+  # static_ip_name - (required) is a type of string
   static_ip_name = var.static_ip_name
 }
 ```

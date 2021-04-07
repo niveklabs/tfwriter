@@ -141,13 +141,17 @@ variable "rule" {
 
 ```terraform
 resource "aws_wafregional_web_acl" "this" {
+  # metric_name - (required) is a type of string
   metric_name = var.metric_name
-  name        = var.name
-  tags        = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "default_action" {
     for_each = var.default_action
     content {
+      # type - (required) is a type of string
       type = default_action.value["type"]
     }
   }
@@ -155,6 +159,7 @@ resource "aws_wafregional_web_acl" "this" {
   dynamic "logging_configuration" {
     for_each = var.logging_configuration
     content {
+      # log_destination - (required) is a type of string
       log_destination = logging_configuration.value["log_destination"]
 
       dynamic "redacted_fields" {
@@ -164,7 +169,9 @@ resource "aws_wafregional_web_acl" "this" {
           dynamic "field_to_match" {
             for_each = redacted_fields.value.field_to_match
             content {
+              # data - (optional) is a type of string
               data = field_to_match.value["data"]
+              # type - (required) is a type of string
               type = field_to_match.value["type"]
             }
           }
@@ -178,13 +185,17 @@ resource "aws_wafregional_web_acl" "this" {
   dynamic "rule" {
     for_each = var.rule
     content {
+      # priority - (required) is a type of number
       priority = rule.value["priority"]
-      rule_id  = rule.value["rule_id"]
-      type     = rule.value["type"]
+      # rule_id - (required) is a type of string
+      rule_id = rule.value["rule_id"]
+      # type - (optional) is a type of string
+      type = rule.value["type"]
 
       dynamic "action" {
         for_each = rule.value.action
         content {
+          # type - (required) is a type of string
           type = action.value["type"]
         }
       }
@@ -192,6 +203,7 @@ resource "aws_wafregional_web_acl" "this" {
       dynamic "override_action" {
         for_each = rule.value.override_action
         content {
+          # type - (required) is a type of string
           type = override_action.value["type"]
         }
       }

@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "aws_elastic_beanstalk_application" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

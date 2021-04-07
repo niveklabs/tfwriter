@@ -197,49 +197,77 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_netapp_volume" "this" {
-  account_name                     = var.account_name
+  # account_name - (required) is a type of string
+  account_name = var.account_name
+  # create_from_snapshot_resource_id - (optional) is a type of string
   create_from_snapshot_resource_id = var.create_from_snapshot_resource_id
-  location                         = var.location
-  name                             = var.name
-  pool_name                        = var.pool_name
-  protocols                        = var.protocols
-  resource_group_name              = var.resource_group_name
-  service_level                    = var.service_level
-  storage_quota_in_gb              = var.storage_quota_in_gb
-  subnet_id                        = var.subnet_id
-  tags                             = var.tags
-  volume_path                      = var.volume_path
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # pool_name - (required) is a type of string
+  pool_name = var.pool_name
+  # protocols - (optional) is a type of set of string
+  protocols = var.protocols
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # service_level - (required) is a type of string
+  service_level = var.service_level
+  # storage_quota_in_gb - (required) is a type of number
+  storage_quota_in_gb = var.storage_quota_in_gb
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # volume_path - (required) is a type of string
+  volume_path = var.volume_path
 
   dynamic "data_protection_replication" {
     for_each = var.data_protection_replication
     content {
-      endpoint_type             = data_protection_replication.value["endpoint_type"]
-      remote_volume_location    = data_protection_replication.value["remote_volume_location"]
+      # endpoint_type - (optional) is a type of string
+      endpoint_type = data_protection_replication.value["endpoint_type"]
+      # remote_volume_location - (required) is a type of string
+      remote_volume_location = data_protection_replication.value["remote_volume_location"]
+      # remote_volume_resource_id - (required) is a type of string
       remote_volume_resource_id = data_protection_replication.value["remote_volume_resource_id"]
-      replication_frequency     = data_protection_replication.value["replication_frequency"]
+      # replication_frequency - (required) is a type of string
+      replication_frequency = data_protection_replication.value["replication_frequency"]
     }
   }
 
   dynamic "export_policy_rule" {
     for_each = var.export_policy_rule
     content {
-      allowed_clients   = export_policy_rule.value["allowed_clients"]
-      cifs_enabled      = export_policy_rule.value["cifs_enabled"]
-      nfsv3_enabled     = export_policy_rule.value["nfsv3_enabled"]
-      nfsv4_enabled     = export_policy_rule.value["nfsv4_enabled"]
+      # allowed_clients - (required) is a type of set of string
+      allowed_clients = export_policy_rule.value["allowed_clients"]
+      # cifs_enabled - (optional) is a type of bool
+      cifs_enabled = export_policy_rule.value["cifs_enabled"]
+      # nfsv3_enabled - (optional) is a type of bool
+      nfsv3_enabled = export_policy_rule.value["nfsv3_enabled"]
+      # nfsv4_enabled - (optional) is a type of bool
+      nfsv4_enabled = export_policy_rule.value["nfsv4_enabled"]
+      # protocols_enabled - (optional) is a type of list of string
       protocols_enabled = export_policy_rule.value["protocols_enabled"]
-      rule_index        = export_policy_rule.value["rule_index"]
-      unix_read_only    = export_policy_rule.value["unix_read_only"]
-      unix_read_write   = export_policy_rule.value["unix_read_write"]
+      # rule_index - (required) is a type of number
+      rule_index = export_policy_rule.value["rule_index"]
+      # unix_read_only - (optional) is a type of bool
+      unix_read_only = export_policy_rule.value["unix_read_only"]
+      # unix_read_write - (optional) is a type of bool
+      unix_read_write = export_policy_rule.value["unix_read_write"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

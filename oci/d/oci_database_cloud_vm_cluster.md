@@ -49,6 +49,7 @@ variable "cloud_vm_cluster_id" {
 
 ```terraform
 data "oci_database_cloud_vm_cluster" "this" {
+  # cloud_vm_cluster_id - (required) is a type of string
   cloud_vm_cluster_id = var.cloud_vm_cluster_id
 }
 ```

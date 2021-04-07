@@ -73,10 +73,14 @@ variable "role_entity" {
 
 ```terraform
 resource "google_storage_bucket_acl" "this" {
-  bucket         = var.bucket
-  default_acl    = var.default_acl
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # default_acl - (optional) is a type of string
+  default_acl = var.default_acl
+  # predefined_acl - (optional) is a type of string
   predefined_acl = var.predefined_acl
-  role_entity    = var.role_entity
+  # role_entity - (optional) is a type of list of string
+  role_entity = var.role_entity
 }
 ```
 

@@ -106,17 +106,25 @@ variable "vpc_configuration" {
 
 ```terraform
 resource "aws_s3_access_point" "this" {
+  # account_id - (optional) is a type of string
   account_id = var.account_id
-  bucket     = var.bucket
-  name       = var.name
-  policy     = var.policy
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # name - (required) is a type of string
+  name = var.name
+  # policy - (optional) is a type of string
+  policy = var.policy
 
   dynamic "public_access_block_configuration" {
     for_each = var.public_access_block_configuration
     content {
-      block_public_acls       = public_access_block_configuration.value["block_public_acls"]
-      block_public_policy     = public_access_block_configuration.value["block_public_policy"]
-      ignore_public_acls      = public_access_block_configuration.value["ignore_public_acls"]
+      # block_public_acls - (optional) is a type of bool
+      block_public_acls = public_access_block_configuration.value["block_public_acls"]
+      # block_public_policy - (optional) is a type of bool
+      block_public_policy = public_access_block_configuration.value["block_public_policy"]
+      # ignore_public_acls - (optional) is a type of bool
+      ignore_public_acls = public_access_block_configuration.value["ignore_public_acls"]
+      # restrict_public_buckets - (optional) is a type of bool
       restrict_public_buckets = public_access_block_configuration.value["restrict_public_buckets"]
     }
   }
@@ -124,6 +132,7 @@ resource "aws_s3_access_point" "this" {
   dynamic "vpc_configuration" {
     for_each = var.vpc_configuration
     content {
+      # vpc_id - (required) is a type of string
       vpc_id = vpc_configuration.value["vpc_id"]
     }
   }

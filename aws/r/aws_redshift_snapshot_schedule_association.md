@@ -56,7 +56,9 @@ variable "schedule_identifier" {
 
 ```terraform
 resource "aws_redshift_snapshot_schedule_association" "this" {
-  cluster_identifier  = var.cluster_identifier
+  # cluster_identifier - (required) is a type of string
+  cluster_identifier = var.cluster_identifier
+  # schedule_identifier - (required) is a type of string
   schedule_identifier = var.schedule_identifier
 }
 ```

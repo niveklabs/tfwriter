@@ -99,17 +99,25 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_cross_connect_group" "this" {
-  compartment_id          = var.compartment_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # customer_reference_name - (optional) is a type of string
   customer_reference_name = var.customer_reference_name
-  defined_tags            = var.defined_tags
-  display_name            = var.display_name
-  freeform_tags           = var.freeform_tags
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

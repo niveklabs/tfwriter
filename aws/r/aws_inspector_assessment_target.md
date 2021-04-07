@@ -57,7 +57,9 @@ variable "resource_group_arn" {
 
 ```terraform
 resource "aws_inspector_assessment_target" "this" {
-  name               = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_arn - (optional) is a type of string
   resource_group_arn = var.resource_group_arn
 }
 ```

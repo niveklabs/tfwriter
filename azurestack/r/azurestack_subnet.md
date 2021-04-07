@@ -94,13 +94,20 @@ variable "virtual_network_name" {
 
 ```terraform
 resource "azurestack_subnet" "this" {
-  address_prefix            = var.address_prefix
-  ip_configurations         = var.ip_configurations
-  name                      = var.name
+  # address_prefix - (required) is a type of string
+  address_prefix = var.address_prefix
+  # ip_configurations - (optional) is a type of set of string
+  ip_configurations = var.ip_configurations
+  # name - (required) is a type of string
+  name = var.name
+  # network_security_group_id - (optional) is a type of string
   network_security_group_id = var.network_security_group_id
-  resource_group_name       = var.resource_group_name
-  route_table_id            = var.route_table_id
-  virtual_network_name      = var.virtual_network_name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # route_table_id - (optional) is a type of string
+  route_table_id = var.route_table_id
+  # virtual_network_name - (required) is a type of string
+  virtual_network_name = var.virtual_network_name
 }
 ```
 

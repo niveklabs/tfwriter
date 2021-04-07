@@ -126,11 +126,16 @@ variable "vpc_id" {
 
 ```terraform
 resource "aws_default_security_group" "this" {
-  egress                 = var.egress
-  ingress                = var.ingress
+  # egress - (optional) is a type of set of object
+  egress = var.egress
+  # ingress - (optional) is a type of set of object
+  ingress = var.ingress
+  # revoke_rules_on_delete - (optional) is a type of bool
   revoke_rules_on_delete = var.revoke_rules_on_delete
-  tags                   = var.tags
-  vpc_id                 = var.vpc_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

@@ -66,9 +66,12 @@ variable "object_ids" {
 
 ```terraform
 data "azuread_groups" "this" {
+  # display_names - (optional) is a type of list of string
   display_names = var.display_names
-  names         = var.names
-  object_ids    = var.object_ids
+  # names - (optional) is a type of list of string
+  names = var.names
+  # object_ids - (optional) is a type of list of string
+  object_ids = var.object_ids
 }
 ```
 

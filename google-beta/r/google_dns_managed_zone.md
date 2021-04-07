@@ -236,29 +236,44 @@ variable "timeouts" {
 
 ```terraform
 resource "google_dns_managed_zone" "this" {
-  description    = var.description
-  dns_name       = var.dns_name
-  force_destroy  = var.force_destroy
-  labels         = var.labels
-  name           = var.name
-  project        = var.project
+  # description - (optional) is a type of string
+  description = var.description
+  # dns_name - (required) is a type of string
+  dns_name = var.dns_name
+  # force_destroy - (optional) is a type of bool
+  force_destroy = var.force_destroy
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # reverse_lookup - (optional) is a type of bool
   reverse_lookup = var.reverse_lookup
-  visibility     = var.visibility
+  # visibility - (optional) is a type of string
+  visibility = var.visibility
 
   dynamic "dnssec_config" {
     for_each = var.dnssec_config
     content {
-      kind          = dnssec_config.value["kind"]
+      # kind - (optional) is a type of string
+      kind = dnssec_config.value["kind"]
+      # non_existence - (optional) is a type of string
       non_existence = dnssec_config.value["non_existence"]
-      state         = dnssec_config.value["state"]
+      # state - (optional) is a type of string
+      state = dnssec_config.value["state"]
 
       dynamic "default_key_specs" {
         for_each = dnssec_config.value.default_key_specs
         content {
-          algorithm  = default_key_specs.value["algorithm"]
+          # algorithm - (optional) is a type of string
+          algorithm = default_key_specs.value["algorithm"]
+          # key_length - (optional) is a type of number
           key_length = default_key_specs.value["key_length"]
-          key_type   = default_key_specs.value["key_type"]
-          kind       = default_key_specs.value["kind"]
+          # key_type - (optional) is a type of string
+          key_type = default_key_specs.value["key_type"]
+          # kind - (optional) is a type of string
+          kind = default_key_specs.value["kind"]
         }
       }
 
@@ -272,8 +287,10 @@ resource "google_dns_managed_zone" "this" {
       dynamic "target_name_servers" {
         for_each = forwarding_config.value.target_name_servers
         content {
+          # forwarding_path - (optional) is a type of string
           forwarding_path = target_name_servers.value["forwarding_path"]
-          ipv4_address    = target_name_servers.value["ipv4_address"]
+          # ipv4_address - (required) is a type of string
+          ipv4_address = target_name_servers.value["ipv4_address"]
         }
       }
 
@@ -287,6 +304,7 @@ resource "google_dns_managed_zone" "this" {
       dynamic "target_network" {
         for_each = peering_config.value.target_network
         content {
+          # network_url - (required) is a type of string
           network_url = target_network.value["network_url"]
         }
       }
@@ -301,6 +319,7 @@ resource "google_dns_managed_zone" "this" {
       dynamic "networks" {
         for_each = private_visibility_config.value.networks
         content {
+          # network_url - (required) is a type of string
           network_url = networks.value["network_url"]
         }
       }
@@ -315,6 +334,7 @@ resource "google_dns_managed_zone" "this" {
       dynamic "namespace" {
         for_each = service_directory_config.value.namespace
         content {
+          # namespace_url - (required) is a type of string
           namespace_url = namespace.value["namespace_url"]
         }
       }
@@ -325,8 +345,11 @@ resource "google_dns_managed_zone" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

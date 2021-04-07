@@ -49,6 +49,7 @@ variable "publication_id" {
 
 ```terraform
 data "oci_marketplace_publication" "this" {
+  # publication_id - (required) is a type of string
   publication_id = var.publication_id
 }
 ```

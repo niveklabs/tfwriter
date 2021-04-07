@@ -209,27 +209,48 @@ variable "ttl" {
 
 ```terraform
 resource "vault_azure_auth_backend_role" "this" {
-  backend                     = var.backend
-  bound_group_ids             = var.bound_group_ids
-  bound_locations             = var.bound_locations
-  bound_resource_groups       = var.bound_resource_groups
-  bound_scale_sets            = var.bound_scale_sets
+  # backend - (optional) is a type of string
+  backend = var.backend
+  # bound_group_ids - (optional) is a type of list of string
+  bound_group_ids = var.bound_group_ids
+  # bound_locations - (optional) is a type of list of string
+  bound_locations = var.bound_locations
+  # bound_resource_groups - (optional) is a type of list of string
+  bound_resource_groups = var.bound_resource_groups
+  # bound_scale_sets - (optional) is a type of list of string
+  bound_scale_sets = var.bound_scale_sets
+  # bound_service_principal_ids - (optional) is a type of list of string
   bound_service_principal_ids = var.bound_service_principal_ids
-  bound_subscription_ids      = var.bound_subscription_ids
-  max_ttl                     = var.max_ttl
-  period                      = var.period
-  policies                    = var.policies
-  role                        = var.role
-  token_bound_cidrs           = var.token_bound_cidrs
-  token_explicit_max_ttl      = var.token_explicit_max_ttl
-  token_max_ttl               = var.token_max_ttl
-  token_no_default_policy     = var.token_no_default_policy
-  token_num_uses              = var.token_num_uses
-  token_period                = var.token_period
-  token_policies              = var.token_policies
-  token_ttl                   = var.token_ttl
-  token_type                  = var.token_type
-  ttl                         = var.ttl
+  # bound_subscription_ids - (optional) is a type of list of string
+  bound_subscription_ids = var.bound_subscription_ids
+  # max_ttl - (optional) is a type of number
+  max_ttl = var.max_ttl
+  # period - (optional) is a type of number
+  period = var.period
+  # policies - (optional) is a type of list of string
+  policies = var.policies
+  # role - (required) is a type of string
+  role = var.role
+  # token_bound_cidrs - (optional) is a type of set of string
+  token_bound_cidrs = var.token_bound_cidrs
+  # token_explicit_max_ttl - (optional) is a type of number
+  token_explicit_max_ttl = var.token_explicit_max_ttl
+  # token_max_ttl - (optional) is a type of number
+  token_max_ttl = var.token_max_ttl
+  # token_no_default_policy - (optional) is a type of bool
+  token_no_default_policy = var.token_no_default_policy
+  # token_num_uses - (optional) is a type of number
+  token_num_uses = var.token_num_uses
+  # token_period - (optional) is a type of number
+  token_period = var.token_period
+  # token_policies - (optional) is a type of set of string
+  token_policies = var.token_policies
+  # token_ttl - (optional) is a type of number
+  token_ttl = var.token_ttl
+  # token_type - (optional) is a type of string
+  token_type = var.token_type
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
 }
 ```
 

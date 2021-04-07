@@ -49,6 +49,7 @@ variable "task_definition" {
 
 ```terraform
 data "aws_ecs_task_definition" "this" {
+  # task_definition - (required) is a type of string
   task_definition = var.task_definition
 }
 ```

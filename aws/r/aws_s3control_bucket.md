@@ -64,9 +64,12 @@ variable "tags" {
 
 ```terraform
 resource "aws_s3control_bucket" "this" {
-  bucket     = var.bucket
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # outpost_id - (required) is a type of string
   outpost_id = var.outpost_id
-  tags       = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

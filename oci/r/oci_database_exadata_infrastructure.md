@@ -234,45 +234,71 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_database_exadata_infrastructure" "this" {
-  activation_file             = var.activation_file
-  admin_network_cidr          = var.admin_network_cidr
+  # activation_file - (optional) is a type of string
+  activation_file = var.activation_file
+  # admin_network_cidr - (required) is a type of string
+  admin_network_cidr = var.admin_network_cidr
+  # cloud_control_plane_server1 - (required) is a type of string
   cloud_control_plane_server1 = var.cloud_control_plane_server1
+  # cloud_control_plane_server2 - (required) is a type of string
   cloud_control_plane_server2 = var.cloud_control_plane_server2
-  compartment_id              = var.compartment_id
-  corporate_proxy             = var.corporate_proxy
-  defined_tags                = var.defined_tags
-  display_name                = var.display_name
-  dns_server                  = var.dns_server
-  freeform_tags               = var.freeform_tags
-  gateway                     = var.gateway
-  infini_band_network_cidr    = var.infini_band_network_cidr
-  netmask                     = var.netmask
-  ntp_server                  = var.ntp_server
-  shape                       = var.shape
-  time_zone                   = var.time_zone
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # corporate_proxy - (optional) is a type of string
+  corporate_proxy = var.corporate_proxy
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # dns_server - (required) is a type of list of string
+  dns_server = var.dns_server
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # gateway - (required) is a type of string
+  gateway = var.gateway
+  # infini_band_network_cidr - (required) is a type of string
+  infini_band_network_cidr = var.infini_band_network_cidr
+  # netmask - (required) is a type of string
+  netmask = var.netmask
+  # ntp_server - (required) is a type of list of string
+  ntp_server = var.ntp_server
+  # shape - (required) is a type of string
+  shape = var.shape
+  # time_zone - (required) is a type of string
+  time_zone = var.time_zone
 
   dynamic "contacts" {
     for_each = var.contacts
     content {
-      email                    = contacts.value["email"]
+      # email - (required) is a type of string
+      email = contacts.value["email"]
+      # is_contact_mos_validated - (optional) is a type of bool
       is_contact_mos_validated = contacts.value["is_contact_mos_validated"]
-      is_primary               = contacts.value["is_primary"]
-      name                     = contacts.value["name"]
-      phone_number             = contacts.value["phone_number"]
+      # is_primary - (required) is a type of bool
+      is_primary = contacts.value["is_primary"]
+      # name - (required) is a type of string
+      name = contacts.value["name"]
+      # phone_number - (optional) is a type of string
+      phone_number = contacts.value["phone_number"]
     }
   }
 
   dynamic "maintenance_window" {
     for_each = var.maintenance_window
     content {
-      hours_of_day       = maintenance_window.value["hours_of_day"]
+      # hours_of_day - (optional) is a type of list of number
+      hours_of_day = maintenance_window.value["hours_of_day"]
+      # lead_time_in_weeks - (optional) is a type of number
       lead_time_in_weeks = maintenance_window.value["lead_time_in_weeks"]
-      preference         = maintenance_window.value["preference"]
-      weeks_of_month     = maintenance_window.value["weeks_of_month"]
+      # preference - (required) is a type of string
+      preference = maintenance_window.value["preference"]
+      # weeks_of_month - (optional) is a type of list of number
+      weeks_of_month = maintenance_window.value["weeks_of_month"]
 
       dynamic "days_of_week" {
         for_each = maintenance_window.value.days_of_week
         content {
+          # name - (required) is a type of string
           name = days_of_week.value["name"]
         }
       }
@@ -280,6 +306,7 @@ resource "oci_database_exadata_infrastructure" "this" {
       dynamic "months" {
         for_each = maintenance_window.value.months
         content {
+          # name - (required) is a type of string
           name = months.value["name"]
         }
       }
@@ -290,8 +317,11 @@ resource "oci_database_exadata_infrastructure" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

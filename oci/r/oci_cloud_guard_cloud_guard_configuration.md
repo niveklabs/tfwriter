@@ -89,16 +89,23 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_cloud_guard_cloud_guard_configuration" "this" {
-  compartment_id        = var.compartment_id
-  reporting_region      = var.reporting_region
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # reporting_region - (required) is a type of string
+  reporting_region = var.reporting_region
+  # self_manage_resources - (optional) is a type of bool
   self_manage_resources = var.self_manage_resources
-  status                = var.status
+  # status - (required) is a type of string
+  status = var.status
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

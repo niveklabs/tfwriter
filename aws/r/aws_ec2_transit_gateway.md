@@ -106,14 +106,22 @@ variable "vpn_ecmp_support" {
 
 ```terraform
 resource "aws_ec2_transit_gateway" "this" {
-  amazon_side_asn                 = var.amazon_side_asn
-  auto_accept_shared_attachments  = var.auto_accept_shared_attachments
+  # amazon_side_asn - (optional) is a type of number
+  amazon_side_asn = var.amazon_side_asn
+  # auto_accept_shared_attachments - (optional) is a type of string
+  auto_accept_shared_attachments = var.auto_accept_shared_attachments
+  # default_route_table_association - (optional) is a type of string
   default_route_table_association = var.default_route_table_association
+  # default_route_table_propagation - (optional) is a type of string
   default_route_table_propagation = var.default_route_table_propagation
-  description                     = var.description
-  dns_support                     = var.dns_support
-  tags                            = var.tags
-  vpn_ecmp_support                = var.vpn_ecmp_support
+  # description - (optional) is a type of string
+  description = var.description
+  # dns_support - (optional) is a type of string
+  dns_support = var.dns_support
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpn_ecmp_support - (optional) is a type of string
+  vpn_ecmp_support = var.vpn_ecmp_support
 }
 ```
 

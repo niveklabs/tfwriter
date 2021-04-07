@@ -90,12 +90,18 @@ variable "tags_all" {
 
 ```terraform
 resource "aws_default_vpc" "this" {
-  enable_classiclink             = var.enable_classiclink
+  # enable_classiclink - (optional) is a type of bool
+  enable_classiclink = var.enable_classiclink
+  # enable_classiclink_dns_support - (optional) is a type of bool
   enable_classiclink_dns_support = var.enable_classiclink_dns_support
-  enable_dns_hostnames           = var.enable_dns_hostnames
-  enable_dns_support             = var.enable_dns_support
-  tags                           = var.tags
-  tags_all                       = var.tags_all
+  # enable_dns_hostnames - (optional) is a type of bool
+  enable_dns_hostnames = var.enable_dns_hostnames
+  # enable_dns_support - (optional) is a type of bool
+  enable_dns_support = var.enable_dns_support
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # tags_all - (optional) is a type of map of string
+  tags_all = var.tags_all
 }
 ```
 

@@ -221,25 +221,41 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_sentinel_alert_rule_scheduled" "this" {
-  alert_rule_template_guid   = var.alert_rule_template_guid
-  description                = var.description
-  display_name               = var.display_name
-  enabled                    = var.enabled
+  # alert_rule_template_guid - (optional) is a type of string
+  alert_rule_template_guid = var.alert_rule_template_guid
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # log_analytics_workspace_id - (required) is a type of string
   log_analytics_workspace_id = var.log_analytics_workspace_id
-  name                       = var.name
-  query                      = var.query
-  query_frequency            = var.query_frequency
-  query_period               = var.query_period
-  severity                   = var.severity
-  suppression_duration       = var.suppression_duration
-  suppression_enabled        = var.suppression_enabled
-  tactics                    = var.tactics
-  trigger_operator           = var.trigger_operator
-  trigger_threshold          = var.trigger_threshold
+  # name - (required) is a type of string
+  name = var.name
+  # query - (required) is a type of string
+  query = var.query
+  # query_frequency - (optional) is a type of string
+  query_frequency = var.query_frequency
+  # query_period - (optional) is a type of string
+  query_period = var.query_period
+  # severity - (required) is a type of string
+  severity = var.severity
+  # suppression_duration - (optional) is a type of string
+  suppression_duration = var.suppression_duration
+  # suppression_enabled - (optional) is a type of bool
+  suppression_enabled = var.suppression_enabled
+  # tactics - (optional) is a type of set of string
+  tactics = var.tactics
+  # trigger_operator - (optional) is a type of string
+  trigger_operator = var.trigger_operator
+  # trigger_threshold - (optional) is a type of number
+  trigger_threshold = var.trigger_threshold
 
   dynamic "event_grouping" {
     for_each = var.event_grouping
     content {
+      # aggregation_method - (required) is a type of string
       aggregation_method = event_grouping.value["aggregation_method"]
     }
   }
@@ -247,15 +263,21 @@ resource "azurerm_sentinel_alert_rule_scheduled" "this" {
   dynamic "incident_configuration" {
     for_each = var.incident_configuration
     content {
+      # create_incident - (required) is a type of bool
       create_incident = incident_configuration.value["create_incident"]
 
       dynamic "grouping" {
         for_each = incident_configuration.value.grouping
         content {
-          enabled                 = grouping.value["enabled"]
-          entity_matching_method  = grouping.value["entity_matching_method"]
-          group_by                = grouping.value["group_by"]
-          lookback_duration       = grouping.value["lookback_duration"]
+          # enabled - (optional) is a type of bool
+          enabled = grouping.value["enabled"]
+          # entity_matching_method - (optional) is a type of string
+          entity_matching_method = grouping.value["entity_matching_method"]
+          # group_by - (optional) is a type of set of string
+          group_by = grouping.value["group_by"]
+          # lookback_duration - (optional) is a type of string
+          lookback_duration = grouping.value["lookback_duration"]
+          # reopen_closed_incidents - (optional) is a type of bool
           reopen_closed_incidents = grouping.value["reopen_closed_incidents"]
         }
       }
@@ -266,9 +288,13 @@ resource "azurerm_sentinel_alert_rule_scheduled" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

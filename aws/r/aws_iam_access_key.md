@@ -65,9 +65,12 @@ variable "user" {
 
 ```terraform
 resource "aws_iam_access_key" "this" {
+  # pgp_key - (optional) is a type of string
   pgp_key = var.pgp_key
-  status  = var.status
-  user    = var.user
+  # status - (optional) is a type of string
+  status = var.status
+  # user - (required) is a type of string
+  user = var.user
 }
 ```
 

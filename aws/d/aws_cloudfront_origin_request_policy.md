@@ -50,6 +50,7 @@ variable "name" {
 
 ```terraform
 data "aws_cloudfront_origin_request_policy" "this" {
+  # name - (optional) is a type of string
   name = var.name
 }
 ```

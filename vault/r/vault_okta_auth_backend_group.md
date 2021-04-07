@@ -64,9 +64,12 @@ variable "policies" {
 
 ```terraform
 resource "vault_okta_auth_backend_group" "this" {
+  # group_name - (required) is a type of string
   group_name = var.group_name
-  path       = var.path
-  policies   = var.policies
+  # path - (required) is a type of string
+  path = var.path
+  # policies - (optional) is a type of set of string
+  policies = var.policies
 }
 ```
 

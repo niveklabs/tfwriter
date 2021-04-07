@@ -86,19 +86,25 @@ variable "endpoint" {
 
 ```terraform
 resource "aws_cloudfront_realtime_log_config" "this" {
-  fields        = var.fields
-  name          = var.name
+  # fields - (required) is a type of set of string
+  fields = var.fields
+  # name - (required) is a type of string
+  name = var.name
+  # sampling_rate - (required) is a type of number
   sampling_rate = var.sampling_rate
 
   dynamic "endpoint" {
     for_each = var.endpoint
     content {
+      # stream_type - (required) is a type of string
       stream_type = endpoint.value["stream_type"]
 
       dynamic "kinesis_stream_config" {
         for_each = endpoint.value.kinesis_stream_config
         content {
-          role_arn   = kinesis_stream_config.value["role_arn"]
+          # role_arn - (required) is a type of string
+          role_arn = kinesis_stream_config.value["role_arn"]
+          # stream_arn - (required) is a type of string
           stream_arn = kinesis_stream_config.value["stream_arn"]
         }
       }

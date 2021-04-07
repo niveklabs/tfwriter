@@ -87,11 +87,17 @@ variable "statement_id_prefix" {
 
 ```terraform
 resource "aws_signer_signing_profile_permission" "this" {
-  action              = var.action
-  principal           = var.principal
-  profile_name        = var.profile_name
-  profile_version     = var.profile_version
-  statement_id        = var.statement_id
+  # action - (required) is a type of string
+  action = var.action
+  # principal - (required) is a type of string
+  principal = var.principal
+  # profile_name - (required) is a type of string
+  profile_name = var.profile_name
+  # profile_version - (optional) is a type of string
+  profile_version = var.profile_version
+  # statement_id - (optional) is a type of string
+  statement_id = var.statement_id
+  # statement_id_prefix - (optional) is a type of string
   statement_id_prefix = var.statement_id_prefix
 }
 ```

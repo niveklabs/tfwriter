@@ -123,16 +123,23 @@ variable "azure_roles" {
 
 ```terraform
 resource "vault_azure_secret_backend_role" "this" {
+  # application_object_id - (optional) is a type of string
   application_object_id = var.application_object_id
-  backend               = var.backend
-  description           = var.description
-  max_ttl               = var.max_ttl
-  role                  = var.role
-  ttl                   = var.ttl
+  # backend - (optional) is a type of string
+  backend = var.backend
+  # description - (optional) is a type of string
+  description = var.description
+  # max_ttl - (optional) is a type of string
+  max_ttl = var.max_ttl
+  # role - (required) is a type of string
+  role = var.role
+  # ttl - (optional) is a type of string
+  ttl = var.ttl
 
   dynamic "azure_groups" {
     for_each = var.azure_groups
     content {
+      # group_name - (required) is a type of string
       group_name = azure_groups.value["group_name"]
     }
   }
@@ -140,8 +147,10 @@ resource "vault_azure_secret_backend_role" "this" {
   dynamic "azure_roles" {
     for_each = var.azure_roles
     content {
+      # role_name - (required) is a type of string
       role_name = azure_roles.value["role_name"]
-      scope     = azure_roles.value["scope"]
+      # scope - (required) is a type of string
+      scope = azure_roles.value["scope"]
     }
   }
 

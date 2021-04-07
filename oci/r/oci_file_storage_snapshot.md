@@ -90,16 +90,23 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_file_storage_snapshot" "this" {
-  defined_tags   = var.defined_tags
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # file_system_id - (required) is a type of string
   file_system_id = var.file_system_id
-  freeform_tags  = var.freeform_tags
-  name           = var.name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

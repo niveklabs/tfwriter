@@ -131,18 +131,27 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_virtual_hub" "this" {
-  address_prefix      = var.address_prefix
-  location            = var.location
-  name                = var.name
+  # address_prefix - (optional) is a type of string
+  address_prefix = var.address_prefix
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  sku                 = var.sku
-  tags                = var.tags
-  virtual_wan_id      = var.virtual_wan_id
+  # sku - (optional) is a type of string
+  sku = var.sku
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # virtual_wan_id - (optional) is a type of string
+  virtual_wan_id = var.virtual_wan_id
 
   dynamic "route" {
     for_each = var.route
     content {
-      address_prefixes    = route.value["address_prefixes"]
+      # address_prefixes - (required) is a type of list of string
+      address_prefixes = route.value["address_prefixes"]
+      # next_hop_ip_address - (required) is a type of string
       next_hop_ip_address = route.value["next_hop_ip_address"]
     }
   }
@@ -150,9 +159,13 @@ resource "azurerm_virtual_hub" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

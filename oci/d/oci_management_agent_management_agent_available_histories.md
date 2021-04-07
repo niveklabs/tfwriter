@@ -83,15 +83,21 @@ variable "filter" {
 
 ```terraform
 data "oci_management_agent_management_agent_available_histories" "this" {
-  management_agent_id                         = var.management_agent_id
+  # management_agent_id - (required) is a type of string
+  management_agent_id = var.management_agent_id
+  # time_availability_status_ended_greater_than - (optional) is a type of string
   time_availability_status_ended_greater_than = var.time_availability_status_ended_greater_than
-  time_availability_status_started_less_than  = var.time_availability_status_started_less_than
+  # time_availability_status_started_less_than - (optional) is a type of string
+  time_availability_status_started_less_than = var.time_availability_status_started_less_than
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

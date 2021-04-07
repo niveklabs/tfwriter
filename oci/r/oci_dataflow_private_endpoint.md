@@ -129,21 +129,33 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_dataflow_private_endpoint" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  defined_tags   = var.defined_tags
-  description    = var.description
-  display_name   = var.display_name
-  dns_zones      = var.dns_zones
-  freeform_tags  = var.freeform_tags
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # dns_zones - (required) is a type of list of string
+  dns_zones = var.dns_zones
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # max_host_count - (optional) is a type of number
   max_host_count = var.max_host_count
-  nsg_ids        = var.nsg_ids
-  subnet_id      = var.subnet_id
+  # nsg_ids - (optional) is a type of set of string
+  nsg_ids = var.nsg_ids
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

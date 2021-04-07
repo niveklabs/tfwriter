@@ -49,6 +49,7 @@ variable "path" {
 
 ```terraform
 resource "vault_namespace" "this" {
+  # path - (required) is a type of string
   path = var.path
 }
 ```

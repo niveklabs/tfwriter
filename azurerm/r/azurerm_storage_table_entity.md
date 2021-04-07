@@ -97,18 +97,27 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_storage_table_entity" "this" {
-  entity               = var.entity
-  partition_key        = var.partition_key
-  row_key              = var.row_key
+  # entity - (required) is a type of map of string
+  entity = var.entity
+  # partition_key - (required) is a type of string
+  partition_key = var.partition_key
+  # row_key - (required) is a type of string
+  row_key = var.row_key
+  # storage_account_name - (required) is a type of string
   storage_account_name = var.storage_account_name
-  table_name           = var.table_name
+  # table_name - (required) is a type of string
+  table_name = var.table_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

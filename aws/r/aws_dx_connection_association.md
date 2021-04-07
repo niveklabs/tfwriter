@@ -56,8 +56,10 @@ variable "lag_id" {
 
 ```terraform
 resource "aws_dx_connection_association" "this" {
+  # connection_id - (required) is a type of string
   connection_id = var.connection_id
-  lag_id        = var.lag_id
+  # lag_id - (required) is a type of string
+  lag_id = var.lag_id
 }
 ```
 

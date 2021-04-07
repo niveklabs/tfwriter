@@ -73,9 +73,13 @@ variable "username" {
 
 ```terraform
 resource "vault_ldap_auth_backend_user" "this" {
-  backend  = var.backend
-  groups   = var.groups
+  # backend - (optional) is a type of string
+  backend = var.backend
+  # groups - (optional) is a type of set of string
+  groups = var.groups
+  # policies - (optional) is a type of set of string
   policies = var.policies
+  # username - (required) is a type of string
   username = var.username
 }
 ```

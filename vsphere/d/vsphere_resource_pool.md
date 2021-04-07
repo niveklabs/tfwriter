@@ -58,8 +58,10 @@ variable "name" {
 
 ```terraform
 data "vsphere_resource_pool" "this" {
+  # datacenter_id - (optional) is a type of string
   datacenter_id = var.datacenter_id
-  name          = var.name
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

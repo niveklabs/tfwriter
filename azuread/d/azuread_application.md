@@ -142,10 +142,14 @@ variable "optional_claims" {
 
 ```terraform
 data "azuread_application" "this" {
+  # application_id - (optional) is a type of string
   application_id = var.application_id
-  display_name   = var.display_name
-  name           = var.name
-  object_id      = var.object_id
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # name - (optional) is a type of string
+  name = var.name
+  # object_id - (optional) is a type of string
+  object_id = var.object_id
 
   dynamic "oauth2_permissions" {
     for_each = var.oauth2_permissions
@@ -160,20 +164,28 @@ data "azuread_application" "this" {
       dynamic "access_token" {
         for_each = optional_claims.value.access_token
         content {
+          # additional_properties - (optional) is a type of list of string
           additional_properties = access_token.value["additional_properties"]
-          essential             = access_token.value["essential"]
-          name                  = access_token.value["name"]
-          source                = access_token.value["source"]
+          # essential - (optional) is a type of bool
+          essential = access_token.value["essential"]
+          # name - (required) is a type of string
+          name = access_token.value["name"]
+          # source - (optional) is a type of string
+          source = access_token.value["source"]
         }
       }
 
       dynamic "id_token" {
         for_each = optional_claims.value.id_token
         content {
+          # additional_properties - (optional) is a type of list of string
           additional_properties = id_token.value["additional_properties"]
-          essential             = id_token.value["essential"]
-          name                  = id_token.value["name"]
-          source                = id_token.value["source"]
+          # essential - (optional) is a type of bool
+          essential = id_token.value["essential"]
+          # name - (required) is a type of string
+          name = id_token.value["name"]
+          # source - (optional) is a type of string
+          source = id_token.value["source"]
         }
       }
 

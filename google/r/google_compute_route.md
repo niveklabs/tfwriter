@@ -159,24 +159,39 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_route" "this" {
-  description            = var.description
-  dest_range             = var.dest_range
-  name                   = var.name
-  network                = var.network
-  next_hop_gateway       = var.next_hop_gateway
-  next_hop_ilb           = var.next_hop_ilb
-  next_hop_instance      = var.next_hop_instance
+  # description - (optional) is a type of string
+  description = var.description
+  # dest_range - (required) is a type of string
+  dest_range = var.dest_range
+  # name - (required) is a type of string
+  name = var.name
+  # network - (required) is a type of string
+  network = var.network
+  # next_hop_gateway - (optional) is a type of string
+  next_hop_gateway = var.next_hop_gateway
+  # next_hop_ilb - (optional) is a type of string
+  next_hop_ilb = var.next_hop_ilb
+  # next_hop_instance - (optional) is a type of string
+  next_hop_instance = var.next_hop_instance
+  # next_hop_instance_zone - (optional) is a type of string
   next_hop_instance_zone = var.next_hop_instance_zone
-  next_hop_ip            = var.next_hop_ip
-  next_hop_vpn_tunnel    = var.next_hop_vpn_tunnel
-  priority               = var.priority
-  project                = var.project
-  tags                   = var.tags
+  # next_hop_ip - (optional) is a type of string
+  next_hop_ip = var.next_hop_ip
+  # next_hop_vpn_tunnel - (optional) is a type of string
+  next_hop_vpn_tunnel = var.next_hop_vpn_tunnel
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # project - (optional) is a type of string
+  project = var.project
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

@@ -219,19 +219,25 @@ variable "timeouts" {
 
 ```terraform
 resource "google_composer_environment" "this" {
-  labels  = var.labels
-  name    = var.name
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
   project = var.project
-  region  = var.region
+  # region - (optional) is a type of string
+  region = var.region
 
   dynamic "config" {
     for_each = var.config
     content {
+      # node_count - (optional) is a type of number
       node_count = config.value["node_count"]
 
       dynamic "database_config" {
         for_each = config.value.database_config
         content {
+          # machine_type - (required) is a type of string
           machine_type = database_config.value["machine_type"]
         }
       }
@@ -239,6 +245,7 @@ resource "google_composer_environment" "this" {
       dynamic "encryption_config" {
         for_each = config.value.encryption_config
         content {
+          # kms_key_name - (required) is a type of string
           kms_key_name = encryption_config.value["kms_key_name"]
         }
       }
@@ -246,24 +253,37 @@ resource "google_composer_environment" "this" {
       dynamic "node_config" {
         for_each = config.value.node_config
         content {
-          disk_size_gb         = node_config.value["disk_size_gb"]
+          # disk_size_gb - (optional) is a type of number
+          disk_size_gb = node_config.value["disk_size_gb"]
+          # ip_allocation_policy - (optional) is a type of list of object
           ip_allocation_policy = node_config.value["ip_allocation_policy"]
-          machine_type         = node_config.value["machine_type"]
-          network              = node_config.value["network"]
-          oauth_scopes         = node_config.value["oauth_scopes"]
-          service_account      = node_config.value["service_account"]
-          subnetwork           = node_config.value["subnetwork"]
-          tags                 = node_config.value["tags"]
-          zone                 = node_config.value["zone"]
+          # machine_type - (optional) is a type of string
+          machine_type = node_config.value["machine_type"]
+          # network - (optional) is a type of string
+          network = node_config.value["network"]
+          # oauth_scopes - (optional) is a type of set of string
+          oauth_scopes = node_config.value["oauth_scopes"]
+          # service_account - (optional) is a type of string
+          service_account = node_config.value["service_account"]
+          # subnetwork - (optional) is a type of string
+          subnetwork = node_config.value["subnetwork"]
+          # tags - (optional) is a type of set of string
+          tags = node_config.value["tags"]
+          # zone - (required) is a type of string
+          zone = node_config.value["zone"]
         }
       }
 
       dynamic "private_environment_config" {
         for_each = config.value.private_environment_config
         content {
-          cloud_sql_ipv4_cidr_block  = private_environment_config.value["cloud_sql_ipv4_cidr_block"]
-          enable_private_endpoint    = private_environment_config.value["enable_private_endpoint"]
-          master_ipv4_cidr_block     = private_environment_config.value["master_ipv4_cidr_block"]
+          # cloud_sql_ipv4_cidr_block - (optional) is a type of string
+          cloud_sql_ipv4_cidr_block = private_environment_config.value["cloud_sql_ipv4_cidr_block"]
+          # enable_private_endpoint - (optional) is a type of bool
+          enable_private_endpoint = private_environment_config.value["enable_private_endpoint"]
+          # master_ipv4_cidr_block - (optional) is a type of string
+          master_ipv4_cidr_block = private_environment_config.value["master_ipv4_cidr_block"]
+          # web_server_ipv4_cidr_block - (optional) is a type of string
           web_server_ipv4_cidr_block = private_environment_config.value["web_server_ipv4_cidr_block"]
         }
       }
@@ -271,17 +291,23 @@ resource "google_composer_environment" "this" {
       dynamic "software_config" {
         for_each = config.value.software_config
         content {
+          # airflow_config_overrides - (optional) is a type of map of string
           airflow_config_overrides = software_config.value["airflow_config_overrides"]
-          env_variables            = software_config.value["env_variables"]
-          image_version            = software_config.value["image_version"]
-          pypi_packages            = software_config.value["pypi_packages"]
-          python_version           = software_config.value["python_version"]
+          # env_variables - (optional) is a type of map of string
+          env_variables = software_config.value["env_variables"]
+          # image_version - (optional) is a type of string
+          image_version = software_config.value["image_version"]
+          # pypi_packages - (optional) is a type of map of string
+          pypi_packages = software_config.value["pypi_packages"]
+          # python_version - (optional) is a type of string
+          python_version = software_config.value["python_version"]
         }
       }
 
       dynamic "web_server_config" {
         for_each = config.value.web_server_config
         content {
+          # machine_type - (required) is a type of string
           machine_type = web_server_config.value["machine_type"]
         }
       }
@@ -293,8 +319,10 @@ resource "google_composer_environment" "this" {
           dynamic "allowed_ip_range" {
             for_each = web_server_network_access_control.value.allowed_ip_range
             content {
+              # description - (optional) is a type of string
               description = allowed_ip_range.value["description"]
-              value       = allowed_ip_range.value["value"]
+              # value - (required) is a type of string
+              value = allowed_ip_range.value["value"]
             }
           }
 
@@ -307,8 +335,11 @@ resource "google_composer_environment" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

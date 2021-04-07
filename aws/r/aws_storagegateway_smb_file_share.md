@@ -239,31 +239,53 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_storagegateway_smb_file_share" "this" {
+  # access_based_enumeration - (optional) is a type of bool
   access_based_enumeration = var.access_based_enumeration
-  admin_user_list          = var.admin_user_list
-  audit_destination_arn    = var.audit_destination_arn
-  authentication           = var.authentication
-  case_sensitivity         = var.case_sensitivity
-  default_storage_class    = var.default_storage_class
-  file_share_name          = var.file_share_name
-  gateway_arn              = var.gateway_arn
-  guess_mime_type_enabled  = var.guess_mime_type_enabled
-  invalid_user_list        = var.invalid_user_list
-  kms_encrypted            = var.kms_encrypted
-  kms_key_arn              = var.kms_key_arn
-  location_arn             = var.location_arn
-  notification_policy      = var.notification_policy
-  object_acl               = var.object_acl
-  read_only                = var.read_only
-  requester_pays           = var.requester_pays
-  role_arn                 = var.role_arn
-  smb_acl_enabled          = var.smb_acl_enabled
-  tags                     = var.tags
-  valid_user_list          = var.valid_user_list
+  # admin_user_list - (optional) is a type of set of string
+  admin_user_list = var.admin_user_list
+  # audit_destination_arn - (optional) is a type of string
+  audit_destination_arn = var.audit_destination_arn
+  # authentication - (optional) is a type of string
+  authentication = var.authentication
+  # case_sensitivity - (optional) is a type of string
+  case_sensitivity = var.case_sensitivity
+  # default_storage_class - (optional) is a type of string
+  default_storage_class = var.default_storage_class
+  # file_share_name - (optional) is a type of string
+  file_share_name = var.file_share_name
+  # gateway_arn - (required) is a type of string
+  gateway_arn = var.gateway_arn
+  # guess_mime_type_enabled - (optional) is a type of bool
+  guess_mime_type_enabled = var.guess_mime_type_enabled
+  # invalid_user_list - (optional) is a type of set of string
+  invalid_user_list = var.invalid_user_list
+  # kms_encrypted - (optional) is a type of bool
+  kms_encrypted = var.kms_encrypted
+  # kms_key_arn - (optional) is a type of string
+  kms_key_arn = var.kms_key_arn
+  # location_arn - (required) is a type of string
+  location_arn = var.location_arn
+  # notification_policy - (optional) is a type of string
+  notification_policy = var.notification_policy
+  # object_acl - (optional) is a type of string
+  object_acl = var.object_acl
+  # read_only - (optional) is a type of bool
+  read_only = var.read_only
+  # requester_pays - (optional) is a type of bool
+  requester_pays = var.requester_pays
+  # role_arn - (required) is a type of string
+  role_arn = var.role_arn
+  # smb_acl_enabled - (optional) is a type of bool
+  smb_acl_enabled = var.smb_acl_enabled
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # valid_user_list - (optional) is a type of set of string
+  valid_user_list = var.valid_user_list
 
   dynamic "cache_attributes" {
     for_each = var.cache_attributes
     content {
+      # cache_stale_timeout_in_seconds - (optional) is a type of number
       cache_stale_timeout_in_seconds = cache_attributes.value["cache_stale_timeout_in_seconds"]
     }
   }
@@ -271,8 +293,11 @@ resource "aws_storagegateway_smb_file_share" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -58,8 +58,10 @@ variable "prefix" {
 
 ```terraform
 data "nomad_datacenters" "this" {
+  # ignore_down_nodes - (optional) is a type of bool
   ignore_down_nodes = var.ignore_down_nodes
-  prefix            = var.prefix
+  # prefix - (optional) is a type of string
+  prefix = var.prefix
 }
 ```
 

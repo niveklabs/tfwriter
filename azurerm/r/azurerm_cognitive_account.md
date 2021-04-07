@@ -139,20 +139,31 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_cognitive_account" "this" {
+  # custom_subdomain_name - (optional) is a type of string
   custom_subdomain_name = var.custom_subdomain_name
-  kind                  = var.kind
-  location              = var.location
-  name                  = var.name
-  qna_runtime_endpoint  = var.qna_runtime_endpoint
-  resource_group_name   = var.resource_group_name
-  sku_name              = var.sku_name
-  tags                  = var.tags
+  # kind - (required) is a type of string
+  kind = var.kind
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # qna_runtime_endpoint - (optional) is a type of string
+  qna_runtime_endpoint = var.qna_runtime_endpoint
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # sku_name - (required) is a type of string
+  sku_name = var.sku_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "network_acls" {
     for_each = var.network_acls
     content {
-      default_action             = network_acls.value["default_action"]
-      ip_rules                   = network_acls.value["ip_rules"]
+      # default_action - (required) is a type of string
+      default_action = network_acls.value["default_action"]
+      # ip_rules - (optional) is a type of set of string
+      ip_rules = network_acls.value["ip_rules"]
+      # virtual_network_subnet_ids - (optional) is a type of set of string
       virtual_network_subnet_ids = network_acls.value["virtual_network_subnet_ids"]
     }
   }
@@ -160,9 +171,13 @@ resource "azurerm_cognitive_account" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

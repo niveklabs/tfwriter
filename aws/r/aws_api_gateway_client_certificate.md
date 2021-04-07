@@ -58,8 +58,10 @@ variable "tags" {
 
 ```terraform
 resource "aws_api_gateway_client_certificate" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  tags        = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

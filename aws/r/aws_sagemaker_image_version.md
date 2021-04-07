@@ -56,7 +56,9 @@ variable "image_name" {
 
 ```terraform
 resource "aws_sagemaker_image_version" "this" {
+  # base_image - (required) is a type of string
   base_image = var.base_image
+  # image_name - (required) is a type of string
   image_name = var.image_name
 }
 ```

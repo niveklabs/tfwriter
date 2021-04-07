@@ -89,17 +89,24 @@ variable "timeouts" {
 
 ```terraform
 resource "hcp_hvn" "this" {
-  cidr_block     = var.cidr_block
+  # cidr_block - (optional) is a type of string
+  cidr_block = var.cidr_block
+  # cloud_provider - (required) is a type of string
   cloud_provider = var.cloud_provider
-  hvn_id         = var.hvn_id
-  region         = var.region
+  # hvn_id - (required) is a type of string
+  hvn_id = var.hvn_id
+  # region - (required) is a type of string
+  region = var.region
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
-      create  = timeouts.value["create"]
+      # create - (optional) is a type of string
+      create = timeouts.value["create"]
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
-      delete  = timeouts.value["delete"]
+      # delete - (optional) is a type of string
+      delete = timeouts.value["delete"]
     }
   }
 

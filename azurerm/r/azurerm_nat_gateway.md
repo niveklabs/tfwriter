@@ -131,22 +131,35 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_nat_gateway" "this" {
+  # idle_timeout_in_minutes - (optional) is a type of number
   idle_timeout_in_minutes = var.idle_timeout_in_minutes
-  location                = var.location
-  name                    = var.name
-  public_ip_address_ids   = var.public_ip_address_ids
-  public_ip_prefix_ids    = var.public_ip_prefix_ids
-  resource_group_name     = var.resource_group_name
-  sku_name                = var.sku_name
-  tags                    = var.tags
-  zones                   = var.zones
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # public_ip_address_ids - (optional) is a type of set of string
+  public_ip_address_ids = var.public_ip_address_ids
+  # public_ip_prefix_ids - (optional) is a type of set of string
+  public_ip_prefix_ids = var.public_ip_prefix_ids
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # sku_name - (optional) is a type of string
+  sku_name = var.sku_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # zones - (optional) is a type of list of string
+  zones = var.zones
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

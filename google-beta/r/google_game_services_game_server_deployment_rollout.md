@@ -104,18 +104,23 @@ variable "timeouts" {
 
 ```terraform
 resource "google_game_services_game_server_deployment_rollout" "this" {
+  # default_game_server_config - (required) is a type of string
   default_game_server_config = var.default_game_server_config
-  deployment_id              = var.deployment_id
-  project                    = var.project
+  # deployment_id - (required) is a type of string
+  deployment_id = var.deployment_id
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "game_server_config_overrides" {
     for_each = var.game_server_config_overrides
     content {
+      # config_version - (optional) is a type of string
       config_version = game_server_config_overrides.value["config_version"]
 
       dynamic "realms_selector" {
         for_each = game_server_config_overrides.value.realms_selector
         content {
+          # realms - (optional) is a type of list of string
           realms = realms_selector.value["realms"]
         }
       }
@@ -126,8 +131,11 @@ resource "google_game_services_game_server_deployment_rollout" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

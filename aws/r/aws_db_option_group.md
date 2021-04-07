@@ -134,26 +134,39 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_db_option_group" "this" {
-  engine_name              = var.engine_name
-  major_engine_version     = var.major_engine_version
-  name                     = var.name
-  name_prefix              = var.name_prefix
+  # engine_name - (required) is a type of string
+  engine_name = var.engine_name
+  # major_engine_version - (required) is a type of string
+  major_engine_version = var.major_engine_version
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # option_group_description - (optional) is a type of string
   option_group_description = var.option_group_description
-  tags                     = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "option" {
     for_each = var.option
     content {
-      db_security_group_memberships  = option.value["db_security_group_memberships"]
-      option_name                    = option.value["option_name"]
-      port                           = option.value["port"]
-      version                        = option.value["version"]
+      # db_security_group_memberships - (optional) is a type of set of string
+      db_security_group_memberships = option.value["db_security_group_memberships"]
+      # option_name - (required) is a type of string
+      option_name = option.value["option_name"]
+      # port - (optional) is a type of number
+      port = option.value["port"]
+      # version - (optional) is a type of string
+      version = option.value["version"]
+      # vpc_security_group_memberships - (optional) is a type of set of string
       vpc_security_group_memberships = option.value["vpc_security_group_memberships"]
 
       dynamic "option_settings" {
         for_each = option.value.option_settings
         content {
-          name  = option_settings.value["name"]
+          # name - (required) is a type of string
+          name = option_settings.value["name"]
+          # value - (required) is a type of string
           value = option_settings.value["value"]
         }
       }
@@ -164,6 +177,7 @@ resource "aws_db_option_group" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

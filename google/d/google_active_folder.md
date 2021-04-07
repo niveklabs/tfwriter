@@ -56,8 +56,10 @@ variable "parent" {
 
 ```terraform
 data "google_active_folder" "this" {
+  # display_name - (required) is a type of string
   display_name = var.display_name
-  parent       = var.parent
+  # parent - (required) is a type of string
+  parent = var.parent
 }
 ```
 

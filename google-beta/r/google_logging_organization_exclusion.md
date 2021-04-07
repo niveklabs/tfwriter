@@ -79,11 +79,16 @@ variable "org_id" {
 
 ```terraform
 resource "google_logging_organization_exclusion" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  disabled    = var.disabled
-  filter      = var.filter
-  name        = var.name
-  org_id      = var.org_id
+  # disabled - (optional) is a type of bool
+  disabled = var.disabled
+  # filter - (required) is a type of string
+  filter = var.filter
+  # name - (required) is a type of string
+  name = var.name
+  # org_id - (required) is a type of string
+  org_id = var.org_id
 }
 ```
 

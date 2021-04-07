@@ -79,11 +79,16 @@ variable "scope" {
 
 ```terraform
 resource "ad_group" "this" {
-  category         = var.category
-  container        = var.container
-  name             = var.name
+  # category - (optional) is a type of string
+  category = var.category
+  # container - (required) is a type of string
+  container = var.container
+  # name - (required) is a type of string
+  name = var.name
+  # sam_account_name - (required) is a type of string
   sam_account_name = var.sam_account_name
-  scope            = var.scope
+  # scope - (optional) is a type of string
+  scope = var.scope
 }
 ```
 

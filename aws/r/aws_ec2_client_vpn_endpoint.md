@@ -132,30 +132,44 @@ variable "connection_log_options" {
 
 ```terraform
 resource "aws_ec2_client_vpn_endpoint" "this" {
-  client_cidr_block      = var.client_cidr_block
-  description            = var.description
-  dns_servers            = var.dns_servers
+  # client_cidr_block - (required) is a type of string
+  client_cidr_block = var.client_cidr_block
+  # description - (optional) is a type of string
+  description = var.description
+  # dns_servers - (optional) is a type of set of string
+  dns_servers = var.dns_servers
+  # server_certificate_arn - (required) is a type of string
   server_certificate_arn = var.server_certificate_arn
-  split_tunnel           = var.split_tunnel
-  tags                   = var.tags
-  transport_protocol     = var.transport_protocol
+  # split_tunnel - (optional) is a type of bool
+  split_tunnel = var.split_tunnel
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # transport_protocol - (optional) is a type of string
+  transport_protocol = var.transport_protocol
 
   dynamic "authentication_options" {
     for_each = var.authentication_options
     content {
-      active_directory_id        = authentication_options.value["active_directory_id"]
+      # active_directory_id - (optional) is a type of string
+      active_directory_id = authentication_options.value["active_directory_id"]
+      # root_certificate_chain_arn - (optional) is a type of string
       root_certificate_chain_arn = authentication_options.value["root_certificate_chain_arn"]
-      saml_provider_arn          = authentication_options.value["saml_provider_arn"]
-      type                       = authentication_options.value["type"]
+      # saml_provider_arn - (optional) is a type of string
+      saml_provider_arn = authentication_options.value["saml_provider_arn"]
+      # type - (required) is a type of string
+      type = authentication_options.value["type"]
     }
   }
 
   dynamic "connection_log_options" {
     for_each = var.connection_log_options
     content {
-      cloudwatch_log_group  = connection_log_options.value["cloudwatch_log_group"]
+      # cloudwatch_log_group - (optional) is a type of string
+      cloudwatch_log_group = connection_log_options.value["cloudwatch_log_group"]
+      # cloudwatch_log_stream - (optional) is a type of string
       cloudwatch_log_stream = connection_log_options.value["cloudwatch_log_stream"]
-      enabled               = connection_log_options.value["enabled"]
+      # enabled - (required) is a type of bool
+      enabled = connection_log_options.value["enabled"]
     }
   }
 

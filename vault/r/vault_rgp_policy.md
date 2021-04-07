@@ -63,9 +63,12 @@ variable "policy" {
 
 ```terraform
 resource "vault_rgp_policy" "this" {
+  # enforcement_level - (required) is a type of string
   enforcement_level = var.enforcement_level
-  name              = var.name
-  policy            = var.policy
+  # name - (required) is a type of string
+  name = var.name
+  # policy - (required) is a type of string
+  policy = var.policy
 }
 ```
 

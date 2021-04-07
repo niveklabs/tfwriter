@@ -96,13 +96,20 @@ variable "tenant_id" {
 
 ```terraform
 resource "vault_azure_secret_backend" "this" {
-  client_id       = var.client_id
-  client_secret   = var.client_secret
-  description     = var.description
-  environment     = var.environment
-  path            = var.path
+  # client_id - (optional) is a type of string
+  client_id = var.client_id
+  # client_secret - (optional) is a type of string
+  client_secret = var.client_secret
+  # description - (optional) is a type of string
+  description = var.description
+  # environment - (optional) is a type of string
+  environment = var.environment
+  # path - (optional) is a type of string
+  path = var.path
+  # subscription_id - (required) is a type of string
   subscription_id = var.subscription_id
-  tenant_id       = var.tenant_id
+  # tenant_id - (required) is a type of string
+  tenant_id = var.tenant_id
 }
 ```
 

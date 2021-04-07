@@ -150,36 +150,51 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_snapshot" "this" {
-  description       = var.description
-  labels            = var.labels
-  name              = var.name
-  project           = var.project
-  source_disk       = var.source_disk
+  # description - (optional) is a type of string
+  description = var.description
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # source_disk - (required) is a type of string
+  source_disk = var.source_disk
+  # storage_locations - (optional) is a type of list of string
   storage_locations = var.storage_locations
-  zone              = var.zone
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "snapshot_encryption_key" {
     for_each = var.snapshot_encryption_key
     content {
-      kms_key_self_link       = snapshot_encryption_key.value["kms_key_self_link"]
+      # kms_key_self_link - (optional) is a type of string
+      kms_key_self_link = snapshot_encryption_key.value["kms_key_self_link"]
+      # kms_key_service_account - (optional) is a type of string
       kms_key_service_account = snapshot_encryption_key.value["kms_key_service_account"]
-      raw_key                 = snapshot_encryption_key.value["raw_key"]
+      # raw_key - (optional) is a type of string
+      raw_key = snapshot_encryption_key.value["raw_key"]
     }
   }
 
   dynamic "source_disk_encryption_key" {
     for_each = var.source_disk_encryption_key
     content {
+      # kms_key_service_account - (optional) is a type of string
       kms_key_service_account = source_disk_encryption_key.value["kms_key_service_account"]
-      raw_key                 = source_disk_encryption_key.value["raw_key"]
+      # raw_key - (optional) is a type of string
+      raw_key = source_disk_encryption_key.value["raw_key"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

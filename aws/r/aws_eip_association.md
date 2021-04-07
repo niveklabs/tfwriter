@@ -90,12 +90,18 @@ variable "public_ip" {
 
 ```terraform
 resource "aws_eip_association" "this" {
-  allocation_id        = var.allocation_id
-  allow_reassociation  = var.allow_reassociation
-  instance_id          = var.instance_id
+  # allocation_id - (optional) is a type of string
+  allocation_id = var.allocation_id
+  # allow_reassociation - (optional) is a type of bool
+  allow_reassociation = var.allow_reassociation
+  # instance_id - (optional) is a type of string
+  instance_id = var.instance_id
+  # network_interface_id - (optional) is a type of string
   network_interface_id = var.network_interface_id
-  private_ip_address   = var.private_ip_address
-  public_ip            = var.public_ip
+  # private_ip_address - (optional) is a type of string
+  private_ip_address = var.private_ip_address
+  # public_ip - (optional) is a type of string
+  public_ip = var.public_ip
 }
 ```
 

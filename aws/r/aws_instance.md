@@ -438,39 +438,69 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_instance" "this" {
-  ami                                  = var.ami
-  associate_public_ip_address          = var.associate_public_ip_address
-  availability_zone                    = var.availability_zone
-  cpu_core_count                       = var.cpu_core_count
-  cpu_threads_per_core                 = var.cpu_threads_per_core
-  disable_api_termination              = var.disable_api_termination
-  ebs_optimized                        = var.ebs_optimized
-  get_password_data                    = var.get_password_data
-  hibernation                          = var.hibernation
-  host_id                              = var.host_id
-  iam_instance_profile                 = var.iam_instance_profile
+  # ami - (required) is a type of string
+  ami = var.ami
+  # associate_public_ip_address - (optional) is a type of bool
+  associate_public_ip_address = var.associate_public_ip_address
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # cpu_core_count - (optional) is a type of number
+  cpu_core_count = var.cpu_core_count
+  # cpu_threads_per_core - (optional) is a type of number
+  cpu_threads_per_core = var.cpu_threads_per_core
+  # disable_api_termination - (optional) is a type of bool
+  disable_api_termination = var.disable_api_termination
+  # ebs_optimized - (optional) is a type of bool
+  ebs_optimized = var.ebs_optimized
+  # get_password_data - (optional) is a type of bool
+  get_password_data = var.get_password_data
+  # hibernation - (optional) is a type of bool
+  hibernation = var.hibernation
+  # host_id - (optional) is a type of string
+  host_id = var.host_id
+  # iam_instance_profile - (optional) is a type of string
+  iam_instance_profile = var.iam_instance_profile
+  # instance_initiated_shutdown_behavior - (optional) is a type of string
   instance_initiated_shutdown_behavior = var.instance_initiated_shutdown_behavior
-  instance_type                        = var.instance_type
-  ipv6_address_count                   = var.ipv6_address_count
-  ipv6_addresses                       = var.ipv6_addresses
-  key_name                             = var.key_name
-  monitoring                           = var.monitoring
-  placement_group                      = var.placement_group
-  private_ip                           = var.private_ip
-  secondary_private_ips                = var.secondary_private_ips
-  security_groups                      = var.security_groups
-  source_dest_check                    = var.source_dest_check
-  subnet_id                            = var.subnet_id
-  tags                                 = var.tags
-  tenancy                              = var.tenancy
-  user_data                            = var.user_data
-  user_data_base64                     = var.user_data_base64
-  volume_tags                          = var.volume_tags
-  vpc_security_group_ids               = var.vpc_security_group_ids
+  # instance_type - (required) is a type of string
+  instance_type = var.instance_type
+  # ipv6_address_count - (optional) is a type of number
+  ipv6_address_count = var.ipv6_address_count
+  # ipv6_addresses - (optional) is a type of list of string
+  ipv6_addresses = var.ipv6_addresses
+  # key_name - (optional) is a type of string
+  key_name = var.key_name
+  # monitoring - (optional) is a type of bool
+  monitoring = var.monitoring
+  # placement_group - (optional) is a type of string
+  placement_group = var.placement_group
+  # private_ip - (optional) is a type of string
+  private_ip = var.private_ip
+  # secondary_private_ips - (optional) is a type of set of string
+  secondary_private_ips = var.secondary_private_ips
+  # security_groups - (optional) is a type of set of string
+  security_groups = var.security_groups
+  # source_dest_check - (optional) is a type of bool
+  source_dest_check = var.source_dest_check
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # tenancy - (optional) is a type of string
+  tenancy = var.tenancy
+  # user_data - (optional) is a type of string
+  user_data = var.user_data
+  # user_data_base64 - (optional) is a type of string
+  user_data_base64 = var.user_data_base64
+  # volume_tags - (optional) is a type of map of string
+  volume_tags = var.volume_tags
+  # vpc_security_group_ids - (optional) is a type of set of string
+  vpc_security_group_ids = var.vpc_security_group_ids
 
   dynamic "credit_specification" {
     for_each = var.credit_specification
     content {
+      # cpu_credits - (optional) is a type of string
       cpu_credits = credit_specification.value["cpu_credits"]
     }
   }
@@ -478,22 +508,33 @@ resource "aws_instance" "this" {
   dynamic "ebs_block_device" {
     for_each = var.ebs_block_device
     content {
+      # delete_on_termination - (optional) is a type of bool
       delete_on_termination = ebs_block_device.value["delete_on_termination"]
-      device_name           = ebs_block_device.value["device_name"]
-      encrypted             = ebs_block_device.value["encrypted"]
-      iops                  = ebs_block_device.value["iops"]
-      kms_key_id            = ebs_block_device.value["kms_key_id"]
-      snapshot_id           = ebs_block_device.value["snapshot_id"]
-      tags                  = ebs_block_device.value["tags"]
-      throughput            = ebs_block_device.value["throughput"]
-      volume_size           = ebs_block_device.value["volume_size"]
-      volume_type           = ebs_block_device.value["volume_type"]
+      # device_name - (required) is a type of string
+      device_name = ebs_block_device.value["device_name"]
+      # encrypted - (optional) is a type of bool
+      encrypted = ebs_block_device.value["encrypted"]
+      # iops - (optional) is a type of number
+      iops = ebs_block_device.value["iops"]
+      # kms_key_id - (optional) is a type of string
+      kms_key_id = ebs_block_device.value["kms_key_id"]
+      # snapshot_id - (optional) is a type of string
+      snapshot_id = ebs_block_device.value["snapshot_id"]
+      # tags - (optional) is a type of map of string
+      tags = ebs_block_device.value["tags"]
+      # throughput - (optional) is a type of number
+      throughput = ebs_block_device.value["throughput"]
+      # volume_size - (optional) is a type of number
+      volume_size = ebs_block_device.value["volume_size"]
+      # volume_type - (optional) is a type of string
+      volume_type = ebs_block_device.value["volume_type"]
     }
   }
 
   dynamic "enclave_options" {
     for_each = var.enclave_options
     content {
+      # enabled - (optional) is a type of bool
       enabled = enclave_options.value["enabled"]
     }
   }
@@ -501,8 +542,11 @@ resource "aws_instance" "this" {
   dynamic "ephemeral_block_device" {
     for_each = var.ephemeral_block_device
     content {
-      device_name  = ephemeral_block_device.value["device_name"]
-      no_device    = ephemeral_block_device.value["no_device"]
+      # device_name - (required) is a type of string
+      device_name = ephemeral_block_device.value["device_name"]
+      # no_device - (optional) is a type of bool
+      no_device = ephemeral_block_device.value["no_device"]
+      # virtual_name - (optional) is a type of string
       virtual_name = ephemeral_block_device.value["virtual_name"]
     }
   }
@@ -510,40 +554,57 @@ resource "aws_instance" "this" {
   dynamic "metadata_options" {
     for_each = var.metadata_options
     content {
-      http_endpoint               = metadata_options.value["http_endpoint"]
+      # http_endpoint - (optional) is a type of string
+      http_endpoint = metadata_options.value["http_endpoint"]
+      # http_put_response_hop_limit - (optional) is a type of number
       http_put_response_hop_limit = metadata_options.value["http_put_response_hop_limit"]
-      http_tokens                 = metadata_options.value["http_tokens"]
+      # http_tokens - (optional) is a type of string
+      http_tokens = metadata_options.value["http_tokens"]
     }
   }
 
   dynamic "network_interface" {
     for_each = var.network_interface
     content {
+      # delete_on_termination - (optional) is a type of bool
       delete_on_termination = network_interface.value["delete_on_termination"]
-      device_index          = network_interface.value["device_index"]
-      network_interface_id  = network_interface.value["network_interface_id"]
+      # device_index - (required) is a type of number
+      device_index = network_interface.value["device_index"]
+      # network_interface_id - (required) is a type of string
+      network_interface_id = network_interface.value["network_interface_id"]
     }
   }
 
   dynamic "root_block_device" {
     for_each = var.root_block_device
     content {
+      # delete_on_termination - (optional) is a type of bool
       delete_on_termination = root_block_device.value["delete_on_termination"]
-      encrypted             = root_block_device.value["encrypted"]
-      iops                  = root_block_device.value["iops"]
-      kms_key_id            = root_block_device.value["kms_key_id"]
-      tags                  = root_block_device.value["tags"]
-      throughput            = root_block_device.value["throughput"]
-      volume_size           = root_block_device.value["volume_size"]
-      volume_type           = root_block_device.value["volume_type"]
+      # encrypted - (optional) is a type of bool
+      encrypted = root_block_device.value["encrypted"]
+      # iops - (optional) is a type of number
+      iops = root_block_device.value["iops"]
+      # kms_key_id - (optional) is a type of string
+      kms_key_id = root_block_device.value["kms_key_id"]
+      # tags - (optional) is a type of map of string
+      tags = root_block_device.value["tags"]
+      # throughput - (optional) is a type of number
+      throughput = root_block_device.value["throughput"]
+      # volume_size - (optional) is a type of number
+      volume_size = root_block_device.value["volume_size"]
+      # volume_type - (optional) is a type of string
+      volume_type = root_block_device.value["volume_type"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

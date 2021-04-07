@@ -63,8 +63,11 @@ variable "management_endpoint" {
 
 ```terraform
 data "oci_kms_key_version" "this" {
-  key_id              = var.key_id
-  key_version_id      = var.key_version_id
+  # key_id - (required) is a type of string
+  key_id = var.key_id
+  # key_version_id - (required) is a type of string
+  key_version_id = var.key_version_id
+  # management_endpoint - (required) is a type of string
   management_endpoint = var.management_endpoint
 }
 ```

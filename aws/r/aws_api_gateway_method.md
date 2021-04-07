@@ -126,17 +126,28 @@ variable "rest_api_id" {
 
 ```terraform
 resource "aws_api_gateway_method" "this" {
-  api_key_required     = var.api_key_required
-  authorization        = var.authorization
+  # api_key_required - (optional) is a type of bool
+  api_key_required = var.api_key_required
+  # authorization - (required) is a type of string
+  authorization = var.authorization
+  # authorization_scopes - (optional) is a type of set of string
   authorization_scopes = var.authorization_scopes
-  authorizer_id        = var.authorizer_id
-  http_method          = var.http_method
-  operation_name       = var.operation_name
-  request_models       = var.request_models
-  request_parameters   = var.request_parameters
+  # authorizer_id - (optional) is a type of string
+  authorizer_id = var.authorizer_id
+  # http_method - (required) is a type of string
+  http_method = var.http_method
+  # operation_name - (optional) is a type of string
+  operation_name = var.operation_name
+  # request_models - (optional) is a type of map of string
+  request_models = var.request_models
+  # request_parameters - (optional) is a type of map of bool
+  request_parameters = var.request_parameters
+  # request_validator_id - (optional) is a type of string
   request_validator_id = var.request_validator_id
-  resource_id          = var.resource_id
-  rest_api_id          = var.rest_api_id
+  # resource_id - (required) is a type of string
+  resource_id = var.resource_id
+  # rest_api_id - (required) is a type of string
+  rest_api_id = var.rest_api_id
 }
 ```
 

@@ -83,15 +83,21 @@ variable "filter" {
 
 ```terraform
 data "oci_core_compute_capacity_reservation_instances" "this" {
-  availability_domain     = var.availability_domain
+  # availability_domain - (optional) is a type of string
+  availability_domain = var.availability_domain
+  # capacity_reservation_id - (required) is a type of string
   capacity_reservation_id = var.capacity_reservation_id
-  compartment_id          = var.compartment_id
+  # compartment_id - (optional) is a type of string
+  compartment_id = var.compartment_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

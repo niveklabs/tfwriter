@@ -107,18 +107,27 @@ variable "filter" {
 
 ```terraform
 data "oci_database_maintenance_runs" "this" {
-  availability_domain  = var.availability_domain
-  compartment_id       = var.compartment_id
-  maintenance_type     = var.maintenance_type
-  state                = var.state
-  target_resource_id   = var.target_resource_id
+  # availability_domain - (optional) is a type of string
+  availability_domain = var.availability_domain
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # maintenance_type - (optional) is a type of string
+  maintenance_type = var.maintenance_type
+  # state - (optional) is a type of string
+  state = var.state
+  # target_resource_id - (optional) is a type of string
+  target_resource_id = var.target_resource_id
+  # target_resource_type - (optional) is a type of string
   target_resource_type = var.target_resource_type
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

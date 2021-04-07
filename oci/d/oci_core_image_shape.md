@@ -56,7 +56,9 @@ variable "shape_name" {
 
 ```terraform
 data "oci_core_image_shape" "this" {
-  image_id   = var.image_id
+  # image_id - (required) is a type of string
+  image_id = var.image_id
+  # shape_name - (required) is a type of string
   shape_name = var.shape_name
 }
 ```

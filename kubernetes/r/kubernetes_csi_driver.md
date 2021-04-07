@@ -91,18 +91,25 @@ resource "kubernetes_csi_driver" "this" {
   dynamic "metadata" {
     for_each = var.metadata
     content {
-      annotations   = metadata.value["annotations"]
+      # annotations - (optional) is a type of map of string
+      annotations = metadata.value["annotations"]
+      # generate_name - (optional) is a type of string
       generate_name = metadata.value["generate_name"]
-      labels        = metadata.value["labels"]
-      name          = metadata.value["name"]
+      # labels - (optional) is a type of map of string
+      labels = metadata.value["labels"]
+      # name - (optional) is a type of string
+      name = metadata.value["name"]
     }
   }
 
   dynamic "spec" {
     for_each = var.spec
     content {
-      attach_required        = spec.value["attach_required"]
-      pod_info_on_mount      = spec.value["pod_info_on_mount"]
+      # attach_required - (required) is a type of bool
+      attach_required = spec.value["attach_required"]
+      # pod_info_on_mount - (optional) is a type of bool
+      pod_info_on_mount = spec.value["pod_info_on_mount"]
+      # volume_lifecycle_modes - (optional) is a type of list of string
       volume_lifecycle_modes = spec.value["volume_lifecycle_modes"]
     }
   }

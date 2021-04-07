@@ -188,23 +188,37 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_traffic_manager_endpoint" "this" {
-  endpoint_location   = var.endpoint_location
-  endpoint_status     = var.endpoint_status
-  geo_mappings        = var.geo_mappings
+  # endpoint_location - (optional) is a type of string
+  endpoint_location = var.endpoint_location
+  # endpoint_status - (optional) is a type of string
+  endpoint_status = var.endpoint_status
+  # geo_mappings - (optional) is a type of list of string
+  geo_mappings = var.geo_mappings
+  # min_child_endpoints - (optional) is a type of number
   min_child_endpoints = var.min_child_endpoints
-  name                = var.name
-  priority            = var.priority
-  profile_name        = var.profile_name
+  # name - (required) is a type of string
+  name = var.name
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # profile_name - (required) is a type of string
+  profile_name = var.profile_name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  target              = var.target
-  target_resource_id  = var.target_resource_id
-  type                = var.type
-  weight              = var.weight
+  # target - (optional) is a type of string
+  target = var.target
+  # target_resource_id - (optional) is a type of string
+  target_resource_id = var.target_resource_id
+  # type - (required) is a type of string
+  type = var.type
+  # weight - (optional) is a type of number
+  weight = var.weight
 
   dynamic "custom_header" {
     for_each = var.custom_header
     content {
-      name  = custom_header.value["name"]
+      # name - (required) is a type of string
+      name = custom_header.value["name"]
+      # value - (required) is a type of string
       value = custom_header.value["value"]
     }
   }
@@ -212,8 +226,11 @@ resource "azurerm_traffic_manager_endpoint" "this" {
   dynamic "subnet" {
     for_each = var.subnet
     content {
+      # first - (required) is a type of string
       first = subnet.value["first"]
-      last  = subnet.value["last"]
+      # last - (optional) is a type of string
+      last = subnet.value["last"]
+      # scope - (optional) is a type of number
       scope = subnet.value["scope"]
     }
   }
@@ -221,9 +238,13 @@ resource "azurerm_traffic_manager_endpoint" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

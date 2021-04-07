@@ -75,14 +75,19 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_data_safe_data_safe_configuration" "this" {
+  # compartment_id - (optional) is a type of string
   compartment_id = var.compartment_id
-  is_enabled     = var.is_enabled
+  # is_enabled - (required) is a type of bool
+  is_enabled = var.is_enabled
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

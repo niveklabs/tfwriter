@@ -116,19 +116,29 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_private_ip" "this" {
-  defined_tags   = var.defined_tags
-  display_name   = var.display_name
-  freeform_tags  = var.freeform_tags
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # hostname_label - (optional) is a type of string
   hostname_label = var.hostname_label
-  ip_address     = var.ip_address
-  vlan_id        = var.vlan_id
-  vnic_id        = var.vnic_id
+  # ip_address - (optional) is a type of string
+  ip_address = var.ip_address
+  # vlan_id - (optional) is a type of string
+  vlan_id = var.vlan_id
+  # vnic_id - (optional) is a type of string
+  vnic_id = var.vnic_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

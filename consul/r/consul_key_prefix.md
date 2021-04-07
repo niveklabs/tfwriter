@@ -99,17 +99,25 @@ variable "subkey" {
 
 ```terraform
 resource "consul_key_prefix" "this" {
-  datacenter  = var.datacenter
-  namespace   = var.namespace
+  # datacenter - (optional) is a type of string
+  datacenter = var.datacenter
+  # namespace - (optional) is a type of string
+  namespace = var.namespace
+  # path_prefix - (required) is a type of string
   path_prefix = var.path_prefix
-  subkeys     = var.subkeys
-  token       = var.token
+  # subkeys - (optional) is a type of map of string
+  subkeys = var.subkeys
+  # token - (optional) is a type of string
+  token = var.token
 
   dynamic "subkey" {
     for_each = var.subkey
     content {
+      # flags - (optional) is a type of number
       flags = subkey.value["flags"]
-      path  = subkey.value["path"]
+      # path - (required) is a type of string
+      path = subkey.value["path"]
+      # value - (required) is a type of string
       value = subkey.value["value"]
     }
   }

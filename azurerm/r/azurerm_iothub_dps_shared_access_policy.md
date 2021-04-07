@@ -123,21 +123,33 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_iothub_dps_shared_access_policy" "this" {
-  enrollment_read     = var.enrollment_read
-  enrollment_write    = var.enrollment_write
-  iothub_dps_name     = var.iothub_dps_name
-  name                = var.name
-  registration_read   = var.registration_read
-  registration_write  = var.registration_write
+  # enrollment_read - (optional) is a type of bool
+  enrollment_read = var.enrollment_read
+  # enrollment_write - (optional) is a type of bool
+  enrollment_write = var.enrollment_write
+  # iothub_dps_name - (required) is a type of string
+  iothub_dps_name = var.iothub_dps_name
+  # name - (required) is a type of string
+  name = var.name
+  # registration_read - (optional) is a type of bool
+  registration_read = var.registration_read
+  # registration_write - (optional) is a type of bool
+  registration_write = var.registration_write
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  service_config      = var.service_config
+  # service_config - (optional) is a type of bool
+  service_config = var.service_config
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

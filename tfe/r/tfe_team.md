@@ -82,16 +82,22 @@ variable "organization_access" {
 
 ```terraform
 resource "tfe_team" "this" {
-  name         = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # organization - (required) is a type of string
   organization = var.organization
-  visibility   = var.visibility
+  # visibility - (optional) is a type of string
+  visibility = var.visibility
 
   dynamic "organization_access" {
     for_each = var.organization_access
     content {
-      manage_policies     = organization_access.value["manage_policies"]
+      # manage_policies - (optional) is a type of bool
+      manage_policies = organization_access.value["manage_policies"]
+      # manage_vcs_settings - (optional) is a type of bool
       manage_vcs_settings = organization_access.value["manage_vcs_settings"]
-      manage_workspaces   = organization_access.value["manage_workspaces"]
+      # manage_workspaces - (optional) is a type of bool
+      manage_workspaces = organization_access.value["manage_workspaces"]
     }
   }
 

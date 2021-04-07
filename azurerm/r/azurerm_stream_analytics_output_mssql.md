@@ -118,21 +118,33 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_stream_analytics_output_mssql" "this" {
-  database                  = var.database
-  name                      = var.name
-  password                  = var.password
-  resource_group_name       = var.resource_group_name
-  server                    = var.server
+  # database - (required) is a type of string
+  database = var.database
+  # name - (required) is a type of string
+  name = var.name
+  # password - (required) is a type of string
+  password = var.password
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # server - (required) is a type of string
+  server = var.server
+  # stream_analytics_job_name - (required) is a type of string
   stream_analytics_job_name = var.stream_analytics_job_name
-  table                     = var.table
-  user                      = var.user
+  # table - (required) is a type of string
+  table = var.table
+  # user - (required) is a type of string
+  user = var.user
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -82,16 +82,22 @@ variable "routing_strategy" {
 
 ```terraform
 resource "aws_gamelift_alias" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  tags        = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "routing_strategy" {
     for_each = var.routing_strategy
     content {
+      # fleet_id - (optional) is a type of string
       fleet_id = routing_strategy.value["fleet_id"]
-      message  = routing_strategy.value["message"]
-      type     = routing_strategy.value["type"]
+      # message - (optional) is a type of string
+      message = routing_strategy.value["message"]
+      # type - (required) is a type of string
+      type = routing_strategy.value["type"]
     }
   }
 

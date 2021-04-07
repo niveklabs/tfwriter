@@ -49,6 +49,7 @@ variable "boot_volume_replica_id" {
 
 ```terraform
 data "oci_core_boot_volume_replica" "this" {
+  # boot_volume_replica_id - (required) is a type of string
   boot_volume_replica_id = var.boot_volume_replica_id
 }
 ```

@@ -185,24 +185,34 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_sch_service_connector" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  defined_tags   = var.defined_tags
-  description    = var.description
-  display_name   = var.display_name
-  freeform_tags  = var.freeform_tags
-  state          = var.state
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # state - (optional) is a type of string
+  state = var.state
 
   dynamic "source" {
     for_each = var.source
     content {
+      # kind - (required) is a type of string
       kind = source.value["kind"]
 
       dynamic "log_sources" {
         for_each = source.value.log_sources
         content {
+          # compartment_id - (required) is a type of string
           compartment_id = log_sources.value["compartment_id"]
-          log_group_id   = log_sources.value["log_group_id"]
-          log_id         = log_sources.value["log_id"]
+          # log_group_id - (optional) is a type of string
+          log_group_id = log_sources.value["log_group_id"]
+          # log_id - (optional) is a type of string
+          log_id = log_sources.value["log_id"]
         }
       }
 
@@ -212,36 +222,55 @@ resource "oci_sch_service_connector" "this" {
   dynamic "target" {
     for_each = var.target
     content {
+      # batch_rollover_size_in_mbs - (optional) is a type of number
       batch_rollover_size_in_mbs = target.value["batch_rollover_size_in_mbs"]
-      batch_rollover_time_in_ms  = target.value["batch_rollover_time_in_ms"]
-      bucket                     = target.value["bucket"]
-      compartment_id             = target.value["compartment_id"]
+      # batch_rollover_time_in_ms - (optional) is a type of number
+      batch_rollover_time_in_ms = target.value["batch_rollover_time_in_ms"]
+      # bucket - (optional) is a type of string
+      bucket = target.value["bucket"]
+      # compartment_id - (optional) is a type of string
+      compartment_id = target.value["compartment_id"]
+      # enable_formatted_messaging - (optional) is a type of bool
       enable_formatted_messaging = target.value["enable_formatted_messaging"]
-      function_id                = target.value["function_id"]
-      kind                       = target.value["kind"]
-      log_group_id               = target.value["log_group_id"]
-      metric                     = target.value["metric"]
-      metric_namespace           = target.value["metric_namespace"]
-      namespace                  = target.value["namespace"]
-      object_name_prefix         = target.value["object_name_prefix"]
-      stream_id                  = target.value["stream_id"]
-      topic_id                   = target.value["topic_id"]
+      # function_id - (optional) is a type of string
+      function_id = target.value["function_id"]
+      # kind - (required) is a type of string
+      kind = target.value["kind"]
+      # log_group_id - (optional) is a type of string
+      log_group_id = target.value["log_group_id"]
+      # metric - (optional) is a type of string
+      metric = target.value["metric"]
+      # metric_namespace - (optional) is a type of string
+      metric_namespace = target.value["metric_namespace"]
+      # namespace - (optional) is a type of string
+      namespace = target.value["namespace"]
+      # object_name_prefix - (optional) is a type of string
+      object_name_prefix = target.value["object_name_prefix"]
+      # stream_id - (optional) is a type of string
+      stream_id = target.value["stream_id"]
+      # topic_id - (optional) is a type of string
+      topic_id = target.value["topic_id"]
     }
   }
 
   dynamic "tasks" {
     for_each = var.tasks
     content {
+      # condition - (required) is a type of string
       condition = tasks.value["condition"]
-      kind      = tasks.value["kind"]
+      # kind - (required) is a type of string
+      kind = tasks.value["kind"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

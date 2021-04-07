@@ -49,6 +49,7 @@ variable "auto_scaling_configuration_id" {
 
 ```terraform
 data "oci_autoscaling_auto_scaling_configuration" "this" {
+  # auto_scaling_configuration_id - (required) is a type of string
   auto_scaling_configuration_id = var.auto_scaling_configuration_id
 }
 ```

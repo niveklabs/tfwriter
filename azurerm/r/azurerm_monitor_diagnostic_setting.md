@@ -168,24 +168,35 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_monitor_diagnostic_setting" "this" {
+  # eventhub_authorization_rule_id - (optional) is a type of string
   eventhub_authorization_rule_id = var.eventhub_authorization_rule_id
-  eventhub_name                  = var.eventhub_name
+  # eventhub_name - (optional) is a type of string
+  eventhub_name = var.eventhub_name
+  # log_analytics_destination_type - (optional) is a type of string
   log_analytics_destination_type = var.log_analytics_destination_type
-  log_analytics_workspace_id     = var.log_analytics_workspace_id
-  name                           = var.name
-  storage_account_id             = var.storage_account_id
-  target_resource_id             = var.target_resource_id
+  # log_analytics_workspace_id - (optional) is a type of string
+  log_analytics_workspace_id = var.log_analytics_workspace_id
+  # name - (required) is a type of string
+  name = var.name
+  # storage_account_id - (optional) is a type of string
+  storage_account_id = var.storage_account_id
+  # target_resource_id - (required) is a type of string
+  target_resource_id = var.target_resource_id
 
   dynamic "log" {
     for_each = var.log
     content {
+      # category - (required) is a type of string
       category = log.value["category"]
-      enabled  = log.value["enabled"]
+      # enabled - (optional) is a type of bool
+      enabled = log.value["enabled"]
 
       dynamic "retention_policy" {
         for_each = log.value.retention_policy
         content {
-          days    = retention_policy.value["days"]
+          # days - (optional) is a type of number
+          days = retention_policy.value["days"]
+          # enabled - (required) is a type of bool
           enabled = retention_policy.value["enabled"]
         }
       }
@@ -196,13 +207,17 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
   dynamic "metric" {
     for_each = var.metric
     content {
+      # category - (required) is a type of string
       category = metric.value["category"]
-      enabled  = metric.value["enabled"]
+      # enabled - (optional) is a type of bool
+      enabled = metric.value["enabled"]
 
       dynamic "retention_policy" {
         for_each = metric.value.retention_policy
         content {
-          days    = retention_policy.value["days"]
+          # days - (optional) is a type of number
+          days = retention_policy.value["days"]
+          # enabled - (required) is a type of bool
           enabled = retention_policy.value["enabled"]
         }
       }
@@ -213,9 +228,13 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

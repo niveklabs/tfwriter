@@ -80,13 +80,17 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_policy_set_definition" "this" {
-  display_name          = var.display_name
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # management_group_name - (optional) is a type of string
   management_group_name = var.management_group_name
-  name                  = var.name
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

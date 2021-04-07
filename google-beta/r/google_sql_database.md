@@ -98,17 +98,25 @@ variable "timeouts" {
 
 ```terraform
 resource "google_sql_database" "this" {
-  charset   = var.charset
+  # charset - (optional) is a type of string
+  charset = var.charset
+  # collation - (optional) is a type of string
   collation = var.collation
-  instance  = var.instance
-  name      = var.name
-  project   = var.project
+  # instance - (required) is a type of string
+  instance = var.instance
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

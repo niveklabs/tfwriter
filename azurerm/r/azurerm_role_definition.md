@@ -120,18 +120,27 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_role_definition" "this" {
-  assignable_scopes  = var.assignable_scopes
-  description        = var.description
-  name               = var.name
+  # assignable_scopes - (optional) is a type of list of string
+  assignable_scopes = var.assignable_scopes
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # role_definition_id - (optional) is a type of string
   role_definition_id = var.role_definition_id
-  scope              = var.scope
+  # scope - (required) is a type of string
+  scope = var.scope
 
   dynamic "permissions" {
     for_each = var.permissions
     content {
-      actions          = permissions.value["actions"]
-      data_actions     = permissions.value["data_actions"]
-      not_actions      = permissions.value["not_actions"]
+      # actions - (optional) is a type of list of string
+      actions = permissions.value["actions"]
+      # data_actions - (optional) is a type of set of string
+      data_actions = permissions.value["data_actions"]
+      # not_actions - (optional) is a type of list of string
+      not_actions = permissions.value["not_actions"]
+      # not_data_actions - (optional) is a type of set of string
       not_data_actions = permissions.value["not_data_actions"]
     }
   }
@@ -139,9 +148,13 @@ resource "azurerm_role_definition" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

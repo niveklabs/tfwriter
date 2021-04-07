@@ -97,16 +97,23 @@ variable "vpc" {
 
 ```terraform
 resource "aws_route53_zone" "this" {
-  comment           = var.comment
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # delegation_set_id - (optional) is a type of string
   delegation_set_id = var.delegation_set_id
-  force_destroy     = var.force_destroy
-  name              = var.name
-  tags              = var.tags
+  # force_destroy - (optional) is a type of bool
+  force_destroy = var.force_destroy
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "vpc" {
     for_each = var.vpc
     content {
-      vpc_id     = vpc.value["vpc_id"]
+      # vpc_id - (required) is a type of string
+      vpc_id = vpc.value["vpc_id"]
+      # vpc_region - (optional) is a type of string
       vpc_region = vpc.value["vpc_region"]
     }
   }

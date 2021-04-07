@@ -64,9 +64,12 @@ variable "project" {
 
 ```terraform
 resource "google_iap_web_type_app_engine_iam_policy" "this" {
-  app_id      = var.app_id
+  # app_id - (required) is a type of string
+  app_id = var.app_id
+  # policy_data - (required) is a type of string
   policy_data = var.policy_data
-  project     = var.project
+  # project - (optional) is a type of string
+  project = var.project
 }
 ```
 

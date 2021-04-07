@@ -106,14 +106,22 @@ variable "upgrade_version_tag" {
 
 ```terraform
 resource "consul_autopilot_config" "this" {
-  cleanup_dead_servers      = var.cleanup_dead_servers
-  datacenter                = var.datacenter
+  # cleanup_dead_servers - (optional) is a type of bool
+  cleanup_dead_servers = var.cleanup_dead_servers
+  # datacenter - (optional) is a type of string
+  datacenter = var.datacenter
+  # disable_upgrade_migration - (optional) is a type of bool
   disable_upgrade_migration = var.disable_upgrade_migration
-  last_contact_threshold    = var.last_contact_threshold
-  max_trailing_logs         = var.max_trailing_logs
-  redundancy_zone_tag       = var.redundancy_zone_tag
+  # last_contact_threshold - (optional) is a type of string
+  last_contact_threshold = var.last_contact_threshold
+  # max_trailing_logs - (optional) is a type of number
+  max_trailing_logs = var.max_trailing_logs
+  # redundancy_zone_tag - (optional) is a type of string
+  redundancy_zone_tag = var.redundancy_zone_tag
+  # server_stabilization_time - (optional) is a type of string
   server_stabilization_time = var.server_stabilization_time
-  upgrade_version_tag       = var.upgrade_version_tag
+  # upgrade_version_tag - (optional) is a type of string
+  upgrade_version_tag = var.upgrade_version_tag
 }
 ```
 

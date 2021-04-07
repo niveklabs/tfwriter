@@ -80,11 +80,16 @@ variable "target_network_cidr" {
 
 ```terraform
 resource "aws_ec2_client_vpn_authorization_rule" "this" {
-  access_group_id        = var.access_group_id
-  authorize_all_groups   = var.authorize_all_groups
+  # access_group_id - (optional) is a type of string
+  access_group_id = var.access_group_id
+  # authorize_all_groups - (optional) is a type of bool
+  authorize_all_groups = var.authorize_all_groups
+  # client_vpn_endpoint_id - (required) is a type of string
   client_vpn_endpoint_id = var.client_vpn_endpoint_id
-  description            = var.description
-  target_network_cidr    = var.target_network_cidr
+  # description - (optional) is a type of string
+  description = var.description
+  # target_network_cidr - (required) is a type of string
+  target_network_cidr = var.target_network_cidr
 }
 ```
 

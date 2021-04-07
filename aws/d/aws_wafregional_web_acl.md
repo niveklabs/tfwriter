@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "aws_wafregional_web_acl" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

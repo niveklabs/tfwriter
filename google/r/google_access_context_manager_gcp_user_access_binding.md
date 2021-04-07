@@ -81,15 +81,21 @@ variable "timeouts" {
 
 ```terraform
 resource "google_access_context_manager_gcp_user_access_binding" "this" {
-  access_levels   = var.access_levels
-  group_key       = var.group_key
+  # access_levels - (required) is a type of list of string
+  access_levels = var.access_levels
+  # group_key - (required) is a type of string
+  group_key = var.group_key
+  # organization_id - (required) is a type of string
   organization_id = var.organization_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

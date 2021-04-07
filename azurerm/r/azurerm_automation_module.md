@@ -106,20 +106,26 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_automation_module" "this" {
+  # automation_account_name - (required) is a type of string
   automation_account_name = var.automation_account_name
-  name                    = var.name
-  resource_group_name     = var.resource_group_name
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
 
   dynamic "module_link" {
     for_each = var.module_link
     content {
+      # uri - (required) is a type of string
       uri = module_link.value["uri"]
 
       dynamic "hash" {
         for_each = module_link.value.hash
         content {
+          # algorithm - (required) is a type of string
           algorithm = hash.value["algorithm"]
-          value     = hash.value["value"]
+          # value - (required) is a type of string
+          value = hash.value["value"]
         }
       }
 
@@ -129,9 +135,13 @@ resource "azurerm_automation_module" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

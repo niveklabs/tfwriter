@@ -49,6 +49,7 @@ variable "group" {
 
 ```terraform
 data "google_cloud_identity_group_memberships" "this" {
+  # group - (required) is a type of string
   group = var.group
 }
 ```

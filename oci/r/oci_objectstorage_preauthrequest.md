@@ -111,19 +111,29 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_objectstorage_preauthrequest" "this" {
-  access_type           = var.access_type
-  bucket                = var.bucket
+  # access_type - (required) is a type of string
+  access_type = var.access_type
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # bucket_listing_action - (optional) is a type of string
   bucket_listing_action = var.bucket_listing_action
-  name                  = var.name
-  namespace             = var.namespace
-  object                = var.object
-  time_expires          = var.time_expires
+  # name - (required) is a type of string
+  name = var.name
+  # namespace - (required) is a type of string
+  namespace = var.namespace
+  # object - (optional) is a type of string
+  object = var.object
+  # time_expires - (required) is a type of string
+  time_expires = var.time_expires
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

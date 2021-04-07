@@ -240,27 +240,39 @@ variable "sqs_target" {
 
 ```terraform
 resource "aws_cloudwatch_event_target" "this" {
-  arn            = var.arn
+  # arn - (required) is a type of string
+  arn = var.arn
+  # event_bus_name - (optional) is a type of string
   event_bus_name = var.event_bus_name
-  input          = var.input
-  input_path     = var.input_path
-  role_arn       = var.role_arn
-  rule           = var.rule
-  target_id      = var.target_id
+  # input - (optional) is a type of string
+  input = var.input
+  # input_path - (optional) is a type of string
+  input_path = var.input_path
+  # role_arn - (optional) is a type of string
+  role_arn = var.role_arn
+  # rule - (required) is a type of string
+  rule = var.rule
+  # target_id - (optional) is a type of string
+  target_id = var.target_id
 
   dynamic "batch_target" {
     for_each = var.batch_target
     content {
-      array_size     = batch_target.value["array_size"]
-      job_attempts   = batch_target.value["job_attempts"]
+      # array_size - (optional) is a type of number
+      array_size = batch_target.value["array_size"]
+      # job_attempts - (optional) is a type of number
+      job_attempts = batch_target.value["job_attempts"]
+      # job_definition - (required) is a type of string
       job_definition = batch_target.value["job_definition"]
-      job_name       = batch_target.value["job_name"]
+      # job_name - (required) is a type of string
+      job_name = batch_target.value["job_name"]
     }
   }
 
   dynamic "dead_letter_config" {
     for_each = var.dead_letter_config
     content {
+      # arn - (optional) is a type of string
       arn = dead_letter_config.value["arn"]
     }
   }
@@ -268,18 +280,26 @@ resource "aws_cloudwatch_event_target" "this" {
   dynamic "ecs_target" {
     for_each = var.ecs_target
     content {
-      group               = ecs_target.value["group"]
-      launch_type         = ecs_target.value["launch_type"]
-      platform_version    = ecs_target.value["platform_version"]
-      task_count          = ecs_target.value["task_count"]
+      # group - (optional) is a type of string
+      group = ecs_target.value["group"]
+      # launch_type - (optional) is a type of string
+      launch_type = ecs_target.value["launch_type"]
+      # platform_version - (optional) is a type of string
+      platform_version = ecs_target.value["platform_version"]
+      # task_count - (optional) is a type of number
+      task_count = ecs_target.value["task_count"]
+      # task_definition_arn - (required) is a type of string
       task_definition_arn = ecs_target.value["task_definition_arn"]
 
       dynamic "network_configuration" {
         for_each = ecs_target.value.network_configuration
         content {
+          # assign_public_ip - (optional) is a type of bool
           assign_public_ip = network_configuration.value["assign_public_ip"]
-          security_groups  = network_configuration.value["security_groups"]
-          subnets          = network_configuration.value["subnets"]
+          # security_groups - (optional) is a type of set of string
+          security_groups = network_configuration.value["security_groups"]
+          # subnets - (required) is a type of set of string
+          subnets = network_configuration.value["subnets"]
         }
       }
 
@@ -289,7 +309,9 @@ resource "aws_cloudwatch_event_target" "this" {
   dynamic "input_transformer" {
     for_each = var.input_transformer
     content {
-      input_paths    = input_transformer.value["input_paths"]
+      # input_paths - (optional) is a type of map of string
+      input_paths = input_transformer.value["input_paths"]
+      # input_template - (required) is a type of string
       input_template = input_transformer.value["input_template"]
     }
   }
@@ -297,6 +319,7 @@ resource "aws_cloudwatch_event_target" "this" {
   dynamic "kinesis_target" {
     for_each = var.kinesis_target
     content {
+      # partition_key_path - (optional) is a type of string
       partition_key_path = kinesis_target.value["partition_key_path"]
     }
   }
@@ -304,15 +327,19 @@ resource "aws_cloudwatch_event_target" "this" {
   dynamic "retry_policy" {
     for_each = var.retry_policy
     content {
+      # maximum_event_age_in_seconds - (optional) is a type of number
       maximum_event_age_in_seconds = retry_policy.value["maximum_event_age_in_seconds"]
-      maximum_retry_attempts       = retry_policy.value["maximum_retry_attempts"]
+      # maximum_retry_attempts - (optional) is a type of number
+      maximum_retry_attempts = retry_policy.value["maximum_retry_attempts"]
     }
   }
 
   dynamic "run_command_targets" {
     for_each = var.run_command_targets
     content {
-      key    = run_command_targets.value["key"]
+      # key - (required) is a type of string
+      key = run_command_targets.value["key"]
+      # values - (required) is a type of list of string
       values = run_command_targets.value["values"]
     }
   }
@@ -320,6 +347,7 @@ resource "aws_cloudwatch_event_target" "this" {
   dynamic "sqs_target" {
     for_each = var.sqs_target
     content {
+      # message_group_id - (optional) is a type of string
       message_group_id = sqs_target.value["message_group_id"]
     }
   }

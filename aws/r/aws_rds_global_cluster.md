@@ -105,14 +105,22 @@ variable "storage_encrypted" {
 
 ```terraform
 resource "aws_rds_global_cluster" "this" {
-  database_name                = var.database_name
-  deletion_protection          = var.deletion_protection
-  engine                       = var.engine
-  engine_version               = var.engine_version
-  force_destroy                = var.force_destroy
-  global_cluster_identifier    = var.global_cluster_identifier
+  # database_name - (optional) is a type of string
+  database_name = var.database_name
+  # deletion_protection - (optional) is a type of bool
+  deletion_protection = var.deletion_protection
+  # engine - (optional) is a type of string
+  engine = var.engine
+  # engine_version - (optional) is a type of string
+  engine_version = var.engine_version
+  # force_destroy - (optional) is a type of bool
+  force_destroy = var.force_destroy
+  # global_cluster_identifier - (required) is a type of string
+  global_cluster_identifier = var.global_cluster_identifier
+  # source_db_cluster_identifier - (optional) is a type of string
   source_db_cluster_identifier = var.source_db_cluster_identifier
-  storage_encrypted            = var.storage_encrypted
+  # storage_encrypted - (optional) is a type of bool
+  storage_encrypted = var.storage_encrypted
 }
 ```
 

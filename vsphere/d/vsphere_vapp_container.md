@@ -56,8 +56,10 @@ variable "name" {
 
 ```terraform
 data "vsphere_vapp_container" "this" {
+  # datacenter_id - (required) is a type of string
   datacenter_id = var.datacenter_id
-  name          = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

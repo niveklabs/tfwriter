@@ -114,16 +114,23 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_monitor_log_profile" "this" {
-  categories         = var.categories
-  locations          = var.locations
-  name               = var.name
+  # categories - (required) is a type of set of string
+  categories = var.categories
+  # locations - (required) is a type of set of string
+  locations = var.locations
+  # name - (required) is a type of string
+  name = var.name
+  # servicebus_rule_id - (optional) is a type of string
   servicebus_rule_id = var.servicebus_rule_id
+  # storage_account_id - (optional) is a type of string
   storage_account_id = var.storage_account_id
 
   dynamic "retention_policy" {
     for_each = var.retention_policy
     content {
-      days    = retention_policy.value["days"]
+      # days - (optional) is a type of number
+      days = retention_policy.value["days"]
+      # enabled - (required) is a type of bool
       enabled = retention_policy.value["enabled"]
     }
   }
@@ -131,9 +138,13 @@ resource "azurerm_monitor_log_profile" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

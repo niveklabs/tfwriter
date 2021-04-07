@@ -156,26 +156,42 @@ variable "setting" {
 
 ```terraform
 resource "aws_elastic_beanstalk_environment" "this" {
-  application            = var.application
-  cname_prefix           = var.cname_prefix
-  description            = var.description
-  name                   = var.name
-  platform_arn           = var.platform_arn
-  poll_interval          = var.poll_interval
-  solution_stack_name    = var.solution_stack_name
-  tags                   = var.tags
-  template_name          = var.template_name
-  tier                   = var.tier
-  version_label          = var.version_label
+  # application - (required) is a type of string
+  application = var.application
+  # cname_prefix - (optional) is a type of string
+  cname_prefix = var.cname_prefix
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # platform_arn - (optional) is a type of string
+  platform_arn = var.platform_arn
+  # poll_interval - (optional) is a type of string
+  poll_interval = var.poll_interval
+  # solution_stack_name - (optional) is a type of string
+  solution_stack_name = var.solution_stack_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # template_name - (optional) is a type of string
+  template_name = var.template_name
+  # tier - (optional) is a type of string
+  tier = var.tier
+  # version_label - (optional) is a type of string
+  version_label = var.version_label
+  # wait_for_ready_timeout - (optional) is a type of string
   wait_for_ready_timeout = var.wait_for_ready_timeout
 
   dynamic "setting" {
     for_each = var.setting
     content {
-      name      = setting.value["name"]
+      # name - (required) is a type of string
+      name = setting.value["name"]
+      # namespace - (required) is a type of string
       namespace = setting.value["namespace"]
-      resource  = setting.value["resource"]
-      value     = setting.value["value"]
+      # resource - (optional) is a type of string
+      resource = setting.value["resource"]
+      # value - (required) is a type of string
+      value = setting.value["value"]
     }
   }
 

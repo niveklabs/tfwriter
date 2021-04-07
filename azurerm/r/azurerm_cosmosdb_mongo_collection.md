@@ -144,17 +144,25 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_cosmosdb_mongo_collection" "this" {
-  account_name        = var.account_name
-  database_name       = var.database_name
+  # account_name - (required) is a type of string
+  account_name = var.account_name
+  # database_name - (required) is a type of string
+  database_name = var.database_name
+  # default_ttl_seconds - (optional) is a type of number
   default_ttl_seconds = var.default_ttl_seconds
-  name                = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  shard_key           = var.shard_key
-  throughput          = var.throughput
+  # shard_key - (optional) is a type of string
+  shard_key = var.shard_key
+  # throughput - (optional) is a type of number
+  throughput = var.throughput
 
   dynamic "autoscale_settings" {
     for_each = var.autoscale_settings
     content {
+      # max_throughput - (optional) is a type of number
       max_throughput = autoscale_settings.value["max_throughput"]
     }
   }
@@ -162,7 +170,9 @@ resource "azurerm_cosmosdb_mongo_collection" "this" {
   dynamic "index" {
     for_each = var.index
     content {
-      keys   = index.value["keys"]
+      # keys - (required) is a type of list of string
+      keys = index.value["keys"]
+      # unique - (optional) is a type of bool
       unique = index.value["unique"]
     }
   }
@@ -170,9 +180,13 @@ resource "azurerm_cosmosdb_mongo_collection" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

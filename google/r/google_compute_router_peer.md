@@ -151,30 +151,45 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_router_peer" "this" {
-  advertise_mode            = var.advertise_mode
-  advertised_groups         = var.advertised_groups
+  # advertise_mode - (optional) is a type of string
+  advertise_mode = var.advertise_mode
+  # advertised_groups - (optional) is a type of list of string
+  advertised_groups = var.advertised_groups
+  # advertised_route_priority - (optional) is a type of number
   advertised_route_priority = var.advertised_route_priority
-  interface                 = var.interface
-  name                      = var.name
-  peer_asn                  = var.peer_asn
-  peer_ip_address           = var.peer_ip_address
-  project                   = var.project
-  region                    = var.region
-  router                    = var.router
+  # interface - (required) is a type of string
+  interface = var.interface
+  # name - (required) is a type of string
+  name = var.name
+  # peer_asn - (required) is a type of number
+  peer_asn = var.peer_asn
+  # peer_ip_address - (required) is a type of string
+  peer_ip_address = var.peer_ip_address
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
+  # router - (required) is a type of string
+  router = var.router
 
   dynamic "advertised_ip_ranges" {
     for_each = var.advertised_ip_ranges
     content {
+      # description - (optional) is a type of string
       description = advertised_ip_ranges.value["description"]
-      range       = advertised_ip_ranges.value["range"]
+      # range - (required) is a type of string
+      range = advertised_ip_ranges.value["range"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -57,8 +57,10 @@ variable "name_regex" {
 
 ```terraform
 data "aws_elastic_beanstalk_solution_stack" "this" {
+  # most_recent - (optional) is a type of bool
   most_recent = var.most_recent
-  name_regex  = var.name_regex
+  # name_regex - (required) is a type of string
+  name_regex = var.name_regex
 }
 ```
 

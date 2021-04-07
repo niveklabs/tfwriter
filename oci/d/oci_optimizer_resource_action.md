@@ -49,6 +49,7 @@ variable "resource_action_id" {
 
 ```terraform
 data "oci_optimizer_resource_action" "this" {
+  # resource_action_id - (required) is a type of string
   resource_action_id = var.resource_action_id
 }
 ```

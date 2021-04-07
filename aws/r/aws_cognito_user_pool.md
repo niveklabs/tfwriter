@@ -387,16 +387,26 @@ variable "verification_message_template" {
 
 ```terraform
 resource "aws_cognito_user_pool" "this" {
-  alias_attributes           = var.alias_attributes
-  auto_verified_attributes   = var.auto_verified_attributes
+  # alias_attributes - (optional) is a type of set of string
+  alias_attributes = var.alias_attributes
+  # auto_verified_attributes - (optional) is a type of set of string
+  auto_verified_attributes = var.auto_verified_attributes
+  # email_verification_message - (optional) is a type of string
   email_verification_message = var.email_verification_message
+  # email_verification_subject - (optional) is a type of string
   email_verification_subject = var.email_verification_subject
-  mfa_configuration          = var.mfa_configuration
-  name                       = var.name
+  # mfa_configuration - (optional) is a type of string
+  mfa_configuration = var.mfa_configuration
+  # name - (required) is a type of string
+  name = var.name
+  # sms_authentication_message - (optional) is a type of string
   sms_authentication_message = var.sms_authentication_message
-  sms_verification_message   = var.sms_verification_message
-  tags                       = var.tags
-  username_attributes        = var.username_attributes
+  # sms_verification_message - (optional) is a type of string
+  sms_verification_message = var.sms_verification_message
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # username_attributes - (optional) is a type of list of string
+  username_attributes = var.username_attributes
 
   dynamic "account_recovery_setting" {
     for_each = var.account_recovery_setting
@@ -405,7 +415,9 @@ resource "aws_cognito_user_pool" "this" {
       dynamic "recovery_mechanism" {
         for_each = account_recovery_setting.value.recovery_mechanism
         content {
-          name     = recovery_mechanism.value["name"]
+          # name - (required) is a type of string
+          name = recovery_mechanism.value["name"]
+          # priority - (required) is a type of number
           priority = recovery_mechanism.value["priority"]
         }
       }
@@ -416,14 +428,18 @@ resource "aws_cognito_user_pool" "this" {
   dynamic "admin_create_user_config" {
     for_each = var.admin_create_user_config
     content {
+      # allow_admin_create_user_only - (optional) is a type of bool
       allow_admin_create_user_only = admin_create_user_config.value["allow_admin_create_user_only"]
 
       dynamic "invite_message_template" {
         for_each = admin_create_user_config.value.invite_message_template
         content {
+          # email_message - (optional) is a type of string
           email_message = invite_message_template.value["email_message"]
+          # email_subject - (optional) is a type of string
           email_subject = invite_message_template.value["email_subject"]
-          sms_message   = invite_message_template.value["sms_message"]
+          # sms_message - (optional) is a type of string
+          sms_message = invite_message_template.value["sms_message"]
         }
       }
 
@@ -433,7 +449,9 @@ resource "aws_cognito_user_pool" "this" {
   dynamic "device_configuration" {
     for_each = var.device_configuration
     content {
-      challenge_required_on_new_device      = device_configuration.value["challenge_required_on_new_device"]
+      # challenge_required_on_new_device - (optional) is a type of bool
+      challenge_required_on_new_device = device_configuration.value["challenge_required_on_new_device"]
+      # device_only_remembered_on_user_prompt - (optional) is a type of bool
       device_only_remembered_on_user_prompt = device_configuration.value["device_only_remembered_on_user_prompt"]
     }
   }
@@ -441,26 +459,41 @@ resource "aws_cognito_user_pool" "this" {
   dynamic "email_configuration" {
     for_each = var.email_configuration
     content {
-      configuration_set      = email_configuration.value["configuration_set"]
-      email_sending_account  = email_configuration.value["email_sending_account"]
-      from_email_address     = email_configuration.value["from_email_address"]
+      # configuration_set - (optional) is a type of string
+      configuration_set = email_configuration.value["configuration_set"]
+      # email_sending_account - (optional) is a type of string
+      email_sending_account = email_configuration.value["email_sending_account"]
+      # from_email_address - (optional) is a type of string
+      from_email_address = email_configuration.value["from_email_address"]
+      # reply_to_email_address - (optional) is a type of string
       reply_to_email_address = email_configuration.value["reply_to_email_address"]
-      source_arn             = email_configuration.value["source_arn"]
+      # source_arn - (optional) is a type of string
+      source_arn = email_configuration.value["source_arn"]
     }
   }
 
   dynamic "lambda_config" {
     for_each = var.lambda_config
     content {
-      create_auth_challenge          = lambda_config.value["create_auth_challenge"]
-      custom_message                 = lambda_config.value["custom_message"]
-      define_auth_challenge          = lambda_config.value["define_auth_challenge"]
-      post_authentication            = lambda_config.value["post_authentication"]
-      post_confirmation              = lambda_config.value["post_confirmation"]
-      pre_authentication             = lambda_config.value["pre_authentication"]
-      pre_sign_up                    = lambda_config.value["pre_sign_up"]
-      pre_token_generation           = lambda_config.value["pre_token_generation"]
-      user_migration                 = lambda_config.value["user_migration"]
+      # create_auth_challenge - (optional) is a type of string
+      create_auth_challenge = lambda_config.value["create_auth_challenge"]
+      # custom_message - (optional) is a type of string
+      custom_message = lambda_config.value["custom_message"]
+      # define_auth_challenge - (optional) is a type of string
+      define_auth_challenge = lambda_config.value["define_auth_challenge"]
+      # post_authentication - (optional) is a type of string
+      post_authentication = lambda_config.value["post_authentication"]
+      # post_confirmation - (optional) is a type of string
+      post_confirmation = lambda_config.value["post_confirmation"]
+      # pre_authentication - (optional) is a type of string
+      pre_authentication = lambda_config.value["pre_authentication"]
+      # pre_sign_up - (optional) is a type of string
+      pre_sign_up = lambda_config.value["pre_sign_up"]
+      # pre_token_generation - (optional) is a type of string
+      pre_token_generation = lambda_config.value["pre_token_generation"]
+      # user_migration - (optional) is a type of string
+      user_migration = lambda_config.value["user_migration"]
+      # verify_auth_challenge_response - (optional) is a type of string
       verify_auth_challenge_response = lambda_config.value["verify_auth_challenge_response"]
     }
   }
@@ -468,11 +501,17 @@ resource "aws_cognito_user_pool" "this" {
   dynamic "password_policy" {
     for_each = var.password_policy
     content {
-      minimum_length                   = password_policy.value["minimum_length"]
-      require_lowercase                = password_policy.value["require_lowercase"]
-      require_numbers                  = password_policy.value["require_numbers"]
-      require_symbols                  = password_policy.value["require_symbols"]
-      require_uppercase                = password_policy.value["require_uppercase"]
+      # minimum_length - (optional) is a type of number
+      minimum_length = password_policy.value["minimum_length"]
+      # require_lowercase - (optional) is a type of bool
+      require_lowercase = password_policy.value["require_lowercase"]
+      # require_numbers - (optional) is a type of bool
+      require_numbers = password_policy.value["require_numbers"]
+      # require_symbols - (optional) is a type of bool
+      require_symbols = password_policy.value["require_symbols"]
+      # require_uppercase - (optional) is a type of bool
+      require_uppercase = password_policy.value["require_uppercase"]
+      # temporary_password_validity_days - (optional) is a type of number
       temporary_password_validity_days = password_policy.value["temporary_password_validity_days"]
     }
   }
@@ -480,16 +519,23 @@ resource "aws_cognito_user_pool" "this" {
   dynamic "schema" {
     for_each = var.schema
     content {
-      attribute_data_type      = schema.value["attribute_data_type"]
+      # attribute_data_type - (required) is a type of string
+      attribute_data_type = schema.value["attribute_data_type"]
+      # developer_only_attribute - (optional) is a type of bool
       developer_only_attribute = schema.value["developer_only_attribute"]
-      mutable                  = schema.value["mutable"]
-      name                     = schema.value["name"]
-      required                 = schema.value["required"]
+      # mutable - (optional) is a type of bool
+      mutable = schema.value["mutable"]
+      # name - (required) is a type of string
+      name = schema.value["name"]
+      # required - (optional) is a type of bool
+      required = schema.value["required"]
 
       dynamic "number_attribute_constraints" {
         for_each = schema.value.number_attribute_constraints
         content {
+          # max_value - (optional) is a type of string
           max_value = number_attribute_constraints.value["max_value"]
+          # min_value - (optional) is a type of string
           min_value = number_attribute_constraints.value["min_value"]
         }
       }
@@ -497,7 +543,9 @@ resource "aws_cognito_user_pool" "this" {
       dynamic "string_attribute_constraints" {
         for_each = schema.value.string_attribute_constraints
         content {
+          # max_length - (optional) is a type of string
           max_length = string_attribute_constraints.value["max_length"]
+          # min_length - (optional) is a type of string
           min_length = string_attribute_constraints.value["min_length"]
         }
       }
@@ -508,7 +556,9 @@ resource "aws_cognito_user_pool" "this" {
   dynamic "sms_configuration" {
     for_each = var.sms_configuration
     content {
-      external_id    = sms_configuration.value["external_id"]
+      # external_id - (required) is a type of string
+      external_id = sms_configuration.value["external_id"]
+      # sns_caller_arn - (required) is a type of string
       sns_caller_arn = sms_configuration.value["sns_caller_arn"]
     }
   }
@@ -516,6 +566,7 @@ resource "aws_cognito_user_pool" "this" {
   dynamic "software_token_mfa_configuration" {
     for_each = var.software_token_mfa_configuration
     content {
+      # enabled - (required) is a type of bool
       enabled = software_token_mfa_configuration.value["enabled"]
     }
   }
@@ -523,6 +574,7 @@ resource "aws_cognito_user_pool" "this" {
   dynamic "user_pool_add_ons" {
     for_each = var.user_pool_add_ons
     content {
+      # advanced_security_mode - (required) is a type of string
       advanced_security_mode = user_pool_add_ons.value["advanced_security_mode"]
     }
   }
@@ -530,6 +582,7 @@ resource "aws_cognito_user_pool" "this" {
   dynamic "username_configuration" {
     for_each = var.username_configuration
     content {
+      # case_sensitive - (required) is a type of bool
       case_sensitive = username_configuration.value["case_sensitive"]
     }
   }
@@ -537,12 +590,18 @@ resource "aws_cognito_user_pool" "this" {
   dynamic "verification_message_template" {
     for_each = var.verification_message_template
     content {
-      default_email_option  = verification_message_template.value["default_email_option"]
-      email_message         = verification_message_template.value["email_message"]
+      # default_email_option - (optional) is a type of string
+      default_email_option = verification_message_template.value["default_email_option"]
+      # email_message - (optional) is a type of string
+      email_message = verification_message_template.value["email_message"]
+      # email_message_by_link - (optional) is a type of string
       email_message_by_link = verification_message_template.value["email_message_by_link"]
-      email_subject         = verification_message_template.value["email_subject"]
+      # email_subject - (optional) is a type of string
+      email_subject = verification_message_template.value["email_subject"]
+      # email_subject_by_link - (optional) is a type of string
       email_subject_by_link = verification_message_template.value["email_subject_by_link"]
-      sms_message           = verification_message_template.value["sms_message"]
+      # sms_message - (optional) is a type of string
+      sms_message = verification_message_template.value["sms_message"]
     }
   }
 

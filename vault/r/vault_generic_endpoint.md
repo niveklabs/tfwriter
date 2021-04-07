@@ -88,12 +88,18 @@ variable "write_fields" {
 
 ```terraform
 resource "vault_generic_endpoint" "this" {
-  data_json            = var.data_json
-  disable_delete       = var.disable_delete
-  disable_read         = var.disable_read
+  # data_json - (required) is a type of string
+  data_json = var.data_json
+  # disable_delete - (optional) is a type of bool
+  disable_delete = var.disable_delete
+  # disable_read - (optional) is a type of bool
+  disable_read = var.disable_read
+  # ignore_absent_fields - (optional) is a type of bool
   ignore_absent_fields = var.ignore_absent_fields
-  path                 = var.path
-  write_fields         = var.write_fields
+  # path - (required) is a type of string
+  path = var.path
+  # write_fields - (optional) is a type of list of string
+  write_fields = var.write_fields
 }
 ```
 

@@ -74,14 +74,19 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_artifacts_container_configuration" "this" {
-  compartment_id                      = var.compartment_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # is_repository_created_on_first_push - (required) is a type of bool
   is_repository_created_on_first_push = var.is_repository_created_on_first_push
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

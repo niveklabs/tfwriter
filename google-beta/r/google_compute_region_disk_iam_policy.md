@@ -72,10 +72,14 @@ variable "region" {
 
 ```terraform
 resource "google_compute_region_disk_iam_policy" "this" {
-  name        = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # policy_data - (required) is a type of string
   policy_data = var.policy_data
-  project     = var.project
-  region      = var.region
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
 }
 ```
 

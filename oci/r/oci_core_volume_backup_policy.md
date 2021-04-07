@@ -131,33 +131,51 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_volume_backup_policy" "this" {
-  compartment_id     = var.compartment_id
-  defined_tags       = var.defined_tags
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # destination_region - (optional) is a type of string
   destination_region = var.destination_region
-  display_name       = var.display_name
-  freeform_tags      = var.freeform_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
 
   dynamic "schedules" {
     for_each = var.schedules
     content {
-      backup_type       = schedules.value["backup_type"]
-      day_of_month      = schedules.value["day_of_month"]
-      day_of_week       = schedules.value["day_of_week"]
-      hour_of_day       = schedules.value["hour_of_day"]
-      month             = schedules.value["month"]
-      offset_seconds    = schedules.value["offset_seconds"]
-      offset_type       = schedules.value["offset_type"]
-      period            = schedules.value["period"]
+      # backup_type - (required) is a type of string
+      backup_type = schedules.value["backup_type"]
+      # day_of_month - (optional) is a type of number
+      day_of_month = schedules.value["day_of_month"]
+      # day_of_week - (optional) is a type of string
+      day_of_week = schedules.value["day_of_week"]
+      # hour_of_day - (optional) is a type of number
+      hour_of_day = schedules.value["hour_of_day"]
+      # month - (optional) is a type of string
+      month = schedules.value["month"]
+      # offset_seconds - (optional) is a type of number
+      offset_seconds = schedules.value["offset_seconds"]
+      # offset_type - (optional) is a type of string
+      offset_type = schedules.value["offset_type"]
+      # period - (required) is a type of string
+      period = schedules.value["period"]
+      # retention_seconds - (required) is a type of number
       retention_seconds = schedules.value["retention_seconds"]
-      time_zone         = schedules.value["time_zone"]
+      # time_zone - (optional) is a type of string
+      time_zone = schedules.value["time_zone"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

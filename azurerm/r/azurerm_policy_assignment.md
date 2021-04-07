@@ -157,20 +157,31 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_policy_assignment" "this" {
-  description          = var.description
-  display_name         = var.display_name
-  enforcement_mode     = var.enforcement_mode
-  location             = var.location
-  metadata             = var.metadata
-  name                 = var.name
-  not_scopes           = var.not_scopes
-  parameters           = var.parameters
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # enforcement_mode - (optional) is a type of bool
+  enforcement_mode = var.enforcement_mode
+  # location - (optional) is a type of string
+  location = var.location
+  # metadata - (optional) is a type of string
+  metadata = var.metadata
+  # name - (required) is a type of string
+  name = var.name
+  # not_scopes - (optional) is a type of list of string
+  not_scopes = var.not_scopes
+  # parameters - (optional) is a type of string
+  parameters = var.parameters
+  # policy_definition_id - (required) is a type of string
   policy_definition_id = var.policy_definition_id
-  scope                = var.scope
+  # scope - (required) is a type of string
+  scope = var.scope
 
   dynamic "identity" {
     for_each = var.identity
     content {
+      # type - (optional) is a type of string
       type = identity.value["type"]
     }
   }
@@ -178,9 +189,13 @@ resource "azurerm_policy_assignment" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

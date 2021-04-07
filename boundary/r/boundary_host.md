@@ -80,11 +80,16 @@ variable "type" {
 
 ```terraform
 resource "boundary_host" "this" {
-  address         = var.address
-  description     = var.description
+  # address - (optional) is a type of string
+  address = var.address
+  # description - (optional) is a type of string
+  description = var.description
+  # host_catalog_id - (required) is a type of string
   host_catalog_id = var.host_catalog_id
-  name            = var.name
-  type            = var.type
+  # name - (optional) is a type of string
+  name = var.name
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

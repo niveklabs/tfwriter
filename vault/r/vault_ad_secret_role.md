@@ -71,10 +71,14 @@ variable "ttl" {
 
 ```terraform
 resource "vault_ad_secret_role" "this" {
-  backend              = var.backend
-  role                 = var.role
+  # backend - (required) is a type of string
+  backend = var.backend
+  # role - (required) is a type of string
+  role = var.role
+  # service_account_name - (required) is a type of string
   service_account_name = var.service_account_name
-  ttl                  = var.ttl
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
 }
 ```
 

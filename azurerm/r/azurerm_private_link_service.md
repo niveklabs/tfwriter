@@ -143,32 +143,49 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_private_link_service" "this" {
-  auto_approval_subscription_ids              = var.auto_approval_subscription_ids
-  enable_proxy_protocol                       = var.enable_proxy_protocol
+  # auto_approval_subscription_ids - (optional) is a type of set of string
+  auto_approval_subscription_ids = var.auto_approval_subscription_ids
+  # enable_proxy_protocol - (optional) is a type of bool
+  enable_proxy_protocol = var.enable_proxy_protocol
+  # load_balancer_frontend_ip_configuration_ids - (required) is a type of set of string
   load_balancer_frontend_ip_configuration_ids = var.load_balancer_frontend_ip_configuration_ids
-  location                                    = var.location
-  name                                        = var.name
-  resource_group_name                         = var.resource_group_name
-  tags                                        = var.tags
-  visibility_subscription_ids                 = var.visibility_subscription_ids
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # visibility_subscription_ids - (optional) is a type of set of string
+  visibility_subscription_ids = var.visibility_subscription_ids
 
   dynamic "nat_ip_configuration" {
     for_each = var.nat_ip_configuration
     content {
-      name                       = nat_ip_configuration.value["name"]
-      primary                    = nat_ip_configuration.value["primary"]
-      private_ip_address         = nat_ip_configuration.value["private_ip_address"]
+      # name - (required) is a type of string
+      name = nat_ip_configuration.value["name"]
+      # primary - (required) is a type of bool
+      primary = nat_ip_configuration.value["primary"]
+      # private_ip_address - (optional) is a type of string
+      private_ip_address = nat_ip_configuration.value["private_ip_address"]
+      # private_ip_address_version - (optional) is a type of string
       private_ip_address_version = nat_ip_configuration.value["private_ip_address_version"]
-      subnet_id                  = nat_ip_configuration.value["subnet_id"]
+      # subnet_id - (required) is a type of string
+      subnet_id = nat_ip_configuration.value["subnet_id"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

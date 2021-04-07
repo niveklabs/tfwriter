@@ -49,6 +49,7 @@ variable "managed_instance_group_id" {
 
 ```terraform
 data "oci_osmanagement_managed_instance_group" "this" {
+  # managed_instance_group_id - (required) is a type of string
   managed_instance_group_id = var.managed_instance_group_id
 }
 ```

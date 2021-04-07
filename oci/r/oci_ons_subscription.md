@@ -112,19 +112,29 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_ons_subscription" "this" {
-  compartment_id  = var.compartment_id
-  defined_tags    = var.defined_tags
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # delivery_policy - (optional) is a type of string
   delivery_policy = var.delivery_policy
-  endpoint        = var.endpoint
-  freeform_tags   = var.freeform_tags
-  protocol        = var.protocol
-  topic_id        = var.topic_id
+  # endpoint - (required) is a type of string
+  endpoint = var.endpoint
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # topic_id - (required) is a type of string
+  topic_id = var.topic_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

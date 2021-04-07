@@ -404,48 +404,87 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_rds_cluster" "this" {
-  allow_major_version_upgrade         = var.allow_major_version_upgrade
-  apply_immediately                   = var.apply_immediately
-  availability_zones                  = var.availability_zones
-  backtrack_window                    = var.backtrack_window
-  backup_retention_period             = var.backup_retention_period
-  cluster_identifier                  = var.cluster_identifier
-  cluster_identifier_prefix           = var.cluster_identifier_prefix
-  cluster_members                     = var.cluster_members
-  copy_tags_to_snapshot               = var.copy_tags_to_snapshot
-  database_name                       = var.database_name
-  db_cluster_parameter_group_name     = var.db_cluster_parameter_group_name
-  db_subnet_group_name                = var.db_subnet_group_name
-  deletion_protection                 = var.deletion_protection
-  enable_http_endpoint                = var.enable_http_endpoint
-  enabled_cloudwatch_logs_exports     = var.enabled_cloudwatch_logs_exports
-  engine                              = var.engine
-  engine_mode                         = var.engine_mode
-  engine_version                      = var.engine_version
-  final_snapshot_identifier           = var.final_snapshot_identifier
-  global_cluster_identifier           = var.global_cluster_identifier
+  # allow_major_version_upgrade - (optional) is a type of bool
+  allow_major_version_upgrade = var.allow_major_version_upgrade
+  # apply_immediately - (optional) is a type of bool
+  apply_immediately = var.apply_immediately
+  # availability_zones - (optional) is a type of set of string
+  availability_zones = var.availability_zones
+  # backtrack_window - (optional) is a type of number
+  backtrack_window = var.backtrack_window
+  # backup_retention_period - (optional) is a type of number
+  backup_retention_period = var.backup_retention_period
+  # cluster_identifier - (optional) is a type of string
+  cluster_identifier = var.cluster_identifier
+  # cluster_identifier_prefix - (optional) is a type of string
+  cluster_identifier_prefix = var.cluster_identifier_prefix
+  # cluster_members - (optional) is a type of set of string
+  cluster_members = var.cluster_members
+  # copy_tags_to_snapshot - (optional) is a type of bool
+  copy_tags_to_snapshot = var.copy_tags_to_snapshot
+  # database_name - (optional) is a type of string
+  database_name = var.database_name
+  # db_cluster_parameter_group_name - (optional) is a type of string
+  db_cluster_parameter_group_name = var.db_cluster_parameter_group_name
+  # db_subnet_group_name - (optional) is a type of string
+  db_subnet_group_name = var.db_subnet_group_name
+  # deletion_protection - (optional) is a type of bool
+  deletion_protection = var.deletion_protection
+  # enable_http_endpoint - (optional) is a type of bool
+  enable_http_endpoint = var.enable_http_endpoint
+  # enabled_cloudwatch_logs_exports - (optional) is a type of set of string
+  enabled_cloudwatch_logs_exports = var.enabled_cloudwatch_logs_exports
+  # engine - (optional) is a type of string
+  engine = var.engine
+  # engine_mode - (optional) is a type of string
+  engine_mode = var.engine_mode
+  # engine_version - (optional) is a type of string
+  engine_version = var.engine_version
+  # final_snapshot_identifier - (optional) is a type of string
+  final_snapshot_identifier = var.final_snapshot_identifier
+  # global_cluster_identifier - (optional) is a type of string
+  global_cluster_identifier = var.global_cluster_identifier
+  # iam_database_authentication_enabled - (optional) is a type of bool
   iam_database_authentication_enabled = var.iam_database_authentication_enabled
-  iam_roles                           = var.iam_roles
-  kms_key_id                          = var.kms_key_id
-  master_password                     = var.master_password
-  master_username                     = var.master_username
-  port                                = var.port
-  preferred_backup_window             = var.preferred_backup_window
-  preferred_maintenance_window        = var.preferred_maintenance_window
-  replication_source_identifier       = var.replication_source_identifier
-  skip_final_snapshot                 = var.skip_final_snapshot
-  snapshot_identifier                 = var.snapshot_identifier
-  source_region                       = var.source_region
-  storage_encrypted                   = var.storage_encrypted
-  tags                                = var.tags
-  vpc_security_group_ids              = var.vpc_security_group_ids
+  # iam_roles - (optional) is a type of set of string
+  iam_roles = var.iam_roles
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # master_password - (optional) is a type of string
+  master_password = var.master_password
+  # master_username - (optional) is a type of string
+  master_username = var.master_username
+  # port - (optional) is a type of number
+  port = var.port
+  # preferred_backup_window - (optional) is a type of string
+  preferred_backup_window = var.preferred_backup_window
+  # preferred_maintenance_window - (optional) is a type of string
+  preferred_maintenance_window = var.preferred_maintenance_window
+  # replication_source_identifier - (optional) is a type of string
+  replication_source_identifier = var.replication_source_identifier
+  # skip_final_snapshot - (optional) is a type of bool
+  skip_final_snapshot = var.skip_final_snapshot
+  # snapshot_identifier - (optional) is a type of string
+  snapshot_identifier = var.snapshot_identifier
+  # source_region - (optional) is a type of string
+  source_region = var.source_region
+  # storage_encrypted - (optional) is a type of bool
+  storage_encrypted = var.storage_encrypted
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_security_group_ids - (optional) is a type of set of string
+  vpc_security_group_ids = var.vpc_security_group_ids
 
   dynamic "restore_to_point_in_time" {
     for_each = var.restore_to_point_in_time
     content {
-      restore_to_time            = restore_to_point_in_time.value["restore_to_time"]
-      restore_type               = restore_to_point_in_time.value["restore_type"]
-      source_cluster_identifier  = restore_to_point_in_time.value["source_cluster_identifier"]
+      # restore_to_time - (optional) is a type of string
+      restore_to_time = restore_to_point_in_time.value["restore_to_time"]
+      # restore_type - (optional) is a type of string
+      restore_type = restore_to_point_in_time.value["restore_type"]
+      # source_cluster_identifier - (required) is a type of string
+      source_cluster_identifier = restore_to_point_in_time.value["source_cluster_identifier"]
+      # use_latest_restorable_time - (optional) is a type of bool
       use_latest_restorable_time = restore_to_point_in_time.value["use_latest_restorable_time"]
     }
   }
@@ -453,10 +492,15 @@ resource "aws_rds_cluster" "this" {
   dynamic "s3_import" {
     for_each = var.s3_import
     content {
-      bucket_name           = s3_import.value["bucket_name"]
-      bucket_prefix         = s3_import.value["bucket_prefix"]
-      ingestion_role        = s3_import.value["ingestion_role"]
-      source_engine         = s3_import.value["source_engine"]
+      # bucket_name - (required) is a type of string
+      bucket_name = s3_import.value["bucket_name"]
+      # bucket_prefix - (optional) is a type of string
+      bucket_prefix = s3_import.value["bucket_prefix"]
+      # ingestion_role - (required) is a type of string
+      ingestion_role = s3_import.value["ingestion_role"]
+      # source_engine - (required) is a type of string
+      source_engine = s3_import.value["source_engine"]
+      # source_engine_version - (required) is a type of string
       source_engine_version = s3_import.value["source_engine_version"]
     }
   }
@@ -464,19 +508,27 @@ resource "aws_rds_cluster" "this" {
   dynamic "scaling_configuration" {
     for_each = var.scaling_configuration
     content {
-      auto_pause               = scaling_configuration.value["auto_pause"]
-      max_capacity             = scaling_configuration.value["max_capacity"]
-      min_capacity             = scaling_configuration.value["min_capacity"]
+      # auto_pause - (optional) is a type of bool
+      auto_pause = scaling_configuration.value["auto_pause"]
+      # max_capacity - (optional) is a type of number
+      max_capacity = scaling_configuration.value["max_capacity"]
+      # min_capacity - (optional) is a type of number
+      min_capacity = scaling_configuration.value["min_capacity"]
+      # seconds_until_auto_pause - (optional) is a type of number
       seconds_until_auto_pause = scaling_configuration.value["seconds_until_auto_pause"]
-      timeout_action           = scaling_configuration.value["timeout_action"]
+      # timeout_action - (optional) is a type of string
+      timeout_action = scaling_configuration.value["timeout_action"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

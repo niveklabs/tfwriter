@@ -88,23 +88,32 @@ variable "auto_scaling_group_provider" {
 
 ```terraform
 resource "aws_ecs_capacity_provider" "this" {
+  # name - (required) is a type of string
   name = var.name
+  # tags - (optional) is a type of map of string
   tags = var.tags
 
   dynamic "auto_scaling_group_provider" {
     for_each = var.auto_scaling_group_provider
     content {
-      auto_scaling_group_arn         = auto_scaling_group_provider.value["auto_scaling_group_arn"]
+      # auto_scaling_group_arn - (required) is a type of string
+      auto_scaling_group_arn = auto_scaling_group_provider.value["auto_scaling_group_arn"]
+      # managed_termination_protection - (optional) is a type of string
       managed_termination_protection = auto_scaling_group_provider.value["managed_termination_protection"]
 
       dynamic "managed_scaling" {
         for_each = auto_scaling_group_provider.value.managed_scaling
         content {
-          instance_warmup_period    = managed_scaling.value["instance_warmup_period"]
+          # instance_warmup_period - (optional) is a type of number
+          instance_warmup_period = managed_scaling.value["instance_warmup_period"]
+          # maximum_scaling_step_size - (optional) is a type of number
           maximum_scaling_step_size = managed_scaling.value["maximum_scaling_step_size"]
+          # minimum_scaling_step_size - (optional) is a type of number
           minimum_scaling_step_size = managed_scaling.value["minimum_scaling_step_size"]
-          status                    = managed_scaling.value["status"]
-          target_capacity           = managed_scaling.value["target_capacity"]
+          # status - (optional) is a type of string
+          status = managed_scaling.value["status"]
+          # target_capacity - (optional) is a type of number
+          target_capacity = managed_scaling.value["target_capacity"]
         }
       }
 

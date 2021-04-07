@@ -106,24 +106,33 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_lex_slot_type" "this" {
-  create_version           = var.create_version
-  description              = var.description
-  name                     = var.name
+  # create_version - (optional) is a type of bool
+  create_version = var.create_version
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # value_selection_strategy - (optional) is a type of string
   value_selection_strategy = var.value_selection_strategy
 
   dynamic "enumeration_value" {
     for_each = var.enumeration_value
     content {
+      # synonyms - (optional) is a type of set of string
       synonyms = enumeration_value.value["synonyms"]
-      value    = enumeration_value.value["value"]
+      # value - (required) is a type of string
+      value = enumeration_value.value["value"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

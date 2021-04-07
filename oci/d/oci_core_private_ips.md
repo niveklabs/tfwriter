@@ -92,16 +92,23 @@ variable "filter" {
 
 ```terraform
 data "oci_core_private_ips" "this" {
+  # ip_address - (optional) is a type of string
   ip_address = var.ip_address
-  subnet_id  = var.subnet_id
-  vlan_id    = var.vlan_id
-  vnic_id    = var.vnic_id
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # vlan_id - (optional) is a type of string
+  vlan_id = var.vlan_id
+  # vnic_id - (optional) is a type of string
+  vnic_id = var.vnic_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

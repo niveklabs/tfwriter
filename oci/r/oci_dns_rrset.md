@@ -131,28 +131,41 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_dns_rrset" "this" {
-  compartment_id  = var.compartment_id
-  domain          = var.domain
-  rtype           = var.rtype
-  scope           = var.scope
-  view_id         = var.view_id
+  # compartment_id - (optional) is a type of string
+  compartment_id = var.compartment_id
+  # domain - (required) is a type of string
+  domain = var.domain
+  # rtype - (required) is a type of string
+  rtype = var.rtype
+  # scope - (optional) is a type of string
+  scope = var.scope
+  # view_id - (optional) is a type of string
+  view_id = var.view_id
+  # zone_name_or_id - (required) is a type of string
   zone_name_or_id = var.zone_name_or_id
 
   dynamic "items" {
     for_each = var.items
     content {
+      # domain - (required) is a type of string
       domain = items.value["domain"]
-      rdata  = items.value["rdata"]
-      rtype  = items.value["rtype"]
-      ttl    = items.value["ttl"]
+      # rdata - (required) is a type of string
+      rdata = items.value["rdata"]
+      # rtype - (required) is a type of string
+      rtype = items.value["rtype"]
+      # ttl - (required) is a type of number
+      ttl = items.value["ttl"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

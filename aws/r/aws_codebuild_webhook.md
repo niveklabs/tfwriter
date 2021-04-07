@@ -81,8 +81,10 @@ variable "filter_group" {
 
 ```terraform
 resource "aws_codebuild_webhook" "this" {
+  # branch_filter - (optional) is a type of string
   branch_filter = var.branch_filter
-  project_name  = var.project_name
+  # project_name - (required) is a type of string
+  project_name = var.project_name
 
   dynamic "filter_group" {
     for_each = var.filter_group
@@ -91,9 +93,12 @@ resource "aws_codebuild_webhook" "this" {
       dynamic "filter" {
         for_each = filter_group.value.filter
         content {
+          # exclude_matched_pattern - (optional) is a type of bool
           exclude_matched_pattern = filter.value["exclude_matched_pattern"]
-          pattern                 = filter.value["pattern"]
-          type                    = filter.value["type"]
+          # pattern - (required) is a type of string
+          pattern = filter.value["pattern"]
+          # type - (required) is a type of string
+          type = filter.value["type"]
         }
       }
 

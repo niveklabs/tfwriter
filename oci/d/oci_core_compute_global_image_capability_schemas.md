@@ -76,14 +76,19 @@ variable "filter" {
 
 ```terraform
 data "oci_core_compute_global_image_capability_schemas" "this" {
+  # compartment_id - (optional) is a type of string
   compartment_id = var.compartment_id
-  display_name   = var.display_name
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

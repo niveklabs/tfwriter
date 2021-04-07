@@ -65,9 +65,12 @@ variable "unique_id" {
 
 ```terraform
 resource "aws_codedeploy_app" "this" {
+  # compute_platform - (optional) is a type of string
   compute_platform = var.compute_platform
-  name             = var.name
-  unique_id        = var.unique_id
+  # name - (required) is a type of string
+  name = var.name
+  # unique_id - (optional) is a type of string
+  unique_id = var.unique_id
 }
 ```
 

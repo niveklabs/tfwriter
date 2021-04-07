@@ -137,18 +137,27 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_lb_outbound_rule" "this" {
+  # allocated_outbound_ports - (optional) is a type of number
   allocated_outbound_ports = var.allocated_outbound_ports
-  backend_address_pool_id  = var.backend_address_pool_id
-  enable_tcp_reset         = var.enable_tcp_reset
-  idle_timeout_in_minutes  = var.idle_timeout_in_minutes
-  loadbalancer_id          = var.loadbalancer_id
-  name                     = var.name
-  protocol                 = var.protocol
-  resource_group_name      = var.resource_group_name
+  # backend_address_pool_id - (required) is a type of string
+  backend_address_pool_id = var.backend_address_pool_id
+  # enable_tcp_reset - (optional) is a type of bool
+  enable_tcp_reset = var.enable_tcp_reset
+  # idle_timeout_in_minutes - (optional) is a type of number
+  idle_timeout_in_minutes = var.idle_timeout_in_minutes
+  # loadbalancer_id - (required) is a type of string
+  loadbalancer_id = var.loadbalancer_id
+  # name - (required) is a type of string
+  name = var.name
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
 
   dynamic "frontend_ip_configuration" {
     for_each = var.frontend_ip_configuration
     content {
+      # name - (required) is a type of string
       name = frontend_ip_configuration.value["name"]
     }
   }
@@ -156,9 +165,13 @@ resource "azurerm_lb_outbound_rule" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

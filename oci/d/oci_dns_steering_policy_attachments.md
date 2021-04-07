@@ -131,21 +131,33 @@ variable "filter" {
 
 ```terraform
 data "oci_dns_steering_policy_attachments" "this" {
-  compartment_id                        = var.compartment_id
-  display_name                          = var.display_name
-  domain                                = var.domain
-  domain_contains                       = var.domain_contains
-  state                                 = var.state
-  steering_policy_id                    = var.steering_policy_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # domain_contains - (optional) is a type of string
+  domain_contains = var.domain_contains
+  # state - (optional) is a type of string
+  state = var.state
+  # steering_policy_id - (optional) is a type of string
+  steering_policy_id = var.steering_policy_id
+  # time_created_greater_than_or_equal_to - (optional) is a type of string
   time_created_greater_than_or_equal_to = var.time_created_greater_than_or_equal_to
-  time_created_less_than                = var.time_created_less_than
-  zone_id                               = var.zone_id
+  # time_created_less_than - (optional) is a type of string
+  time_created_less_than = var.time_created_less_than
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

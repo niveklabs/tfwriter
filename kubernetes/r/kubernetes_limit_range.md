@@ -105,11 +105,16 @@ resource "kubernetes_limit_range" "this" {
   dynamic "metadata" {
     for_each = var.metadata
     content {
-      annotations   = metadata.value["annotations"]
+      # annotations - (optional) is a type of map of string
+      annotations = metadata.value["annotations"]
+      # generate_name - (optional) is a type of string
       generate_name = metadata.value["generate_name"]
-      labels        = metadata.value["labels"]
-      name          = metadata.value["name"]
-      namespace     = metadata.value["namespace"]
+      # labels - (optional) is a type of map of string
+      labels = metadata.value["labels"]
+      # name - (optional) is a type of string
+      name = metadata.value["name"]
+      # namespace - (optional) is a type of string
+      namespace = metadata.value["namespace"]
     }
   }
 
@@ -120,12 +125,18 @@ resource "kubernetes_limit_range" "this" {
       dynamic "limit" {
         for_each = spec.value.limit
         content {
-          default                 = limit.value["default"]
-          default_request         = limit.value["default_request"]
-          max                     = limit.value["max"]
+          # default - (optional) is a type of map of string
+          default = limit.value["default"]
+          # default_request - (optional) is a type of map of string
+          default_request = limit.value["default_request"]
+          # max - (optional) is a type of map of string
+          max = limit.value["max"]
+          # max_limit_request_ratio - (optional) is a type of map of string
           max_limit_request_ratio = limit.value["max_limit_request_ratio"]
-          min                     = limit.value["min"]
-          type                    = limit.value["type"]
+          # min - (optional) is a type of map of string
+          min = limit.value["min"]
+          # type - (optional) is a type of string
+          type = limit.value["type"]
         }
       }
 

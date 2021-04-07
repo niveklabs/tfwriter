@@ -157,28 +157,41 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_globalaccelerator_endpoint_group" "this" {
-  endpoint_group_region         = var.endpoint_group_region
+  # endpoint_group_region - (optional) is a type of string
+  endpoint_group_region = var.endpoint_group_region
+  # health_check_interval_seconds - (optional) is a type of number
   health_check_interval_seconds = var.health_check_interval_seconds
-  health_check_path             = var.health_check_path
-  health_check_port             = var.health_check_port
-  health_check_protocol         = var.health_check_protocol
-  listener_arn                  = var.listener_arn
-  threshold_count               = var.threshold_count
-  traffic_dial_percentage       = var.traffic_dial_percentage
+  # health_check_path - (optional) is a type of string
+  health_check_path = var.health_check_path
+  # health_check_port - (optional) is a type of number
+  health_check_port = var.health_check_port
+  # health_check_protocol - (optional) is a type of string
+  health_check_protocol = var.health_check_protocol
+  # listener_arn - (required) is a type of string
+  listener_arn = var.listener_arn
+  # threshold_count - (optional) is a type of number
+  threshold_count = var.threshold_count
+  # traffic_dial_percentage - (optional) is a type of number
+  traffic_dial_percentage = var.traffic_dial_percentage
 
   dynamic "endpoint_configuration" {
     for_each = var.endpoint_configuration
     content {
+      # client_ip_preservation_enabled - (optional) is a type of bool
       client_ip_preservation_enabled = endpoint_configuration.value["client_ip_preservation_enabled"]
-      endpoint_id                    = endpoint_configuration.value["endpoint_id"]
-      weight                         = endpoint_configuration.value["weight"]
+      # endpoint_id - (optional) is a type of string
+      endpoint_id = endpoint_configuration.value["endpoint_id"]
+      # weight - (optional) is a type of number
+      weight = endpoint_configuration.value["weight"]
     }
   }
 
   dynamic "port_override" {
     for_each = var.port_override
     content {
+      # endpoint_port - (required) is a type of number
       endpoint_port = port_override.value["endpoint_port"]
+      # listener_port - (required) is a type of number
       listener_port = port_override.value["listener_port"]
     }
   }
@@ -186,8 +199,11 @@ resource "aws_globalaccelerator_endpoint_group" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

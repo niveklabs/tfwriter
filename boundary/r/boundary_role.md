@@ -97,13 +97,20 @@ variable "scope_id" {
 
 ```terraform
 resource "boundary_role" "this" {
-  default_role   = var.default_role
-  description    = var.description
+  # default_role - (optional) is a type of bool
+  default_role = var.default_role
+  # description - (optional) is a type of string
+  description = var.description
+  # grant_scope_id - (optional) is a type of string
   grant_scope_id = var.grant_scope_id
-  grant_strings  = var.grant_strings
-  name           = var.name
-  principal_ids  = var.principal_ids
-  scope_id       = var.scope_id
+  # grant_strings - (optional) is a type of set of string
+  grant_strings = var.grant_strings
+  # name - (optional) is a type of string
+  name = var.name
+  # principal_ids - (optional) is a type of set of string
+  principal_ids = var.principal_ids
+  # scope_id - (required) is a type of string
+  scope_id = var.scope_id
 }
 ```
 

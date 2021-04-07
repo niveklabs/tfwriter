@@ -94,13 +94,20 @@ variable "tags" {
 
 ```terraform
 resource "aws_glue_schema" "this" {
-  compatibility     = var.compatibility
-  data_format       = var.data_format
-  description       = var.description
-  registry_arn      = var.registry_arn
+  # compatibility - (required) is a type of string
+  compatibility = var.compatibility
+  # data_format - (required) is a type of string
+  data_format = var.data_format
+  # description - (optional) is a type of string
+  description = var.description
+  # registry_arn - (optional) is a type of string
+  registry_arn = var.registry_arn
+  # schema_definition - (required) is a type of string
   schema_definition = var.schema_definition
-  schema_name       = var.schema_name
-  tags              = var.tags
+  # schema_name - (required) is a type of string
+  schema_name = var.schema_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

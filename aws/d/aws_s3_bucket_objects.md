@@ -97,13 +97,20 @@ variable "start_after" {
 
 ```terraform
 data "aws_s3_bucket_objects" "this" {
-  bucket        = var.bucket
-  delimiter     = var.delimiter
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # delimiter - (optional) is a type of string
+  delimiter = var.delimiter
+  # encoding_type - (optional) is a type of string
   encoding_type = var.encoding_type
-  fetch_owner   = var.fetch_owner
-  max_keys      = var.max_keys
-  prefix        = var.prefix
-  start_after   = var.start_after
+  # fetch_owner - (optional) is a type of bool
+  fetch_owner = var.fetch_owner
+  # max_keys - (optional) is a type of number
+  max_keys = var.max_keys
+  # prefix - (optional) is a type of string
+  prefix = var.prefix
+  # start_after - (optional) is a type of string
+  start_after = var.start_after
 }
 ```
 

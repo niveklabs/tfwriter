@@ -56,7 +56,9 @@ variable "secret_arn_list" {
 
 ```terraform
 resource "aws_msk_scram_secret_association" "this" {
-  cluster_arn     = var.cluster_arn
+  # cluster_arn - (required) is a type of string
+  cluster_arn = var.cluster_arn
+  # secret_arn_list - (required) is a type of set of string
   secret_arn_list = var.secret_arn_list
 }
 ```

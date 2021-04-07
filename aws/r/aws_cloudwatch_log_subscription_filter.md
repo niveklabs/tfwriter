@@ -86,12 +86,18 @@ variable "role_arn" {
 
 ```terraform
 resource "aws_cloudwatch_log_subscription_filter" "this" {
+  # destination_arn - (required) is a type of string
   destination_arn = var.destination_arn
-  distribution    = var.distribution
-  filter_pattern  = var.filter_pattern
-  log_group_name  = var.log_group_name
-  name            = var.name
-  role_arn        = var.role_arn
+  # distribution - (optional) is a type of string
+  distribution = var.distribution
+  # filter_pattern - (required) is a type of string
+  filter_pattern = var.filter_pattern
+  # log_group_name - (required) is a type of string
+  log_group_name = var.log_group_name
+  # name - (required) is a type of string
+  name = var.name
+  # role_arn - (optional) is a type of string
+  role_arn = var.role_arn
 }
 ```
 

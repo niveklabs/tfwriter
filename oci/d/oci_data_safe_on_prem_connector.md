@@ -49,6 +49,7 @@ variable "on_prem_connector_id" {
 
 ```terraform
 data "oci_data_safe_on_prem_connector" "this" {
+  # on_prem_connector_id - (required) is a type of string
   on_prem_connector_id = var.on_prem_connector_id
 }
 ```

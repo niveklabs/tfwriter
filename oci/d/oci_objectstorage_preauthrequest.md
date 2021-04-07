@@ -63,9 +63,12 @@ variable "par_id" {
 
 ```terraform
 data "oci_objectstorage_preauthrequest" "this" {
-  bucket    = var.bucket
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # namespace - (required) is a type of string
   namespace = var.namespace
-  par_id    = var.par_id
+  # par_id - (required) is a type of string
+  par_id = var.par_id
 }
 ```
 

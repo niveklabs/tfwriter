@@ -86,14 +86,19 @@ variable "regular_expression" {
 
 ```terraform
 resource "aws_wafv2_regex_pattern_set" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  scope       = var.scope
-  tags        = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # scope - (required) is a type of string
+  scope = var.scope
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "regular_expression" {
     for_each = var.regular_expression
     content {
+      # regex_string - (required) is a type of string
       regex_string = regular_expression.value["regex_string"]
     }
   }

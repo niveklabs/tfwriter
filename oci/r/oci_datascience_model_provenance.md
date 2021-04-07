@@ -107,18 +107,27 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_datascience_model_provenance" "this" {
-  git_branch      = var.git_branch
-  git_commit      = var.git_commit
-  model_id        = var.model_id
-  repository_url  = var.repository_url
-  script_dir      = var.script_dir
+  # git_branch - (optional) is a type of string
+  git_branch = var.git_branch
+  # git_commit - (optional) is a type of string
+  git_commit = var.git_commit
+  # model_id - (required) is a type of string
+  model_id = var.model_id
+  # repository_url - (optional) is a type of string
+  repository_url = var.repository_url
+  # script_dir - (optional) is a type of string
+  script_dir = var.script_dir
+  # training_script - (optional) is a type of string
   training_script = var.training_script
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

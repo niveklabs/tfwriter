@@ -83,16 +83,23 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_app_service_slot_virtual_network_swift_connection" "this" {
+  # app_service_id - (required) is a type of string
   app_service_id = var.app_service_id
-  slot_name      = var.slot_name
-  subnet_id      = var.subnet_id
+  # slot_name - (required) is a type of string
+  slot_name = var.slot_name
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

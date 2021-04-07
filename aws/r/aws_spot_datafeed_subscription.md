@@ -57,7 +57,9 @@ variable "prefix" {
 
 ```terraform
 resource "aws_spot_datafeed_subscription" "this" {
+  # bucket - (required) is a type of string
   bucket = var.bucket
+  # prefix - (optional) is a type of string
   prefix = var.prefix
 }
 ```

@@ -115,19 +115,29 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_mysql_mysql_backup" "this" {
-  backup_type       = var.backup_type
-  db_system_id      = var.db_system_id
-  defined_tags      = var.defined_tags
-  description       = var.description
-  display_name      = var.display_name
-  freeform_tags     = var.freeform_tags
+  # backup_type - (optional) is a type of string
+  backup_type = var.backup_type
+  # db_system_id - (required) is a type of string
+  db_system_id = var.db_system_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # retention_in_days - (optional) is a type of number
   retention_in_days = var.retention_in_days
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

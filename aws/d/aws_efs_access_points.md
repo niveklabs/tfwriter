@@ -49,6 +49,7 @@ variable "file_system_id" {
 
 ```terraform
 data "aws_efs_access_points" "this" {
+  # file_system_id - (required) is a type of string
   file_system_id = var.file_system_id
 }
 ```

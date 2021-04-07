@@ -122,18 +122,27 @@ variable "version_template" {
 
 ```terraform
 resource "google_kms_crypto_key" "this" {
-  key_ring                      = var.key_ring
-  labels                        = var.labels
-  name                          = var.name
-  purpose                       = var.purpose
-  rotation_period               = var.rotation_period
+  # key_ring - (required) is a type of string
+  key_ring = var.key_ring
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # purpose - (optional) is a type of string
+  purpose = var.purpose
+  # rotation_period - (optional) is a type of string
+  rotation_period = var.rotation_period
+  # skip_initial_version_creation - (optional) is a type of bool
   skip_initial_version_creation = var.skip_initial_version_creation
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -141,7 +150,9 @@ resource "google_kms_crypto_key" "this" {
   dynamic "version_template" {
     for_each = var.version_template
     content {
-      algorithm        = version_template.value["algorithm"]
+      # algorithm - (required) is a type of string
+      algorithm = version_template.value["algorithm"]
+      # protection_level - (optional) is a type of string
       protection_level = version_template.value["protection_level"]
     }
   }

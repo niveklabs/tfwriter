@@ -88,17 +88,24 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_synapse_managed_private_endpoint" "this" {
-  name                 = var.name
-  subresource_name     = var.subresource_name
+  # name - (required) is a type of string
+  name = var.name
+  # subresource_name - (required) is a type of string
+  subresource_name = var.subresource_name
+  # synapse_workspace_id - (required) is a type of string
   synapse_workspace_id = var.synapse_workspace_id
-  target_resource_id   = var.target_resource_id
+  # target_resource_id - (required) is a type of string
+  target_resource_id = var.target_resource_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

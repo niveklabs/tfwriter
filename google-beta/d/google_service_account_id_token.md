@@ -73,9 +73,13 @@ variable "target_service_account" {
 
 ```terraform
 data "google_service_account_id_token" "this" {
-  delegates              = var.delegates
-  include_email          = var.include_email
-  target_audience        = var.target_audience
+  # delegates - (optional) is a type of set of string
+  delegates = var.delegates
+  # include_email - (optional) is a type of bool
+  include_email = var.include_email
+  # target_audience - (required) is a type of string
+  target_audience = var.target_audience
+  # target_service_account - (optional) is a type of string
   target_service_account = var.target_service_account
 }
 ```

@@ -83,15 +83,21 @@ variable "filter" {
 
 ```terraform
 data "oci_waas_protection_rules" "this" {
-  action               = var.action
+  # action - (optional) is a type of list of string
+  action = var.action
+  # mod_security_rule_id - (optional) is a type of list of string
   mod_security_rule_id = var.mod_security_rule_id
-  waas_policy_id       = var.waas_policy_id
+  # waas_policy_id - (required) is a type of string
+  waas_policy_id = var.waas_policy_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

@@ -230,36 +230,63 @@ variable "custom_cookbooks_source" {
 
 ```terraform
 resource "aws_opsworks_stack" "this" {
-  agent_version                 = var.agent_version
-  berkshelf_version             = var.berkshelf_version
-  color                         = var.color
-  configuration_manager_name    = var.configuration_manager_name
+  # agent_version - (optional) is a type of string
+  agent_version = var.agent_version
+  # berkshelf_version - (optional) is a type of string
+  berkshelf_version = var.berkshelf_version
+  # color - (optional) is a type of string
+  color = var.color
+  # configuration_manager_name - (optional) is a type of string
+  configuration_manager_name = var.configuration_manager_name
+  # configuration_manager_version - (optional) is a type of string
   configuration_manager_version = var.configuration_manager_version
-  custom_json                   = var.custom_json
-  default_availability_zone     = var.default_availability_zone
-  default_instance_profile_arn  = var.default_instance_profile_arn
-  default_os                    = var.default_os
-  default_root_device_type      = var.default_root_device_type
-  default_ssh_key_name          = var.default_ssh_key_name
-  default_subnet_id             = var.default_subnet_id
-  hostname_theme                = var.hostname_theme
-  manage_berkshelf              = var.manage_berkshelf
-  name                          = var.name
-  region                        = var.region
-  service_role_arn              = var.service_role_arn
-  tags                          = var.tags
-  use_custom_cookbooks          = var.use_custom_cookbooks
-  use_opsworks_security_groups  = var.use_opsworks_security_groups
-  vpc_id                        = var.vpc_id
+  # custom_json - (optional) is a type of string
+  custom_json = var.custom_json
+  # default_availability_zone - (optional) is a type of string
+  default_availability_zone = var.default_availability_zone
+  # default_instance_profile_arn - (required) is a type of string
+  default_instance_profile_arn = var.default_instance_profile_arn
+  # default_os - (optional) is a type of string
+  default_os = var.default_os
+  # default_root_device_type - (optional) is a type of string
+  default_root_device_type = var.default_root_device_type
+  # default_ssh_key_name - (optional) is a type of string
+  default_ssh_key_name = var.default_ssh_key_name
+  # default_subnet_id - (optional) is a type of string
+  default_subnet_id = var.default_subnet_id
+  # hostname_theme - (optional) is a type of string
+  hostname_theme = var.hostname_theme
+  # manage_berkshelf - (optional) is a type of bool
+  manage_berkshelf = var.manage_berkshelf
+  # name - (required) is a type of string
+  name = var.name
+  # region - (required) is a type of string
+  region = var.region
+  # service_role_arn - (required) is a type of string
+  service_role_arn = var.service_role_arn
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # use_custom_cookbooks - (optional) is a type of bool
+  use_custom_cookbooks = var.use_custom_cookbooks
+  # use_opsworks_security_groups - (optional) is a type of bool
+  use_opsworks_security_groups = var.use_opsworks_security_groups
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 
   dynamic "custom_cookbooks_source" {
     for_each = var.custom_cookbooks_source
     content {
+      # password - (optional) is a type of string
       password = custom_cookbooks_source.value["password"]
+      # revision - (optional) is a type of string
       revision = custom_cookbooks_source.value["revision"]
-      ssh_key  = custom_cookbooks_source.value["ssh_key"]
-      type     = custom_cookbooks_source.value["type"]
-      url      = custom_cookbooks_source.value["url"]
+      # ssh_key - (optional) is a type of string
+      ssh_key = custom_cookbooks_source.value["ssh_key"]
+      # type - (required) is a type of string
+      type = custom_cookbooks_source.value["type"]
+      # url - (required) is a type of string
+      url = custom_cookbooks_source.value["url"]
+      # username - (optional) is a type of string
       username = custom_cookbooks_source.value["username"]
     }
   }

@@ -63,8 +63,11 @@ variable "permission_set_arn" {
 
 ```terraform
 resource "aws_ssoadmin_managed_policy_attachment" "this" {
-  instance_arn       = var.instance_arn
+  # instance_arn - (required) is a type of string
+  instance_arn = var.instance_arn
+  # managed_policy_arn - (required) is a type of string
   managed_policy_arn = var.managed_policy_arn
+  # permission_set_arn - (required) is a type of string
   permission_set_arn = var.permission_set_arn
 }
 ```

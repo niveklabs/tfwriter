@@ -66,9 +66,12 @@ variable "port" {
 
 ```terraform
 data "aws_lb_listener" "this" {
-  arn               = var.arn
+  # arn - (optional) is a type of string
+  arn = var.arn
+  # load_balancer_arn - (optional) is a type of string
   load_balancer_arn = var.load_balancer_arn
-  port              = var.port
+  # port - (optional) is a type of number
+  port = var.port
 }
 ```
 

@@ -374,36 +374,54 @@ variable "trigger_template" {
 
 ```terraform
 resource "google_cloudbuild_trigger" "this" {
-  description    = var.description
-  disabled       = var.disabled
-  filename       = var.filename
-  ignored_files  = var.ignored_files
+  # description - (optional) is a type of string
+  description = var.description
+  # disabled - (optional) is a type of bool
+  disabled = var.disabled
+  # filename - (optional) is a type of string
+  filename = var.filename
+  # ignored_files - (optional) is a type of list of string
+  ignored_files = var.ignored_files
+  # included_files - (optional) is a type of list of string
   included_files = var.included_files
-  name           = var.name
-  project        = var.project
-  substitutions  = var.substitutions
-  tags           = var.tags
+  # name - (optional) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # substitutions - (optional) is a type of map of string
+  substitutions = var.substitutions
+  # tags - (optional) is a type of list of string
+  tags = var.tags
 
   dynamic "build" {
     for_each = var.build
     content {
-      images        = build.value["images"]
-      logs_bucket   = build.value["logs_bucket"]
-      queue_ttl     = build.value["queue_ttl"]
+      # images - (optional) is a type of list of string
+      images = build.value["images"]
+      # logs_bucket - (optional) is a type of string
+      logs_bucket = build.value["logs_bucket"]
+      # queue_ttl - (optional) is a type of string
+      queue_ttl = build.value["queue_ttl"]
+      # substitutions - (optional) is a type of map of string
       substitutions = build.value["substitutions"]
-      tags          = build.value["tags"]
-      timeout       = build.value["timeout"]
+      # tags - (optional) is a type of list of string
+      tags = build.value["tags"]
+      # timeout - (optional) is a type of string
+      timeout = build.value["timeout"]
 
       dynamic "artifacts" {
         for_each = build.value.artifacts
         content {
+          # images - (optional) is a type of list of string
           images = artifacts.value["images"]
 
           dynamic "objects" {
             for_each = artifacts.value.objects
             content {
+              # location - (optional) is a type of string
               location = objects.value["location"]
-              paths    = objects.value["paths"]
+              # paths - (optional) is a type of list of string
+              paths = objects.value["paths"]
             }
           }
 
@@ -413,22 +431,35 @@ resource "google_cloudbuild_trigger" "this" {
       dynamic "options" {
         for_each = build.value.options
         content {
-          disk_size_gb            = options.value["disk_size_gb"]
-          dynamic_substitutions   = options.value["dynamic_substitutions"]
-          env                     = options.value["env"]
-          log_streaming_option    = options.value["log_streaming_option"]
-          logging                 = options.value["logging"]
-          machine_type            = options.value["machine_type"]
+          # disk_size_gb - (optional) is a type of number
+          disk_size_gb = options.value["disk_size_gb"]
+          # dynamic_substitutions - (optional) is a type of bool
+          dynamic_substitutions = options.value["dynamic_substitutions"]
+          # env - (optional) is a type of list of string
+          env = options.value["env"]
+          # log_streaming_option - (optional) is a type of string
+          log_streaming_option = options.value["log_streaming_option"]
+          # logging - (optional) is a type of string
+          logging = options.value["logging"]
+          # machine_type - (optional) is a type of string
+          machine_type = options.value["machine_type"]
+          # requested_verify_option - (optional) is a type of string
           requested_verify_option = options.value["requested_verify_option"]
-          secret_env              = options.value["secret_env"]
-          source_provenance_hash  = options.value["source_provenance_hash"]
-          substitution_option     = options.value["substitution_option"]
-          worker_pool             = options.value["worker_pool"]
+          # secret_env - (optional) is a type of list of string
+          secret_env = options.value["secret_env"]
+          # source_provenance_hash - (optional) is a type of list of string
+          source_provenance_hash = options.value["source_provenance_hash"]
+          # substitution_option - (optional) is a type of string
+          substitution_option = options.value["substitution_option"]
+          # worker_pool - (optional) is a type of string
+          worker_pool = options.value["worker_pool"]
 
           dynamic "volumes" {
             for_each = options.value.volumes
             content {
+              # name - (optional) is a type of string
               name = volumes.value["name"]
+              # path - (optional) is a type of string
               path = volumes.value["path"]
             }
           }
@@ -439,8 +470,10 @@ resource "google_cloudbuild_trigger" "this" {
       dynamic "secret" {
         for_each = build.value.secret
         content {
+          # kms_key_name - (required) is a type of string
           kms_key_name = secret.value["kms_key_name"]
-          secret_env   = secret.value["secret_env"]
+          # secret_env - (optional) is a type of map of string
+          secret_env = secret.value["secret_env"]
         }
       }
 
@@ -451,23 +484,34 @@ resource "google_cloudbuild_trigger" "this" {
           dynamic "repo_source" {
             for_each = source.value.repo_source
             content {
-              branch_name   = repo_source.value["branch_name"]
-              commit_sha    = repo_source.value["commit_sha"]
-              dir           = repo_source.value["dir"]
-              invert_regex  = repo_source.value["invert_regex"]
-              project_id    = repo_source.value["project_id"]
-              repo_name     = repo_source.value["repo_name"]
+              # branch_name - (optional) is a type of string
+              branch_name = repo_source.value["branch_name"]
+              # commit_sha - (optional) is a type of string
+              commit_sha = repo_source.value["commit_sha"]
+              # dir - (optional) is a type of string
+              dir = repo_source.value["dir"]
+              # invert_regex - (optional) is a type of bool
+              invert_regex = repo_source.value["invert_regex"]
+              # project_id - (optional) is a type of string
+              project_id = repo_source.value["project_id"]
+              # repo_name - (required) is a type of string
+              repo_name = repo_source.value["repo_name"]
+              # substitutions - (optional) is a type of map of string
               substitutions = repo_source.value["substitutions"]
-              tag_name      = repo_source.value["tag_name"]
+              # tag_name - (optional) is a type of string
+              tag_name = repo_source.value["tag_name"]
             }
           }
 
           dynamic "storage_source" {
             for_each = source.value.storage_source
             content {
-              bucket     = storage_source.value["bucket"]
+              # bucket - (required) is a type of string
+              bucket = storage_source.value["bucket"]
+              # generation - (optional) is a type of string
               generation = storage_source.value["generation"]
-              object     = storage_source.value["object"]
+              # object - (required) is a type of string
+              object = storage_source.value["object"]
             }
           }
 
@@ -477,21 +521,33 @@ resource "google_cloudbuild_trigger" "this" {
       dynamic "step" {
         for_each = build.value.step
         content {
-          args       = step.value["args"]
-          dir        = step.value["dir"]
+          # args - (optional) is a type of list of string
+          args = step.value["args"]
+          # dir - (optional) is a type of string
+          dir = step.value["dir"]
+          # entrypoint - (optional) is a type of string
           entrypoint = step.value["entrypoint"]
-          env        = step.value["env"]
-          id         = step.value["id"]
-          name       = step.value["name"]
+          # env - (optional) is a type of list of string
+          env = step.value["env"]
+          # id - (optional) is a type of string
+          id = step.value["id"]
+          # name - (required) is a type of string
+          name = step.value["name"]
+          # secret_env - (optional) is a type of list of string
           secret_env = step.value["secret_env"]
-          timeout    = step.value["timeout"]
-          timing     = step.value["timing"]
-          wait_for   = step.value["wait_for"]
+          # timeout - (optional) is a type of string
+          timeout = step.value["timeout"]
+          # timing - (optional) is a type of string
+          timing = step.value["timing"]
+          # wait_for - (optional) is a type of list of string
+          wait_for = step.value["wait_for"]
 
           dynamic "volumes" {
             for_each = step.value.volumes
             content {
+              # name - (required) is a type of string
               name = volumes.value["name"]
+              # path - (required) is a type of string
               path = volumes.value["path"]
             }
           }
@@ -505,24 +561,32 @@ resource "google_cloudbuild_trigger" "this" {
   dynamic "github" {
     for_each = var.github
     content {
-      name  = github.value["name"]
+      # name - (optional) is a type of string
+      name = github.value["name"]
+      # owner - (optional) is a type of string
       owner = github.value["owner"]
 
       dynamic "pull_request" {
         for_each = github.value.pull_request
         content {
-          branch          = pull_request.value["branch"]
+          # branch - (required) is a type of string
+          branch = pull_request.value["branch"]
+          # comment_control - (optional) is a type of string
           comment_control = pull_request.value["comment_control"]
-          invert_regex    = pull_request.value["invert_regex"]
+          # invert_regex - (optional) is a type of bool
+          invert_regex = pull_request.value["invert_regex"]
         }
       }
 
       dynamic "push" {
         for_each = github.value.push
         content {
-          branch       = push.value["branch"]
+          # branch - (optional) is a type of string
+          branch = push.value["branch"]
+          # invert_regex - (optional) is a type of bool
           invert_regex = push.value["invert_regex"]
-          tag          = push.value["tag"]
+          # tag - (optional) is a type of string
+          tag = push.value["tag"]
         }
       }
 
@@ -532,8 +596,11 @@ resource "google_cloudbuild_trigger" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -541,13 +608,20 @@ resource "google_cloudbuild_trigger" "this" {
   dynamic "trigger_template" {
     for_each = var.trigger_template
     content {
-      branch_name  = trigger_template.value["branch_name"]
-      commit_sha   = trigger_template.value["commit_sha"]
-      dir          = trigger_template.value["dir"]
+      # branch_name - (optional) is a type of string
+      branch_name = trigger_template.value["branch_name"]
+      # commit_sha - (optional) is a type of string
+      commit_sha = trigger_template.value["commit_sha"]
+      # dir - (optional) is a type of string
+      dir = trigger_template.value["dir"]
+      # invert_regex - (optional) is a type of bool
       invert_regex = trigger_template.value["invert_regex"]
-      project_id   = trigger_template.value["project_id"]
-      repo_name    = trigger_template.value["repo_name"]
-      tag_name     = trigger_template.value["tag_name"]
+      # project_id - (optional) is a type of string
+      project_id = trigger_template.value["project_id"]
+      # repo_name - (optional) is a type of string
+      repo_name = trigger_template.value["repo_name"]
+      # tag_name - (optional) is a type of string
+      tag_name = trigger_template.value["tag_name"]
     }
   }
 

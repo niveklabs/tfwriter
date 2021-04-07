@@ -64,9 +64,12 @@ variable "fleet_arn" {
 
 ```terraform
 resource "aws_worklink_website_certificate_authority_association" "this" {
-  certificate  = var.certificate
+  # certificate - (required) is a type of string
+  certificate = var.certificate
+  # display_name - (optional) is a type of string
   display_name = var.display_name
-  fleet_arn    = var.fleet_arn
+  # fleet_arn - (required) is a type of string
+  fleet_arn = var.fleet_arn
 }
 ```
 

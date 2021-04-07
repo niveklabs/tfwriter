@@ -49,6 +49,7 @@ variable "external_non_container_database_id" {
 
 ```terraform
 data "oci_database_external_non_container_database" "this" {
+  # external_non_container_database_id - (required) is a type of string
   external_non_container_database_id = var.external_non_container_database_id
 }
 ```

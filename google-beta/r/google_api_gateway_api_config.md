@@ -148,12 +148,18 @@ variable "timeouts" {
 
 ```terraform
 resource "google_api_gateway_api_config" "this" {
-  api                  = var.api
-  api_config_id        = var.api_config_id
+  # api - (required) is a type of string
+  api = var.api
+  # api_config_id - (optional) is a type of string
+  api_config_id = var.api_config_id
+  # api_config_id_prefix - (optional) is a type of string
   api_config_id_prefix = var.api_config_id_prefix
-  display_name         = var.display_name
-  labels               = var.labels
-  project              = var.project
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "gateway_config" {
     for_each = var.gateway_config
@@ -162,6 +168,7 @@ resource "google_api_gateway_api_config" "this" {
       dynamic "backend_config" {
         for_each = gateway_config.value.backend_config
         content {
+          # google_service_account - (required) is a type of string
           google_service_account = backend_config.value["google_service_account"]
         }
       }
@@ -176,8 +183,10 @@ resource "google_api_gateway_api_config" "this" {
       dynamic "document" {
         for_each = openapi_documents.value.document
         content {
+          # contents - (required) is a type of string
           contents = document.value["contents"]
-          path     = document.value["path"]
+          # path - (required) is a type of string
+          path = document.value["path"]
         }
       }
 
@@ -187,8 +196,11 @@ resource "google_api_gateway_api_config" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

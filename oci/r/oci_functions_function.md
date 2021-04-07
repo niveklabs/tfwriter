@@ -128,21 +128,33 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_functions_function" "this" {
-  application_id     = var.application_id
-  config             = var.config
-  defined_tags       = var.defined_tags
-  display_name       = var.display_name
-  freeform_tags      = var.freeform_tags
-  image              = var.image
-  image_digest       = var.image_digest
-  memory_in_mbs      = var.memory_in_mbs
+  # application_id - (required) is a type of string
+  application_id = var.application_id
+  # config - (optional) is a type of map of string
+  config = var.config
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # image - (required) is a type of string
+  image = var.image
+  # image_digest - (optional) is a type of string
+  image_digest = var.image_digest
+  # memory_in_mbs - (required) is a type of string
+  memory_in_mbs = var.memory_in_mbs
+  # timeout_in_seconds - (optional) is a type of number
   timeout_in_seconds = var.timeout_in_seconds
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -202,36 +202,57 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_virtual_circuit" "this" {
-  bandwidth_shape_name      = var.bandwidth_shape_name
-  compartment_id            = var.compartment_id
-  customer_asn              = var.customer_asn
-  customer_bgp_asn          = var.customer_bgp_asn
-  defined_tags              = var.defined_tags
-  display_name              = var.display_name
-  freeform_tags             = var.freeform_tags
-  gateway_id                = var.gateway_id
-  provider_service_id       = var.provider_service_id
+  # bandwidth_shape_name - (optional) is a type of string
+  bandwidth_shape_name = var.bandwidth_shape_name
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # customer_asn - (optional) is a type of string
+  customer_asn = var.customer_asn
+  # customer_bgp_asn - (optional) is a type of number
+  customer_bgp_asn = var.customer_bgp_asn
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # gateway_id - (optional) is a type of string
+  gateway_id = var.gateway_id
+  # provider_service_id - (optional) is a type of string
+  provider_service_id = var.provider_service_id
+  # provider_service_key_name - (optional) is a type of string
   provider_service_key_name = var.provider_service_key_name
-  region                    = var.region
-  routing_policy            = var.routing_policy
-  type                      = var.type
+  # region - (optional) is a type of string
+  region = var.region
+  # routing_policy - (optional) is a type of list of string
+  routing_policy = var.routing_policy
+  # type - (required) is a type of string
+  type = var.type
 
   dynamic "cross_connect_mappings" {
     for_each = var.cross_connect_mappings
     content {
-      bgp_md5auth_key                         = cross_connect_mappings.value["bgp_md5auth_key"]
+      # bgp_md5auth_key - (optional) is a type of string
+      bgp_md5auth_key = cross_connect_mappings.value["bgp_md5auth_key"]
+      # cross_connect_or_cross_connect_group_id - (optional) is a type of string
       cross_connect_or_cross_connect_group_id = cross_connect_mappings.value["cross_connect_or_cross_connect_group_id"]
-      customer_bgp_peering_ip                 = cross_connect_mappings.value["customer_bgp_peering_ip"]
-      customer_bgp_peering_ipv6               = cross_connect_mappings.value["customer_bgp_peering_ipv6"]
-      oracle_bgp_peering_ip                   = cross_connect_mappings.value["oracle_bgp_peering_ip"]
-      oracle_bgp_peering_ipv6                 = cross_connect_mappings.value["oracle_bgp_peering_ipv6"]
-      vlan                                    = cross_connect_mappings.value["vlan"]
+      # customer_bgp_peering_ip - (optional) is a type of string
+      customer_bgp_peering_ip = cross_connect_mappings.value["customer_bgp_peering_ip"]
+      # customer_bgp_peering_ipv6 - (optional) is a type of string
+      customer_bgp_peering_ipv6 = cross_connect_mappings.value["customer_bgp_peering_ipv6"]
+      # oracle_bgp_peering_ip - (optional) is a type of string
+      oracle_bgp_peering_ip = cross_connect_mappings.value["oracle_bgp_peering_ip"]
+      # oracle_bgp_peering_ipv6 - (optional) is a type of string
+      oracle_bgp_peering_ipv6 = cross_connect_mappings.value["oracle_bgp_peering_ipv6"]
+      # vlan - (optional) is a type of number
+      vlan = cross_connect_mappings.value["vlan"]
     }
   }
 
   dynamic "public_prefixes" {
     for_each = var.public_prefixes
     content {
+      # cidr_block - (required) is a type of string
       cidr_block = public_prefixes.value["cidr_block"]
     }
   }
@@ -239,8 +260,11 @@ resource "oci_core_virtual_circuit" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

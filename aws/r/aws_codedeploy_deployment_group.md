@@ -321,17 +321,25 @@ variable "trigger_configuration" {
 
 ```terraform
 resource "aws_codedeploy_deployment_group" "this" {
-  app_name               = var.app_name
-  autoscaling_groups     = var.autoscaling_groups
+  # app_name - (required) is a type of string
+  app_name = var.app_name
+  # autoscaling_groups - (optional) is a type of set of string
+  autoscaling_groups = var.autoscaling_groups
+  # deployment_config_name - (optional) is a type of string
   deployment_config_name = var.deployment_config_name
-  deployment_group_name  = var.deployment_group_name
-  service_role_arn       = var.service_role_arn
+  # deployment_group_name - (required) is a type of string
+  deployment_group_name = var.deployment_group_name
+  # service_role_arn - (required) is a type of string
+  service_role_arn = var.service_role_arn
 
   dynamic "alarm_configuration" {
     for_each = var.alarm_configuration
     content {
-      alarms                    = alarm_configuration.value["alarms"]
-      enabled                   = alarm_configuration.value["enabled"]
+      # alarms - (optional) is a type of set of string
+      alarms = alarm_configuration.value["alarms"]
+      # enabled - (optional) is a type of bool
+      enabled = alarm_configuration.value["enabled"]
+      # ignore_poll_alarm_failure - (optional) is a type of bool
       ignore_poll_alarm_failure = alarm_configuration.value["ignore_poll_alarm_failure"]
     }
   }
@@ -339,8 +347,10 @@ resource "aws_codedeploy_deployment_group" "this" {
   dynamic "auto_rollback_configuration" {
     for_each = var.auto_rollback_configuration
     content {
+      # enabled - (optional) is a type of bool
       enabled = auto_rollback_configuration.value["enabled"]
-      events  = auto_rollback_configuration.value["events"]
+      # events - (optional) is a type of set of string
+      events = auto_rollback_configuration.value["events"]
     }
   }
 
@@ -351,7 +361,9 @@ resource "aws_codedeploy_deployment_group" "this" {
       dynamic "deployment_ready_option" {
         for_each = blue_green_deployment_config.value.deployment_ready_option
         content {
-          action_on_timeout    = deployment_ready_option.value["action_on_timeout"]
+          # action_on_timeout - (optional) is a type of string
+          action_on_timeout = deployment_ready_option.value["action_on_timeout"]
+          # wait_time_in_minutes - (optional) is a type of number
           wait_time_in_minutes = deployment_ready_option.value["wait_time_in_minutes"]
         }
       }
@@ -359,6 +371,7 @@ resource "aws_codedeploy_deployment_group" "this" {
       dynamic "green_fleet_provisioning_option" {
         for_each = blue_green_deployment_config.value.green_fleet_provisioning_option
         content {
+          # action - (optional) is a type of string
           action = green_fleet_provisioning_option.value["action"]
         }
       }
@@ -366,7 +379,9 @@ resource "aws_codedeploy_deployment_group" "this" {
       dynamic "terminate_blue_instances_on_deployment_success" {
         for_each = blue_green_deployment_config.value.terminate_blue_instances_on_deployment_success
         content {
-          action                           = terminate_blue_instances_on_deployment_success.value["action"]
+          # action - (optional) is a type of string
+          action = terminate_blue_instances_on_deployment_success.value["action"]
+          # termination_wait_time_in_minutes - (optional) is a type of number
           termination_wait_time_in_minutes = terminate_blue_instances_on_deployment_success.value["termination_wait_time_in_minutes"]
         }
       }
@@ -377,16 +392,21 @@ resource "aws_codedeploy_deployment_group" "this" {
   dynamic "deployment_style" {
     for_each = var.deployment_style
     content {
+      # deployment_option - (optional) is a type of string
       deployment_option = deployment_style.value["deployment_option"]
-      deployment_type   = deployment_style.value["deployment_type"]
+      # deployment_type - (optional) is a type of string
+      deployment_type = deployment_style.value["deployment_type"]
     }
   }
 
   dynamic "ec2_tag_filter" {
     for_each = var.ec2_tag_filter
     content {
-      key   = ec2_tag_filter.value["key"]
-      type  = ec2_tag_filter.value["type"]
+      # key - (optional) is a type of string
+      key = ec2_tag_filter.value["key"]
+      # type - (optional) is a type of string
+      type = ec2_tag_filter.value["type"]
+      # value - (optional) is a type of string
       value = ec2_tag_filter.value["value"]
     }
   }
@@ -398,8 +418,11 @@ resource "aws_codedeploy_deployment_group" "this" {
       dynamic "ec2_tag_filter" {
         for_each = ec2_tag_set.value.ec2_tag_filter
         content {
-          key   = ec2_tag_filter.value["key"]
-          type  = ec2_tag_filter.value["type"]
+          # key - (optional) is a type of string
+          key = ec2_tag_filter.value["key"]
+          # type - (optional) is a type of string
+          type = ec2_tag_filter.value["type"]
+          # value - (optional) is a type of string
           value = ec2_tag_filter.value["value"]
         }
       }
@@ -410,7 +433,9 @@ resource "aws_codedeploy_deployment_group" "this" {
   dynamic "ecs_service" {
     for_each = var.ecs_service
     content {
+      # cluster_name - (required) is a type of string
       cluster_name = ecs_service.value["cluster_name"]
+      # service_name - (required) is a type of string
       service_name = ecs_service.value["service_name"]
     }
   }
@@ -422,6 +447,7 @@ resource "aws_codedeploy_deployment_group" "this" {
       dynamic "elb_info" {
         for_each = load_balancer_info.value.elb_info
         content {
+          # name - (optional) is a type of string
           name = elb_info.value["name"]
         }
       }
@@ -429,6 +455,7 @@ resource "aws_codedeploy_deployment_group" "this" {
       dynamic "target_group_info" {
         for_each = load_balancer_info.value.target_group_info
         content {
+          # name - (optional) is a type of string
           name = target_group_info.value["name"]
         }
       }
@@ -440,6 +467,7 @@ resource "aws_codedeploy_deployment_group" "this" {
           dynamic "prod_traffic_route" {
             for_each = target_group_pair_info.value.prod_traffic_route
             content {
+              # listener_arns - (required) is a type of set of string
               listener_arns = prod_traffic_route.value["listener_arns"]
             }
           }
@@ -447,6 +475,7 @@ resource "aws_codedeploy_deployment_group" "this" {
           dynamic "target_group" {
             for_each = target_group_pair_info.value.target_group
             content {
+              # name - (required) is a type of string
               name = target_group.value["name"]
             }
           }
@@ -454,6 +483,7 @@ resource "aws_codedeploy_deployment_group" "this" {
           dynamic "test_traffic_route" {
             for_each = target_group_pair_info.value.test_traffic_route
             content {
+              # listener_arns - (required) is a type of set of string
               listener_arns = test_traffic_route.value["listener_arns"]
             }
           }
@@ -467,8 +497,11 @@ resource "aws_codedeploy_deployment_group" "this" {
   dynamic "on_premises_instance_tag_filter" {
     for_each = var.on_premises_instance_tag_filter
     content {
-      key   = on_premises_instance_tag_filter.value["key"]
-      type  = on_premises_instance_tag_filter.value["type"]
+      # key - (optional) is a type of string
+      key = on_premises_instance_tag_filter.value["key"]
+      # type - (optional) is a type of string
+      type = on_premises_instance_tag_filter.value["type"]
+      # value - (optional) is a type of string
       value = on_premises_instance_tag_filter.value["value"]
     }
   }
@@ -476,8 +509,11 @@ resource "aws_codedeploy_deployment_group" "this" {
   dynamic "trigger_configuration" {
     for_each = var.trigger_configuration
     content {
-      trigger_events     = trigger_configuration.value["trigger_events"]
-      trigger_name       = trigger_configuration.value["trigger_name"]
+      # trigger_events - (required) is a type of set of string
+      trigger_events = trigger_configuration.value["trigger_events"]
+      # trigger_name - (required) is a type of string
+      trigger_name = trigger_configuration.value["trigger_name"]
+      # trigger_target_arn - (required) is a type of string
       trigger_target_arn = trigger_configuration.value["trigger_target_arn"]
     }
   }

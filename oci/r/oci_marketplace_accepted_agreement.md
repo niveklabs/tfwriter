@@ -119,20 +119,31 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_marketplace_accepted_agreement" "this" {
-  agreement_id    = var.agreement_id
-  compartment_id  = var.compartment_id
-  defined_tags    = var.defined_tags
-  display_name    = var.display_name
-  freeform_tags   = var.freeform_tags
-  listing_id      = var.listing_id
+  # agreement_id - (required) is a type of string
+  agreement_id = var.agreement_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # listing_id - (required) is a type of string
+  listing_id = var.listing_id
+  # package_version - (required) is a type of string
   package_version = var.package_version
-  signature       = var.signature
+  # signature - (required) is a type of string
+  signature = var.signature
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

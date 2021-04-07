@@ -82,10 +82,15 @@ variable "security_enabled" {
 
 ```terraform
 data "azuread_group" "this" {
-  display_name     = var.display_name
-  mail_enabled     = var.mail_enabled
-  name             = var.name
-  object_id        = var.object_id
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # mail_enabled - (optional) is a type of bool
+  mail_enabled = var.mail_enabled
+  # name - (optional) is a type of string
+  name = var.name
+  # object_id - (optional) is a type of string
+  object_id = var.object_id
+  # security_enabled - (optional) is a type of bool
   security_enabled = var.security_enabled
 }
 ```

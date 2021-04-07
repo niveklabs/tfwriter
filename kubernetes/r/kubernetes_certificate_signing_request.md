@@ -108,30 +108,39 @@ variable "timeouts" {
 
 ```terraform
 resource "kubernetes_certificate_signing_request" "this" {
+  # auto_approve - (optional) is a type of bool
   auto_approve = var.auto_approve
 
   dynamic "metadata" {
     for_each = var.metadata
     content {
-      annotations   = metadata.value["annotations"]
+      # annotations - (optional) is a type of map of string
+      annotations = metadata.value["annotations"]
+      # generate_name - (optional) is a type of string
       generate_name = metadata.value["generate_name"]
-      labels        = metadata.value["labels"]
-      name          = metadata.value["name"]
+      # labels - (optional) is a type of map of string
+      labels = metadata.value["labels"]
+      # name - (optional) is a type of string
+      name = metadata.value["name"]
     }
   }
 
   dynamic "spec" {
     for_each = var.spec
     content {
-      request     = spec.value["request"]
+      # request - (required) is a type of string
+      request = spec.value["request"]
+      # signer_name - (optional) is a type of string
       signer_name = spec.value["signer_name"]
-      usages      = spec.value["usages"]
+      # usages - (optional) is a type of set of string
+      usages = spec.value["usages"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

@@ -83,15 +83,21 @@ variable "filter" {
 
 ```terraform
 data "oci_core_dedicated_vm_host_instance_shapes" "this" {
-  availability_domain     = var.availability_domain
-  compartment_id          = var.compartment_id
+  # availability_domain - (optional) is a type of string
+  availability_domain = var.availability_domain
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # dedicated_vm_host_shape - (optional) is a type of string
   dedicated_vm_host_shape = var.dedicated_vm_host_shape
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

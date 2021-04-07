@@ -115,24 +115,38 @@ variable "health_check" {
 
 ```terraform
 resource "opc_lbaas_server_pool" "this" {
-  enabled       = var.enabled
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # load_balancer - (required) is a type of string
   load_balancer = var.load_balancer
-  name          = var.name
-  servers       = var.servers
-  tags          = var.tags
-  vnic_set      = var.vnic_set
+  # name - (required) is a type of string
+  name = var.name
+  # servers - (required) is a type of set of string
+  servers = var.servers
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # vnic_set - (optional) is a type of string
+  vnic_set = var.vnic_set
 
   dynamic "health_check" {
     for_each = var.health_check
     content {
+      # accepted_return_codes - (optional) is a type of list of string
       accepted_return_codes = health_check.value["accepted_return_codes"]
-      enabled               = health_check.value["enabled"]
-      healthy_threshold     = health_check.value["healthy_threshold"]
-      interval              = health_check.value["interval"]
-      path                  = health_check.value["path"]
-      timeout               = health_check.value["timeout"]
-      type                  = health_check.value["type"]
-      unhealthy_threshold   = health_check.value["unhealthy_threshold"]
+      # enabled - (optional) is a type of bool
+      enabled = health_check.value["enabled"]
+      # healthy_threshold - (optional) is a type of number
+      healthy_threshold = health_check.value["healthy_threshold"]
+      # interval - (optional) is a type of number
+      interval = health_check.value["interval"]
+      # path - (optional) is a type of string
+      path = health_check.value["path"]
+      # timeout - (optional) is a type of number
+      timeout = health_check.value["timeout"]
+      # type - (optional) is a type of string
+      type = health_check.value["type"]
+      # unhealthy_threshold - (optional) is a type of number
+      unhealthy_threshold = health_check.value["unhealthy_threshold"]
     }
   }
 

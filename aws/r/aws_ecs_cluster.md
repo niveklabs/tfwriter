@@ -99,23 +99,31 @@ variable "setting" {
 
 ```terraform
 resource "aws_ecs_cluster" "this" {
+  # capacity_providers - (optional) is a type of set of string
   capacity_providers = var.capacity_providers
-  name               = var.name
-  tags               = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "default_capacity_provider_strategy" {
     for_each = var.default_capacity_provider_strategy
     content {
-      base              = default_capacity_provider_strategy.value["base"]
+      # base - (optional) is a type of number
+      base = default_capacity_provider_strategy.value["base"]
+      # capacity_provider - (required) is a type of string
       capacity_provider = default_capacity_provider_strategy.value["capacity_provider"]
-      weight            = default_capacity_provider_strategy.value["weight"]
+      # weight - (optional) is a type of number
+      weight = default_capacity_provider_strategy.value["weight"]
     }
   }
 
   dynamic "setting" {
     for_each = var.setting
     content {
-      name  = setting.value["name"]
+      # name - (required) is a type of string
+      name = setting.value["name"]
+      # value - (required) is a type of string
       value = setting.value["value"]
     }
   }

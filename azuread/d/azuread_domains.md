@@ -66,9 +66,12 @@ variable "only_initial" {
 
 ```terraform
 data "azuread_domains" "this" {
+  # include_unverified - (optional) is a type of bool
   include_unverified = var.include_unverified
-  only_default       = var.only_default
-  only_initial       = var.only_initial
+  # only_default - (optional) is a type of bool
+  only_default = var.only_default
+  # only_initial - (optional) is a type of bool
+  only_initial = var.only_initial
 }
 ```
 

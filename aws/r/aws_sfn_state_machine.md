@@ -97,18 +97,26 @@ variable "logging_configuration" {
 
 ```terraform
 resource "aws_sfn_state_machine" "this" {
+  # definition - (required) is a type of string
   definition = var.definition
-  name       = var.name
-  role_arn   = var.role_arn
-  tags       = var.tags
-  type       = var.type
+  # name - (required) is a type of string
+  name = var.name
+  # role_arn - (required) is a type of string
+  role_arn = var.role_arn
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "logging_configuration" {
     for_each = var.logging_configuration
     content {
+      # include_execution_data - (optional) is a type of bool
       include_execution_data = logging_configuration.value["include_execution_data"]
-      level                  = logging_configuration.value["level"]
-      log_destination        = logging_configuration.value["log_destination"]
+      # level - (optional) is a type of string
+      level = logging_configuration.value["level"]
+      # log_destination - (optional) is a type of string
+      log_destination = logging_configuration.value["log_destination"]
     }
   }
 

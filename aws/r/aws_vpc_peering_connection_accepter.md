@@ -101,15 +101,21 @@ variable "requester" {
 
 ```terraform
 resource "aws_vpc_peering_connection_accepter" "this" {
-  auto_accept               = var.auto_accept
-  tags                      = var.tags
+  # auto_accept - (optional) is a type of bool
+  auto_accept = var.auto_accept
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_peering_connection_id - (required) is a type of string
   vpc_peering_connection_id = var.vpc_peering_connection_id
 
   dynamic "accepter" {
     for_each = var.accepter
     content {
+      # allow_classic_link_to_remote_vpc - (optional) is a type of bool
       allow_classic_link_to_remote_vpc = accepter.value["allow_classic_link_to_remote_vpc"]
-      allow_remote_vpc_dns_resolution  = accepter.value["allow_remote_vpc_dns_resolution"]
+      # allow_remote_vpc_dns_resolution - (optional) is a type of bool
+      allow_remote_vpc_dns_resolution = accepter.value["allow_remote_vpc_dns_resolution"]
+      # allow_vpc_to_remote_classic_link - (optional) is a type of bool
       allow_vpc_to_remote_classic_link = accepter.value["allow_vpc_to_remote_classic_link"]
     }
   }
@@ -117,8 +123,11 @@ resource "aws_vpc_peering_connection_accepter" "this" {
   dynamic "requester" {
     for_each = var.requester
     content {
+      # allow_classic_link_to_remote_vpc - (optional) is a type of bool
       allow_classic_link_to_remote_vpc = requester.value["allow_classic_link_to_remote_vpc"]
-      allow_remote_vpc_dns_resolution  = requester.value["allow_remote_vpc_dns_resolution"]
+      # allow_remote_vpc_dns_resolution - (optional) is a type of bool
+      allow_remote_vpc_dns_resolution = requester.value["allow_remote_vpc_dns_resolution"]
+      # allow_vpc_to_remote_classic_link - (optional) is a type of bool
       allow_vpc_to_remote_classic_link = requester.value["allow_vpc_to_remote_classic_link"]
     }
   }

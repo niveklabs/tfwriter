@@ -76,14 +76,19 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_management_dashboard_management_dashboards_import" "this" {
-  import_details      = var.import_details
+  # import_details - (optional) is a type of string
+  import_details = var.import_details
+  # import_details_file - (optional) is a type of string
   import_details_file = var.import_details_file
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

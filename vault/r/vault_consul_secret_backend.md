@@ -120,16 +120,26 @@ variable "token" {
 
 ```terraform
 resource "vault_consul_secret_backend" "this" {
-  address                   = var.address
-  ca_cert                   = var.ca_cert
-  client_cert               = var.client_cert
-  client_key                = var.client_key
+  # address - (required) is a type of string
+  address = var.address
+  # ca_cert - (optional) is a type of string
+  ca_cert = var.ca_cert
+  # client_cert - (optional) is a type of string
+  client_cert = var.client_cert
+  # client_key - (optional) is a type of string
+  client_key = var.client_key
+  # default_lease_ttl_seconds - (optional) is a type of number
   default_lease_ttl_seconds = var.default_lease_ttl_seconds
-  description               = var.description
-  max_lease_ttl_seconds     = var.max_lease_ttl_seconds
-  path                      = var.path
-  scheme                    = var.scheme
-  token                     = var.token
+  # description - (optional) is a type of string
+  description = var.description
+  # max_lease_ttl_seconds - (optional) is a type of number
+  max_lease_ttl_seconds = var.max_lease_ttl_seconds
+  # path - (optional) is a type of string
+  path = var.path
+  # scheme - (optional) is a type of string
+  scheme = var.scheme
+  # token - (required) is a type of string
+  token = var.token
 }
 ```
 

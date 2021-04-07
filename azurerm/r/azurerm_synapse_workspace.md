@@ -198,46 +198,71 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_synapse_workspace" "this" {
-  aad_admin                            = var.aad_admin
-  location                             = var.location
-  managed_resource_group_name          = var.managed_resource_group_name
-  managed_virtual_network_enabled      = var.managed_virtual_network_enabled
-  name                                 = var.name
-  resource_group_name                  = var.resource_group_name
-  sql_administrator_login              = var.sql_administrator_login
-  sql_administrator_login_password     = var.sql_administrator_login_password
-  sql_identity_control_enabled         = var.sql_identity_control_enabled
+  # aad_admin - (optional) is a type of list of object
+  aad_admin = var.aad_admin
+  # location - (required) is a type of string
+  location = var.location
+  # managed_resource_group_name - (optional) is a type of string
+  managed_resource_group_name = var.managed_resource_group_name
+  # managed_virtual_network_enabled - (optional) is a type of bool
+  managed_virtual_network_enabled = var.managed_virtual_network_enabled
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # sql_administrator_login - (required) is a type of string
+  sql_administrator_login = var.sql_administrator_login
+  # sql_administrator_login_password - (required) is a type of string
+  sql_administrator_login_password = var.sql_administrator_login_password
+  # sql_identity_control_enabled - (optional) is a type of bool
+  sql_identity_control_enabled = var.sql_identity_control_enabled
+  # storage_data_lake_gen2_filesystem_id - (required) is a type of string
   storage_data_lake_gen2_filesystem_id = var.storage_data_lake_gen2_filesystem_id
-  tags                                 = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "azure_devops_repo" {
     for_each = var.azure_devops_repo
     content {
-      account_name    = azure_devops_repo.value["account_name"]
-      branch_name     = azure_devops_repo.value["branch_name"]
-      project_name    = azure_devops_repo.value["project_name"]
+      # account_name - (required) is a type of string
+      account_name = azure_devops_repo.value["account_name"]
+      # branch_name - (required) is a type of string
+      branch_name = azure_devops_repo.value["branch_name"]
+      # project_name - (required) is a type of string
+      project_name = azure_devops_repo.value["project_name"]
+      # repository_name - (required) is a type of string
       repository_name = azure_devops_repo.value["repository_name"]
-      root_folder     = azure_devops_repo.value["root_folder"]
+      # root_folder - (required) is a type of string
+      root_folder = azure_devops_repo.value["root_folder"]
     }
   }
 
   dynamic "github_repo" {
     for_each = var.github_repo
     content {
-      account_name    = github_repo.value["account_name"]
-      branch_name     = github_repo.value["branch_name"]
-      git_url         = github_repo.value["git_url"]
+      # account_name - (required) is a type of string
+      account_name = github_repo.value["account_name"]
+      # branch_name - (required) is a type of string
+      branch_name = github_repo.value["branch_name"]
+      # git_url - (optional) is a type of string
+      git_url = github_repo.value["git_url"]
+      # repository_name - (required) is a type of string
       repository_name = github_repo.value["repository_name"]
-      root_folder     = github_repo.value["root_folder"]
+      # root_folder - (required) is a type of string
+      root_folder = github_repo.value["root_folder"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

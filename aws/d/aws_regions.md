@@ -66,12 +66,15 @@ variable "filter" {
 
 ```terraform
 data "aws_regions" "this" {
+  # all_regions - (optional) is a type of bool
   all_regions = var.all_regions
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

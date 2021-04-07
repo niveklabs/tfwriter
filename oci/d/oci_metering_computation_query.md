@@ -49,6 +49,7 @@ variable "query_id" {
 
 ```terraform
 data "oci_metering_computation_query" "this" {
+  # query_id - (required) is a type of string
   query_id = var.query_id
 }
 ```

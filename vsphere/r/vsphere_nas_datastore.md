@@ -126,17 +126,28 @@ variable "type" {
 
 ```terraform
 resource "vsphere_nas_datastore" "this" {
-  access_mode          = var.access_mode
-  custom_attributes    = var.custom_attributes
+  # access_mode - (optional) is a type of string
+  access_mode = var.access_mode
+  # custom_attributes - (optional) is a type of map of string
+  custom_attributes = var.custom_attributes
+  # datastore_cluster_id - (optional) is a type of string
   datastore_cluster_id = var.datastore_cluster_id
-  folder               = var.folder
-  host_system_ids      = var.host_system_ids
-  name                 = var.name
-  remote_hosts         = var.remote_hosts
-  remote_path          = var.remote_path
-  security_type        = var.security_type
-  tags                 = var.tags
-  type                 = var.type
+  # folder - (optional) is a type of string
+  folder = var.folder
+  # host_system_ids - (required) is a type of set of string
+  host_system_ids = var.host_system_ids
+  # name - (required) is a type of string
+  name = var.name
+  # remote_hosts - (required) is a type of list of string
+  remote_hosts = var.remote_hosts
+  # remote_path - (required) is a type of string
+  remote_path = var.remote_path
+  # security_type - (optional) is a type of string
+  security_type = var.security_type
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

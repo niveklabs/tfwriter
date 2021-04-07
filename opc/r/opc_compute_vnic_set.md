@@ -81,10 +81,15 @@ variable "virtual_nics" {
 
 ```terraform
 resource "opc_compute_vnic_set" "this" {
+  # applied_acls - (optional) is a type of list of string
   applied_acls = var.applied_acls
-  description  = var.description
-  name         = var.name
-  tags         = var.tags
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of list of string
+  tags = var.tags
+  # virtual_nics - (optional) is a type of list of string
   virtual_nics = var.virtual_nics
 }
 ```

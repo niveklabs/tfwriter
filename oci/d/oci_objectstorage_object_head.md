@@ -63,9 +63,12 @@ variable "object" {
 
 ```terraform
 data "oci_objectstorage_object_head" "this" {
-  bucket    = var.bucket
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # namespace - (required) is a type of string
   namespace = var.namespace
-  object    = var.object
+  # object - (required) is a type of string
+  object = var.object
 }
 ```
 

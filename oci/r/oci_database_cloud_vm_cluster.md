@@ -211,32 +211,55 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_database_cloud_vm_cluster" "this" {
-  backup_network_nsg_ids          = var.backup_network_nsg_ids
-  backup_subnet_id                = var.backup_subnet_id
+  # backup_network_nsg_ids - (optional) is a type of set of string
+  backup_network_nsg_ids = var.backup_network_nsg_ids
+  # backup_subnet_id - (required) is a type of string
+  backup_subnet_id = var.backup_subnet_id
+  # cloud_exadata_infrastructure_id - (required) is a type of string
   cloud_exadata_infrastructure_id = var.cloud_exadata_infrastructure_id
-  cluster_name                    = var.cluster_name
-  compartment_id                  = var.compartment_id
-  cpu_core_count                  = var.cpu_core_count
-  data_storage_percentage         = var.data_storage_percentage
-  defined_tags                    = var.defined_tags
-  display_name                    = var.display_name
-  domain                          = var.domain
-  freeform_tags                   = var.freeform_tags
-  gi_version                      = var.gi_version
-  hostname                        = var.hostname
-  is_local_backup_enabled         = var.is_local_backup_enabled
-  is_sparse_diskgroup_enabled     = var.is_sparse_diskgroup_enabled
-  license_model                   = var.license_model
-  nsg_ids                         = var.nsg_ids
-  ssh_public_keys                 = var.ssh_public_keys
-  subnet_id                       = var.subnet_id
-  time_zone                       = var.time_zone
+  # cluster_name - (optional) is a type of string
+  cluster_name = var.cluster_name
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # cpu_core_count - (required) is a type of number
+  cpu_core_count = var.cpu_core_count
+  # data_storage_percentage - (optional) is a type of number
+  data_storage_percentage = var.data_storage_percentage
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # gi_version - (required) is a type of string
+  gi_version = var.gi_version
+  # hostname - (required) is a type of string
+  hostname = var.hostname
+  # is_local_backup_enabled - (optional) is a type of bool
+  is_local_backup_enabled = var.is_local_backup_enabled
+  # is_sparse_diskgroup_enabled - (optional) is a type of bool
+  is_sparse_diskgroup_enabled = var.is_sparse_diskgroup_enabled
+  # license_model - (optional) is a type of string
+  license_model = var.license_model
+  # nsg_ids - (optional) is a type of set of string
+  nsg_ids = var.nsg_ids
+  # ssh_public_keys - (required) is a type of list of string
+  ssh_public_keys = var.ssh_public_keys
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
+  # time_zone - (optional) is a type of string
+  time_zone = var.time_zone
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

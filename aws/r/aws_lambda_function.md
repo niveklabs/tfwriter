@@ -308,30 +308,51 @@ variable "vpc_config" {
 
 ```terraform
 resource "aws_lambda_function" "this" {
-  code_signing_config_arn        = var.code_signing_config_arn
-  description                    = var.description
-  filename                       = var.filename
-  function_name                  = var.function_name
-  handler                        = var.handler
-  image_uri                      = var.image_uri
-  kms_key_arn                    = var.kms_key_arn
-  layers                         = var.layers
-  memory_size                    = var.memory_size
-  package_type                   = var.package_type
-  publish                        = var.publish
+  # code_signing_config_arn - (optional) is a type of string
+  code_signing_config_arn = var.code_signing_config_arn
+  # description - (optional) is a type of string
+  description = var.description
+  # filename - (optional) is a type of string
+  filename = var.filename
+  # function_name - (required) is a type of string
+  function_name = var.function_name
+  # handler - (optional) is a type of string
+  handler = var.handler
+  # image_uri - (optional) is a type of string
+  image_uri = var.image_uri
+  # kms_key_arn - (optional) is a type of string
+  kms_key_arn = var.kms_key_arn
+  # layers - (optional) is a type of list of string
+  layers = var.layers
+  # memory_size - (optional) is a type of number
+  memory_size = var.memory_size
+  # package_type - (optional) is a type of string
+  package_type = var.package_type
+  # publish - (optional) is a type of bool
+  publish = var.publish
+  # reserved_concurrent_executions - (optional) is a type of number
   reserved_concurrent_executions = var.reserved_concurrent_executions
-  role                           = var.role
-  runtime                        = var.runtime
-  s3_bucket                      = var.s3_bucket
-  s3_key                         = var.s3_key
-  s3_object_version              = var.s3_object_version
-  source_code_hash               = var.source_code_hash
-  tags                           = var.tags
-  timeout                        = var.timeout
+  # role - (required) is a type of string
+  role = var.role
+  # runtime - (optional) is a type of string
+  runtime = var.runtime
+  # s3_bucket - (optional) is a type of string
+  s3_bucket = var.s3_bucket
+  # s3_key - (optional) is a type of string
+  s3_key = var.s3_key
+  # s3_object_version - (optional) is a type of string
+  s3_object_version = var.s3_object_version
+  # source_code_hash - (optional) is a type of string
+  source_code_hash = var.source_code_hash
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
 
   dynamic "dead_letter_config" {
     for_each = var.dead_letter_config
     content {
+      # target_arn - (required) is a type of string
       target_arn = dead_letter_config.value["target_arn"]
     }
   }
@@ -339,6 +360,7 @@ resource "aws_lambda_function" "this" {
   dynamic "environment" {
     for_each = var.environment
     content {
+      # variables - (optional) is a type of map of string
       variables = environment.value["variables"]
     }
   }
@@ -346,7 +368,9 @@ resource "aws_lambda_function" "this" {
   dynamic "file_system_config" {
     for_each = var.file_system_config
     content {
-      arn              = file_system_config.value["arn"]
+      # arn - (required) is a type of string
+      arn = file_system_config.value["arn"]
+      # local_mount_path - (required) is a type of string
       local_mount_path = file_system_config.value["local_mount_path"]
     }
   }
@@ -354,8 +378,11 @@ resource "aws_lambda_function" "this" {
   dynamic "image_config" {
     for_each = var.image_config
     content {
-      command           = image_config.value["command"]
-      entry_point       = image_config.value["entry_point"]
+      # command - (optional) is a type of list of string
+      command = image_config.value["command"]
+      # entry_point - (optional) is a type of list of string
+      entry_point = image_config.value["entry_point"]
+      # working_directory - (optional) is a type of string
       working_directory = image_config.value["working_directory"]
     }
   }
@@ -363,6 +390,7 @@ resource "aws_lambda_function" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }
@@ -370,6 +398,7 @@ resource "aws_lambda_function" "this" {
   dynamic "tracing_config" {
     for_each = var.tracing_config
     content {
+      # mode - (required) is a type of string
       mode = tracing_config.value["mode"]
     }
   }
@@ -377,8 +406,10 @@ resource "aws_lambda_function" "this" {
   dynamic "vpc_config" {
     for_each = var.vpc_config
     content {
+      # security_group_ids - (required) is a type of set of string
       security_group_ids = vpc_config.value["security_group_ids"]
-      subnet_ids         = vpc_config.value["subnet_ids"]
+      # subnet_ids - (required) is a type of set of string
+      subnet_ids = vpc_config.value["subnet_ids"]
     }
   }
 

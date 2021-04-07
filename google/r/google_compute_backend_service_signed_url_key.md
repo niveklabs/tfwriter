@@ -87,15 +87,21 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_backend_service_signed_url_key" "this" {
+  # backend_service - (required) is a type of string
   backend_service = var.backend_service
-  key_value       = var.key_value
-  name            = var.name
-  project         = var.project
+  # key_value - (required) is a type of string
+  key_value = var.key_value
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

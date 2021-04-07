@@ -138,22 +138,35 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_vpc_endpoint" "this" {
-  auto_accept         = var.auto_accept
-  policy              = var.policy
+  # auto_accept - (optional) is a type of bool
+  auto_accept = var.auto_accept
+  # policy - (optional) is a type of string
+  policy = var.policy
+  # private_dns_enabled - (optional) is a type of bool
   private_dns_enabled = var.private_dns_enabled
-  route_table_ids     = var.route_table_ids
-  security_group_ids  = var.security_group_ids
-  service_name        = var.service_name
-  subnet_ids          = var.subnet_ids
-  tags                = var.tags
-  vpc_endpoint_type   = var.vpc_endpoint_type
-  vpc_id              = var.vpc_id
+  # route_table_ids - (optional) is a type of set of string
+  route_table_ids = var.route_table_ids
+  # security_group_ids - (optional) is a type of set of string
+  security_group_ids = var.security_group_ids
+  # service_name - (required) is a type of string
+  service_name = var.service_name
+  # subnet_ids - (optional) is a type of set of string
+  subnet_ids = var.subnet_ids
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_endpoint_type - (optional) is a type of string
+  vpc_endpoint_type = var.vpc_endpoint_type
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

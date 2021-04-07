@@ -107,18 +107,27 @@ variable "filter" {
 
 ```terraform
 data "oci_logging_logs" "this" {
-  display_name    = var.display_name
-  log_group_id    = var.log_group_id
-  log_type        = var.log_type
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # log_group_id - (required) is a type of string
+  log_group_id = var.log_group_id
+  # log_type - (optional) is a type of string
+  log_type = var.log_type
+  # source_resource - (optional) is a type of string
   source_resource = var.source_resource
-  source_service  = var.source_service
-  state           = var.state
+  # source_service - (optional) is a type of string
+  source_service = var.source_service
+  # state - (optional) is a type of string
+  state = var.state
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

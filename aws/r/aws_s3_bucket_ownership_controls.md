@@ -62,11 +62,13 @@ variable "rule" {
 
 ```terraform
 resource "aws_s3_bucket_ownership_controls" "this" {
+  # bucket - (required) is a type of string
   bucket = var.bucket
 
   dynamic "rule" {
     for_each = var.rule
     content {
+      # object_ownership - (required) is a type of string
       object_ownership = rule.value["object_ownership"]
     }
   }

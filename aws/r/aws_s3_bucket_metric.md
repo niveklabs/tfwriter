@@ -72,14 +72,18 @@ variable "filter" {
 
 ```terraform
 resource "aws_s3_bucket_metric" "this" {
+  # bucket - (required) is a type of string
   bucket = var.bucket
-  name   = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "filter" {
     for_each = var.filter
     content {
+      # prefix - (optional) is a type of string
       prefix = filter.value["prefix"]
-      tags   = filter.value["tags"]
+      # tags - (optional) is a type of map of string
+      tags = filter.value["tags"]
     }
   }
 

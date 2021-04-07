@@ -105,11 +105,13 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_identity_authentication_policy" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
 
   dynamic "network_policy" {
     for_each = var.network_policy
     content {
+      # network_source_ids - (optional) is a type of list of string
       network_source_ids = network_policy.value["network_source_ids"]
     }
   }
@@ -117,20 +119,29 @@ resource "oci_identity_authentication_policy" "this" {
   dynamic "password_policy" {
     for_each = var.password_policy
     content {
+      # is_lowercase_characters_required - (optional) is a type of bool
       is_lowercase_characters_required = password_policy.value["is_lowercase_characters_required"]
-      is_numeric_characters_required   = password_policy.value["is_numeric_characters_required"]
-      is_special_characters_required   = password_policy.value["is_special_characters_required"]
+      # is_numeric_characters_required - (optional) is a type of bool
+      is_numeric_characters_required = password_policy.value["is_numeric_characters_required"]
+      # is_special_characters_required - (optional) is a type of bool
+      is_special_characters_required = password_policy.value["is_special_characters_required"]
+      # is_uppercase_characters_required - (optional) is a type of bool
       is_uppercase_characters_required = password_policy.value["is_uppercase_characters_required"]
-      is_username_containment_allowed  = password_policy.value["is_username_containment_allowed"]
-      minimum_password_length          = password_policy.value["minimum_password_length"]
+      # is_username_containment_allowed - (optional) is a type of bool
+      is_username_containment_allowed = password_policy.value["is_username_containment_allowed"]
+      # minimum_password_length - (optional) is a type of number
+      minimum_password_length = password_policy.value["minimum_password_length"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

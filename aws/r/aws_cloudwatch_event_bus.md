@@ -57,7 +57,9 @@ variable "tags" {
 
 ```terraform
 resource "aws_cloudwatch_event_bus" "this" {
+  # name - (required) is a type of string
   name = var.name
+  # tags - (optional) is a type of map of string
   tags = var.tags
 }
 ```

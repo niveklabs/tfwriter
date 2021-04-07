@@ -102,16 +102,23 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_identity_compartment" "this" {
+  # compartment_id - (optional) is a type of string
   compartment_id = var.compartment_id
-  defined_tags   = var.defined_tags
-  description    = var.description
-  enable_delete  = var.enable_delete
-  freeform_tags  = var.freeform_tags
-  name           = var.name
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # description - (required) is a type of string
+  description = var.description
+  # enable_delete - (optional) is a type of bool
+  enable_delete = var.enable_delete
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

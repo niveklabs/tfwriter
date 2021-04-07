@@ -146,18 +146,27 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_node_template" "this" {
-  cpu_overcommit_type  = var.cpu_overcommit_type
-  description          = var.description
-  name                 = var.name
+  # cpu_overcommit_type - (optional) is a type of string
+  cpu_overcommit_type = var.cpu_overcommit_type
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (optional) is a type of string
+  name = var.name
+  # node_affinity_labels - (optional) is a type of map of string
   node_affinity_labels = var.node_affinity_labels
-  node_type            = var.node_type
-  project              = var.project
-  region               = var.region
+  # node_type - (optional) is a type of string
+  node_type = var.node_type
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
 
   dynamic "node_type_flexibility" {
     for_each = var.node_type_flexibility
     content {
-      cpus   = node_type_flexibility.value["cpus"]
+      # cpus - (optional) is a type of string
+      cpus = node_type_flexibility.value["cpus"]
+      # memory - (optional) is a type of string
       memory = node_type_flexibility.value["memory"]
     }
   }
@@ -165,6 +174,7 @@ resource "google_compute_node_template" "this" {
   dynamic "server_binding" {
     for_each = var.server_binding
     content {
+      # type - (required) is a type of string
       type = server_binding.value["type"]
     }
   }
@@ -172,7 +182,9 @@ resource "google_compute_node_template" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

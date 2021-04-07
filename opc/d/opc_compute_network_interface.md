@@ -63,9 +63,12 @@ variable "interface" {
 
 ```terraform
 data "opc_compute_network_interface" "this" {
-  instance_id   = var.instance_id
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # instance_name - (required) is a type of string
   instance_name = var.instance_name
-  interface     = var.interface
+  # interface - (required) is a type of string
+  interface = var.interface
 }
 ```
 

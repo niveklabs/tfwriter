@@ -115,19 +115,29 @@ variable "cognito_identity_providers" {
 
 ```terraform
 resource "aws_cognito_identity_pool" "this" {
+  # allow_unauthenticated_identities - (optional) is a type of bool
   allow_unauthenticated_identities = var.allow_unauthenticated_identities
-  developer_provider_name          = var.developer_provider_name
-  identity_pool_name               = var.identity_pool_name
-  openid_connect_provider_arns     = var.openid_connect_provider_arns
-  saml_provider_arns               = var.saml_provider_arns
-  supported_login_providers        = var.supported_login_providers
-  tags                             = var.tags
+  # developer_provider_name - (optional) is a type of string
+  developer_provider_name = var.developer_provider_name
+  # identity_pool_name - (required) is a type of string
+  identity_pool_name = var.identity_pool_name
+  # openid_connect_provider_arns - (optional) is a type of set of string
+  openid_connect_provider_arns = var.openid_connect_provider_arns
+  # saml_provider_arns - (optional) is a type of list of string
+  saml_provider_arns = var.saml_provider_arns
+  # supported_login_providers - (optional) is a type of map of string
+  supported_login_providers = var.supported_login_providers
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "cognito_identity_providers" {
     for_each = var.cognito_identity_providers
     content {
-      client_id               = cognito_identity_providers.value["client_id"]
-      provider_name           = cognito_identity_providers.value["provider_name"]
+      # client_id - (optional) is a type of string
+      client_id = cognito_identity_providers.value["client_id"]
+      # provider_name - (optional) is a type of string
+      provider_name = cognito_identity_providers.value["provider_name"]
+      # server_side_token_check - (optional) is a type of bool
       server_side_token_check = cognito_identity_providers.value["server_side_token_check"]
     }
   }

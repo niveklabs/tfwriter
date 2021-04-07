@@ -65,9 +65,12 @@ variable "project" {
 
 ```terraform
 data "google_container_cluster" "this" {
+  # location - (optional) is a type of string
   location = var.location
-  name     = var.name
-  project  = var.project
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
 }
 ```
 

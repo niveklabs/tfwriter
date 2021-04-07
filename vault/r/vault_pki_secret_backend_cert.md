@@ -143,19 +143,32 @@ variable "uri_sans" {
 
 ```terraform
 resource "vault_pki_secret_backend_cert" "this" {
-  alt_names             = var.alt_names
-  auto_renew            = var.auto_renew
-  backend               = var.backend
-  common_name           = var.common_name
-  exclude_cn_from_sans  = var.exclude_cn_from_sans
-  format                = var.format
-  ip_sans               = var.ip_sans
+  # alt_names - (optional) is a type of list of string
+  alt_names = var.alt_names
+  # auto_renew - (optional) is a type of bool
+  auto_renew = var.auto_renew
+  # backend - (required) is a type of string
+  backend = var.backend
+  # common_name - (required) is a type of string
+  common_name = var.common_name
+  # exclude_cn_from_sans - (optional) is a type of bool
+  exclude_cn_from_sans = var.exclude_cn_from_sans
+  # format - (optional) is a type of string
+  format = var.format
+  # ip_sans - (optional) is a type of list of string
+  ip_sans = var.ip_sans
+  # min_seconds_remaining - (optional) is a type of number
   min_seconds_remaining = var.min_seconds_remaining
-  name                  = var.name
-  other_sans            = var.other_sans
-  private_key_format    = var.private_key_format
-  ttl                   = var.ttl
-  uri_sans              = var.uri_sans
+  # name - (required) is a type of string
+  name = var.name
+  # other_sans - (optional) is a type of list of string
+  other_sans = var.other_sans
+  # private_key_format - (optional) is a type of string
+  private_key_format = var.private_key_format
+  # ttl - (optional) is a type of string
+  ttl = var.ttl
+  # uri_sans - (optional) is a type of list of string
+  uri_sans = var.uri_sans
 }
 ```
 

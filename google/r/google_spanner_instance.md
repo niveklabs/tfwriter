@@ -106,18 +106,27 @@ variable "timeouts" {
 
 ```terraform
 resource "google_spanner_instance" "this" {
-  config       = var.config
+  # config - (required) is a type of string
+  config = var.config
+  # display_name - (required) is a type of string
   display_name = var.display_name
-  labels       = var.labels
-  name         = var.name
-  num_nodes    = var.num_nodes
-  project      = var.project
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (optional) is a type of string
+  name = var.name
+  # num_nodes - (optional) is a type of number
+  num_nodes = var.num_nodes
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -49,6 +49,7 @@ variable "tenant_id" {
 
 ```terraform
 data "oci_metering_computation_configuration" "this" {
+  # tenant_id - (required) is a type of string
   tenant_id = var.tenant_id
 }
 ```

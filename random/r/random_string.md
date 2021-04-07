@@ -129,17 +129,28 @@ variable "upper" {
 
 ```terraform
 resource "random_string" "this" {
-  keepers          = var.keepers
-  length           = var.length
-  lower            = var.lower
-  min_lower        = var.min_lower
-  min_numeric      = var.min_numeric
-  min_special      = var.min_special
-  min_upper        = var.min_upper
-  number           = var.number
+  # keepers - (optional) is a type of map of string
+  keepers = var.keepers
+  # length - (required) is a type of number
+  length = var.length
+  # lower - (optional) is a type of bool
+  lower = var.lower
+  # min_lower - (optional) is a type of number
+  min_lower = var.min_lower
+  # min_numeric - (optional) is a type of number
+  min_numeric = var.min_numeric
+  # min_special - (optional) is a type of number
+  min_special = var.min_special
+  # min_upper - (optional) is a type of number
+  min_upper = var.min_upper
+  # number - (optional) is a type of bool
+  number = var.number
+  # override_special - (optional) is a type of string
   override_special = var.override_special
-  special          = var.special
-  upper            = var.upper
+  # special - (optional) is a type of bool
+  special = var.special
+  # upper - (optional) is a type of bool
+  upper = var.upper
 }
 ```
 

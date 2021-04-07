@@ -157,13 +157,20 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_ami_copy" "this" {
-  description       = var.description
-  encrypted         = var.encrypted
-  kms_key_id        = var.kms_key_id
-  name              = var.name
-  source_ami_id     = var.source_ami_id
+  # description - (optional) is a type of string
+  description = var.description
+  # encrypted - (optional) is a type of bool
+  encrypted = var.encrypted
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # name - (required) is a type of string
+  name = var.name
+  # source_ami_id - (required) is a type of string
+  source_ami_id = var.source_ami_id
+  # source_ami_region - (required) is a type of string
   source_ami_region = var.source_ami_region
-  tags              = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "ebs_block_device" {
     for_each = var.ebs_block_device
@@ -180,8 +187,11 @@ resource "aws_ami_copy" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -87,15 +87,21 @@ variable "entry" {
 
 ```terraform
 resource "aws_ec2_managed_prefix_list" "this" {
+  # address_family - (required) is a type of string
   address_family = var.address_family
-  max_entries    = var.max_entries
-  name           = var.name
-  tags           = var.tags
+  # max_entries - (required) is a type of number
+  max_entries = var.max_entries
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "entry" {
     for_each = var.entry
     content {
-      cidr        = entry.value["cidr"]
+      # cidr - (required) is a type of string
+      cidr = entry.value["cidr"]
+      # description - (optional) is a type of string
       description = entry.value["description"]
     }
   }

@@ -122,21 +122,33 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_data_factory_integration_runtime_azure" "this" {
-  compute_type        = var.compute_type
-  core_count          = var.core_count
-  data_factory_name   = var.data_factory_name
-  description         = var.description
-  location            = var.location
-  name                = var.name
+  # compute_type - (optional) is a type of string
+  compute_type = var.compute_type
+  # core_count - (optional) is a type of number
+  core_count = var.core_count
+  # data_factory_name - (required) is a type of string
+  data_factory_name = var.data_factory_name
+  # description - (optional) is a type of string
+  description = var.description
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  time_to_live_min    = var.time_to_live_min
+  # time_to_live_min - (optional) is a type of number
+  time_to_live_min = var.time_to_live_min
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

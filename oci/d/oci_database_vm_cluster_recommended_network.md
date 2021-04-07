@@ -120,24 +120,38 @@ variable "networks" {
 
 ```terraform
 data "oci_database_vm_cluster_recommended_network" "this" {
-  compartment_id            = var.compartment_id
-  defined_tags              = var.defined_tags
-  display_name              = var.display_name
-  dns                       = var.dns
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # dns - (optional) is a type of list of string
+  dns = var.dns
+  # exadata_infrastructure_id - (required) is a type of string
   exadata_infrastructure_id = var.exadata_infrastructure_id
-  freeform_tags             = var.freeform_tags
-  ntp                       = var.ntp
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # ntp - (optional) is a type of list of string
+  ntp = var.ntp
 
   dynamic "networks" {
     for_each = var.networks
     content {
-      cidr         = networks.value["cidr"]
-      domain       = networks.value["domain"]
-      gateway      = networks.value["gateway"]
-      netmask      = networks.value["netmask"]
+      # cidr - (required) is a type of string
+      cidr = networks.value["cidr"]
+      # domain - (required) is a type of string
+      domain = networks.value["domain"]
+      # gateway - (required) is a type of string
+      gateway = networks.value["gateway"]
+      # netmask - (required) is a type of string
+      netmask = networks.value["netmask"]
+      # network_type - (required) is a type of string
       network_type = networks.value["network_type"]
-      prefix       = networks.value["prefix"]
-      vlan_id      = networks.value["vlan_id"]
+      # prefix - (required) is a type of string
+      prefix = networks.value["prefix"]
+      # vlan_id - (required) is a type of string
+      vlan_id = networks.value["vlan_id"]
     }
   }
 

@@ -71,10 +71,14 @@ variable "key_id" {
 
 ```terraform
 data "oci_kms_decrypted_data" "this" {
+  # associated_data - (optional) is a type of map of string
   associated_data = var.associated_data
-  ciphertext      = var.ciphertext
+  # ciphertext - (required) is a type of string
+  ciphertext = var.ciphertext
+  # crypto_endpoint - (required) is a type of string
   crypto_endpoint = var.crypto_endpoint
-  key_id          = var.key_id
+  # key_id - (required) is a type of string
+  key_id = var.key_id
 }
 ```
 

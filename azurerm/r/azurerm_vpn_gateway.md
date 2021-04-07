@@ -152,22 +152,31 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_vpn_gateway" "this" {
-  location            = var.location
-  name                = var.name
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  scale_unit          = var.scale_unit
-  tags                = var.tags
-  virtual_hub_id      = var.virtual_hub_id
+  # scale_unit - (optional) is a type of number
+  scale_unit = var.scale_unit
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # virtual_hub_id - (required) is a type of string
+  virtual_hub_id = var.virtual_hub_id
 
   dynamic "bgp_settings" {
     for_each = var.bgp_settings
     content {
-      asn         = bgp_settings.value["asn"]
+      # asn - (required) is a type of number
+      asn = bgp_settings.value["asn"]
+      # peer_weight - (required) is a type of number
       peer_weight = bgp_settings.value["peer_weight"]
 
       dynamic "instance_0_bgp_peering_address" {
         for_each = bgp_settings.value.instance_0_bgp_peering_address
         content {
+          # custom_ips - (required) is a type of set of string
           custom_ips = instance_0_bgp_peering_address.value["custom_ips"]
         }
       }
@@ -175,6 +184,7 @@ resource "azurerm_vpn_gateway" "this" {
       dynamic "instance_1_bgp_peering_address" {
         for_each = bgp_settings.value.instance_1_bgp_peering_address
         content {
+          # custom_ips - (required) is a type of set of string
           custom_ips = instance_1_bgp_peering_address.value["custom_ips"]
         }
       }
@@ -185,9 +195,13 @@ resource "azurerm_vpn_gateway" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

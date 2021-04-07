@@ -63,11 +63,13 @@ variable "timeouts" {
 
 ```terraform
 data "hcp_hvn" "this" {
+  # hvn_id - (required) is a type of string
   hvn_id = var.hvn_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

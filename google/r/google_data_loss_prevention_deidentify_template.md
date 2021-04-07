@@ -192,9 +192,12 @@ variable "timeouts" {
 
 ```terraform
 resource "google_data_loss_prevention_deidentify_template" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
   display_name = var.display_name
-  parent       = var.parent
+  # parent - (required) is a type of string
+  parent = var.parent
 
   dynamic "deidentify_config" {
     for_each = var.deidentify_config
@@ -211,6 +214,7 @@ resource "google_data_loss_prevention_deidentify_template" "this" {
               dynamic "info_types" {
                 for_each = transformations.value.info_types
                 content {
+                  # name - (required) is a type of string
                   name = info_types.value["name"]
                 }
               }
@@ -222,14 +226,19 @@ resource "google_data_loss_prevention_deidentify_template" "this" {
                   dynamic "character_mask_config" {
                     for_each = primitive_transformation.value.character_mask_config
                     content {
+                      # masking_character - (optional) is a type of string
                       masking_character = character_mask_config.value["masking_character"]
-                      number_to_mask    = character_mask_config.value["number_to_mask"]
-                      reverse_order     = character_mask_config.value["reverse_order"]
+                      # number_to_mask - (optional) is a type of number
+                      number_to_mask = character_mask_config.value["number_to_mask"]
+                      # reverse_order - (optional) is a type of bool
+                      reverse_order = character_mask_config.value["reverse_order"]
 
                       dynamic "characters_to_ignore" {
                         for_each = character_mask_config.value.characters_to_ignore
                         content {
-                          character_to_skip           = characters_to_ignore.value["character_to_skip"]
+                          # character_to_skip - (optional) is a type of string
+                          character_to_skip = characters_to_ignore.value["character_to_skip"]
+                          # common_characters_to_ignore - (optional) is a type of string
                           common_characters_to_ignore = characters_to_ignore.value["common_characters_to_ignore"]
                         }
                       }
@@ -244,28 +253,41 @@ resource "google_data_loss_prevention_deidentify_template" "this" {
                       dynamic "new_value" {
                         for_each = replace_config.value.new_value
                         content {
-                          boolean_value     = new_value.value["boolean_value"]
+                          # boolean_value - (optional) is a type of bool
+                          boolean_value = new_value.value["boolean_value"]
+                          # day_of_week_value - (optional) is a type of string
                           day_of_week_value = new_value.value["day_of_week_value"]
-                          float_value       = new_value.value["float_value"]
-                          integer_value     = new_value.value["integer_value"]
-                          string_value      = new_value.value["string_value"]
-                          timestamp_value   = new_value.value["timestamp_value"]
+                          # float_value - (optional) is a type of number
+                          float_value = new_value.value["float_value"]
+                          # integer_value - (optional) is a type of number
+                          integer_value = new_value.value["integer_value"]
+                          # string_value - (optional) is a type of string
+                          string_value = new_value.value["string_value"]
+                          # timestamp_value - (optional) is a type of string
+                          timestamp_value = new_value.value["timestamp_value"]
 
                           dynamic "date_value" {
                             for_each = new_value.value.date_value
                             content {
-                              day   = date_value.value["day"]
+                              # day - (optional) is a type of number
+                              day = date_value.value["day"]
+                              # month - (optional) is a type of number
                               month = date_value.value["month"]
-                              year  = date_value.value["year"]
+                              # year - (optional) is a type of number
+                              year = date_value.value["year"]
                             }
                           }
 
                           dynamic "time_value" {
                             for_each = new_value.value.time_value
                             content {
-                              hours   = time_value.value["hours"]
+                              # hours - (optional) is a type of number
+                              hours = time_value.value["hours"]
+                              # minutes - (optional) is a type of number
                               minutes = time_value.value["minutes"]
-                              nanos   = time_value.value["nanos"]
+                              # nanos - (optional) is a type of number
+                              nanos = time_value.value["nanos"]
+                              # seconds - (optional) is a type of number
                               seconds = time_value.value["seconds"]
                             }
                           }
@@ -291,8 +313,11 @@ resource "google_data_loss_prevention_deidentify_template" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -65,9 +65,12 @@ variable "tags" {
 
 ```terraform
 resource "aws_sagemaker_model_package_group" "this" {
+  # model_package_group_description - (optional) is a type of string
   model_package_group_description = var.model_package_group_description
-  model_package_group_name        = var.model_package_group_name
-  tags                            = var.tags
+  # model_package_group_name - (required) is a type of string
+  model_package_group_name = var.model_package_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

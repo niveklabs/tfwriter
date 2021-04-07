@@ -158,19 +158,29 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_load_balancer_load_balancer" "this" {
-  compartment_id             = var.compartment_id
-  defined_tags               = var.defined_tags
-  display_name               = var.display_name
-  freeform_tags              = var.freeform_tags
-  ip_mode                    = var.ip_mode
-  is_private                 = var.is_private
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # ip_mode - (optional) is a type of string
+  ip_mode = var.ip_mode
+  # is_private - (optional) is a type of bool
+  is_private = var.is_private
+  # network_security_group_ids - (optional) is a type of set of string
   network_security_group_ids = var.network_security_group_ids
-  shape                      = var.shape
-  subnet_ids                 = var.subnet_ids
+  # shape - (required) is a type of string
+  shape = var.shape
+  # subnet_ids - (required) is a type of list of string
+  subnet_ids = var.subnet_ids
 
   dynamic "reserved_ips" {
     for_each = var.reserved_ips
     content {
+      # id - (optional) is a type of string
       id = reserved_ips.value["id"]
     }
   }
@@ -178,7 +188,9 @@ resource "oci_load_balancer_load_balancer" "this" {
   dynamic "shape_details" {
     for_each = var.shape_details
     content {
+      # maximum_bandwidth_in_mbps - (required) is a type of number
       maximum_bandwidth_in_mbps = shape_details.value["maximum_bandwidth_in_mbps"]
+      # minimum_bandwidth_in_mbps - (required) is a type of number
       minimum_bandwidth_in_mbps = shape_details.value["minimum_bandwidth_in_mbps"]
     }
   }
@@ -186,8 +198,11 @@ resource "oci_load_balancer_load_balancer" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

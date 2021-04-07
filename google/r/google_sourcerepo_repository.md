@@ -93,23 +93,31 @@ variable "timeouts" {
 
 ```terraform
 resource "google_sourcerepo_repository" "this" {
-  name    = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
   project = var.project
 
   dynamic "pubsub_configs" {
     for_each = var.pubsub_configs
     content {
-      message_format        = pubsub_configs.value["message_format"]
+      # message_format - (required) is a type of string
+      message_format = pubsub_configs.value["message_format"]
+      # service_account_email - (optional) is a type of string
       service_account_email = pubsub_configs.value["service_account_email"]
-      topic                 = pubsub_configs.value["topic"]
+      # topic - (required) is a type of string
+      topic = pubsub_configs.value["topic"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -79,11 +79,16 @@ variable "tags" {
 
 ```terraform
 resource "aws_dx_lag" "this" {
+  # connections_bandwidth - (required) is a type of string
   connections_bandwidth = var.connections_bandwidth
-  force_destroy         = var.force_destroy
-  location              = var.location
-  name                  = var.name
-  tags                  = var.tags
+  # force_destroy - (optional) is a type of bool
+  force_destroy = var.force_destroy
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

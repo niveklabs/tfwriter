@@ -98,17 +98,25 @@ variable "timeouts" {
 
 ```terraform
 resource "google_app_engine_firewall_rule" "this" {
-  action       = var.action
-  description  = var.description
-  priority     = var.priority
-  project      = var.project
+  # action - (required) is a type of string
+  action = var.action
+  # description - (optional) is a type of string
+  description = var.description
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # project - (optional) is a type of string
+  project = var.project
+  # source_range - (required) is a type of string
   source_range = var.source_range
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

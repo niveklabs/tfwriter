@@ -260,36 +260,59 @@ variable "timeouts" {
 
 ```terraform
 resource "google_cloudfunctions_function" "this" {
-  available_memory_mb           = var.available_memory_mb
-  build_environment_variables   = var.build_environment_variables
-  description                   = var.description
-  entry_point                   = var.entry_point
-  environment_variables         = var.environment_variables
-  https_trigger_url             = var.https_trigger_url
-  ingress_settings              = var.ingress_settings
-  labels                        = var.labels
-  max_instances                 = var.max_instances
-  name                          = var.name
-  project                       = var.project
-  region                        = var.region
-  runtime                       = var.runtime
-  service_account_email         = var.service_account_email
-  source_archive_bucket         = var.source_archive_bucket
-  source_archive_object         = var.source_archive_object
-  timeout                       = var.timeout
-  trigger_http                  = var.trigger_http
-  vpc_connector                 = var.vpc_connector
+  # available_memory_mb - (optional) is a type of number
+  available_memory_mb = var.available_memory_mb
+  # build_environment_variables - (optional) is a type of map of string
+  build_environment_variables = var.build_environment_variables
+  # description - (optional) is a type of string
+  description = var.description
+  # entry_point - (optional) is a type of string
+  entry_point = var.entry_point
+  # environment_variables - (optional) is a type of map of string
+  environment_variables = var.environment_variables
+  # https_trigger_url - (optional) is a type of string
+  https_trigger_url = var.https_trigger_url
+  # ingress_settings - (optional) is a type of string
+  ingress_settings = var.ingress_settings
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # max_instances - (optional) is a type of number
+  max_instances = var.max_instances
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
+  # runtime - (required) is a type of string
+  runtime = var.runtime
+  # service_account_email - (optional) is a type of string
+  service_account_email = var.service_account_email
+  # source_archive_bucket - (optional) is a type of string
+  source_archive_bucket = var.source_archive_bucket
+  # source_archive_object - (optional) is a type of string
+  source_archive_object = var.source_archive_object
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
+  # trigger_http - (optional) is a type of bool
+  trigger_http = var.trigger_http
+  # vpc_connector - (optional) is a type of string
+  vpc_connector = var.vpc_connector
+  # vpc_connector_egress_settings - (optional) is a type of string
   vpc_connector_egress_settings = var.vpc_connector_egress_settings
 
   dynamic "event_trigger" {
     for_each = var.event_trigger
     content {
+      # event_type - (required) is a type of string
       event_type = event_trigger.value["event_type"]
-      resource   = event_trigger.value["resource"]
+      # resource - (required) is a type of string
+      resource = event_trigger.value["resource"]
 
       dynamic "failure_policy" {
         for_each = event_trigger.value.failure_policy
         content {
+          # retry - (required) is a type of bool
           retry = failure_policy.value["retry"]
         }
       }
@@ -300,6 +323,7 @@ resource "google_cloudfunctions_function" "this" {
   dynamic "source_repository" {
     for_each = var.source_repository
     content {
+      # url - (required) is a type of string
       url = source_repository.value["url"]
     }
   }
@@ -307,9 +331,13 @@ resource "google_cloudfunctions_function" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

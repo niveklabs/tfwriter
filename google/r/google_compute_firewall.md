@@ -216,25 +216,41 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_firewall" "this" {
-  description             = var.description
-  destination_ranges      = var.destination_ranges
-  direction               = var.direction
-  disabled                = var.disabled
-  enable_logging          = var.enable_logging
-  name                    = var.name
-  network                 = var.network
-  priority                = var.priority
-  project                 = var.project
-  source_ranges           = var.source_ranges
+  # description - (optional) is a type of string
+  description = var.description
+  # destination_ranges - (optional) is a type of set of string
+  destination_ranges = var.destination_ranges
+  # direction - (optional) is a type of string
+  direction = var.direction
+  # disabled - (optional) is a type of bool
+  disabled = var.disabled
+  # enable_logging - (optional) is a type of bool
+  enable_logging = var.enable_logging
+  # name - (required) is a type of string
+  name = var.name
+  # network - (required) is a type of string
+  network = var.network
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # project - (optional) is a type of string
+  project = var.project
+  # source_ranges - (optional) is a type of set of string
+  source_ranges = var.source_ranges
+  # source_service_accounts - (optional) is a type of set of string
   source_service_accounts = var.source_service_accounts
-  source_tags             = var.source_tags
+  # source_tags - (optional) is a type of set of string
+  source_tags = var.source_tags
+  # target_service_accounts - (optional) is a type of set of string
   target_service_accounts = var.target_service_accounts
-  target_tags             = var.target_tags
+  # target_tags - (optional) is a type of set of string
+  target_tags = var.target_tags
 
   dynamic "allow" {
     for_each = var.allow
     content {
-      ports    = allow.value["ports"]
+      # ports - (optional) is a type of list of string
+      ports = allow.value["ports"]
+      # protocol - (required) is a type of string
       protocol = allow.value["protocol"]
     }
   }
@@ -242,7 +258,9 @@ resource "google_compute_firewall" "this" {
   dynamic "deny" {
     for_each = var.deny
     content {
-      ports    = deny.value["ports"]
+      # ports - (optional) is a type of list of string
+      ports = deny.value["ports"]
+      # protocol - (required) is a type of string
       protocol = deny.value["protocol"]
     }
   }
@@ -250,6 +268,7 @@ resource "google_compute_firewall" "this" {
   dynamic "log_config" {
     for_each = var.log_config
     content {
+      # metadata - (required) is a type of string
       metadata = log_config.value["metadata"]
     }
   }
@@ -257,8 +276,11 @@ resource "google_compute_firewall" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

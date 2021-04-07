@@ -116,27 +116,39 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_lighthouse_definition" "this" {
-  description              = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # lighthouse_definition_id - (optional) is a type of string
   lighthouse_definition_id = var.lighthouse_definition_id
-  managing_tenant_id       = var.managing_tenant_id
-  name                     = var.name
-  scope                    = var.scope
+  # managing_tenant_id - (required) is a type of string
+  managing_tenant_id = var.managing_tenant_id
+  # name - (required) is a type of string
+  name = var.name
+  # scope - (required) is a type of string
+  scope = var.scope
 
   dynamic "authorization" {
     for_each = var.authorization
     content {
+      # principal_display_name - (optional) is a type of string
       principal_display_name = authorization.value["principal_display_name"]
-      principal_id           = authorization.value["principal_id"]
-      role_definition_id     = authorization.value["role_definition_id"]
+      # principal_id - (required) is a type of string
+      principal_id = authorization.value["principal_id"]
+      # role_definition_id - (required) is a type of string
+      role_definition_id = authorization.value["role_definition_id"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

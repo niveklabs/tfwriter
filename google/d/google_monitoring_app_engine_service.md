@@ -57,8 +57,10 @@ variable "project" {
 
 ```terraform
 data "google_monitoring_app_engine_service" "this" {
+  # module_id - (required) is a type of string
   module_id = var.module_id
-  project   = var.project
+  # project - (optional) is a type of string
+  project = var.project
 }
 ```
 

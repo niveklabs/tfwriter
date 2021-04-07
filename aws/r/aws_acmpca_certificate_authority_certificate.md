@@ -64,9 +64,12 @@ variable "certificate_chain" {
 
 ```terraform
 resource "aws_acmpca_certificate_authority_certificate" "this" {
-  certificate               = var.certificate
+  # certificate - (required) is a type of string
+  certificate = var.certificate
+  # certificate_authority_arn - (required) is a type of string
   certificate_authority_arn = var.certificate_authority_arn
-  certificate_chain         = var.certificate_chain
+  # certificate_chain - (optional) is a type of string
+  certificate_chain = var.certificate_chain
 }
 ```
 

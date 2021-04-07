@@ -410,22 +410,31 @@ variable "timeouts" {
 
 ```terraform
 resource "google_os_config_patch_deployment" "this" {
-  description         = var.description
-  duration            = var.duration
+  # description - (optional) is a type of string
+  description = var.description
+  # duration - (optional) is a type of string
+  duration = var.duration
+  # patch_deployment_id - (required) is a type of string
   patch_deployment_id = var.patch_deployment_id
-  project             = var.project
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "instance_filter" {
     for_each = var.instance_filter
     content {
-      all                    = instance_filter.value["all"]
+      # all - (optional) is a type of bool
+      all = instance_filter.value["all"]
+      # instance_name_prefixes - (optional) is a type of list of string
       instance_name_prefixes = instance_filter.value["instance_name_prefixes"]
-      instances              = instance_filter.value["instances"]
-      zones                  = instance_filter.value["zones"]
+      # instances - (optional) is a type of list of string
+      instances = instance_filter.value["instances"]
+      # zones - (optional) is a type of list of string
+      zones = instance_filter.value["zones"]
 
       dynamic "group_labels" {
         for_each = instance_filter.value.group_labels
         content {
+          # labels - (required) is a type of map of string
           labels = group_labels.value["labels"]
         }
       }
@@ -436,6 +445,7 @@ resource "google_os_config_patch_deployment" "this" {
   dynamic "one_time_schedule" {
     for_each = var.one_time_schedule
     content {
+      # execute_time - (required) is a type of string
       execute_time = one_time_schedule.value["execute_time"]
     }
   }
@@ -443,20 +453,25 @@ resource "google_os_config_patch_deployment" "this" {
   dynamic "patch_config" {
     for_each = var.patch_config
     content {
+      # reboot_config - (optional) is a type of string
       reboot_config = patch_config.value["reboot_config"]
 
       dynamic "apt" {
         for_each = patch_config.value.apt
         content {
-          excludes           = apt.value["excludes"]
+          # excludes - (optional) is a type of list of string
+          excludes = apt.value["excludes"]
+          # exclusive_packages - (optional) is a type of list of string
           exclusive_packages = apt.value["exclusive_packages"]
-          type               = apt.value["type"]
+          # type - (optional) is a type of string
+          type = apt.value["type"]
         }
       }
 
       dynamic "goo" {
         for_each = patch_config.value.goo
         content {
+          # enabled - (required) is a type of bool
           enabled = goo.value["enabled"]
         }
       }
@@ -468,16 +483,22 @@ resource "google_os_config_patch_deployment" "this" {
           dynamic "linux_exec_step_config" {
             for_each = post_step.value.linux_exec_step_config
             content {
+              # allowed_success_codes - (optional) is a type of list of number
               allowed_success_codes = linux_exec_step_config.value["allowed_success_codes"]
-              interpreter           = linux_exec_step_config.value["interpreter"]
-              local_path            = linux_exec_step_config.value["local_path"]
+              # interpreter - (optional) is a type of string
+              interpreter = linux_exec_step_config.value["interpreter"]
+              # local_path - (optional) is a type of string
+              local_path = linux_exec_step_config.value["local_path"]
 
               dynamic "gcs_object" {
                 for_each = linux_exec_step_config.value.gcs_object
                 content {
-                  bucket            = gcs_object.value["bucket"]
+                  # bucket - (required) is a type of string
+                  bucket = gcs_object.value["bucket"]
+                  # generation_number - (required) is a type of string
                   generation_number = gcs_object.value["generation_number"]
-                  object            = gcs_object.value["object"]
+                  # object - (required) is a type of string
+                  object = gcs_object.value["object"]
                 }
               }
 
@@ -487,16 +508,22 @@ resource "google_os_config_patch_deployment" "this" {
           dynamic "windows_exec_step_config" {
             for_each = post_step.value.windows_exec_step_config
             content {
+              # allowed_success_codes - (optional) is a type of list of number
               allowed_success_codes = windows_exec_step_config.value["allowed_success_codes"]
-              interpreter           = windows_exec_step_config.value["interpreter"]
-              local_path            = windows_exec_step_config.value["local_path"]
+              # interpreter - (optional) is a type of string
+              interpreter = windows_exec_step_config.value["interpreter"]
+              # local_path - (optional) is a type of string
+              local_path = windows_exec_step_config.value["local_path"]
 
               dynamic "gcs_object" {
                 for_each = windows_exec_step_config.value.gcs_object
                 content {
-                  bucket            = gcs_object.value["bucket"]
+                  # bucket - (required) is a type of string
+                  bucket = gcs_object.value["bucket"]
+                  # generation_number - (required) is a type of string
                   generation_number = gcs_object.value["generation_number"]
-                  object            = gcs_object.value["object"]
+                  # object - (required) is a type of string
+                  object = gcs_object.value["object"]
                 }
               }
 
@@ -513,16 +540,22 @@ resource "google_os_config_patch_deployment" "this" {
           dynamic "linux_exec_step_config" {
             for_each = pre_step.value.linux_exec_step_config
             content {
+              # allowed_success_codes - (optional) is a type of list of number
               allowed_success_codes = linux_exec_step_config.value["allowed_success_codes"]
-              interpreter           = linux_exec_step_config.value["interpreter"]
-              local_path            = linux_exec_step_config.value["local_path"]
+              # interpreter - (optional) is a type of string
+              interpreter = linux_exec_step_config.value["interpreter"]
+              # local_path - (optional) is a type of string
+              local_path = linux_exec_step_config.value["local_path"]
 
               dynamic "gcs_object" {
                 for_each = linux_exec_step_config.value.gcs_object
                 content {
-                  bucket            = gcs_object.value["bucket"]
+                  # bucket - (required) is a type of string
+                  bucket = gcs_object.value["bucket"]
+                  # generation_number - (required) is a type of string
                   generation_number = gcs_object.value["generation_number"]
-                  object            = gcs_object.value["object"]
+                  # object - (required) is a type of string
+                  object = gcs_object.value["object"]
                 }
               }
 
@@ -532,16 +565,22 @@ resource "google_os_config_patch_deployment" "this" {
           dynamic "windows_exec_step_config" {
             for_each = pre_step.value.windows_exec_step_config
             content {
+              # allowed_success_codes - (optional) is a type of list of number
               allowed_success_codes = windows_exec_step_config.value["allowed_success_codes"]
-              interpreter           = windows_exec_step_config.value["interpreter"]
-              local_path            = windows_exec_step_config.value["local_path"]
+              # interpreter - (optional) is a type of string
+              interpreter = windows_exec_step_config.value["interpreter"]
+              # local_path - (optional) is a type of string
+              local_path = windows_exec_step_config.value["local_path"]
 
               dynamic "gcs_object" {
                 for_each = windows_exec_step_config.value.gcs_object
                 content {
-                  bucket            = gcs_object.value["bucket"]
+                  # bucket - (required) is a type of string
+                  bucket = gcs_object.value["bucket"]
+                  # generation_number - (required) is a type of string
                   generation_number = gcs_object.value["generation_number"]
-                  object            = gcs_object.value["object"]
+                  # object - (required) is a type of string
+                  object = gcs_object.value["object"]
                 }
               }
 
@@ -554,8 +593,11 @@ resource "google_os_config_patch_deployment" "this" {
       dynamic "windows_update" {
         for_each = patch_config.value.windows_update
         content {
-          classifications   = windows_update.value["classifications"]
-          excludes          = windows_update.value["excludes"]
+          # classifications - (optional) is a type of list of string
+          classifications = windows_update.value["classifications"]
+          # excludes - (optional) is a type of list of string
+          excludes = windows_update.value["excludes"]
+          # exclusive_patches - (optional) is a type of list of string
           exclusive_patches = windows_update.value["exclusive_patches"]
         }
       }
@@ -563,22 +605,32 @@ resource "google_os_config_patch_deployment" "this" {
       dynamic "yum" {
         for_each = patch_config.value.yum
         content {
-          excludes           = yum.value["excludes"]
+          # excludes - (optional) is a type of list of string
+          excludes = yum.value["excludes"]
+          # exclusive_packages - (optional) is a type of list of string
           exclusive_packages = yum.value["exclusive_packages"]
-          minimal            = yum.value["minimal"]
-          security           = yum.value["security"]
+          # minimal - (optional) is a type of bool
+          minimal = yum.value["minimal"]
+          # security - (optional) is a type of bool
+          security = yum.value["security"]
         }
       }
 
       dynamic "zypper" {
         for_each = patch_config.value.zypper
         content {
-          categories        = zypper.value["categories"]
-          excludes          = zypper.value["excludes"]
+          # categories - (optional) is a type of list of string
+          categories = zypper.value["categories"]
+          # excludes - (optional) is a type of list of string
+          excludes = zypper.value["excludes"]
+          # exclusive_patches - (optional) is a type of list of string
           exclusive_patches = zypper.value["exclusive_patches"]
-          severities        = zypper.value["severities"]
-          with_optional     = zypper.value["with_optional"]
-          with_update       = zypper.value["with_update"]
+          # severities - (optional) is a type of list of string
+          severities = zypper.value["severities"]
+          # with_optional - (optional) is a type of bool
+          with_optional = zypper.value["with_optional"]
+          # with_update - (optional) is a type of bool
+          with_update = zypper.value["with_update"]
         }
       }
 
@@ -588,18 +640,23 @@ resource "google_os_config_patch_deployment" "this" {
   dynamic "recurring_schedule" {
     for_each = var.recurring_schedule
     content {
-      end_time   = recurring_schedule.value["end_time"]
+      # end_time - (optional) is a type of string
+      end_time = recurring_schedule.value["end_time"]
+      # start_time - (optional) is a type of string
       start_time = recurring_schedule.value["start_time"]
 
       dynamic "monthly" {
         for_each = recurring_schedule.value.monthly
         content {
+          # month_day - (optional) is a type of number
           month_day = monthly.value["month_day"]
 
           dynamic "week_day_of_month" {
             for_each = monthly.value.week_day_of_month
             content {
-              day_of_week  = week_day_of_month.value["day_of_week"]
+              # day_of_week - (required) is a type of string
+              day_of_week = week_day_of_month.value["day_of_week"]
+              # week_ordinal - (required) is a type of number
               week_ordinal = week_day_of_month.value["week_ordinal"]
             }
           }
@@ -610,9 +667,13 @@ resource "google_os_config_patch_deployment" "this" {
       dynamic "time_of_day" {
         for_each = recurring_schedule.value.time_of_day
         content {
-          hours   = time_of_day.value["hours"]
+          # hours - (optional) is a type of number
+          hours = time_of_day.value["hours"]
+          # minutes - (optional) is a type of number
           minutes = time_of_day.value["minutes"]
-          nanos   = time_of_day.value["nanos"]
+          # nanos - (optional) is a type of number
+          nanos = time_of_day.value["nanos"]
+          # seconds - (optional) is a type of number
           seconds = time_of_day.value["seconds"]
         }
       }
@@ -620,7 +681,9 @@ resource "google_os_config_patch_deployment" "this" {
       dynamic "time_zone" {
         for_each = recurring_schedule.value.time_zone
         content {
-          id      = time_zone.value["id"]
+          # id - (required) is a type of string
+          id = time_zone.value["id"]
+          # version - (optional) is a type of string
           version = time_zone.value["version"]
         }
       }
@@ -628,6 +691,7 @@ resource "google_os_config_patch_deployment" "this" {
       dynamic "weekly" {
         for_each = recurring_schedule.value.weekly
         content {
+          # day_of_week - (required) is a type of string
           day_of_week = weekly.value["day_of_week"]
         }
       }
@@ -638,12 +702,15 @@ resource "google_os_config_patch_deployment" "this" {
   dynamic "rollout" {
     for_each = var.rollout
     content {
+      # mode - (required) is a type of string
       mode = rollout.value["mode"]
 
       dynamic "disruption_budget" {
         for_each = rollout.value.disruption_budget
         content {
-          fixed      = disruption_budget.value["fixed"]
+          # fixed - (optional) is a type of number
+          fixed = disruption_budget.value["fixed"]
+          # percentage - (optional) is a type of number
           percentage = disruption_budget.value["percentage"]
         }
       }
@@ -654,7 +721,9 @@ resource "google_os_config_patch_deployment" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

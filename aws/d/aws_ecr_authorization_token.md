@@ -50,6 +50,7 @@ variable "registry_id" {
 
 ```terraform
 data "aws_ecr_authorization_token" "this" {
+  # registry_id - (optional) is a type of string
   registry_id = var.registry_id
 }
 ```

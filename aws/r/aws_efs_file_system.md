@@ -120,18 +120,27 @@ variable "lifecycle_policy" {
 
 ```terraform
 resource "aws_efs_file_system" "this" {
-  availability_zone_name          = var.availability_zone_name
-  creation_token                  = var.creation_token
-  encrypted                       = var.encrypted
-  kms_key_id                      = var.kms_key_id
-  performance_mode                = var.performance_mode
+  # availability_zone_name - (optional) is a type of string
+  availability_zone_name = var.availability_zone_name
+  # creation_token - (optional) is a type of string
+  creation_token = var.creation_token
+  # encrypted - (optional) is a type of bool
+  encrypted = var.encrypted
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # performance_mode - (optional) is a type of string
+  performance_mode = var.performance_mode
+  # provisioned_throughput_in_mibps - (optional) is a type of number
   provisioned_throughput_in_mibps = var.provisioned_throughput_in_mibps
-  tags                            = var.tags
-  throughput_mode                 = var.throughput_mode
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # throughput_mode - (optional) is a type of string
+  throughput_mode = var.throughput_mode
 
   dynamic "lifecycle_policy" {
     for_each = var.lifecycle_policy
     content {
+      # transition_to_ia - (required) is a type of string
       transition_to_ia = lifecycle_policy.value["transition_to_ia"]
     }
   }

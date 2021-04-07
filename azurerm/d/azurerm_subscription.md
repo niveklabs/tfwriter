@@ -64,11 +64,13 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_subscription" "this" {
+  # subscription_id - (optional) is a type of string
   subscription_id = var.subscription_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

@@ -57,7 +57,9 @@ variable "cluster_state" {
 
 ```terraform
 data "aws_cloudhsm_v2_cluster" "this" {
-  cluster_id    = var.cluster_id
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # cluster_state - (optional) is a type of string
   cluster_state = var.cluster_state
 }
 ```

@@ -81,15 +81,21 @@ variable "timeouts" {
 
 ```terraform
 resource "google_service_networking_connection" "this" {
-  network                 = var.network
+  # network - (required) is a type of string
+  network = var.network
+  # reserved_peering_ranges - (required) is a type of list of string
   reserved_peering_ranges = var.reserved_peering_ranges
-  service                 = var.service
+  # service - (required) is a type of string
+  service = var.service
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

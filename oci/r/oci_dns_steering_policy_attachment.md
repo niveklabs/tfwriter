@@ -89,16 +89,23 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_dns_steering_policy_attachment" "this" {
-  display_name       = var.display_name
-  domain_name        = var.domain_name
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # domain_name - (required) is a type of string
+  domain_name = var.domain_name
+  # steering_policy_id - (required) is a type of string
   steering_policy_id = var.steering_policy_id
-  zone_id            = var.zone_id
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

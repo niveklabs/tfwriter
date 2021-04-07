@@ -64,9 +64,12 @@ variable "policies" {
 
 ```terraform
 resource "vault_identity_group_policies" "this" {
+  # exclusive - (optional) is a type of bool
   exclusive = var.exclusive
-  group_id  = var.group_id
-  policies  = var.policies
+  # group_id - (required) is a type of string
+  group_id = var.group_id
+  # policies - (required) is a type of set of string
+  policies = var.policies
 }
 ```
 

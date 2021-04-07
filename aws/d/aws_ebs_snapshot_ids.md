@@ -74,13 +74,17 @@ variable "filter" {
 
 ```terraform
 data "aws_ebs_snapshot_ids" "this" {
-  owners                 = var.owners
+  # owners - (optional) is a type of list of string
+  owners = var.owners
+  # restorable_by_user_ids - (optional) is a type of list of string
   restorable_by_user_ids = var.restorable_by_user_ids
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

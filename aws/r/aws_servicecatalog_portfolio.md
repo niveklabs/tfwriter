@@ -91,16 +91,23 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_servicecatalog_portfolio" "this" {
-  description   = var.description
-  name          = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # provider_name - (optional) is a type of string
   provider_name = var.provider_name
-  tags          = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

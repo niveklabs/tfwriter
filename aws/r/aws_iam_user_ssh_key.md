@@ -71,10 +71,14 @@ variable "username" {
 
 ```terraform
 resource "aws_iam_user_ssh_key" "this" {
-  encoding   = var.encoding
+  # encoding - (required) is a type of string
+  encoding = var.encoding
+  # public_key - (required) is a type of string
   public_key = var.public_key
-  status     = var.status
-  username   = var.username
+  # status - (optional) is a type of string
+  status = var.status
+  # username - (required) is a type of string
+  username = var.username
 }
 ```
 

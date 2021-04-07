@@ -56,8 +56,10 @@ variable "vpn_connection_id" {
 
 ```terraform
 resource "aws_vpn_connection_route" "this" {
+  # destination_cidr_block - (required) is a type of string
   destination_cidr_block = var.destination_cidr_block
-  vpn_connection_id      = var.vpn_connection_id
+  # vpn_connection_id - (required) is a type of string
+  vpn_connection_id = var.vpn_connection_id
 }
 ```
 

@@ -72,10 +72,14 @@ variable "zone" {
 
 ```terraform
 data "google_compute_instance_serial_port" "this" {
+  # instance - (required) is a type of string
   instance = var.instance
-  port     = var.port
-  project  = var.project
-  zone     = var.zone
+  # port - (required) is a type of number
+  port = var.port
+  # project - (optional) is a type of string
+  project = var.project
+  # zone - (optional) is a type of string
+  zone = var.zone
 }
 ```
 

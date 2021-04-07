@@ -80,10 +80,15 @@ variable "user_pool_id" {
 
 ```terraform
 resource "aws_cognito_user_group" "this" {
-  description  = var.description
-  name         = var.name
-  precedence   = var.precedence
-  role_arn     = var.role_arn
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # precedence - (optional) is a type of number
+  precedence = var.precedence
+  # role_arn - (optional) is a type of string
+  role_arn = var.role_arn
+  # user_pool_id - (required) is a type of string
   user_pool_id = var.user_pool_id
 }
 ```

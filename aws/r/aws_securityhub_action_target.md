@@ -63,9 +63,12 @@ variable "name" {
 
 ```terraform
 resource "aws_securityhub_action_target" "this" {
+  # description - (required) is a type of string
   description = var.description
-  identifier  = var.identifier
-  name        = var.name
+  # identifier - (required) is a type of string
+  identifier = var.identifier
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

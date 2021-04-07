@@ -72,9 +72,13 @@ variable "transit_gateway_route_table_id" {
 
 ```terraform
 resource "aws_ec2_transit_gateway_prefix_list_reference" "this" {
-  blackhole                      = var.blackhole
-  prefix_list_id                 = var.prefix_list_id
-  transit_gateway_attachment_id  = var.transit_gateway_attachment_id
+  # blackhole - (optional) is a type of bool
+  blackhole = var.blackhole
+  # prefix_list_id - (required) is a type of string
+  prefix_list_id = var.prefix_list_id
+  # transit_gateway_attachment_id - (optional) is a type of string
+  transit_gateway_attachment_id = var.transit_gateway_attachment_id
+  # transit_gateway_route_table_id - (required) is a type of string
   transit_gateway_route_table_id = var.transit_gateway_route_table_id
 }
 ```

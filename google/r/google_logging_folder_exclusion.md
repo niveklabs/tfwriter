@@ -79,11 +79,16 @@ variable "name" {
 
 ```terraform
 resource "google_logging_folder_exclusion" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  disabled    = var.disabled
-  filter      = var.filter
-  folder      = var.folder
-  name        = var.name
+  # disabled - (optional) is a type of bool
+  disabled = var.disabled
+  # filter - (required) is a type of string
+  filter = var.filter
+  # folder - (required) is a type of string
+  folder = var.folder
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

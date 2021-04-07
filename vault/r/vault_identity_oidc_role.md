@@ -80,11 +80,16 @@ variable "ttl" {
 
 ```terraform
 resource "vault_identity_oidc_role" "this" {
+  # client_id - (optional) is a type of string
   client_id = var.client_id
-  key       = var.key
-  name      = var.name
-  template  = var.template
-  ttl       = var.ttl
+  # key - (required) is a type of string
+  key = var.key
+  # name - (required) is a type of string
+  name = var.name
+  # template - (optional) is a type of string
+  template = var.template
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
 }
 ```
 

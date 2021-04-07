@@ -215,47 +215,68 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_integration_integration_instance" "this" {
-  compartment_id            = var.compartment_id
-  consumption_model         = var.consumption_model
-  defined_tags              = var.defined_tags
-  display_name              = var.display_name
-  freeform_tags             = var.freeform_tags
-  idcs_at                   = var.idcs_at
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # consumption_model - (optional) is a type of string
+  consumption_model = var.consumption_model
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # idcs_at - (optional) is a type of string
+  idcs_at = var.idcs_at
+  # integration_instance_type - (required) is a type of string
   integration_instance_type = var.integration_instance_type
-  is_byol                   = var.is_byol
-  is_file_server_enabled    = var.is_file_server_enabled
+  # is_byol - (required) is a type of bool
+  is_byol = var.is_byol
+  # is_file_server_enabled - (optional) is a type of bool
+  is_file_server_enabled = var.is_file_server_enabled
+  # is_visual_builder_enabled - (optional) is a type of bool
   is_visual_builder_enabled = var.is_visual_builder_enabled
-  message_packs             = var.message_packs
-  state                     = var.state
+  # message_packs - (required) is a type of number
+  message_packs = var.message_packs
+  # state - (optional) is a type of string
+  state = var.state
 
   dynamic "alternate_custom_endpoints" {
     for_each = var.alternate_custom_endpoints
     content {
+      # certificate_secret_id - (optional) is a type of string
       certificate_secret_id = alternate_custom_endpoints.value["certificate_secret_id"]
-      hostname              = alternate_custom_endpoints.value["hostname"]
+      # hostname - (required) is a type of string
+      hostname = alternate_custom_endpoints.value["hostname"]
     }
   }
 
   dynamic "custom_endpoint" {
     for_each = var.custom_endpoint
     content {
+      # certificate_secret_id - (optional) is a type of string
       certificate_secret_id = custom_endpoint.value["certificate_secret_id"]
-      hostname              = custom_endpoint.value["hostname"]
+      # hostname - (required) is a type of string
+      hostname = custom_endpoint.value["hostname"]
     }
   }
 
   dynamic "network_endpoint_details" {
     for_each = var.network_endpoint_details
     content {
-      allowlisted_http_ips           = network_endpoint_details.value["allowlisted_http_ips"]
+      # allowlisted_http_ips - (optional) is a type of set of string
+      allowlisted_http_ips = network_endpoint_details.value["allowlisted_http_ips"]
+      # is_integration_vcn_allowlisted - (optional) is a type of bool
       is_integration_vcn_allowlisted = network_endpoint_details.value["is_integration_vcn_allowlisted"]
-      network_endpoint_type          = network_endpoint_details.value["network_endpoint_type"]
+      # network_endpoint_type - (required) is a type of string
+      network_endpoint_type = network_endpoint_details.value["network_endpoint_type"]
 
       dynamic "allowlisted_http_vcns" {
         for_each = network_endpoint_details.value.allowlisted_http_vcns
         content {
+          # allowlisted_ips - (optional) is a type of set of string
           allowlisted_ips = allowlisted_http_vcns.value["allowlisted_ips"]
-          id              = allowlisted_http_vcns.value["id"]
+          # id - (required) is a type of string
+          id = allowlisted_http_vcns.value["id"]
         }
       }
 
@@ -265,8 +286,11 @@ resource "oci_integration_integration_instance" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

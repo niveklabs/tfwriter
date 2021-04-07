@@ -49,6 +49,7 @@ variable "esxi_host_id" {
 
 ```terraform
 data "oci_ocvp_esxi_host" "this" {
+  # esxi_host_id - (required) is a type of string
   esxi_host_id = var.esxi_host_id
 }
 ```

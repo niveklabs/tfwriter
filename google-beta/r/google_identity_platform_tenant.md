@@ -99,17 +99,25 @@ variable "timeouts" {
 
 ```terraform
 resource "google_identity_platform_tenant" "this" {
-  allow_password_signup    = var.allow_password_signup
-  disable_auth             = var.disable_auth
-  display_name             = var.display_name
+  # allow_password_signup - (optional) is a type of bool
+  allow_password_signup = var.allow_password_signup
+  # disable_auth - (optional) is a type of bool
+  disable_auth = var.disable_auth
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # enable_email_link_signin - (optional) is a type of bool
   enable_email_link_signin = var.enable_email_link_signin
-  project                  = var.project
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

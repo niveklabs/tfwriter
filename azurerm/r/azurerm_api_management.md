@@ -438,25 +438,37 @@ variable "virtual_network_configuration" {
 
 ```terraform
 resource "azurerm_api_management" "this" {
-  location                  = var.location
-  name                      = var.name
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # notification_sender_email - (optional) is a type of string
   notification_sender_email = var.notification_sender_email
-  policy                    = var.policy
-  publisher_email           = var.publisher_email
-  publisher_name            = var.publisher_name
-  resource_group_name       = var.resource_group_name
-  sku_name                  = var.sku_name
-  tags                      = var.tags
-  virtual_network_type      = var.virtual_network_type
+  # policy - (optional) is a type of list of object
+  policy = var.policy
+  # publisher_email - (required) is a type of string
+  publisher_email = var.publisher_email
+  # publisher_name - (required) is a type of string
+  publisher_name = var.publisher_name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # sku_name - (required) is a type of string
+  sku_name = var.sku_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # virtual_network_type - (optional) is a type of string
+  virtual_network_type = var.virtual_network_type
 
   dynamic "additional_location" {
     for_each = var.additional_location
     content {
+      # location - (required) is a type of string
       location = additional_location.value["location"]
 
       dynamic "virtual_network_configuration" {
         for_each = additional_location.value.virtual_network_configuration
         content {
+          # subnet_id - (required) is a type of string
           subnet_id = virtual_network_configuration.value["subnet_id"]
         }
       }
@@ -467,9 +479,12 @@ resource "azurerm_api_management" "this" {
   dynamic "certificate" {
     for_each = var.certificate
     content {
+      # certificate_password - (optional) is a type of string
       certificate_password = certificate.value["certificate_password"]
-      encoded_certificate  = certificate.value["encoded_certificate"]
-      store_name           = certificate.value["store_name"]
+      # encoded_certificate - (required) is a type of string
+      encoded_certificate = certificate.value["encoded_certificate"]
+      # store_name - (required) is a type of string
+      store_name = certificate.value["store_name"]
     }
   }
 
@@ -480,10 +495,15 @@ resource "azurerm_api_management" "this" {
       dynamic "developer_portal" {
         for_each = hostname_configuration.value.developer_portal
         content {
-          certificate                  = developer_portal.value["certificate"]
-          certificate_password         = developer_portal.value["certificate_password"]
-          host_name                    = developer_portal.value["host_name"]
-          key_vault_id                 = developer_portal.value["key_vault_id"]
+          # certificate - (optional) is a type of string
+          certificate = developer_portal.value["certificate"]
+          # certificate_password - (optional) is a type of string
+          certificate_password = developer_portal.value["certificate_password"]
+          # host_name - (required) is a type of string
+          host_name = developer_portal.value["host_name"]
+          # key_vault_id - (optional) is a type of string
+          key_vault_id = developer_portal.value["key_vault_id"]
+          # negotiate_client_certificate - (optional) is a type of bool
           negotiate_client_certificate = developer_portal.value["negotiate_client_certificate"]
         }
       }
@@ -491,10 +511,15 @@ resource "azurerm_api_management" "this" {
       dynamic "management" {
         for_each = hostname_configuration.value.management
         content {
-          certificate                  = management.value["certificate"]
-          certificate_password         = management.value["certificate_password"]
-          host_name                    = management.value["host_name"]
-          key_vault_id                 = management.value["key_vault_id"]
+          # certificate - (optional) is a type of string
+          certificate = management.value["certificate"]
+          # certificate_password - (optional) is a type of string
+          certificate_password = management.value["certificate_password"]
+          # host_name - (required) is a type of string
+          host_name = management.value["host_name"]
+          # key_vault_id - (optional) is a type of string
+          key_vault_id = management.value["key_vault_id"]
+          # negotiate_client_certificate - (optional) is a type of bool
           negotiate_client_certificate = management.value["negotiate_client_certificate"]
         }
       }
@@ -502,10 +527,15 @@ resource "azurerm_api_management" "this" {
       dynamic "portal" {
         for_each = hostname_configuration.value.portal
         content {
-          certificate                  = portal.value["certificate"]
-          certificate_password         = portal.value["certificate_password"]
-          host_name                    = portal.value["host_name"]
-          key_vault_id                 = portal.value["key_vault_id"]
+          # certificate - (optional) is a type of string
+          certificate = portal.value["certificate"]
+          # certificate_password - (optional) is a type of string
+          certificate_password = portal.value["certificate_password"]
+          # host_name - (required) is a type of string
+          host_name = portal.value["host_name"]
+          # key_vault_id - (optional) is a type of string
+          key_vault_id = portal.value["key_vault_id"]
+          # negotiate_client_certificate - (optional) is a type of bool
           negotiate_client_certificate = portal.value["negotiate_client_certificate"]
         }
       }
@@ -513,11 +543,17 @@ resource "azurerm_api_management" "this" {
       dynamic "proxy" {
         for_each = hostname_configuration.value.proxy
         content {
-          certificate                  = proxy.value["certificate"]
-          certificate_password         = proxy.value["certificate_password"]
-          default_ssl_binding          = proxy.value["default_ssl_binding"]
-          host_name                    = proxy.value["host_name"]
-          key_vault_id                 = proxy.value["key_vault_id"]
+          # certificate - (optional) is a type of string
+          certificate = proxy.value["certificate"]
+          # certificate_password - (optional) is a type of string
+          certificate_password = proxy.value["certificate_password"]
+          # default_ssl_binding - (optional) is a type of bool
+          default_ssl_binding = proxy.value["default_ssl_binding"]
+          # host_name - (required) is a type of string
+          host_name = proxy.value["host_name"]
+          # key_vault_id - (optional) is a type of string
+          key_vault_id = proxy.value["key_vault_id"]
+          # negotiate_client_certificate - (optional) is a type of bool
           negotiate_client_certificate = proxy.value["negotiate_client_certificate"]
         }
       }
@@ -525,10 +561,15 @@ resource "azurerm_api_management" "this" {
       dynamic "scm" {
         for_each = hostname_configuration.value.scm
         content {
-          certificate                  = scm.value["certificate"]
-          certificate_password         = scm.value["certificate_password"]
-          host_name                    = scm.value["host_name"]
-          key_vault_id                 = scm.value["key_vault_id"]
+          # certificate - (optional) is a type of string
+          certificate = scm.value["certificate"]
+          # certificate_password - (optional) is a type of string
+          certificate_password = scm.value["certificate_password"]
+          # host_name - (required) is a type of string
+          host_name = scm.value["host_name"]
+          # key_vault_id - (optional) is a type of string
+          key_vault_id = scm.value["key_vault_id"]
+          # negotiate_client_certificate - (optional) is a type of bool
           negotiate_client_certificate = scm.value["negotiate_client_certificate"]
         }
       }
@@ -539,14 +580,17 @@ resource "azurerm_api_management" "this" {
   dynamic "identity" {
     for_each = var.identity
     content {
+      # identity_ids - (optional) is a type of set of string
       identity_ids = identity.value["identity_ids"]
-      type         = identity.value["type"]
+      # type - (optional) is a type of string
+      type = identity.value["type"]
     }
   }
 
   dynamic "protocols" {
     for_each = var.protocols
     content {
+      # enable_http2 - (optional) is a type of bool
       enable_http2 = protocols.value["enable_http2"]
     }
   }
@@ -554,29 +598,47 @@ resource "azurerm_api_management" "this" {
   dynamic "security" {
     for_each = var.security
     content {
-      enable_backend_ssl30                                = security.value["enable_backend_ssl30"]
-      enable_backend_tls10                                = security.value["enable_backend_tls10"]
-      enable_backend_tls11                                = security.value["enable_backend_tls11"]
-      enable_frontend_ssl30                               = security.value["enable_frontend_ssl30"]
-      enable_frontend_tls10                               = security.value["enable_frontend_tls10"]
-      enable_frontend_tls11                               = security.value["enable_frontend_tls11"]
-      enable_triple_des_ciphers                           = security.value["enable_triple_des_ciphers"]
+      # enable_backend_ssl30 - (optional) is a type of bool
+      enable_backend_ssl30 = security.value["enable_backend_ssl30"]
+      # enable_backend_tls10 - (optional) is a type of bool
+      enable_backend_tls10 = security.value["enable_backend_tls10"]
+      # enable_backend_tls11 - (optional) is a type of bool
+      enable_backend_tls11 = security.value["enable_backend_tls11"]
+      # enable_frontend_ssl30 - (optional) is a type of bool
+      enable_frontend_ssl30 = security.value["enable_frontend_ssl30"]
+      # enable_frontend_tls10 - (optional) is a type of bool
+      enable_frontend_tls10 = security.value["enable_frontend_tls10"]
+      # enable_frontend_tls11 - (optional) is a type of bool
+      enable_frontend_tls11 = security.value["enable_frontend_tls11"]
+      # enable_triple_des_ciphers - (optional) is a type of bool
+      enable_triple_des_ciphers = security.value["enable_triple_des_ciphers"]
+      # tls_ecdhe_ecdsa_with_aes128_cbc_sha_ciphers_enabled - (optional) is a type of bool
       tls_ecdhe_ecdsa_with_aes128_cbc_sha_ciphers_enabled = security.value["tls_ecdhe_ecdsa_with_aes128_cbc_sha_ciphers_enabled"]
+      # tls_ecdhe_ecdsa_with_aes256_cbc_sha_ciphers_enabled - (optional) is a type of bool
       tls_ecdhe_ecdsa_with_aes256_cbc_sha_ciphers_enabled = security.value["tls_ecdhe_ecdsa_with_aes256_cbc_sha_ciphers_enabled"]
-      tls_ecdhe_rsa_with_aes128_cbc_sha_ciphers_enabled   = security.value["tls_ecdhe_rsa_with_aes128_cbc_sha_ciphers_enabled"]
-      tls_ecdhe_rsa_with_aes256_cbc_sha_ciphers_enabled   = security.value["tls_ecdhe_rsa_with_aes256_cbc_sha_ciphers_enabled"]
-      tls_rsa_with_aes128_cbc_sha256_ciphers_enabled      = security.value["tls_rsa_with_aes128_cbc_sha256_ciphers_enabled"]
-      tls_rsa_with_aes128_cbc_sha_ciphers_enabled         = security.value["tls_rsa_with_aes128_cbc_sha_ciphers_enabled"]
-      tls_rsa_with_aes128_gcm_sha256_ciphers_enabled      = security.value["tls_rsa_with_aes128_gcm_sha256_ciphers_enabled"]
-      tls_rsa_with_aes256_cbc_sha256_ciphers_enabled      = security.value["tls_rsa_with_aes256_cbc_sha256_ciphers_enabled"]
-      tls_rsa_with_aes256_cbc_sha_ciphers_enabled         = security.value["tls_rsa_with_aes256_cbc_sha_ciphers_enabled"]
-      triple_des_ciphers_enabled                          = security.value["triple_des_ciphers_enabled"]
+      # tls_ecdhe_rsa_with_aes128_cbc_sha_ciphers_enabled - (optional) is a type of bool
+      tls_ecdhe_rsa_with_aes128_cbc_sha_ciphers_enabled = security.value["tls_ecdhe_rsa_with_aes128_cbc_sha_ciphers_enabled"]
+      # tls_ecdhe_rsa_with_aes256_cbc_sha_ciphers_enabled - (optional) is a type of bool
+      tls_ecdhe_rsa_with_aes256_cbc_sha_ciphers_enabled = security.value["tls_ecdhe_rsa_with_aes256_cbc_sha_ciphers_enabled"]
+      # tls_rsa_with_aes128_cbc_sha256_ciphers_enabled - (optional) is a type of bool
+      tls_rsa_with_aes128_cbc_sha256_ciphers_enabled = security.value["tls_rsa_with_aes128_cbc_sha256_ciphers_enabled"]
+      # tls_rsa_with_aes128_cbc_sha_ciphers_enabled - (optional) is a type of bool
+      tls_rsa_with_aes128_cbc_sha_ciphers_enabled = security.value["tls_rsa_with_aes128_cbc_sha_ciphers_enabled"]
+      # tls_rsa_with_aes128_gcm_sha256_ciphers_enabled - (optional) is a type of bool
+      tls_rsa_with_aes128_gcm_sha256_ciphers_enabled = security.value["tls_rsa_with_aes128_gcm_sha256_ciphers_enabled"]
+      # tls_rsa_with_aes256_cbc_sha256_ciphers_enabled - (optional) is a type of bool
+      tls_rsa_with_aes256_cbc_sha256_ciphers_enabled = security.value["tls_rsa_with_aes256_cbc_sha256_ciphers_enabled"]
+      # tls_rsa_with_aes256_cbc_sha_ciphers_enabled - (optional) is a type of bool
+      tls_rsa_with_aes256_cbc_sha_ciphers_enabled = security.value["tls_rsa_with_aes256_cbc_sha_ciphers_enabled"]
+      # triple_des_ciphers_enabled - (optional) is a type of bool
+      triple_des_ciphers_enabled = security.value["triple_des_ciphers_enabled"]
     }
   }
 
   dynamic "sign_in" {
     for_each = var.sign_in
     content {
+      # enabled - (required) is a type of bool
       enabled = sign_in.value["enabled"]
     }
   }
@@ -584,14 +646,18 @@ resource "azurerm_api_management" "this" {
   dynamic "sign_up" {
     for_each = var.sign_up
     content {
+      # enabled - (required) is a type of bool
       enabled = sign_up.value["enabled"]
 
       dynamic "terms_of_service" {
         for_each = sign_up.value.terms_of_service
         content {
+          # consent_required - (required) is a type of bool
           consent_required = terms_of_service.value["consent_required"]
-          enabled          = terms_of_service.value["enabled"]
-          text             = terms_of_service.value["text"]
+          # enabled - (required) is a type of bool
+          enabled = terms_of_service.value["enabled"]
+          # text - (optional) is a type of string
+          text = terms_of_service.value["text"]
         }
       }
 
@@ -601,6 +667,7 @@ resource "azurerm_api_management" "this" {
   dynamic "tenant_access" {
     for_each = var.tenant_access
     content {
+      # enabled - (required) is a type of bool
       enabled = tenant_access.value["enabled"]
     }
   }
@@ -608,9 +675,13 @@ resource "azurerm_api_management" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -618,6 +689,7 @@ resource "azurerm_api_management" "this" {
   dynamic "virtual_network_configuration" {
     for_each = var.virtual_network_configuration
     content {
+      # subnet_id - (required) is a type of string
       subnet_id = virtual_network_configuration.value["subnet_id"]
     }
   }

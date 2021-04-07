@@ -354,24 +354,39 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_instance_template" "this" {
-  can_ip_forward          = var.can_ip_forward
-  description             = var.description
-  enable_display          = var.enable_display
-  instance_description    = var.instance_description
-  labels                  = var.labels
-  machine_type            = var.machine_type
-  metadata                = var.metadata
+  # can_ip_forward - (optional) is a type of bool
+  can_ip_forward = var.can_ip_forward
+  # description - (optional) is a type of string
+  description = var.description
+  # enable_display - (optional) is a type of bool
+  enable_display = var.enable_display
+  # instance_description - (optional) is a type of string
+  instance_description = var.instance_description
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # machine_type - (required) is a type of string
+  machine_type = var.machine_type
+  # metadata - (optional) is a type of map of string
+  metadata = var.metadata
+  # metadata_startup_script - (optional) is a type of string
   metadata_startup_script = var.metadata_startup_script
-  min_cpu_platform        = var.min_cpu_platform
-  name                    = var.name
-  name_prefix             = var.name_prefix
-  project                 = var.project
-  region                  = var.region
-  tags                    = var.tags
+  # min_cpu_platform - (optional) is a type of string
+  min_cpu_platform = var.min_cpu_platform
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 
   dynamic "confidential_instance_config" {
     for_each = var.confidential_instance_config
     content {
+      # enable_confidential_compute - (required) is a type of bool
       enable_confidential_compute = confidential_instance_config.value["enable_confidential_compute"]
     }
   }
@@ -379,23 +394,37 @@ resource "google_compute_instance_template" "this" {
   dynamic "disk" {
     for_each = var.disk
     content {
-      auto_delete       = disk.value["auto_delete"]
-      boot              = disk.value["boot"]
-      device_name       = disk.value["device_name"]
-      disk_name         = disk.value["disk_name"]
-      disk_size_gb      = disk.value["disk_size_gb"]
-      disk_type         = disk.value["disk_type"]
-      interface         = disk.value["interface"]
-      labels            = disk.value["labels"]
-      mode              = disk.value["mode"]
+      # auto_delete - (optional) is a type of bool
+      auto_delete = disk.value["auto_delete"]
+      # boot - (optional) is a type of bool
+      boot = disk.value["boot"]
+      # device_name - (optional) is a type of string
+      device_name = disk.value["device_name"]
+      # disk_name - (optional) is a type of string
+      disk_name = disk.value["disk_name"]
+      # disk_size_gb - (optional) is a type of number
+      disk_size_gb = disk.value["disk_size_gb"]
+      # disk_type - (optional) is a type of string
+      disk_type = disk.value["disk_type"]
+      # interface - (optional) is a type of string
+      interface = disk.value["interface"]
+      # labels - (optional) is a type of map of string
+      labels = disk.value["labels"]
+      # mode - (optional) is a type of string
+      mode = disk.value["mode"]
+      # resource_policies - (optional) is a type of list of string
       resource_policies = disk.value["resource_policies"]
-      source            = disk.value["source"]
-      source_image      = disk.value["source_image"]
-      type              = disk.value["type"]
+      # source - (optional) is a type of string
+      source = disk.value["source"]
+      # source_image - (optional) is a type of string
+      source_image = disk.value["source_image"]
+      # type - (optional) is a type of string
+      type = disk.value["type"]
 
       dynamic "disk_encryption_key" {
         for_each = disk.value.disk_encryption_key
         content {
+          # kms_key_self_link - (required) is a type of string
           kms_key_self_link = disk_encryption_key.value["kms_key_self_link"]
         }
       }
@@ -406,23 +435,31 @@ resource "google_compute_instance_template" "this" {
   dynamic "guest_accelerator" {
     for_each = var.guest_accelerator
     content {
+      # count - (required) is a type of number
       count = guest_accelerator.value["count"]
-      type  = guest_accelerator.value["type"]
+      # type - (required) is a type of string
+      type = guest_accelerator.value["type"]
     }
   }
 
   dynamic "network_interface" {
     for_each = var.network_interface
     content {
-      network            = network_interface.value["network"]
-      network_ip         = network_interface.value["network_ip"]
-      subnetwork         = network_interface.value["subnetwork"]
+      # network - (optional) is a type of string
+      network = network_interface.value["network"]
+      # network_ip - (optional) is a type of string
+      network_ip = network_interface.value["network_ip"]
+      # subnetwork - (optional) is a type of string
+      subnetwork = network_interface.value["subnetwork"]
+      # subnetwork_project - (optional) is a type of string
       subnetwork_project = network_interface.value["subnetwork_project"]
 
       dynamic "access_config" {
         for_each = network_interface.value.access_config
         content {
-          nat_ip       = access_config.value["nat_ip"]
+          # nat_ip - (optional) is a type of string
+          nat_ip = access_config.value["nat_ip"]
+          # network_tier - (optional) is a type of string
           network_tier = access_config.value["network_tier"]
         }
       }
@@ -430,7 +467,9 @@ resource "google_compute_instance_template" "this" {
       dynamic "alias_ip_range" {
         for_each = network_interface.value.alias_ip_range
         content {
-          ip_cidr_range         = alias_ip_range.value["ip_cidr_range"]
+          # ip_cidr_range - (required) is a type of string
+          ip_cidr_range = alias_ip_range.value["ip_cidr_range"]
+          # subnetwork_range_name - (optional) is a type of string
           subnetwork_range_name = alias_ip_range.value["subnetwork_range_name"]
         }
       }
@@ -441,17 +480,24 @@ resource "google_compute_instance_template" "this" {
   dynamic "scheduling" {
     for_each = var.scheduling
     content {
-      automatic_restart   = scheduling.value["automatic_restart"]
-      min_node_cpus       = scheduling.value["min_node_cpus"]
+      # automatic_restart - (optional) is a type of bool
+      automatic_restart = scheduling.value["automatic_restart"]
+      # min_node_cpus - (optional) is a type of number
+      min_node_cpus = scheduling.value["min_node_cpus"]
+      # on_host_maintenance - (optional) is a type of string
       on_host_maintenance = scheduling.value["on_host_maintenance"]
-      preemptible         = scheduling.value["preemptible"]
+      # preemptible - (optional) is a type of bool
+      preemptible = scheduling.value["preemptible"]
 
       dynamic "node_affinities" {
         for_each = scheduling.value.node_affinities
         content {
-          key      = node_affinities.value["key"]
+          # key - (required) is a type of string
+          key = node_affinities.value["key"]
+          # operator - (required) is a type of string
           operator = node_affinities.value["operator"]
-          values   = node_affinities.value["values"]
+          # values - (required) is a type of set of string
+          values = node_affinities.value["values"]
         }
       }
 
@@ -461,7 +507,9 @@ resource "google_compute_instance_template" "this" {
   dynamic "service_account" {
     for_each = var.service_account
     content {
-      email  = service_account.value["email"]
+      # email - (optional) is a type of string
+      email = service_account.value["email"]
+      # scopes - (required) is a type of set of string
       scopes = service_account.value["scopes"]
     }
   }
@@ -469,16 +517,21 @@ resource "google_compute_instance_template" "this" {
   dynamic "shielded_instance_config" {
     for_each = var.shielded_instance_config
     content {
+      # enable_integrity_monitoring - (optional) is a type of bool
       enable_integrity_monitoring = shielded_instance_config.value["enable_integrity_monitoring"]
-      enable_secure_boot          = shielded_instance_config.value["enable_secure_boot"]
-      enable_vtpm                 = shielded_instance_config.value["enable_vtpm"]
+      # enable_secure_boot - (optional) is a type of bool
+      enable_secure_boot = shielded_instance_config.value["enable_secure_boot"]
+      # enable_vtpm - (optional) is a type of bool
+      enable_vtpm = shielded_instance_config.value["enable_vtpm"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

@@ -126,38 +126,52 @@ variable "rule" {
 
 ```terraform
 resource "aws_backup_plan" "this" {
+  # name - (required) is a type of string
   name = var.name
+  # tags - (optional) is a type of map of string
   tags = var.tags
 
   dynamic "advanced_backup_setting" {
     for_each = var.advanced_backup_setting
     content {
+      # backup_options - (required) is a type of map of string
       backup_options = advanced_backup_setting.value["backup_options"]
-      resource_type  = advanced_backup_setting.value["resource_type"]
+      # resource_type - (required) is a type of string
+      resource_type = advanced_backup_setting.value["resource_type"]
     }
   }
 
   dynamic "rule" {
     for_each = var.rule
     content {
-      completion_window        = rule.value["completion_window"]
+      # completion_window - (optional) is a type of number
+      completion_window = rule.value["completion_window"]
+      # enable_continuous_backup - (optional) is a type of bool
       enable_continuous_backup = rule.value["enable_continuous_backup"]
-      recovery_point_tags      = rule.value["recovery_point_tags"]
-      rule_name                = rule.value["rule_name"]
-      schedule                 = rule.value["schedule"]
-      start_window             = rule.value["start_window"]
-      target_vault_name        = rule.value["target_vault_name"]
+      # recovery_point_tags - (optional) is a type of map of string
+      recovery_point_tags = rule.value["recovery_point_tags"]
+      # rule_name - (required) is a type of string
+      rule_name = rule.value["rule_name"]
+      # schedule - (optional) is a type of string
+      schedule = rule.value["schedule"]
+      # start_window - (optional) is a type of number
+      start_window = rule.value["start_window"]
+      # target_vault_name - (required) is a type of string
+      target_vault_name = rule.value["target_vault_name"]
 
       dynamic "copy_action" {
         for_each = rule.value.copy_action
         content {
+          # destination_vault_arn - (required) is a type of string
           destination_vault_arn = copy_action.value["destination_vault_arn"]
 
           dynamic "lifecycle" {
             for_each = copy_action.value.lifecycle
             content {
+              # cold_storage_after - (optional) is a type of number
               cold_storage_after = lifecycle.value["cold_storage_after"]
-              delete_after       = lifecycle.value["delete_after"]
+              # delete_after - (optional) is a type of number
+              delete_after = lifecycle.value["delete_after"]
             }
           }
 
@@ -167,8 +181,10 @@ resource "aws_backup_plan" "this" {
       dynamic "lifecycle" {
         for_each = rule.value.lifecycle
         content {
+          # cold_storage_after - (optional) is a type of number
           cold_storage_after = lifecycle.value["cold_storage_after"]
-          delete_after       = lifecycle.value["delete_after"]
+          # delete_after - (optional) is a type of number
+          delete_after = lifecycle.value["delete_after"]
         }
       }
 

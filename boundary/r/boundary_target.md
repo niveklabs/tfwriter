@@ -112,15 +112,24 @@ variable "worker_filter" {
 
 ```terraform
 resource "boundary_target" "this" {
-  default_port             = var.default_port
-  description              = var.description
-  host_set_ids             = var.host_set_ids
-  name                     = var.name
-  scope_id                 = var.scope_id
+  # default_port - (optional) is a type of number
+  default_port = var.default_port
+  # description - (optional) is a type of string
+  description = var.description
+  # host_set_ids - (optional) is a type of set of string
+  host_set_ids = var.host_set_ids
+  # name - (optional) is a type of string
+  name = var.name
+  # scope_id - (required) is a type of string
+  scope_id = var.scope_id
+  # session_connection_limit - (optional) is a type of number
   session_connection_limit = var.session_connection_limit
-  session_max_seconds      = var.session_max_seconds
-  type                     = var.type
-  worker_filter            = var.worker_filter
+  # session_max_seconds - (optional) is a type of number
+  session_max_seconds = var.session_max_seconds
+  # type - (required) is a type of string
+  type = var.type
+  # worker_filter - (optional) is a type of string
+  worker_filter = var.worker_filter
 }
 ```
 

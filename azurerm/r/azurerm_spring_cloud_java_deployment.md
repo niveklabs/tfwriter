@@ -124,21 +124,33 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_spring_cloud_java_deployment" "this" {
-  cpu                   = var.cpu
+  # cpu - (optional) is a type of number
+  cpu = var.cpu
+  # environment_variables - (optional) is a type of map of string
   environment_variables = var.environment_variables
-  instance_count        = var.instance_count
-  jvm_options           = var.jvm_options
-  memory_in_gb          = var.memory_in_gb
-  name                  = var.name
-  runtime_version       = var.runtime_version
-  spring_cloud_app_id   = var.spring_cloud_app_id
+  # instance_count - (optional) is a type of number
+  instance_count = var.instance_count
+  # jvm_options - (optional) is a type of string
+  jvm_options = var.jvm_options
+  # memory_in_gb - (optional) is a type of number
+  memory_in_gb = var.memory_in_gb
+  # name - (required) is a type of string
+  name = var.name
+  # runtime_version - (optional) is a type of string
+  runtime_version = var.runtime_version
+  # spring_cloud_app_id - (required) is a type of string
+  spring_cloud_app_id = var.spring_cloud_app_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

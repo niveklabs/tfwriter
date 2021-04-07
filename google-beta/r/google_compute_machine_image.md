@@ -116,24 +116,33 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_machine_image" "this" {
-  description     = var.description
-  guest_flush     = var.guest_flush
-  name            = var.name
-  project         = var.project
+  # description - (optional) is a type of string
+  description = var.description
+  # guest_flush - (optional) is a type of bool
+  guest_flush = var.guest_flush
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # source_instance - (required) is a type of string
   source_instance = var.source_instance
 
   dynamic "machine_image_encryption_key" {
     for_each = var.machine_image_encryption_key
     content {
+      # kms_key_service_account - (optional) is a type of string
       kms_key_service_account = machine_image_encryption_key.value["kms_key_service_account"]
-      raw_key                 = machine_image_encryption_key.value["raw_key"]
+      # raw_key - (optional) is a type of string
+      raw_key = machine_image_encryption_key.value["raw_key"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

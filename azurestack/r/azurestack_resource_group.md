@@ -64,9 +64,12 @@ variable "tags" {
 
 ```terraform
 resource "azurestack_resource_group" "this" {
+  # location - (required) is a type of string
   location = var.location
-  name     = var.name
-  tags     = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

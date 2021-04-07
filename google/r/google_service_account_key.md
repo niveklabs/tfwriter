@@ -89,11 +89,17 @@ variable "service_account_id" {
 
 ```terraform
 resource "google_service_account_key" "this" {
-  keepers            = var.keepers
-  key_algorithm      = var.key_algorithm
-  private_key_type   = var.private_key_type
-  public_key_data    = var.public_key_data
-  public_key_type    = var.public_key_type
+  # keepers - (optional) is a type of map of string
+  keepers = var.keepers
+  # key_algorithm - (optional) is a type of string
+  key_algorithm = var.key_algorithm
+  # private_key_type - (optional) is a type of string
+  private_key_type = var.private_key_type
+  # public_key_data - (optional) is a type of string
+  public_key_data = var.public_key_data
+  # public_key_type - (optional) is a type of string
+  public_key_type = var.public_key_type
+  # service_account_id - (required) is a type of string
   service_account_id = var.service_account_id
 }
 ```

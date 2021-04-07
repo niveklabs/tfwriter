@@ -49,6 +49,7 @@ variable "topic_id" {
 
 ```terraform
 data "oci_ons_notification_topic" "this" {
+  # topic_id - (required) is a type of string
   topic_id = var.topic_id
 }
 ```

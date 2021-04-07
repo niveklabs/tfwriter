@@ -73,10 +73,14 @@ variable "type" {
 
 ```terraform
 resource "nomad_acl_token" "this" {
-  global   = var.global
-  name     = var.name
+  # global - (optional) is a type of bool
+  global = var.global
+  # name - (optional) is a type of string
+  name = var.name
+  # policies - (optional) is a type of set of string
   policies = var.policies
-  type     = var.type
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

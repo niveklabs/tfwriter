@@ -49,6 +49,7 @@ variable "cloud_exadata_infrastructure_id" {
 
 ```terraform
 data "oci_database_cloud_exadata_infrastructure" "this" {
+  # cloud_exadata_infrastructure_id - (required) is a type of string
   cloud_exadata_infrastructure_id = var.cloud_exadata_infrastructure_id
 }
 ```

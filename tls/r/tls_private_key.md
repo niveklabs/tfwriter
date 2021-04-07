@@ -65,9 +65,12 @@ variable "rsa_bits" {
 
 ```terraform
 resource "tls_private_key" "this" {
-  algorithm   = var.algorithm
+  # algorithm - (required) is a type of string
+  algorithm = var.algorithm
+  # ecdsa_curve - (optional) is a type of string
   ecdsa_curve = var.ecdsa_curve
-  rsa_bits    = var.rsa_bits
+  # rsa_bits - (optional) is a type of number
+  rsa_bits = var.rsa_bits
 }
 ```
 

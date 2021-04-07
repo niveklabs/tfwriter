@@ -49,6 +49,7 @@ variable "detector_recipe_id" {
 
 ```terraform
 data "oci_cloud_guard_detector_recipe" "this" {
+  # detector_recipe_id - (required) is a type of string
   detector_recipe_id = var.detector_recipe_id
 }
 ```

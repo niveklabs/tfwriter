@@ -89,17 +89,24 @@ variable "condition" {
 
 ```terraform
 resource "google_sourcerepo_repository_iam_member" "this" {
-  member     = var.member
-  project    = var.project
+  # member - (required) is a type of string
+  member = var.member
+  # project - (optional) is a type of string
+  project = var.project
+  # repository - (required) is a type of string
   repository = var.repository
-  role       = var.role
+  # role - (required) is a type of string
+  role = var.role
 
   dynamic "condition" {
     for_each = var.condition
     content {
+      # description - (optional) is a type of string
       description = condition.value["description"]
-      expression  = condition.value["expression"]
-      title       = condition.value["title"]
+      # expression - (required) is a type of string
+      expression = condition.value["expression"]
+      # title - (required) is a type of string
+      title = condition.value["title"]
     }
   }
 

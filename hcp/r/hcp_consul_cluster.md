@@ -131,23 +131,36 @@ variable "timeouts" {
 
 ```terraform
 resource "hcp_consul_cluster" "this" {
-  cluster_id         = var.cluster_id
-  connect_enabled    = var.connect_enabled
-  datacenter         = var.datacenter
-  hvn_id             = var.hvn_id
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # connect_enabled - (optional) is a type of bool
+  connect_enabled = var.connect_enabled
+  # datacenter - (optional) is a type of string
+  datacenter = var.datacenter
+  # hvn_id - (required) is a type of string
+  hvn_id = var.hvn_id
+  # min_consul_version - (optional) is a type of string
   min_consul_version = var.min_consul_version
-  primary_link       = var.primary_link
-  public_endpoint    = var.public_endpoint
-  size               = var.size
-  tier               = var.tier
+  # primary_link - (optional) is a type of string
+  primary_link = var.primary_link
+  # public_endpoint - (optional) is a type of bool
+  public_endpoint = var.public_endpoint
+  # size - (optional) is a type of string
+  size = var.size
+  # tier - (required) is a type of string
+  tier = var.tier
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
-      create  = timeouts.value["create"]
+      # create - (optional) is a type of string
+      create = timeouts.value["create"]
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
-      delete  = timeouts.value["delete"]
-      update  = timeouts.value["update"]
+      # delete - (optional) is a type of string
+      delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
+      update = timeouts.value["update"]
     }
   }
 

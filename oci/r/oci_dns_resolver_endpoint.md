@@ -134,22 +134,35 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_dns_resolver_endpoint" "this" {
-  endpoint_type      = var.endpoint_type
+  # endpoint_type - (optional) is a type of string
+  endpoint_type = var.endpoint_type
+  # forwarding_address - (optional) is a type of string
   forwarding_address = var.forwarding_address
-  is_forwarding      = var.is_forwarding
-  is_listening       = var.is_listening
-  listening_address  = var.listening_address
-  name               = var.name
-  nsg_ids            = var.nsg_ids
-  resolver_id        = var.resolver_id
-  scope              = var.scope
-  subnet_id          = var.subnet_id
+  # is_forwarding - (required) is a type of bool
+  is_forwarding = var.is_forwarding
+  # is_listening - (required) is a type of bool
+  is_listening = var.is_listening
+  # listening_address - (optional) is a type of string
+  listening_address = var.listening_address
+  # name - (required) is a type of string
+  name = var.name
+  # nsg_ids - (optional) is a type of set of string
+  nsg_ids = var.nsg_ids
+  # resolver_id - (required) is a type of string
+  resolver_id = var.resolver_id
+  # scope - (required) is a type of string
+  scope = var.scope
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

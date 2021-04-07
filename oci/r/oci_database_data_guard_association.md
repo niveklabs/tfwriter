@@ -190,29 +190,49 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_database_data_guard_association" "this" {
-  availability_domain              = var.availability_domain
-  backup_network_nsg_ids           = var.backup_network_nsg_ids
-  creation_type                    = var.creation_type
-  database_admin_password          = var.database_admin_password
-  database_id                      = var.database_id
-  database_software_image_id       = var.database_software_image_id
+  # availability_domain - (optional) is a type of string
+  availability_domain = var.availability_domain
+  # backup_network_nsg_ids - (optional) is a type of set of string
+  backup_network_nsg_ids = var.backup_network_nsg_ids
+  # creation_type - (required) is a type of string
+  creation_type = var.creation_type
+  # database_admin_password - (required) is a type of string
+  database_admin_password = var.database_admin_password
+  # database_id - (required) is a type of string
+  database_id = var.database_id
+  # database_software_image_id - (optional) is a type of string
+  database_software_image_id = var.database_software_image_id
+  # delete_standby_db_home_on_delete - (required) is a type of string
   delete_standby_db_home_on_delete = var.delete_standby_db_home_on_delete
-  display_name                     = var.display_name
-  hostname                         = var.hostname
-  nsg_ids                          = var.nsg_ids
-  peer_db_home_id                  = var.peer_db_home_id
-  peer_db_system_id                = var.peer_db_system_id
-  peer_vm_cluster_id               = var.peer_vm_cluster_id
-  protection_mode                  = var.protection_mode
-  shape                            = var.shape
-  subnet_id                        = var.subnet_id
-  transport_type                   = var.transport_type
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # hostname - (optional) is a type of string
+  hostname = var.hostname
+  # nsg_ids - (optional) is a type of set of string
+  nsg_ids = var.nsg_ids
+  # peer_db_home_id - (optional) is a type of string
+  peer_db_home_id = var.peer_db_home_id
+  # peer_db_system_id - (optional) is a type of string
+  peer_db_system_id = var.peer_db_system_id
+  # peer_vm_cluster_id - (optional) is a type of string
+  peer_vm_cluster_id = var.peer_vm_cluster_id
+  # protection_mode - (required) is a type of string
+  protection_mode = var.protection_mode
+  # shape - (optional) is a type of string
+  shape = var.shape
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # transport_type - (required) is a type of string
+  transport_type = var.transport_type
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

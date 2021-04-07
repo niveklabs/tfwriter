@@ -268,17 +268,24 @@ variable "traffic" {
 
 ```terraform
 resource "google_cloud_run_service" "this" {
+  # autogenerate_revision_name - (optional) is a type of bool
   autogenerate_revision_name = var.autogenerate_revision_name
-  location                   = var.location
-  name                       = var.name
-  project                    = var.project
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "metadata" {
     for_each = var.metadata
     content {
+      # annotations - (optional) is a type of map of string
       annotations = metadata.value["annotations"]
-      labels      = metadata.value["labels"]
-      namespace   = metadata.value["namespace"]
+      # labels - (optional) is a type of map of string
+      labels = metadata.value["labels"]
+      # namespace - (optional) is a type of string
+      namespace = metadata.value["namespace"]
     }
   }
 
@@ -289,32 +296,45 @@ resource "google_cloud_run_service" "this" {
       dynamic "metadata" {
         for_each = template.value.metadata
         content {
+          # annotations - (optional) is a type of map of string
           annotations = metadata.value["annotations"]
-          labels      = metadata.value["labels"]
-          name        = metadata.value["name"]
-          namespace   = metadata.value["namespace"]
+          # labels - (optional) is a type of map of string
+          labels = metadata.value["labels"]
+          # name - (optional) is a type of string
+          name = metadata.value["name"]
+          # namespace - (optional) is a type of string
+          namespace = metadata.value["namespace"]
         }
       }
 
       dynamic "spec" {
         for_each = template.value.spec
         content {
+          # container_concurrency - (optional) is a type of number
           container_concurrency = spec.value["container_concurrency"]
-          service_account_name  = spec.value["service_account_name"]
-          timeout_seconds       = spec.value["timeout_seconds"]
+          # service_account_name - (optional) is a type of string
+          service_account_name = spec.value["service_account_name"]
+          # timeout_seconds - (optional) is a type of number
+          timeout_seconds = spec.value["timeout_seconds"]
 
           dynamic "containers" {
             for_each = spec.value.containers
             content {
-              args        = containers.value["args"]
-              command     = containers.value["command"]
-              image       = containers.value["image"]
+              # args - (optional) is a type of list of string
+              args = containers.value["args"]
+              # command - (optional) is a type of list of string
+              command = containers.value["command"]
+              # image - (required) is a type of string
+              image = containers.value["image"]
+              # working_dir - (optional) is a type of string
               working_dir = containers.value["working_dir"]
 
               dynamic "env" {
                 for_each = containers.value.env
                 content {
-                  name  = env.value["name"]
+                  # name - (optional) is a type of string
+                  name = env.value["name"]
+                  # value - (optional) is a type of string
                   value = env.value["value"]
                 }
               }
@@ -322,16 +342,19 @@ resource "google_cloud_run_service" "this" {
               dynamic "env_from" {
                 for_each = containers.value.env_from
                 content {
+                  # prefix - (optional) is a type of string
                   prefix = env_from.value["prefix"]
 
                   dynamic "config_map_ref" {
                     for_each = env_from.value.config_map_ref
                     content {
+                      # optional - (optional) is a type of bool
                       optional = config_map_ref.value["optional"]
 
                       dynamic "local_object_reference" {
                         for_each = config_map_ref.value.local_object_reference
                         content {
+                          # name - (required) is a type of string
                           name = local_object_reference.value["name"]
                         }
                       }
@@ -342,11 +365,13 @@ resource "google_cloud_run_service" "this" {
                   dynamic "secret_ref" {
                     for_each = env_from.value.secret_ref
                     content {
+                      # optional - (optional) is a type of bool
                       optional = secret_ref.value["optional"]
 
                       dynamic "local_object_reference" {
                         for_each = secret_ref.value.local_object_reference
                         content {
+                          # name - (required) is a type of string
                           name = local_object_reference.value["name"]
                         }
                       }
@@ -360,16 +385,21 @@ resource "google_cloud_run_service" "this" {
               dynamic "ports" {
                 for_each = containers.value.ports
                 content {
+                  # container_port - (required) is a type of number
                   container_port = ports.value["container_port"]
-                  name           = ports.value["name"]
-                  protocol       = ports.value["protocol"]
+                  # name - (optional) is a type of string
+                  name = ports.value["name"]
+                  # protocol - (optional) is a type of string
+                  protocol = ports.value["protocol"]
                 }
               }
 
               dynamic "resources" {
                 for_each = containers.value.resources
                 content {
-                  limits   = resources.value["limits"]
+                  # limits - (optional) is a type of map of string
+                  limits = resources.value["limits"]
+                  # requests - (optional) is a type of map of string
                   requests = resources.value["requests"]
                 }
               }
@@ -386,8 +416,11 @@ resource "google_cloud_run_service" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -395,9 +428,12 @@ resource "google_cloud_run_service" "this" {
   dynamic "traffic" {
     for_each = var.traffic
     content {
+      # latest_revision - (optional) is a type of bool
       latest_revision = traffic.value["latest_revision"]
-      percent         = traffic.value["percent"]
-      revision_name   = traffic.value["revision_name"]
+      # percent - (required) is a type of number
+      percent = traffic.value["percent"]
+      # revision_name - (optional) is a type of string
+      revision_name = traffic.value["revision_name"]
     }
   }
 

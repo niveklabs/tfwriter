@@ -84,16 +84,23 @@ variable "ingress" {
 
 ```terraform
 resource "aws_db_security_group" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  tags        = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "ingress" {
     for_each = var.ingress
     content {
-      cidr                    = ingress.value["cidr"]
-      security_group_id       = ingress.value["security_group_id"]
-      security_group_name     = ingress.value["security_group_name"]
+      # cidr - (optional) is a type of string
+      cidr = ingress.value["cidr"]
+      # security_group_id - (optional) is a type of string
+      security_group_id = ingress.value["security_group_id"]
+      # security_group_name - (optional) is a type of string
+      security_group_name = ingress.value["security_group_name"]
+      # security_group_owner_id - (optional) is a type of string
       security_group_owner_id = ingress.value["security_group_owner_id"]
     }
   }

@@ -103,17 +103,25 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_guardduty_member" "this" {
-  account_id                 = var.account_id
-  detector_id                = var.detector_id
+  # account_id - (required) is a type of string
+  account_id = var.account_id
+  # detector_id - (required) is a type of string
+  detector_id = var.detector_id
+  # disable_email_notification - (optional) is a type of bool
   disable_email_notification = var.disable_email_notification
-  email                      = var.email
-  invitation_message         = var.invitation_message
-  invite                     = var.invite
+  # email - (required) is a type of string
+  email = var.email
+  # invitation_message - (optional) is a type of string
+  invitation_message = var.invitation_message
+  # invite - (optional) is a type of bool
+  invite = var.invite
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

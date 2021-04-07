@@ -58,8 +58,10 @@ variable "name" {
 
 ```terraform
 data "aws_region" "this" {
+  # endpoint - (optional) is a type of string
   endpoint = var.endpoint
-  name     = var.name
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

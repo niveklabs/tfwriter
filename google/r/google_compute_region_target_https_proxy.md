@@ -105,18 +105,27 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_region_target_https_proxy" "this" {
-  description      = var.description
-  name             = var.name
-  project          = var.project
-  region           = var.region
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
+  # ssl_certificates - (required) is a type of list of string
   ssl_certificates = var.ssl_certificates
-  url_map          = var.url_map
+  # url_map - (required) is a type of string
+  url_map = var.url_map
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

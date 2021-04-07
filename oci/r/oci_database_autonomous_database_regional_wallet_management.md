@@ -68,13 +68,17 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_database_autonomous_database_regional_wallet_management" "this" {
+  # should_rotate - (optional) is a type of bool
   should_rotate = var.should_rotate
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -116,19 +116,29 @@ variable "timeouts" {
 
 ```terraform
 resource "oraclepaas_mysql_access_rule" "this" {
-  description         = var.description
-  destination         = var.destination
-  enabled             = var.enabled
-  name                = var.name
-  ports               = var.ports
-  protocol            = var.protocol
+  # description - (optional) is a type of string
+  description = var.description
+  # destination - (required) is a type of string
+  destination = var.destination
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
+  # ports - (required) is a type of string
+  ports = var.ports
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # service_instance_id - (required) is a type of string
   service_instance_id = var.service_instance_id
-  source              = var.source
+  # source - (required) is a type of string
+  source = var.source
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

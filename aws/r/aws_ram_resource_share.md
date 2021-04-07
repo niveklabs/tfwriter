@@ -81,14 +81,19 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_ram_resource_share" "this" {
+  # allow_external_principals - (optional) is a type of bool
   allow_external_principals = var.allow_external_principals
-  name                      = var.name
-  tags                      = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

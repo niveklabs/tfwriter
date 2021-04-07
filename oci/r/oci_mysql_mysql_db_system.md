@@ -265,34 +265,59 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_mysql_mysql_db_system" "this" {
-  admin_password          = var.admin_password
-  admin_username          = var.admin_username
-  availability_domain     = var.availability_domain
-  compartment_id          = var.compartment_id
-  configuration_id        = var.configuration_id
+  # admin_password - (required) is a type of string
+  admin_password = var.admin_password
+  # admin_username - (required) is a type of string
+  admin_username = var.admin_username
+  # availability_domain - (required) is a type of string
+  availability_domain = var.availability_domain
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # configuration_id - (optional) is a type of string
+  configuration_id = var.configuration_id
+  # data_storage_size_in_gb - (optional) is a type of number
   data_storage_size_in_gb = var.data_storage_size_in_gb
-  defined_tags            = var.defined_tags
-  description             = var.description
-  display_name            = var.display_name
-  fault_domain            = var.fault_domain
-  freeform_tags           = var.freeform_tags
-  hostname_label          = var.hostname_label
-  ip_address              = var.ip_address
-  mysql_version           = var.mysql_version
-  port                    = var.port
-  port_x                  = var.port_x
-  shape_name              = var.shape_name
-  shutdown_type           = var.shutdown_type
-  state                   = var.state
-  subnet_id               = var.subnet_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # fault_domain - (optional) is a type of string
+  fault_domain = var.fault_domain
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # hostname_label - (optional) is a type of string
+  hostname_label = var.hostname_label
+  # ip_address - (optional) is a type of string
+  ip_address = var.ip_address
+  # mysql_version - (optional) is a type of string
+  mysql_version = var.mysql_version
+  # port - (optional) is a type of number
+  port = var.port
+  # port_x - (optional) is a type of number
+  port_x = var.port_x
+  # shape_name - (required) is a type of string
+  shape_name = var.shape_name
+  # shutdown_type - (optional) is a type of string
+  shutdown_type = var.shutdown_type
+  # state - (optional) is a type of string
+  state = var.state
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
 
   dynamic "backup_policy" {
     for_each = var.backup_policy
     content {
-      defined_tags      = backup_policy.value["defined_tags"]
-      freeform_tags     = backup_policy.value["freeform_tags"]
-      is_enabled        = backup_policy.value["is_enabled"]
+      # defined_tags - (optional) is a type of map of string
+      defined_tags = backup_policy.value["defined_tags"]
+      # freeform_tags - (optional) is a type of map of string
+      freeform_tags = backup_policy.value["freeform_tags"]
+      # is_enabled - (optional) is a type of bool
+      is_enabled = backup_policy.value["is_enabled"]
+      # retention_in_days - (optional) is a type of number
       retention_in_days = backup_policy.value["retention_in_days"]
+      # window_start_time - (optional) is a type of string
       window_start_time = backup_policy.value["window_start_time"]
     }
   }
@@ -300,6 +325,7 @@ resource "oci_mysql_mysql_db_system" "this" {
   dynamic "maintenance" {
     for_each = var.maintenance
     content {
+      # window_start_time - (required) is a type of string
       window_start_time = maintenance.value["window_start_time"]
     }
   }
@@ -307,7 +333,9 @@ resource "oci_mysql_mysql_db_system" "this" {
   dynamic "source" {
     for_each = var.source
     content {
-      backup_id   = source.value["backup_id"]
+      # backup_id - (optional) is a type of string
+      backup_id = source.value["backup_id"]
+      # source_type - (required) is a type of string
       source_type = source.value["source_type"]
     }
   }
@@ -315,8 +343,11 @@ resource "oci_mysql_mysql_db_system" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -112,20 +112,31 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_devspace_controller" "this" {
-  location                                 = var.location
-  name                                     = var.name
-  resource_group_name                      = var.resource_group_name
-  sku_name                                 = var.sku_name
-  tags                                     = var.tags
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # sku_name - (required) is a type of string
+  sku_name = var.sku_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # target_container_host_credentials_base64 - (required) is a type of string
   target_container_host_credentials_base64 = var.target_container_host_credentials_base64
-  target_container_host_resource_id        = var.target_container_host_resource_id
+  # target_container_host_resource_id - (required) is a type of string
+  target_container_host_resource_id = var.target_container_host_resource_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

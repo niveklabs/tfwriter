@@ -49,6 +49,7 @@ variable "byoip_range_id" {
 
 ```terraform
 data "oci_core_byoip_range" "this" {
+  # byoip_range_id - (required) is a type of string
   byoip_range_id = var.byoip_range_id
 }
 ```

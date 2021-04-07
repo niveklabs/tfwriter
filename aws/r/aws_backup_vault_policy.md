@@ -56,8 +56,10 @@ variable "policy" {
 
 ```terraform
 resource "aws_backup_vault_policy" "this" {
+  # backup_vault_name - (required) is a type of string
   backup_vault_name = var.backup_vault_name
-  policy            = var.policy
+  # policy - (required) is a type of string
+  policy = var.policy
 }
 ```
 

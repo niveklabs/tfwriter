@@ -113,19 +113,29 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_dedicated_vm_host" "this" {
-  availability_domain     = var.availability_domain
-  compartment_id          = var.compartment_id
+  # availability_domain - (required) is a type of string
+  availability_domain = var.availability_domain
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # dedicated_vm_host_shape - (required) is a type of string
   dedicated_vm_host_shape = var.dedicated_vm_host_shape
-  defined_tags            = var.defined_tags
-  display_name            = var.display_name
-  fault_domain            = var.fault_domain
-  freeform_tags           = var.freeform_tags
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # fault_domain - (optional) is a type of string
+  fault_domain = var.fault_domain
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

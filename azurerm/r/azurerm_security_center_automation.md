@@ -165,27 +165,39 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_security_center_automation" "this" {
-  description         = var.description
-  enabled             = var.enabled
-  location            = var.location
-  name                = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  scopes              = var.scopes
-  tags                = var.tags
+  # scopes - (required) is a type of list of string
+  scopes = var.scopes
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "action" {
     for_each = var.action
     content {
+      # connection_string - (optional) is a type of string
       connection_string = action.value["connection_string"]
-      resource_id       = action.value["resource_id"]
-      trigger_url       = action.value["trigger_url"]
-      type              = action.value["type"]
+      # resource_id - (required) is a type of string
+      resource_id = action.value["resource_id"]
+      # trigger_url - (optional) is a type of string
+      trigger_url = action.value["trigger_url"]
+      # type - (required) is a type of string
+      type = action.value["type"]
     }
   }
 
   dynamic "source" {
     for_each = var.source
     content {
+      # event_source - (required) is a type of string
       event_source = source.value["event_source"]
 
       dynamic "rule_set" {
@@ -195,10 +207,14 @@ resource "azurerm_security_center_automation" "this" {
           dynamic "rule" {
             for_each = rule_set.value.rule
             content {
+              # expected_value - (required) is a type of string
               expected_value = rule.value["expected_value"]
-              operator       = rule.value["operator"]
-              property_path  = rule.value["property_path"]
-              property_type  = rule.value["property_type"]
+              # operator - (required) is a type of string
+              operator = rule.value["operator"]
+              # property_path - (required) is a type of string
+              property_path = rule.value["property_path"]
+              # property_type - (required) is a type of string
+              property_type = rule.value["property_type"]
             }
           }
 
@@ -211,9 +227,13 @@ resource "azurerm_security_center_automation" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

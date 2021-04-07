@@ -213,36 +213,57 @@ variable "trigger" {
 
 ```terraform
 resource "azurerm_monitor_scheduled_query_rules_alert" "this" {
+  # authorized_resource_ids - (optional) is a type of set of string
   authorized_resource_ids = var.authorized_resource_ids
-  data_source_id          = var.data_source_id
-  description             = var.description
-  enabled                 = var.enabled
-  frequency               = var.frequency
-  location                = var.location
-  name                    = var.name
-  query                   = var.query
-  query_type              = var.query_type
-  resource_group_name     = var.resource_group_name
-  severity                = var.severity
-  tags                    = var.tags
-  throttling              = var.throttling
-  time_window             = var.time_window
+  # data_source_id - (required) is a type of string
+  data_source_id = var.data_source_id
+  # description - (optional) is a type of string
+  description = var.description
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # frequency - (required) is a type of number
+  frequency = var.frequency
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # query - (required) is a type of string
+  query = var.query
+  # query_type - (optional) is a type of string
+  query_type = var.query_type
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # severity - (optional) is a type of number
+  severity = var.severity
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # throttling - (optional) is a type of number
+  throttling = var.throttling
+  # time_window - (required) is a type of number
+  time_window = var.time_window
 
   dynamic "action" {
     for_each = var.action
     content {
-      action_group           = action.value["action_group"]
+      # action_group - (required) is a type of set of string
+      action_group = action.value["action_group"]
+      # custom_webhook_payload - (optional) is a type of string
       custom_webhook_payload = action.value["custom_webhook_payload"]
-      email_subject          = action.value["email_subject"]
+      # email_subject - (optional) is a type of string
+      email_subject = action.value["email_subject"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -250,16 +271,22 @@ resource "azurerm_monitor_scheduled_query_rules_alert" "this" {
   dynamic "trigger" {
     for_each = var.trigger
     content {
-      operator  = trigger.value["operator"]
+      # operator - (required) is a type of string
+      operator = trigger.value["operator"]
+      # threshold - (required) is a type of number
       threshold = trigger.value["threshold"]
 
       dynamic "metric_trigger" {
         for_each = trigger.value.metric_trigger
         content {
-          metric_column       = metric_trigger.value["metric_column"]
+          # metric_column - (required) is a type of string
+          metric_column = metric_trigger.value["metric_column"]
+          # metric_trigger_type - (required) is a type of string
           metric_trigger_type = metric_trigger.value["metric_trigger_type"]
-          operator            = metric_trigger.value["operator"]
-          threshold           = metric_trigger.value["threshold"]
+          # operator - (required) is a type of string
+          operator = metric_trigger.value["operator"]
+          # threshold - (required) is a type of number
+          threshold = metric_trigger.value["threshold"]
         }
       }
 

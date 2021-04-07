@@ -56,7 +56,9 @@ variable "destination_name" {
 
 ```terraform
 resource "aws_cloudwatch_log_destination_policy" "this" {
-  access_policy    = var.access_policy
+  # access_policy - (required) is a type of string
+  access_policy = var.access_policy
+  # destination_name - (required) is a type of string
   destination_name = var.destination_name
 }
 ```

@@ -192,10 +192,15 @@ variable "spec" {
 
 ```terraform
 resource "aws_appmesh_gateway_route" "this" {
-  mesh_name            = var.mesh_name
-  mesh_owner           = var.mesh_owner
-  name                 = var.name
-  tags                 = var.tags
+  # mesh_name - (required) is a type of string
+  mesh_name = var.mesh_name
+  # mesh_owner - (optional) is a type of string
+  mesh_owner = var.mesh_owner
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # virtual_gateway_name - (required) is a type of string
   virtual_gateway_name = var.virtual_gateway_name
 
   dynamic "spec" {
@@ -217,6 +222,7 @@ resource "aws_appmesh_gateway_route" "this" {
                   dynamic "virtual_service" {
                     for_each = target.value.virtual_service
                     content {
+                      # virtual_service_name - (required) is a type of string
                       virtual_service_name = virtual_service.value["virtual_service_name"]
                     }
                   }
@@ -230,6 +236,7 @@ resource "aws_appmesh_gateway_route" "this" {
           dynamic "match" {
             for_each = grpc_route.value.match
             content {
+              # service_name - (required) is a type of string
               service_name = match.value["service_name"]
             }
           }
@@ -252,6 +259,7 @@ resource "aws_appmesh_gateway_route" "this" {
                   dynamic "virtual_service" {
                     for_each = target.value.virtual_service
                     content {
+                      # virtual_service_name - (required) is a type of string
                       virtual_service_name = virtual_service.value["virtual_service_name"]
                     }
                   }
@@ -265,6 +273,7 @@ resource "aws_appmesh_gateway_route" "this" {
           dynamic "match" {
             for_each = http2_route.value.match
             content {
+              # prefix - (required) is a type of string
               prefix = match.value["prefix"]
             }
           }
@@ -287,6 +296,7 @@ resource "aws_appmesh_gateway_route" "this" {
                   dynamic "virtual_service" {
                     for_each = target.value.virtual_service
                     content {
+                      # virtual_service_name - (required) is a type of string
                       virtual_service_name = virtual_service.value["virtual_service_name"]
                     }
                   }
@@ -300,6 +310,7 @@ resource "aws_appmesh_gateway_route" "this" {
           dynamic "match" {
             for_each = http_route.value.match
             content {
+              # prefix - (required) is a type of string
               prefix = match.value["prefix"]
             }
           }

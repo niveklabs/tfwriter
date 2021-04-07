@@ -196,40 +196,65 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_objectstorage_object" "this" {
-  bucket                     = var.bucket
-  cache_control              = var.cache_control
-  content                    = var.content
-  content_disposition        = var.content_disposition
-  content_encoding           = var.content_encoding
-  content_language           = var.content_language
-  content_md5                = var.content_md5
-  content_type               = var.content_type
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # cache_control - (optional) is a type of string
+  cache_control = var.cache_control
+  # content - (optional) is a type of string
+  content = var.content
+  # content_disposition - (optional) is a type of string
+  content_disposition = var.content_disposition
+  # content_encoding - (optional) is a type of string
+  content_encoding = var.content_encoding
+  # content_language - (optional) is a type of string
+  content_language = var.content_language
+  # content_md5 - (optional) is a type of string
+  content_md5 = var.content_md5
+  # content_type - (optional) is a type of string
+  content_type = var.content_type
+  # delete_all_object_versions - (optional) is a type of bool
   delete_all_object_versions = var.delete_all_object_versions
-  metadata                   = var.metadata
-  namespace                  = var.namespace
-  object                     = var.object
-  source                     = var.source
-  storage_tier               = var.storage_tier
+  # metadata - (optional) is a type of map of string
+  metadata = var.metadata
+  # namespace - (required) is a type of string
+  namespace = var.namespace
+  # object - (required) is a type of string
+  object = var.object
+  # source - (optional) is a type of string
+  source = var.source
+  # storage_tier - (optional) is a type of string
+  storage_tier = var.storage_tier
 
   dynamic "source_uri_details" {
     for_each = var.source_uri_details
     content {
-      bucket                                = source_uri_details.value["bucket"]
-      destination_object_if_match_etag      = source_uri_details.value["destination_object_if_match_etag"]
+      # bucket - (required) is a type of string
+      bucket = source_uri_details.value["bucket"]
+      # destination_object_if_match_etag - (optional) is a type of string
+      destination_object_if_match_etag = source_uri_details.value["destination_object_if_match_etag"]
+      # destination_object_if_none_match_etag - (optional) is a type of string
       destination_object_if_none_match_etag = source_uri_details.value["destination_object_if_none_match_etag"]
-      namespace                             = source_uri_details.value["namespace"]
-      object                                = source_uri_details.value["object"]
-      region                                = source_uri_details.value["region"]
-      source_object_if_match_etag           = source_uri_details.value["source_object_if_match_etag"]
-      source_version_id                     = source_uri_details.value["source_version_id"]
+      # namespace - (required) is a type of string
+      namespace = source_uri_details.value["namespace"]
+      # object - (required) is a type of string
+      object = source_uri_details.value["object"]
+      # region - (required) is a type of string
+      region = source_uri_details.value["region"]
+      # source_object_if_match_etag - (optional) is a type of string
+      source_object_if_match_etag = source_uri_details.value["source_object_if_match_etag"]
+      # source_version_id - (optional) is a type of string
+      source_version_id = source_uri_details.value["source_version_id"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

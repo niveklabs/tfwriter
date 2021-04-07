@@ -73,10 +73,14 @@ variable "tags" {
 
 ```terraform
 resource "opc_compute_ip_reservation" "this" {
-  name        = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # parent_pool - (optional) is a type of string
   parent_pool = var.parent_pool
-  permanent   = var.permanent
-  tags        = var.tags
+  # permanent - (required) is a type of bool
+  permanent = var.permanent
+  # tags - (optional) is a type of list of string
+  tags = var.tags
 }
 ```
 

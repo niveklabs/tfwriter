@@ -65,9 +65,12 @@ variable "tags" {
 
 ```terraform
 resource "aws_glue_registry" "this" {
-  description   = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # registry_name - (required) is a type of string
   registry_name = var.registry_name
-  tags          = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

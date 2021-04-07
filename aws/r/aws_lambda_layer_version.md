@@ -113,15 +113,24 @@ variable "source_code_hash" {
 
 ```terraform
 resource "aws_lambda_layer_version" "this" {
+  # compatible_runtimes - (optional) is a type of set of string
   compatible_runtimes = var.compatible_runtimes
-  description         = var.description
-  filename            = var.filename
-  layer_name          = var.layer_name
-  license_info        = var.license_info
-  s3_bucket           = var.s3_bucket
-  s3_key              = var.s3_key
-  s3_object_version   = var.s3_object_version
-  source_code_hash    = var.source_code_hash
+  # description - (optional) is a type of string
+  description = var.description
+  # filename - (optional) is a type of string
+  filename = var.filename
+  # layer_name - (required) is a type of string
+  layer_name = var.layer_name
+  # license_info - (optional) is a type of string
+  license_info = var.license_info
+  # s3_bucket - (optional) is a type of string
+  s3_bucket = var.s3_bucket
+  # s3_key - (optional) is a type of string
+  s3_key = var.s3_key
+  # s3_object_version - (optional) is a type of string
+  s3_object_version = var.s3_object_version
+  # source_code_hash - (optional) is a type of string
+  source_code_hash = var.source_code_hash
 }
 ```
 

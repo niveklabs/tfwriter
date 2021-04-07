@@ -90,12 +90,18 @@ variable "zone_id" {
 
 ```terraform
 data "aws_route53_zone" "this" {
-  name                      = var.name
-  private_zone              = var.private_zone
+  # name - (optional) is a type of string
+  name = var.name
+  # private_zone - (optional) is a type of bool
+  private_zone = var.private_zone
+  # resource_record_set_count - (optional) is a type of number
   resource_record_set_count = var.resource_record_set_count
-  tags                      = var.tags
-  vpc_id                    = var.vpc_id
-  zone_id                   = var.zone_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

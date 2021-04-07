@@ -50,6 +50,7 @@ variable "endpoint_type" {
 
 ```terraform
 data "aws_iot_endpoint" "this" {
+  # endpoint_type - (optional) is a type of string
   endpoint_type = var.endpoint_type
 }
 ```

@@ -106,19 +106,28 @@ variable "physical_connection_requirements" {
 
 ```terraform
 resource "aws_glue_connection" "this" {
-  catalog_id            = var.catalog_id
+  # catalog_id - (optional) is a type of string
+  catalog_id = var.catalog_id
+  # connection_properties - (required) is a type of map of string
   connection_properties = var.connection_properties
-  connection_type       = var.connection_type
-  description           = var.description
-  match_criteria        = var.match_criteria
-  name                  = var.name
+  # connection_type - (optional) is a type of string
+  connection_type = var.connection_type
+  # description - (optional) is a type of string
+  description = var.description
+  # match_criteria - (optional) is a type of list of string
+  match_criteria = var.match_criteria
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "physical_connection_requirements" {
     for_each = var.physical_connection_requirements
     content {
-      availability_zone      = physical_connection_requirements.value["availability_zone"]
+      # availability_zone - (optional) is a type of string
+      availability_zone = physical_connection_requirements.value["availability_zone"]
+      # security_group_id_list - (optional) is a type of set of string
       security_group_id_list = physical_connection_requirements.value["security_group_id_list"]
-      subnet_id              = physical_connection_requirements.value["subnet_id"]
+      # subnet_id - (optional) is a type of string
+      subnet_id = physical_connection_requirements.value["subnet_id"]
     }
   }
 

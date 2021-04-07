@@ -49,6 +49,7 @@ variable "filter" {
 
 ```terraform
 data "google_projects" "this" {
+  # filter - (required) is a type of string
   filter = var.filter
 }
 ```

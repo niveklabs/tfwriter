@@ -126,29 +126,43 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_storage_data_lake_gen2_path" "this" {
-  filesystem_name    = var.filesystem_name
-  group              = var.group
-  owner              = var.owner
-  path               = var.path
-  resource           = var.resource
+  # filesystem_name - (required) is a type of string
+  filesystem_name = var.filesystem_name
+  # group - (optional) is a type of string
+  group = var.group
+  # owner - (optional) is a type of string
+  owner = var.owner
+  # path - (required) is a type of string
+  path = var.path
+  # resource - (required) is a type of string
+  resource = var.resource
+  # storage_account_id - (required) is a type of string
   storage_account_id = var.storage_account_id
 
   dynamic "ace" {
     for_each = var.ace
     content {
-      id          = ace.value["id"]
+      # id - (optional) is a type of string
+      id = ace.value["id"]
+      # permissions - (required) is a type of string
       permissions = ace.value["permissions"]
-      scope       = ace.value["scope"]
-      type        = ace.value["type"]
+      # scope - (optional) is a type of string
+      scope = ace.value["scope"]
+      # type - (required) is a type of string
+      type = ace.value["type"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

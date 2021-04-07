@@ -98,18 +98,27 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_ssh_public_key" "this" {
-  location            = var.location
-  name                = var.name
-  public_key          = var.public_key
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # public_key - (required) is a type of string
+  public_key = var.public_key
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  tags                = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

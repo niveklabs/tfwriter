@@ -109,21 +109,27 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_ecr_repository" "this" {
+  # image_tag_mutability - (optional) is a type of string
   image_tag_mutability = var.image_tag_mutability
-  name                 = var.name
-  tags                 = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "encryption_configuration" {
     for_each = var.encryption_configuration
     content {
+      # encryption_type - (optional) is a type of string
       encryption_type = encryption_configuration.value["encryption_type"]
-      kms_key         = encryption_configuration.value["kms_key"]
+      # kms_key - (optional) is a type of string
+      kms_key = encryption_configuration.value["kms_key"]
     }
   }
 
   dynamic "image_scanning_configuration" {
     for_each = var.image_scanning_configuration
     content {
+      # scan_on_push - (required) is a type of bool
       scan_on_push = image_scanning_configuration.value["scan_on_push"]
     }
   }
@@ -131,6 +137,7 @@ resource "aws_ecr_repository" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

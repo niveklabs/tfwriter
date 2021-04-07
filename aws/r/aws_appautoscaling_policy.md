@@ -164,26 +164,38 @@ variable "target_tracking_scaling_policy_configuration" {
 
 ```terraform
 resource "aws_appautoscaling_policy" "this" {
-  name               = var.name
-  policy_type        = var.policy_type
-  resource_id        = var.resource_id
+  # name - (required) is a type of string
+  name = var.name
+  # policy_type - (optional) is a type of string
+  policy_type = var.policy_type
+  # resource_id - (required) is a type of string
+  resource_id = var.resource_id
+  # scalable_dimension - (required) is a type of string
   scalable_dimension = var.scalable_dimension
-  service_namespace  = var.service_namespace
+  # service_namespace - (required) is a type of string
+  service_namespace = var.service_namespace
 
   dynamic "step_scaling_policy_configuration" {
     for_each = var.step_scaling_policy_configuration
     content {
-      adjustment_type          = step_scaling_policy_configuration.value["adjustment_type"]
-      cooldown                 = step_scaling_policy_configuration.value["cooldown"]
-      metric_aggregation_type  = step_scaling_policy_configuration.value["metric_aggregation_type"]
+      # adjustment_type - (optional) is a type of string
+      adjustment_type = step_scaling_policy_configuration.value["adjustment_type"]
+      # cooldown - (optional) is a type of number
+      cooldown = step_scaling_policy_configuration.value["cooldown"]
+      # metric_aggregation_type - (optional) is a type of string
+      metric_aggregation_type = step_scaling_policy_configuration.value["metric_aggregation_type"]
+      # min_adjustment_magnitude - (optional) is a type of number
       min_adjustment_magnitude = step_scaling_policy_configuration.value["min_adjustment_magnitude"]
 
       dynamic "step_adjustment" {
         for_each = step_scaling_policy_configuration.value.step_adjustment
         content {
+          # metric_interval_lower_bound - (optional) is a type of string
           metric_interval_lower_bound = step_adjustment.value["metric_interval_lower_bound"]
+          # metric_interval_upper_bound - (optional) is a type of string
           metric_interval_upper_bound = step_adjustment.value["metric_interval_upper_bound"]
-          scaling_adjustment          = step_adjustment.value["scaling_adjustment"]
+          # scaling_adjustment - (required) is a type of number
+          scaling_adjustment = step_adjustment.value["scaling_adjustment"]
         }
       }
 
@@ -193,23 +205,33 @@ resource "aws_appautoscaling_policy" "this" {
   dynamic "target_tracking_scaling_policy_configuration" {
     for_each = var.target_tracking_scaling_policy_configuration
     content {
-      disable_scale_in   = target_tracking_scaling_policy_configuration.value["disable_scale_in"]
-      scale_in_cooldown  = target_tracking_scaling_policy_configuration.value["scale_in_cooldown"]
+      # disable_scale_in - (optional) is a type of bool
+      disable_scale_in = target_tracking_scaling_policy_configuration.value["disable_scale_in"]
+      # scale_in_cooldown - (optional) is a type of number
+      scale_in_cooldown = target_tracking_scaling_policy_configuration.value["scale_in_cooldown"]
+      # scale_out_cooldown - (optional) is a type of number
       scale_out_cooldown = target_tracking_scaling_policy_configuration.value["scale_out_cooldown"]
-      target_value       = target_tracking_scaling_policy_configuration.value["target_value"]
+      # target_value - (required) is a type of number
+      target_value = target_tracking_scaling_policy_configuration.value["target_value"]
 
       dynamic "customized_metric_specification" {
         for_each = target_tracking_scaling_policy_configuration.value.customized_metric_specification
         content {
+          # metric_name - (required) is a type of string
           metric_name = customized_metric_specification.value["metric_name"]
-          namespace   = customized_metric_specification.value["namespace"]
-          statistic   = customized_metric_specification.value["statistic"]
-          unit        = customized_metric_specification.value["unit"]
+          # namespace - (required) is a type of string
+          namespace = customized_metric_specification.value["namespace"]
+          # statistic - (required) is a type of string
+          statistic = customized_metric_specification.value["statistic"]
+          # unit - (optional) is a type of string
+          unit = customized_metric_specification.value["unit"]
 
           dynamic "dimensions" {
             for_each = customized_metric_specification.value.dimensions
             content {
-              name  = dimensions.value["name"]
+              # name - (required) is a type of string
+              name = dimensions.value["name"]
+              # value - (required) is a type of string
               value = dimensions.value["value"]
             }
           }
@@ -220,8 +242,10 @@ resource "aws_appautoscaling_policy" "this" {
       dynamic "predefined_metric_specification" {
         for_each = target_tracking_scaling_policy_configuration.value.predefined_metric_specification
         content {
+          # predefined_metric_type - (required) is a type of string
           predefined_metric_type = predefined_metric_specification.value["predefined_metric_type"]
-          resource_label         = predefined_metric_specification.value["resource_label"]
+          # resource_label - (optional) is a type of string
+          resource_label = predefined_metric_specification.value["resource_label"]
         }
       }
 

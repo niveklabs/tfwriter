@@ -350,44 +350,79 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_redshift_cluster" "this" {
-  allow_version_upgrade               = var.allow_version_upgrade
+  # allow_version_upgrade - (optional) is a type of bool
+  allow_version_upgrade = var.allow_version_upgrade
+  # automated_snapshot_retention_period - (optional) is a type of number
   automated_snapshot_retention_period = var.automated_snapshot_retention_period
-  availability_zone                   = var.availability_zone
-  cluster_identifier                  = var.cluster_identifier
-  cluster_parameter_group_name        = var.cluster_parameter_group_name
-  cluster_public_key                  = var.cluster_public_key
-  cluster_revision_number             = var.cluster_revision_number
-  cluster_security_groups             = var.cluster_security_groups
-  cluster_subnet_group_name           = var.cluster_subnet_group_name
-  cluster_type                        = var.cluster_type
-  cluster_version                     = var.cluster_version
-  database_name                       = var.database_name
-  elastic_ip                          = var.elastic_ip
-  encrypted                           = var.encrypted
-  endpoint                            = var.endpoint
-  enhanced_vpc_routing                = var.enhanced_vpc_routing
-  final_snapshot_identifier           = var.final_snapshot_identifier
-  iam_roles                           = var.iam_roles
-  kms_key_id                          = var.kms_key_id
-  master_password                     = var.master_password
-  master_username                     = var.master_username
-  node_type                           = var.node_type
-  number_of_nodes                     = var.number_of_nodes
-  owner_account                       = var.owner_account
-  port                                = var.port
-  preferred_maintenance_window        = var.preferred_maintenance_window
-  publicly_accessible                 = var.publicly_accessible
-  skip_final_snapshot                 = var.skip_final_snapshot
-  snapshot_cluster_identifier         = var.snapshot_cluster_identifier
-  snapshot_identifier                 = var.snapshot_identifier
-  tags                                = var.tags
-  vpc_security_group_ids              = var.vpc_security_group_ids
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # cluster_identifier - (required) is a type of string
+  cluster_identifier = var.cluster_identifier
+  # cluster_parameter_group_name - (optional) is a type of string
+  cluster_parameter_group_name = var.cluster_parameter_group_name
+  # cluster_public_key - (optional) is a type of string
+  cluster_public_key = var.cluster_public_key
+  # cluster_revision_number - (optional) is a type of string
+  cluster_revision_number = var.cluster_revision_number
+  # cluster_security_groups - (optional) is a type of set of string
+  cluster_security_groups = var.cluster_security_groups
+  # cluster_subnet_group_name - (optional) is a type of string
+  cluster_subnet_group_name = var.cluster_subnet_group_name
+  # cluster_type - (optional) is a type of string
+  cluster_type = var.cluster_type
+  # cluster_version - (optional) is a type of string
+  cluster_version = var.cluster_version
+  # database_name - (optional) is a type of string
+  database_name = var.database_name
+  # elastic_ip - (optional) is a type of string
+  elastic_ip = var.elastic_ip
+  # encrypted - (optional) is a type of bool
+  encrypted = var.encrypted
+  # endpoint - (optional) is a type of string
+  endpoint = var.endpoint
+  # enhanced_vpc_routing - (optional) is a type of bool
+  enhanced_vpc_routing = var.enhanced_vpc_routing
+  # final_snapshot_identifier - (optional) is a type of string
+  final_snapshot_identifier = var.final_snapshot_identifier
+  # iam_roles - (optional) is a type of set of string
+  iam_roles = var.iam_roles
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # master_password - (optional) is a type of string
+  master_password = var.master_password
+  # master_username - (optional) is a type of string
+  master_username = var.master_username
+  # node_type - (required) is a type of string
+  node_type = var.node_type
+  # number_of_nodes - (optional) is a type of number
+  number_of_nodes = var.number_of_nodes
+  # owner_account - (optional) is a type of string
+  owner_account = var.owner_account
+  # port - (optional) is a type of number
+  port = var.port
+  # preferred_maintenance_window - (optional) is a type of string
+  preferred_maintenance_window = var.preferred_maintenance_window
+  # publicly_accessible - (optional) is a type of bool
+  publicly_accessible = var.publicly_accessible
+  # skip_final_snapshot - (optional) is a type of bool
+  skip_final_snapshot = var.skip_final_snapshot
+  # snapshot_cluster_identifier - (optional) is a type of string
+  snapshot_cluster_identifier = var.snapshot_cluster_identifier
+  # snapshot_identifier - (optional) is a type of string
+  snapshot_identifier = var.snapshot_identifier
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_security_group_ids - (optional) is a type of set of string
+  vpc_security_group_ids = var.vpc_security_group_ids
 
   dynamic "logging" {
     for_each = var.logging
     content {
-      bucket_name   = logging.value["bucket_name"]
-      enable        = logging.value["enable"]
+      # bucket_name - (optional) is a type of string
+      bucket_name = logging.value["bucket_name"]
+      # enable - (required) is a type of bool
+      enable = logging.value["enable"]
+      # s3_key_prefix - (optional) is a type of string
       s3_key_prefix = logging.value["s3_key_prefix"]
     }
   }
@@ -395,17 +430,23 @@ resource "aws_redshift_cluster" "this" {
   dynamic "snapshot_copy" {
     for_each = var.snapshot_copy
     content {
+      # destination_region - (required) is a type of string
       destination_region = snapshot_copy.value["destination_region"]
-      grant_name         = snapshot_copy.value["grant_name"]
-      retention_period   = snapshot_copy.value["retention_period"]
+      # grant_name - (optional) is a type of string
+      grant_name = snapshot_copy.value["grant_name"]
+      # retention_period - (optional) is a type of number
+      retention_period = snapshot_copy.value["retention_period"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

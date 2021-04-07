@@ -79,14 +79,19 @@ variable "attribute" {
 
 ```terraform
 resource "aws_lb_ssl_negotiation_policy" "this" {
-  lb_port       = var.lb_port
+  # lb_port - (required) is a type of number
+  lb_port = var.lb_port
+  # load_balancer - (required) is a type of string
   load_balancer = var.load_balancer
-  name          = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "attribute" {
     for_each = var.attribute
     content {
-      name  = attribute.value["name"]
+      # name - (required) is a type of string
+      name = attribute.value["name"]
+      # value - (required) is a type of string
       value = attribute.value["value"]
     }
   }

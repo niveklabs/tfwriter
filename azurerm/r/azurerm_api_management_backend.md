@@ -213,27 +213,40 @@ variable "tls" {
 
 ```terraform
 resource "azurerm_api_management_backend" "this" {
+  # api_management_name - (required) is a type of string
   api_management_name = var.api_management_name
-  description         = var.description
-  name                = var.name
-  protocol            = var.protocol
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  resource_id         = var.resource_id
-  title               = var.title
-  url                 = var.url
+  # resource_id - (optional) is a type of string
+  resource_id = var.resource_id
+  # title - (optional) is a type of string
+  title = var.title
+  # url - (required) is a type of string
+  url = var.url
 
   dynamic "credentials" {
     for_each = var.credentials
     content {
+      # certificate - (optional) is a type of list of string
       certificate = credentials.value["certificate"]
-      header      = credentials.value["header"]
-      query       = credentials.value["query"]
+      # header - (optional) is a type of map of string
+      header = credentials.value["header"]
+      # query - (optional) is a type of map of string
+      query = credentials.value["query"]
 
       dynamic "authorization" {
         for_each = credentials.value.authorization
         content {
+          # parameter - (optional) is a type of string
           parameter = authorization.value["parameter"]
-          scheme    = authorization.value["scheme"]
+          # scheme - (optional) is a type of string
+          scheme = authorization.value["scheme"]
         }
       }
 
@@ -243,8 +256,11 @@ resource "azurerm_api_management_backend" "this" {
   dynamic "proxy" {
     for_each = var.proxy
     content {
+      # password - (optional) is a type of string
       password = proxy.value["password"]
-      url      = proxy.value["url"]
+      # url - (required) is a type of string
+      url = proxy.value["url"]
+      # username - (required) is a type of string
       username = proxy.value["username"]
     }
   }
@@ -252,16 +268,22 @@ resource "azurerm_api_management_backend" "this" {
   dynamic "service_fabric_cluster" {
     for_each = var.service_fabric_cluster
     content {
-      client_certificate_thumbprint    = service_fabric_cluster.value["client_certificate_thumbprint"]
-      management_endpoints             = service_fabric_cluster.value["management_endpoints"]
+      # client_certificate_thumbprint - (required) is a type of string
+      client_certificate_thumbprint = service_fabric_cluster.value["client_certificate_thumbprint"]
+      # management_endpoints - (required) is a type of set of string
+      management_endpoints = service_fabric_cluster.value["management_endpoints"]
+      # max_partition_resolution_retries - (required) is a type of number
       max_partition_resolution_retries = service_fabric_cluster.value["max_partition_resolution_retries"]
-      server_certificate_thumbprints   = service_fabric_cluster.value["server_certificate_thumbprints"]
+      # server_certificate_thumbprints - (optional) is a type of set of string
+      server_certificate_thumbprints = service_fabric_cluster.value["server_certificate_thumbprints"]
 
       dynamic "server_x509_name" {
         for_each = service_fabric_cluster.value.server_x509_name
         content {
+          # issuer_certificate_thumbprint - (required) is a type of string
           issuer_certificate_thumbprint = server_x509_name.value["issuer_certificate_thumbprint"]
-          name                          = server_x509_name.value["name"]
+          # name - (required) is a type of string
+          name = server_x509_name.value["name"]
         }
       }
 
@@ -271,9 +293,13 @@ resource "azurerm_api_management_backend" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -281,8 +307,10 @@ resource "azurerm_api_management_backend" "this" {
   dynamic "tls" {
     for_each = var.tls
     content {
+      # validate_certificate_chain - (optional) is a type of bool
       validate_certificate_chain = tls.value["validate_certificate_chain"]
-      validate_certificate_name  = tls.value["validate_certificate_name"]
+      # validate_certificate_name - (optional) is a type of bool
+      validate_certificate_name = tls.value["validate_certificate_name"]
     }
   }
 

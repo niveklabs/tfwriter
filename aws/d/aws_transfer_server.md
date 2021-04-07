@@ -49,6 +49,7 @@ variable "server_id" {
 
 ```terraform
 data "aws_transfer_server" "this" {
+  # server_id - (required) is a type of string
   server_id = var.server_id
 }
 ```

@@ -49,6 +49,7 @@ variable "group_name" {
 
 ```terraform
 data "aws_iam_group" "this" {
+  # group_name - (required) is a type of string
   group_name = var.group_name
 }
 ```

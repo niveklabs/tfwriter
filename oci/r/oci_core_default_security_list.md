@@ -235,24 +235,35 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_default_security_list" "this" {
-  defined_tags               = var.defined_tags
-  display_name               = var.display_name
-  freeform_tags              = var.freeform_tags
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # manage_default_resource_id - (required) is a type of string
   manage_default_resource_id = var.manage_default_resource_id
 
   dynamic "egress_security_rules" {
     for_each = var.egress_security_rules
     content {
-      description      = egress_security_rules.value["description"]
-      destination      = egress_security_rules.value["destination"]
+      # description - (optional) is a type of string
+      description = egress_security_rules.value["description"]
+      # destination - (required) is a type of string
+      destination = egress_security_rules.value["destination"]
+      # destination_type - (optional) is a type of string
       destination_type = egress_security_rules.value["destination_type"]
-      protocol         = egress_security_rules.value["protocol"]
-      stateless        = egress_security_rules.value["stateless"]
+      # protocol - (required) is a type of string
+      protocol = egress_security_rules.value["protocol"]
+      # stateless - (optional) is a type of bool
+      stateless = egress_security_rules.value["stateless"]
 
       dynamic "icmp_options" {
         for_each = egress_security_rules.value.icmp_options
         content {
+          # code - (optional) is a type of number
           code = icmp_options.value["code"]
+          # type - (required) is a type of number
           type = icmp_options.value["type"]
         }
       }
@@ -260,13 +271,17 @@ resource "oci_core_default_security_list" "this" {
       dynamic "tcp_options" {
         for_each = egress_security_rules.value.tcp_options
         content {
+          # max - (optional) is a type of number
           max = tcp_options.value["max"]
+          # min - (optional) is a type of number
           min = tcp_options.value["min"]
 
           dynamic "source_port_range" {
             for_each = tcp_options.value.source_port_range
             content {
+              # max - (required) is a type of number
               max = source_port_range.value["max"]
+              # min - (required) is a type of number
               min = source_port_range.value["min"]
             }
           }
@@ -277,13 +292,17 @@ resource "oci_core_default_security_list" "this" {
       dynamic "udp_options" {
         for_each = egress_security_rules.value.udp_options
         content {
+          # max - (optional) is a type of number
           max = udp_options.value["max"]
+          # min - (optional) is a type of number
           min = udp_options.value["min"]
 
           dynamic "source_port_range" {
             for_each = udp_options.value.source_port_range
             content {
+              # max - (required) is a type of number
               max = source_port_range.value["max"]
+              # min - (required) is a type of number
               min = source_port_range.value["min"]
             }
           }
@@ -297,16 +316,23 @@ resource "oci_core_default_security_list" "this" {
   dynamic "ingress_security_rules" {
     for_each = var.ingress_security_rules
     content {
+      # description - (optional) is a type of string
       description = ingress_security_rules.value["description"]
-      protocol    = ingress_security_rules.value["protocol"]
-      source      = ingress_security_rules.value["source"]
+      # protocol - (required) is a type of string
+      protocol = ingress_security_rules.value["protocol"]
+      # source - (required) is a type of string
+      source = ingress_security_rules.value["source"]
+      # source_type - (optional) is a type of string
       source_type = ingress_security_rules.value["source_type"]
-      stateless   = ingress_security_rules.value["stateless"]
+      # stateless - (optional) is a type of bool
+      stateless = ingress_security_rules.value["stateless"]
 
       dynamic "icmp_options" {
         for_each = ingress_security_rules.value.icmp_options
         content {
+          # code - (optional) is a type of number
           code = icmp_options.value["code"]
+          # type - (required) is a type of number
           type = icmp_options.value["type"]
         }
       }
@@ -314,13 +340,17 @@ resource "oci_core_default_security_list" "this" {
       dynamic "tcp_options" {
         for_each = ingress_security_rules.value.tcp_options
         content {
+          # max - (optional) is a type of number
           max = tcp_options.value["max"]
+          # min - (optional) is a type of number
           min = tcp_options.value["min"]
 
           dynamic "source_port_range" {
             for_each = tcp_options.value.source_port_range
             content {
+              # max - (required) is a type of number
               max = source_port_range.value["max"]
+              # min - (required) is a type of number
               min = source_port_range.value["min"]
             }
           }
@@ -331,13 +361,17 @@ resource "oci_core_default_security_list" "this" {
       dynamic "udp_options" {
         for_each = ingress_security_rules.value.udp_options
         content {
+          # max - (optional) is a type of number
           max = udp_options.value["max"]
+          # min - (optional) is a type of number
           min = udp_options.value["min"]
 
           dynamic "source_port_range" {
             for_each = udp_options.value.source_port_range
             content {
+              # max - (required) is a type of number
               max = source_port_range.value["max"]
+              # min - (required) is a type of number
               min = source_port_range.value["min"]
             }
           }
@@ -351,8 +385,11 @@ resource "oci_core_default_security_list" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -56,7 +56,9 @@ variable "policy_arn" {
 
 ```terraform
 resource "aws_iam_group_policy_attachment" "this" {
-  group      = var.group
+  # group - (required) is a type of string
+  group = var.group
+  # policy_arn - (required) is a type of string
   policy_arn = var.policy_arn
 }
 ```

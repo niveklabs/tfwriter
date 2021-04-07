@@ -71,10 +71,14 @@ variable "version" {
 
 ```terraform
 resource "opc_compute_image_list_entry" "this" {
-  attributes     = var.attributes
+  # attributes - (optional) is a type of string
+  attributes = var.attributes
+  # machine_images - (required) is a type of list of string
   machine_images = var.machine_images
-  name           = var.name
-  version        = var.version
+  # name - (required) is a type of string
+  name = var.name
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

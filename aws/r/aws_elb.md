@@ -209,37 +209,59 @@ variable "listener" {
 
 ```terraform
 resource "aws_elb" "this" {
-  availability_zones          = var.availability_zones
-  connection_draining         = var.connection_draining
+  # availability_zones - (optional) is a type of set of string
+  availability_zones = var.availability_zones
+  # connection_draining - (optional) is a type of bool
+  connection_draining = var.connection_draining
+  # connection_draining_timeout - (optional) is a type of number
   connection_draining_timeout = var.connection_draining_timeout
-  cross_zone_load_balancing   = var.cross_zone_load_balancing
-  idle_timeout                = var.idle_timeout
-  instances                   = var.instances
-  internal                    = var.internal
-  name                        = var.name
-  name_prefix                 = var.name_prefix
-  security_groups             = var.security_groups
-  source_security_group       = var.source_security_group
-  subnets                     = var.subnets
-  tags                        = var.tags
+  # cross_zone_load_balancing - (optional) is a type of bool
+  cross_zone_load_balancing = var.cross_zone_load_balancing
+  # idle_timeout - (optional) is a type of number
+  idle_timeout = var.idle_timeout
+  # instances - (optional) is a type of set of string
+  instances = var.instances
+  # internal - (optional) is a type of bool
+  internal = var.internal
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # security_groups - (optional) is a type of set of string
+  security_groups = var.security_groups
+  # source_security_group - (optional) is a type of string
+  source_security_group = var.source_security_group
+  # subnets - (optional) is a type of set of string
+  subnets = var.subnets
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "access_logs" {
     for_each = var.access_logs
     content {
-      bucket        = access_logs.value["bucket"]
+      # bucket - (required) is a type of string
+      bucket = access_logs.value["bucket"]
+      # bucket_prefix - (optional) is a type of string
       bucket_prefix = access_logs.value["bucket_prefix"]
-      enabled       = access_logs.value["enabled"]
-      interval      = access_logs.value["interval"]
+      # enabled - (optional) is a type of bool
+      enabled = access_logs.value["enabled"]
+      # interval - (optional) is a type of number
+      interval = access_logs.value["interval"]
     }
   }
 
   dynamic "health_check" {
     for_each = var.health_check
     content {
-      healthy_threshold   = health_check.value["healthy_threshold"]
-      interval            = health_check.value["interval"]
-      target              = health_check.value["target"]
-      timeout             = health_check.value["timeout"]
+      # healthy_threshold - (required) is a type of number
+      healthy_threshold = health_check.value["healthy_threshold"]
+      # interval - (required) is a type of number
+      interval = health_check.value["interval"]
+      # target - (required) is a type of string
+      target = health_check.value["target"]
+      # timeout - (required) is a type of number
+      timeout = health_check.value["timeout"]
+      # unhealthy_threshold - (required) is a type of number
       unhealthy_threshold = health_check.value["unhealthy_threshold"]
     }
   }
@@ -247,10 +269,15 @@ resource "aws_elb" "this" {
   dynamic "listener" {
     for_each = var.listener
     content {
-      instance_port      = listener.value["instance_port"]
-      instance_protocol  = listener.value["instance_protocol"]
-      lb_port            = listener.value["lb_port"]
-      lb_protocol        = listener.value["lb_protocol"]
+      # instance_port - (required) is a type of number
+      instance_port = listener.value["instance_port"]
+      # instance_protocol - (required) is a type of string
+      instance_protocol = listener.value["instance_protocol"]
+      # lb_port - (required) is a type of number
+      lb_port = listener.value["lb_port"]
+      # lb_protocol - (required) is a type of string
+      lb_protocol = listener.value["lb_protocol"]
+      # ssl_certificate_id - (optional) is a type of string
       ssl_certificate_id = listener.value["ssl_certificate_id"]
     }
   }

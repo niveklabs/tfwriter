@@ -97,19 +97,28 @@ variable "frontend_ip_configuration" {
 
 ```terraform
 resource "azurestack_lb" "this" {
-  location            = var.location
-  name                = var.name
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  tags                = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "frontend_ip_configuration" {
     for_each = var.frontend_ip_configuration
     content {
-      name                          = frontend_ip_configuration.value["name"]
-      private_ip_address            = frontend_ip_configuration.value["private_ip_address"]
+      # name - (required) is a type of string
+      name = frontend_ip_configuration.value["name"]
+      # private_ip_address - (optional) is a type of string
+      private_ip_address = frontend_ip_configuration.value["private_ip_address"]
+      # private_ip_address_allocation - (optional) is a type of string
       private_ip_address_allocation = frontend_ip_configuration.value["private_ip_address_allocation"]
-      public_ip_address_id          = frontend_ip_configuration.value["public_ip_address_id"]
-      subnet_id                     = frontend_ip_configuration.value["subnet_id"]
+      # public_ip_address_id - (optional) is a type of string
+      public_ip_address_id = frontend_ip_configuration.value["public_ip_address_id"]
+      # subnet_id - (optional) is a type of string
+      subnet_id = frontend_ip_configuration.value["subnet_id"]
     }
   }
 

@@ -142,29 +142,44 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_backend_bucket" "this" {
-  bucket_name             = var.bucket_name
+  # bucket_name - (required) is a type of string
+  bucket_name = var.bucket_name
+  # custom_response_headers - (optional) is a type of list of string
   custom_response_headers = var.custom_response_headers
-  description             = var.description
-  enable_cdn              = var.enable_cdn
-  name                    = var.name
-  project                 = var.project
+  # description - (optional) is a type of string
+  description = var.description
+  # enable_cdn - (optional) is a type of bool
+  enable_cdn = var.enable_cdn
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "cdn_policy" {
     for_each = var.cdn_policy
     content {
-      cache_mode                   = cdn_policy.value["cache_mode"]
-      client_ttl                   = cdn_policy.value["client_ttl"]
-      default_ttl                  = cdn_policy.value["default_ttl"]
-      max_ttl                      = cdn_policy.value["max_ttl"]
-      negative_caching             = cdn_policy.value["negative_caching"]
-      serve_while_stale            = cdn_policy.value["serve_while_stale"]
+      # cache_mode - (optional) is a type of string
+      cache_mode = cdn_policy.value["cache_mode"]
+      # client_ttl - (optional) is a type of number
+      client_ttl = cdn_policy.value["client_ttl"]
+      # default_ttl - (optional) is a type of number
+      default_ttl = cdn_policy.value["default_ttl"]
+      # max_ttl - (optional) is a type of number
+      max_ttl = cdn_policy.value["max_ttl"]
+      # negative_caching - (optional) is a type of bool
+      negative_caching = cdn_policy.value["negative_caching"]
+      # serve_while_stale - (optional) is a type of number
+      serve_while_stale = cdn_policy.value["serve_while_stale"]
+      # signed_url_cache_max_age_sec - (optional) is a type of number
       signed_url_cache_max_age_sec = cdn_policy.value["signed_url_cache_max_age_sec"]
 
       dynamic "negative_caching_policy" {
         for_each = cdn_policy.value.negative_caching_policy
         content {
+          # code - (optional) is a type of number
           code = negative_caching_policy.value["code"]
-          ttl  = negative_caching_policy.value["ttl"]
+          # ttl - (optional) is a type of number
+          ttl = negative_caching_policy.value["ttl"]
         }
       }
 
@@ -174,8 +189,11 @@ resource "google_compute_backend_bucket" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

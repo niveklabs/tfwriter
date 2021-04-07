@@ -65,9 +65,12 @@ variable "prefix" {
 
 ```terraform
 resource "random_id" "this" {
+  # byte_length - (required) is a type of number
   byte_length = var.byte_length
-  keepers     = var.keepers
-  prefix      = var.prefix
+  # keepers - (optional) is a type of map of string
+  keepers = var.keepers
+  # prefix - (optional) is a type of string
+  prefix = var.prefix
 }
 ```
 

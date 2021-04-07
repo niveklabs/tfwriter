@@ -79,14 +79,19 @@ variable "policy_attribute" {
 
 ```terraform
 resource "aws_load_balancer_policy" "this" {
+  # load_balancer_name - (required) is a type of string
   load_balancer_name = var.load_balancer_name
-  policy_name        = var.policy_name
-  policy_type_name   = var.policy_type_name
+  # policy_name - (required) is a type of string
+  policy_name = var.policy_name
+  # policy_type_name - (required) is a type of string
+  policy_type_name = var.policy_type_name
 
   dynamic "policy_attribute" {
     for_each = var.policy_attribute
     content {
-      name  = policy_attribute.value["name"]
+      # name - (optional) is a type of string
+      name = policy_attribute.value["name"]
+      # value - (optional) is a type of string
       value = policy_attribute.value["value"]
     }
   }

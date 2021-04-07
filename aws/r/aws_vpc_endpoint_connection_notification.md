@@ -72,10 +72,14 @@ variable "vpc_endpoint_service_id" {
 
 ```terraform
 resource "aws_vpc_endpoint_connection_notification" "this" {
-  connection_events           = var.connection_events
+  # connection_events - (required) is a type of set of string
+  connection_events = var.connection_events
+  # connection_notification_arn - (required) is a type of string
   connection_notification_arn = var.connection_notification_arn
-  vpc_endpoint_id             = var.vpc_endpoint_id
-  vpc_endpoint_service_id     = var.vpc_endpoint_service_id
+  # vpc_endpoint_id - (optional) is a type of string
+  vpc_endpoint_id = var.vpc_endpoint_id
+  # vpc_endpoint_service_id - (optional) is a type of string
+  vpc_endpoint_service_id = var.vpc_endpoint_service_id
 }
 ```
 

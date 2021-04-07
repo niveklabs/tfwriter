@@ -49,6 +49,7 @@ variable "managed_list_id" {
 
 ```terraform
 data "oci_cloud_guard_managed_list" "this" {
+  # managed_list_id - (required) is a type of string
   managed_list_id = var.managed_list_id
 }
 ```

@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "oraclepaas_database_service_instance" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

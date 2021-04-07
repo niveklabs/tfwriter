@@ -64,8 +64,11 @@ variable "web_backend_service" {
 
 ```terraform
 resource "google_iap_web_backend_service_iam_policy" "this" {
-  policy_data         = var.policy_data
-  project             = var.project
+  # policy_data - (required) is a type of string
+  policy_data = var.policy_data
+  # project - (optional) is a type of string
+  project = var.project
+  # web_backend_service - (required) is a type of string
   web_backend_service = var.web_backend_service
 }
 ```

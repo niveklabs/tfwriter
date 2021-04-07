@@ -304,41 +304,67 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_mssql_database" "this" {
+  # auto_pause_delay_in_minutes - (optional) is a type of number
   auto_pause_delay_in_minutes = var.auto_pause_delay_in_minutes
-  collation                   = var.collation
-  create_mode                 = var.create_mode
+  # collation - (optional) is a type of string
+  collation = var.collation
+  # create_mode - (optional) is a type of string
+  create_mode = var.create_mode
+  # creation_source_database_id - (optional) is a type of string
   creation_source_database_id = var.creation_source_database_id
-  elastic_pool_id             = var.elastic_pool_id
-  extended_auditing_policy    = var.extended_auditing_policy
-  license_type                = var.license_type
-  max_size_gb                 = var.max_size_gb
-  min_capacity                = var.min_capacity
-  name                        = var.name
-  read_replica_count          = var.read_replica_count
-  read_scale                  = var.read_scale
-  recover_database_id         = var.recover_database_id
+  # elastic_pool_id - (optional) is a type of string
+  elastic_pool_id = var.elastic_pool_id
+  # extended_auditing_policy - (optional) is a type of list of object
+  extended_auditing_policy = var.extended_auditing_policy
+  # license_type - (optional) is a type of string
+  license_type = var.license_type
+  # max_size_gb - (optional) is a type of number
+  max_size_gb = var.max_size_gb
+  # min_capacity - (optional) is a type of number
+  min_capacity = var.min_capacity
+  # name - (required) is a type of string
+  name = var.name
+  # read_replica_count - (optional) is a type of number
+  read_replica_count = var.read_replica_count
+  # read_scale - (optional) is a type of bool
+  read_scale = var.read_scale
+  # recover_database_id - (optional) is a type of string
+  recover_database_id = var.recover_database_id
+  # restore_dropped_database_id - (optional) is a type of string
   restore_dropped_database_id = var.restore_dropped_database_id
-  restore_point_in_time       = var.restore_point_in_time
-  sample_name                 = var.sample_name
-  server_id                   = var.server_id
-  sku_name                    = var.sku_name
-  storage_account_type        = var.storage_account_type
-  tags                        = var.tags
-  zone_redundant              = var.zone_redundant
+  # restore_point_in_time - (optional) is a type of string
+  restore_point_in_time = var.restore_point_in_time
+  # sample_name - (optional) is a type of string
+  sample_name = var.sample_name
+  # server_id - (required) is a type of string
+  server_id = var.server_id
+  # sku_name - (optional) is a type of string
+  sku_name = var.sku_name
+  # storage_account_type - (optional) is a type of string
+  storage_account_type = var.storage_account_type
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # zone_redundant - (optional) is a type of bool
+  zone_redundant = var.zone_redundant
 
   dynamic "long_term_retention_policy" {
     for_each = var.long_term_retention_policy
     content {
+      # monthly_retention - (optional) is a type of string
       monthly_retention = long_term_retention_policy.value["monthly_retention"]
-      week_of_year      = long_term_retention_policy.value["week_of_year"]
-      weekly_retention  = long_term_retention_policy.value["weekly_retention"]
-      yearly_retention  = long_term_retention_policy.value["yearly_retention"]
+      # week_of_year - (optional) is a type of number
+      week_of_year = long_term_retention_policy.value["week_of_year"]
+      # weekly_retention - (optional) is a type of string
+      weekly_retention = long_term_retention_policy.value["weekly_retention"]
+      # yearly_retention - (optional) is a type of string
+      yearly_retention = long_term_retention_policy.value["yearly_retention"]
     }
   }
 
   dynamic "short_term_retention_policy" {
     for_each = var.short_term_retention_policy
     content {
+      # retention_days - (required) is a type of number
       retention_days = short_term_retention_policy.value["retention_days"]
     }
   }
@@ -346,23 +372,35 @@ resource "azurerm_mssql_database" "this" {
   dynamic "threat_detection_policy" {
     for_each = var.threat_detection_policy
     content {
-      disabled_alerts            = threat_detection_policy.value["disabled_alerts"]
-      email_account_admins       = threat_detection_policy.value["email_account_admins"]
-      email_addresses            = threat_detection_policy.value["email_addresses"]
-      retention_days             = threat_detection_policy.value["retention_days"]
-      state                      = threat_detection_policy.value["state"]
+      # disabled_alerts - (optional) is a type of set of string
+      disabled_alerts = threat_detection_policy.value["disabled_alerts"]
+      # email_account_admins - (optional) is a type of string
+      email_account_admins = threat_detection_policy.value["email_account_admins"]
+      # email_addresses - (optional) is a type of set of string
+      email_addresses = threat_detection_policy.value["email_addresses"]
+      # retention_days - (optional) is a type of number
+      retention_days = threat_detection_policy.value["retention_days"]
+      # state - (optional) is a type of string
+      state = threat_detection_policy.value["state"]
+      # storage_account_access_key - (optional) is a type of string
       storage_account_access_key = threat_detection_policy.value["storage_account_access_key"]
-      storage_endpoint           = threat_detection_policy.value["storage_endpoint"]
-      use_server_default         = threat_detection_policy.value["use_server_default"]
+      # storage_endpoint - (optional) is a type of string
+      storage_endpoint = threat_detection_policy.value["storage_endpoint"]
+      # use_server_default - (optional) is a type of string
+      use_server_default = threat_detection_policy.value["use_server_default"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

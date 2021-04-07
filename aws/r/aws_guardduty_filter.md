@@ -117,12 +117,18 @@ variable "finding_criteria" {
 
 ```terraform
 resource "aws_guardduty_filter" "this" {
-  action      = var.action
+  # action - (required) is a type of string
+  action = var.action
+  # description - (optional) is a type of string
   description = var.description
+  # detector_id - (required) is a type of string
   detector_id = var.detector_id
-  name        = var.name
-  rank        = var.rank
-  tags        = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # rank - (required) is a type of number
+  rank = var.rank
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "finding_criteria" {
     for_each = var.finding_criteria
@@ -131,13 +137,20 @@ resource "aws_guardduty_filter" "this" {
       dynamic "criterion" {
         for_each = finding_criteria.value.criterion
         content {
-          equals                = criterion.value["equals"]
-          field                 = criterion.value["field"]
-          greater_than          = criterion.value["greater_than"]
+          # equals - (optional) is a type of list of string
+          equals = criterion.value["equals"]
+          # field - (required) is a type of string
+          field = criterion.value["field"]
+          # greater_than - (optional) is a type of string
+          greater_than = criterion.value["greater_than"]
+          # greater_than_or_equal - (optional) is a type of string
           greater_than_or_equal = criterion.value["greater_than_or_equal"]
-          less_than             = criterion.value["less_than"]
-          less_than_or_equal    = criterion.value["less_than_or_equal"]
-          not_equals            = criterion.value["not_equals"]
+          # less_than - (optional) is a type of string
+          less_than = criterion.value["less_than"]
+          # less_than_or_equal - (optional) is a type of string
+          less_than_or_equal = criterion.value["less_than_or_equal"]
+          # not_equals - (optional) is a type of list of string
+          not_equals = criterion.value["not_equals"]
         }
       }
 

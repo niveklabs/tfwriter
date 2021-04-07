@@ -93,17 +93,25 @@ variable "timeouts" {
 
 ```terraform
 resource "google_project_service" "this" {
+  # disable_dependent_services - (optional) is a type of bool
   disable_dependent_services = var.disable_dependent_services
-  disable_on_destroy         = var.disable_on_destroy
-  project                    = var.project
-  service                    = var.service
+  # disable_on_destroy - (optional) is a type of bool
+  disable_on_destroy = var.disable_on_destroy
+  # project - (optional) is a type of string
+  project = var.project
+  # service - (required) is a type of string
+  service = var.service
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

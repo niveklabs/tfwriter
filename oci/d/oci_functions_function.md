@@ -49,6 +49,7 @@ variable "function_id" {
 
 ```terraform
 data "oci_functions_function" "this" {
+  # function_id - (required) is a type of string
   function_id = var.function_id
 }
 ```

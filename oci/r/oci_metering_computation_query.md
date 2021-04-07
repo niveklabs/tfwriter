@@ -142,18 +142,23 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_metering_computation_query" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
 
   dynamic "query_definition" {
     for_each = var.query_definition
     content {
+      # display_name - (required) is a type of string
       display_name = query_definition.value["display_name"]
-      version      = query_definition.value["version"]
+      # version - (required) is a type of number
+      version = query_definition.value["version"]
 
       dynamic "cost_analysis_ui" {
         for_each = query_definition.value.cost_analysis_ui
         content {
-          graph               = cost_analysis_ui.value["graph"]
+          # graph - (optional) is a type of string
+          graph = cost_analysis_ui.value["graph"]
+          # is_cumulative_graph - (optional) is a type of bool
           is_cumulative_graph = cost_analysis_ui.value["is_cumulative_graph"]
         }
       }
@@ -161,22 +166,35 @@ resource "oci_metering_computation_query" "this" {
       dynamic "report_query" {
         for_each = query_definition.value.report_query
         content {
-          compartment_depth    = report_query.value["compartment_depth"]
-          date_range_name      = report_query.value["date_range_name"]
-          filter               = report_query.value["filter"]
-          granularity          = report_query.value["granularity"]
-          group_by             = report_query.value["group_by"]
+          # compartment_depth - (optional) is a type of number
+          compartment_depth = report_query.value["compartment_depth"]
+          # date_range_name - (optional) is a type of string
+          date_range_name = report_query.value["date_range_name"]
+          # filter - (optional) is a type of string
+          filter = report_query.value["filter"]
+          # granularity - (required) is a type of string
+          granularity = report_query.value["granularity"]
+          # group_by - (optional) is a type of list of string
+          group_by = report_query.value["group_by"]
+          # is_aggregate_by_time - (optional) is a type of bool
           is_aggregate_by_time = report_query.value["is_aggregate_by_time"]
-          query_type           = report_query.value["query_type"]
-          tenant_id            = report_query.value["tenant_id"]
-          time_usage_ended     = report_query.value["time_usage_ended"]
-          time_usage_started   = report_query.value["time_usage_started"]
+          # query_type - (optional) is a type of string
+          query_type = report_query.value["query_type"]
+          # tenant_id - (required) is a type of string
+          tenant_id = report_query.value["tenant_id"]
+          # time_usage_ended - (optional) is a type of string
+          time_usage_ended = report_query.value["time_usage_ended"]
+          # time_usage_started - (optional) is a type of string
+          time_usage_started = report_query.value["time_usage_started"]
 
           dynamic "forecast" {
             for_each = report_query.value.forecast
             content {
-              forecast_type         = forecast.value["forecast_type"]
-              time_forecast_ended   = forecast.value["time_forecast_ended"]
+              # forecast_type - (optional) is a type of string
+              forecast_type = forecast.value["forecast_type"]
+              # time_forecast_ended - (required) is a type of string
+              time_forecast_ended = forecast.value["time_forecast_ended"]
+              # time_forecast_started - (optional) is a type of string
               time_forecast_started = forecast.value["time_forecast_started"]
             }
           }
@@ -184,9 +202,12 @@ resource "oci_metering_computation_query" "this" {
           dynamic "group_by_tag" {
             for_each = report_query.value.group_by_tag
             content {
-              key       = group_by_tag.value["key"]
+              # key - (optional) is a type of string
+              key = group_by_tag.value["key"]
+              # namespace - (optional) is a type of string
               namespace = group_by_tag.value["namespace"]
-              value     = group_by_tag.value["value"]
+              # value - (optional) is a type of string
+              value = group_by_tag.value["value"]
             }
           }
 
@@ -199,8 +220,11 @@ resource "oci_metering_computation_query" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

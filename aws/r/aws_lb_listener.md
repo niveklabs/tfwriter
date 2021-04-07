@@ -218,56 +218,86 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_lb_listener" "this" {
-  certificate_arn   = var.certificate_arn
+  # certificate_arn - (optional) is a type of string
+  certificate_arn = var.certificate_arn
+  # load_balancer_arn - (required) is a type of string
   load_balancer_arn = var.load_balancer_arn
-  port              = var.port
-  protocol          = var.protocol
-  ssl_policy        = var.ssl_policy
+  # port - (optional) is a type of number
+  port = var.port
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # ssl_policy - (optional) is a type of string
+  ssl_policy = var.ssl_policy
 
   dynamic "default_action" {
     for_each = var.default_action
     content {
-      order            = default_action.value["order"]
+      # order - (optional) is a type of number
+      order = default_action.value["order"]
+      # target_group_arn - (optional) is a type of string
       target_group_arn = default_action.value["target_group_arn"]
-      type             = default_action.value["type"]
+      # type - (required) is a type of string
+      type = default_action.value["type"]
 
       dynamic "authenticate_cognito" {
         for_each = default_action.value.authenticate_cognito
         content {
+          # authentication_request_extra_params - (optional) is a type of map of string
           authentication_request_extra_params = authenticate_cognito.value["authentication_request_extra_params"]
-          on_unauthenticated_request          = authenticate_cognito.value["on_unauthenticated_request"]
-          scope                               = authenticate_cognito.value["scope"]
-          session_cookie_name                 = authenticate_cognito.value["session_cookie_name"]
-          session_timeout                     = authenticate_cognito.value["session_timeout"]
-          user_pool_arn                       = authenticate_cognito.value["user_pool_arn"]
-          user_pool_client_id                 = authenticate_cognito.value["user_pool_client_id"]
-          user_pool_domain                    = authenticate_cognito.value["user_pool_domain"]
+          # on_unauthenticated_request - (optional) is a type of string
+          on_unauthenticated_request = authenticate_cognito.value["on_unauthenticated_request"]
+          # scope - (optional) is a type of string
+          scope = authenticate_cognito.value["scope"]
+          # session_cookie_name - (optional) is a type of string
+          session_cookie_name = authenticate_cognito.value["session_cookie_name"]
+          # session_timeout - (optional) is a type of number
+          session_timeout = authenticate_cognito.value["session_timeout"]
+          # user_pool_arn - (required) is a type of string
+          user_pool_arn = authenticate_cognito.value["user_pool_arn"]
+          # user_pool_client_id - (required) is a type of string
+          user_pool_client_id = authenticate_cognito.value["user_pool_client_id"]
+          # user_pool_domain - (required) is a type of string
+          user_pool_domain = authenticate_cognito.value["user_pool_domain"]
         }
       }
 
       dynamic "authenticate_oidc" {
         for_each = default_action.value.authenticate_oidc
         content {
+          # authentication_request_extra_params - (optional) is a type of map of string
           authentication_request_extra_params = authenticate_oidc.value["authentication_request_extra_params"]
-          authorization_endpoint              = authenticate_oidc.value["authorization_endpoint"]
-          client_id                           = authenticate_oidc.value["client_id"]
-          client_secret                       = authenticate_oidc.value["client_secret"]
-          issuer                              = authenticate_oidc.value["issuer"]
-          on_unauthenticated_request          = authenticate_oidc.value["on_unauthenticated_request"]
-          scope                               = authenticate_oidc.value["scope"]
-          session_cookie_name                 = authenticate_oidc.value["session_cookie_name"]
-          session_timeout                     = authenticate_oidc.value["session_timeout"]
-          token_endpoint                      = authenticate_oidc.value["token_endpoint"]
-          user_info_endpoint                  = authenticate_oidc.value["user_info_endpoint"]
+          # authorization_endpoint - (required) is a type of string
+          authorization_endpoint = authenticate_oidc.value["authorization_endpoint"]
+          # client_id - (required) is a type of string
+          client_id = authenticate_oidc.value["client_id"]
+          # client_secret - (required) is a type of string
+          client_secret = authenticate_oidc.value["client_secret"]
+          # issuer - (required) is a type of string
+          issuer = authenticate_oidc.value["issuer"]
+          # on_unauthenticated_request - (optional) is a type of string
+          on_unauthenticated_request = authenticate_oidc.value["on_unauthenticated_request"]
+          # scope - (optional) is a type of string
+          scope = authenticate_oidc.value["scope"]
+          # session_cookie_name - (optional) is a type of string
+          session_cookie_name = authenticate_oidc.value["session_cookie_name"]
+          # session_timeout - (optional) is a type of number
+          session_timeout = authenticate_oidc.value["session_timeout"]
+          # token_endpoint - (required) is a type of string
+          token_endpoint = authenticate_oidc.value["token_endpoint"]
+          # user_info_endpoint - (required) is a type of string
+          user_info_endpoint = authenticate_oidc.value["user_info_endpoint"]
         }
       }
 
       dynamic "fixed_response" {
         for_each = default_action.value.fixed_response
         content {
+          # content_type - (required) is a type of string
           content_type = fixed_response.value["content_type"]
+          # message_body - (optional) is a type of string
           message_body = fixed_response.value["message_body"]
-          status_code  = fixed_response.value["status_code"]
+          # status_code - (optional) is a type of string
+          status_code = fixed_response.value["status_code"]
         }
       }
 
@@ -278,15 +308,19 @@ resource "aws_lb_listener" "this" {
           dynamic "stickiness" {
             for_each = forward.value.stickiness
             content {
+              # duration - (required) is a type of number
               duration = stickiness.value["duration"]
-              enabled  = stickiness.value["enabled"]
+              # enabled - (optional) is a type of bool
+              enabled = stickiness.value["enabled"]
             }
           }
 
           dynamic "target_group" {
             for_each = forward.value.target_group
             content {
-              arn    = target_group.value["arn"]
+              # arn - (required) is a type of string
+              arn = target_group.value["arn"]
+              # weight - (optional) is a type of number
               weight = target_group.value["weight"]
             }
           }
@@ -297,11 +331,17 @@ resource "aws_lb_listener" "this" {
       dynamic "redirect" {
         for_each = default_action.value.redirect
         content {
-          host        = redirect.value["host"]
-          path        = redirect.value["path"]
-          port        = redirect.value["port"]
-          protocol    = redirect.value["protocol"]
-          query       = redirect.value["query"]
+          # host - (optional) is a type of string
+          host = redirect.value["host"]
+          # path - (optional) is a type of string
+          path = redirect.value["path"]
+          # port - (optional) is a type of string
+          port = redirect.value["port"]
+          # protocol - (optional) is a type of string
+          protocol = redirect.value["protocol"]
+          # query - (optional) is a type of string
+          query = redirect.value["query"]
+          # status_code - (required) is a type of string
           status_code = redirect.value["status_code"]
         }
       }
@@ -312,6 +352,7 @@ resource "aws_lb_listener" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

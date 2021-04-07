@@ -104,14 +104,22 @@ variable "type" {
 
 ```terraform
 resource "vault_transform_transformation" "this" {
-  allowed_roles     = var.allowed_roles
+  # allowed_roles - (optional) is a type of list of string
+  allowed_roles = var.allowed_roles
+  # masking_character - (optional) is a type of string
   masking_character = var.masking_character
-  name              = var.name
-  path              = var.path
-  template          = var.template
-  templates         = var.templates
-  tweak_source      = var.tweak_source
-  type              = var.type
+  # name - (required) is a type of string
+  name = var.name
+  # path - (required) is a type of string
+  path = var.path
+  # template - (optional) is a type of string
+  template = var.template
+  # templates - (optional) is a type of list of string
+  templates = var.templates
+  # tweak_source - (optional) is a type of string
+  tweak_source = var.tweak_source
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

@@ -65,8 +65,11 @@ variable "public_key_type" {
 
 ```terraform
 data "google_service_account_key" "this" {
-  name            = var.name
-  project         = var.project
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # public_key_type - (optional) is a type of string
   public_key_type = var.public_key_type
 }
 ```

@@ -112,20 +112,31 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_bot_channel_slack" "this" {
-  bot_name            = var.bot_name
-  client_id           = var.client_id
-  client_secret       = var.client_secret
-  landing_page_url    = var.landing_page_url
-  location            = var.location
+  # bot_name - (required) is a type of string
+  bot_name = var.bot_name
+  # client_id - (required) is a type of string
+  client_id = var.client_id
+  # client_secret - (required) is a type of string
+  client_secret = var.client_secret
+  # landing_page_url - (optional) is a type of string
+  landing_page_url = var.landing_page_url
+  # location - (required) is a type of string
+  location = var.location
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  verification_token  = var.verification_token
+  # verification_token - (required) is a type of string
+  verification_token = var.verification_token
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

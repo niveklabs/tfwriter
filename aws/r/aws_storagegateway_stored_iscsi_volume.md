@@ -109,15 +109,24 @@ variable "target_name" {
 
 ```terraform
 resource "aws_storagegateway_stored_iscsi_volume" "this" {
-  disk_id                = var.disk_id
-  gateway_arn            = var.gateway_arn
-  kms_encrypted          = var.kms_encrypted
-  kms_key                = var.kms_key
-  network_interface_id   = var.network_interface_id
+  # disk_id - (required) is a type of string
+  disk_id = var.disk_id
+  # gateway_arn - (required) is a type of string
+  gateway_arn = var.gateway_arn
+  # kms_encrypted - (optional) is a type of bool
+  kms_encrypted = var.kms_encrypted
+  # kms_key - (optional) is a type of string
+  kms_key = var.kms_key
+  # network_interface_id - (required) is a type of string
+  network_interface_id = var.network_interface_id
+  # preserve_existing_data - (required) is a type of bool
   preserve_existing_data = var.preserve_existing_data
-  snapshot_id            = var.snapshot_id
-  tags                   = var.tags
-  target_name            = var.target_name
+  # snapshot_id - (optional) is a type of string
+  snapshot_id = var.snapshot_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # target_name - (required) is a type of string
+  target_name = var.target_name
 }
 ```
 

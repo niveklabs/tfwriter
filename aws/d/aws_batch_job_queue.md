@@ -57,7 +57,9 @@ variable "tags" {
 
 ```terraform
 data "aws_batch_job_queue" "this" {
+  # name - (required) is a type of string
   name = var.name
+  # tags - (optional) is a type of map of string
   tags = var.tags
 }
 ```

@@ -87,12 +87,18 @@ variable "tags" {
 
 ```terraform
 resource "aws_wafv2_ip_set" "this" {
-  addresses          = var.addresses
-  description        = var.description
+  # addresses - (optional) is a type of set of string
+  addresses = var.addresses
+  # description - (optional) is a type of string
+  description = var.description
+  # ip_address_version - (required) is a type of string
   ip_address_version = var.ip_address_version
-  name               = var.name
-  scope              = var.scope
-  tags               = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # scope - (required) is a type of string
+  scope = var.scope
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

@@ -56,8 +56,10 @@ variable "policy_tag" {
 
 ```terraform
 resource "google_data_catalog_policy_tag_iam_policy" "this" {
+  # policy_data - (required) is a type of string
   policy_data = var.policy_data
-  policy_tag  = var.policy_tag
+  # policy_tag - (required) is a type of string
+  policy_tag = var.policy_tag
 }
 ```
 

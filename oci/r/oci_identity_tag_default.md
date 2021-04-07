@@ -89,16 +89,23 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_identity_tag_default" "this" {
-  compartment_id    = var.compartment_id
-  is_required       = var.is_required
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # is_required - (optional) is a type of bool
+  is_required = var.is_required
+  # tag_definition_id - (required) is a type of string
   tag_definition_id = var.tag_definition_id
-  value             = var.value
+  # value - (required) is a type of string
+  value = var.value
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

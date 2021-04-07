@@ -87,16 +87,21 @@ resource "kubernetes_namespace" "this" {
   dynamic "metadata" {
     for_each = var.metadata
     content {
-      annotations   = metadata.value["annotations"]
+      # annotations - (optional) is a type of map of string
+      annotations = metadata.value["annotations"]
+      # generate_name - (optional) is a type of string
       generate_name = metadata.value["generate_name"]
-      labels        = metadata.value["labels"]
-      name          = metadata.value["name"]
+      # labels - (optional) is a type of map of string
+      labels = metadata.value["labels"]
+      # name - (optional) is a type of string
+      name = metadata.value["name"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

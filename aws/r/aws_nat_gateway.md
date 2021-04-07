@@ -64,9 +64,12 @@ variable "tags" {
 
 ```terraform
 resource "aws_nat_gateway" "this" {
+  # allocation_id - (required) is a type of string
   allocation_id = var.allocation_id
-  subnet_id     = var.subnet_id
-  tags          = var.tags
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

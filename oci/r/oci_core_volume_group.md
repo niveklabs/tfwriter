@@ -125,28 +125,41 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_volume_group" "this" {
+  # availability_domain - (required) is a type of string
   availability_domain = var.availability_domain
-  backup_policy_id    = var.backup_policy_id
-  compartment_id      = var.compartment_id
-  defined_tags        = var.defined_tags
-  display_name        = var.display_name
-  freeform_tags       = var.freeform_tags
+  # backup_policy_id - (optional) is a type of string
+  backup_policy_id = var.backup_policy_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
 
   dynamic "source_details" {
     for_each = var.source_details
     content {
-      type                   = source_details.value["type"]
+      # type - (required) is a type of string
+      type = source_details.value["type"]
+      # volume_group_backup_id - (optional) is a type of string
       volume_group_backup_id = source_details.value["volume_group_backup_id"]
-      volume_group_id        = source_details.value["volume_group_id"]
-      volume_ids             = source_details.value["volume_ids"]
+      # volume_group_id - (optional) is a type of string
+      volume_group_id = source_details.value["volume_group_id"]
+      # volume_ids - (optional) is a type of set of string
+      volume_ids = source_details.value["volume_ids"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

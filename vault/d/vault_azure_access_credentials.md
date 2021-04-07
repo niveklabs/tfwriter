@@ -88,12 +88,18 @@ variable "validate_creds" {
 
 ```terraform
 data "vault_azure_access_credentials" "this" {
-  backend                     = var.backend
+  # backend - (required) is a type of string
+  backend = var.backend
+  # max_cred_validation_seconds - (optional) is a type of number
   max_cred_validation_seconds = var.max_cred_validation_seconds
-  num_seconds_between_tests   = var.num_seconds_between_tests
-  num_sequential_successes    = var.num_sequential_successes
-  role                        = var.role
-  validate_creds              = var.validate_creds
+  # num_seconds_between_tests - (optional) is a type of number
+  num_seconds_between_tests = var.num_seconds_between_tests
+  # num_sequential_successes - (optional) is a type of number
+  num_sequential_successes = var.num_sequential_successes
+  # role - (required) is a type of string
+  role = var.role
+  # validate_creds - (optional) is a type of bool
+  validate_creds = var.validate_creds
 }
 ```
 

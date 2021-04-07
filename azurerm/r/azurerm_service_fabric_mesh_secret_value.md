@@ -98,18 +98,27 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_service_fabric_mesh_secret_value" "this" {
-  location                      = var.location
-  name                          = var.name
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # service_fabric_mesh_secret_id - (required) is a type of string
   service_fabric_mesh_secret_id = var.service_fabric_mesh_secret_id
-  tags                          = var.tags
-  value                         = var.value
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # value - (required) is a type of string
+  value = var.value
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

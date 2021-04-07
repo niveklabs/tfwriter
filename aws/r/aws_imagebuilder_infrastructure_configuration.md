@@ -150,16 +150,27 @@ variable "logging" {
 
 ```terraform
 resource "aws_imagebuilder_infrastructure_configuration" "this" {
-  description                   = var.description
-  instance_profile_name         = var.instance_profile_name
-  instance_types                = var.instance_types
-  key_pair                      = var.key_pair
-  name                          = var.name
-  resource_tags                 = var.resource_tags
-  security_group_ids            = var.security_group_ids
-  sns_topic_arn                 = var.sns_topic_arn
-  subnet_id                     = var.subnet_id
-  tags                          = var.tags
+  # description - (optional) is a type of string
+  description = var.description
+  # instance_profile_name - (required) is a type of string
+  instance_profile_name = var.instance_profile_name
+  # instance_types - (optional) is a type of set of string
+  instance_types = var.instance_types
+  # key_pair - (optional) is a type of string
+  key_pair = var.key_pair
+  # name - (required) is a type of string
+  name = var.name
+  # resource_tags - (optional) is a type of map of string
+  resource_tags = var.resource_tags
+  # security_group_ids - (optional) is a type of set of string
+  security_group_ids = var.security_group_ids
+  # sns_topic_arn - (optional) is a type of string
+  sns_topic_arn = var.sns_topic_arn
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # terminate_instance_on_failure - (optional) is a type of bool
   terminate_instance_on_failure = var.terminate_instance_on_failure
 
   dynamic "logging" {
@@ -169,8 +180,10 @@ resource "aws_imagebuilder_infrastructure_configuration" "this" {
       dynamic "s3_logs" {
         for_each = logging.value.s3_logs
         content {
+          # s3_bucket_name - (required) is a type of string
           s3_bucket_name = s3_logs.value["s3_bucket_name"]
-          s3_key_prefix  = s3_logs.value["s3_key_prefix"]
+          # s3_key_prefix - (optional) is a type of string
+          s3_key_prefix = s3_logs.value["s3_key_prefix"]
         }
       }
 

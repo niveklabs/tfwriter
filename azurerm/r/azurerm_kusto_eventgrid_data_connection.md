@@ -134,23 +134,37 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_kusto_eventgrid_data_connection" "this" {
-  blob_storage_event_type      = var.blob_storage_event_type
-  cluster_name                 = var.cluster_name
-  database_name                = var.database_name
+  # blob_storage_event_type - (optional) is a type of string
+  blob_storage_event_type = var.blob_storage_event_type
+  # cluster_name - (required) is a type of string
+  cluster_name = var.cluster_name
+  # database_name - (required) is a type of string
+  database_name = var.database_name
+  # eventhub_consumer_group_name - (required) is a type of string
   eventhub_consumer_group_name = var.eventhub_consumer_group_name
-  eventhub_id                  = var.eventhub_id
-  location                     = var.location
-  name                         = var.name
-  resource_group_name          = var.resource_group_name
-  skip_first_record            = var.skip_first_record
-  storage_account_id           = var.storage_account_id
+  # eventhub_id - (required) is a type of string
+  eventhub_id = var.eventhub_id
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # skip_first_record - (optional) is a type of bool
+  skip_first_record = var.skip_first_record
+  # storage_account_id - (required) is a type of string
+  storage_account_id = var.storage_account_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -139,22 +139,35 @@ variable "filter" {
 
 ```terraform
 data "oci_artifacts_container_image_signatures" "this" {
-  compartment_id            = var.compartment_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # compartment_id_in_subtree - (optional) is a type of bool
   compartment_id_in_subtree = var.compartment_id_in_subtree
-  display_name              = var.display_name
-  image_digest              = var.image_digest
-  image_id                  = var.image_id
-  kms_key_id                = var.kms_key_id
-  kms_key_version_id        = var.kms_key_version_id
-  repository_id             = var.repository_id
-  repository_name           = var.repository_name
-  signing_algorithm         = var.signing_algorithm
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # image_digest - (optional) is a type of string
+  image_digest = var.image_digest
+  # image_id - (optional) is a type of string
+  image_id = var.image_id
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # kms_key_version_id - (optional) is a type of string
+  kms_key_version_id = var.kms_key_version_id
+  # repository_id - (optional) is a type of string
+  repository_id = var.repository_id
+  # repository_name - (optional) is a type of string
+  repository_name = var.repository_name
+  # signing_algorithm - (optional) is a type of string
+  signing_algorithm = var.signing_algorithm
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

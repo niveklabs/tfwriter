@@ -57,8 +57,10 @@ variable "tags" {
 
 ```terraform
 data "aws_backup_plan" "this" {
+  # plan_id - (required) is a type of string
   plan_id = var.plan_id
-  tags    = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

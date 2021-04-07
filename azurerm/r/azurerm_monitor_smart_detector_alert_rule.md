@@ -153,22 +153,35 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_monitor_smart_detector_alert_rule" "this" {
-  description         = var.description
-  detector_type       = var.detector_type
-  enabled             = var.enabled
-  frequency           = var.frequency
-  name                = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # detector_type - (required) is a type of string
+  detector_type = var.detector_type
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # frequency - (required) is a type of string
+  frequency = var.frequency
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  scope_resource_ids  = var.scope_resource_ids
-  severity            = var.severity
-  tags                = var.tags
+  # scope_resource_ids - (required) is a type of set of string
+  scope_resource_ids = var.scope_resource_ids
+  # severity - (required) is a type of string
+  severity = var.severity
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # throttling_duration - (optional) is a type of string
   throttling_duration = var.throttling_duration
 
   dynamic "action_group" {
     for_each = var.action_group
     content {
-      email_subject   = action_group.value["email_subject"]
-      ids             = action_group.value["ids"]
+      # email_subject - (optional) is a type of string
+      email_subject = action_group.value["email_subject"]
+      # ids - (required) is a type of set of string
+      ids = action_group.value["ids"]
+      # webhook_payload - (optional) is a type of string
       webhook_payload = action_group.value["webhook_payload"]
     }
   }
@@ -176,9 +189,13 @@ resource "azurerm_monitor_smart_detector_alert_rule" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

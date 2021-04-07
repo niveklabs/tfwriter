@@ -158,26 +158,43 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_data_factory_linked_service_sftp" "this" {
-  additional_properties    = var.additional_properties
-  annotations              = var.annotations
-  authentication_type      = var.authentication_type
-  data_factory_name        = var.data_factory_name
-  description              = var.description
-  host                     = var.host
+  # additional_properties - (optional) is a type of map of string
+  additional_properties = var.additional_properties
+  # annotations - (optional) is a type of list of string
+  annotations = var.annotations
+  # authentication_type - (required) is a type of string
+  authentication_type = var.authentication_type
+  # data_factory_name - (required) is a type of string
+  data_factory_name = var.data_factory_name
+  # description - (optional) is a type of string
+  description = var.description
+  # host - (required) is a type of string
+  host = var.host
+  # integration_runtime_name - (optional) is a type of string
   integration_runtime_name = var.integration_runtime_name
-  name                     = var.name
-  parameters               = var.parameters
-  password                 = var.password
-  port                     = var.port
-  resource_group_name      = var.resource_group_name
-  username                 = var.username
+  # name - (required) is a type of string
+  name = var.name
+  # parameters - (optional) is a type of map of string
+  parameters = var.parameters
+  # password - (required) is a type of string
+  password = var.password
+  # port - (required) is a type of number
+  port = var.port
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # username - (required) is a type of string
+  username = var.username
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

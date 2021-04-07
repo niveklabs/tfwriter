@@ -219,23 +219,33 @@ variable "trace" {
 
 ```terraform
 resource "azurerm_spring_cloud_service" "this" {
-  location            = var.location
-  name                = var.name
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  sku_name            = var.sku_name
-  tags                = var.tags
+  # sku_name - (optional) is a type of string
+  sku_name = var.sku_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "config_server_git_setting" {
     for_each = var.config_server_git_setting
     content {
-      label        = config_server_git_setting.value["label"]
+      # label - (optional) is a type of string
+      label = config_server_git_setting.value["label"]
+      # search_paths - (optional) is a type of list of string
       search_paths = config_server_git_setting.value["search_paths"]
-      uri          = config_server_git_setting.value["uri"]
+      # uri - (required) is a type of string
+      uri = config_server_git_setting.value["uri"]
 
       dynamic "http_basic_auth" {
         for_each = config_server_git_setting.value.http_basic_auth
         content {
+          # password - (required) is a type of string
           password = http_basic_auth.value["password"]
+          # username - (required) is a type of string
           username = http_basic_auth.value["username"]
         }
       }
@@ -243,16 +253,23 @@ resource "azurerm_spring_cloud_service" "this" {
       dynamic "repository" {
         for_each = config_server_git_setting.value.repository
         content {
-          label        = repository.value["label"]
-          name         = repository.value["name"]
-          pattern      = repository.value["pattern"]
+          # label - (optional) is a type of string
+          label = repository.value["label"]
+          # name - (required) is a type of string
+          name = repository.value["name"]
+          # pattern - (optional) is a type of list of string
+          pattern = repository.value["pattern"]
+          # search_paths - (optional) is a type of list of string
           search_paths = repository.value["search_paths"]
-          uri          = repository.value["uri"]
+          # uri - (required) is a type of string
+          uri = repository.value["uri"]
 
           dynamic "http_basic_auth" {
             for_each = repository.value.http_basic_auth
             content {
+              # password - (required) is a type of string
               password = http_basic_auth.value["password"]
+              # username - (required) is a type of string
               username = http_basic_auth.value["username"]
             }
           }
@@ -260,9 +277,13 @@ resource "azurerm_spring_cloud_service" "this" {
           dynamic "ssh_auth" {
             for_each = repository.value.ssh_auth
             content {
-              host_key                         = ssh_auth.value["host_key"]
-              host_key_algorithm               = ssh_auth.value["host_key_algorithm"]
-              private_key                      = ssh_auth.value["private_key"]
+              # host_key - (optional) is a type of string
+              host_key = ssh_auth.value["host_key"]
+              # host_key_algorithm - (optional) is a type of string
+              host_key_algorithm = ssh_auth.value["host_key_algorithm"]
+              # private_key - (required) is a type of string
+              private_key = ssh_auth.value["private_key"]
+              # strict_host_key_checking_enabled - (optional) is a type of bool
               strict_host_key_checking_enabled = ssh_auth.value["strict_host_key_checking_enabled"]
             }
           }
@@ -273,9 +294,13 @@ resource "azurerm_spring_cloud_service" "this" {
       dynamic "ssh_auth" {
         for_each = config_server_git_setting.value.ssh_auth
         content {
-          host_key                         = ssh_auth.value["host_key"]
-          host_key_algorithm               = ssh_auth.value["host_key_algorithm"]
-          private_key                      = ssh_auth.value["private_key"]
+          # host_key - (optional) is a type of string
+          host_key = ssh_auth.value["host_key"]
+          # host_key_algorithm - (optional) is a type of string
+          host_key_algorithm = ssh_auth.value["host_key_algorithm"]
+          # private_key - (required) is a type of string
+          private_key = ssh_auth.value["private_key"]
+          # strict_host_key_checking_enabled - (optional) is a type of bool
           strict_host_key_checking_enabled = ssh_auth.value["strict_host_key_checking_enabled"]
         }
       }
@@ -286,20 +311,29 @@ resource "azurerm_spring_cloud_service" "this" {
   dynamic "network" {
     for_each = var.network
     content {
-      app_network_resource_group             = network.value["app_network_resource_group"]
-      app_subnet_id                          = network.value["app_subnet_id"]
-      cidr_ranges                            = network.value["cidr_ranges"]
+      # app_network_resource_group - (optional) is a type of string
+      app_network_resource_group = network.value["app_network_resource_group"]
+      # app_subnet_id - (required) is a type of string
+      app_subnet_id = network.value["app_subnet_id"]
+      # cidr_ranges - (required) is a type of list of string
+      cidr_ranges = network.value["cidr_ranges"]
+      # service_runtime_network_resource_group - (optional) is a type of string
       service_runtime_network_resource_group = network.value["service_runtime_network_resource_group"]
-      service_runtime_subnet_id              = network.value["service_runtime_subnet_id"]
+      # service_runtime_subnet_id - (required) is a type of string
+      service_runtime_subnet_id = network.value["service_runtime_subnet_id"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -307,8 +341,10 @@ resource "azurerm_spring_cloud_service" "this" {
   dynamic "trace" {
     for_each = var.trace
     content {
+      # instrumentation_key - (required) is a type of string
       instrumentation_key = trace.value["instrumentation_key"]
-      sample_rate         = trace.value["sample_rate"]
+      # sample_rate - (optional) is a type of number
+      sample_rate = trace.value["sample_rate"]
     }
   }
 

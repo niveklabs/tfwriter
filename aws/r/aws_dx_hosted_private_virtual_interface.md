@@ -132,21 +132,33 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_dx_hosted_private_virtual_interface" "this" {
-  address_family   = var.address_family
-  amazon_address   = var.amazon_address
-  bgp_asn          = var.bgp_asn
-  bgp_auth_key     = var.bgp_auth_key
-  connection_id    = var.connection_id
+  # address_family - (required) is a type of string
+  address_family = var.address_family
+  # amazon_address - (optional) is a type of string
+  amazon_address = var.amazon_address
+  # bgp_asn - (required) is a type of number
+  bgp_asn = var.bgp_asn
+  # bgp_auth_key - (optional) is a type of string
+  bgp_auth_key = var.bgp_auth_key
+  # connection_id - (required) is a type of string
+  connection_id = var.connection_id
+  # customer_address - (optional) is a type of string
   customer_address = var.customer_address
-  mtu              = var.mtu
-  name             = var.name
+  # mtu - (optional) is a type of number
+  mtu = var.mtu
+  # name - (required) is a type of string
+  name = var.name
+  # owner_account_id - (required) is a type of string
   owner_account_id = var.owner_account_id
-  vlan             = var.vlan
+  # vlan - (required) is a type of number
+  vlan = var.vlan
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

@@ -49,6 +49,7 @@ variable "provider_service_id" {
 
 ```terraform
 data "oci_core_fast_connect_provider_service" "this" {
+  # provider_service_id - (required) is a type of string
   provider_service_id = var.provider_service_id
 }
 ```

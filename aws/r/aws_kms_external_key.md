@@ -98,13 +98,20 @@ variable "valid_to" {
 
 ```terraform
 resource "aws_kms_external_key" "this" {
+  # deletion_window_in_days - (optional) is a type of number
   deletion_window_in_days = var.deletion_window_in_days
-  description             = var.description
-  enabled                 = var.enabled
-  key_material_base64     = var.key_material_base64
-  policy                  = var.policy
-  tags                    = var.tags
-  valid_to                = var.valid_to
+  # description - (optional) is a type of string
+  description = var.description
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # key_material_base64 - (optional) is a type of string
+  key_material_base64 = var.key_material_base64
+  # policy - (optional) is a type of string
+  policy = var.policy
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # valid_to - (optional) is a type of string
+  valid_to = var.valid_to
 }
 ```
 

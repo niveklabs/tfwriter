@@ -73,10 +73,14 @@ variable "tags" {
 
 ```terraform
 resource "opc_compute_ip_address_prefix_set" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  prefixes    = var.prefixes
-  tags        = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # prefixes - (optional) is a type of list of string
+  prefixes = var.prefixes
+  # tags - (optional) is a type of list of string
+  tags = var.tags
 }
 ```
 

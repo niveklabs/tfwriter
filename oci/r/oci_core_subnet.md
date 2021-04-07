@@ -161,25 +161,41 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_subnet" "this" {
-  availability_domain        = var.availability_domain
-  cidr_block                 = var.cidr_block
-  compartment_id             = var.compartment_id
-  defined_tags               = var.defined_tags
-  dhcp_options_id            = var.dhcp_options_id
-  display_name               = var.display_name
-  dns_label                  = var.dns_label
-  freeform_tags              = var.freeform_tags
-  ipv6cidr_block             = var.ipv6cidr_block
+  # availability_domain - (optional) is a type of string
+  availability_domain = var.availability_domain
+  # cidr_block - (required) is a type of string
+  cidr_block = var.cidr_block
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # dhcp_options_id - (optional) is a type of string
+  dhcp_options_id = var.dhcp_options_id
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # dns_label - (optional) is a type of string
+  dns_label = var.dns_label
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # ipv6cidr_block - (optional) is a type of string
+  ipv6cidr_block = var.ipv6cidr_block
+  # prohibit_public_ip_on_vnic - (optional) is a type of bool
   prohibit_public_ip_on_vnic = var.prohibit_public_ip_on_vnic
-  route_table_id             = var.route_table_id
-  security_list_ids          = var.security_list_ids
-  vcn_id                     = var.vcn_id
+  # route_table_id - (optional) is a type of string
+  route_table_id = var.route_table_id
+  # security_list_ids - (optional) is a type of set of string
+  security_list_ids = var.security_list_ids
+  # vcn_id - (required) is a type of string
+  vcn_id = var.vcn_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -190,27 +190,45 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_site_recovery_replicated_vm" "this" {
-  managed_disk                              = var.managed_disk
-  name                                      = var.name
-  network_interface                         = var.network_interface
-  recovery_replication_policy_id            = var.recovery_replication_policy_id
-  recovery_vault_name                       = var.recovery_vault_name
-  resource_group_name                       = var.resource_group_name
-  source_recovery_fabric_name               = var.source_recovery_fabric_name
+  # managed_disk - (optional) is a type of set of object
+  managed_disk = var.managed_disk
+  # name - (required) is a type of string
+  name = var.name
+  # network_interface - (optional) is a type of set of object
+  network_interface = var.network_interface
+  # recovery_replication_policy_id - (required) is a type of string
+  recovery_replication_policy_id = var.recovery_replication_policy_id
+  # recovery_vault_name - (required) is a type of string
+  recovery_vault_name = var.recovery_vault_name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # source_recovery_fabric_name - (required) is a type of string
+  source_recovery_fabric_name = var.source_recovery_fabric_name
+  # source_recovery_protection_container_name - (required) is a type of string
   source_recovery_protection_container_name = var.source_recovery_protection_container_name
-  source_vm_id                              = var.source_vm_id
-  target_availability_set_id                = var.target_availability_set_id
-  target_network_id                         = var.target_network_id
-  target_recovery_fabric_id                 = var.target_recovery_fabric_id
-  target_recovery_protection_container_id   = var.target_recovery_protection_container_id
-  target_resource_group_id                  = var.target_resource_group_id
+  # source_vm_id - (required) is a type of string
+  source_vm_id = var.source_vm_id
+  # target_availability_set_id - (optional) is a type of string
+  target_availability_set_id = var.target_availability_set_id
+  # target_network_id - (optional) is a type of string
+  target_network_id = var.target_network_id
+  # target_recovery_fabric_id - (required) is a type of string
+  target_recovery_fabric_id = var.target_recovery_fabric_id
+  # target_recovery_protection_container_id - (required) is a type of string
+  target_recovery_protection_container_id = var.target_recovery_protection_container_id
+  # target_resource_group_id - (required) is a type of string
+  target_resource_group_id = var.target_resource_group_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

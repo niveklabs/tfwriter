@@ -177,29 +177,44 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_objectstorage_bucket" "this" {
-  access_type           = var.access_type
-  compartment_id        = var.compartment_id
-  defined_tags          = var.defined_tags
-  freeform_tags         = var.freeform_tags
-  kms_key_id            = var.kms_key_id
-  metadata              = var.metadata
-  name                  = var.name
-  namespace             = var.namespace
+  # access_type - (optional) is a type of string
+  access_type = var.access_type
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # metadata - (optional) is a type of map of string
+  metadata = var.metadata
+  # name - (required) is a type of string
+  name = var.name
+  # namespace - (required) is a type of string
+  namespace = var.namespace
+  # object_events_enabled - (optional) is a type of bool
   object_events_enabled = var.object_events_enabled
-  storage_tier          = var.storage_tier
-  versioning            = var.versioning
+  # storage_tier - (optional) is a type of string
+  storage_tier = var.storage_tier
+  # versioning - (optional) is a type of string
+  versioning = var.versioning
 
   dynamic "retention_rules" {
     for_each = var.retention_rules
     content {
-      display_name     = retention_rules.value["display_name"]
+      # display_name - (required) is a type of string
+      display_name = retention_rules.value["display_name"]
+      # time_rule_locked - (optional) is a type of string
       time_rule_locked = retention_rules.value["time_rule_locked"]
 
       dynamic "duration" {
         for_each = retention_rules.value.duration
         content {
+          # time_amount - (required) is a type of string
           time_amount = duration.value["time_amount"]
-          time_unit   = duration.value["time_unit"]
+          # time_unit - (required) is a type of string
+          time_unit = duration.value["time_unit"]
         }
       }
 
@@ -209,8 +224,11 @@ resource "oci_objectstorage_bucket" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

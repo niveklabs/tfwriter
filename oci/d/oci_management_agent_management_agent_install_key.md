@@ -49,6 +49,7 @@ variable "management_agent_install_key_id" {
 
 ```terraform
 data "oci_management_agent_management_agent_install_key" "this" {
+  # management_agent_install_key_id - (required) is a type of string
   management_agent_install_key_id = var.management_agent_install_key_id
 }
 ```

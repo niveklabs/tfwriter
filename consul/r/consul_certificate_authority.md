@@ -56,7 +56,9 @@ variable "connect_provider" {
 
 ```terraform
 resource "consul_certificate_authority" "this" {
-  config           = var.config
+  # config - (required) is a type of map of string
+  config = var.config
+  # connect_provider - (required) is a type of string
   connect_provider = var.connect_provider
 }
 ```

@@ -87,12 +87,18 @@ variable "tags" {
 
 ```terraform
 resource "opc_compute_route" "this" {
-  admin_distance    = var.admin_distance
-  description       = var.description
+  # admin_distance - (optional) is a type of number
+  admin_distance = var.admin_distance
+  # description - (optional) is a type of string
+  description = var.description
+  # ip_address_prefix - (required) is a type of string
   ip_address_prefix = var.ip_address_prefix
-  name              = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # next_hop_vnic_set - (required) is a type of string
   next_hop_vnic_set = var.next_hop_vnic_set
-  tags              = var.tags
+  # tags - (optional) is a type of list of string
+  tags = var.tags
 }
 ```
 

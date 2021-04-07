@@ -107,18 +107,27 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_dx_gateway_association" "this" {
-  allowed_prefixes                    = var.allowed_prefixes
-  associated_gateway_id               = var.associated_gateway_id
+  # allowed_prefixes - (optional) is a type of set of string
+  allowed_prefixes = var.allowed_prefixes
+  # associated_gateway_id - (optional) is a type of string
+  associated_gateway_id = var.associated_gateway_id
+  # associated_gateway_owner_account_id - (optional) is a type of string
   associated_gateway_owner_account_id = var.associated_gateway_owner_account_id
-  dx_gateway_id                       = var.dx_gateway_id
-  proposal_id                         = var.proposal_id
-  vpn_gateway_id                      = var.vpn_gateway_id
+  # dx_gateway_id - (required) is a type of string
+  dx_gateway_id = var.dx_gateway_id
+  # proposal_id - (optional) is a type of string
+  proposal_id = var.proposal_id
+  # vpn_gateway_id - (optional) is a type of string
+  vpn_gateway_id = var.vpn_gateway_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

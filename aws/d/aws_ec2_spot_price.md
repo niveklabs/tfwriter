@@ -74,13 +74,17 @@ variable "filter" {
 
 ```terraform
 data "aws_ec2_spot_price" "this" {
+  # availability_zone - (optional) is a type of string
   availability_zone = var.availability_zone
-  instance_type     = var.instance_type
+  # instance_type - (optional) is a type of string
+  instance_type = var.instance_type
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

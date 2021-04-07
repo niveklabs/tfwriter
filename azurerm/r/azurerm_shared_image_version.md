@@ -146,31 +146,47 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_shared_image_version" "this" {
+  # exclude_from_latest - (optional) is a type of bool
   exclude_from_latest = var.exclude_from_latest
-  gallery_name        = var.gallery_name
-  image_name          = var.image_name
-  location            = var.location
-  managed_image_id    = var.managed_image_id
-  name                = var.name
+  # gallery_name - (required) is a type of string
+  gallery_name = var.gallery_name
+  # image_name - (required) is a type of string
+  image_name = var.image_name
+  # location - (required) is a type of string
+  location = var.location
+  # managed_image_id - (optional) is a type of string
+  managed_image_id = var.managed_image_id
+  # name - (required) is a type of string
+  name = var.name
+  # os_disk_snapshot_id - (optional) is a type of string
   os_disk_snapshot_id = var.os_disk_snapshot_id
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  tags                = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "target_region" {
     for_each = var.target_region
     content {
-      name                   = target_region.value["name"]
+      # name - (required) is a type of string
+      name = target_region.value["name"]
+      # regional_replica_count - (required) is a type of number
       regional_replica_count = target_region.value["regional_replica_count"]
-      storage_account_type   = target_region.value["storage_account_type"]
+      # storage_account_type - (optional) is a type of string
+      storage_account_type = target_region.value["storage_account_type"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -168,16 +168,23 @@ variable "user_settings" {
 
 ```terraform
 resource "aws_sagemaker_user_profile" "this" {
-  domain_id                      = var.domain_id
+  # domain_id - (required) is a type of string
+  domain_id = var.domain_id
+  # single_sign_on_user_identifier - (optional) is a type of string
   single_sign_on_user_identifier = var.single_sign_on_user_identifier
-  single_sign_on_user_value      = var.single_sign_on_user_value
-  tags                           = var.tags
-  user_profile_name              = var.user_profile_name
+  # single_sign_on_user_value - (optional) is a type of string
+  single_sign_on_user_value = var.single_sign_on_user_value
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # user_profile_name - (required) is a type of string
+  user_profile_name = var.user_profile_name
 
   dynamic "user_settings" {
     for_each = var.user_settings
     content {
-      execution_role  = user_settings.value["execution_role"]
+      # execution_role - (required) is a type of string
+      execution_role = user_settings.value["execution_role"]
+      # security_groups - (optional) is a type of set of string
       security_groups = user_settings.value["security_groups"]
 
       dynamic "jupyter_server_app_settings" {
@@ -187,7 +194,9 @@ resource "aws_sagemaker_user_profile" "this" {
           dynamic "default_resource_spec" {
             for_each = jupyter_server_app_settings.value.default_resource_spec
             content {
-              instance_type       = default_resource_spec.value["instance_type"]
+              # instance_type - (optional) is a type of string
+              instance_type = default_resource_spec.value["instance_type"]
+              # sagemaker_image_arn - (optional) is a type of string
               sagemaker_image_arn = default_resource_spec.value["sagemaker_image_arn"]
             }
           }
@@ -202,16 +211,21 @@ resource "aws_sagemaker_user_profile" "this" {
           dynamic "custom_image" {
             for_each = kernel_gateway_app_settings.value.custom_image
             content {
+              # app_image_config_name - (required) is a type of string
               app_image_config_name = custom_image.value["app_image_config_name"]
-              image_name            = custom_image.value["image_name"]
-              image_version_number  = custom_image.value["image_version_number"]
+              # image_name - (required) is a type of string
+              image_name = custom_image.value["image_name"]
+              # image_version_number - (optional) is a type of number
+              image_version_number = custom_image.value["image_version_number"]
             }
           }
 
           dynamic "default_resource_spec" {
             for_each = kernel_gateway_app_settings.value.default_resource_spec
             content {
-              instance_type       = default_resource_spec.value["instance_type"]
+              # instance_type - (optional) is a type of string
+              instance_type = default_resource_spec.value["instance_type"]
+              # sagemaker_image_arn - (optional) is a type of string
               sagemaker_image_arn = default_resource_spec.value["sagemaker_image_arn"]
             }
           }
@@ -222,9 +236,12 @@ resource "aws_sagemaker_user_profile" "this" {
       dynamic "sharing_settings" {
         for_each = user_settings.value.sharing_settings
         content {
+          # notebook_output_option - (optional) is a type of string
           notebook_output_option = sharing_settings.value["notebook_output_option"]
-          s3_kms_key_id          = sharing_settings.value["s3_kms_key_id"]
-          s3_output_path         = sharing_settings.value["s3_output_path"]
+          # s3_kms_key_id - (optional) is a type of string
+          s3_kms_key_id = sharing_settings.value["s3_kms_key_id"]
+          # s3_output_path - (optional) is a type of string
+          s3_output_path = sharing_settings.value["s3_output_path"]
         }
       }
 
@@ -235,7 +252,9 @@ resource "aws_sagemaker_user_profile" "this" {
           dynamic "default_resource_spec" {
             for_each = tensor_board_app_settings.value.default_resource_spec
             content {
-              instance_type       = default_resource_spec.value["instance_type"]
+              # instance_type - (optional) is a type of string
+              instance_type = default_resource_spec.value["instance_type"]
+              # sagemaker_image_arn - (optional) is a type of string
               sagemaker_image_arn = default_resource_spec.value["sagemaker_image_arn"]
             }
           }

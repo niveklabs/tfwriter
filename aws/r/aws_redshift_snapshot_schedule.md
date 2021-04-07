@@ -89,12 +89,18 @@ variable "tags" {
 
 ```terraform
 resource "aws_redshift_snapshot_schedule" "this" {
-  definitions       = var.definitions
-  description       = var.description
-  force_destroy     = var.force_destroy
-  identifier        = var.identifier
+  # definitions - (required) is a type of set of string
+  definitions = var.definitions
+  # description - (optional) is a type of string
+  description = var.description
+  # force_destroy - (optional) is a type of bool
+  force_destroy = var.force_destroy
+  # identifier - (optional) is a type of string
+  identifier = var.identifier
+  # identifier_prefix - (optional) is a type of string
   identifier_prefix = var.identifier_prefix
-  tags              = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

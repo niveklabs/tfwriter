@@ -58,8 +58,10 @@ variable "status" {
 
 ```terraform
 data "google_compute_regions" "this" {
+  # project - (optional) is a type of string
   project = var.project
-  status  = var.status
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

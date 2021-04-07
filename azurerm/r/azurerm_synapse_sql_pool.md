@@ -139,19 +139,29 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_synapse_sql_pool" "this" {
-  collation            = var.collation
-  create_mode          = var.create_mode
-  data_encrypted       = var.data_encrypted
-  name                 = var.name
+  # collation - (optional) is a type of string
+  collation = var.collation
+  # create_mode - (optional) is a type of string
+  create_mode = var.create_mode
+  # data_encrypted - (optional) is a type of bool
+  data_encrypted = var.data_encrypted
+  # name - (required) is a type of string
+  name = var.name
+  # recovery_database_id - (optional) is a type of string
   recovery_database_id = var.recovery_database_id
-  sku_name             = var.sku_name
+  # sku_name - (required) is a type of string
+  sku_name = var.sku_name
+  # synapse_workspace_id - (required) is a type of string
   synapse_workspace_id = var.synapse_workspace_id
-  tags                 = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "restore" {
     for_each = var.restore
     content {
-      point_in_time      = restore.value["point_in_time"]
+      # point_in_time - (required) is a type of string
+      point_in_time = restore.value["point_in_time"]
+      # source_database_id - (required) is a type of string
       source_database_id = restore.value["source_database_id"]
     }
   }
@@ -159,9 +169,13 @@ resource "azurerm_synapse_sql_pool" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

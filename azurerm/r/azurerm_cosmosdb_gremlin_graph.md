@@ -178,17 +178,25 @@ variable "unique_key" {
 
 ```terraform
 resource "azurerm_cosmosdb_gremlin_graph" "this" {
-  account_name        = var.account_name
-  database_name       = var.database_name
-  default_ttl         = var.default_ttl
-  name                = var.name
-  partition_key_path  = var.partition_key_path
+  # account_name - (required) is a type of string
+  account_name = var.account_name
+  # database_name - (required) is a type of string
+  database_name = var.database_name
+  # default_ttl - (optional) is a type of number
+  default_ttl = var.default_ttl
+  # name - (required) is a type of string
+  name = var.name
+  # partition_key_path - (optional) is a type of string
+  partition_key_path = var.partition_key_path
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  throughput          = var.throughput
+  # throughput - (optional) is a type of number
+  throughput = var.throughput
 
   dynamic "autoscale_settings" {
     for_each = var.autoscale_settings
     content {
+      # max_throughput - (optional) is a type of number
       max_throughput = autoscale_settings.value["max_throughput"]
     }
   }
@@ -196,28 +204,39 @@ resource "azurerm_cosmosdb_gremlin_graph" "this" {
   dynamic "conflict_resolution_policy" {
     for_each = var.conflict_resolution_policy
     content {
-      conflict_resolution_path      = conflict_resolution_policy.value["conflict_resolution_path"]
+      # conflict_resolution_path - (optional) is a type of string
+      conflict_resolution_path = conflict_resolution_policy.value["conflict_resolution_path"]
+      # conflict_resolution_procedure - (optional) is a type of string
       conflict_resolution_procedure = conflict_resolution_policy.value["conflict_resolution_procedure"]
-      mode                          = conflict_resolution_policy.value["mode"]
+      # mode - (required) is a type of string
+      mode = conflict_resolution_policy.value["mode"]
     }
   }
 
   dynamic "index_policy" {
     for_each = var.index_policy
     content {
-      automatic      = index_policy.value["automatic"]
+      # automatic - (optional) is a type of bool
+      automatic = index_policy.value["automatic"]
+      # excluded_paths - (optional) is a type of set of string
       excluded_paths = index_policy.value["excluded_paths"]
+      # included_paths - (optional) is a type of set of string
       included_paths = index_policy.value["included_paths"]
-      indexing_mode  = index_policy.value["indexing_mode"]
+      # indexing_mode - (required) is a type of string
+      indexing_mode = index_policy.value["indexing_mode"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -225,6 +244,7 @@ resource "azurerm_cosmosdb_gremlin_graph" "this" {
   dynamic "unique_key" {
     for_each = var.unique_key
     content {
+      # paths - (required) is a type of set of string
       paths = unique_key.value["paths"]
     }
   }

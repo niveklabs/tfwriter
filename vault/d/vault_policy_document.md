@@ -90,17 +90,25 @@ data "vault_policy_document" "this" {
   dynamic "rule" {
     for_each = var.rule
     content {
-      capabilities        = rule.value["capabilities"]
-      description         = rule.value["description"]
-      max_wrapping_ttl    = rule.value["max_wrapping_ttl"]
-      min_wrapping_ttl    = rule.value["min_wrapping_ttl"]
-      path                = rule.value["path"]
+      # capabilities - (required) is a type of list of string
+      capabilities = rule.value["capabilities"]
+      # description - (optional) is a type of string
+      description = rule.value["description"]
+      # max_wrapping_ttl - (optional) is a type of string
+      max_wrapping_ttl = rule.value["max_wrapping_ttl"]
+      # min_wrapping_ttl - (optional) is a type of string
+      min_wrapping_ttl = rule.value["min_wrapping_ttl"]
+      # path - (required) is a type of string
+      path = rule.value["path"]
+      # required_parameters - (optional) is a type of list of string
       required_parameters = rule.value["required_parameters"]
 
       dynamic "allowed_parameter" {
         for_each = rule.value.allowed_parameter
         content {
-          key   = allowed_parameter.value["key"]
+          # key - (required) is a type of string
+          key = allowed_parameter.value["key"]
+          # value - (required) is a type of list of string
           value = allowed_parameter.value["value"]
         }
       }
@@ -108,7 +116,9 @@ data "vault_policy_document" "this" {
       dynamic "denied_parameter" {
         for_each = rule.value.denied_parameter
         content {
-          key   = denied_parameter.value["key"]
+          # key - (required) is a type of string
+          key = denied_parameter.value["key"]
+          # value - (required) is a type of list of string
           value = denied_parameter.value["value"]
         }
       }

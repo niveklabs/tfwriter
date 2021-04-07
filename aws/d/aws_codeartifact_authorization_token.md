@@ -65,8 +65,11 @@ variable "duration_seconds" {
 
 ```terraform
 data "aws_codeartifact_authorization_token" "this" {
-  domain           = var.domain
-  domain_owner     = var.domain_owner
+  # domain - (required) is a type of string
+  domain = var.domain
+  # domain_owner - (optional) is a type of string
+  domain_owner = var.domain_owner
+  # duration_seconds - (optional) is a type of number
   duration_seconds = var.duration_seconds
 }
 ```

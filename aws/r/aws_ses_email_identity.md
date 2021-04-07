@@ -49,6 +49,7 @@ variable "email" {
 
 ```terraform
 resource "aws_ses_email_identity" "this" {
+  # email - (required) is a type of string
   email = var.email
 }
 ```

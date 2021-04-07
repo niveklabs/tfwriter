@@ -63,9 +63,12 @@ variable "sns_topic_arn" {
 
 ```terraform
 resource "aws_backup_vault_notifications" "this" {
+  # backup_vault_events - (required) is a type of set of string
   backup_vault_events = var.backup_vault_events
-  backup_vault_name   = var.backup_vault_name
-  sns_topic_arn       = var.sns_topic_arn
+  # backup_vault_name - (required) is a type of string
+  backup_vault_name = var.backup_vault_name
+  # sns_topic_arn - (required) is a type of string
+  sns_topic_arn = var.sns_topic_arn
 }
 ```
 

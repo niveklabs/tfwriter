@@ -65,9 +65,12 @@ variable "tags" {
 
 ```terraform
 resource "aws_codeartifact_domain" "this" {
-  domain         = var.domain
+  # domain - (required) is a type of string
+  domain = var.domain
+  # encryption_key - (optional) is a type of string
   encryption_key = var.encryption_key
-  tags           = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

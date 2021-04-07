@@ -111,19 +111,29 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_analytics_analytics_instance_vanity_url" "this" {
+  # analytics_instance_id - (required) is a type of string
   analytics_instance_id = var.analytics_instance_id
-  ca_certificate        = var.ca_certificate
-  description           = var.description
-  hosts                 = var.hosts
-  passphrase            = var.passphrase
-  private_key           = var.private_key
-  public_certificate    = var.public_certificate
+  # ca_certificate - (required) is a type of string
+  ca_certificate = var.ca_certificate
+  # description - (optional) is a type of string
+  description = var.description
+  # hosts - (required) is a type of list of string
+  hosts = var.hosts
+  # passphrase - (optional) is a type of string
+  passphrase = var.passphrase
+  # private_key - (required) is a type of string
+  private_key = var.private_key
+  # public_certificate - (required) is a type of string
+  public_certificate = var.public_certificate
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

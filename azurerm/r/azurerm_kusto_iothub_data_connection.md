@@ -124,22 +124,34 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_kusto_iothub_data_connection" "this" {
-  cluster_name              = var.cluster_name
-  consumer_group            = var.consumer_group
-  database_name             = var.database_name
-  event_system_properties   = var.event_system_properties
-  iothub_id                 = var.iothub_id
-  location                  = var.location
-  name                      = var.name
-  resource_group_name       = var.resource_group_name
+  # cluster_name - (required) is a type of string
+  cluster_name = var.cluster_name
+  # consumer_group - (required) is a type of string
+  consumer_group = var.consumer_group
+  # database_name - (required) is a type of string
+  database_name = var.database_name
+  # event_system_properties - (optional) is a type of set of string
+  event_system_properties = var.event_system_properties
+  # iothub_id - (required) is a type of string
+  iothub_id = var.iothub_id
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # shared_access_policy_name - (required) is a type of string
   shared_access_policy_name = var.shared_access_policy_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

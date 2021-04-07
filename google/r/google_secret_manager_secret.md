@@ -110,13 +110,17 @@ variable "timeouts" {
 
 ```terraform
 resource "google_secret_manager_secret" "this" {
-  labels    = var.labels
-  project   = var.project
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # project - (optional) is a type of string
+  project = var.project
+  # secret_id - (required) is a type of string
   secret_id = var.secret_id
 
   dynamic "replication" {
     for_each = var.replication
     content {
+      # automatic - (optional) is a type of bool
       automatic = replication.value["automatic"]
 
       dynamic "user_managed" {
@@ -126,6 +130,7 @@ resource "google_secret_manager_secret" "this" {
           dynamic "replicas" {
             for_each = user_managed.value.replicas
             content {
+              # location - (required) is a type of string
               location = replicas.value["location"]
             }
           }
@@ -139,8 +144,11 @@ resource "google_secret_manager_secret" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

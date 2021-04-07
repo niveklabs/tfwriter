@@ -114,15 +114,24 @@ variable "require_uppercase_characters" {
 
 ```terraform
 resource "aws_iam_account_password_policy" "this" {
+  # allow_users_to_change_password - (optional) is a type of bool
   allow_users_to_change_password = var.allow_users_to_change_password
-  hard_expiry                    = var.hard_expiry
-  max_password_age               = var.max_password_age
-  minimum_password_length        = var.minimum_password_length
-  password_reuse_prevention      = var.password_reuse_prevention
-  require_lowercase_characters   = var.require_lowercase_characters
-  require_numbers                = var.require_numbers
-  require_symbols                = var.require_symbols
-  require_uppercase_characters   = var.require_uppercase_characters
+  # hard_expiry - (optional) is a type of bool
+  hard_expiry = var.hard_expiry
+  # max_password_age - (optional) is a type of number
+  max_password_age = var.max_password_age
+  # minimum_password_length - (optional) is a type of number
+  minimum_password_length = var.minimum_password_length
+  # password_reuse_prevention - (optional) is a type of number
+  password_reuse_prevention = var.password_reuse_prevention
+  # require_lowercase_characters - (optional) is a type of bool
+  require_lowercase_characters = var.require_lowercase_characters
+  # require_numbers - (optional) is a type of bool
+  require_numbers = var.require_numbers
+  # require_symbols - (optional) is a type of bool
+  require_symbols = var.require_symbols
+  # require_uppercase_characters - (optional) is a type of bool
+  require_uppercase_characters = var.require_uppercase_characters
 }
 ```
 

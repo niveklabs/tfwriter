@@ -132,28 +132,41 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_node_group" "this" {
-  description        = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # maintenance_policy - (optional) is a type of string
   maintenance_policy = var.maintenance_policy
-  name               = var.name
-  node_template      = var.node_template
-  project            = var.project
-  size               = var.size
-  zone               = var.zone
+  # name - (optional) is a type of string
+  name = var.name
+  # node_template - (required) is a type of string
+  node_template = var.node_template
+  # project - (optional) is a type of string
+  project = var.project
+  # size - (required) is a type of number
+  size = var.size
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "autoscaling_policy" {
     for_each = var.autoscaling_policy
     content {
+      # max_nodes - (optional) is a type of number
       max_nodes = autoscaling_policy.value["max_nodes"]
+      # min_nodes - (optional) is a type of number
       min_nodes = autoscaling_policy.value["min_nodes"]
-      mode      = autoscaling_policy.value["mode"]
+      # mode - (optional) is a type of string
+      mode = autoscaling_policy.value["mode"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

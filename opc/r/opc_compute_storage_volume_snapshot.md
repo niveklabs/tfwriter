@@ -105,17 +105,25 @@ variable "timeouts" {
 
 ```terraform
 resource "opc_compute_storage_volume_snapshot" "this" {
-  collocated             = var.collocated
-  description            = var.description
-  name                   = var.name
+  # collocated - (optional) is a type of bool
+  collocated = var.collocated
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (optional) is a type of string
+  name = var.name
+  # parent_volume_bootable - (optional) is a type of bool
   parent_volume_bootable = var.parent_volume_bootable
-  tags                   = var.tags
-  volume_name            = var.volume_name
+  # tags - (optional) is a type of list of string
+  tags = var.tags
+  # volume_name - (required) is a type of string
+  volume_name = var.volume_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

@@ -56,8 +56,10 @@ variable "policy" {
 
 ```terraform
 resource "aws_media_store_container_policy" "this" {
+  # container_name - (required) is a type of string
   container_name = var.container_name
-  policy         = var.policy
+  # policy - (required) is a type of string
+  policy = var.policy
 }
 ```
 

@@ -71,10 +71,14 @@ variable "table" {
 
 ```terraform
 resource "google_bigtable_table_iam_policy" "this" {
-  instance    = var.instance
+  # instance - (required) is a type of string
+  instance = var.instance
+  # policy_data - (required) is a type of string
   policy_data = var.policy_data
-  project     = var.project
-  table       = var.table
+  # project - (optional) is a type of string
+  project = var.project
+  # table - (required) is a type of string
+  table = var.table
 }
 ```
 

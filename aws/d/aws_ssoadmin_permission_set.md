@@ -73,10 +73,14 @@ variable "tags" {
 
 ```terraform
 data "aws_ssoadmin_permission_set" "this" {
-  arn          = var.arn
+  # arn - (optional) is a type of string
+  arn = var.arn
+  # instance_arn - (required) is a type of string
   instance_arn = var.instance_arn
-  name         = var.name
-  tags         = var.tags
+  # name - (optional) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

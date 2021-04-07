@@ -111,15 +111,24 @@ variable "workspace_id" {
 
 ```terraform
 resource "tfe_notification_configuration" "this" {
+  # destination_type - (required) is a type of string
   destination_type = var.destination_type
-  email_addresses  = var.email_addresses
-  email_user_ids   = var.email_user_ids
-  enabled          = var.enabled
-  name             = var.name
-  token            = var.token
-  triggers         = var.triggers
-  url              = var.url
-  workspace_id     = var.workspace_id
+  # email_addresses - (optional) is a type of set of string
+  email_addresses = var.email_addresses
+  # email_user_ids - (optional) is a type of set of string
+  email_user_ids = var.email_user_ids
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
+  # token - (optional) is a type of string
+  token = var.token
+  # triggers - (optional) is a type of set of string
+  triggers = var.triggers
+  # url - (optional) is a type of string
+  url = var.url
+  # workspace_id - (required) is a type of string
+  workspace_id = var.workspace_id
 }
 ```
 

@@ -162,26 +162,43 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_data_factory_linked_service_data_lake_storage_gen2" "this" {
-  additional_properties    = var.additional_properties
-  annotations              = var.annotations
-  data_factory_name        = var.data_factory_name
-  description              = var.description
+  # additional_properties - (optional) is a type of map of string
+  additional_properties = var.additional_properties
+  # annotations - (optional) is a type of list of string
+  annotations = var.annotations
+  # data_factory_name - (required) is a type of string
+  data_factory_name = var.data_factory_name
+  # description - (optional) is a type of string
+  description = var.description
+  # integration_runtime_name - (optional) is a type of string
   integration_runtime_name = var.integration_runtime_name
-  name                     = var.name
-  parameters               = var.parameters
-  resource_group_name      = var.resource_group_name
-  service_principal_id     = var.service_principal_id
-  service_principal_key    = var.service_principal_key
-  tenant                   = var.tenant
-  url                      = var.url
-  use_managed_identity     = var.use_managed_identity
+  # name - (required) is a type of string
+  name = var.name
+  # parameters - (optional) is a type of map of string
+  parameters = var.parameters
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # service_principal_id - (optional) is a type of string
+  service_principal_id = var.service_principal_id
+  # service_principal_key - (optional) is a type of string
+  service_principal_key = var.service_principal_key
+  # tenant - (optional) is a type of string
+  tenant = var.tenant
+  # url - (required) is a type of string
+  url = var.url
+  # use_managed_identity - (optional) is a type of bool
+  use_managed_identity = var.use_managed_identity
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

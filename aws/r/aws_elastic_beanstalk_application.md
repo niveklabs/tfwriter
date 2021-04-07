@@ -85,17 +85,24 @@ variable "appversion_lifecycle" {
 
 ```terraform
 resource "aws_elastic_beanstalk_application" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  tags        = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "appversion_lifecycle" {
     for_each = var.appversion_lifecycle
     content {
+      # delete_source_from_s3 - (optional) is a type of bool
       delete_source_from_s3 = appversion_lifecycle.value["delete_source_from_s3"]
-      max_age_in_days       = appversion_lifecycle.value["max_age_in_days"]
-      max_count             = appversion_lifecycle.value["max_count"]
-      service_role          = appversion_lifecycle.value["service_role"]
+      # max_age_in_days - (optional) is a type of number
+      max_age_in_days = appversion_lifecycle.value["max_age_in_days"]
+      # max_count - (optional) is a type of number
+      max_count = appversion_lifecycle.value["max_count"]
+      # service_role - (required) is a type of string
+      service_role = appversion_lifecycle.value["service_role"]
     }
   }
 

@@ -111,18 +111,27 @@ variable "home_directory_mappings" {
 
 ```terraform
 resource "aws_transfer_user" "this" {
-  home_directory      = var.home_directory
+  # home_directory - (optional) is a type of string
+  home_directory = var.home_directory
+  # home_directory_type - (optional) is a type of string
   home_directory_type = var.home_directory_type
-  policy              = var.policy
-  role                = var.role
-  server_id           = var.server_id
-  tags                = var.tags
-  user_name           = var.user_name
+  # policy - (optional) is a type of string
+  policy = var.policy
+  # role - (required) is a type of string
+  role = var.role
+  # server_id - (required) is a type of string
+  server_id = var.server_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # user_name - (required) is a type of string
+  user_name = var.user_name
 
   dynamic "home_directory_mappings" {
     for_each = var.home_directory_mappings
     content {
-      entry  = home_directory_mappings.value["entry"]
+      # entry - (required) is a type of string
+      entry = home_directory_mappings.value["entry"]
+      # target - (required) is a type of string
       target = home_directory_mappings.value["target"]
     }
   }

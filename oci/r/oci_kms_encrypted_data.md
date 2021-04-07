@@ -113,19 +113,29 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_kms_encrypted_data" "this" {
-  associated_data      = var.associated_data
-  crypto_endpoint      = var.crypto_endpoint
+  # associated_data - (optional) is a type of map of string
+  associated_data = var.associated_data
+  # crypto_endpoint - (required) is a type of string
+  crypto_endpoint = var.crypto_endpoint
+  # encryption_algorithm - (optional) is a type of string
   encryption_algorithm = var.encryption_algorithm
-  key_id               = var.key_id
-  key_version_id       = var.key_version_id
-  logging_context      = var.logging_context
-  plaintext            = var.plaintext
+  # key_id - (required) is a type of string
+  key_id = var.key_id
+  # key_version_id - (optional) is a type of string
+  key_version_id = var.key_version_id
+  # logging_context - (optional) is a type of map of string
+  logging_context = var.logging_context
+  # plaintext - (required) is a type of string
+  plaintext = var.plaintext
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

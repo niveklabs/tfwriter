@@ -78,11 +78,16 @@ variable "tags" {
 
 ```terraform
 resource "aws_batch_job_queue" "this" {
+  # compute_environments - (required) is a type of list of string
   compute_environments = var.compute_environments
-  name                 = var.name
-  priority             = var.priority
-  state                = var.state
-  tags                 = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # priority - (required) is a type of number
+  priority = var.priority
+  # state - (required) is a type of string
+  state = var.state
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

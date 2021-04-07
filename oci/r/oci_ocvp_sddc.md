@@ -219,32 +219,55 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_ocvp_sddc" "this" {
-  compartment_id               = var.compartment_id
-  compute_availability_domain  = var.compute_availability_domain
-  defined_tags                 = var.defined_tags
-  display_name                 = var.display_name
-  esxi_hosts_count             = var.esxi_hosts_count
-  freeform_tags                = var.freeform_tags
-  hcx_vlan_id                  = var.hcx_vlan_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # compute_availability_domain - (required) is a type of string
+  compute_availability_domain = var.compute_availability_domain
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # esxi_hosts_count - (required) is a type of number
+  esxi_hosts_count = var.esxi_hosts_count
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # hcx_vlan_id - (optional) is a type of string
+  hcx_vlan_id = var.hcx_vlan_id
+  # instance_display_name_prefix - (optional) is a type of string
   instance_display_name_prefix = var.instance_display_name_prefix
-  is_hcx_enabled               = var.is_hcx_enabled
-  nsx_edge_uplink1vlan_id      = var.nsx_edge_uplink1vlan_id
-  nsx_edge_uplink2vlan_id      = var.nsx_edge_uplink2vlan_id
-  nsx_edge_vtep_vlan_id        = var.nsx_edge_vtep_vlan_id
-  nsx_vtep_vlan_id             = var.nsx_vtep_vlan_id
-  provisioning_subnet_id       = var.provisioning_subnet_id
-  provisioning_vlan_id         = var.provisioning_vlan_id
-  replication_vlan_id          = var.replication_vlan_id
-  ssh_authorized_keys          = var.ssh_authorized_keys
-  vmotion_vlan_id              = var.vmotion_vlan_id
-  vmware_software_version      = var.vmware_software_version
-  vsan_vlan_id                 = var.vsan_vlan_id
-  vsphere_vlan_id              = var.vsphere_vlan_id
-  workload_network_cidr        = var.workload_network_cidr
+  # is_hcx_enabled - (optional) is a type of bool
+  is_hcx_enabled = var.is_hcx_enabled
+  # nsx_edge_uplink1vlan_id - (required) is a type of string
+  nsx_edge_uplink1vlan_id = var.nsx_edge_uplink1vlan_id
+  # nsx_edge_uplink2vlan_id - (required) is a type of string
+  nsx_edge_uplink2vlan_id = var.nsx_edge_uplink2vlan_id
+  # nsx_edge_vtep_vlan_id - (required) is a type of string
+  nsx_edge_vtep_vlan_id = var.nsx_edge_vtep_vlan_id
+  # nsx_vtep_vlan_id - (required) is a type of string
+  nsx_vtep_vlan_id = var.nsx_vtep_vlan_id
+  # provisioning_subnet_id - (required) is a type of string
+  provisioning_subnet_id = var.provisioning_subnet_id
+  # provisioning_vlan_id - (optional) is a type of string
+  provisioning_vlan_id = var.provisioning_vlan_id
+  # replication_vlan_id - (optional) is a type of string
+  replication_vlan_id = var.replication_vlan_id
+  # ssh_authorized_keys - (required) is a type of string
+  ssh_authorized_keys = var.ssh_authorized_keys
+  # vmotion_vlan_id - (required) is a type of string
+  vmotion_vlan_id = var.vmotion_vlan_id
+  # vmware_software_version - (required) is a type of string
+  vmware_software_version = var.vmware_software_version
+  # vsan_vlan_id - (required) is a type of string
+  vsan_vlan_id = var.vsan_vlan_id
+  # vsphere_vlan_id - (required) is a type of string
+  vsphere_vlan_id = var.vsphere_vlan_id
+  # workload_network_cidr - (optional) is a type of string
+  workload_network_cidr = var.workload_network_cidr
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

@@ -56,7 +56,9 @@ variable "namespace" {
 
 ```terraform
 data "oci_objectstorage_object_lifecycle_policy" "this" {
-  bucket    = var.bucket
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # namespace - (required) is a type of string
   namespace = var.namespace
 }
 ```

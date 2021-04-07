@@ -96,18 +96,26 @@ variable "condition" {
 
 ```terraform
 resource "google_bigtable_table_iam_member" "this" {
+  # instance - (required) is a type of string
   instance = var.instance
-  member   = var.member
-  project  = var.project
-  role     = var.role
-  table    = var.table
+  # member - (required) is a type of string
+  member = var.member
+  # project - (optional) is a type of string
+  project = var.project
+  # role - (required) is a type of string
+  role = var.role
+  # table - (required) is a type of string
+  table = var.table
 
   dynamic "condition" {
     for_each = var.condition
     content {
+      # description - (optional) is a type of string
       description = condition.value["description"]
-      expression  = condition.value["expression"]
-      title       = condition.value["title"]
+      # expression - (required) is a type of string
+      expression = condition.value["expression"]
+      # title - (required) is a type of string
+      title = condition.value["title"]
     }
   }
 

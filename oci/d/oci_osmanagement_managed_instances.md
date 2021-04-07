@@ -83,15 +83,21 @@ variable "filter" {
 
 ```terraform
 data "oci_osmanagement_managed_instances" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  display_name   = var.display_name
-  os_family      = var.os_family
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # os_family - (optional) is a type of string
+  os_family = var.os_family
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

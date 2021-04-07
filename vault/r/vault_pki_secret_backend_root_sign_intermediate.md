@@ -199,26 +199,46 @@ variable "use_csr_values" {
 
 ```terraform
 resource "vault_pki_secret_backend_root_sign_intermediate" "this" {
-  alt_names             = var.alt_names
-  backend               = var.backend
-  common_name           = var.common_name
-  country               = var.country
-  csr                   = var.csr
-  exclude_cn_from_sans  = var.exclude_cn_from_sans
-  format                = var.format
-  ip_sans               = var.ip_sans
-  locality              = var.locality
-  max_path_length       = var.max_path_length
-  organization          = var.organization
-  other_sans            = var.other_sans
-  ou                    = var.ou
+  # alt_names - (optional) is a type of list of string
+  alt_names = var.alt_names
+  # backend - (required) is a type of string
+  backend = var.backend
+  # common_name - (required) is a type of string
+  common_name = var.common_name
+  # country - (optional) is a type of string
+  country = var.country
+  # csr - (required) is a type of string
+  csr = var.csr
+  # exclude_cn_from_sans - (optional) is a type of bool
+  exclude_cn_from_sans = var.exclude_cn_from_sans
+  # format - (optional) is a type of string
+  format = var.format
+  # ip_sans - (optional) is a type of list of string
+  ip_sans = var.ip_sans
+  # locality - (optional) is a type of string
+  locality = var.locality
+  # max_path_length - (optional) is a type of number
+  max_path_length = var.max_path_length
+  # organization - (optional) is a type of string
+  organization = var.organization
+  # other_sans - (optional) is a type of list of string
+  other_sans = var.other_sans
+  # ou - (optional) is a type of string
+  ou = var.ou
+  # permitted_dns_domains - (optional) is a type of list of string
   permitted_dns_domains = var.permitted_dns_domains
-  postal_code           = var.postal_code
-  province              = var.province
-  street_address        = var.street_address
-  ttl                   = var.ttl
-  uri_sans              = var.uri_sans
-  use_csr_values        = var.use_csr_values
+  # postal_code - (optional) is a type of string
+  postal_code = var.postal_code
+  # province - (optional) is a type of string
+  province = var.province
+  # street_address - (optional) is a type of string
+  street_address = var.street_address
+  # ttl - (optional) is a type of string
+  ttl = var.ttl
+  # uri_sans - (optional) is a type of list of string
+  uri_sans = var.uri_sans
+  # use_csr_values - (optional) is a type of bool
+  use_csr_values = var.use_csr_values
 }
 ```
 

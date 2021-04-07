@@ -99,17 +99,25 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_cloudformation_stack_set_instance" "this" {
-  account_id          = var.account_id
+  # account_id - (optional) is a type of string
+  account_id = var.account_id
+  # parameter_overrides - (optional) is a type of map of string
   parameter_overrides = var.parameter_overrides
-  region              = var.region
-  retain_stack        = var.retain_stack
-  stack_set_name      = var.stack_set_name
+  # region - (optional) is a type of string
+  region = var.region
+  # retain_stack - (optional) is a type of bool
+  retain_stack = var.retain_stack
+  # stack_set_name - (required) is a type of string
+  stack_set_name = var.stack_set_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

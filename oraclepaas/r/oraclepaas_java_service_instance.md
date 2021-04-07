@@ -469,60 +469,95 @@ variable "weblogic_server" {
 
 ```terraform
 resource "oraclepaas_java_service_instance" "this" {
-  assign_public_ip       = var.assign_public_ip
-  availability_domain    = var.availability_domain
-  backup_destination     = var.backup_destination
+  # assign_public_ip - (optional) is a type of bool
+  assign_public_ip = var.assign_public_ip
+  # availability_domain - (optional) is a type of string
+  availability_domain = var.availability_domain
+  # backup_destination - (optional) is a type of string
+  backup_destination = var.backup_destination
+  # bring_your_own_license - (optional) is a type of bool
   bring_your_own_license = var.bring_your_own_license
-  description            = var.description
-  desired_state          = var.desired_state
-  edition                = var.edition
-  enable_admin_console   = var.enable_admin_console
-  force_delete           = var.force_delete
-  ip_network             = var.ip_network
-  level                  = var.level
-  metering_frequency     = var.metering_frequency
-  name                   = var.name
-  notification_email     = var.notification_email
-  region                 = var.region
-  service_version        = var.service_version
-  snapshot_name          = var.snapshot_name
-  source_service_name    = var.source_service_name
-  ssh_public_key         = var.ssh_public_key
-  subnet                 = var.subnet
-  use_identity_service   = var.use_identity_service
+  # description - (optional) is a type of string
+  description = var.description
+  # desired_state - (optional) is a type of string
+  desired_state = var.desired_state
+  # edition - (required) is a type of string
+  edition = var.edition
+  # enable_admin_console - (optional) is a type of bool
+  enable_admin_console = var.enable_admin_console
+  # force_delete - (optional) is a type of bool
+  force_delete = var.force_delete
+  # ip_network - (optional) is a type of string
+  ip_network = var.ip_network
+  # level - (optional) is a type of string
+  level = var.level
+  # metering_frequency - (optional) is a type of string
+  metering_frequency = var.metering_frequency
+  # name - (required) is a type of string
+  name = var.name
+  # notification_email - (optional) is a type of string
+  notification_email = var.notification_email
+  # region - (optional) is a type of string
+  region = var.region
+  # service_version - (optional) is a type of string
+  service_version = var.service_version
+  # snapshot_name - (optional) is a type of string
+  snapshot_name = var.snapshot_name
+  # source_service_name - (optional) is a type of string
+  source_service_name = var.source_service_name
+  # ssh_public_key - (required) is a type of string
+  ssh_public_key = var.ssh_public_key
+  # subnet - (optional) is a type of string
+  subnet = var.subnet
+  # use_identity_service - (optional) is a type of bool
+  use_identity_service = var.use_identity_service
 
   dynamic "backups" {
     for_each = var.backups
     content {
-      auto_generate           = backups.value["auto_generate"]
+      # auto_generate - (optional) is a type of bool
+      auto_generate = backups.value["auto_generate"]
+      # cloud_storage_container - (required) is a type of string
       cloud_storage_container = backups.value["cloud_storage_container"]
-      cloud_storage_password  = backups.value["cloud_storage_password"]
-      cloud_storage_username  = backups.value["cloud_storage_username"]
-      use_oauth_for_storage   = backups.value["use_oauth_for_storage"]
+      # cloud_storage_password - (optional) is a type of string
+      cloud_storage_password = backups.value["cloud_storage_password"]
+      # cloud_storage_username - (optional) is a type of string
+      cloud_storage_username = backups.value["cloud_storage_username"]
+      # use_oauth_for_storage - (optional) is a type of bool
+      use_oauth_for_storage = backups.value["use_oauth_for_storage"]
     }
   }
 
   dynamic "load_balancer" {
     for_each = var.load_balancer
     content {
+      # load_balancing_policy - (optional) is a type of string
       load_balancing_policy = load_balancer.value["load_balancing_policy"]
-      subnets               = load_balancer.value["subnets"]
+      # subnets - (optional) is a type of set of string
+      subnets = load_balancer.value["subnets"]
     }
   }
 
   dynamic "oracle_traffic_director" {
     for_each = var.oracle_traffic_director
     content {
-      high_availability     = oracle_traffic_director.value["high_availability"]
-      ip_reservations       = oracle_traffic_director.value["ip_reservations"]
+      # high_availability - (optional) is a type of bool
+      high_availability = oracle_traffic_director.value["high_availability"]
+      # ip_reservations - (optional) is a type of list of string
+      ip_reservations = oracle_traffic_director.value["ip_reservations"]
+      # load_balancing_policy - (optional) is a type of string
       load_balancing_policy = oracle_traffic_director.value["load_balancing_policy"]
-      shape                 = oracle_traffic_director.value["shape"]
+      # shape - (required) is a type of string
+      shape = oracle_traffic_director.value["shape"]
 
       dynamic "admin" {
         for_each = oracle_traffic_director.value.admin
         content {
+          # password - (required) is a type of string
           password = admin.value["password"]
-          port     = admin.value["port"]
+          # port - (optional) is a type of number
+          port = admin.value["port"]
+          # username - (required) is a type of string
           username = admin.value["username"]
         }
       }
@@ -530,10 +565,14 @@ resource "oraclepaas_java_service_instance" "this" {
       dynamic "listener" {
         for_each = oracle_traffic_director.value.listener
         content {
-          port                    = listener.value["port"]
-          privileged_port         = listener.value["privileged_port"]
+          # port - (optional) is a type of number
+          port = listener.value["port"]
+          # privileged_port - (optional) is a type of number
+          privileged_port = listener.value["privileged_port"]
+          # privileged_secured_port - (optional) is a type of number
           privileged_secured_port = listener.value["privileged_secured_port"]
-          secured_port            = listener.value["secured_port"]
+          # secured_port - (optional) is a type of number
+          secured_port = listener.value["secured_port"]
         }
       }
 
@@ -543,8 +582,11 @@ resource "oraclepaas_java_service_instance" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -552,30 +594,45 @@ resource "oraclepaas_java_service_instance" "this" {
   dynamic "weblogic_server" {
     for_each = var.weblogic_server
     content {
-      backup_volume_size       = weblogic_server.value["backup_volume_size"]
-      cluster_name             = weblogic_server.value["cluster_name"]
-      connect_string           = weblogic_server.value["connect_string"]
-      ip_reservations          = weblogic_server.value["ip_reservations"]
-      middleware_volume_size   = weblogic_server.value["middleware_volume_size"]
-      shape                    = weblogic_server.value["shape"]
+      # backup_volume_size - (optional) is a type of string
+      backup_volume_size = weblogic_server.value["backup_volume_size"]
+      # cluster_name - (optional) is a type of string
+      cluster_name = weblogic_server.value["cluster_name"]
+      # connect_string - (optional) is a type of string
+      connect_string = weblogic_server.value["connect_string"]
+      # ip_reservations - (optional) is a type of list of string
+      ip_reservations = weblogic_server.value["ip_reservations"]
+      # middleware_volume_size - (optional) is a type of string
+      middleware_volume_size = weblogic_server.value["middleware_volume_size"]
+      # shape - (required) is a type of string
+      shape = weblogic_server.value["shape"]
+      # upper_stack_product_name - (optional) is a type of string
       upper_stack_product_name = weblogic_server.value["upper_stack_product_name"]
 
       dynamic "admin" {
         for_each = weblogic_server.value.admin
         content {
-          password     = admin.value["password"]
-          port         = admin.value["port"]
+          # password - (required) is a type of string
+          password = admin.value["password"]
+          # port - (optional) is a type of number
+          port = admin.value["port"]
+          # secured_port - (optional) is a type of number
           secured_port = admin.value["secured_port"]
-          username     = admin.value["username"]
+          # username - (required) is a type of string
+          username = admin.value["username"]
         }
       }
 
       dynamic "application_database" {
         for_each = weblogic_server.value.application_database
         content {
-          name     = application_database.value["name"]
+          # name - (required) is a type of string
+          name = application_database.value["name"]
+          # password - (required) is a type of string
           password = application_database.value["password"]
+          # pdb_name - (optional) is a type of string
           pdb_name = application_database.value["pdb_name"]
+          # username - (required) is a type of string
           username = application_database.value["username"]
         }
       }
@@ -583,21 +640,31 @@ resource "oraclepaas_java_service_instance" "this" {
       dynamic "cluster" {
         for_each = weblogic_server.value.cluster
         content {
-          name             = cluster.value["name"]
-          path_prefixes    = cluster.value["path_prefixes"]
-          server_count     = cluster.value["server_count"]
+          # name - (required) is a type of string
+          name = cluster.value["name"]
+          # path_prefixes - (optional) is a type of set of string
+          path_prefixes = cluster.value["path_prefixes"]
+          # server_count - (optional) is a type of number
+          server_count = cluster.value["server_count"]
+          # servers_per_node - (optional) is a type of number
           servers_per_node = cluster.value["servers_per_node"]
-          shape            = cluster.value["shape"]
-          type             = cluster.value["type"]
+          # shape - (optional) is a type of string
+          shape = cluster.value["shape"]
+          # type - (required) is a type of string
+          type = cluster.value["type"]
         }
       }
 
       dynamic "database" {
         for_each = weblogic_server.value.database
         content {
-          name     = database.value["name"]
+          # name - (optional) is a type of string
+          name = database.value["name"]
+          # password - (required) is a type of string
           password = database.value["password"]
+          # pdb_name - (optional) is a type of string
           pdb_name = database.value["pdb_name"]
+          # username - (required) is a type of string
           username = database.value["username"]
         }
       }
@@ -605,31 +672,45 @@ resource "oraclepaas_java_service_instance" "this" {
       dynamic "domain" {
         for_each = weblogic_server.value.domain
         content {
-          mode            = domain.value["mode"]
-          name            = domain.value["name"]
+          # mode - (optional) is a type of string
+          mode = domain.value["mode"]
+          # name - (optional) is a type of string
+          name = domain.value["name"]
+          # partition_count - (optional) is a type of number
           partition_count = domain.value["partition_count"]
-          volume_size     = domain.value["volume_size"]
+          # volume_size - (optional) is a type of string
+          volume_size = domain.value["volume_size"]
         }
       }
 
       dynamic "managed_servers" {
         for_each = weblogic_server.value.managed_servers
         content {
-          initial_heap_size            = managed_servers.value["initial_heap_size"]
+          # initial_heap_size - (optional) is a type of number
+          initial_heap_size = managed_servers.value["initial_heap_size"]
+          # initial_permanent_generation - (optional) is a type of number
           initial_permanent_generation = managed_servers.value["initial_permanent_generation"]
-          jvm_args                     = managed_servers.value["jvm_args"]
-          max_heap_size                = managed_servers.value["max_heap_size"]
-          max_permanent_generation     = managed_servers.value["max_permanent_generation"]
-          overwrite_jvm_args           = managed_servers.value["overwrite_jvm_args"]
-          server_count                 = managed_servers.value["server_count"]
+          # jvm_args - (optional) is a type of string
+          jvm_args = managed_servers.value["jvm_args"]
+          # max_heap_size - (optional) is a type of number
+          max_heap_size = managed_servers.value["max_heap_size"]
+          # max_permanent_generation - (optional) is a type of number
+          max_permanent_generation = managed_servers.value["max_permanent_generation"]
+          # overwrite_jvm_args - (optional) is a type of bool
+          overwrite_jvm_args = managed_servers.value["overwrite_jvm_args"]
+          # server_count - (optional) is a type of number
+          server_count = managed_servers.value["server_count"]
         }
       }
 
       dynamic "node_manager" {
         for_each = weblogic_server.value.node_manager
         content {
+          # password - (optional) is a type of string
           password = node_manager.value["password"]
-          port     = node_manager.value["port"]
+          # port - (optional) is a type of number
+          port = node_manager.value["port"]
+          # username - (optional) is a type of string
           username = node_manager.value["username"]
         }
       }
@@ -637,9 +718,13 @@ resource "oraclepaas_java_service_instance" "this" {
       dynamic "ports" {
         for_each = weblogic_server.value.ports
         content {
-          content_port                    = ports.value["content_port"]
-          deployment_channel_port         = ports.value["deployment_channel_port"]
-          privileged_content_port         = ports.value["privileged_content_port"]
+          # content_port - (optional) is a type of number
+          content_port = ports.value["content_port"]
+          # deployment_channel_port - (optional) is a type of number
+          deployment_channel_port = ports.value["deployment_channel_port"]
+          # privileged_content_port - (optional) is a type of number
+          privileged_content_port = ports.value["privileged_content_port"]
+          # privileged_secured_content_port - (optional) is a type of number
           privileged_secured_content_port = ports.value["privileged_secured_content_port"]
         }
       }

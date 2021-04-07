@@ -175,16 +175,22 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_resource_policy" "this" {
-  name    = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
   project = var.project
-  region  = var.region
+  # region - (optional) is a type of string
+  region = var.region
 
   dynamic "group_placement_policy" {
     for_each = var.group_placement_policy
     content {
+      # availability_domain_count - (optional) is a type of number
       availability_domain_count = group_placement_policy.value["availability_domain_count"]
-      collocation               = group_placement_policy.value["collocation"]
-      vm_count                  = group_placement_policy.value["vm_count"]
+      # collocation - (optional) is a type of string
+      collocation = group_placement_policy.value["collocation"]
+      # vm_count - (optional) is a type of number
+      vm_count = group_placement_policy.value["vm_count"]
     }
   }
 
@@ -195,7 +201,9 @@ resource "google_compute_resource_policy" "this" {
       dynamic "retention_policy" {
         for_each = snapshot_schedule_policy.value.retention_policy
         content {
-          max_retention_days    = retention_policy.value["max_retention_days"]
+          # max_retention_days - (required) is a type of number
+          max_retention_days = retention_policy.value["max_retention_days"]
+          # on_source_disk_delete - (optional) is a type of string
           on_source_disk_delete = retention_policy.value["on_source_disk_delete"]
         }
       }
@@ -207,16 +215,20 @@ resource "google_compute_resource_policy" "this" {
           dynamic "daily_schedule" {
             for_each = schedule.value.daily_schedule
             content {
+              # days_in_cycle - (required) is a type of number
               days_in_cycle = daily_schedule.value["days_in_cycle"]
-              start_time    = daily_schedule.value["start_time"]
+              # start_time - (required) is a type of string
+              start_time = daily_schedule.value["start_time"]
             }
           }
 
           dynamic "hourly_schedule" {
             for_each = schedule.value.hourly_schedule
             content {
+              # hours_in_cycle - (required) is a type of number
               hours_in_cycle = hourly_schedule.value["hours_in_cycle"]
-              start_time     = hourly_schedule.value["start_time"]
+              # start_time - (required) is a type of string
+              start_time = hourly_schedule.value["start_time"]
             }
           }
 
@@ -227,7 +239,9 @@ resource "google_compute_resource_policy" "this" {
               dynamic "day_of_weeks" {
                 for_each = weekly_schedule.value.day_of_weeks
                 content {
-                  day        = day_of_weeks.value["day"]
+                  # day - (required) is a type of string
+                  day = day_of_weeks.value["day"]
+                  # start_time - (required) is a type of string
                   start_time = day_of_weeks.value["start_time"]
                 }
               }
@@ -241,8 +255,11 @@ resource "google_compute_resource_policy" "this" {
       dynamic "snapshot_properties" {
         for_each = snapshot_schedule_policy.value.snapshot_properties
         content {
-          guest_flush       = snapshot_properties.value["guest_flush"]
-          labels            = snapshot_properties.value["labels"]
+          # guest_flush - (optional) is a type of bool
+          guest_flush = snapshot_properties.value["guest_flush"]
+          # labels - (optional) is a type of map of string
+          labels = snapshot_properties.value["labels"]
+          # storage_locations - (optional) is a type of set of string
           storage_locations = snapshot_properties.value["storage_locations"]
         }
       }
@@ -253,7 +270,9 @@ resource "google_compute_resource_policy" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

@@ -56,7 +56,9 @@ variable "policy_data" {
 
 ```terraform
 resource "google_service_directory_namespace_iam_policy" "this" {
-  name        = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # policy_data - (required) is a type of string
   policy_data = var.policy_data
 }
 ```

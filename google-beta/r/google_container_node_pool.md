@@ -301,21 +301,33 @@ variable "upgrade_settings" {
 
 ```terraform
 resource "google_container_node_pool" "this" {
-  cluster            = var.cluster
+  # cluster - (required) is a type of string
+  cluster = var.cluster
+  # initial_node_count - (optional) is a type of number
   initial_node_count = var.initial_node_count
-  location           = var.location
-  max_pods_per_node  = var.max_pods_per_node
-  name               = var.name
-  name_prefix        = var.name_prefix
-  node_count         = var.node_count
-  node_locations     = var.node_locations
-  project            = var.project
-  version            = var.version
+  # location - (optional) is a type of string
+  location = var.location
+  # max_pods_per_node - (optional) is a type of number
+  max_pods_per_node = var.max_pods_per_node
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # node_count - (optional) is a type of number
+  node_count = var.node_count
+  # node_locations - (optional) is a type of set of string
+  node_locations = var.node_locations
+  # project - (optional) is a type of string
+  project = var.project
+  # version - (optional) is a type of string
+  version = var.version
 
   dynamic "autoscaling" {
     for_each = var.autoscaling
     content {
+      # max_node_count - (required) is a type of number
       max_node_count = autoscaling.value["max_node_count"]
+      # min_node_count - (required) is a type of number
       min_node_count = autoscaling.value["min_node_count"]
     }
   }
@@ -323,7 +335,9 @@ resource "google_container_node_pool" "this" {
   dynamic "management" {
     for_each = var.management
     content {
-      auto_repair  = management.value["auto_repair"]
+      # auto_repair - (optional) is a type of bool
+      auto_repair = management.value["auto_repair"]
+      # auto_upgrade - (optional) is a type of bool
       auto_upgrade = management.value["auto_upgrade"]
     }
   }
@@ -331,25 +345,41 @@ resource "google_container_node_pool" "this" {
   dynamic "node_config" {
     for_each = var.node_config
     content {
+      # boot_disk_kms_key - (optional) is a type of string
       boot_disk_kms_key = node_config.value["boot_disk_kms_key"]
-      disk_size_gb      = node_config.value["disk_size_gb"]
-      disk_type         = node_config.value["disk_type"]
+      # disk_size_gb - (optional) is a type of number
+      disk_size_gb = node_config.value["disk_size_gb"]
+      # disk_type - (optional) is a type of string
+      disk_type = node_config.value["disk_type"]
+      # guest_accelerator - (optional) is a type of list of object
       guest_accelerator = node_config.value["guest_accelerator"]
-      image_type        = node_config.value["image_type"]
-      labels            = node_config.value["labels"]
-      local_ssd_count   = node_config.value["local_ssd_count"]
-      machine_type      = node_config.value["machine_type"]
-      metadata          = node_config.value["metadata"]
-      min_cpu_platform  = node_config.value["min_cpu_platform"]
-      oauth_scopes      = node_config.value["oauth_scopes"]
-      preemptible       = node_config.value["preemptible"]
-      service_account   = node_config.value["service_account"]
-      tags              = node_config.value["tags"]
-      taint             = node_config.value["taint"]
+      # image_type - (optional) is a type of string
+      image_type = node_config.value["image_type"]
+      # labels - (optional) is a type of map of string
+      labels = node_config.value["labels"]
+      # local_ssd_count - (optional) is a type of number
+      local_ssd_count = node_config.value["local_ssd_count"]
+      # machine_type - (optional) is a type of string
+      machine_type = node_config.value["machine_type"]
+      # metadata - (optional) is a type of map of string
+      metadata = node_config.value["metadata"]
+      # min_cpu_platform - (optional) is a type of string
+      min_cpu_platform = node_config.value["min_cpu_platform"]
+      # oauth_scopes - (optional) is a type of set of string
+      oauth_scopes = node_config.value["oauth_scopes"]
+      # preemptible - (optional) is a type of bool
+      preemptible = node_config.value["preemptible"]
+      # service_account - (optional) is a type of string
+      service_account = node_config.value["service_account"]
+      # tags - (optional) is a type of list of string
+      tags = node_config.value["tags"]
+      # taint - (optional) is a type of list of object
+      taint = node_config.value["taint"]
 
       dynamic "ephemeral_storage_config" {
         for_each = node_config.value.ephemeral_storage_config
         content {
+          # local_ssd_count - (required) is a type of number
           local_ssd_count = ephemeral_storage_config.value["local_ssd_count"]
         }
       }
@@ -357,15 +387,19 @@ resource "google_container_node_pool" "this" {
       dynamic "kubelet_config" {
         for_each = node_config.value.kubelet_config
         content {
-          cpu_cfs_quota        = kubelet_config.value["cpu_cfs_quota"]
+          # cpu_cfs_quota - (optional) is a type of bool
+          cpu_cfs_quota = kubelet_config.value["cpu_cfs_quota"]
+          # cpu_cfs_quota_period - (optional) is a type of string
           cpu_cfs_quota_period = kubelet_config.value["cpu_cfs_quota_period"]
-          cpu_manager_policy   = kubelet_config.value["cpu_manager_policy"]
+          # cpu_manager_policy - (required) is a type of string
+          cpu_manager_policy = kubelet_config.value["cpu_manager_policy"]
         }
       }
 
       dynamic "linux_node_config" {
         for_each = node_config.value.linux_node_config
         content {
+          # sysctls - (required) is a type of map of string
           sysctls = linux_node_config.value["sysctls"]
         }
       }
@@ -373,6 +407,7 @@ resource "google_container_node_pool" "this" {
       dynamic "sandbox_config" {
         for_each = node_config.value.sandbox_config
         content {
+          # sandbox_type - (required) is a type of string
           sandbox_type = sandbox_config.value["sandbox_type"]
         }
       }
@@ -380,14 +415,17 @@ resource "google_container_node_pool" "this" {
       dynamic "shielded_instance_config" {
         for_each = node_config.value.shielded_instance_config
         content {
+          # enable_integrity_monitoring - (optional) is a type of bool
           enable_integrity_monitoring = shielded_instance_config.value["enable_integrity_monitoring"]
-          enable_secure_boot          = shielded_instance_config.value["enable_secure_boot"]
+          # enable_secure_boot - (optional) is a type of bool
+          enable_secure_boot = shielded_instance_config.value["enable_secure_boot"]
         }
       }
 
       dynamic "workload_metadata_config" {
         for_each = node_config.value.workload_metadata_config
         content {
+          # node_metadata - (required) is a type of string
           node_metadata = workload_metadata_config.value["node_metadata"]
         }
       }
@@ -398,8 +436,11 @@ resource "google_container_node_pool" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -407,7 +448,9 @@ resource "google_container_node_pool" "this" {
   dynamic "upgrade_settings" {
     for_each = var.upgrade_settings
     content {
-      max_surge       = upgrade_settings.value["max_surge"]
+      # max_surge - (required) is a type of number
+      max_surge = upgrade_settings.value["max_surge"]
+      # max_unavailable - (required) is a type of number
       max_unavailable = upgrade_settings.value["max_unavailable"]
     }
   }

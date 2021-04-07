@@ -126,24 +126,34 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_router" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  network     = var.network
-  project     = var.project
-  region      = var.region
+  # name - (required) is a type of string
+  name = var.name
+  # network - (required) is a type of string
+  network = var.network
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
 
   dynamic "bgp" {
     for_each = var.bgp
     content {
-      advertise_mode    = bgp.value["advertise_mode"]
+      # advertise_mode - (optional) is a type of string
+      advertise_mode = bgp.value["advertise_mode"]
+      # advertised_groups - (optional) is a type of list of string
       advertised_groups = bgp.value["advertised_groups"]
-      asn               = bgp.value["asn"]
+      # asn - (required) is a type of number
+      asn = bgp.value["asn"]
 
       dynamic "advertised_ip_ranges" {
         for_each = bgp.value.advertised_ip_ranges
         content {
+          # description - (optional) is a type of string
           description = advertised_ip_ranges.value["description"]
-          range       = advertised_ip_ranges.value["range"]
+          # range - (required) is a type of string
+          range = advertised_ip_ranges.value["range"]
         }
       }
 
@@ -153,8 +163,11 @@ resource "google_compute_router" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

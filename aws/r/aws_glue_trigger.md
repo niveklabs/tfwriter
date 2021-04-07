@@ -171,26 +171,39 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_glue_trigger" "this" {
-  description   = var.description
-  enabled       = var.enabled
-  name          = var.name
-  schedule      = var.schedule
-  tags          = var.tags
-  type          = var.type
+  # description - (optional) is a type of string
+  description = var.description
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
+  # schedule - (optional) is a type of string
+  schedule = var.schedule
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (required) is a type of string
+  type = var.type
+  # workflow_name - (optional) is a type of string
   workflow_name = var.workflow_name
 
   dynamic "actions" {
     for_each = var.actions
     content {
-      arguments              = actions.value["arguments"]
-      crawler_name           = actions.value["crawler_name"]
-      job_name               = actions.value["job_name"]
+      # arguments - (optional) is a type of map of string
+      arguments = actions.value["arguments"]
+      # crawler_name - (optional) is a type of string
+      crawler_name = actions.value["crawler_name"]
+      # job_name - (optional) is a type of string
+      job_name = actions.value["job_name"]
+      # security_configuration - (optional) is a type of string
       security_configuration = actions.value["security_configuration"]
-      timeout                = actions.value["timeout"]
+      # timeout - (optional) is a type of number
+      timeout = actions.value["timeout"]
 
       dynamic "notification_property" {
         for_each = actions.value.notification_property
         content {
+          # notify_delay_after - (optional) is a type of number
           notify_delay_after = notification_property.value["notify_delay_after"]
         }
       }
@@ -201,16 +214,22 @@ resource "aws_glue_trigger" "this" {
   dynamic "predicate" {
     for_each = var.predicate
     content {
+      # logical - (optional) is a type of string
       logical = predicate.value["logical"]
 
       dynamic "conditions" {
         for_each = predicate.value.conditions
         content {
-          crawl_state      = conditions.value["crawl_state"]
-          crawler_name     = conditions.value["crawler_name"]
-          job_name         = conditions.value["job_name"]
+          # crawl_state - (optional) is a type of string
+          crawl_state = conditions.value["crawl_state"]
+          # crawler_name - (optional) is a type of string
+          crawler_name = conditions.value["crawler_name"]
+          # job_name - (optional) is a type of string
+          job_name = conditions.value["job_name"]
+          # logical_operator - (optional) is a type of string
           logical_operator = conditions.value["logical_operator"]
-          state            = conditions.value["state"]
+          # state - (optional) is a type of string
+          state = conditions.value["state"]
         }
       }
 
@@ -220,7 +239,9 @@ resource "aws_glue_trigger" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

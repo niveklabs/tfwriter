@@ -74,14 +74,19 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_listing_resource_version_agreement" "this" {
-  listing_id               = var.listing_id
+  # listing_id - (required) is a type of string
+  listing_id = var.listing_id
+  # listing_resource_version - (required) is a type of string
   listing_resource_version = var.listing_resource_version
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

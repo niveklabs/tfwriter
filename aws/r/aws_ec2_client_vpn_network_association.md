@@ -64,9 +64,12 @@ variable "subnet_id" {
 
 ```terraform
 resource "aws_ec2_client_vpn_network_association" "this" {
+  # client_vpn_endpoint_id - (required) is a type of string
   client_vpn_endpoint_id = var.client_vpn_endpoint_id
-  security_groups        = var.security_groups
-  subnet_id              = var.subnet_id
+  # security_groups - (optional) is a type of set of string
+  security_groups = var.security_groups
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
 }
 ```
 

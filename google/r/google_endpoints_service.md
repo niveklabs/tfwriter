@@ -99,17 +99,25 @@ variable "timeouts" {
 
 ```terraform
 resource "google_endpoints_service" "this" {
-  grpc_config          = var.grpc_config
-  openapi_config       = var.openapi_config
-  project              = var.project
+  # grpc_config - (optional) is a type of string
+  grpc_config = var.grpc_config
+  # openapi_config - (optional) is a type of string
+  openapi_config = var.openapi_config
+  # project - (optional) is a type of string
+  project = var.project
+  # protoc_output_base64 - (optional) is a type of string
   protoc_output_base64 = var.protoc_output_base64
-  service_name         = var.service_name
+  # service_name - (required) is a type of string
+  service_name = var.service_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

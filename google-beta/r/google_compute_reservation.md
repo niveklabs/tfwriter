@@ -143,36 +143,48 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_reservation" "this" {
-  description                   = var.description
-  name                          = var.name
-  project                       = var.project
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # specific_reservation_required - (optional) is a type of bool
   specific_reservation_required = var.specific_reservation_required
-  zone                          = var.zone
+  # zone - (required) is a type of string
+  zone = var.zone
 
   dynamic "specific_reservation" {
     for_each = var.specific_reservation
     content {
+      # count - (required) is a type of number
       count = specific_reservation.value["count"]
 
       dynamic "instance_properties" {
         for_each = specific_reservation.value.instance_properties
         content {
-          machine_type     = instance_properties.value["machine_type"]
+          # machine_type - (required) is a type of string
+          machine_type = instance_properties.value["machine_type"]
+          # min_cpu_platform - (optional) is a type of string
           min_cpu_platform = instance_properties.value["min_cpu_platform"]
 
           dynamic "guest_accelerators" {
             for_each = instance_properties.value.guest_accelerators
             content {
+              # accelerator_count - (required) is a type of number
               accelerator_count = guest_accelerators.value["accelerator_count"]
-              accelerator_type  = guest_accelerators.value["accelerator_type"]
+              # accelerator_type - (required) is a type of string
+              accelerator_type = guest_accelerators.value["accelerator_type"]
             }
           }
 
           dynamic "local_ssds" {
             for_each = instance_properties.value.local_ssds
             content {
+              # disk_size_gb - (required) is a type of number
               disk_size_gb = local_ssds.value["disk_size_gb"]
-              interface    = local_ssds.value["interface"]
+              # interface - (optional) is a type of string
+              interface = local_ssds.value["interface"]
             }
           }
 
@@ -185,8 +197,11 @@ resource "google_compute_reservation" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

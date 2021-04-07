@@ -97,13 +97,20 @@ variable "user_id" {
 
 ```terraform
 resource "vault_terraform_cloud_secret_role" "this" {
-  backend      = var.backend
-  max_ttl      = var.max_ttl
-  name         = var.name
+  # backend - (optional) is a type of string
+  backend = var.backend
+  # max_ttl - (optional) is a type of number
+  max_ttl = var.max_ttl
+  # name - (required) is a type of string
+  name = var.name
+  # organization - (optional) is a type of string
   organization = var.organization
-  team_id      = var.team_id
-  ttl          = var.ttl
-  user_id      = var.user_id
+  # team_id - (optional) is a type of string
+  team_id = var.team_id
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
+  # user_id - (optional) is a type of string
+  user_id = var.user_id
 }
 ```
 

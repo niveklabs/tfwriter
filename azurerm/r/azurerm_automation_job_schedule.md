@@ -114,20 +114,31 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_automation_job_schedule" "this" {
+  # automation_account_name - (required) is a type of string
   automation_account_name = var.automation_account_name
-  job_schedule_id         = var.job_schedule_id
-  parameters              = var.parameters
-  resource_group_name     = var.resource_group_name
-  run_on                  = var.run_on
-  runbook_name            = var.runbook_name
-  schedule_name           = var.schedule_name
+  # job_schedule_id - (optional) is a type of string
+  job_schedule_id = var.job_schedule_id
+  # parameters - (optional) is a type of map of string
+  parameters = var.parameters
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # run_on - (optional) is a type of string
+  run_on = var.run_on
+  # runbook_name - (required) is a type of string
+  runbook_name = var.runbook_name
+  # schedule_name - (required) is a type of string
+  schedule_name = var.schedule_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

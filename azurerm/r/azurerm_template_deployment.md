@@ -107,19 +107,29 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_template_deployment" "this" {
-  deployment_mode     = var.deployment_mode
-  name                = var.name
-  parameters          = var.parameters
-  parameters_body     = var.parameters_body
+  # deployment_mode - (required) is a type of string
+  deployment_mode = var.deployment_mode
+  # name - (required) is a type of string
+  name = var.name
+  # parameters - (optional) is a type of map of string
+  parameters = var.parameters
+  # parameters_body - (optional) is a type of string
+  parameters_body = var.parameters_body
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  template_body       = var.template_body
+  # template_body - (optional) is a type of string
+  template_body = var.template_body
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

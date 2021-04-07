@@ -86,15 +86,21 @@ variable "timeouts" {
 
 ```terraform
 resource "google_kms_key_ring_import_job" "this" {
-  import_job_id    = var.import_job_id
-  import_method    = var.import_method
-  key_ring         = var.key_ring
+  # import_job_id - (required) is a type of string
+  import_job_id = var.import_job_id
+  # import_method - (required) is a type of string
+  import_method = var.import_method
+  # key_ring - (required) is a type of string
+  key_ring = var.key_ring
+  # protection_level - (required) is a type of string
   protection_level = var.protection_level
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

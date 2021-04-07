@@ -190,21 +190,33 @@ variable "timeouts" {
 
 ```terraform
 resource "google_bigquery_data_transfer_config" "this" {
-  data_refresh_window_days  = var.data_refresh_window_days
-  data_source_id            = var.data_source_id
-  destination_dataset_id    = var.destination_dataset_id
-  disabled                  = var.disabled
-  display_name              = var.display_name
-  location                  = var.location
+  # data_refresh_window_days - (optional) is a type of number
+  data_refresh_window_days = var.data_refresh_window_days
+  # data_source_id - (required) is a type of string
+  data_source_id = var.data_source_id
+  # destination_dataset_id - (required) is a type of string
+  destination_dataset_id = var.destination_dataset_id
+  # disabled - (optional) is a type of bool
+  disabled = var.disabled
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # location - (optional) is a type of string
+  location = var.location
+  # notification_pubsub_topic - (optional) is a type of string
   notification_pubsub_topic = var.notification_pubsub_topic
-  params                    = var.params
-  project                   = var.project
-  schedule                  = var.schedule
-  service_account_name      = var.service_account_name
+  # params - (required) is a type of map of string
+  params = var.params
+  # project - (optional) is a type of string
+  project = var.project
+  # schedule - (optional) is a type of string
+  schedule = var.schedule
+  # service_account_name - (optional) is a type of string
+  service_account_name = var.service_account_name
 
   dynamic "email_preferences" {
     for_each = var.email_preferences
     content {
+      # enable_failure_email - (required) is a type of bool
       enable_failure_email = email_preferences.value["enable_failure_email"]
     }
   }
@@ -212,15 +224,19 @@ resource "google_bigquery_data_transfer_config" "this" {
   dynamic "schedule_options" {
     for_each = var.schedule_options
     content {
+      # disable_auto_scheduling - (optional) is a type of bool
       disable_auto_scheduling = schedule_options.value["disable_auto_scheduling"]
-      end_time                = schedule_options.value["end_time"]
-      start_time              = schedule_options.value["start_time"]
+      # end_time - (optional) is a type of string
+      end_time = schedule_options.value["end_time"]
+      # start_time - (optional) is a type of string
+      start_time = schedule_options.value["start_time"]
     }
   }
 
   dynamic "sensitive_params" {
     for_each = var.sensitive_params
     content {
+      # secret_access_key - (required) is a type of string
       secret_access_key = sensitive_params.value["secret_access_key"]
     }
   }
@@ -228,8 +244,11 @@ resource "google_bigquery_data_transfer_config" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

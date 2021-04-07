@@ -78,13 +78,17 @@ variable "timeouts" {
 
 ```terraform
 data "hcp_aws_transit_gateway_attachment" "this" {
-  hvn_id                        = var.hvn_id
+  # hvn_id - (required) is a type of string
+  hvn_id = var.hvn_id
+  # transit_gateway_attachment_id - (required) is a type of string
   transit_gateway_attachment_id = var.transit_gateway_attachment_id
-  wait_for_active_state         = var.wait_for_active_state
+  # wait_for_active_state - (optional) is a type of bool
+  wait_for_active_state = var.wait_for_active_state
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

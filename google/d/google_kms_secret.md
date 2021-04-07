@@ -64,9 +64,12 @@ variable "crypto_key" {
 
 ```terraform
 data "google_kms_secret" "this" {
+  # additional_authenticated_data - (optional) is a type of string
   additional_authenticated_data = var.additional_authenticated_data
-  ciphertext                    = var.ciphertext
-  crypto_key                    = var.crypto_key
+  # ciphertext - (required) is a type of string
+  ciphertext = var.ciphertext
+  # crypto_key - (required) is a type of string
+  crypto_key = var.crypto_key
 }
 ```
 

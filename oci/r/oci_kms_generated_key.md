@@ -114,26 +114,37 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_kms_generated_key" "this" {
-  associated_data       = var.associated_data
-  crypto_endpoint       = var.crypto_endpoint
+  # associated_data - (optional) is a type of map of string
+  associated_data = var.associated_data
+  # crypto_endpoint - (required) is a type of string
+  crypto_endpoint = var.crypto_endpoint
+  # include_plaintext_key - (required) is a type of bool
   include_plaintext_key = var.include_plaintext_key
-  key_id                = var.key_id
-  logging_context       = var.logging_context
+  # key_id - (required) is a type of string
+  key_id = var.key_id
+  # logging_context - (optional) is a type of map of string
+  logging_context = var.logging_context
 
   dynamic "key_shape" {
     for_each = var.key_shape
     content {
+      # algorithm - (required) is a type of string
       algorithm = key_shape.value["algorithm"]
-      curve_id  = key_shape.value["curve_id"]
-      length    = key_shape.value["length"]
+      # curve_id - (optional) is a type of string
+      curve_id = key_shape.value["curve_id"]
+      # length - (required) is a type of number
+      length = key_shape.value["length"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

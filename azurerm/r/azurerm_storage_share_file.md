@@ -131,22 +131,35 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_storage_share_file" "this" {
+  # content_disposition - (optional) is a type of string
   content_disposition = var.content_disposition
-  content_encoding    = var.content_encoding
-  content_md5         = var.content_md5
-  content_type        = var.content_type
-  metadata            = var.metadata
-  name                = var.name
-  path                = var.path
-  source              = var.source
-  storage_share_id    = var.storage_share_id
+  # content_encoding - (optional) is a type of string
+  content_encoding = var.content_encoding
+  # content_md5 - (optional) is a type of string
+  content_md5 = var.content_md5
+  # content_type - (optional) is a type of string
+  content_type = var.content_type
+  # metadata - (optional) is a type of map of string
+  metadata = var.metadata
+  # name - (required) is a type of string
+  name = var.name
+  # path - (optional) is a type of string
+  path = var.path
+  # source - (optional) is a type of string
+  source = var.source
+  # storage_share_id - (required) is a type of string
+  storage_share_id = var.storage_share_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

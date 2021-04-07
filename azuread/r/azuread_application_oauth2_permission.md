@@ -107,15 +107,24 @@ variable "value" {
 
 ```terraform
 resource "azuread_application_oauth2_permission" "this" {
-  admin_consent_description  = var.admin_consent_description
+  # admin_consent_description - (required) is a type of string
+  admin_consent_description = var.admin_consent_description
+  # admin_consent_display_name - (required) is a type of string
   admin_consent_display_name = var.admin_consent_display_name
-  application_object_id      = var.application_object_id
-  is_enabled                 = var.is_enabled
-  permission_id              = var.permission_id
-  type                       = var.type
-  user_consent_description   = var.user_consent_description
-  user_consent_display_name  = var.user_consent_display_name
-  value                      = var.value
+  # application_object_id - (required) is a type of string
+  application_object_id = var.application_object_id
+  # is_enabled - (optional) is a type of bool
+  is_enabled = var.is_enabled
+  # permission_id - (optional) is a type of string
+  permission_id = var.permission_id
+  # type - (required) is a type of string
+  type = var.type
+  # user_consent_description - (required) is a type of string
+  user_consent_description = var.user_consent_description
+  # user_consent_display_name - (required) is a type of string
+  user_consent_display_name = var.user_consent_display_name
+  # value - (required) is a type of string
+  value = var.value
 }
 ```
 

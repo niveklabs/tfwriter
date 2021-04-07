@@ -73,7 +73,9 @@ variable "server_side_encryption" {
 
 ```terraform
 data "aws_dynamodb_table" "this" {
+  # name - (required) is a type of string
   name = var.name
+  # tags - (optional) is a type of map of string
   tags = var.tags
 
   dynamic "server_side_encryption" {

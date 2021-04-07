@@ -66,8 +66,11 @@ variable "version_prefix" {
 
 ```terraform
 data "google_container_engine_versions" "this" {
-  location       = var.location
-  project        = var.project
+  # location - (optional) is a type of string
+  location = var.location
+  # project - (optional) is a type of string
+  project = var.project
+  # version_prefix - (optional) is a type of string
   version_prefix = var.version_prefix
 }
 ```

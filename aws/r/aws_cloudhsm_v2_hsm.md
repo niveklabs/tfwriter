@@ -89,15 +89,21 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_cloudhsm_v2_hsm" "this" {
+  # availability_zone - (optional) is a type of string
   availability_zone = var.availability_zone
-  cluster_id        = var.cluster_id
-  ip_address        = var.ip_address
-  subnet_id         = var.subnet_id
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # ip_address - (optional) is a type of string
+  ip_address = var.ip_address
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

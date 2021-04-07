@@ -79,11 +79,16 @@ variable "volume_id" {
 
 ```terraform
 resource "aws_volume_attachment" "this" {
-  device_name  = var.device_name
+  # device_name - (required) is a type of string
+  device_name = var.device_name
+  # force_detach - (optional) is a type of bool
   force_detach = var.force_detach
-  instance_id  = var.instance_id
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # skip_destroy - (optional) is a type of bool
   skip_destroy = var.skip_destroy
-  volume_id    = var.volume_id
+  # volume_id - (required) is a type of string
+  volume_id = var.volume_id
 }
 ```
 

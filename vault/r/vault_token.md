@@ -154,20 +154,34 @@ variable "wrapping_ttl" {
 
 ```terraform
 resource "vault_token" "this" {
-  display_name      = var.display_name
-  explicit_max_ttl  = var.explicit_max_ttl
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # explicit_max_ttl - (optional) is a type of string
+  explicit_max_ttl = var.explicit_max_ttl
+  # no_default_policy - (optional) is a type of bool
   no_default_policy = var.no_default_policy
-  no_parent         = var.no_parent
-  num_uses          = var.num_uses
-  period            = var.period
-  pgp_key           = var.pgp_key
-  policies          = var.policies
-  renew_increment   = var.renew_increment
-  renew_min_lease   = var.renew_min_lease
-  renewable         = var.renewable
-  role_name         = var.role_name
-  ttl               = var.ttl
-  wrapping_ttl      = var.wrapping_ttl
+  # no_parent - (optional) is a type of bool
+  no_parent = var.no_parent
+  # num_uses - (optional) is a type of number
+  num_uses = var.num_uses
+  # period - (optional) is a type of string
+  period = var.period
+  # pgp_key - (optional) is a type of string
+  pgp_key = var.pgp_key
+  # policies - (optional) is a type of set of string
+  policies = var.policies
+  # renew_increment - (optional) is a type of number
+  renew_increment = var.renew_increment
+  # renew_min_lease - (optional) is a type of number
+  renew_min_lease = var.renew_min_lease
+  # renewable - (optional) is a type of bool
+  renewable = var.renewable
+  # role_name - (optional) is a type of string
+  role_name = var.role_name
+  # ttl - (optional) is a type of string
+  ttl = var.ttl
+  # wrapping_ttl - (optional) is a type of string
+  wrapping_ttl = var.wrapping_ttl
 }
 ```
 

@@ -156,14 +156,19 @@ variable "upstream_endpoint" {
 
 ```terraform
 resource "azurerm_signalr_service" "this" {
-  location            = var.location
-  name                = var.name
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  tags                = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "cors" {
     for_each = var.cors
     content {
+      # allowed_origins - (required) is a type of set of string
       allowed_origins = cors.value["allowed_origins"]
     }
   }
@@ -171,7 +176,9 @@ resource "azurerm_signalr_service" "this" {
   dynamic "features" {
     for_each = var.features
     content {
-      flag  = features.value["flag"]
+      # flag - (required) is a type of string
+      flag = features.value["flag"]
+      # value - (required) is a type of string
       value = features.value["value"]
     }
   }
@@ -179,17 +186,23 @@ resource "azurerm_signalr_service" "this" {
   dynamic "sku" {
     for_each = var.sku
     content {
+      # capacity - (required) is a type of number
       capacity = sku.value["capacity"]
-      name     = sku.value["name"]
+      # name - (required) is a type of string
+      name = sku.value["name"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -197,10 +210,14 @@ resource "azurerm_signalr_service" "this" {
   dynamic "upstream_endpoint" {
     for_each = var.upstream_endpoint
     content {
+      # category_pattern - (required) is a type of list of string
       category_pattern = upstream_endpoint.value["category_pattern"]
-      event_pattern    = upstream_endpoint.value["event_pattern"]
-      hub_pattern      = upstream_endpoint.value["hub_pattern"]
-      url_template     = upstream_endpoint.value["url_template"]
+      # event_pattern - (required) is a type of list of string
+      event_pattern = upstream_endpoint.value["event_pattern"]
+      # hub_pattern - (required) is a type of list of string
+      hub_pattern = upstream_endpoint.value["hub_pattern"]
+      # url_template - (required) is a type of string
+      url_template = upstream_endpoint.value["url_template"]
     }
   }
 

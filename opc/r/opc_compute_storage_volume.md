@@ -210,31 +210,53 @@ variable "timeouts" {
 
 ```terraform
 resource "opc_compute_storage_volume" "this" {
-  bootable         = var.bootable
-  description      = var.description
-  hypervisor       = var.hypervisor
-  image_list       = var.image_list
+  # bootable - (optional) is a type of bool
+  bootable = var.bootable
+  # description - (optional) is a type of string
+  description = var.description
+  # hypervisor - (optional) is a type of string
+  hypervisor = var.hypervisor
+  # image_list - (optional) is a type of string
+  image_list = var.image_list
+  # image_list_entry - (optional) is a type of number
   image_list_entry = var.image_list_entry
-  machine_image    = var.machine_image
-  managed          = var.managed
-  name             = var.name
-  platform         = var.platform
-  readonly         = var.readonly
-  size             = var.size
-  snapshot         = var.snapshot
+  # machine_image - (optional) is a type of string
+  machine_image = var.machine_image
+  # managed - (optional) is a type of bool
+  managed = var.managed
+  # name - (required) is a type of string
+  name = var.name
+  # platform - (optional) is a type of string
+  platform = var.platform
+  # readonly - (optional) is a type of bool
+  readonly = var.readonly
+  # size - (required) is a type of number
+  size = var.size
+  # snapshot - (optional) is a type of string
+  snapshot = var.snapshot
+  # snapshot_account - (optional) is a type of string
   snapshot_account = var.snapshot_account
-  snapshot_id      = var.snapshot_id
-  status           = var.status
-  storage_pool     = var.storage_pool
-  storage_type     = var.storage_type
-  tags             = var.tags
-  uri              = var.uri
+  # snapshot_id - (optional) is a type of string
+  snapshot_id = var.snapshot_id
+  # status - (optional) is a type of string
+  status = var.status
+  # storage_pool - (optional) is a type of string
+  storage_pool = var.storage_pool
+  # storage_type - (optional) is a type of string
+  storage_type = var.storage_type
+  # tags - (optional) is a type of list of string
+  tags = var.tags
+  # uri - (optional) is a type of string
+  uri = var.uri
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

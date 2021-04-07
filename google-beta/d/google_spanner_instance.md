@@ -89,12 +89,18 @@ variable "project" {
 
 ```terraform
 data "google_spanner_instance" "this" {
-  config       = var.config
+  # config - (optional) is a type of string
+  config = var.config
+  # display_name - (optional) is a type of string
   display_name = var.display_name
-  labels       = var.labels
-  name         = var.name
-  num_nodes    = var.num_nodes
-  project      = var.project
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # num_nodes - (optional) is a type of number
+  num_nodes = var.num_nodes
+  # project - (optional) is a type of string
+  project = var.project
 }
 ```
 

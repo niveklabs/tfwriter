@@ -64,9 +64,12 @@ variable "user_pool_id" {
 
 ```terraform
 resource "aws_cognito_user_pool_domain" "this" {
+  # certificate_arn - (optional) is a type of string
   certificate_arn = var.certificate_arn
-  domain          = var.domain
-  user_pool_id    = var.user_pool_id
+  # domain - (required) is a type of string
+  domain = var.domain
+  # user_pool_id - (required) is a type of string
+  user_pool_id = var.user_pool_id
 }
 ```
 

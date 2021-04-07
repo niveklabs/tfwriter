@@ -57,7 +57,9 @@ variable "node_pool_option_id" {
 
 ```terraform
 data "oci_containerengine_node_pool_option" "this" {
-  compartment_id      = var.compartment_id
+  # compartment_id - (optional) is a type of string
+  compartment_id = var.compartment_id
+  # node_pool_option_id - (required) is a type of string
   node_pool_option_id = var.node_pool_option_id
 }
 ```

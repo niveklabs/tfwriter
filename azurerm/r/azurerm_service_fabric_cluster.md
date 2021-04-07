@@ -406,44 +406,63 @@ variable "upgrade_policy" {
 
 ```terraform
 resource "azurerm_service_fabric_cluster" "this" {
-  add_on_features      = var.add_on_features
+  # add_on_features - (optional) is a type of set of string
+  add_on_features = var.add_on_features
+  # cluster_code_version - (optional) is a type of string
   cluster_code_version = var.cluster_code_version
-  location             = var.location
-  management_endpoint  = var.management_endpoint
-  name                 = var.name
-  reliability_level    = var.reliability_level
-  resource_group_name  = var.resource_group_name
-  tags                 = var.tags
-  upgrade_mode         = var.upgrade_mode
-  vm_image             = var.vm_image
+  # location - (required) is a type of string
+  location = var.location
+  # management_endpoint - (required) is a type of string
+  management_endpoint = var.management_endpoint
+  # name - (required) is a type of string
+  name = var.name
+  # reliability_level - (required) is a type of string
+  reliability_level = var.reliability_level
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # upgrade_mode - (required) is a type of string
+  upgrade_mode = var.upgrade_mode
+  # vm_image - (required) is a type of string
+  vm_image = var.vm_image
 
   dynamic "azure_active_directory" {
     for_each = var.azure_active_directory
     content {
-      client_application_id  = azure_active_directory.value["client_application_id"]
+      # client_application_id - (required) is a type of string
+      client_application_id = azure_active_directory.value["client_application_id"]
+      # cluster_application_id - (required) is a type of string
       cluster_application_id = azure_active_directory.value["cluster_application_id"]
-      tenant_id              = azure_active_directory.value["tenant_id"]
+      # tenant_id - (required) is a type of string
+      tenant_id = azure_active_directory.value["tenant_id"]
     }
   }
 
   dynamic "certificate" {
     for_each = var.certificate
     content {
-      thumbprint           = certificate.value["thumbprint"]
+      # thumbprint - (required) is a type of string
+      thumbprint = certificate.value["thumbprint"]
+      # thumbprint_secondary - (optional) is a type of string
       thumbprint_secondary = certificate.value["thumbprint_secondary"]
-      x509_store_name      = certificate.value["x509_store_name"]
+      # x509_store_name - (required) is a type of string
+      x509_store_name = certificate.value["x509_store_name"]
     }
   }
 
   dynamic "certificate_common_names" {
     for_each = var.certificate_common_names
     content {
+      # x509_store_name - (required) is a type of string
       x509_store_name = certificate_common_names.value["x509_store_name"]
 
       dynamic "common_names" {
         for_each = certificate_common_names.value.common_names
         content {
-          certificate_common_name       = common_names.value["certificate_common_name"]
+          # certificate_common_name - (required) is a type of string
+          certificate_common_name = common_names.value["certificate_common_name"]
+          # certificate_issuer_thumbprint - (optional) is a type of string
           certificate_issuer_thumbprint = common_names.value["certificate_issuer_thumbprint"]
         }
       }
@@ -454,8 +473,11 @@ resource "azurerm_service_fabric_cluster" "this" {
   dynamic "client_certificate_common_name" {
     for_each = var.client_certificate_common_name
     content {
-      common_name       = client_certificate_common_name.value["common_name"]
-      is_admin          = client_certificate_common_name.value["is_admin"]
+      # common_name - (required) is a type of string
+      common_name = client_certificate_common_name.value["common_name"]
+      # is_admin - (required) is a type of bool
+      is_admin = client_certificate_common_name.value["is_admin"]
+      # issuer_thumbprint - (optional) is a type of string
       issuer_thumbprint = client_certificate_common_name.value["issuer_thumbprint"]
     }
   }
@@ -463,7 +485,9 @@ resource "azurerm_service_fabric_cluster" "this" {
   dynamic "client_certificate_thumbprint" {
     for_each = var.client_certificate_thumbprint
     content {
-      is_admin   = client_certificate_thumbprint.value["is_admin"]
+      # is_admin - (required) is a type of bool
+      is_admin = client_certificate_thumbprint.value["is_admin"]
+      # thumbprint - (required) is a type of string
       thumbprint = client_certificate_thumbprint.value["thumbprint"]
     }
   }
@@ -471,18 +495,25 @@ resource "azurerm_service_fabric_cluster" "this" {
   dynamic "diagnostics_config" {
     for_each = var.diagnostics_config
     content {
-      blob_endpoint              = diagnostics_config.value["blob_endpoint"]
+      # blob_endpoint - (required) is a type of string
+      blob_endpoint = diagnostics_config.value["blob_endpoint"]
+      # protected_account_key_name - (required) is a type of string
       protected_account_key_name = diagnostics_config.value["protected_account_key_name"]
-      queue_endpoint             = diagnostics_config.value["queue_endpoint"]
-      storage_account_name       = diagnostics_config.value["storage_account_name"]
-      table_endpoint             = diagnostics_config.value["table_endpoint"]
+      # queue_endpoint - (required) is a type of string
+      queue_endpoint = diagnostics_config.value["queue_endpoint"]
+      # storage_account_name - (required) is a type of string
+      storage_account_name = diagnostics_config.value["storage_account_name"]
+      # table_endpoint - (required) is a type of string
+      table_endpoint = diagnostics_config.value["table_endpoint"]
     }
   }
 
   dynamic "fabric_settings" {
     for_each = var.fabric_settings
     content {
-      name       = fabric_settings.value["name"]
+      # name - (required) is a type of string
+      name = fabric_settings.value["name"]
+      # parameters - (optional) is a type of map of string
       parameters = fabric_settings.value["parameters"]
     }
   }
@@ -490,20 +521,31 @@ resource "azurerm_service_fabric_cluster" "this" {
   dynamic "node_type" {
     for_each = var.node_type
     content {
-      capacities                  = node_type.value["capacities"]
-      client_endpoint_port        = node_type.value["client_endpoint_port"]
-      durability_level            = node_type.value["durability_level"]
-      http_endpoint_port          = node_type.value["http_endpoint_port"]
-      instance_count              = node_type.value["instance_count"]
-      is_primary                  = node_type.value["is_primary"]
-      name                        = node_type.value["name"]
-      placement_properties        = node_type.value["placement_properties"]
+      # capacities - (optional) is a type of map of string
+      capacities = node_type.value["capacities"]
+      # client_endpoint_port - (required) is a type of number
+      client_endpoint_port = node_type.value["client_endpoint_port"]
+      # durability_level - (optional) is a type of string
+      durability_level = node_type.value["durability_level"]
+      # http_endpoint_port - (required) is a type of number
+      http_endpoint_port = node_type.value["http_endpoint_port"]
+      # instance_count - (required) is a type of number
+      instance_count = node_type.value["instance_count"]
+      # is_primary - (required) is a type of bool
+      is_primary = node_type.value["is_primary"]
+      # name - (required) is a type of string
+      name = node_type.value["name"]
+      # placement_properties - (optional) is a type of map of string
+      placement_properties = node_type.value["placement_properties"]
+      # reverse_proxy_endpoint_port - (optional) is a type of number
       reverse_proxy_endpoint_port = node_type.value["reverse_proxy_endpoint_port"]
 
       dynamic "application_ports" {
         for_each = node_type.value.application_ports
         content {
-          end_port   = application_ports.value["end_port"]
+          # end_port - (required) is a type of number
+          end_port = application_ports.value["end_port"]
+          # start_port - (required) is a type of number
           start_port = application_ports.value["start_port"]
         }
       }
@@ -511,7 +553,9 @@ resource "azurerm_service_fabric_cluster" "this" {
       dynamic "ephemeral_ports" {
         for_each = node_type.value.ephemeral_ports
         content {
-          end_port   = ephemeral_ports.value["end_port"]
+          # end_port - (required) is a type of number
+          end_port = ephemeral_ports.value["end_port"]
+          # start_port - (required) is a type of number
           start_port = ephemeral_ports.value["start_port"]
         }
       }
@@ -522,21 +566,27 @@ resource "azurerm_service_fabric_cluster" "this" {
   dynamic "reverse_proxy_certificate" {
     for_each = var.reverse_proxy_certificate
     content {
-      thumbprint           = reverse_proxy_certificate.value["thumbprint"]
+      # thumbprint - (required) is a type of string
+      thumbprint = reverse_proxy_certificate.value["thumbprint"]
+      # thumbprint_secondary - (optional) is a type of string
       thumbprint_secondary = reverse_proxy_certificate.value["thumbprint_secondary"]
-      x509_store_name      = reverse_proxy_certificate.value["x509_store_name"]
+      # x509_store_name - (required) is a type of string
+      x509_store_name = reverse_proxy_certificate.value["x509_store_name"]
     }
   }
 
   dynamic "reverse_proxy_certificate_common_names" {
     for_each = var.reverse_proxy_certificate_common_names
     content {
+      # x509_store_name - (required) is a type of string
       x509_store_name = reverse_proxy_certificate_common_names.value["x509_store_name"]
 
       dynamic "common_names" {
         for_each = reverse_proxy_certificate_common_names.value.common_names
         content {
-          certificate_common_name       = common_names.value["certificate_common_name"]
+          # certificate_common_name - (required) is a type of string
+          certificate_common_name = common_names.value["certificate_common_name"]
+          # certificate_issuer_thumbprint - (optional) is a type of string
           certificate_issuer_thumbprint = common_names.value["certificate_issuer_thumbprint"]
         }
       }
@@ -547,9 +597,13 @@ resource "azurerm_service_fabric_cluster" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -557,19 +611,29 @@ resource "azurerm_service_fabric_cluster" "this" {
   dynamic "upgrade_policy" {
     for_each = var.upgrade_policy
     content {
-      force_restart_enabled             = upgrade_policy.value["force_restart_enabled"]
-      health_check_retry_timeout        = upgrade_policy.value["health_check_retry_timeout"]
-      health_check_stable_duration      = upgrade_policy.value["health_check_stable_duration"]
-      health_check_wait_duration        = upgrade_policy.value["health_check_wait_duration"]
-      upgrade_domain_timeout            = upgrade_policy.value["upgrade_domain_timeout"]
+      # force_restart_enabled - (optional) is a type of bool
+      force_restart_enabled = upgrade_policy.value["force_restart_enabled"]
+      # health_check_retry_timeout - (optional) is a type of string
+      health_check_retry_timeout = upgrade_policy.value["health_check_retry_timeout"]
+      # health_check_stable_duration - (optional) is a type of string
+      health_check_stable_duration = upgrade_policy.value["health_check_stable_duration"]
+      # health_check_wait_duration - (optional) is a type of string
+      health_check_wait_duration = upgrade_policy.value["health_check_wait_duration"]
+      # upgrade_domain_timeout - (optional) is a type of string
+      upgrade_domain_timeout = upgrade_policy.value["upgrade_domain_timeout"]
+      # upgrade_replica_set_check_timeout - (optional) is a type of string
       upgrade_replica_set_check_timeout = upgrade_policy.value["upgrade_replica_set_check_timeout"]
-      upgrade_timeout                   = upgrade_policy.value["upgrade_timeout"]
+      # upgrade_timeout - (optional) is a type of string
+      upgrade_timeout = upgrade_policy.value["upgrade_timeout"]
 
       dynamic "delta_health_policy" {
         for_each = upgrade_policy.value.delta_health_policy
         content {
-          max_delta_unhealthy_applications_percent         = delta_health_policy.value["max_delta_unhealthy_applications_percent"]
-          max_delta_unhealthy_nodes_percent                = delta_health_policy.value["max_delta_unhealthy_nodes_percent"]
+          # max_delta_unhealthy_applications_percent - (optional) is a type of number
+          max_delta_unhealthy_applications_percent = delta_health_policy.value["max_delta_unhealthy_applications_percent"]
+          # max_delta_unhealthy_nodes_percent - (optional) is a type of number
+          max_delta_unhealthy_nodes_percent = delta_health_policy.value["max_delta_unhealthy_nodes_percent"]
+          # max_upgrade_domain_delta_unhealthy_nodes_percent - (optional) is a type of number
           max_upgrade_domain_delta_unhealthy_nodes_percent = delta_health_policy.value["max_upgrade_domain_delta_unhealthy_nodes_percent"]
         }
       }
@@ -577,8 +641,10 @@ resource "azurerm_service_fabric_cluster" "this" {
       dynamic "health_policy" {
         for_each = upgrade_policy.value.health_policy
         content {
+          # max_unhealthy_applications_percent - (optional) is a type of number
           max_unhealthy_applications_percent = health_policy.value["max_unhealthy_applications_percent"]
-          max_unhealthy_nodes_percent        = health_policy.value["max_unhealthy_nodes_percent"]
+          # max_unhealthy_nodes_percent - (optional) is a type of number
+          max_unhealthy_nodes_percent = health_policy.value["max_unhealthy_nodes_percent"]
         }
       }
 

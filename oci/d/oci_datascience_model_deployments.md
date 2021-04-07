@@ -99,17 +99,25 @@ variable "filter" {
 
 ```terraform
 data "oci_datascience_model_deployments" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  created_by     = var.created_by
-  display_name   = var.display_name
-  project_id     = var.project_id
-  state          = var.state
+  # created_by - (optional) is a type of string
+  created_by = var.created_by
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # project_id - (optional) is a type of string
+  project_id = var.project_id
+  # state - (optional) is a type of string
+  state = var.state
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

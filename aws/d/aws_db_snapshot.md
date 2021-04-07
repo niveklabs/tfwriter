@@ -90,12 +90,18 @@ variable "snapshot_type" {
 
 ```terraform
 data "aws_db_snapshot" "this" {
+  # db_instance_identifier - (optional) is a type of string
   db_instance_identifier = var.db_instance_identifier
+  # db_snapshot_identifier - (optional) is a type of string
   db_snapshot_identifier = var.db_snapshot_identifier
-  include_public         = var.include_public
-  include_shared         = var.include_shared
-  most_recent            = var.most_recent
-  snapshot_type          = var.snapshot_type
+  # include_public - (optional) is a type of bool
+  include_public = var.include_public
+  # include_shared - (optional) is a type of bool
+  include_shared = var.include_shared
+  # most_recent - (optional) is a type of bool
+  most_recent = var.most_recent
+  # snapshot_type - (optional) is a type of string
+  snapshot_type = var.snapshot_type
 }
 ```
 

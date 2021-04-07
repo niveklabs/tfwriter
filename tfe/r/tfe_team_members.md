@@ -56,7 +56,9 @@ variable "usernames" {
 
 ```terraform
 resource "tfe_team_members" "this" {
-  team_id   = var.team_id
+  # team_id - (required) is a type of string
+  team_id = var.team_id
+  # usernames - (required) is a type of set of string
   usernames = var.usernames
 }
 ```

@@ -123,21 +123,33 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_app_service_certificate" "this" {
+  # hosting_environment_profile_id - (optional) is a type of string
   hosting_environment_profile_id = var.hosting_environment_profile_id
-  key_vault_secret_id            = var.key_vault_secret_id
-  location                       = var.location
-  name                           = var.name
-  password                       = var.password
-  pfx_blob                       = var.pfx_blob
-  resource_group_name            = var.resource_group_name
-  tags                           = var.tags
+  # key_vault_secret_id - (optional) is a type of string
+  key_vault_secret_id = var.key_vault_secret_id
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # password - (optional) is a type of string
+  password = var.password
+  # pfx_blob - (optional) is a type of string
+  pfx_blob = var.pfx_blob
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

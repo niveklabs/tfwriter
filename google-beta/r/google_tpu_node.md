@@ -151,20 +151,31 @@ variable "timeouts" {
 
 ```terraform
 resource "google_tpu_node" "this" {
-  accelerator_type       = var.accelerator_type
-  cidr_block             = var.cidr_block
-  description            = var.description
-  labels                 = var.labels
-  name                   = var.name
-  network                = var.network
-  project                = var.project
-  tensorflow_version     = var.tensorflow_version
+  # accelerator_type - (required) is a type of string
+  accelerator_type = var.accelerator_type
+  # cidr_block - (optional) is a type of string
+  cidr_block = var.cidr_block
+  # description - (optional) is a type of string
+  description = var.description
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # network - (optional) is a type of string
+  network = var.network
+  # project - (optional) is a type of string
+  project = var.project
+  # tensorflow_version - (required) is a type of string
+  tensorflow_version = var.tensorflow_version
+  # use_service_networking - (optional) is a type of bool
   use_service_networking = var.use_service_networking
-  zone                   = var.zone
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "scheduling_config" {
     for_each = var.scheduling_config
     content {
+      # preemptible - (required) is a type of bool
       preemptible = scheduling_config.value["preemptible"]
     }
   }
@@ -172,8 +183,11 @@ resource "google_tpu_node" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

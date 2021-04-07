@@ -50,6 +50,7 @@ variable "latest_valid_till" {
 
 ```terraform
 data "aws_rds_certificate" "this" {
+  # latest_valid_till - (optional) is a type of bool
   latest_valid_till = var.latest_valid_till
 }
 ```

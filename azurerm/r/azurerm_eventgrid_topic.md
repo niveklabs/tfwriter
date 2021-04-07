@@ -165,41 +165,61 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_eventgrid_topic" "this" {
-  inbound_ip_rule               = var.inbound_ip_rule
-  input_schema                  = var.input_schema
-  location                      = var.location
-  name                          = var.name
+  # inbound_ip_rule - (optional) is a type of list of object
+  inbound_ip_rule = var.inbound_ip_rule
+  # input_schema - (optional) is a type of string
+  input_schema = var.input_schema
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # public_network_access_enabled - (optional) is a type of bool
   public_network_access_enabled = var.public_network_access_enabled
-  resource_group_name           = var.resource_group_name
-  tags                          = var.tags
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "input_mapping_default_values" {
     for_each = var.input_mapping_default_values
     content {
+      # data_version - (optional) is a type of string
       data_version = input_mapping_default_values.value["data_version"]
-      event_type   = input_mapping_default_values.value["event_type"]
-      subject      = input_mapping_default_values.value["subject"]
+      # event_type - (optional) is a type of string
+      event_type = input_mapping_default_values.value["event_type"]
+      # subject - (optional) is a type of string
+      subject = input_mapping_default_values.value["subject"]
     }
   }
 
   dynamic "input_mapping_fields" {
     for_each = var.input_mapping_fields
     content {
+      # data_version - (optional) is a type of string
       data_version = input_mapping_fields.value["data_version"]
-      event_time   = input_mapping_fields.value["event_time"]
-      event_type   = input_mapping_fields.value["event_type"]
-      id           = input_mapping_fields.value["id"]
-      subject      = input_mapping_fields.value["subject"]
-      topic        = input_mapping_fields.value["topic"]
+      # event_time - (optional) is a type of string
+      event_time = input_mapping_fields.value["event_time"]
+      # event_type - (optional) is a type of string
+      event_type = input_mapping_fields.value["event_type"]
+      # id - (optional) is a type of string
+      id = input_mapping_fields.value["id"]
+      # subject - (optional) is a type of string
+      subject = input_mapping_fields.value["subject"]
+      # topic - (optional) is a type of string
+      topic = input_mapping_fields.value["topic"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

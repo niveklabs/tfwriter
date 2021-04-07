@@ -71,10 +71,14 @@ variable "storage_account_name" {
 
 ```terraform
 resource "azurestack_storage_container" "this" {
+  # container_access_type - (optional) is a type of string
   container_access_type = var.container_access_type
-  name                  = var.name
-  resource_group_name   = var.resource_group_name
-  storage_account_name  = var.storage_account_name
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # storage_account_name - (required) is a type of string
+  storage_account_name = var.storage_account_name
 }
 ```
 

@@ -50,6 +50,7 @@ variable "prefix" {
 
 ```terraform
 data "nomad_acl_policies" "this" {
+  # prefix - (optional) is a type of string
   prefix = var.prefix
 }
 ```

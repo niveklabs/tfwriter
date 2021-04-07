@@ -56,7 +56,9 @@ variable "group_members" {
 
 ```terraform
 resource "ad_group_membership" "this" {
-  group_id      = var.group_id
+  # group_id - (required) is a type of string
+  group_id = var.group_id
+  # group_members - (required) is a type of set of string
   group_members = var.group_members
 }
 ```

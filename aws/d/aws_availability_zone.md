@@ -90,15 +90,21 @@ variable "filter" {
 
 ```terraform
 data "aws_availability_zone" "this" {
+  # all_availability_zones - (optional) is a type of bool
   all_availability_zones = var.all_availability_zones
-  name                   = var.name
-  state                  = var.state
-  zone_id                = var.zone_id
+  # name - (optional) is a type of string
+  name = var.name
+  # state - (optional) is a type of string
+  state = var.state
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of set of string
       values = filter.value["values"]
     }
   }

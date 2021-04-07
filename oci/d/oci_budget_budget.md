@@ -49,6 +49,7 @@ variable "budget_id" {
 
 ```terraform
 data "oci_budget_budget" "this" {
+  # budget_id - (required) is a type of string
   budget_id = var.budget_id
 }
 ```

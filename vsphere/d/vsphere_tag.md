@@ -56,8 +56,10 @@ variable "name" {
 
 ```terraform
 data "vsphere_tag" "this" {
+  # category_id - (required) is a type of string
   category_id = var.category_id
-  name        = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

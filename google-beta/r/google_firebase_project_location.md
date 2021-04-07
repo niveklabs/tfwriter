@@ -73,13 +73,17 @@ variable "timeouts" {
 
 ```terraform
 resource "google_firebase_project_location" "this" {
+  # location_id - (required) is a type of string
   location_id = var.location_id
-  project     = var.project
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

@@ -65,9 +65,12 @@ variable "port" {
 
 ```terraform
 data "vsphere_host_thumbprint" "this" {
-  address  = var.address
+  # address - (required) is a type of string
+  address = var.address
+  # insecure - (optional) is a type of bool
   insecure = var.insecure
-  port     = var.port
+  # port - (optional) is a type of string
+  port = var.port
 }
 ```
 

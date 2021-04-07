@@ -65,9 +65,12 @@ variable "tags" {
 
 ```terraform
 data "aws_lambda_function" "this" {
+  # function_name - (required) is a type of string
   function_name = var.function_name
-  qualifier     = var.qualifier
-  tags          = var.tags
+  # qualifier - (optional) is a type of string
+  qualifier = var.qualifier
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

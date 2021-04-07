@@ -88,12 +88,18 @@ variable "tags" {
 
 ```terraform
 resource "aws_organizations_account" "this" {
-  email                      = var.email
+  # email - (required) is a type of string
+  email = var.email
+  # iam_user_access_to_billing - (optional) is a type of string
   iam_user_access_to_billing = var.iam_user_access_to_billing
-  name                       = var.name
-  parent_id                  = var.parent_id
-  role_name                  = var.role_name
-  tags                       = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # parent_id - (optional) is a type of string
+  parent_id = var.parent_id
+  # role_name - (optional) is a type of string
+  role_name = var.role_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

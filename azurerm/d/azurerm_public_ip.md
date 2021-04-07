@@ -86,14 +86,19 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_public_ip" "this" {
-  name                = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  tags                = var.tags
-  zones               = var.zones
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # zones - (optional) is a type of list of string
+  zones = var.zones
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

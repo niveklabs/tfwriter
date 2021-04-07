@@ -104,18 +104,27 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_kms_sign" "this" {
-  crypto_endpoint   = var.crypto_endpoint
-  key_id            = var.key_id
-  key_version_id    = var.key_version_id
-  message           = var.message
-  message_type      = var.message_type
+  # crypto_endpoint - (required) is a type of string
+  crypto_endpoint = var.crypto_endpoint
+  # key_id - (required) is a type of string
+  key_id = var.key_id
+  # key_version_id - (optional) is a type of string
+  key_version_id = var.key_version_id
+  # message - (required) is a type of string
+  message = var.message
+  # message_type - (optional) is a type of string
+  message_type = var.message_type
+  # signing_algorithm - (required) is a type of string
   signing_algorithm = var.signing_algorithm
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -71,10 +71,14 @@ variable "zone" {
 
 ```terraform
 resource "dns_cname_record" "this" {
+  # cname - (required) is a type of string
   cname = var.cname
-  name  = var.name
-  ttl   = var.ttl
-  zone  = var.zone
+  # name - (required) is a type of string
+  name = var.name
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
+  # zone - (required) is a type of string
+  zone = var.zone
 }
 ```
 

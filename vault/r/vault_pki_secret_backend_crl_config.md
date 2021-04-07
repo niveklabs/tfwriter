@@ -65,9 +65,12 @@ variable "expiry" {
 
 ```terraform
 resource "vault_pki_secret_backend_crl_config" "this" {
+  # backend - (required) is a type of string
   backend = var.backend
+  # disable - (optional) is a type of bool
   disable = var.disable
-  expiry  = var.expiry
+  # expiry - (optional) is a type of string
+  expiry = var.expiry
 }
 ```
 

@@ -109,24 +109,33 @@ variable "filter" {
 
 ```terraform
 resource "aws_codepipeline_webhook" "this" {
-  authentication  = var.authentication
-  name            = var.name
-  tags            = var.tags
-  target_action   = var.target_action
+  # authentication - (required) is a type of string
+  authentication = var.authentication
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # target_action - (required) is a type of string
+  target_action = var.target_action
+  # target_pipeline - (required) is a type of string
   target_pipeline = var.target_pipeline
 
   dynamic "authentication_configuration" {
     for_each = var.authentication_configuration
     content {
+      # allowed_ip_range - (optional) is a type of string
       allowed_ip_range = authentication_configuration.value["allowed_ip_range"]
-      secret_token     = authentication_configuration.value["secret_token"]
+      # secret_token - (optional) is a type of string
+      secret_token = authentication_configuration.value["secret_token"]
     }
   }
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      json_path    = filter.value["json_path"]
+      # json_path - (required) is a type of string
+      json_path = filter.value["json_path"]
+      # match_equals - (required) is a type of string
       match_equals = filter.value["match_equals"]
     }
   }

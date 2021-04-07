@@ -145,28 +145,37 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_media_transform" "this" {
-  description                 = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # media_services_account_name - (required) is a type of string
   media_services_account_name = var.media_services_account_name
-  name                        = var.name
-  resource_group_name         = var.resource_group_name
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
 
   dynamic "output" {
     for_each = var.output
     content {
-      on_error_action   = output.value["on_error_action"]
+      # on_error_action - (optional) is a type of string
+      on_error_action = output.value["on_error_action"]
+      # relative_priority - (optional) is a type of string
       relative_priority = output.value["relative_priority"]
 
       dynamic "audio_analyzer_preset" {
         for_each = output.value.audio_analyzer_preset
         content {
+          # audio_analysis_mode - (optional) is a type of string
           audio_analysis_mode = audio_analyzer_preset.value["audio_analysis_mode"]
-          audio_language      = audio_analyzer_preset.value["audio_language"]
+          # audio_language - (optional) is a type of string
+          audio_language = audio_analyzer_preset.value["audio_language"]
         }
       }
 
       dynamic "builtin_preset" {
         for_each = output.value.builtin_preset
         content {
+          # preset_name - (optional) is a type of string
           preset_name = builtin_preset.value["preset_name"]
         }
       }
@@ -174,6 +183,7 @@ resource "azurerm_media_transform" "this" {
       dynamic "face_detector_preset" {
         for_each = output.value.face_detector_preset
         content {
+          # analysis_resolution - (optional) is a type of string
           analysis_resolution = face_detector_preset.value["analysis_resolution"]
         }
       }
@@ -181,9 +191,12 @@ resource "azurerm_media_transform" "this" {
       dynamic "video_analyzer_preset" {
         for_each = output.value.video_analyzer_preset
         content {
+          # audio_analysis_mode - (optional) is a type of string
           audio_analysis_mode = video_analyzer_preset.value["audio_analysis_mode"]
-          audio_language      = video_analyzer_preset.value["audio_language"]
-          insights_type       = video_analyzer_preset.value["insights_type"]
+          # audio_language - (optional) is a type of string
+          audio_language = video_analyzer_preset.value["audio_language"]
+          # insights_type - (optional) is a type of string
+          insights_type = video_analyzer_preset.value["insights_type"]
         }
       }
 
@@ -193,9 +206,13 @@ resource "azurerm_media_transform" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

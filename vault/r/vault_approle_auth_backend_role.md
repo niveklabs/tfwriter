@@ -193,25 +193,44 @@ variable "token_type" {
 
 ```terraform
 resource "vault_approle_auth_backend_role" "this" {
-  backend                 = var.backend
-  bind_secret_id          = var.bind_secret_id
-  bound_cidr_list         = var.bound_cidr_list
-  period                  = var.period
-  policies                = var.policies
-  role_id                 = var.role_id
-  role_name               = var.role_name
-  secret_id_bound_cidrs   = var.secret_id_bound_cidrs
-  secret_id_num_uses      = var.secret_id_num_uses
-  secret_id_ttl           = var.secret_id_ttl
-  token_bound_cidrs       = var.token_bound_cidrs
-  token_explicit_max_ttl  = var.token_explicit_max_ttl
-  token_max_ttl           = var.token_max_ttl
+  # backend - (optional) is a type of string
+  backend = var.backend
+  # bind_secret_id - (optional) is a type of bool
+  bind_secret_id = var.bind_secret_id
+  # bound_cidr_list - (optional) is a type of set of string
+  bound_cidr_list = var.bound_cidr_list
+  # period - (optional) is a type of number
+  period = var.period
+  # policies - (optional) is a type of set of string
+  policies = var.policies
+  # role_id - (optional) is a type of string
+  role_id = var.role_id
+  # role_name - (required) is a type of string
+  role_name = var.role_name
+  # secret_id_bound_cidrs - (optional) is a type of set of string
+  secret_id_bound_cidrs = var.secret_id_bound_cidrs
+  # secret_id_num_uses - (optional) is a type of number
+  secret_id_num_uses = var.secret_id_num_uses
+  # secret_id_ttl - (optional) is a type of number
+  secret_id_ttl = var.secret_id_ttl
+  # token_bound_cidrs - (optional) is a type of set of string
+  token_bound_cidrs = var.token_bound_cidrs
+  # token_explicit_max_ttl - (optional) is a type of number
+  token_explicit_max_ttl = var.token_explicit_max_ttl
+  # token_max_ttl - (optional) is a type of number
+  token_max_ttl = var.token_max_ttl
+  # token_no_default_policy - (optional) is a type of bool
   token_no_default_policy = var.token_no_default_policy
-  token_num_uses          = var.token_num_uses
-  token_period            = var.token_period
-  token_policies          = var.token_policies
-  token_ttl               = var.token_ttl
-  token_type              = var.token_type
+  # token_num_uses - (optional) is a type of number
+  token_num_uses = var.token_num_uses
+  # token_period - (optional) is a type of number
+  token_period = var.token_period
+  # token_policies - (optional) is a type of set of string
+  token_policies = var.token_policies
+  # token_ttl - (optional) is a type of number
+  token_ttl = var.token_ttl
+  # token_type - (optional) is a type of string
+  token_type = var.token_type
 }
 ```
 

@@ -126,19 +126,25 @@ variable "firewall_policy" {
 
 ```terraform
 resource "aws_networkfirewall_firewall_policy" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  tags        = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "firewall_policy" {
     for_each = var.firewall_policy
     content {
-      stateless_default_actions          = firewall_policy.value["stateless_default_actions"]
+      # stateless_default_actions - (required) is a type of set of string
+      stateless_default_actions = firewall_policy.value["stateless_default_actions"]
+      # stateless_fragment_default_actions - (required) is a type of set of string
       stateless_fragment_default_actions = firewall_policy.value["stateless_fragment_default_actions"]
 
       dynamic "stateful_rule_group_reference" {
         for_each = firewall_policy.value.stateful_rule_group_reference
         content {
+          # resource_arn - (required) is a type of string
           resource_arn = stateful_rule_group_reference.value["resource_arn"]
         }
       }
@@ -146,6 +152,7 @@ resource "aws_networkfirewall_firewall_policy" "this" {
       dynamic "stateless_custom_action" {
         for_each = firewall_policy.value.stateless_custom_action
         content {
+          # action_name - (required) is a type of string
           action_name = stateless_custom_action.value["action_name"]
 
           dynamic "action_definition" {
@@ -159,6 +166,7 @@ resource "aws_networkfirewall_firewall_policy" "this" {
                   dynamic "dimension" {
                     for_each = publish_metric_action.value.dimension
                     content {
+                      # value - (required) is a type of string
                       value = dimension.value["value"]
                     }
                   }
@@ -175,7 +183,9 @@ resource "aws_networkfirewall_firewall_policy" "this" {
       dynamic "stateless_rule_group_reference" {
         for_each = firewall_policy.value.stateless_rule_group_reference
         content {
-          priority     = stateless_rule_group_reference.value["priority"]
+          # priority - (required) is a type of number
+          priority = stateless_rule_group_reference.value["priority"]
+          # resource_arn - (required) is a type of string
           resource_arn = stateless_rule_group_reference.value["resource_arn"]
         }
       }

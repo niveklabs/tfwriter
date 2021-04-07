@@ -501,74 +501,133 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_db_instance" "this" {
-  allocated_storage                     = var.allocated_storage
-  allow_major_version_upgrade           = var.allow_major_version_upgrade
-  apply_immediately                     = var.apply_immediately
-  auto_minor_version_upgrade            = var.auto_minor_version_upgrade
-  availability_zone                     = var.availability_zone
-  backup_retention_period               = var.backup_retention_period
-  backup_window                         = var.backup_window
-  ca_cert_identifier                    = var.ca_cert_identifier
-  character_set_name                    = var.character_set_name
-  copy_tags_to_snapshot                 = var.copy_tags_to_snapshot
-  db_subnet_group_name                  = var.db_subnet_group_name
-  delete_automated_backups              = var.delete_automated_backups
-  deletion_protection                   = var.deletion_protection
-  domain                                = var.domain
-  domain_iam_role_name                  = var.domain_iam_role_name
-  enabled_cloudwatch_logs_exports       = var.enabled_cloudwatch_logs_exports
-  engine                                = var.engine
-  engine_version                        = var.engine_version
-  final_snapshot_identifier             = var.final_snapshot_identifier
-  iam_database_authentication_enabled   = var.iam_database_authentication_enabled
-  identifier                            = var.identifier
-  identifier_prefix                     = var.identifier_prefix
-  instance_class                        = var.instance_class
-  iops                                  = var.iops
-  kms_key_id                            = var.kms_key_id
-  license_model                         = var.license_model
-  maintenance_window                    = var.maintenance_window
-  max_allocated_storage                 = var.max_allocated_storage
-  monitoring_interval                   = var.monitoring_interval
-  monitoring_role_arn                   = var.monitoring_role_arn
-  multi_az                              = var.multi_az
-  name                                  = var.name
-  option_group_name                     = var.option_group_name
-  parameter_group_name                  = var.parameter_group_name
-  password                              = var.password
-  performance_insights_enabled          = var.performance_insights_enabled
-  performance_insights_kms_key_id       = var.performance_insights_kms_key_id
+  # allocated_storage - (optional) is a type of number
+  allocated_storage = var.allocated_storage
+  # allow_major_version_upgrade - (optional) is a type of bool
+  allow_major_version_upgrade = var.allow_major_version_upgrade
+  # apply_immediately - (optional) is a type of bool
+  apply_immediately = var.apply_immediately
+  # auto_minor_version_upgrade - (optional) is a type of bool
+  auto_minor_version_upgrade = var.auto_minor_version_upgrade
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # backup_retention_period - (optional) is a type of number
+  backup_retention_period = var.backup_retention_period
+  # backup_window - (optional) is a type of string
+  backup_window = var.backup_window
+  # ca_cert_identifier - (optional) is a type of string
+  ca_cert_identifier = var.ca_cert_identifier
+  # character_set_name - (optional) is a type of string
+  character_set_name = var.character_set_name
+  # copy_tags_to_snapshot - (optional) is a type of bool
+  copy_tags_to_snapshot = var.copy_tags_to_snapshot
+  # db_subnet_group_name - (optional) is a type of string
+  db_subnet_group_name = var.db_subnet_group_name
+  # delete_automated_backups - (optional) is a type of bool
+  delete_automated_backups = var.delete_automated_backups
+  # deletion_protection - (optional) is a type of bool
+  deletion_protection = var.deletion_protection
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # domain_iam_role_name - (optional) is a type of string
+  domain_iam_role_name = var.domain_iam_role_name
+  # enabled_cloudwatch_logs_exports - (optional) is a type of set of string
+  enabled_cloudwatch_logs_exports = var.enabled_cloudwatch_logs_exports
+  # engine - (optional) is a type of string
+  engine = var.engine
+  # engine_version - (optional) is a type of string
+  engine_version = var.engine_version
+  # final_snapshot_identifier - (optional) is a type of string
+  final_snapshot_identifier = var.final_snapshot_identifier
+  # iam_database_authentication_enabled - (optional) is a type of bool
+  iam_database_authentication_enabled = var.iam_database_authentication_enabled
+  # identifier - (optional) is a type of string
+  identifier = var.identifier
+  # identifier_prefix - (optional) is a type of string
+  identifier_prefix = var.identifier_prefix
+  # instance_class - (required) is a type of string
+  instance_class = var.instance_class
+  # iops - (optional) is a type of number
+  iops = var.iops
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # license_model - (optional) is a type of string
+  license_model = var.license_model
+  # maintenance_window - (optional) is a type of string
+  maintenance_window = var.maintenance_window
+  # max_allocated_storage - (optional) is a type of number
+  max_allocated_storage = var.max_allocated_storage
+  # monitoring_interval - (optional) is a type of number
+  monitoring_interval = var.monitoring_interval
+  # monitoring_role_arn - (optional) is a type of string
+  monitoring_role_arn = var.monitoring_role_arn
+  # multi_az - (optional) is a type of bool
+  multi_az = var.multi_az
+  # name - (optional) is a type of string
+  name = var.name
+  # option_group_name - (optional) is a type of string
+  option_group_name = var.option_group_name
+  # parameter_group_name - (optional) is a type of string
+  parameter_group_name = var.parameter_group_name
+  # password - (optional) is a type of string
+  password = var.password
+  # performance_insights_enabled - (optional) is a type of bool
+  performance_insights_enabled = var.performance_insights_enabled
+  # performance_insights_kms_key_id - (optional) is a type of string
+  performance_insights_kms_key_id = var.performance_insights_kms_key_id
+  # performance_insights_retention_period - (optional) is a type of number
   performance_insights_retention_period = var.performance_insights_retention_period
-  port                                  = var.port
-  publicly_accessible                   = var.publicly_accessible
-  replicate_source_db                   = var.replicate_source_db
-  security_group_names                  = var.security_group_names
-  skip_final_snapshot                   = var.skip_final_snapshot
-  snapshot_identifier                   = var.snapshot_identifier
-  storage_encrypted                     = var.storage_encrypted
-  storage_type                          = var.storage_type
-  tags                                  = var.tags
-  timezone                              = var.timezone
-  username                              = var.username
-  vpc_security_group_ids                = var.vpc_security_group_ids
+  # port - (optional) is a type of number
+  port = var.port
+  # publicly_accessible - (optional) is a type of bool
+  publicly_accessible = var.publicly_accessible
+  # replicate_source_db - (optional) is a type of string
+  replicate_source_db = var.replicate_source_db
+  # security_group_names - (optional) is a type of set of string
+  security_group_names = var.security_group_names
+  # skip_final_snapshot - (optional) is a type of bool
+  skip_final_snapshot = var.skip_final_snapshot
+  # snapshot_identifier - (optional) is a type of string
+  snapshot_identifier = var.snapshot_identifier
+  # storage_encrypted - (optional) is a type of bool
+  storage_encrypted = var.storage_encrypted
+  # storage_type - (optional) is a type of string
+  storage_type = var.storage_type
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # timezone - (optional) is a type of string
+  timezone = var.timezone
+  # username - (optional) is a type of string
+  username = var.username
+  # vpc_security_group_ids - (optional) is a type of set of string
+  vpc_security_group_ids = var.vpc_security_group_ids
 
   dynamic "restore_to_point_in_time" {
     for_each = var.restore_to_point_in_time
     content {
-      restore_time                  = restore_to_point_in_time.value["restore_time"]
+      # restore_time - (optional) is a type of string
+      restore_time = restore_to_point_in_time.value["restore_time"]
+      # source_db_instance_identifier - (optional) is a type of string
       source_db_instance_identifier = restore_to_point_in_time.value["source_db_instance_identifier"]
-      source_dbi_resource_id        = restore_to_point_in_time.value["source_dbi_resource_id"]
-      use_latest_restorable_time    = restore_to_point_in_time.value["use_latest_restorable_time"]
+      # source_dbi_resource_id - (optional) is a type of string
+      source_dbi_resource_id = restore_to_point_in_time.value["source_dbi_resource_id"]
+      # use_latest_restorable_time - (optional) is a type of bool
+      use_latest_restorable_time = restore_to_point_in_time.value["use_latest_restorable_time"]
     }
   }
 
   dynamic "s3_import" {
     for_each = var.s3_import
     content {
-      bucket_name           = s3_import.value["bucket_name"]
-      bucket_prefix         = s3_import.value["bucket_prefix"]
-      ingestion_role        = s3_import.value["ingestion_role"]
-      source_engine         = s3_import.value["source_engine"]
+      # bucket_name - (required) is a type of string
+      bucket_name = s3_import.value["bucket_name"]
+      # bucket_prefix - (optional) is a type of string
+      bucket_prefix = s3_import.value["bucket_prefix"]
+      # ingestion_role - (required) is a type of string
+      ingestion_role = s3_import.value["ingestion_role"]
+      # source_engine - (required) is a type of string
+      source_engine = s3_import.value["source_engine"]
+      # source_engine_version - (required) is a type of string
       source_engine_version = s3_import.value["source_engine_version"]
     }
   }
@@ -576,8 +635,11 @@ resource "aws_db_instance" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

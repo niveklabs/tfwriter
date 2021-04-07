@@ -291,61 +291,92 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_api_management_api_operation" "this" {
+  # api_management_name - (required) is a type of string
   api_management_name = var.api_management_name
-  api_name            = var.api_name
-  description         = var.description
-  display_name        = var.display_name
-  method              = var.method
-  operation_id        = var.operation_id
+  # api_name - (required) is a type of string
+  api_name = var.api_name
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # method - (required) is a type of string
+  method = var.method
+  # operation_id - (required) is a type of string
+  operation_id = var.operation_id
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  url_template        = var.url_template
+  # url_template - (required) is a type of string
+  url_template = var.url_template
 
   dynamic "request" {
     for_each = var.request
     content {
+      # description - (optional) is a type of string
       description = request.value["description"]
 
       dynamic "header" {
         for_each = request.value.header
         content {
+          # default_value - (optional) is a type of string
           default_value = header.value["default_value"]
-          description   = header.value["description"]
-          name          = header.value["name"]
-          required      = header.value["required"]
-          type          = header.value["type"]
-          values        = header.value["values"]
+          # description - (optional) is a type of string
+          description = header.value["description"]
+          # name - (required) is a type of string
+          name = header.value["name"]
+          # required - (required) is a type of bool
+          required = header.value["required"]
+          # type - (required) is a type of string
+          type = header.value["type"]
+          # values - (optional) is a type of set of string
+          values = header.value["values"]
         }
       }
 
       dynamic "query_parameter" {
         for_each = request.value.query_parameter
         content {
+          # default_value - (optional) is a type of string
           default_value = query_parameter.value["default_value"]
-          description   = query_parameter.value["description"]
-          name          = query_parameter.value["name"]
-          required      = query_parameter.value["required"]
-          type          = query_parameter.value["type"]
-          values        = query_parameter.value["values"]
+          # description - (optional) is a type of string
+          description = query_parameter.value["description"]
+          # name - (required) is a type of string
+          name = query_parameter.value["name"]
+          # required - (required) is a type of bool
+          required = query_parameter.value["required"]
+          # type - (required) is a type of string
+          type = query_parameter.value["type"]
+          # values - (optional) is a type of set of string
+          values = query_parameter.value["values"]
         }
       }
 
       dynamic "representation" {
         for_each = request.value.representation
         content {
+          # content_type - (required) is a type of string
           content_type = representation.value["content_type"]
-          sample       = representation.value["sample"]
-          schema_id    = representation.value["schema_id"]
-          type_name    = representation.value["type_name"]
+          # sample - (optional) is a type of string
+          sample = representation.value["sample"]
+          # schema_id - (optional) is a type of string
+          schema_id = representation.value["schema_id"]
+          # type_name - (optional) is a type of string
+          type_name = representation.value["type_name"]
 
           dynamic "form_parameter" {
             for_each = representation.value.form_parameter
             content {
+              # default_value - (optional) is a type of string
               default_value = form_parameter.value["default_value"]
-              description   = form_parameter.value["description"]
-              name          = form_parameter.value["name"]
-              required      = form_parameter.value["required"]
-              type          = form_parameter.value["type"]
-              values        = form_parameter.value["values"]
+              # description - (optional) is a type of string
+              description = form_parameter.value["description"]
+              # name - (required) is a type of string
+              name = form_parameter.value["name"]
+              # required - (required) is a type of bool
+              required = form_parameter.value["required"]
+              # type - (required) is a type of string
+              type = form_parameter.value["type"]
+              # values - (optional) is a type of set of string
+              values = form_parameter.value["values"]
             }
           }
 
@@ -358,38 +389,56 @@ resource "azurerm_api_management_api_operation" "this" {
   dynamic "response" {
     for_each = var.response
     content {
+      # description - (optional) is a type of string
       description = response.value["description"]
+      # status_code - (required) is a type of number
       status_code = response.value["status_code"]
 
       dynamic "header" {
         for_each = response.value.header
         content {
+          # default_value - (optional) is a type of string
           default_value = header.value["default_value"]
-          description   = header.value["description"]
-          name          = header.value["name"]
-          required      = header.value["required"]
-          type          = header.value["type"]
-          values        = header.value["values"]
+          # description - (optional) is a type of string
+          description = header.value["description"]
+          # name - (required) is a type of string
+          name = header.value["name"]
+          # required - (required) is a type of bool
+          required = header.value["required"]
+          # type - (required) is a type of string
+          type = header.value["type"]
+          # values - (optional) is a type of set of string
+          values = header.value["values"]
         }
       }
 
       dynamic "representation" {
         for_each = response.value.representation
         content {
+          # content_type - (required) is a type of string
           content_type = representation.value["content_type"]
-          sample       = representation.value["sample"]
-          schema_id    = representation.value["schema_id"]
-          type_name    = representation.value["type_name"]
+          # sample - (optional) is a type of string
+          sample = representation.value["sample"]
+          # schema_id - (optional) is a type of string
+          schema_id = representation.value["schema_id"]
+          # type_name - (optional) is a type of string
+          type_name = representation.value["type_name"]
 
           dynamic "form_parameter" {
             for_each = representation.value.form_parameter
             content {
+              # default_value - (optional) is a type of string
               default_value = form_parameter.value["default_value"]
-              description   = form_parameter.value["description"]
-              name          = form_parameter.value["name"]
-              required      = form_parameter.value["required"]
-              type          = form_parameter.value["type"]
-              values        = form_parameter.value["values"]
+              # description - (optional) is a type of string
+              description = form_parameter.value["description"]
+              # name - (required) is a type of string
+              name = form_parameter.value["name"]
+              # required - (required) is a type of bool
+              required = form_parameter.value["required"]
+              # type - (required) is a type of string
+              type = form_parameter.value["type"]
+              # values - (optional) is a type of set of string
+              values = form_parameter.value["values"]
             }
           }
 
@@ -402,21 +451,31 @@ resource "azurerm_api_management_api_operation" "this" {
   dynamic "template_parameter" {
     for_each = var.template_parameter
     content {
+      # default_value - (optional) is a type of string
       default_value = template_parameter.value["default_value"]
-      description   = template_parameter.value["description"]
-      name          = template_parameter.value["name"]
-      required      = template_parameter.value["required"]
-      type          = template_parameter.value["type"]
-      values        = template_parameter.value["values"]
+      # description - (optional) is a type of string
+      description = template_parameter.value["description"]
+      # name - (required) is a type of string
+      name = template_parameter.value["name"]
+      # required - (required) is a type of bool
+      required = template_parameter.value["required"]
+      # type - (required) is a type of string
+      type = template_parameter.value["type"]
+      # values - (optional) is a type of set of string
+      values = template_parameter.value["values"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

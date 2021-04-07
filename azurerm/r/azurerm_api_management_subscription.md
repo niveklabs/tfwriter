@@ -139,23 +139,37 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_api_management_subscription" "this" {
-  allow_tracing       = var.allow_tracing
+  # allow_tracing - (optional) is a type of bool
+  allow_tracing = var.allow_tracing
+  # api_management_name - (required) is a type of string
   api_management_name = var.api_management_name
-  display_name        = var.display_name
-  primary_key         = var.primary_key
-  product_id          = var.product_id
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # primary_key - (optional) is a type of string
+  primary_key = var.primary_key
+  # product_id - (optional) is a type of string
+  product_id = var.product_id
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  secondary_key       = var.secondary_key
-  state               = var.state
-  subscription_id     = var.subscription_id
-  user_id             = var.user_id
+  # secondary_key - (optional) is a type of string
+  secondary_key = var.secondary_key
+  # state - (optional) is a type of string
+  state = var.state
+  # subscription_id - (optional) is a type of string
+  subscription_id = var.subscription_id
+  # user_id - (optional) is a type of string
+  user_id = var.user_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

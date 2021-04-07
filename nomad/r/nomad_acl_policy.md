@@ -64,9 +64,12 @@ variable "rules_hcl" {
 
 ```terraform
 resource "nomad_acl_policy" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  rules_hcl   = var.rules_hcl
+  # name - (required) is a type of string
+  name = var.name
+  # rules_hcl - (required) is a type of string
+  rules_hcl = var.rules_hcl
 }
 ```
 

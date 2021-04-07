@@ -157,34 +157,52 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_media_streaming_locator" "this" {
-  alternative_media_id            = var.alternative_media_id
-  asset_name                      = var.asset_name
+  # alternative_media_id - (optional) is a type of string
+  alternative_media_id = var.alternative_media_id
+  # asset_name - (required) is a type of string
+  asset_name = var.asset_name
+  # default_content_key_policy_name - (optional) is a type of string
   default_content_key_policy_name = var.default_content_key_policy_name
-  end_time                        = var.end_time
-  media_services_account_name     = var.media_services_account_name
-  name                            = var.name
-  resource_group_name             = var.resource_group_name
-  start_time                      = var.start_time
-  streaming_locator_id            = var.streaming_locator_id
-  streaming_policy_name           = var.streaming_policy_name
+  # end_time - (optional) is a type of string
+  end_time = var.end_time
+  # media_services_account_name - (required) is a type of string
+  media_services_account_name = var.media_services_account_name
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # start_time - (optional) is a type of string
+  start_time = var.start_time
+  # streaming_locator_id - (optional) is a type of string
+  streaming_locator_id = var.streaming_locator_id
+  # streaming_policy_name - (required) is a type of string
+  streaming_policy_name = var.streaming_policy_name
 
   dynamic "content_key" {
     for_each = var.content_key
     content {
-      content_key_id                      = content_key.value["content_key_id"]
+      # content_key_id - (optional) is a type of string
+      content_key_id = content_key.value["content_key_id"]
+      # label_reference_in_streaming_policy - (optional) is a type of string
       label_reference_in_streaming_policy = content_key.value["label_reference_in_streaming_policy"]
-      policy_name                         = content_key.value["policy_name"]
-      type                                = content_key.value["type"]
-      value                               = content_key.value["value"]
+      # policy_name - (optional) is a type of string
+      policy_name = content_key.value["policy_name"]
+      # type - (optional) is a type of string
+      type = content_key.value["type"]
+      # value - (optional) is a type of string
+      value = content_key.value["value"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

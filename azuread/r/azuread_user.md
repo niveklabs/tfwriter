@@ -199,26 +199,46 @@ variable "user_principal_name" {
 
 ```terraform
 resource "azuread_user" "this" {
-  account_enabled               = var.account_enabled
-  city                          = var.city
-  company_name                  = var.company_name
-  country                       = var.country
-  department                    = var.department
-  display_name                  = var.display_name
-  force_password_change         = var.force_password_change
-  given_name                    = var.given_name
-  immutable_id                  = var.immutable_id
-  job_title                     = var.job_title
-  mail_nickname                 = var.mail_nickname
-  mobile                        = var.mobile
-  password                      = var.password
+  # account_enabled - (optional) is a type of bool
+  account_enabled = var.account_enabled
+  # city - (optional) is a type of string
+  city = var.city
+  # company_name - (optional) is a type of string
+  company_name = var.company_name
+  # country - (optional) is a type of string
+  country = var.country
+  # department - (optional) is a type of string
+  department = var.department
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # force_password_change - (optional) is a type of bool
+  force_password_change = var.force_password_change
+  # given_name - (optional) is a type of string
+  given_name = var.given_name
+  # immutable_id - (optional) is a type of string
+  immutable_id = var.immutable_id
+  # job_title - (optional) is a type of string
+  job_title = var.job_title
+  # mail_nickname - (optional) is a type of string
+  mail_nickname = var.mail_nickname
+  # mobile - (optional) is a type of string
+  mobile = var.mobile
+  # password - (required) is a type of string
+  password = var.password
+  # physical_delivery_office_name - (optional) is a type of string
   physical_delivery_office_name = var.physical_delivery_office_name
-  postal_code                   = var.postal_code
-  state                         = var.state
-  street_address                = var.street_address
-  surname                       = var.surname
-  usage_location                = var.usage_location
-  user_principal_name           = var.user_principal_name
+  # postal_code - (optional) is a type of string
+  postal_code = var.postal_code
+  # state - (optional) is a type of string
+  state = var.state
+  # street_address - (optional) is a type of string
+  street_address = var.street_address
+  # surname - (optional) is a type of string
+  surname = var.surname
+  # usage_location - (optional) is a type of string
+  usage_location = var.usage_location
+  # user_principal_name - (required) is a type of string
+  user_principal_name = var.user_principal_name
 }
 ```
 

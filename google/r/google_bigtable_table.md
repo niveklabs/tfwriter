@@ -86,14 +86,19 @@ variable "column_family" {
 
 ```terraform
 resource "google_bigtable_table" "this" {
+  # instance_name - (required) is a type of string
   instance_name = var.instance_name
-  name          = var.name
-  project       = var.project
-  split_keys    = var.split_keys
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # split_keys - (optional) is a type of list of string
+  split_keys = var.split_keys
 
   dynamic "column_family" {
     for_each = var.column_family
     content {
+      # family - (required) is a type of string
       family = column_family.value["family"]
     }
   }

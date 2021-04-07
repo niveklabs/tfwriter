@@ -524,25 +524,41 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_virtual_machine_scale_set" "this" {
-  automatic_os_upgrade         = var.automatic_os_upgrade
-  eviction_policy              = var.eviction_policy
-  health_probe_id              = var.health_probe_id
-  license_type                 = var.license_type
-  location                     = var.location
-  name                         = var.name
-  overprovision                = var.overprovision
-  priority                     = var.priority
+  # automatic_os_upgrade - (optional) is a type of bool
+  automatic_os_upgrade = var.automatic_os_upgrade
+  # eviction_policy - (optional) is a type of string
+  eviction_policy = var.eviction_policy
+  # health_probe_id - (optional) is a type of string
+  health_probe_id = var.health_probe_id
+  # license_type - (optional) is a type of string
+  license_type = var.license_type
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # overprovision - (optional) is a type of bool
+  overprovision = var.overprovision
+  # priority - (optional) is a type of string
+  priority = var.priority
+  # proximity_placement_group_id - (optional) is a type of string
   proximity_placement_group_id = var.proximity_placement_group_id
-  resource_group_name          = var.resource_group_name
-  single_placement_group       = var.single_placement_group
-  tags                         = var.tags
-  upgrade_policy_mode          = var.upgrade_policy_mode
-  zones                        = var.zones
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # single_placement_group - (optional) is a type of bool
+  single_placement_group = var.single_placement_group
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # upgrade_policy_mode - (required) is a type of string
+  upgrade_policy_mode = var.upgrade_policy_mode
+  # zones - (optional) is a type of list of string
+  zones = var.zones
 
   dynamic "boot_diagnostics" {
     for_each = var.boot_diagnostics
     content {
-      enabled     = boot_diagnostics.value["enabled"]
+      # enabled - (optional) is a type of bool
+      enabled = boot_diagnostics.value["enabled"]
+      # storage_uri - (required) is a type of string
       storage_uri = boot_diagnostics.value["storage_uri"]
     }
   }
@@ -550,37 +566,53 @@ resource "azurerm_virtual_machine_scale_set" "this" {
   dynamic "extension" {
     for_each = var.extension
     content {
+      # auto_upgrade_minor_version - (optional) is a type of bool
       auto_upgrade_minor_version = extension.value["auto_upgrade_minor_version"]
-      name                       = extension.value["name"]
-      protected_settings         = extension.value["protected_settings"]
+      # name - (required) is a type of string
+      name = extension.value["name"]
+      # protected_settings - (optional) is a type of string
+      protected_settings = extension.value["protected_settings"]
+      # provision_after_extensions - (optional) is a type of set of string
       provision_after_extensions = extension.value["provision_after_extensions"]
-      publisher                  = extension.value["publisher"]
-      settings                   = extension.value["settings"]
-      type                       = extension.value["type"]
-      type_handler_version       = extension.value["type_handler_version"]
+      # publisher - (required) is a type of string
+      publisher = extension.value["publisher"]
+      # settings - (optional) is a type of string
+      settings = extension.value["settings"]
+      # type - (required) is a type of string
+      type = extension.value["type"]
+      # type_handler_version - (required) is a type of string
+      type_handler_version = extension.value["type_handler_version"]
     }
   }
 
   dynamic "identity" {
     for_each = var.identity
     content {
+      # identity_ids - (optional) is a type of list of string
       identity_ids = identity.value["identity_ids"]
-      type         = identity.value["type"]
+      # type - (required) is a type of string
+      type = identity.value["type"]
     }
   }
 
   dynamic "network_profile" {
     for_each = var.network_profile
     content {
-      accelerated_networking    = network_profile.value["accelerated_networking"]
-      ip_forwarding             = network_profile.value["ip_forwarding"]
-      name                      = network_profile.value["name"]
+      # accelerated_networking - (optional) is a type of bool
+      accelerated_networking = network_profile.value["accelerated_networking"]
+      # ip_forwarding - (optional) is a type of bool
+      ip_forwarding = network_profile.value["ip_forwarding"]
+      # name - (required) is a type of string
+      name = network_profile.value["name"]
+      # network_security_group_id - (optional) is a type of string
       network_security_group_id = network_profile.value["network_security_group_id"]
-      primary                   = network_profile.value["primary"]
+      # primary - (required) is a type of bool
+      primary = network_profile.value["primary"]
 
       dynamic "dns_settings" {
         for_each = network_profile.value.dns_settings
         content {
+          # dns_servers - (required) is a type of list of string
           dns_servers = dns_settings.value["dns_servers"]
         }
       }
@@ -588,20 +620,30 @@ resource "azurerm_virtual_machine_scale_set" "this" {
       dynamic "ip_configuration" {
         for_each = network_profile.value.ip_configuration
         content {
+          # application_gateway_backend_address_pool_ids - (optional) is a type of set of string
           application_gateway_backend_address_pool_ids = ip_configuration.value["application_gateway_backend_address_pool_ids"]
-          application_security_group_ids               = ip_configuration.value["application_security_group_ids"]
-          load_balancer_backend_address_pool_ids       = ip_configuration.value["load_balancer_backend_address_pool_ids"]
-          load_balancer_inbound_nat_rules_ids          = ip_configuration.value["load_balancer_inbound_nat_rules_ids"]
-          name                                         = ip_configuration.value["name"]
-          primary                                      = ip_configuration.value["primary"]
-          subnet_id                                    = ip_configuration.value["subnet_id"]
+          # application_security_group_ids - (optional) is a type of set of string
+          application_security_group_ids = ip_configuration.value["application_security_group_ids"]
+          # load_balancer_backend_address_pool_ids - (optional) is a type of set of string
+          load_balancer_backend_address_pool_ids = ip_configuration.value["load_balancer_backend_address_pool_ids"]
+          # load_balancer_inbound_nat_rules_ids - (optional) is a type of set of string
+          load_balancer_inbound_nat_rules_ids = ip_configuration.value["load_balancer_inbound_nat_rules_ids"]
+          # name - (required) is a type of string
+          name = ip_configuration.value["name"]
+          # primary - (required) is a type of bool
+          primary = ip_configuration.value["primary"]
+          # subnet_id - (required) is a type of string
+          subnet_id = ip_configuration.value["subnet_id"]
 
           dynamic "public_ip_address_configuration" {
             for_each = ip_configuration.value.public_ip_address_configuration
             content {
+              # domain_name_label - (required) is a type of string
               domain_name_label = public_ip_address_configuration.value["domain_name_label"]
-              idle_timeout      = public_ip_address_configuration.value["idle_timeout"]
-              name              = public_ip_address_configuration.value["name"]
+              # idle_timeout - (required) is a type of number
+              idle_timeout = public_ip_address_configuration.value["idle_timeout"]
+              # name - (required) is a type of string
+              name = public_ip_address_configuration.value["name"]
             }
           }
 
@@ -614,23 +656,30 @@ resource "azurerm_virtual_machine_scale_set" "this" {
   dynamic "os_profile" {
     for_each = var.os_profile
     content {
-      admin_password       = os_profile.value["admin_password"]
-      admin_username       = os_profile.value["admin_username"]
+      # admin_password - (optional) is a type of string
+      admin_password = os_profile.value["admin_password"]
+      # admin_username - (required) is a type of string
+      admin_username = os_profile.value["admin_username"]
+      # computer_name_prefix - (required) is a type of string
       computer_name_prefix = os_profile.value["computer_name_prefix"]
-      custom_data          = os_profile.value["custom_data"]
+      # custom_data - (optional) is a type of string
+      custom_data = os_profile.value["custom_data"]
     }
   }
 
   dynamic "os_profile_linux_config" {
     for_each = var.os_profile_linux_config
     content {
+      # disable_password_authentication - (optional) is a type of bool
       disable_password_authentication = os_profile_linux_config.value["disable_password_authentication"]
 
       dynamic "ssh_keys" {
         for_each = os_profile_linux_config.value.ssh_keys
         content {
+          # key_data - (optional) is a type of string
           key_data = ssh_keys.value["key_data"]
-          path     = ssh_keys.value["path"]
+          # path - (required) is a type of string
+          path = ssh_keys.value["path"]
         }
       }
 
@@ -640,13 +689,16 @@ resource "azurerm_virtual_machine_scale_set" "this" {
   dynamic "os_profile_secrets" {
     for_each = var.os_profile_secrets
     content {
+      # source_vault_id - (required) is a type of string
       source_vault_id = os_profile_secrets.value["source_vault_id"]
 
       dynamic "vault_certificates" {
         for_each = os_profile_secrets.value.vault_certificates
         content {
+          # certificate_store - (optional) is a type of string
           certificate_store = vault_certificates.value["certificate_store"]
-          certificate_url   = vault_certificates.value["certificate_url"]
+          # certificate_url - (required) is a type of string
+          certificate_url = vault_certificates.value["certificate_url"]
         }
       }
 
@@ -656,15 +708,21 @@ resource "azurerm_virtual_machine_scale_set" "this" {
   dynamic "os_profile_windows_config" {
     for_each = var.os_profile_windows_config
     content {
+      # enable_automatic_upgrades - (optional) is a type of bool
       enable_automatic_upgrades = os_profile_windows_config.value["enable_automatic_upgrades"]
-      provision_vm_agent        = os_profile_windows_config.value["provision_vm_agent"]
+      # provision_vm_agent - (optional) is a type of bool
+      provision_vm_agent = os_profile_windows_config.value["provision_vm_agent"]
 
       dynamic "additional_unattend_config" {
         for_each = os_profile_windows_config.value.additional_unattend_config
         content {
-          component    = additional_unattend_config.value["component"]
-          content      = additional_unattend_config.value["content"]
-          pass         = additional_unattend_config.value["pass"]
+          # component - (required) is a type of string
+          component = additional_unattend_config.value["component"]
+          # content - (required) is a type of string
+          content = additional_unattend_config.value["content"]
+          # pass - (required) is a type of string
+          pass = additional_unattend_config.value["pass"]
+          # setting_name - (required) is a type of string
           setting_name = additional_unattend_config.value["setting_name"]
         }
       }
@@ -672,8 +730,10 @@ resource "azurerm_virtual_machine_scale_set" "this" {
       dynamic "winrm" {
         for_each = os_profile_windows_config.value.winrm
         content {
+          # certificate_url - (optional) is a type of string
           certificate_url = winrm.value["certificate_url"]
-          protocol        = winrm.value["protocol"]
+          # protocol - (required) is a type of string
+          protocol = winrm.value["protocol"]
         }
       }
 
@@ -683,8 +743,11 @@ resource "azurerm_virtual_machine_scale_set" "this" {
   dynamic "plan" {
     for_each = var.plan
     content {
-      name      = plan.value["name"]
-      product   = plan.value["product"]
+      # name - (required) is a type of string
+      name = plan.value["name"]
+      # product - (required) is a type of string
+      product = plan.value["product"]
+      # publisher - (required) is a type of string
       publisher = plan.value["publisher"]
     }
   }
@@ -692,29 +755,41 @@ resource "azurerm_virtual_machine_scale_set" "this" {
   dynamic "rolling_upgrade_policy" {
     for_each = var.rolling_upgrade_policy
     content {
-      max_batch_instance_percent              = rolling_upgrade_policy.value["max_batch_instance_percent"]
-      max_unhealthy_instance_percent          = rolling_upgrade_policy.value["max_unhealthy_instance_percent"]
+      # max_batch_instance_percent - (optional) is a type of number
+      max_batch_instance_percent = rolling_upgrade_policy.value["max_batch_instance_percent"]
+      # max_unhealthy_instance_percent - (optional) is a type of number
+      max_unhealthy_instance_percent = rolling_upgrade_policy.value["max_unhealthy_instance_percent"]
+      # max_unhealthy_upgraded_instance_percent - (optional) is a type of number
       max_unhealthy_upgraded_instance_percent = rolling_upgrade_policy.value["max_unhealthy_upgraded_instance_percent"]
-      pause_time_between_batches              = rolling_upgrade_policy.value["pause_time_between_batches"]
+      # pause_time_between_batches - (optional) is a type of string
+      pause_time_between_batches = rolling_upgrade_policy.value["pause_time_between_batches"]
     }
   }
 
   dynamic "sku" {
     for_each = var.sku
     content {
+      # capacity - (required) is a type of number
       capacity = sku.value["capacity"]
-      name     = sku.value["name"]
-      tier     = sku.value["tier"]
+      # name - (required) is a type of string
+      name = sku.value["name"]
+      # tier - (optional) is a type of string
+      tier = sku.value["tier"]
     }
   }
 
   dynamic "storage_profile_data_disk" {
     for_each = var.storage_profile_data_disk
     content {
-      caching           = storage_profile_data_disk.value["caching"]
-      create_option     = storage_profile_data_disk.value["create_option"]
-      disk_size_gb      = storage_profile_data_disk.value["disk_size_gb"]
-      lun               = storage_profile_data_disk.value["lun"]
+      # caching - (optional) is a type of string
+      caching = storage_profile_data_disk.value["caching"]
+      # create_option - (required) is a type of string
+      create_option = storage_profile_data_disk.value["create_option"]
+      # disk_size_gb - (optional) is a type of number
+      disk_size_gb = storage_profile_data_disk.value["disk_size_gb"]
+      # lun - (required) is a type of number
+      lun = storage_profile_data_disk.value["lun"]
+      # managed_disk_type - (optional) is a type of string
       managed_disk_type = storage_profile_data_disk.value["managed_disk_type"]
     }
   }
@@ -722,33 +797,49 @@ resource "azurerm_virtual_machine_scale_set" "this" {
   dynamic "storage_profile_image_reference" {
     for_each = var.storage_profile_image_reference
     content {
-      id        = storage_profile_image_reference.value["id"]
-      offer     = storage_profile_image_reference.value["offer"]
+      # id - (optional) is a type of string
+      id = storage_profile_image_reference.value["id"]
+      # offer - (optional) is a type of string
+      offer = storage_profile_image_reference.value["offer"]
+      # publisher - (optional) is a type of string
       publisher = storage_profile_image_reference.value["publisher"]
-      sku       = storage_profile_image_reference.value["sku"]
-      version   = storage_profile_image_reference.value["version"]
+      # sku - (optional) is a type of string
+      sku = storage_profile_image_reference.value["sku"]
+      # version - (optional) is a type of string
+      version = storage_profile_image_reference.value["version"]
     }
   }
 
   dynamic "storage_profile_os_disk" {
     for_each = var.storage_profile_os_disk
     content {
-      caching           = storage_profile_os_disk.value["caching"]
-      create_option     = storage_profile_os_disk.value["create_option"]
-      image             = storage_profile_os_disk.value["image"]
+      # caching - (optional) is a type of string
+      caching = storage_profile_os_disk.value["caching"]
+      # create_option - (required) is a type of string
+      create_option = storage_profile_os_disk.value["create_option"]
+      # image - (optional) is a type of string
+      image = storage_profile_os_disk.value["image"]
+      # managed_disk_type - (optional) is a type of string
       managed_disk_type = storage_profile_os_disk.value["managed_disk_type"]
-      name              = storage_profile_os_disk.value["name"]
-      os_type           = storage_profile_os_disk.value["os_type"]
-      vhd_containers    = storage_profile_os_disk.value["vhd_containers"]
+      # name - (optional) is a type of string
+      name = storage_profile_os_disk.value["name"]
+      # os_type - (optional) is a type of string
+      os_type = storage_profile_os_disk.value["os_type"]
+      # vhd_containers - (optional) is a type of set of string
+      vhd_containers = storage_profile_os_disk.value["vhd_containers"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

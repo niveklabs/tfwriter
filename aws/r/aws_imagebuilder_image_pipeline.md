@@ -135,28 +135,40 @@ variable "schedule" {
 
 ```terraform
 resource "aws_imagebuilder_image_pipeline" "this" {
-  description                      = var.description
-  distribution_configuration_arn   = var.distribution_configuration_arn
-  enhanced_image_metadata_enabled  = var.enhanced_image_metadata_enabled
-  image_recipe_arn                 = var.image_recipe_arn
+  # description - (optional) is a type of string
+  description = var.description
+  # distribution_configuration_arn - (optional) is a type of string
+  distribution_configuration_arn = var.distribution_configuration_arn
+  # enhanced_image_metadata_enabled - (optional) is a type of bool
+  enhanced_image_metadata_enabled = var.enhanced_image_metadata_enabled
+  # image_recipe_arn - (required) is a type of string
+  image_recipe_arn = var.image_recipe_arn
+  # infrastructure_configuration_arn - (required) is a type of string
   infrastructure_configuration_arn = var.infrastructure_configuration_arn
-  name                             = var.name
-  status                           = var.status
-  tags                             = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # status - (optional) is a type of string
+  status = var.status
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "image_tests_configuration" {
     for_each = var.image_tests_configuration
     content {
+      # image_tests_enabled - (optional) is a type of bool
       image_tests_enabled = image_tests_configuration.value["image_tests_enabled"]
-      timeout_minutes     = image_tests_configuration.value["timeout_minutes"]
+      # timeout_minutes - (optional) is a type of number
+      timeout_minutes = image_tests_configuration.value["timeout_minutes"]
     }
   }
 
   dynamic "schedule" {
     for_each = var.schedule
     content {
+      # pipeline_execution_start_condition - (optional) is a type of string
       pipeline_execution_start_condition = schedule.value["pipeline_execution_start_condition"]
-      schedule_expression                = schedule.value["schedule_expression"]
+      # schedule_expression - (required) is a type of string
+      schedule_expression = schedule.value["schedule_expression"]
     }
   }
 

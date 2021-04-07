@@ -120,18 +120,27 @@ variable "rotation_rules" {
 
 ```terraform
 resource "aws_secretsmanager_secret" "this" {
-  description             = var.description
-  kms_key_id              = var.kms_key_id
-  name                    = var.name
-  name_prefix             = var.name_prefix
-  policy                  = var.policy
+  # description - (optional) is a type of string
+  description = var.description
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # policy - (optional) is a type of string
+  policy = var.policy
+  # recovery_window_in_days - (optional) is a type of number
   recovery_window_in_days = var.recovery_window_in_days
-  rotation_lambda_arn     = var.rotation_lambda_arn
-  tags                    = var.tags
+  # rotation_lambda_arn - (optional) is a type of string
+  rotation_lambda_arn = var.rotation_lambda_arn
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "rotation_rules" {
     for_each = var.rotation_rules
     content {
+      # automatically_after_days - (required) is a type of number
       automatically_after_days = rotation_rules.value["automatically_after_days"]
     }
   }

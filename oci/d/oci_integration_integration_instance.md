@@ -49,6 +49,7 @@ variable "integration_instance_id" {
 
 ```terraform
 data "oci_integration_integration_instance" "this" {
+  # integration_instance_id - (required) is a type of string
   integration_instance_id = var.integration_instance_id
 }
 ```

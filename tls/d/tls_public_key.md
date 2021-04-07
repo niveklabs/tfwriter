@@ -49,6 +49,7 @@ variable "private_key_pem" {
 
 ```terraform
 data "tls_public_key" "this" {
+  # private_key_pem - (required) is a type of string
   private_key_pem = var.private_key_pem
 }
 ```

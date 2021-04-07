@@ -90,17 +90,25 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_mssql_firewall_rule" "this" {
-  end_ip_address   = var.end_ip_address
-  name             = var.name
-  server_id        = var.server_id
+  # end_ip_address - (required) is a type of string
+  end_ip_address = var.end_ip_address
+  # name - (required) is a type of string
+  name = var.name
+  # server_id - (required) is a type of string
+  server_id = var.server_id
+  # start_ip_address - (required) is a type of string
   start_ip_address = var.start_ip_address
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

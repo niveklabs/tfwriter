@@ -80,11 +80,16 @@ variable "tags" {
 
 ```terraform
 resource "aws_sagemaker_image" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
   display_name = var.display_name
-  image_name   = var.image_name
-  role_arn     = var.role_arn
-  tags         = var.tags
+  # image_name - (required) is a type of string
+  image_name = var.image_name
+  # role_arn - (required) is a type of string
+  role_arn = var.role_arn
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

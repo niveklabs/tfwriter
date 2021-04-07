@@ -97,18 +97,26 @@ variable "parameter" {
 
 ```terraform
 resource "aws_config_remediation_configuration" "this" {
+  # config_rule_name - (required) is a type of string
   config_rule_name = var.config_rule_name
-  resource_type    = var.resource_type
-  target_id        = var.target_id
-  target_type      = var.target_type
-  target_version   = var.target_version
+  # resource_type - (optional) is a type of string
+  resource_type = var.resource_type
+  # target_id - (required) is a type of string
+  target_id = var.target_id
+  # target_type - (required) is a type of string
+  target_type = var.target_type
+  # target_version - (optional) is a type of string
+  target_version = var.target_version
 
   dynamic "parameter" {
     for_each = var.parameter
     content {
-      name           = parameter.value["name"]
+      # name - (required) is a type of string
+      name = parameter.value["name"]
+      # resource_value - (optional) is a type of string
       resource_value = parameter.value["resource_value"]
-      static_value   = parameter.value["static_value"]
+      # static_value - (optional) is a type of string
+      static_value = parameter.value["static_value"]
     }
   }
 

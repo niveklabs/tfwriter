@@ -81,15 +81,21 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_database_external_pluggable_database_management" "this" {
-  enable_management              = var.enable_management
+  # enable_management - (required) is a type of bool
+  enable_management = var.enable_management
+  # external_database_connector_id - (required) is a type of string
   external_database_connector_id = var.external_database_connector_id
+  # external_pluggable_database_id - (required) is a type of string
   external_pluggable_database_id = var.external_pluggable_database_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

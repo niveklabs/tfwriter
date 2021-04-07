@@ -94,13 +94,20 @@ variable "user" {
 
 ```terraform
 resource "aws_datasync_location_fsx_windows_file_system" "this" {
-  domain              = var.domain
-  fsx_filesystem_arn  = var.fsx_filesystem_arn
-  password            = var.password
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # fsx_filesystem_arn - (required) is a type of string
+  fsx_filesystem_arn = var.fsx_filesystem_arn
+  # password - (required) is a type of string
+  password = var.password
+  # security_group_arns - (required) is a type of set of string
   security_group_arns = var.security_group_arns
-  subdirectory        = var.subdirectory
-  tags                = var.tags
-  user                = var.user
+  # subdirectory - (optional) is a type of string
+  subdirectory = var.subdirectory
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # user - (required) is a type of string
+  user = var.user
 }
 ```
 

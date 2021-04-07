@@ -231,20 +231,31 @@ variable "task_invocation_parameters" {
 
 ```terraform
 resource "aws_ssm_maintenance_window_task" "this" {
-  description      = var.description
-  max_concurrency  = var.max_concurrency
-  max_errors       = var.max_errors
-  name             = var.name
-  priority         = var.priority
+  # description - (optional) is a type of string
+  description = var.description
+  # max_concurrency - (required) is a type of string
+  max_concurrency = var.max_concurrency
+  # max_errors - (required) is a type of string
+  max_errors = var.max_errors
+  # name - (optional) is a type of string
+  name = var.name
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # service_role_arn - (optional) is a type of string
   service_role_arn = var.service_role_arn
-  task_arn         = var.task_arn
-  task_type        = var.task_type
-  window_id        = var.window_id
+  # task_arn - (required) is a type of string
+  task_arn = var.task_arn
+  # task_type - (required) is a type of string
+  task_type = var.task_type
+  # window_id - (required) is a type of string
+  window_id = var.window_id
 
   dynamic "targets" {
     for_each = var.targets
     content {
-      key    = targets.value["key"]
+      # key - (required) is a type of string
+      key = targets.value["key"]
+      # values - (required) is a type of list of string
       values = targets.value["values"]
     }
   }
@@ -256,12 +267,15 @@ resource "aws_ssm_maintenance_window_task" "this" {
       dynamic "automation_parameters" {
         for_each = task_invocation_parameters.value.automation_parameters
         content {
+          # document_version - (optional) is a type of string
           document_version = automation_parameters.value["document_version"]
 
           dynamic "parameter" {
             for_each = automation_parameters.value.parameter
             content {
-              name   = parameter.value["name"]
+              # name - (required) is a type of string
+              name = parameter.value["name"]
+              # values - (required) is a type of list of string
               values = parameter.value["values"]
             }
           }
@@ -272,28 +286,41 @@ resource "aws_ssm_maintenance_window_task" "this" {
       dynamic "lambda_parameters" {
         for_each = task_invocation_parameters.value.lambda_parameters
         content {
+          # client_context - (optional) is a type of string
           client_context = lambda_parameters.value["client_context"]
-          payload        = lambda_parameters.value["payload"]
-          qualifier      = lambda_parameters.value["qualifier"]
+          # payload - (optional) is a type of string
+          payload = lambda_parameters.value["payload"]
+          # qualifier - (optional) is a type of string
+          qualifier = lambda_parameters.value["qualifier"]
         }
       }
 
       dynamic "run_command_parameters" {
         for_each = task_invocation_parameters.value.run_command_parameters
         content {
-          comment              = run_command_parameters.value["comment"]
-          document_hash        = run_command_parameters.value["document_hash"]
-          document_hash_type   = run_command_parameters.value["document_hash_type"]
-          document_version     = run_command_parameters.value["document_version"]
-          output_s3_bucket     = run_command_parameters.value["output_s3_bucket"]
+          # comment - (optional) is a type of string
+          comment = run_command_parameters.value["comment"]
+          # document_hash - (optional) is a type of string
+          document_hash = run_command_parameters.value["document_hash"]
+          # document_hash_type - (optional) is a type of string
+          document_hash_type = run_command_parameters.value["document_hash_type"]
+          # document_version - (optional) is a type of string
+          document_version = run_command_parameters.value["document_version"]
+          # output_s3_bucket - (optional) is a type of string
+          output_s3_bucket = run_command_parameters.value["output_s3_bucket"]
+          # output_s3_key_prefix - (optional) is a type of string
           output_s3_key_prefix = run_command_parameters.value["output_s3_key_prefix"]
-          service_role_arn     = run_command_parameters.value["service_role_arn"]
-          timeout_seconds      = run_command_parameters.value["timeout_seconds"]
+          # service_role_arn - (optional) is a type of string
+          service_role_arn = run_command_parameters.value["service_role_arn"]
+          # timeout_seconds - (optional) is a type of number
+          timeout_seconds = run_command_parameters.value["timeout_seconds"]
 
           dynamic "cloudwatch_config" {
             for_each = run_command_parameters.value.cloudwatch_config
             content {
+              # cloudwatch_log_group_name - (optional) is a type of string
               cloudwatch_log_group_name = cloudwatch_config.value["cloudwatch_log_group_name"]
+              # cloudwatch_output_enabled - (optional) is a type of bool
               cloudwatch_output_enabled = cloudwatch_config.value["cloudwatch_output_enabled"]
             }
           }
@@ -301,16 +328,21 @@ resource "aws_ssm_maintenance_window_task" "this" {
           dynamic "notification_config" {
             for_each = run_command_parameters.value.notification_config
             content {
-              notification_arn    = notification_config.value["notification_arn"]
+              # notification_arn - (optional) is a type of string
+              notification_arn = notification_config.value["notification_arn"]
+              # notification_events - (optional) is a type of list of string
               notification_events = notification_config.value["notification_events"]
-              notification_type   = notification_config.value["notification_type"]
+              # notification_type - (optional) is a type of string
+              notification_type = notification_config.value["notification_type"]
             }
           }
 
           dynamic "parameter" {
             for_each = run_command_parameters.value.parameter
             content {
-              name   = parameter.value["name"]
+              # name - (required) is a type of string
+              name = parameter.value["name"]
+              # values - (required) is a type of list of string
               values = parameter.value["values"]
             }
           }
@@ -321,8 +353,10 @@ resource "aws_ssm_maintenance_window_task" "this" {
       dynamic "step_functions_parameters" {
         for_each = task_invocation_parameters.value.step_functions_parameters
         content {
+          # input - (optional) is a type of string
           input = step_functions_parameters.value["input"]
-          name  = step_functions_parameters.value["name"]
+          # name - (optional) is a type of string
+          name = step_functions_parameters.value["name"]
         }
       }
 

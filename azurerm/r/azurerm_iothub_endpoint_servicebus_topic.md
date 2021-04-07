@@ -90,17 +90,25 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_iothub_endpoint_servicebus_topic" "this" {
-  connection_string   = var.connection_string
-  iothub_name         = var.iothub_name
-  name                = var.name
+  # connection_string - (required) is a type of string
+  connection_string = var.connection_string
+  # iothub_name - (required) is a type of string
+  iothub_name = var.iothub_name
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

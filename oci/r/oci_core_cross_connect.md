@@ -145,23 +145,37 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_cross_connect" "this" {
-  compartment_id                               = var.compartment_id
-  cross_connect_group_id                       = var.cross_connect_group_id
-  customer_reference_name                      = var.customer_reference_name
-  defined_tags                                 = var.defined_tags
-  display_name                                 = var.display_name
-  far_cross_connect_or_cross_connect_group_id  = var.far_cross_connect_or_cross_connect_group_id
-  freeform_tags                                = var.freeform_tags
-  is_active                                    = var.is_active
-  location_name                                = var.location_name
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # cross_connect_group_id - (optional) is a type of string
+  cross_connect_group_id = var.cross_connect_group_id
+  # customer_reference_name - (optional) is a type of string
+  customer_reference_name = var.customer_reference_name
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # far_cross_connect_or_cross_connect_group_id - (optional) is a type of string
+  far_cross_connect_or_cross_connect_group_id = var.far_cross_connect_or_cross_connect_group_id
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # is_active - (optional) is a type of bool
+  is_active = var.is_active
+  # location_name - (required) is a type of string
+  location_name = var.location_name
+  # near_cross_connect_or_cross_connect_group_id - (optional) is a type of string
   near_cross_connect_or_cross_connect_group_id = var.near_cross_connect_or_cross_connect_group_id
-  port_speed_shape_name                        = var.port_speed_shape_name
+  # port_speed_shape_name - (required) is a type of string
+  port_speed_shape_name = var.port_speed_shape_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

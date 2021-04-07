@@ -70,12 +70,15 @@ variable "timeouts" {
 
 ```terraform
 data "hcp_aws_network_peering" "this" {
-  hvn_id     = var.hvn_id
+  # hvn_id - (required) is a type of string
+  hvn_id = var.hvn_id
+  # peering_id - (required) is a type of string
   peering_id = var.peering_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

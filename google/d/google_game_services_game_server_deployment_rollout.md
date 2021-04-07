@@ -49,6 +49,7 @@ variable "deployment_id" {
 
 ```terraform
 data "google_game_services_game_server_deployment_rollout" "this" {
+  # deployment_id - (required) is a type of string
   deployment_id = var.deployment_id
 }
 ```

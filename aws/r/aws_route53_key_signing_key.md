@@ -71,10 +71,14 @@ variable "status" {
 
 ```terraform
 resource "aws_route53_key_signing_key" "this" {
-  hosted_zone_id             = var.hosted_zone_id
+  # hosted_zone_id - (required) is a type of string
+  hosted_zone_id = var.hosted_zone_id
+  # key_management_service_arn - (required) is a type of string
   key_management_service_arn = var.key_management_service_arn
-  name                       = var.name
-  status                     = var.status
+  # name - (required) is a type of string
+  name = var.name
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

@@ -104,17 +104,25 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_ssl_certificate" "this" {
+  # certificate - (required) is a type of string
   certificate = var.certificate
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
   name_prefix = var.name_prefix
+  # private_key - (required) is a type of string
   private_key = var.private_key
-  project     = var.project
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

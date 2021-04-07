@@ -144,28 +144,37 @@ variable "spec" {
 
 ```terraform
 resource "kubernetes_ingress" "this" {
+  # wait_for_load_balancer - (optional) is a type of bool
   wait_for_load_balancer = var.wait_for_load_balancer
 
   dynamic "metadata" {
     for_each = var.metadata
     content {
-      annotations   = metadata.value["annotations"]
+      # annotations - (optional) is a type of map of string
+      annotations = metadata.value["annotations"]
+      # generate_name - (optional) is a type of string
       generate_name = metadata.value["generate_name"]
-      labels        = metadata.value["labels"]
-      name          = metadata.value["name"]
-      namespace     = metadata.value["namespace"]
+      # labels - (optional) is a type of map of string
+      labels = metadata.value["labels"]
+      # name - (optional) is a type of string
+      name = metadata.value["name"]
+      # namespace - (optional) is a type of string
+      namespace = metadata.value["namespace"]
     }
   }
 
   dynamic "spec" {
     for_each = var.spec
     content {
+      # ingress_class_name - (optional) is a type of string
       ingress_class_name = spec.value["ingress_class_name"]
 
       dynamic "backend" {
         for_each = spec.value.backend
         content {
+          # service_name - (optional) is a type of string
           service_name = backend.value["service_name"]
+          # service_port - (optional) is a type of string
           service_port = backend.value["service_port"]
         }
       }
@@ -173,6 +182,7 @@ resource "kubernetes_ingress" "this" {
       dynamic "rule" {
         for_each = spec.value.rule
         content {
+          # host - (optional) is a type of string
           host = rule.value["host"]
 
           dynamic "http" {
@@ -182,12 +192,15 @@ resource "kubernetes_ingress" "this" {
               dynamic "path" {
                 for_each = http.value.path
                 content {
+                  # path - (optional) is a type of string
                   path = path.value["path"]
 
                   dynamic "backend" {
                     for_each = path.value.backend
                     content {
+                      # service_name - (optional) is a type of string
                       service_name = backend.value["service_name"]
+                      # service_port - (optional) is a type of string
                       service_port = backend.value["service_port"]
                     }
                   }
@@ -204,7 +217,9 @@ resource "kubernetes_ingress" "this" {
       dynamic "tls" {
         for_each = spec.value.tls
         content {
-          hosts       = tls.value["hosts"]
+          # hosts - (optional) is a type of list of string
+          hosts = tls.value["hosts"]
+          # secret_name - (optional) is a type of string
           secret_name = tls.value["secret_name"]
         }
       }

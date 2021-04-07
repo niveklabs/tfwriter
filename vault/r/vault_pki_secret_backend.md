@@ -73,10 +73,14 @@ variable "path" {
 
 ```terraform
 resource "vault_pki_secret_backend" "this" {
+  # default_lease_ttl_seconds - (optional) is a type of number
   default_lease_ttl_seconds = var.default_lease_ttl_seconds
-  description               = var.description
-  max_lease_ttl_seconds     = var.max_lease_ttl_seconds
-  path                      = var.path
+  # description - (optional) is a type of string
+  description = var.description
+  # max_lease_ttl_seconds - (optional) is a type of number
+  max_lease_ttl_seconds = var.max_lease_ttl_seconds
+  # path - (required) is a type of string
+  path = var.path
 }
 ```
 

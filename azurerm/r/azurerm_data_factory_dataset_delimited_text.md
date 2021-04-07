@@ -256,39 +256,63 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_data_factory_dataset_delimited_text" "this" {
+  # additional_properties - (optional) is a type of map of string
   additional_properties = var.additional_properties
-  annotations           = var.annotations
-  column_delimiter      = var.column_delimiter
-  compression_codec     = var.compression_codec
-  compression_level     = var.compression_level
-  data_factory_name     = var.data_factory_name
-  description           = var.description
-  encoding              = var.encoding
-  escape_character      = var.escape_character
-  first_row_as_header   = var.first_row_as_header
-  folder                = var.folder
-  linked_service_name   = var.linked_service_name
-  name                  = var.name
-  null_value            = var.null_value
-  parameters            = var.parameters
-  quote_character       = var.quote_character
-  resource_group_name   = var.resource_group_name
-  row_delimiter         = var.row_delimiter
+  # annotations - (optional) is a type of list of string
+  annotations = var.annotations
+  # column_delimiter - (optional) is a type of string
+  column_delimiter = var.column_delimiter
+  # compression_codec - (optional) is a type of string
+  compression_codec = var.compression_codec
+  # compression_level - (optional) is a type of string
+  compression_level = var.compression_level
+  # data_factory_name - (required) is a type of string
+  data_factory_name = var.data_factory_name
+  # description - (optional) is a type of string
+  description = var.description
+  # encoding - (optional) is a type of string
+  encoding = var.encoding
+  # escape_character - (optional) is a type of string
+  escape_character = var.escape_character
+  # first_row_as_header - (optional) is a type of bool
+  first_row_as_header = var.first_row_as_header
+  # folder - (optional) is a type of string
+  folder = var.folder
+  # linked_service_name - (required) is a type of string
+  linked_service_name = var.linked_service_name
+  # name - (required) is a type of string
+  name = var.name
+  # null_value - (optional) is a type of string
+  null_value = var.null_value
+  # parameters - (optional) is a type of map of string
+  parameters = var.parameters
+  # quote_character - (optional) is a type of string
+  quote_character = var.quote_character
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # row_delimiter - (optional) is a type of string
+  row_delimiter = var.row_delimiter
 
   dynamic "azure_blob_storage_location" {
     for_each = var.azure_blob_storage_location
     content {
+      # container - (required) is a type of string
       container = azure_blob_storage_location.value["container"]
-      filename  = azure_blob_storage_location.value["filename"]
-      path      = azure_blob_storage_location.value["path"]
+      # filename - (required) is a type of string
+      filename = azure_blob_storage_location.value["filename"]
+      # path - (required) is a type of string
+      path = azure_blob_storage_location.value["path"]
     }
   }
 
   dynamic "http_server_location" {
     for_each = var.http_server_location
     content {
-      filename     = http_server_location.value["filename"]
-      path         = http_server_location.value["path"]
+      # filename - (required) is a type of string
+      filename = http_server_location.value["filename"]
+      # path - (required) is a type of string
+      path = http_server_location.value["path"]
+      # relative_url - (required) is a type of string
       relative_url = http_server_location.value["relative_url"]
     }
   }
@@ -296,18 +320,25 @@ resource "azurerm_data_factory_dataset_delimited_text" "this" {
   dynamic "schema_column" {
     for_each = var.schema_column
     content {
+      # description - (optional) is a type of string
       description = schema_column.value["description"]
-      name        = schema_column.value["name"]
-      type        = schema_column.value["type"]
+      # name - (required) is a type of string
+      name = schema_column.value["name"]
+      # type - (optional) is a type of string
+      type = schema_column.value["type"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

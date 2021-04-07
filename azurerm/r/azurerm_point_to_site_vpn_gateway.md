@@ -159,29 +159,41 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_point_to_site_vpn_gateway" "this" {
-  dns_servers                 = var.dns_servers
-  location                    = var.location
-  name                        = var.name
-  resource_group_name         = var.resource_group_name
-  scale_unit                  = var.scale_unit
-  tags                        = var.tags
-  virtual_hub_id              = var.virtual_hub_id
+  # dns_servers - (optional) is a type of list of string
+  dns_servers = var.dns_servers
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # scale_unit - (required) is a type of number
+  scale_unit = var.scale_unit
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # virtual_hub_id - (required) is a type of string
+  virtual_hub_id = var.virtual_hub_id
+  # vpn_server_configuration_id - (required) is a type of string
   vpn_server_configuration_id = var.vpn_server_configuration_id
 
   dynamic "connection_configuration" {
     for_each = var.connection_configuration
     content {
+      # name - (required) is a type of string
       name = connection_configuration.value["name"]
 
       dynamic "route" {
         for_each = connection_configuration.value.route
         content {
+          # associated_route_table_id - (required) is a type of string
           associated_route_table_id = route.value["associated_route_table_id"]
 
           dynamic "propagated_route_table" {
             for_each = route.value.propagated_route_table
             content {
-              ids    = propagated_route_table.value["ids"]
+              # ids - (required) is a type of list of string
+              ids = propagated_route_table.value["ids"]
+              # labels - (optional) is a type of set of string
               labels = propagated_route_table.value["labels"]
             }
           }
@@ -192,6 +204,7 @@ resource "azurerm_point_to_site_vpn_gateway" "this" {
       dynamic "vpn_client_address_pool" {
         for_each = connection_configuration.value.vpn_client_address_pool
         content {
+          # address_prefixes - (required) is a type of set of string
           address_prefixes = vpn_client_address_pool.value["address_prefixes"]
         }
       }
@@ -202,9 +215,13 @@ resource "azurerm_point_to_site_vpn_gateway" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

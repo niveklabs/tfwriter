@@ -106,14 +106,22 @@ variable "type" {
 
 ```terraform
 resource "vault_identity_group" "this" {
+  # external_member_entity_ids - (optional) is a type of bool
   external_member_entity_ids = var.external_member_entity_ids
-  external_policies          = var.external_policies
-  member_entity_ids          = var.member_entity_ids
-  member_group_ids           = var.member_group_ids
-  metadata                   = var.metadata
-  name                       = var.name
-  policies                   = var.policies
-  type                       = var.type
+  # external_policies - (optional) is a type of bool
+  external_policies = var.external_policies
+  # member_entity_ids - (optional) is a type of set of string
+  member_entity_ids = var.member_entity_ids
+  # member_group_ids - (optional) is a type of set of string
+  member_group_ids = var.member_group_ids
+  # metadata - (optional) is a type of map of string
+  metadata = var.metadata
+  # name - (optional) is a type of string
+  name = var.name
+  # policies - (optional) is a type of set of string
+  policies = var.policies
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

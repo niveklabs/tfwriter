@@ -114,27 +114,39 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_hpc_cache_nfs_target" "this" {
-  cache_name          = var.cache_name
-  name                = var.name
+  # cache_name - (required) is a type of string
+  cache_name = var.cache_name
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  target_host_name    = var.target_host_name
-  usage_model         = var.usage_model
+  # target_host_name - (required) is a type of string
+  target_host_name = var.target_host_name
+  # usage_model - (required) is a type of string
+  usage_model = var.usage_model
 
   dynamic "namespace_junction" {
     for_each = var.namespace_junction
     content {
+      # namespace_path - (required) is a type of string
       namespace_path = namespace_junction.value["namespace_path"]
-      nfs_export     = namespace_junction.value["nfs_export"]
-      target_path    = namespace_junction.value["target_path"]
+      # nfs_export - (required) is a type of string
+      nfs_export = namespace_junction.value["nfs_export"]
+      # target_path - (optional) is a type of string
+      target_path = namespace_junction.value["target_path"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

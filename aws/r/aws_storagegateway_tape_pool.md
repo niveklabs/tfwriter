@@ -80,11 +80,16 @@ variable "tags" {
 
 ```terraform
 resource "aws_storagegateway_tape_pool" "this" {
-  pool_name                   = var.pool_name
+  # pool_name - (required) is a type of string
+  pool_name = var.pool_name
+  # retention_lock_time_in_days - (optional) is a type of number
   retention_lock_time_in_days = var.retention_lock_time_in_days
-  retention_lock_type         = var.retention_lock_type
-  storage_class               = var.storage_class
-  tags                        = var.tags
+  # retention_lock_type - (optional) is a type of string
+  retention_lock_type = var.retention_lock_type
+  # storage_class - (required) is a type of string
+  storage_class = var.storage_class
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

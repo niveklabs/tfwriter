@@ -56,7 +56,9 @@ variable "opt_in_status" {
 
 ```terraform
 resource "aws_ec2_availability_zone_group" "this" {
-  group_name    = var.group_name
+  # group_name - (required) is a type of string
+  group_name = var.group_name
+  # opt_in_status - (required) is a type of string
   opt_in_status = var.opt_in_status
 }
 ```

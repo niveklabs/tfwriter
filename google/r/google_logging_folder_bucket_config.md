@@ -79,10 +79,15 @@ variable "retention_days" {
 
 ```terraform
 resource "google_logging_folder_bucket_config" "this" {
-  bucket_id      = var.bucket_id
-  description    = var.description
-  folder         = var.folder
-  location       = var.location
+  # bucket_id - (required) is a type of string
+  bucket_id = var.bucket_id
+  # description - (optional) is a type of string
+  description = var.description
+  # folder - (required) is a type of string
+  folder = var.folder
+  # location - (required) is a type of string
+  location = var.location
+  # retention_days - (optional) is a type of number
   retention_days = var.retention_days
 }
 ```

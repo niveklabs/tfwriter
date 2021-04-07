@@ -278,20 +278,31 @@ variable "view" {
 
 ```terraform
 resource "google_bigquery_table" "this" {
-  clustering          = var.clustering
-  dataset_id          = var.dataset_id
+  # clustering - (optional) is a type of list of string
+  clustering = var.clustering
+  # dataset_id - (required) is a type of string
+  dataset_id = var.dataset_id
+  # deletion_protection - (optional) is a type of bool
   deletion_protection = var.deletion_protection
-  description         = var.description
-  expiration_time     = var.expiration_time
-  friendly_name       = var.friendly_name
-  labels              = var.labels
-  project             = var.project
-  schema              = var.schema
-  table_id            = var.table_id
+  # description - (optional) is a type of string
+  description = var.description
+  # expiration_time - (optional) is a type of number
+  expiration_time = var.expiration_time
+  # friendly_name - (optional) is a type of string
+  friendly_name = var.friendly_name
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # project - (optional) is a type of string
+  project = var.project
+  # schema - (optional) is a type of string
+  schema = var.schema
+  # table_id - (required) is a type of string
+  table_id = var.table_id
 
   dynamic "encryption_configuration" {
     for_each = var.encryption_configuration
     content {
+      # kms_key_name - (required) is a type of string
       kms_key_name = encryption_configuration.value["kms_key_name"]
     }
   }
@@ -299,30 +310,45 @@ resource "google_bigquery_table" "this" {
   dynamic "external_data_configuration" {
     for_each = var.external_data_configuration
     content {
-      autodetect            = external_data_configuration.value["autodetect"]
-      compression           = external_data_configuration.value["compression"]
+      # autodetect - (required) is a type of bool
+      autodetect = external_data_configuration.value["autodetect"]
+      # compression - (optional) is a type of string
+      compression = external_data_configuration.value["compression"]
+      # ignore_unknown_values - (optional) is a type of bool
       ignore_unknown_values = external_data_configuration.value["ignore_unknown_values"]
-      max_bad_records       = external_data_configuration.value["max_bad_records"]
-      schema                = external_data_configuration.value["schema"]
-      source_format         = external_data_configuration.value["source_format"]
-      source_uris           = external_data_configuration.value["source_uris"]
+      # max_bad_records - (optional) is a type of number
+      max_bad_records = external_data_configuration.value["max_bad_records"]
+      # schema - (optional) is a type of string
+      schema = external_data_configuration.value["schema"]
+      # source_format - (required) is a type of string
+      source_format = external_data_configuration.value["source_format"]
+      # source_uris - (required) is a type of list of string
+      source_uris = external_data_configuration.value["source_uris"]
 
       dynamic "csv_options" {
         for_each = external_data_configuration.value.csv_options
         content {
-          allow_jagged_rows     = csv_options.value["allow_jagged_rows"]
+          # allow_jagged_rows - (optional) is a type of bool
+          allow_jagged_rows = csv_options.value["allow_jagged_rows"]
+          # allow_quoted_newlines - (optional) is a type of bool
           allow_quoted_newlines = csv_options.value["allow_quoted_newlines"]
-          encoding              = csv_options.value["encoding"]
-          field_delimiter       = csv_options.value["field_delimiter"]
-          quote                 = csv_options.value["quote"]
-          skip_leading_rows     = csv_options.value["skip_leading_rows"]
+          # encoding - (optional) is a type of string
+          encoding = csv_options.value["encoding"]
+          # field_delimiter - (optional) is a type of string
+          field_delimiter = csv_options.value["field_delimiter"]
+          # quote - (required) is a type of string
+          quote = csv_options.value["quote"]
+          # skip_leading_rows - (optional) is a type of number
+          skip_leading_rows = csv_options.value["skip_leading_rows"]
         }
       }
 
       dynamic "google_sheets_options" {
         for_each = external_data_configuration.value.google_sheets_options
         content {
-          range             = google_sheets_options.value["range"]
+          # range - (optional) is a type of string
+          range = google_sheets_options.value["range"]
+          # skip_leading_rows - (optional) is a type of number
           skip_leading_rows = google_sheets_options.value["skip_leading_rows"]
         }
       }
@@ -330,7 +356,9 @@ resource "google_bigquery_table" "this" {
       dynamic "hive_partitioning_options" {
         for_each = external_data_configuration.value.hive_partitioning_options
         content {
-          mode              = hive_partitioning_options.value["mode"]
+          # mode - (optional) is a type of string
+          mode = hive_partitioning_options.value["mode"]
+          # source_uri_prefix - (optional) is a type of string
           source_uri_prefix = hive_partitioning_options.value["source_uri_prefix"]
         }
       }
@@ -341,8 +369,11 @@ resource "google_bigquery_table" "this" {
   dynamic "materialized_view" {
     for_each = var.materialized_view
     content {
-      enable_refresh      = materialized_view.value["enable_refresh"]
-      query               = materialized_view.value["query"]
+      # enable_refresh - (optional) is a type of bool
+      enable_refresh = materialized_view.value["enable_refresh"]
+      # query - (required) is a type of string
+      query = materialized_view.value["query"]
+      # refresh_interval_ms - (optional) is a type of number
       refresh_interval_ms = materialized_view.value["refresh_interval_ms"]
     }
   }
@@ -350,14 +381,18 @@ resource "google_bigquery_table" "this" {
   dynamic "range_partitioning" {
     for_each = var.range_partitioning
     content {
+      # field - (required) is a type of string
       field = range_partitioning.value["field"]
 
       dynamic "range" {
         for_each = range_partitioning.value.range
         content {
-          end      = range.value["end"]
+          # end - (required) is a type of number
+          end = range.value["end"]
+          # interval - (required) is a type of number
           interval = range.value["interval"]
-          start    = range.value["start"]
+          # start - (required) is a type of number
+          start = range.value["start"]
         }
       }
 
@@ -367,17 +402,23 @@ resource "google_bigquery_table" "this" {
   dynamic "time_partitioning" {
     for_each = var.time_partitioning
     content {
-      expiration_ms            = time_partitioning.value["expiration_ms"]
-      field                    = time_partitioning.value["field"]
+      # expiration_ms - (optional) is a type of number
+      expiration_ms = time_partitioning.value["expiration_ms"]
+      # field - (optional) is a type of string
+      field = time_partitioning.value["field"]
+      # require_partition_filter - (optional) is a type of bool
       require_partition_filter = time_partitioning.value["require_partition_filter"]
-      type                     = time_partitioning.value["type"]
+      # type - (required) is a type of string
+      type = time_partitioning.value["type"]
     }
   }
 
   dynamic "view" {
     for_each = var.view
     content {
-      query          = view.value["query"]
+      # query - (required) is a type of string
+      query = view.value["query"]
+      # use_legacy_sql - (optional) is a type of bool
       use_legacy_sql = view.value["use_legacy_sql"]
     }
   }

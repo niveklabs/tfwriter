@@ -163,23 +163,33 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_autoscaler" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  project     = var.project
-  target      = var.target
-  zone        = var.zone
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # target - (required) is a type of string
+  target = var.target
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "autoscaling_policy" {
     for_each = var.autoscaling_policy
     content {
+      # cooldown_period - (optional) is a type of number
       cooldown_period = autoscaling_policy.value["cooldown_period"]
-      max_replicas    = autoscaling_policy.value["max_replicas"]
-      min_replicas    = autoscaling_policy.value["min_replicas"]
-      mode            = autoscaling_policy.value["mode"]
+      # max_replicas - (required) is a type of number
+      max_replicas = autoscaling_policy.value["max_replicas"]
+      # min_replicas - (required) is a type of number
+      min_replicas = autoscaling_policy.value["min_replicas"]
+      # mode - (optional) is a type of string
+      mode = autoscaling_policy.value["mode"]
 
       dynamic "cpu_utilization" {
         for_each = autoscaling_policy.value.cpu_utilization
         content {
+          # target - (required) is a type of number
           target = cpu_utilization.value["target"]
         }
       }
@@ -187,6 +197,7 @@ resource "google_compute_autoscaler" "this" {
       dynamic "load_balancing_utilization" {
         for_each = autoscaling_policy.value.load_balancing_utilization
         content {
+          # target - (required) is a type of number
           target = load_balancing_utilization.value["target"]
         }
       }
@@ -194,21 +205,27 @@ resource "google_compute_autoscaler" "this" {
       dynamic "metric" {
         for_each = autoscaling_policy.value.metric
         content {
-          name   = metric.value["name"]
+          # name - (required) is a type of string
+          name = metric.value["name"]
+          # target - (optional) is a type of number
           target = metric.value["target"]
-          type   = metric.value["type"]
+          # type - (optional) is a type of string
+          type = metric.value["type"]
         }
       }
 
       dynamic "scale_in_control" {
         for_each = autoscaling_policy.value.scale_in_control
         content {
+          # time_window_sec - (optional) is a type of number
           time_window_sec = scale_in_control.value["time_window_sec"]
 
           dynamic "max_scaled_in_replicas" {
             for_each = scale_in_control.value.max_scaled_in_replicas
             content {
-              fixed   = max_scaled_in_replicas.value["fixed"]
+              # fixed - (optional) is a type of number
+              fixed = max_scaled_in_replicas.value["fixed"]
+              # percent - (optional) is a type of number
               percent = max_scaled_in_replicas.value["percent"]
             }
           }
@@ -222,8 +239,11 @@ resource "google_compute_autoscaler" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

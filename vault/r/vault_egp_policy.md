@@ -70,10 +70,14 @@ variable "policy" {
 
 ```terraform
 resource "vault_egp_policy" "this" {
+  # enforcement_level - (required) is a type of string
   enforcement_level = var.enforcement_level
-  name              = var.name
-  paths             = var.paths
-  policy            = var.policy
+  # name - (required) is a type of string
+  name = var.name
+  # paths - (required) is a type of list of string
+  paths = var.paths
+  # policy - (required) is a type of string
+  policy = var.policy
 }
 ```
 

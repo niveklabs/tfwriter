@@ -56,8 +56,10 @@ variable "name" {
 
 ```terraform
 resource "aws_cloudwatch_log_stream" "this" {
+  # log_group_name - (required) is a type of string
   log_group_name = var.log_group_name
-  name           = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

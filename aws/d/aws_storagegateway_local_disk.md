@@ -65,8 +65,11 @@ variable "gateway_arn" {
 
 ```terraform
 data "aws_storagegateway_local_disk" "this" {
-  disk_node   = var.disk_node
-  disk_path   = var.disk_path
+  # disk_node - (optional) is a type of string
+  disk_node = var.disk_node
+  # disk_path - (optional) is a type of string
+  disk_path = var.disk_path
+  # gateway_arn - (required) is a type of string
   gateway_arn = var.gateway_arn
 }
 ```

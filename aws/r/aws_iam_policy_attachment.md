@@ -80,11 +80,16 @@ variable "users" {
 
 ```terraform
 resource "aws_iam_policy_attachment" "this" {
-  groups     = var.groups
-  name       = var.name
+  # groups - (optional) is a type of set of string
+  groups = var.groups
+  # name - (required) is a type of string
+  name = var.name
+  # policy_arn - (required) is a type of string
   policy_arn = var.policy_arn
-  roles      = var.roles
-  users      = var.users
+  # roles - (optional) is a type of set of string
+  roles = var.roles
+  # users - (optional) is a type of set of string
+  users = var.users
 }
 ```
 

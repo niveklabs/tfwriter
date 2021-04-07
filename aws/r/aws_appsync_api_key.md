@@ -65,9 +65,12 @@ variable "expires" {
 
 ```terraform
 resource "aws_appsync_api_key" "this" {
-  api_id      = var.api_id
+  # api_id - (required) is a type of string
+  api_id = var.api_id
+  # description - (optional) is a type of string
   description = var.description
-  expires     = var.expires
+  # expires - (optional) is a type of string
+  expires = var.expires
 }
 ```
 

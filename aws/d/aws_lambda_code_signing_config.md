@@ -49,6 +49,7 @@ variable "arn" {
 
 ```terraform
 data "aws_lambda_code_signing_config" "this" {
+  # arn - (required) is a type of string
   arn = var.arn
 }
 ```

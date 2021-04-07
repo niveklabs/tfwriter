@@ -147,23 +147,37 @@ variable "filter" {
 
 ```terraform
 data "oci_dns_zones" "this" {
-  compartment_id                        = var.compartment_id
-  name                                  = var.name
-  name_contains                         = var.name_contains
-  scope                                 = var.scope
-  sort_by                               = var.sort_by
-  sort_order                            = var.sort_order
-  state                                 = var.state
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # name - (optional) is a type of string
+  name = var.name
+  # name_contains - (optional) is a type of string
+  name_contains = var.name_contains
+  # scope - (optional) is a type of string
+  scope = var.scope
+  # sort_by - (optional) is a type of string
+  sort_by = var.sort_by
+  # sort_order - (optional) is a type of string
+  sort_order = var.sort_order
+  # state - (optional) is a type of string
+  state = var.state
+  # time_created_greater_than_or_equal_to - (optional) is a type of string
   time_created_greater_than_or_equal_to = var.time_created_greater_than_or_equal_to
-  time_created_less_than                = var.time_created_less_than
-  view_id                               = var.view_id
-  zone_type                             = var.zone_type
+  # time_created_less_than - (optional) is a type of string
+  time_created_less_than = var.time_created_less_than
+  # view_id - (optional) is a type of string
+  view_id = var.view_id
+  # zone_type - (optional) is a type of string
+  zone_type = var.zone_type
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

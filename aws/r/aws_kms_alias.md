@@ -65,8 +65,11 @@ variable "target_key_id" {
 
 ```terraform
 resource "aws_kms_alias" "this" {
-  name          = var.name
-  name_prefix   = var.name_prefix
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # target_key_id - (required) is a type of string
   target_key_id = var.target_key_id
 }
 ```

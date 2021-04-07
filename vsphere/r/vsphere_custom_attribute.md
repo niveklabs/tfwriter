@@ -57,8 +57,10 @@ variable "name" {
 
 ```terraform
 resource "vsphere_custom_attribute" "this" {
+  # managed_object_type - (optional) is a type of string
   managed_object_type = var.managed_object_type
-  name                = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

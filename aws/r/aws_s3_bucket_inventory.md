@@ -153,11 +153,16 @@ variable "schedule" {
 
 ```terraform
 resource "aws_s3_bucket_inventory" "this" {
-  bucket                   = var.bucket
-  enabled                  = var.enabled
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # included_object_versions - (required) is a type of string
   included_object_versions = var.included_object_versions
-  name                     = var.name
-  optional_fields          = var.optional_fields
+  # name - (required) is a type of string
+  name = var.name
+  # optional_fields - (optional) is a type of set of string
+  optional_fields = var.optional_fields
 
   dynamic "destination" {
     for_each = var.destination
@@ -166,10 +171,14 @@ resource "aws_s3_bucket_inventory" "this" {
       dynamic "bucket" {
         for_each = destination.value.bucket
         content {
+          # account_id - (optional) is a type of string
           account_id = bucket.value["account_id"]
+          # bucket_arn - (required) is a type of string
           bucket_arn = bucket.value["bucket_arn"]
-          format     = bucket.value["format"]
-          prefix     = bucket.value["prefix"]
+          # format - (required) is a type of string
+          format = bucket.value["format"]
+          # prefix - (optional) is a type of string
+          prefix = bucket.value["prefix"]
 
           dynamic "encryption" {
             for_each = bucket.value.encryption
@@ -178,6 +187,7 @@ resource "aws_s3_bucket_inventory" "this" {
               dynamic "sse_kms" {
                 for_each = encryption.value.sse_kms
                 content {
+                  # key_id - (required) is a type of string
                   key_id = sse_kms.value["key_id"]
                 }
               }
@@ -200,6 +210,7 @@ resource "aws_s3_bucket_inventory" "this" {
   dynamic "filter" {
     for_each = var.filter
     content {
+      # prefix - (optional) is a type of string
       prefix = filter.value["prefix"]
     }
   }
@@ -207,6 +218,7 @@ resource "aws_s3_bucket_inventory" "this" {
   dynamic "schedule" {
     for_each = var.schedule
     content {
+      # frequency - (required) is a type of string
       frequency = schedule.value["frequency"]
     }
   }

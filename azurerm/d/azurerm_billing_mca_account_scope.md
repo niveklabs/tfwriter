@@ -77,13 +77,17 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_billing_mca_account_scope" "this" {
+  # billing_account_name - (required) is a type of string
   billing_account_name = var.billing_account_name
+  # billing_profile_name - (required) is a type of string
   billing_profile_name = var.billing_profile_name
+  # invoice_section_name - (required) is a type of string
   invoice_section_name = var.invoice_section_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

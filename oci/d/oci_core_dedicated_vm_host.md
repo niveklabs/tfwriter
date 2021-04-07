@@ -49,6 +49,7 @@ variable "dedicated_vm_host_id" {
 
 ```terraform
 data "oci_core_dedicated_vm_host" "this" {
+  # dedicated_vm_host_id - (required) is a type of string
   dedicated_vm_host_id = var.dedicated_vm_host_id
 }
 ```

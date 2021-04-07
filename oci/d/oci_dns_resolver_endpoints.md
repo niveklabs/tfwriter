@@ -90,16 +90,23 @@ variable "filter" {
 
 ```terraform
 data "oci_dns_resolver_endpoints" "this" {
-  name        = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # resolver_id - (required) is a type of string
   resolver_id = var.resolver_id
-  scope       = var.scope
-  state       = var.state
+  # scope - (required) is a type of string
+  scope = var.scope
+  # state - (optional) is a type of string
+  state = var.state
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

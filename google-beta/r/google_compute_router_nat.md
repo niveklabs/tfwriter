@@ -202,25 +202,41 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_router_nat" "this" {
-  drain_nat_ips                       = var.drain_nat_ips
+  # drain_nat_ips - (optional) is a type of set of string
+  drain_nat_ips = var.drain_nat_ips
+  # enable_endpoint_independent_mapping - (optional) is a type of bool
   enable_endpoint_independent_mapping = var.enable_endpoint_independent_mapping
-  icmp_idle_timeout_sec               = var.icmp_idle_timeout_sec
-  min_ports_per_vm                    = var.min_ports_per_vm
-  name                                = var.name
-  nat_ip_allocate_option              = var.nat_ip_allocate_option
-  nat_ips                             = var.nat_ips
-  project                             = var.project
-  region                              = var.region
-  router                              = var.router
-  source_subnetwork_ip_ranges_to_nat  = var.source_subnetwork_ip_ranges_to_nat
-  tcp_established_idle_timeout_sec    = var.tcp_established_idle_timeout_sec
-  tcp_transitory_idle_timeout_sec     = var.tcp_transitory_idle_timeout_sec
-  udp_idle_timeout_sec                = var.udp_idle_timeout_sec
+  # icmp_idle_timeout_sec - (optional) is a type of number
+  icmp_idle_timeout_sec = var.icmp_idle_timeout_sec
+  # min_ports_per_vm - (optional) is a type of number
+  min_ports_per_vm = var.min_ports_per_vm
+  # name - (required) is a type of string
+  name = var.name
+  # nat_ip_allocate_option - (required) is a type of string
+  nat_ip_allocate_option = var.nat_ip_allocate_option
+  # nat_ips - (optional) is a type of set of string
+  nat_ips = var.nat_ips
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
+  # router - (required) is a type of string
+  router = var.router
+  # source_subnetwork_ip_ranges_to_nat - (required) is a type of string
+  source_subnetwork_ip_ranges_to_nat = var.source_subnetwork_ip_ranges_to_nat
+  # tcp_established_idle_timeout_sec - (optional) is a type of number
+  tcp_established_idle_timeout_sec = var.tcp_established_idle_timeout_sec
+  # tcp_transitory_idle_timeout_sec - (optional) is a type of number
+  tcp_transitory_idle_timeout_sec = var.tcp_transitory_idle_timeout_sec
+  # udp_idle_timeout_sec - (optional) is a type of number
+  udp_idle_timeout_sec = var.udp_idle_timeout_sec
 
   dynamic "log_config" {
     for_each = var.log_config
     content {
+      # enable - (required) is a type of bool
       enable = log_config.value["enable"]
+      # filter - (required) is a type of string
       filter = log_config.value["filter"]
     }
   }
@@ -228,17 +244,23 @@ resource "google_compute_router_nat" "this" {
   dynamic "subnetwork" {
     for_each = var.subnetwork
     content {
-      name                     = subnetwork.value["name"]
+      # name - (required) is a type of string
+      name = subnetwork.value["name"]
+      # secondary_ip_range_names - (optional) is a type of set of string
       secondary_ip_range_names = subnetwork.value["secondary_ip_range_names"]
-      source_ip_ranges_to_nat  = subnetwork.value["source_ip_ranges_to_nat"]
+      # source_ip_ranges_to_nat - (required) is a type of set of string
+      source_ip_ranges_to_nat = subnetwork.value["source_ip_ranges_to_nat"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

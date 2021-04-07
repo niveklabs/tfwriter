@@ -56,8 +56,10 @@ variable "policy_data" {
 
 ```terraform
 resource "google_kms_crypto_key_iam_policy" "this" {
+  # crypto_key_id - (required) is a type of string
   crypto_key_id = var.crypto_key_id
-  policy_data   = var.policy_data
+  # policy_data - (required) is a type of string
+  policy_data = var.policy_data
 }
 ```
 

@@ -124,20 +124,31 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_eip" "this" {
+  # associate_with_private_ip - (optional) is a type of string
   associate_with_private_ip = var.associate_with_private_ip
-  customer_owned_ipv4_pool  = var.customer_owned_ipv4_pool
-  instance                  = var.instance
-  network_border_group      = var.network_border_group
-  network_interface         = var.network_interface
-  public_ipv4_pool          = var.public_ipv4_pool
-  tags                      = var.tags
-  vpc                       = var.vpc
+  # customer_owned_ipv4_pool - (optional) is a type of string
+  customer_owned_ipv4_pool = var.customer_owned_ipv4_pool
+  # instance - (optional) is a type of string
+  instance = var.instance
+  # network_border_group - (optional) is a type of string
+  network_border_group = var.network_border_group
+  # network_interface - (optional) is a type of string
+  network_interface = var.network_interface
+  # public_ipv4_pool - (optional) is a type of string
+  public_ipv4_pool = var.public_ipv4_pool
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc - (optional) is a type of bool
+  vpc = var.vpc
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

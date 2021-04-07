@@ -143,18 +143,27 @@ variable "security_service_policy_data" {
 
 ```terraform
 resource "aws_fms_policy" "this" {
+  # delete_all_policy_resources - (optional) is a type of bool
   delete_all_policy_resources = var.delete_all_policy_resources
-  exclude_resource_tags       = var.exclude_resource_tags
-  name                        = var.name
-  remediation_enabled         = var.remediation_enabled
-  resource_tags               = var.resource_tags
-  resource_type               = var.resource_type
-  resource_type_list          = var.resource_type_list
+  # exclude_resource_tags - (required) is a type of bool
+  exclude_resource_tags = var.exclude_resource_tags
+  # name - (required) is a type of string
+  name = var.name
+  # remediation_enabled - (optional) is a type of bool
+  remediation_enabled = var.remediation_enabled
+  # resource_tags - (optional) is a type of map of string
+  resource_tags = var.resource_tags
+  # resource_type - (optional) is a type of string
+  resource_type = var.resource_type
+  # resource_type_list - (optional) is a type of set of string
+  resource_type_list = var.resource_type_list
 
   dynamic "exclude_map" {
     for_each = var.exclude_map
     content {
+      # account - (optional) is a type of set of string
       account = exclude_map.value["account"]
+      # orgunit - (optional) is a type of set of string
       orgunit = exclude_map.value["orgunit"]
     }
   }
@@ -162,7 +171,9 @@ resource "aws_fms_policy" "this" {
   dynamic "include_map" {
     for_each = var.include_map
     content {
+      # account - (optional) is a type of set of string
       account = include_map.value["account"]
+      # orgunit - (optional) is a type of set of string
       orgunit = include_map.value["orgunit"]
     }
   }
@@ -170,8 +181,10 @@ resource "aws_fms_policy" "this" {
   dynamic "security_service_policy_data" {
     for_each = var.security_service_policy_data
     content {
+      # managed_service_data - (optional) is a type of string
       managed_service_data = security_service_policy_data.value["managed_service_data"]
-      type                 = security_service_policy_data.value["type"]
+      # type - (required) is a type of string
+      type = security_service_policy_data.value["type"]
     }
   }
 

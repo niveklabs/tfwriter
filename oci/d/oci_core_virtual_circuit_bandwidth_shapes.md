@@ -67,13 +67,17 @@ variable "filter" {
 
 ```terraform
 data "oci_core_virtual_circuit_bandwidth_shapes" "this" {
+  # provider_service_id - (required) is a type of string
   provider_service_id = var.provider_service_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

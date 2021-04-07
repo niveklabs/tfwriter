@@ -79,11 +79,16 @@ variable "name" {
 
 ```terraform
 resource "opc_compute_machine_image" "this" {
-  account     = var.account
-  attributes  = var.attributes
+  # account - (required) is a type of string
+  account = var.account
+  # attributes - (optional) is a type of string
+  attributes = var.attributes
+  # description - (optional) is a type of string
   description = var.description
-  file        = var.file
-  name        = var.name
+  # file - (required) is a type of string
+  file = var.file
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

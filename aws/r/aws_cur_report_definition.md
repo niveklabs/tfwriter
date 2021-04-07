@@ -123,17 +123,28 @@ variable "time_unit" {
 
 ```terraform
 resource "aws_cur_report_definition" "this" {
-  additional_artifacts       = var.additional_artifacts
+  # additional_artifacts - (optional) is a type of set of string
+  additional_artifacts = var.additional_artifacts
+  # additional_schema_elements - (required) is a type of set of string
   additional_schema_elements = var.additional_schema_elements
-  compression                = var.compression
-  format                     = var.format
-  refresh_closed_reports     = var.refresh_closed_reports
-  report_name                = var.report_name
-  report_versioning          = var.report_versioning
-  s3_bucket                  = var.s3_bucket
-  s3_prefix                  = var.s3_prefix
-  s3_region                  = var.s3_region
-  time_unit                  = var.time_unit
+  # compression - (required) is a type of string
+  compression = var.compression
+  # format - (required) is a type of string
+  format = var.format
+  # refresh_closed_reports - (optional) is a type of bool
+  refresh_closed_reports = var.refresh_closed_reports
+  # report_name - (required) is a type of string
+  report_name = var.report_name
+  # report_versioning - (optional) is a type of string
+  report_versioning = var.report_versioning
+  # s3_bucket - (required) is a type of string
+  s3_bucket = var.s3_bucket
+  # s3_prefix - (optional) is a type of string
+  s3_prefix = var.s3_prefix
+  # s3_region - (required) is a type of string
+  s3_region = var.s3_region
+  # time_unit - (required) is a type of string
+  time_unit = var.time_unit
 }
 ```
 

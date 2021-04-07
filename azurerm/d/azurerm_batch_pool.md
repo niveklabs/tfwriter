@@ -193,23 +193,31 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_batch_pool" "this" {
-  account_name        = var.account_name
-  name                = var.name
+  # account_name - (required) is a type of string
+  account_name = var.account_name
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
 
   dynamic "certificate" {
     for_each = var.certificate
     content {
-      id             = certificate.value["id"]
+      # id - (required) is a type of string
+      id = certificate.value["id"]
+      # store_location - (required) is a type of string
       store_location = certificate.value["store_location"]
-      store_name     = certificate.value["store_name"]
-      visibility     = certificate.value["visibility"]
+      # store_name - (optional) is a type of string
+      store_name = certificate.value["store_name"]
+      # visibility - (optional) is a type of set of string
+      visibility = certificate.value["visibility"]
     }
   }
 
   dynamic "network_configuration" {
     for_each = var.network_configuration
     content {
+      # subnet_id - (optional) is a type of string
       subnet_id = network_configuration.value["subnet_id"]
 
       dynamic "endpoint_configuration" {
@@ -231,16 +239,21 @@ data "azurerm_batch_pool" "this" {
   dynamic "start_task" {
     for_each = var.start_task
     content {
-      command_line         = start_task.value["command_line"]
-      environment          = start_task.value["environment"]
+      # command_line - (required) is a type of string
+      command_line = start_task.value["command_line"]
+      # environment - (optional) is a type of map of string
+      environment = start_task.value["environment"]
+      # max_task_retry_count - (optional) is a type of number
       max_task_retry_count = start_task.value["max_task_retry_count"]
-      wait_for_success     = start_task.value["wait_for_success"]
+      # wait_for_success - (optional) is a type of bool
+      wait_for_success = start_task.value["wait_for_success"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

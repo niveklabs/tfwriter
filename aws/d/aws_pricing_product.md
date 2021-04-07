@@ -64,12 +64,15 @@ variable "filters" {
 
 ```terraform
 data "aws_pricing_product" "this" {
+  # service_code - (required) is a type of string
   service_code = var.service_code
 
   dynamic "filters" {
     for_each = var.filters
     content {
+      # field - (required) is a type of string
       field = filters.value["field"]
+      # value - (required) is a type of string
       value = filters.value["value"]
     }
   }

@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "opc_compute_vnic" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

@@ -75,14 +75,19 @@ variable "filter" {
 
 ```terraform
 data "oci_core_remote_peering_connections" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  drg_id         = var.drg_id
+  # drg_id - (optional) is a type of string
+  drg_id = var.drg_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

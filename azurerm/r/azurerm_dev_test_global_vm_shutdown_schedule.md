@@ -123,28 +123,41 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_dev_test_global_vm_shutdown_schedule" "this" {
+  # daily_recurrence_time - (required) is a type of string
   daily_recurrence_time = var.daily_recurrence_time
-  enabled               = var.enabled
-  location              = var.location
-  tags                  = var.tags
-  timezone              = var.timezone
-  virtual_machine_id    = var.virtual_machine_id
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # location - (required) is a type of string
+  location = var.location
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # timezone - (required) is a type of string
+  timezone = var.timezone
+  # virtual_machine_id - (required) is a type of string
+  virtual_machine_id = var.virtual_machine_id
 
   dynamic "notification_settings" {
     for_each = var.notification_settings
     content {
-      enabled         = notification_settings.value["enabled"]
+      # enabled - (required) is a type of bool
+      enabled = notification_settings.value["enabled"]
+      # time_in_minutes - (optional) is a type of number
       time_in_minutes = notification_settings.value["time_in_minutes"]
-      webhook_url     = notification_settings.value["webhook_url"]
+      # webhook_url - (optional) is a type of string
+      webhook_url = notification_settings.value["webhook_url"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

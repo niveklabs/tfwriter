@@ -81,16 +81,22 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_synapse_role_assignment" "this" {
-  principal_id         = var.principal_id
-  role_name            = var.role_name
+  # principal_id - (required) is a type of string
+  principal_id = var.principal_id
+  # role_name - (required) is a type of string
+  role_name = var.role_name
+  # synapse_workspace_id - (required) is a type of string
   synapse_workspace_id = var.synapse_workspace_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

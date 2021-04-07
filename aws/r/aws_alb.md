@@ -212,45 +212,69 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_alb" "this" {
-  customer_owned_ipv4_pool         = var.customer_owned_ipv4_pool
-  drop_invalid_header_fields       = var.drop_invalid_header_fields
+  # customer_owned_ipv4_pool - (optional) is a type of string
+  customer_owned_ipv4_pool = var.customer_owned_ipv4_pool
+  # drop_invalid_header_fields - (optional) is a type of bool
+  drop_invalid_header_fields = var.drop_invalid_header_fields
+  # enable_cross_zone_load_balancing - (optional) is a type of bool
   enable_cross_zone_load_balancing = var.enable_cross_zone_load_balancing
-  enable_deletion_protection       = var.enable_deletion_protection
-  enable_http2                     = var.enable_http2
-  idle_timeout                     = var.idle_timeout
-  internal                         = var.internal
-  ip_address_type                  = var.ip_address_type
-  load_balancer_type               = var.load_balancer_type
-  name                             = var.name
-  name_prefix                      = var.name_prefix
-  security_groups                  = var.security_groups
-  subnets                          = var.subnets
-  tags                             = var.tags
+  # enable_deletion_protection - (optional) is a type of bool
+  enable_deletion_protection = var.enable_deletion_protection
+  # enable_http2 - (optional) is a type of bool
+  enable_http2 = var.enable_http2
+  # idle_timeout - (optional) is a type of number
+  idle_timeout = var.idle_timeout
+  # internal - (optional) is a type of bool
+  internal = var.internal
+  # ip_address_type - (optional) is a type of string
+  ip_address_type = var.ip_address_type
+  # load_balancer_type - (optional) is a type of string
+  load_balancer_type = var.load_balancer_type
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # security_groups - (optional) is a type of set of string
+  security_groups = var.security_groups
+  # subnets - (optional) is a type of set of string
+  subnets = var.subnets
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "access_logs" {
     for_each = var.access_logs
     content {
-      bucket  = access_logs.value["bucket"]
+      # bucket - (required) is a type of string
+      bucket = access_logs.value["bucket"]
+      # enabled - (optional) is a type of bool
       enabled = access_logs.value["enabled"]
-      prefix  = access_logs.value["prefix"]
+      # prefix - (optional) is a type of string
+      prefix = access_logs.value["prefix"]
     }
   }
 
   dynamic "subnet_mapping" {
     for_each = var.subnet_mapping
     content {
-      allocation_id        = subnet_mapping.value["allocation_id"]
-      ipv6_address         = subnet_mapping.value["ipv6_address"]
+      # allocation_id - (optional) is a type of string
+      allocation_id = subnet_mapping.value["allocation_id"]
+      # ipv6_address - (optional) is a type of string
+      ipv6_address = subnet_mapping.value["ipv6_address"]
+      # private_ipv4_address - (optional) is a type of string
       private_ipv4_address = subnet_mapping.value["private_ipv4_address"]
-      subnet_id            = subnet_mapping.value["subnet_id"]
+      # subnet_id - (required) is a type of string
+      subnet_id = subnet_mapping.value["subnet_id"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

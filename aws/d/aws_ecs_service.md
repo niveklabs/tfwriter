@@ -56,7 +56,9 @@ variable "service_name" {
 
 ```terraform
 data "aws_ecs_service" "this" {
-  cluster_arn  = var.cluster_arn
+  # cluster_arn - (required) is a type of string
+  cluster_arn = var.cluster_arn
+  # service_name - (required) is a type of string
   service_name = var.service_name
 }
 ```

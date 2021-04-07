@@ -100,19 +100,28 @@ variable "setting" {
 
 ```terraform
 resource "aws_elastic_beanstalk_configuration_template" "this" {
-  application         = var.application
-  description         = var.description
-  environment_id      = var.environment_id
-  name                = var.name
+  # application - (required) is a type of string
+  application = var.application
+  # description - (optional) is a type of string
+  description = var.description
+  # environment_id - (optional) is a type of string
+  environment_id = var.environment_id
+  # name - (required) is a type of string
+  name = var.name
+  # solution_stack_name - (optional) is a type of string
   solution_stack_name = var.solution_stack_name
 
   dynamic "setting" {
     for_each = var.setting
     content {
-      name      = setting.value["name"]
+      # name - (required) is a type of string
+      name = setting.value["name"]
+      # namespace - (required) is a type of string
       namespace = setting.value["namespace"]
-      resource  = setting.value["resource"]
-      value     = setting.value["value"]
+      # resource - (optional) is a type of string
+      resource = setting.value["resource"]
+      # value - (required) is a type of string
+      value = setting.value["value"]
     }
   }
 

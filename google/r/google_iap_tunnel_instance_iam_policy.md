@@ -72,10 +72,14 @@ variable "zone" {
 
 ```terraform
 resource "google_iap_tunnel_instance_iam_policy" "this" {
-  instance    = var.instance
+  # instance - (required) is a type of string
+  instance = var.instance
+  # policy_data - (required) is a type of string
   policy_data = var.policy_data
-  project     = var.project
-  zone        = var.zone
+  # project - (optional) is a type of string
+  project = var.project
+  # zone - (optional) is a type of string
+  zone = var.zone
 }
 ```
 

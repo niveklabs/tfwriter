@@ -98,23 +98,30 @@ variable "create_table_default_permissions" {
 
 ```terraform
 resource "aws_lakeformation_data_lake_settings" "this" {
-  admins                  = var.admins
-  catalog_id              = var.catalog_id
+  # admins - (optional) is a type of set of string
+  admins = var.admins
+  # catalog_id - (optional) is a type of string
+  catalog_id = var.catalog_id
+  # trusted_resource_owners - (optional) is a type of list of string
   trusted_resource_owners = var.trusted_resource_owners
 
   dynamic "create_database_default_permissions" {
     for_each = var.create_database_default_permissions
     content {
+      # permissions - (optional) is a type of set of string
       permissions = create_database_default_permissions.value["permissions"]
-      principal   = create_database_default_permissions.value["principal"]
+      # principal - (optional) is a type of string
+      principal = create_database_default_permissions.value["principal"]
     }
   }
 
   dynamic "create_table_default_permissions" {
     for_each = var.create_table_default_permissions
     content {
+      # permissions - (optional) is a type of set of string
       permissions = create_table_default_permissions.value["permissions"]
-      principal   = create_table_default_permissions.value["principal"]
+      # principal - (optional) is a type of string
+      principal = create_table_default_permissions.value["principal"]
     }
   }
 

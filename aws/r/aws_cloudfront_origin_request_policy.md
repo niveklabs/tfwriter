@@ -128,18 +128,23 @@ variable "query_strings_config" {
 
 ```terraform
 resource "aws_cloudfront_origin_request_policy" "this" {
+  # comment - (optional) is a type of string
   comment = var.comment
-  etag    = var.etag
-  name    = var.name
+  # etag - (optional) is a type of string
+  etag = var.etag
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "cookies_config" {
     for_each = var.cookies_config
     content {
+      # cookie_behavior - (required) is a type of string
       cookie_behavior = cookies_config.value["cookie_behavior"]
 
       dynamic "cookies" {
         for_each = cookies_config.value.cookies
         content {
+          # items - (optional) is a type of set of string
           items = cookies.value["items"]
         }
       }
@@ -150,11 +155,13 @@ resource "aws_cloudfront_origin_request_policy" "this" {
   dynamic "headers_config" {
     for_each = var.headers_config
     content {
+      # header_behavior - (optional) is a type of string
       header_behavior = headers_config.value["header_behavior"]
 
       dynamic "headers" {
         for_each = headers_config.value.headers
         content {
+          # items - (optional) is a type of set of string
           items = headers.value["items"]
         }
       }
@@ -165,11 +172,13 @@ resource "aws_cloudfront_origin_request_policy" "this" {
   dynamic "query_strings_config" {
     for_each = var.query_strings_config
     content {
+      # query_string_behavior - (required) is a type of string
       query_string_behavior = query_strings_config.value["query_string_behavior"]
 
       dynamic "query_strings" {
         for_each = query_strings_config.value.query_strings
         content {
+          # items - (optional) is a type of set of string
           items = query_strings.value["items"]
         }
       }

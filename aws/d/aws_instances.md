@@ -74,13 +74,17 @@ variable "filter" {
 
 ```terraform
 data "aws_instances" "this" {
+  # instance_state_names - (optional) is a type of set of string
   instance_state_names = var.instance_state_names
-  instance_tags        = var.instance_tags
+  # instance_tags - (optional) is a type of map of string
+  instance_tags = var.instance_tags
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

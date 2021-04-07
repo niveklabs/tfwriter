@@ -125,11 +125,16 @@ variable "vpc_id" {
 
 ```terraform
 resource "aws_network_acl" "this" {
-  egress     = var.egress
-  ingress    = var.ingress
+  # egress - (optional) is a type of set of object
+  egress = var.egress
+  # ingress - (optional) is a type of set of object
+  ingress = var.ingress
+  # subnet_ids - (optional) is a type of set of string
   subnet_ids = var.subnet_ids
-  tags       = var.tags
-  vpc_id     = var.vpc_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

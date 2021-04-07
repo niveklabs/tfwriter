@@ -120,16 +120,26 @@ variable "wait_for_guest" {
 
 ```terraform
 resource "vsphere_vapp_entity" "this" {
-  container_id      = var.container_id
+  # container_id - (required) is a type of string
+  container_id = var.container_id
+  # custom_attributes - (optional) is a type of map of string
   custom_attributes = var.custom_attributes
-  start_action      = var.start_action
-  start_delay       = var.start_delay
-  start_order       = var.start_order
-  stop_action       = var.stop_action
-  stop_delay        = var.stop_delay
-  tags              = var.tags
-  target_id         = var.target_id
-  wait_for_guest    = var.wait_for_guest
+  # start_action - (optional) is a type of string
+  start_action = var.start_action
+  # start_delay - (optional) is a type of number
+  start_delay = var.start_delay
+  # start_order - (optional) is a type of number
+  start_order = var.start_order
+  # stop_action - (optional) is a type of string
+  stop_action = var.stop_action
+  # stop_delay - (optional) is a type of number
+  stop_delay = var.stop_delay
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # target_id - (required) is a type of string
+  target_id = var.target_id
+  # wait_for_guest - (optional) is a type of bool
+  wait_for_guest = var.wait_for_guest
 }
 ```
 

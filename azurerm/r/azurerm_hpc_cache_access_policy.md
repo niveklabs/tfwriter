@@ -103,29 +103,43 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_hpc_cache_access_policy" "this" {
+  # hpc_cache_id - (required) is a type of string
   hpc_cache_id = var.hpc_cache_id
-  name         = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "access_rule" {
     for_each = var.access_rule
     content {
-      access                  = access_rule.value["access"]
-      anonymous_gid           = access_rule.value["anonymous_gid"]
-      anonymous_uid           = access_rule.value["anonymous_uid"]
-      filter                  = access_rule.value["filter"]
-      root_squash_enabled     = access_rule.value["root_squash_enabled"]
-      scope                   = access_rule.value["scope"]
+      # access - (required) is a type of string
+      access = access_rule.value["access"]
+      # anonymous_gid - (optional) is a type of number
+      anonymous_gid = access_rule.value["anonymous_gid"]
+      # anonymous_uid - (optional) is a type of number
+      anonymous_uid = access_rule.value["anonymous_uid"]
+      # filter - (optional) is a type of string
+      filter = access_rule.value["filter"]
+      # root_squash_enabled - (optional) is a type of bool
+      root_squash_enabled = access_rule.value["root_squash_enabled"]
+      # scope - (required) is a type of string
+      scope = access_rule.value["scope"]
+      # submount_access_enabled - (optional) is a type of bool
       submount_access_enabled = access_rule.value["submount_access_enabled"]
-      suid_enabled            = access_rule.value["suid_enabled"]
+      # suid_enabled - (optional) is a type of bool
+      suid_enabled = access_rule.value["suid_enabled"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

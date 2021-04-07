@@ -75,15 +75,20 @@ variable "timeouts" {
 
 ```terraform
 resource "google_project_service_identity" "this" {
+  # project - (optional) is a type of string
   project = var.project
+  # service - (required) is a type of string
   service = var.service
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

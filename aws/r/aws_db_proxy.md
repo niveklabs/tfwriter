@@ -147,31 +147,47 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_db_proxy" "this" {
-  debug_logging          = var.debug_logging
-  engine_family          = var.engine_family
-  idle_client_timeout    = var.idle_client_timeout
-  name                   = var.name
-  require_tls            = var.require_tls
-  role_arn               = var.role_arn
-  tags                   = var.tags
+  # debug_logging - (optional) is a type of bool
+  debug_logging = var.debug_logging
+  # engine_family - (required) is a type of string
+  engine_family = var.engine_family
+  # idle_client_timeout - (optional) is a type of number
+  idle_client_timeout = var.idle_client_timeout
+  # name - (required) is a type of string
+  name = var.name
+  # require_tls - (optional) is a type of bool
+  require_tls = var.require_tls
+  # role_arn - (required) is a type of string
+  role_arn = var.role_arn
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_security_group_ids - (optional) is a type of set of string
   vpc_security_group_ids = var.vpc_security_group_ids
-  vpc_subnet_ids         = var.vpc_subnet_ids
+  # vpc_subnet_ids - (required) is a type of set of string
+  vpc_subnet_ids = var.vpc_subnet_ids
 
   dynamic "auth" {
     for_each = var.auth
     content {
+      # auth_scheme - (optional) is a type of string
       auth_scheme = auth.value["auth_scheme"]
+      # description - (optional) is a type of string
       description = auth.value["description"]
-      iam_auth    = auth.value["iam_auth"]
-      secret_arn  = auth.value["secret_arn"]
+      # iam_auth - (optional) is a type of string
+      iam_auth = auth.value["iam_auth"]
+      # secret_arn - (optional) is a type of string
+      secret_arn = auth.value["secret_arn"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

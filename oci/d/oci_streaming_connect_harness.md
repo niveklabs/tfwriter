@@ -49,6 +49,7 @@ variable "connect_harness_id" {
 
 ```terraform
 data "oci_streaming_connect_harness" "this" {
+  # connect_harness_id - (required) is a type of string
   connect_harness_id = var.connect_harness_id
 }
 ```

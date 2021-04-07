@@ -123,17 +123,25 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_batch_account" "this" {
-  location             = var.location
-  name                 = var.name
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # pool_allocation_mode - (optional) is a type of string
   pool_allocation_mode = var.pool_allocation_mode
-  resource_group_name  = var.resource_group_name
-  storage_account_id   = var.storage_account_id
-  tags                 = var.tags
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # storage_account_id - (optional) is a type of string
+  storage_account_id = var.storage_account_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "key_vault_reference" {
     for_each = var.key_vault_reference
     content {
-      id  = key_vault_reference.value["id"]
+      # id - (required) is a type of string
+      id = key_vault_reference.value["id"]
+      # url - (required) is a type of string
       url = key_vault_reference.value["url"]
     }
   }
@@ -141,9 +149,13 @@ resource "azurerm_batch_account" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

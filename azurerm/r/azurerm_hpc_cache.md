@@ -154,14 +154,22 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_hpc_cache" "this" {
-  cache_size_in_gb    = var.cache_size_in_gb
-  location            = var.location
-  mtu                 = var.mtu
-  name                = var.name
+  # cache_size_in_gb - (required) is a type of number
+  cache_size_in_gb = var.cache_size_in_gb
+  # location - (required) is a type of string
+  location = var.location
+  # mtu - (optional) is a type of number
+  mtu = var.mtu
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
+  # root_squash_enabled - (optional) is a type of bool
   root_squash_enabled = var.root_squash_enabled
-  sku_name            = var.sku_name
-  subnet_id           = var.subnet_id
+  # sku_name - (required) is a type of string
+  sku_name = var.sku_name
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
 
   dynamic "default_access_policy" {
     for_each = var.default_access_policy
@@ -170,14 +178,22 @@ resource "azurerm_hpc_cache" "this" {
       dynamic "access_rule" {
         for_each = default_access_policy.value.access_rule
         content {
-          access                  = access_rule.value["access"]
-          anonymous_gid           = access_rule.value["anonymous_gid"]
-          anonymous_uid           = access_rule.value["anonymous_uid"]
-          filter                  = access_rule.value["filter"]
-          root_squash_enabled     = access_rule.value["root_squash_enabled"]
-          scope                   = access_rule.value["scope"]
+          # access - (required) is a type of string
+          access = access_rule.value["access"]
+          # anonymous_gid - (optional) is a type of number
+          anonymous_gid = access_rule.value["anonymous_gid"]
+          # anonymous_uid - (optional) is a type of number
+          anonymous_uid = access_rule.value["anonymous_uid"]
+          # filter - (optional) is a type of string
+          filter = access_rule.value["filter"]
+          # root_squash_enabled - (optional) is a type of bool
+          root_squash_enabled = access_rule.value["root_squash_enabled"]
+          # scope - (required) is a type of string
+          scope = access_rule.value["scope"]
+          # submount_access_enabled - (optional) is a type of bool
           submount_access_enabled = access_rule.value["submount_access_enabled"]
-          suid_enabled            = access_rule.value["suid_enabled"]
+          # suid_enabled - (optional) is a type of bool
+          suid_enabled = access_rule.value["suid_enabled"]
         }
       }
 
@@ -187,9 +203,13 @@ resource "azurerm_hpc_cache" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

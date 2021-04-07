@@ -89,12 +89,18 @@ variable "tags" {
 
 ```terraform
 resource "opc_compute_security_protocol" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  dst_ports   = var.dst_ports
+  # dst_ports - (optional) is a type of list of string
+  dst_ports = var.dst_ports
+  # ip_protocol - (optional) is a type of string
   ip_protocol = var.ip_protocol
-  name        = var.name
-  src_ports   = var.src_ports
-  tags        = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # src_ports - (optional) is a type of list of string
+  src_ports = var.src_ports
+  # tags - (optional) is a type of list of string
+  tags = var.tags
 }
 ```
 

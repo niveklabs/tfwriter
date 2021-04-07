@@ -49,6 +49,7 @@ variable "autonomous_database_backup_id" {
 
 ```terraform
 data "oci_database_autonomous_database_backup" "this" {
+  # autonomous_database_backup_id - (required) is a type of string
   autonomous_database_backup_id = var.autonomous_database_backup_id
 }
 ```

@@ -81,16 +81,22 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_maintenance_assignment_dedicated_host" "this" {
-  dedicated_host_id            = var.dedicated_host_id
-  location                     = var.location
+  # dedicated_host_id - (required) is a type of string
+  dedicated_host_id = var.dedicated_host_id
+  # location - (required) is a type of string
+  location = var.location
+  # maintenance_configuration_id - (required) is a type of string
   maintenance_configuration_id = var.maintenance_configuration_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

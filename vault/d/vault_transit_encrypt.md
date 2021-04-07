@@ -79,11 +79,16 @@ variable "plaintext" {
 
 ```terraform
 data "vault_transit_encrypt" "this" {
-  backend     = var.backend
-  context     = var.context
-  key         = var.key
+  # backend - (required) is a type of string
+  backend = var.backend
+  # context - (optional) is a type of string
+  context = var.context
+  # key - (required) is a type of string
+  key = var.key
+  # key_version - (optional) is a type of number
   key_version = var.key_version
-  plaintext   = var.plaintext
+  # plaintext - (required) is a type of string
+  plaintext = var.plaintext
 }
 ```
 

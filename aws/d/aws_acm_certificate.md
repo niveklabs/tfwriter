@@ -89,12 +89,18 @@ variable "types" {
 
 ```terraform
 data "aws_acm_certificate" "this" {
-  domain      = var.domain
-  key_types   = var.key_types
+  # domain - (required) is a type of string
+  domain = var.domain
+  # key_types - (optional) is a type of set of string
+  key_types = var.key_types
+  # most_recent - (optional) is a type of bool
   most_recent = var.most_recent
-  statuses    = var.statuses
-  tags        = var.tags
-  types       = var.types
+  # statuses - (optional) is a type of list of string
+  statuses = var.statuses
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # types - (optional) is a type of list of string
+  types = var.types
 }
 ```
 

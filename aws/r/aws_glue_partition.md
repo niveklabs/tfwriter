@@ -153,38 +153,57 @@ variable "storage_descriptor" {
 
 ```terraform
 resource "aws_glue_partition" "this" {
-  catalog_id       = var.catalog_id
-  database_name    = var.database_name
-  parameters       = var.parameters
+  # catalog_id - (optional) is a type of string
+  catalog_id = var.catalog_id
+  # database_name - (required) is a type of string
+  database_name = var.database_name
+  # parameters - (optional) is a type of map of string
+  parameters = var.parameters
+  # partition_values - (required) is a type of list of string
   partition_values = var.partition_values
-  table_name       = var.table_name
+  # table_name - (required) is a type of string
+  table_name = var.table_name
 
   dynamic "storage_descriptor" {
     for_each = var.storage_descriptor
     content {
-      bucket_columns            = storage_descriptor.value["bucket_columns"]
-      compressed                = storage_descriptor.value["compressed"]
-      input_format              = storage_descriptor.value["input_format"]
-      location                  = storage_descriptor.value["location"]
-      number_of_buckets         = storage_descriptor.value["number_of_buckets"]
-      output_format             = storage_descriptor.value["output_format"]
-      parameters                = storage_descriptor.value["parameters"]
+      # bucket_columns - (optional) is a type of list of string
+      bucket_columns = storage_descriptor.value["bucket_columns"]
+      # compressed - (optional) is a type of bool
+      compressed = storage_descriptor.value["compressed"]
+      # input_format - (optional) is a type of string
+      input_format = storage_descriptor.value["input_format"]
+      # location - (optional) is a type of string
+      location = storage_descriptor.value["location"]
+      # number_of_buckets - (optional) is a type of number
+      number_of_buckets = storage_descriptor.value["number_of_buckets"]
+      # output_format - (optional) is a type of string
+      output_format = storage_descriptor.value["output_format"]
+      # parameters - (optional) is a type of map of string
+      parameters = storage_descriptor.value["parameters"]
+      # stored_as_sub_directories - (optional) is a type of bool
       stored_as_sub_directories = storage_descriptor.value["stored_as_sub_directories"]
 
       dynamic "columns" {
         for_each = storage_descriptor.value.columns
         content {
+          # comment - (optional) is a type of string
           comment = columns.value["comment"]
-          name    = columns.value["name"]
-          type    = columns.value["type"]
+          # name - (required) is a type of string
+          name = columns.value["name"]
+          # type - (optional) is a type of string
+          type = columns.value["type"]
         }
       }
 
       dynamic "ser_de_info" {
         for_each = storage_descriptor.value.ser_de_info
         content {
-          name                  = ser_de_info.value["name"]
-          parameters            = ser_de_info.value["parameters"]
+          # name - (optional) is a type of string
+          name = ser_de_info.value["name"]
+          # parameters - (optional) is a type of map of string
+          parameters = ser_de_info.value["parameters"]
+          # serialization_library - (optional) is a type of string
           serialization_library = ser_de_info.value["serialization_library"]
         }
       }
@@ -192,16 +211,21 @@ resource "aws_glue_partition" "this" {
       dynamic "skewed_info" {
         for_each = storage_descriptor.value.skewed_info
         content {
-          skewed_column_names               = skewed_info.value["skewed_column_names"]
+          # skewed_column_names - (optional) is a type of list of string
+          skewed_column_names = skewed_info.value["skewed_column_names"]
+          # skewed_column_value_location_maps - (optional) is a type of map of string
           skewed_column_value_location_maps = skewed_info.value["skewed_column_value_location_maps"]
-          skewed_column_values              = skewed_info.value["skewed_column_values"]
+          # skewed_column_values - (optional) is a type of list of string
+          skewed_column_values = skewed_info.value["skewed_column_values"]
         }
       }
 
       dynamic "sort_columns" {
         for_each = storage_descriptor.value.sort_columns
         content {
-          column     = sort_columns.value["column"]
+          # column - (required) is a type of string
+          column = sort_columns.value["column"]
+          # sort_order - (required) is a type of number
           sort_order = sort_columns.value["sort_order"]
         }
       }

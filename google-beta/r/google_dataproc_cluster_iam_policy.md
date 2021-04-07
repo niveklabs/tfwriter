@@ -72,10 +72,14 @@ variable "region" {
 
 ```terraform
 resource "google_dataproc_cluster_iam_policy" "this" {
-  cluster     = var.cluster
+  # cluster - (required) is a type of string
+  cluster = var.cluster
+  # policy_data - (required) is a type of string
   policy_data = var.policy_data
-  project     = var.project
-  region      = var.region
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
 }
 ```
 

@@ -56,7 +56,9 @@ variable "parent_id" {
 
 ```terraform
 resource "aws_organizations_organizational_unit" "this" {
-  name      = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # parent_id - (required) is a type of string
   parent_id = var.parent_id
 }
 ```

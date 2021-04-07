@@ -140,26 +140,37 @@ variable "vm_image" {
 
 ```terraform
 resource "google_notebooks_environment" "this" {
-  description         = var.description
-  display_name        = var.display_name
-  location            = var.location
-  name                = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # post_startup_script - (optional) is a type of string
   post_startup_script = var.post_startup_script
-  project             = var.project
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "container_image" {
     for_each = var.container_image
     content {
+      # repository - (required) is a type of string
       repository = container_image.value["repository"]
-      tag        = container_image.value["tag"]
+      # tag - (optional) is a type of string
+      tag = container_image.value["tag"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -167,9 +178,12 @@ resource "google_notebooks_environment" "this" {
   dynamic "vm_image" {
     for_each = var.vm_image
     content {
+      # image_family - (optional) is a type of string
       image_family = vm_image.value["image_family"]
-      image_name   = vm_image.value["image_name"]
-      project      = vm_image.value["project"]
+      # image_name - (optional) is a type of string
+      image_name = vm_image.value["image_name"]
+      # project - (required) is a type of string
+      project = vm_image.value["project"]
     }
   }
 

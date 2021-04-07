@@ -336,34 +336,53 @@ variable "postgresql" {
 
 ```terraform
 resource "vault_database_secret_backend_connection" "this" {
-  allowed_roles            = var.allowed_roles
-  backend                  = var.backend
-  data                     = var.data
-  name                     = var.name
+  # allowed_roles - (optional) is a type of list of string
+  allowed_roles = var.allowed_roles
+  # backend - (required) is a type of string
+  backend = var.backend
+  # data - (optional) is a type of map of string
+  data = var.data
+  # name - (required) is a type of string
+  name = var.name
+  # root_rotation_statements - (optional) is a type of list of string
   root_rotation_statements = var.root_rotation_statements
-  verify_connection        = var.verify_connection
+  # verify_connection - (optional) is a type of bool
+  verify_connection = var.verify_connection
 
   dynamic "cassandra" {
     for_each = var.cassandra
     content {
-      connect_timeout  = cassandra.value["connect_timeout"]
-      hosts            = cassandra.value["hosts"]
-      insecure_tls     = cassandra.value["insecure_tls"]
-      password         = cassandra.value["password"]
-      pem_bundle       = cassandra.value["pem_bundle"]
-      pem_json         = cassandra.value["pem_json"]
-      port             = cassandra.value["port"]
+      # connect_timeout - (optional) is a type of number
+      connect_timeout = cassandra.value["connect_timeout"]
+      # hosts - (optional) is a type of list of string
+      hosts = cassandra.value["hosts"]
+      # insecure_tls - (optional) is a type of bool
+      insecure_tls = cassandra.value["insecure_tls"]
+      # password - (optional) is a type of string
+      password = cassandra.value["password"]
+      # pem_bundle - (optional) is a type of string
+      pem_bundle = cassandra.value["pem_bundle"]
+      # pem_json - (optional) is a type of string
+      pem_json = cassandra.value["pem_json"]
+      # port - (optional) is a type of number
+      port = cassandra.value["port"]
+      # protocol_version - (optional) is a type of number
       protocol_version = cassandra.value["protocol_version"]
-      tls              = cassandra.value["tls"]
-      username         = cassandra.value["username"]
+      # tls - (optional) is a type of bool
+      tls = cassandra.value["tls"]
+      # username - (optional) is a type of string
+      username = cassandra.value["username"]
     }
   }
 
   dynamic "elasticsearch" {
     for_each = var.elasticsearch
     content {
+      # password - (required) is a type of string
       password = elasticsearch.value["password"]
-      url      = elasticsearch.value["url"]
+      # url - (required) is a type of string
+      url = elasticsearch.value["url"]
+      # username - (required) is a type of string
       username = elasticsearch.value["username"]
     }
   }
@@ -371,99 +390,138 @@ resource "vault_database_secret_backend_connection" "this" {
   dynamic "hana" {
     for_each = var.hana
     content {
-      connection_url          = hana.value["connection_url"]
+      # connection_url - (optional) is a type of string
+      connection_url = hana.value["connection_url"]
+      # max_connection_lifetime - (optional) is a type of number
       max_connection_lifetime = hana.value["max_connection_lifetime"]
-      max_idle_connections    = hana.value["max_idle_connections"]
-      max_open_connections    = hana.value["max_open_connections"]
+      # max_idle_connections - (optional) is a type of number
+      max_idle_connections = hana.value["max_idle_connections"]
+      # max_open_connections - (optional) is a type of number
+      max_open_connections = hana.value["max_open_connections"]
     }
   }
 
   dynamic "mongodb" {
     for_each = var.mongodb
     content {
-      connection_url          = mongodb.value["connection_url"]
+      # connection_url - (optional) is a type of string
+      connection_url = mongodb.value["connection_url"]
+      # max_connection_lifetime - (optional) is a type of number
       max_connection_lifetime = mongodb.value["max_connection_lifetime"]
-      max_idle_connections    = mongodb.value["max_idle_connections"]
-      max_open_connections    = mongodb.value["max_open_connections"]
+      # max_idle_connections - (optional) is a type of number
+      max_idle_connections = mongodb.value["max_idle_connections"]
+      # max_open_connections - (optional) is a type of number
+      max_open_connections = mongodb.value["max_open_connections"]
     }
   }
 
   dynamic "mongodbatlas" {
     for_each = var.mongodbatlas
     content {
+      # private_key - (required) is a type of string
       private_key = mongodbatlas.value["private_key"]
-      project_id  = mongodbatlas.value["project_id"]
-      public_key  = mongodbatlas.value["public_key"]
+      # project_id - (required) is a type of string
+      project_id = mongodbatlas.value["project_id"]
+      # public_key - (required) is a type of string
+      public_key = mongodbatlas.value["public_key"]
     }
   }
 
   dynamic "mssql" {
     for_each = var.mssql
     content {
-      connection_url          = mssql.value["connection_url"]
+      # connection_url - (optional) is a type of string
+      connection_url = mssql.value["connection_url"]
+      # max_connection_lifetime - (optional) is a type of number
       max_connection_lifetime = mssql.value["max_connection_lifetime"]
-      max_idle_connections    = mssql.value["max_idle_connections"]
-      max_open_connections    = mssql.value["max_open_connections"]
+      # max_idle_connections - (optional) is a type of number
+      max_idle_connections = mssql.value["max_idle_connections"]
+      # max_open_connections - (optional) is a type of number
+      max_open_connections = mssql.value["max_open_connections"]
     }
   }
 
   dynamic "mysql" {
     for_each = var.mysql
     content {
-      connection_url          = mysql.value["connection_url"]
+      # connection_url - (optional) is a type of string
+      connection_url = mysql.value["connection_url"]
+      # max_connection_lifetime - (optional) is a type of number
       max_connection_lifetime = mysql.value["max_connection_lifetime"]
-      max_idle_connections    = mysql.value["max_idle_connections"]
-      max_open_connections    = mysql.value["max_open_connections"]
+      # max_idle_connections - (optional) is a type of number
+      max_idle_connections = mysql.value["max_idle_connections"]
+      # max_open_connections - (optional) is a type of number
+      max_open_connections = mysql.value["max_open_connections"]
     }
   }
 
   dynamic "mysql_aurora" {
     for_each = var.mysql_aurora
     content {
-      connection_url          = mysql_aurora.value["connection_url"]
+      # connection_url - (optional) is a type of string
+      connection_url = mysql_aurora.value["connection_url"]
+      # max_connection_lifetime - (optional) is a type of number
       max_connection_lifetime = mysql_aurora.value["max_connection_lifetime"]
-      max_idle_connections    = mysql_aurora.value["max_idle_connections"]
-      max_open_connections    = mysql_aurora.value["max_open_connections"]
+      # max_idle_connections - (optional) is a type of number
+      max_idle_connections = mysql_aurora.value["max_idle_connections"]
+      # max_open_connections - (optional) is a type of number
+      max_open_connections = mysql_aurora.value["max_open_connections"]
     }
   }
 
   dynamic "mysql_legacy" {
     for_each = var.mysql_legacy
     content {
-      connection_url          = mysql_legacy.value["connection_url"]
+      # connection_url - (optional) is a type of string
+      connection_url = mysql_legacy.value["connection_url"]
+      # max_connection_lifetime - (optional) is a type of number
       max_connection_lifetime = mysql_legacy.value["max_connection_lifetime"]
-      max_idle_connections    = mysql_legacy.value["max_idle_connections"]
-      max_open_connections    = mysql_legacy.value["max_open_connections"]
+      # max_idle_connections - (optional) is a type of number
+      max_idle_connections = mysql_legacy.value["max_idle_connections"]
+      # max_open_connections - (optional) is a type of number
+      max_open_connections = mysql_legacy.value["max_open_connections"]
     }
   }
 
   dynamic "mysql_rds" {
     for_each = var.mysql_rds
     content {
-      connection_url          = mysql_rds.value["connection_url"]
+      # connection_url - (optional) is a type of string
+      connection_url = mysql_rds.value["connection_url"]
+      # max_connection_lifetime - (optional) is a type of number
       max_connection_lifetime = mysql_rds.value["max_connection_lifetime"]
-      max_idle_connections    = mysql_rds.value["max_idle_connections"]
-      max_open_connections    = mysql_rds.value["max_open_connections"]
+      # max_idle_connections - (optional) is a type of number
+      max_idle_connections = mysql_rds.value["max_idle_connections"]
+      # max_open_connections - (optional) is a type of number
+      max_open_connections = mysql_rds.value["max_open_connections"]
     }
   }
 
   dynamic "oracle" {
     for_each = var.oracle
     content {
-      connection_url          = oracle.value["connection_url"]
+      # connection_url - (optional) is a type of string
+      connection_url = oracle.value["connection_url"]
+      # max_connection_lifetime - (optional) is a type of number
       max_connection_lifetime = oracle.value["max_connection_lifetime"]
-      max_idle_connections    = oracle.value["max_idle_connections"]
-      max_open_connections    = oracle.value["max_open_connections"]
+      # max_idle_connections - (optional) is a type of number
+      max_idle_connections = oracle.value["max_idle_connections"]
+      # max_open_connections - (optional) is a type of number
+      max_open_connections = oracle.value["max_open_connections"]
     }
   }
 
   dynamic "postgresql" {
     for_each = var.postgresql
     content {
-      connection_url          = postgresql.value["connection_url"]
+      # connection_url - (optional) is a type of string
+      connection_url = postgresql.value["connection_url"]
+      # max_connection_lifetime - (optional) is a type of number
       max_connection_lifetime = postgresql.value["max_connection_lifetime"]
-      max_idle_connections    = postgresql.value["max_idle_connections"]
-      max_open_connections    = postgresql.value["max_open_connections"]
+      # max_idle_connections - (optional) is a type of number
+      max_idle_connections = postgresql.value["max_idle_connections"]
+      # max_open_connections - (optional) is a type of number
+      max_open_connections = postgresql.value["max_open_connections"]
     }
   }
 

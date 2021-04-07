@@ -49,6 +49,7 @@ variable "stream_pool_id" {
 
 ```terraform
 data "oci_streaming_stream_pool" "this" {
+  # stream_pool_id - (required) is a type of string
   stream_pool_id = var.stream_pool_id
 }
 ```

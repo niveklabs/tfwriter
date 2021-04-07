@@ -83,15 +83,21 @@ variable "filter" {
 
 ```terraform
 data "oci_core_volume_group_backups" "this" {
-  compartment_id  = var.compartment_id
-  display_name    = var.display_name
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # volume_group_id - (optional) is a type of string
   volume_group_id = var.volume_group_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

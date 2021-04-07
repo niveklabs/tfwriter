@@ -110,15 +110,24 @@ variable "rollback_statements" {
 
 ```terraform
 resource "vault_database_secret_backend_role" "this" {
-  backend               = var.backend
-  creation_statements   = var.creation_statements
-  db_name               = var.db_name
-  default_ttl           = var.default_ttl
-  max_ttl               = var.max_ttl
-  name                  = var.name
-  renew_statements      = var.renew_statements
+  # backend - (required) is a type of string
+  backend = var.backend
+  # creation_statements - (required) is a type of list of string
+  creation_statements = var.creation_statements
+  # db_name - (required) is a type of string
+  db_name = var.db_name
+  # default_ttl - (optional) is a type of number
+  default_ttl = var.default_ttl
+  # max_ttl - (optional) is a type of number
+  max_ttl = var.max_ttl
+  # name - (required) is a type of string
+  name = var.name
+  # renew_statements - (optional) is a type of list of string
+  renew_statements = var.renew_statements
+  # revocation_statements - (optional) is a type of list of string
   revocation_statements = var.revocation_statements
-  rollback_statements   = var.rollback_statements
+  # rollback_statements - (optional) is a type of list of string
+  rollback_statements = var.rollback_statements
 }
 ```
 

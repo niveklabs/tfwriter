@@ -191,36 +191,57 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_ami" "this" {
-  architecture        = var.architecture
-  description         = var.description
-  ena_support         = var.ena_support
-  image_location      = var.image_location
-  kernel_id           = var.kernel_id
-  name                = var.name
-  ramdisk_id          = var.ramdisk_id
-  root_device_name    = var.root_device_name
-  sriov_net_support   = var.sriov_net_support
-  tags                = var.tags
+  # architecture - (optional) is a type of string
+  architecture = var.architecture
+  # description - (optional) is a type of string
+  description = var.description
+  # ena_support - (optional) is a type of bool
+  ena_support = var.ena_support
+  # image_location - (optional) is a type of string
+  image_location = var.image_location
+  # kernel_id - (optional) is a type of string
+  kernel_id = var.kernel_id
+  # name - (required) is a type of string
+  name = var.name
+  # ramdisk_id - (optional) is a type of string
+  ramdisk_id = var.ramdisk_id
+  # root_device_name - (optional) is a type of string
+  root_device_name = var.root_device_name
+  # sriov_net_support - (optional) is a type of string
+  sriov_net_support = var.sriov_net_support
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # virtualization_type - (optional) is a type of string
   virtualization_type = var.virtualization_type
 
   dynamic "ebs_block_device" {
     for_each = var.ebs_block_device
     content {
+      # delete_on_termination - (optional) is a type of bool
       delete_on_termination = ebs_block_device.value["delete_on_termination"]
-      device_name           = ebs_block_device.value["device_name"]
-      encrypted             = ebs_block_device.value["encrypted"]
-      iops                  = ebs_block_device.value["iops"]
-      snapshot_id           = ebs_block_device.value["snapshot_id"]
-      throughput            = ebs_block_device.value["throughput"]
-      volume_size           = ebs_block_device.value["volume_size"]
-      volume_type           = ebs_block_device.value["volume_type"]
+      # device_name - (required) is a type of string
+      device_name = ebs_block_device.value["device_name"]
+      # encrypted - (optional) is a type of bool
+      encrypted = ebs_block_device.value["encrypted"]
+      # iops - (optional) is a type of number
+      iops = ebs_block_device.value["iops"]
+      # snapshot_id - (optional) is a type of string
+      snapshot_id = ebs_block_device.value["snapshot_id"]
+      # throughput - (optional) is a type of number
+      throughput = ebs_block_device.value["throughput"]
+      # volume_size - (optional) is a type of number
+      volume_size = ebs_block_device.value["volume_size"]
+      # volume_type - (optional) is a type of string
+      volume_type = ebs_block_device.value["volume_type"]
     }
   }
 
   dynamic "ephemeral_block_device" {
     for_each = var.ephemeral_block_device
     content {
-      device_name  = ephemeral_block_device.value["device_name"]
+      # device_name - (required) is a type of string
+      device_name = ephemeral_block_device.value["device_name"]
+      # virtual_name - (required) is a type of string
       virtual_name = ephemeral_block_device.value["virtual_name"]
     }
   }
@@ -228,8 +249,11 @@ resource "aws_ami" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

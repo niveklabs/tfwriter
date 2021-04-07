@@ -71,12 +71,15 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_project_default_network_tier" "this" {
+  # network_tier - (required) is a type of string
   network_tier = var.network_tier
-  project      = var.project
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

@@ -161,33 +161,52 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_acmpca_certificate_authority" "this" {
-  enabled                         = var.enabled
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # permanent_deletion_time_in_days - (optional) is a type of number
   permanent_deletion_time_in_days = var.permanent_deletion_time_in_days
-  tags                            = var.tags
-  type                            = var.type
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "certificate_authority_configuration" {
     for_each = var.certificate_authority_configuration
     content {
-      key_algorithm     = certificate_authority_configuration.value["key_algorithm"]
+      # key_algorithm - (required) is a type of string
+      key_algorithm = certificate_authority_configuration.value["key_algorithm"]
+      # signing_algorithm - (required) is a type of string
       signing_algorithm = certificate_authority_configuration.value["signing_algorithm"]
 
       dynamic "subject" {
         for_each = certificate_authority_configuration.value.subject
         content {
-          common_name                  = subject.value["common_name"]
-          country                      = subject.value["country"]
+          # common_name - (optional) is a type of string
+          common_name = subject.value["common_name"]
+          # country - (optional) is a type of string
+          country = subject.value["country"]
+          # distinguished_name_qualifier - (optional) is a type of string
           distinguished_name_qualifier = subject.value["distinguished_name_qualifier"]
-          generation_qualifier         = subject.value["generation_qualifier"]
-          given_name                   = subject.value["given_name"]
-          initials                     = subject.value["initials"]
-          locality                     = subject.value["locality"]
-          organization                 = subject.value["organization"]
-          organizational_unit          = subject.value["organizational_unit"]
-          pseudonym                    = subject.value["pseudonym"]
-          state                        = subject.value["state"]
-          surname                      = subject.value["surname"]
-          title                        = subject.value["title"]
+          # generation_qualifier - (optional) is a type of string
+          generation_qualifier = subject.value["generation_qualifier"]
+          # given_name - (optional) is a type of string
+          given_name = subject.value["given_name"]
+          # initials - (optional) is a type of string
+          initials = subject.value["initials"]
+          # locality - (optional) is a type of string
+          locality = subject.value["locality"]
+          # organization - (optional) is a type of string
+          organization = subject.value["organization"]
+          # organizational_unit - (optional) is a type of string
+          organizational_unit = subject.value["organizational_unit"]
+          # pseudonym - (optional) is a type of string
+          pseudonym = subject.value["pseudonym"]
+          # state - (optional) is a type of string
+          state = subject.value["state"]
+          # surname - (optional) is a type of string
+          surname = subject.value["surname"]
+          # title - (optional) is a type of string
+          title = subject.value["title"]
         }
       }
 
@@ -201,10 +220,14 @@ resource "aws_acmpca_certificate_authority" "this" {
       dynamic "crl_configuration" {
         for_each = revocation_configuration.value.crl_configuration
         content {
-          custom_cname       = crl_configuration.value["custom_cname"]
-          enabled            = crl_configuration.value["enabled"]
+          # custom_cname - (optional) is a type of string
+          custom_cname = crl_configuration.value["custom_cname"]
+          # enabled - (optional) is a type of bool
+          enabled = crl_configuration.value["enabled"]
+          # expiration_in_days - (required) is a type of number
           expiration_in_days = crl_configuration.value["expiration_in_days"]
-          s3_bucket_name     = crl_configuration.value["s3_bucket_name"]
+          # s3_bucket_name - (optional) is a type of string
+          s3_bucket_name = crl_configuration.value["s3_bucket_name"]
         }
       }
 
@@ -214,6 +237,7 @@ resource "aws_acmpca_certificate_authority" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

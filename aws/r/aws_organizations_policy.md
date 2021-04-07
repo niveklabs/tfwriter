@@ -80,11 +80,16 @@ variable "type" {
 
 ```terraform
 resource "aws_organizations_policy" "this" {
-  content     = var.content
+  # content - (required) is a type of string
+  content = var.content
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  tags        = var.tags
-  type        = var.type
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

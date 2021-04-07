@@ -81,11 +81,16 @@ variable "vnic" {
 
 ```terraform
 resource "opc_compute_ip_address_association" "this" {
-  description            = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # ip_address_reservation - (optional) is a type of string
   ip_address_reservation = var.ip_address_reservation
-  name                   = var.name
-  tags                   = var.tags
-  vnic                   = var.vnic
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of list of string
+  tags = var.tags
+  # vnic - (optional) is a type of string
+  vnic = var.vnic
 }
 ```
 

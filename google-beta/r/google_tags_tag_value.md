@@ -82,15 +82,21 @@ variable "timeouts" {
 
 ```terraform
 resource "google_tags_tag_value" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  parent      = var.parent
-  short_name  = var.short_name
+  # parent - (required) is a type of string
+  parent = var.parent
+  # short_name - (required) is a type of string
+  short_name = var.short_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -212,29 +212,49 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_dataflow_application" "this" {
-  archive_uri          = var.archive_uri
-  arguments            = var.arguments
-  class_name           = var.class_name
-  compartment_id       = var.compartment_id
-  configuration        = var.configuration
-  defined_tags         = var.defined_tags
-  description          = var.description
-  display_name         = var.display_name
-  driver_shape         = var.driver_shape
-  executor_shape       = var.executor_shape
-  file_uri             = var.file_uri
-  freeform_tags        = var.freeform_tags
-  language             = var.language
-  logs_bucket_uri      = var.logs_bucket_uri
-  num_executors        = var.num_executors
-  private_endpoint_id  = var.private_endpoint_id
-  spark_version        = var.spark_version
+  # archive_uri - (optional) is a type of string
+  archive_uri = var.archive_uri
+  # arguments - (optional) is a type of list of string
+  arguments = var.arguments
+  # class_name - (optional) is a type of string
+  class_name = var.class_name
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # configuration - (optional) is a type of map of string
+  configuration = var.configuration
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # driver_shape - (required) is a type of string
+  driver_shape = var.driver_shape
+  # executor_shape - (required) is a type of string
+  executor_shape = var.executor_shape
+  # file_uri - (required) is a type of string
+  file_uri = var.file_uri
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # language - (required) is a type of string
+  language = var.language
+  # logs_bucket_uri - (optional) is a type of string
+  logs_bucket_uri = var.logs_bucket_uri
+  # num_executors - (required) is a type of number
+  num_executors = var.num_executors
+  # private_endpoint_id - (optional) is a type of string
+  private_endpoint_id = var.private_endpoint_id
+  # spark_version - (required) is a type of string
+  spark_version = var.spark_version
+  # warehouse_bucket_uri - (optional) is a type of string
   warehouse_bucket_uri = var.warehouse_bucket_uri
 
   dynamic "parameters" {
     for_each = var.parameters
     content {
-      name  = parameters.value["name"]
+      # name - (required) is a type of string
+      name = parameters.value["name"]
+      # value - (required) is a type of string
       value = parameters.value["value"]
     }
   }
@@ -242,8 +262,11 @@ resource "oci_dataflow_application" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

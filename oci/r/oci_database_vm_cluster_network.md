@@ -173,29 +173,43 @@ variable "vm_networks" {
 
 ```terraform
 resource "oci_database_vm_cluster_network" "this" {
-  compartment_id              = var.compartment_id
-  defined_tags                = var.defined_tags
-  display_name                = var.display_name
-  dns                         = var.dns
-  exadata_infrastructure_id   = var.exadata_infrastructure_id
-  freeform_tags               = var.freeform_tags
-  ntp                         = var.ntp
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # dns - (optional) is a type of list of string
+  dns = var.dns
+  # exadata_infrastructure_id - (required) is a type of string
+  exadata_infrastructure_id = var.exadata_infrastructure_id
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # ntp - (optional) is a type of list of string
+  ntp = var.ntp
+  # validate_vm_cluster_network - (optional) is a type of bool
   validate_vm_cluster_network = var.validate_vm_cluster_network
 
   dynamic "scans" {
     for_each = var.scans
     content {
+      # hostname - (required) is a type of string
       hostname = scans.value["hostname"]
-      ips      = scans.value["ips"]
-      port     = scans.value["port"]
+      # ips - (required) is a type of list of string
+      ips = scans.value["ips"]
+      # port - (required) is a type of number
+      port = scans.value["port"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -203,18 +217,27 @@ resource "oci_database_vm_cluster_network" "this" {
   dynamic "vm_networks" {
     for_each = var.vm_networks
     content {
-      domain_name  = vm_networks.value["domain_name"]
-      gateway      = vm_networks.value["gateway"]
-      netmask      = vm_networks.value["netmask"]
+      # domain_name - (required) is a type of string
+      domain_name = vm_networks.value["domain_name"]
+      # gateway - (required) is a type of string
+      gateway = vm_networks.value["gateway"]
+      # netmask - (required) is a type of string
+      netmask = vm_networks.value["netmask"]
+      # network_type - (required) is a type of string
       network_type = vm_networks.value["network_type"]
-      vlan_id      = vm_networks.value["vlan_id"]
+      # vlan_id - (required) is a type of string
+      vlan_id = vm_networks.value["vlan_id"]
 
       dynamic "nodes" {
         for_each = vm_networks.value.nodes
         content {
-          hostname     = nodes.value["hostname"]
-          ip           = nodes.value["ip"]
-          vip          = nodes.value["vip"]
+          # hostname - (required) is a type of string
+          hostname = nodes.value["hostname"]
+          # ip - (required) is a type of string
+          ip = nodes.value["ip"]
+          # vip - (optional) is a type of string
+          vip = nodes.value["vip"]
+          # vip_hostname - (optional) is a type of string
           vip_hostname = nodes.value["vip_hostname"]
         }
       }

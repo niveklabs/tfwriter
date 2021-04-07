@@ -127,29 +127,43 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_key_vault_certificate_issuer" "this" {
-  account_id    = var.account_id
-  key_vault_id  = var.key_vault_id
-  name          = var.name
-  org_id        = var.org_id
-  password      = var.password
+  # account_id - (optional) is a type of string
+  account_id = var.account_id
+  # key_vault_id - (required) is a type of string
+  key_vault_id = var.key_vault_id
+  # name - (required) is a type of string
+  name = var.name
+  # org_id - (optional) is a type of string
+  org_id = var.org_id
+  # password - (optional) is a type of string
+  password = var.password
+  # provider_name - (required) is a type of string
   provider_name = var.provider_name
 
   dynamic "admin" {
     for_each = var.admin
     content {
+      # email_address - (required) is a type of string
       email_address = admin.value["email_address"]
-      first_name    = admin.value["first_name"]
-      last_name     = admin.value["last_name"]
-      phone         = admin.value["phone"]
+      # first_name - (optional) is a type of string
+      first_name = admin.value["first_name"]
+      # last_name - (optional) is a type of string
+      last_name = admin.value["last_name"]
+      # phone - (optional) is a type of string
+      phone = admin.value["phone"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

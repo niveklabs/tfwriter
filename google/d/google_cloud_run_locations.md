@@ -50,6 +50,7 @@ variable "project" {
 
 ```terraform
 data "google_cloud_run_locations" "this" {
+  # project - (optional) is a type of string
   project = var.project
 }
 ```

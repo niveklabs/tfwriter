@@ -794,135 +794,234 @@ variable "vapp" {
 
 ```terraform
 resource "vsphere_virtual_machine" "this" {
-  alternate_guest_name                    = var.alternate_guest_name
-  annotation                              = var.annotation
-  boot_delay                              = var.boot_delay
-  boot_retry_delay                        = var.boot_retry_delay
-  boot_retry_enabled                      = var.boot_retry_enabled
-  cpu_hot_add_enabled                     = var.cpu_hot_add_enabled
-  cpu_hot_remove_enabled                  = var.cpu_hot_remove_enabled
-  cpu_limit                               = var.cpu_limit
-  cpu_performance_counters_enabled        = var.cpu_performance_counters_enabled
-  cpu_reservation                         = var.cpu_reservation
-  cpu_share_count                         = var.cpu_share_count
-  cpu_share_level                         = var.cpu_share_level
-  custom_attributes                       = var.custom_attributes
-  datacenter_id                           = var.datacenter_id
-  datastore_cluster_id                    = var.datastore_cluster_id
-  datastore_id                            = var.datastore_id
-  efi_secure_boot_enabled                 = var.efi_secure_boot_enabled
-  enable_disk_uuid                        = var.enable_disk_uuid
-  enable_logging                          = var.enable_logging
-  ept_rvi_mode                            = var.ept_rvi_mode
-  extra_config                            = var.extra_config
-  firmware                                = var.firmware
-  folder                                  = var.folder
-  force_power_off                         = var.force_power_off
-  guest_id                                = var.guest_id
-  hardware_version                        = var.hardware_version
-  host_system_id                          = var.host_system_id
-  hv_mode                                 = var.hv_mode
-  ide_controller_count                    = var.ide_controller_count
-  ignored_guest_ips                       = var.ignored_guest_ips
-  latency_sensitivity                     = var.latency_sensitivity
-  memory                                  = var.memory
-  memory_hot_add_enabled                  = var.memory_hot_add_enabled
-  memory_limit                            = var.memory_limit
-  memory_reservation                      = var.memory_reservation
-  memory_share_count                      = var.memory_share_count
-  memory_share_level                      = var.memory_share_level
-  migrate_wait_timeout                    = var.migrate_wait_timeout
-  name                                    = var.name
-  nested_hv_enabled                       = var.nested_hv_enabled
-  num_cores_per_socket                    = var.num_cores_per_socket
-  num_cpus                                = var.num_cpus
-  pci_device_id                           = var.pci_device_id
-  poweron_timeout                         = var.poweron_timeout
-  resource_pool_id                        = var.resource_pool_id
-  run_tools_scripts_after_power_on        = var.run_tools_scripts_after_power_on
-  run_tools_scripts_after_resume          = var.run_tools_scripts_after_resume
-  run_tools_scripts_before_guest_reboot   = var.run_tools_scripts_before_guest_reboot
+  # alternate_guest_name - (optional) is a type of string
+  alternate_guest_name = var.alternate_guest_name
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # boot_delay - (optional) is a type of number
+  boot_delay = var.boot_delay
+  # boot_retry_delay - (optional) is a type of number
+  boot_retry_delay = var.boot_retry_delay
+  # boot_retry_enabled - (optional) is a type of bool
+  boot_retry_enabled = var.boot_retry_enabled
+  # cpu_hot_add_enabled - (optional) is a type of bool
+  cpu_hot_add_enabled = var.cpu_hot_add_enabled
+  # cpu_hot_remove_enabled - (optional) is a type of bool
+  cpu_hot_remove_enabled = var.cpu_hot_remove_enabled
+  # cpu_limit - (optional) is a type of number
+  cpu_limit = var.cpu_limit
+  # cpu_performance_counters_enabled - (optional) is a type of bool
+  cpu_performance_counters_enabled = var.cpu_performance_counters_enabled
+  # cpu_reservation - (optional) is a type of number
+  cpu_reservation = var.cpu_reservation
+  # cpu_share_count - (optional) is a type of number
+  cpu_share_count = var.cpu_share_count
+  # cpu_share_level - (optional) is a type of string
+  cpu_share_level = var.cpu_share_level
+  # custom_attributes - (optional) is a type of map of string
+  custom_attributes = var.custom_attributes
+  # datacenter_id - (optional) is a type of string
+  datacenter_id = var.datacenter_id
+  # datastore_cluster_id - (optional) is a type of string
+  datastore_cluster_id = var.datastore_cluster_id
+  # datastore_id - (optional) is a type of string
+  datastore_id = var.datastore_id
+  # efi_secure_boot_enabled - (optional) is a type of bool
+  efi_secure_boot_enabled = var.efi_secure_boot_enabled
+  # enable_disk_uuid - (optional) is a type of bool
+  enable_disk_uuid = var.enable_disk_uuid
+  # enable_logging - (optional) is a type of bool
+  enable_logging = var.enable_logging
+  # ept_rvi_mode - (optional) is a type of string
+  ept_rvi_mode = var.ept_rvi_mode
+  # extra_config - (optional) is a type of map of string
+  extra_config = var.extra_config
+  # firmware - (optional) is a type of string
+  firmware = var.firmware
+  # folder - (optional) is a type of string
+  folder = var.folder
+  # force_power_off - (optional) is a type of bool
+  force_power_off = var.force_power_off
+  # guest_id - (optional) is a type of string
+  guest_id = var.guest_id
+  # hardware_version - (optional) is a type of number
+  hardware_version = var.hardware_version
+  # host_system_id - (optional) is a type of string
+  host_system_id = var.host_system_id
+  # hv_mode - (optional) is a type of string
+  hv_mode = var.hv_mode
+  # ide_controller_count - (optional) is a type of number
+  ide_controller_count = var.ide_controller_count
+  # ignored_guest_ips - (optional) is a type of list of string
+  ignored_guest_ips = var.ignored_guest_ips
+  # latency_sensitivity - (optional) is a type of string
+  latency_sensitivity = var.latency_sensitivity
+  # memory - (optional) is a type of number
+  memory = var.memory
+  # memory_hot_add_enabled - (optional) is a type of bool
+  memory_hot_add_enabled = var.memory_hot_add_enabled
+  # memory_limit - (optional) is a type of number
+  memory_limit = var.memory_limit
+  # memory_reservation - (optional) is a type of number
+  memory_reservation = var.memory_reservation
+  # memory_share_count - (optional) is a type of number
+  memory_share_count = var.memory_share_count
+  # memory_share_level - (optional) is a type of string
+  memory_share_level = var.memory_share_level
+  # migrate_wait_timeout - (optional) is a type of number
+  migrate_wait_timeout = var.migrate_wait_timeout
+  # name - (required) is a type of string
+  name = var.name
+  # nested_hv_enabled - (optional) is a type of bool
+  nested_hv_enabled = var.nested_hv_enabled
+  # num_cores_per_socket - (optional) is a type of number
+  num_cores_per_socket = var.num_cores_per_socket
+  # num_cpus - (optional) is a type of number
+  num_cpus = var.num_cpus
+  # pci_device_id - (optional) is a type of set of string
+  pci_device_id = var.pci_device_id
+  # poweron_timeout - (optional) is a type of number
+  poweron_timeout = var.poweron_timeout
+  # resource_pool_id - (required) is a type of string
+  resource_pool_id = var.resource_pool_id
+  # run_tools_scripts_after_power_on - (optional) is a type of bool
+  run_tools_scripts_after_power_on = var.run_tools_scripts_after_power_on
+  # run_tools_scripts_after_resume - (optional) is a type of bool
+  run_tools_scripts_after_resume = var.run_tools_scripts_after_resume
+  # run_tools_scripts_before_guest_reboot - (optional) is a type of bool
+  run_tools_scripts_before_guest_reboot = var.run_tools_scripts_before_guest_reboot
+  # run_tools_scripts_before_guest_shutdown - (optional) is a type of bool
   run_tools_scripts_before_guest_shutdown = var.run_tools_scripts_before_guest_shutdown
-  run_tools_scripts_before_guest_standby  = var.run_tools_scripts_before_guest_standby
-  sata_controller_count                   = var.sata_controller_count
-  scsi_bus_sharing                        = var.scsi_bus_sharing
-  scsi_controller_count                   = var.scsi_controller_count
-  scsi_type                               = var.scsi_type
-  shutdown_wait_timeout                   = var.shutdown_wait_timeout
-  storage_policy_id                       = var.storage_policy_id
-  swap_placement_policy                   = var.swap_placement_policy
-  sync_time_with_host                     = var.sync_time_with_host
-  tags                                    = var.tags
-  wait_for_guest_ip_timeout               = var.wait_for_guest_ip_timeout
-  wait_for_guest_net_routable             = var.wait_for_guest_net_routable
-  wait_for_guest_net_timeout              = var.wait_for_guest_net_timeout
+  # run_tools_scripts_before_guest_standby - (optional) is a type of bool
+  run_tools_scripts_before_guest_standby = var.run_tools_scripts_before_guest_standby
+  # sata_controller_count - (optional) is a type of number
+  sata_controller_count = var.sata_controller_count
+  # scsi_bus_sharing - (optional) is a type of string
+  scsi_bus_sharing = var.scsi_bus_sharing
+  # scsi_controller_count - (optional) is a type of number
+  scsi_controller_count = var.scsi_controller_count
+  # scsi_type - (optional) is a type of string
+  scsi_type = var.scsi_type
+  # shutdown_wait_timeout - (optional) is a type of number
+  shutdown_wait_timeout = var.shutdown_wait_timeout
+  # storage_policy_id - (optional) is a type of string
+  storage_policy_id = var.storage_policy_id
+  # swap_placement_policy - (optional) is a type of string
+  swap_placement_policy = var.swap_placement_policy
+  # sync_time_with_host - (optional) is a type of bool
+  sync_time_with_host = var.sync_time_with_host
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # wait_for_guest_ip_timeout - (optional) is a type of number
+  wait_for_guest_ip_timeout = var.wait_for_guest_ip_timeout
+  # wait_for_guest_net_routable - (optional) is a type of bool
+  wait_for_guest_net_routable = var.wait_for_guest_net_routable
+  # wait_for_guest_net_timeout - (optional) is a type of number
+  wait_for_guest_net_timeout = var.wait_for_guest_net_timeout
 
   dynamic "cdrom" {
     for_each = var.cdrom
     content {
+      # client_device - (optional) is a type of bool
       client_device = cdrom.value["client_device"]
-      datastore_id  = cdrom.value["datastore_id"]
-      path          = cdrom.value["path"]
+      # datastore_id - (optional) is a type of string
+      datastore_id = cdrom.value["datastore_id"]
+      # path - (optional) is a type of string
+      path = cdrom.value["path"]
     }
   }
 
   dynamic "clone" {
     for_each = var.clone
     content {
-      linked_clone    = clone.value["linked_clone"]
+      # linked_clone - (optional) is a type of bool
+      linked_clone = clone.value["linked_clone"]
+      # ovf_network_map - (optional) is a type of map of string
       ovf_network_map = clone.value["ovf_network_map"]
+      # ovf_storage_map - (optional) is a type of map of string
       ovf_storage_map = clone.value["ovf_storage_map"]
-      template_uuid   = clone.value["template_uuid"]
-      timeout         = clone.value["timeout"]
+      # template_uuid - (required) is a type of string
+      template_uuid = clone.value["template_uuid"]
+      # timeout - (optional) is a type of number
+      timeout = clone.value["timeout"]
 
       dynamic "customize" {
         for_each = clone.value.customize
         content {
-          dns_server_list      = customize.value["dns_server_list"]
-          dns_suffix_list      = customize.value["dns_suffix_list"]
-          ipv4_gateway         = customize.value["ipv4_gateway"]
-          ipv6_gateway         = customize.value["ipv6_gateway"]
-          timeout              = customize.value["timeout"]
+          # dns_server_list - (optional) is a type of list of string
+          dns_server_list = customize.value["dns_server_list"]
+          # dns_suffix_list - (optional) is a type of list of string
+          dns_suffix_list = customize.value["dns_suffix_list"]
+          # ipv4_gateway - (optional) is a type of string
+          ipv4_gateway = customize.value["ipv4_gateway"]
+          # ipv6_gateway - (optional) is a type of string
+          ipv6_gateway = customize.value["ipv6_gateway"]
+          # timeout - (optional) is a type of number
+          timeout = customize.value["timeout"]
+          # windows_sysprep_text - (optional) is a type of string
           windows_sysprep_text = customize.value["windows_sysprep_text"]
 
           dynamic "linux_options" {
             for_each = customize.value.linux_options
             content {
-              domain       = linux_options.value["domain"]
-              host_name    = linux_options.value["host_name"]
+              # domain - (required) is a type of string
+              domain = linux_options.value["domain"]
+              # host_name - (required) is a type of string
+              host_name = linux_options.value["host_name"]
+              # hw_clock_utc - (optional) is a type of bool
               hw_clock_utc = linux_options.value["hw_clock_utc"]
-              time_zone    = linux_options.value["time_zone"]
+              # time_zone - (optional) is a type of string
+              time_zone = linux_options.value["time_zone"]
             }
           }
 
           dynamic "network_interface" {
             for_each = customize.value.network_interface
             content {
-              dns_domain      = network_interface.value["dns_domain"]
+              # dns_domain - (optional) is a type of string
+              dns_domain = network_interface.value["dns_domain"]
+              # dns_server_list - (optional) is a type of list of string
               dns_server_list = network_interface.value["dns_server_list"]
-              ipv4_address    = network_interface.value["ipv4_address"]
-              ipv4_netmask    = network_interface.value["ipv4_netmask"]
-              ipv6_address    = network_interface.value["ipv6_address"]
-              ipv6_netmask    = network_interface.value["ipv6_netmask"]
+              # ipv4_address - (optional) is a type of string
+              ipv4_address = network_interface.value["ipv4_address"]
+              # ipv4_netmask - (optional) is a type of number
+              ipv4_netmask = network_interface.value["ipv4_netmask"]
+              # ipv6_address - (optional) is a type of string
+              ipv6_address = network_interface.value["ipv6_address"]
+              # ipv6_netmask - (optional) is a type of number
+              ipv6_netmask = network_interface.value["ipv6_netmask"]
             }
           }
 
           dynamic "windows_options" {
             for_each = customize.value.windows_options
             content {
-              admin_password        = windows_options.value["admin_password"]
-              auto_logon            = windows_options.value["auto_logon"]
-              auto_logon_count      = windows_options.value["auto_logon_count"]
-              computer_name         = windows_options.value["computer_name"]
+              # admin_password - (optional) is a type of string
+              admin_password = windows_options.value["admin_password"]
+              # auto_logon - (optional) is a type of bool
+              auto_logon = windows_options.value["auto_logon"]
+              # auto_logon_count - (optional) is a type of number
+              auto_logon_count = windows_options.value["auto_logon_count"]
+              # computer_name - (required) is a type of string
+              computer_name = windows_options.value["computer_name"]
+              # domain_admin_password - (optional) is a type of string
               domain_admin_password = windows_options.value["domain_admin_password"]
-              domain_admin_user     = windows_options.value["domain_admin_user"]
-              full_name             = windows_options.value["full_name"]
-              join_domain           = windows_options.value["join_domain"]
-              organization_name     = windows_options.value["organization_name"]
-              product_key           = windows_options.value["product_key"]
+              # domain_admin_user - (optional) is a type of string
+              domain_admin_user = windows_options.value["domain_admin_user"]
+              # full_name - (optional) is a type of string
+              full_name = windows_options.value["full_name"]
+              # join_domain - (optional) is a type of string
+              join_domain = windows_options.value["join_domain"]
+              # organization_name - (optional) is a type of string
+              organization_name = windows_options.value["organization_name"]
+              # product_key - (optional) is a type of string
+              product_key = windows_options.value["product_key"]
+              # run_once_command_list - (optional) is a type of list of string
               run_once_command_list = windows_options.value["run_once_command_list"]
-              time_zone             = windows_options.value["time_zone"]
-              workgroup             = windows_options.value["workgroup"]
+              # time_zone - (optional) is a type of number
+              time_zone = windows_options.value["time_zone"]
+              # workgroup - (optional) is a type of string
+              workgroup = windows_options.value["workgroup"]
             }
           }
 
@@ -935,60 +1034,97 @@ resource "vsphere_virtual_machine" "this" {
   dynamic "disk" {
     for_each = var.disk
     content {
-      attach            = disk.value["attach"]
-      controller_type   = disk.value["controller_type"]
-      datastore_id      = disk.value["datastore_id"]
-      disk_mode         = disk.value["disk_mode"]
-      disk_sharing      = disk.value["disk_sharing"]
-      eagerly_scrub     = disk.value["eagerly_scrub"]
-      io_limit          = disk.value["io_limit"]
-      io_reservation    = disk.value["io_reservation"]
-      io_share_count    = disk.value["io_share_count"]
-      io_share_level    = disk.value["io_share_level"]
-      keep_on_remove    = disk.value["keep_on_remove"]
-      label             = disk.value["label"]
-      name              = disk.value["name"]
-      path              = disk.value["path"]
-      size              = disk.value["size"]
+      # attach - (optional) is a type of bool
+      attach = disk.value["attach"]
+      # controller_type - (optional) is a type of string
+      controller_type = disk.value["controller_type"]
+      # datastore_id - (optional) is a type of string
+      datastore_id = disk.value["datastore_id"]
+      # disk_mode - (optional) is a type of string
+      disk_mode = disk.value["disk_mode"]
+      # disk_sharing - (optional) is a type of string
+      disk_sharing = disk.value["disk_sharing"]
+      # eagerly_scrub - (optional) is a type of bool
+      eagerly_scrub = disk.value["eagerly_scrub"]
+      # io_limit - (optional) is a type of number
+      io_limit = disk.value["io_limit"]
+      # io_reservation - (optional) is a type of number
+      io_reservation = disk.value["io_reservation"]
+      # io_share_count - (optional) is a type of number
+      io_share_count = disk.value["io_share_count"]
+      # io_share_level - (optional) is a type of string
+      io_share_level = disk.value["io_share_level"]
+      # keep_on_remove - (optional) is a type of bool
+      keep_on_remove = disk.value["keep_on_remove"]
+      # label - (optional) is a type of string
+      label = disk.value["label"]
+      # name - (optional) is a type of string
+      name = disk.value["name"]
+      # path - (optional) is a type of string
+      path = disk.value["path"]
+      # size - (optional) is a type of number
+      size = disk.value["size"]
+      # storage_policy_id - (optional) is a type of string
       storage_policy_id = disk.value["storage_policy_id"]
-      thin_provisioned  = disk.value["thin_provisioned"]
-      unit_number       = disk.value["unit_number"]
-      write_through     = disk.value["write_through"]
+      # thin_provisioned - (optional) is a type of bool
+      thin_provisioned = disk.value["thin_provisioned"]
+      # unit_number - (optional) is a type of number
+      unit_number = disk.value["unit_number"]
+      # write_through - (optional) is a type of bool
+      write_through = disk.value["write_through"]
     }
   }
 
   dynamic "network_interface" {
     for_each = var.network_interface
     content {
-      adapter_type          = network_interface.value["adapter_type"]
-      bandwidth_limit       = network_interface.value["bandwidth_limit"]
+      # adapter_type - (optional) is a type of string
+      adapter_type = network_interface.value["adapter_type"]
+      # bandwidth_limit - (optional) is a type of number
+      bandwidth_limit = network_interface.value["bandwidth_limit"]
+      # bandwidth_reservation - (optional) is a type of number
       bandwidth_reservation = network_interface.value["bandwidth_reservation"]
+      # bandwidth_share_count - (optional) is a type of number
       bandwidth_share_count = network_interface.value["bandwidth_share_count"]
+      # bandwidth_share_level - (optional) is a type of string
       bandwidth_share_level = network_interface.value["bandwidth_share_level"]
-      mac_address           = network_interface.value["mac_address"]
-      network_id            = network_interface.value["network_id"]
-      ovf_mapping           = network_interface.value["ovf_mapping"]
-      use_static_mac        = network_interface.value["use_static_mac"]
+      # mac_address - (optional) is a type of string
+      mac_address = network_interface.value["mac_address"]
+      # network_id - (required) is a type of string
+      network_id = network_interface.value["network_id"]
+      # ovf_mapping - (optional) is a type of string
+      ovf_mapping = network_interface.value["ovf_mapping"]
+      # use_static_mac - (optional) is a type of bool
+      use_static_mac = network_interface.value["use_static_mac"]
     }
   }
 
   dynamic "ovf_deploy" {
     for_each = var.ovf_deploy
     content {
+      # allow_unverified_ssl_cert - (optional) is a type of bool
       allow_unverified_ssl_cert = ovf_deploy.value["allow_unverified_ssl_cert"]
-      deployment_option         = ovf_deploy.value["deployment_option"]
-      disk_provisioning         = ovf_deploy.value["disk_provisioning"]
-      ip_allocation_policy      = ovf_deploy.value["ip_allocation_policy"]
-      ip_protocol               = ovf_deploy.value["ip_protocol"]
-      local_ovf_path            = ovf_deploy.value["local_ovf_path"]
-      ovf_network_map           = ovf_deploy.value["ovf_network_map"]
-      remote_ovf_url            = ovf_deploy.value["remote_ovf_url"]
+      # deployment_option - (optional) is a type of string
+      deployment_option = ovf_deploy.value["deployment_option"]
+      # disk_provisioning - (optional) is a type of string
+      disk_provisioning = ovf_deploy.value["disk_provisioning"]
+      # ip_allocation_policy - (optional) is a type of string
+      ip_allocation_policy = ovf_deploy.value["ip_allocation_policy"]
+      # ip_protocol - (optional) is a type of string
+      ip_protocol = ovf_deploy.value["ip_protocol"]
+      # local_ovf_path - (optional) is a type of string
+      local_ovf_path = ovf_deploy.value["local_ovf_path"]
+      # ovf_network_map - (optional) is a type of map of string
+      ovf_network_map = ovf_deploy.value["ovf_network_map"]
+      # remote_ovf_url - (optional) is a type of string
+      remote_ovf_url = ovf_deploy.value["remote_ovf_url"]
     }
   }
 
   dynamic "vapp" {
     for_each = var.vapp
     content {
+      # properties - (optional) is a type of map of string
       properties = vapp.value["properties"]
     }
   }

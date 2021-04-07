@@ -85,12 +85,18 @@ variable "service_namespace" {
 
 ```terraform
 resource "aws_appautoscaling_target" "this" {
-  max_capacity       = var.max_capacity
-  min_capacity       = var.min_capacity
-  resource_id        = var.resource_id
-  role_arn           = var.role_arn
+  # max_capacity - (required) is a type of number
+  max_capacity = var.max_capacity
+  # min_capacity - (required) is a type of number
+  min_capacity = var.min_capacity
+  # resource_id - (required) is a type of string
+  resource_id = var.resource_id
+  # role_arn - (optional) is a type of string
+  role_arn = var.role_arn
+  # scalable_dimension - (required) is a type of string
   scalable_dimension = var.scalable_dimension
-  service_namespace  = var.service_namespace
+  # service_namespace - (required) is a type of string
+  service_namespace = var.service_namespace
 }
 ```
 

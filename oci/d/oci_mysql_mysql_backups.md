@@ -107,18 +107,27 @@ variable "filter" {
 
 ```terraform
 data "oci_mysql_mysql_backups" "this" {
-  backup_id      = var.backup_id
+  # backup_id - (optional) is a type of string
+  backup_id = var.backup_id
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  creation_type  = var.creation_type
-  db_system_id   = var.db_system_id
-  display_name   = var.display_name
-  state          = var.state
+  # creation_type - (optional) is a type of string
+  creation_type = var.creation_type
+  # db_system_id - (optional) is a type of string
+  db_system_id = var.db_system_id
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # state - (optional) is a type of string
+  state = var.state
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

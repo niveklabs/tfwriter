@@ -98,13 +98,20 @@ variable "token" {
 
 ```terraform
 resource "vault_terraform_cloud_secret_backend" "this" {
-  address                   = var.address
-  backend                   = var.backend
-  base_path                 = var.base_path
+  # address - (optional) is a type of string
+  address = var.address
+  # backend - (optional) is a type of string
+  backend = var.backend
+  # base_path - (optional) is a type of string
+  base_path = var.base_path
+  # default_lease_ttl_seconds - (optional) is a type of number
   default_lease_ttl_seconds = var.default_lease_ttl_seconds
-  description               = var.description
-  max_lease_ttl_seconds     = var.max_lease_ttl_seconds
-  token                     = var.token
+  # description - (optional) is a type of string
+  description = var.description
+  # max_lease_ttl_seconds - (optional) is a type of number
+  max_lease_ttl_seconds = var.max_lease_ttl_seconds
+  # token - (optional) is a type of string
+  token = var.token
 }
 ```
 

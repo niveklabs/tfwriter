@@ -49,6 +49,7 @@ variable "load_balancer_id" {
 
 ```terraform
 data "oci_load_balancer_health" "this" {
+  # load_balancer_id - (required) is a type of string
   load_balancer_id = var.load_balancer_id
 }
 ```

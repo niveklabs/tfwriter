@@ -104,19 +104,29 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_cosmosdb_sql_stored_procedure" "this" {
-  account_name        = var.account_name
-  body                = var.body
-  container_name      = var.container_name
-  database_name       = var.database_name
-  name                = var.name
+  # account_name - (required) is a type of string
+  account_name = var.account_name
+  # body - (required) is a type of string
+  body = var.body
+  # container_name - (required) is a type of string
+  container_name = var.container_name
+  # database_name - (required) is a type of string
+  database_name = var.database_name
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

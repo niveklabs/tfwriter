@@ -189,22 +189,38 @@ variable "tune" {
 
 ```terraform
 resource "vault_github_auth_backend" "this" {
-  base_url                = var.base_url
-  description             = var.description
-  max_ttl                 = var.max_ttl
-  organization            = var.organization
-  path                    = var.path
-  token_bound_cidrs       = var.token_bound_cidrs
-  token_explicit_max_ttl  = var.token_explicit_max_ttl
-  token_max_ttl           = var.token_max_ttl
+  # base_url - (optional) is a type of string
+  base_url = var.base_url
+  # description - (optional) is a type of string
+  description = var.description
+  # max_ttl - (optional) is a type of string
+  max_ttl = var.max_ttl
+  # organization - (required) is a type of string
+  organization = var.organization
+  # path - (optional) is a type of string
+  path = var.path
+  # token_bound_cidrs - (optional) is a type of set of string
+  token_bound_cidrs = var.token_bound_cidrs
+  # token_explicit_max_ttl - (optional) is a type of number
+  token_explicit_max_ttl = var.token_explicit_max_ttl
+  # token_max_ttl - (optional) is a type of number
+  token_max_ttl = var.token_max_ttl
+  # token_no_default_policy - (optional) is a type of bool
   token_no_default_policy = var.token_no_default_policy
-  token_num_uses          = var.token_num_uses
-  token_period            = var.token_period
-  token_policies          = var.token_policies
-  token_ttl               = var.token_ttl
-  token_type              = var.token_type
-  ttl                     = var.ttl
-  tune                    = var.tune
+  # token_num_uses - (optional) is a type of number
+  token_num_uses = var.token_num_uses
+  # token_period - (optional) is a type of number
+  token_period = var.token_period
+  # token_policies - (optional) is a type of set of string
+  token_policies = var.token_policies
+  # token_ttl - (optional) is a type of number
+  token_ttl = var.token_ttl
+  # token_type - (optional) is a type of string
+  token_type = var.token_type
+  # ttl - (optional) is a type of string
+  ttl = var.ttl
+  # tune - (optional) is a type of set of object
+  tune = var.tune
 }
 ```
 

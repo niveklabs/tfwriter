@@ -58,8 +58,10 @@ variable "name" {
 
 ```terraform
 data "google_storage_bucket_object" "this" {
+  # bucket - (optional) is a type of string
   bucket = var.bucket
-  name   = var.name
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

@@ -56,8 +56,10 @@ variable "namespace" {
 
 ```terraform
 data "oci_log_analytics_log_analytics_log_group" "this" {
+  # log_analytics_log_group_id - (required) is a type of string
   log_analytics_log_group_id = var.log_analytics_log_group_id
-  namespace                  = var.namespace
+  # namespace - (required) is a type of string
+  namespace = var.namespace
 }
 ```
 

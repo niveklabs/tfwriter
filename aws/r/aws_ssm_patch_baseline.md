@@ -176,28 +176,43 @@ variable "source" {
 
 ```terraform
 resource "aws_ssm_patch_baseline" "this" {
-  approved_patches                     = var.approved_patches
-  approved_patches_compliance_level    = var.approved_patches_compliance_level
+  # approved_patches - (optional) is a type of set of string
+  approved_patches = var.approved_patches
+  # approved_patches_compliance_level - (optional) is a type of string
+  approved_patches_compliance_level = var.approved_patches_compliance_level
+  # approved_patches_enable_non_security - (optional) is a type of bool
   approved_patches_enable_non_security = var.approved_patches_enable_non_security
-  description                          = var.description
-  name                                 = var.name
-  operating_system                     = var.operating_system
-  rejected_patches                     = var.rejected_patches
-  rejected_patches_action              = var.rejected_patches_action
-  tags                                 = var.tags
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # operating_system - (optional) is a type of string
+  operating_system = var.operating_system
+  # rejected_patches - (optional) is a type of set of string
+  rejected_patches = var.rejected_patches
+  # rejected_patches_action - (optional) is a type of string
+  rejected_patches_action = var.rejected_patches_action
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "approval_rule" {
     for_each = var.approval_rule
     content {
-      approve_after_days  = approval_rule.value["approve_after_days"]
-      approve_until_date  = approval_rule.value["approve_until_date"]
-      compliance_level    = approval_rule.value["compliance_level"]
+      # approve_after_days - (optional) is a type of number
+      approve_after_days = approval_rule.value["approve_after_days"]
+      # approve_until_date - (optional) is a type of string
+      approve_until_date = approval_rule.value["approve_until_date"]
+      # compliance_level - (optional) is a type of string
+      compliance_level = approval_rule.value["compliance_level"]
+      # enable_non_security - (optional) is a type of bool
       enable_non_security = approval_rule.value["enable_non_security"]
 
       dynamic "patch_filter" {
         for_each = approval_rule.value.patch_filter
         content {
-          key    = patch_filter.value["key"]
+          # key - (required) is a type of string
+          key = patch_filter.value["key"]
+          # values - (required) is a type of list of string
           values = patch_filter.value["values"]
         }
       }
@@ -208,7 +223,9 @@ resource "aws_ssm_patch_baseline" "this" {
   dynamic "global_filter" {
     for_each = var.global_filter
     content {
-      key    = global_filter.value["key"]
+      # key - (required) is a type of string
+      key = global_filter.value["key"]
+      # values - (required) is a type of list of string
       values = global_filter.value["values"]
     }
   }
@@ -216,9 +233,12 @@ resource "aws_ssm_patch_baseline" "this" {
   dynamic "source" {
     for_each = var.source
     content {
+      # configuration - (required) is a type of string
       configuration = source.value["configuration"]
-      name          = source.value["name"]
-      products      = source.value["products"]
+      # name - (required) is a type of string
+      name = source.value["name"]
+      # products - (required) is a type of list of string
+      products = source.value["products"]
     }
   }
 

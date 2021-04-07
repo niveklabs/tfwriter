@@ -285,20 +285,31 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_network_connection_monitor" "this" {
-  auto_start                    = var.auto_start
-  interval_in_seconds           = var.interval_in_seconds
-  location                      = var.location
-  name                          = var.name
-  network_watcher_id            = var.network_watcher_id
-  notes                         = var.notes
+  # auto_start - (optional) is a type of bool
+  auto_start = var.auto_start
+  # interval_in_seconds - (optional) is a type of number
+  interval_in_seconds = var.interval_in_seconds
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # network_watcher_id - (required) is a type of string
+  network_watcher_id = var.network_watcher_id
+  # notes - (optional) is a type of string
+  notes = var.notes
+  # output_workspace_resource_ids - (optional) is a type of set of string
   output_workspace_resource_ids = var.output_workspace_resource_ids
-  tags                          = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "destination" {
     for_each = var.destination
     content {
-      address            = destination.value["address"]
-      port               = destination.value["port"]
+      # address - (optional) is a type of string
+      address = destination.value["address"]
+      # port - (optional) is a type of number
+      port = destination.value["port"]
+      # virtual_machine_id - (optional) is a type of string
       virtual_machine_id = destination.value["virtual_machine_id"]
     }
   }
@@ -306,20 +317,26 @@ resource "azurerm_network_connection_monitor" "this" {
   dynamic "endpoint" {
     for_each = var.endpoint
     content {
-      address            = endpoint.value["address"]
-      name               = endpoint.value["name"]
+      # address - (optional) is a type of string
+      address = endpoint.value["address"]
+      # name - (required) is a type of string
+      name = endpoint.value["name"]
+      # virtual_machine_id - (optional) is a type of string
       virtual_machine_id = endpoint.value["virtual_machine_id"]
 
       dynamic "filter" {
         for_each = endpoint.value.filter
         content {
+          # type - (optional) is a type of string
           type = filter.value["type"]
 
           dynamic "item" {
             for_each = filter.value.item
             content {
+              # address - (optional) is a type of string
               address = item.value["address"]
-              type    = item.value["type"]
+              # type - (optional) is a type of string
+              type = item.value["type"]
             }
           }
 
@@ -332,7 +349,9 @@ resource "azurerm_network_connection_monitor" "this" {
   dynamic "source" {
     for_each = var.source
     content {
-      port               = source.value["port"]
+      # port - (optional) is a type of number
+      port = source.value["port"]
+      # virtual_machine_id - (optional) is a type of string
       virtual_machine_id = source.value["virtual_machine_id"]
     }
   }
@@ -340,24 +359,35 @@ resource "azurerm_network_connection_monitor" "this" {
   dynamic "test_configuration" {
     for_each = var.test_configuration
     content {
-      name                      = test_configuration.value["name"]
-      preferred_ip_version      = test_configuration.value["preferred_ip_version"]
-      protocol                  = test_configuration.value["protocol"]
+      # name - (required) is a type of string
+      name = test_configuration.value["name"]
+      # preferred_ip_version - (optional) is a type of string
+      preferred_ip_version = test_configuration.value["preferred_ip_version"]
+      # protocol - (required) is a type of string
+      protocol = test_configuration.value["protocol"]
+      # test_frequency_in_seconds - (optional) is a type of number
       test_frequency_in_seconds = test_configuration.value["test_frequency_in_seconds"]
 
       dynamic "http_configuration" {
         for_each = test_configuration.value.http_configuration
         content {
-          method                   = http_configuration.value["method"]
-          path                     = http_configuration.value["path"]
-          port                     = http_configuration.value["port"]
-          prefer_https             = http_configuration.value["prefer_https"]
+          # method - (optional) is a type of string
+          method = http_configuration.value["method"]
+          # path - (optional) is a type of string
+          path = http_configuration.value["path"]
+          # port - (optional) is a type of number
+          port = http_configuration.value["port"]
+          # prefer_https - (optional) is a type of bool
+          prefer_https = http_configuration.value["prefer_https"]
+          # valid_status_code_ranges - (optional) is a type of set of string
           valid_status_code_ranges = http_configuration.value["valid_status_code_ranges"]
 
           dynamic "request_header" {
             for_each = http_configuration.value.request_header
             content {
-              name  = request_header.value["name"]
+              # name - (required) is a type of string
+              name = request_header.value["name"]
+              # value - (required) is a type of string
               value = request_header.value["value"]
             }
           }
@@ -368,6 +398,7 @@ resource "azurerm_network_connection_monitor" "this" {
       dynamic "icmp_configuration" {
         for_each = test_configuration.value.icmp_configuration
         content {
+          # trace_route_enabled - (optional) is a type of bool
           trace_route_enabled = icmp_configuration.value["trace_route_enabled"]
         }
       }
@@ -375,15 +406,19 @@ resource "azurerm_network_connection_monitor" "this" {
       dynamic "success_threshold" {
         for_each = test_configuration.value.success_threshold
         content {
+          # checks_failed_percent - (optional) is a type of number
           checks_failed_percent = success_threshold.value["checks_failed_percent"]
-          round_trip_time_ms    = success_threshold.value["round_trip_time_ms"]
+          # round_trip_time_ms - (optional) is a type of number
+          round_trip_time_ms = success_threshold.value["round_trip_time_ms"]
         }
       }
 
       dynamic "tcp_configuration" {
         for_each = test_configuration.value.tcp_configuration
         content {
-          port                = tcp_configuration.value["port"]
+          # port - (required) is a type of number
+          port = tcp_configuration.value["port"]
+          # trace_route_enabled - (optional) is a type of bool
           trace_route_enabled = tcp_configuration.value["trace_route_enabled"]
         }
       }
@@ -394,10 +429,15 @@ resource "azurerm_network_connection_monitor" "this" {
   dynamic "test_group" {
     for_each = var.test_group
     content {
-      destination_endpoints    = test_group.value["destination_endpoints"]
-      enabled                  = test_group.value["enabled"]
-      name                     = test_group.value["name"]
-      source_endpoints         = test_group.value["source_endpoints"]
+      # destination_endpoints - (required) is a type of set of string
+      destination_endpoints = test_group.value["destination_endpoints"]
+      # enabled - (optional) is a type of bool
+      enabled = test_group.value["enabled"]
+      # name - (required) is a type of string
+      name = test_group.value["name"]
+      # source_endpoints - (required) is a type of set of string
+      source_endpoints = test_group.value["source_endpoints"]
+      # test_configuration_names - (required) is a type of set of string
       test_configuration_names = test_group.value["test_configuration_names"]
     }
   }
@@ -405,9 +445,13 @@ resource "azurerm_network_connection_monitor" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

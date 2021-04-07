@@ -56,7 +56,9 @@ variable "service_account_id" {
 
 ```terraform
 resource "google_service_account_iam_policy" "this" {
-  policy_data        = var.policy_data
+  # policy_data - (required) is a type of string
+  policy_data = var.policy_data
+  # service_account_id - (required) is a type of string
   service_account_id = var.service_account_id
 }
 ```

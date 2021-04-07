@@ -88,17 +88,24 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_virtual_hub_bgp_connection" "this" {
-  name           = var.name
-  peer_asn       = var.peer_asn
-  peer_ip        = var.peer_ip
+  # name - (required) is a type of string
+  name = var.name
+  # peer_asn - (required) is a type of number
+  peer_asn = var.peer_asn
+  # peer_ip - (required) is a type of string
+  peer_ip = var.peer_ip
+  # virtual_hub_id - (required) is a type of string
   virtual_hub_id = var.virtual_hub_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

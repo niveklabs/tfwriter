@@ -91,16 +91,23 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_console_history" "this" {
-  defined_tags  = var.defined_tags
-  display_name  = var.display_name
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
   freeform_tags = var.freeform_tags
-  instance_id   = var.instance_id
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

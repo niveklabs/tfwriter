@@ -87,12 +87,18 @@ variable "tunneled" {
 
 ```terraform
 resource "ciscoasa_static_route" "this" {
-  gateway   = var.gateway
+  # gateway - (required) is a type of string
+  gateway = var.gateway
+  # interface - (required) is a type of string
   interface = var.interface
-  metric    = var.metric
-  network   = var.network
-  tracked   = var.tracked
-  tunneled  = var.tunneled
+  # metric - (optional) is a type of number
+  metric = var.metric
+  # network - (required) is a type of string
+  network = var.network
+  # tracked - (optional) is a type of bool
+  tracked = var.tracked
+  # tunneled - (optional) is a type of bool
+  tunneled = var.tunneled
 }
 ```
 

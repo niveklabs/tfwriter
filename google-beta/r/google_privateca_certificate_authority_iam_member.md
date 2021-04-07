@@ -81,16 +81,22 @@ variable "condition" {
 
 ```terraform
 resource "google_privateca_certificate_authority_iam_member" "this" {
+  # certificate_authority - (required) is a type of string
   certificate_authority = var.certificate_authority
-  member                = var.member
-  role                  = var.role
+  # member - (required) is a type of string
+  member = var.member
+  # role - (required) is a type of string
+  role = var.role
 
   dynamic "condition" {
     for_each = var.condition
     content {
+      # description - (optional) is a type of string
       description = condition.value["description"]
-      expression  = condition.value["expression"]
-      title       = condition.value["title"]
+      # expression - (required) is a type of string
+      expression = condition.value["expression"]
+      # title - (required) is a type of string
+      title = condition.value["title"]
     }
   }
 

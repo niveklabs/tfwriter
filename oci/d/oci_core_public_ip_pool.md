@@ -49,6 +49,7 @@ variable "public_ip_pool_id" {
 
 ```terraform
 data "oci_core_public_ip_pool" "this" {
+  # public_ip_pool_id - (required) is a type of string
   public_ip_pool_id = var.public_ip_pool_id
 }
 ```

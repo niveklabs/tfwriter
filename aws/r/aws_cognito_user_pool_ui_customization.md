@@ -73,9 +73,13 @@ variable "user_pool_id" {
 
 ```terraform
 resource "aws_cognito_user_pool_ui_customization" "this" {
-  client_id    = var.client_id
-  css          = var.css
-  image_file   = var.image_file
+  # client_id - (optional) is a type of string
+  client_id = var.client_id
+  # css - (optional) is a type of string
+  css = var.css
+  # image_file - (optional) is a type of string
+  image_file = var.image_file
+  # user_pool_id - (required) is a type of string
   user_pool_id = var.user_pool_id
 }
 ```

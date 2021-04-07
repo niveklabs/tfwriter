@@ -72,9 +72,13 @@ variable "tag_template" {
 
 ```terraform
 resource "google_data_catalog_tag_template_iam_policy" "this" {
-  policy_data  = var.policy_data
-  project      = var.project
-  region       = var.region
+  # policy_data - (required) is a type of string
+  policy_data = var.policy_data
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
+  # tag_template - (required) is a type of string
   tag_template = var.tag_template
 }
 ```

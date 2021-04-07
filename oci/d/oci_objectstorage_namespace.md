@@ -50,6 +50,7 @@ variable "compartment_id" {
 
 ```terraform
 data "oci_objectstorage_namespace" "this" {
+  # compartment_id - (optional) is a type of string
   compartment_id = var.compartment_id
 }
 ```

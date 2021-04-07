@@ -124,21 +124,33 @@ variable "ebs_config" {
 
 ```terraform
 resource "aws_emr_instance_group" "this" {
-  autoscaling_policy  = var.autoscaling_policy
-  bid_price           = var.bid_price
-  cluster_id          = var.cluster_id
+  # autoscaling_policy - (optional) is a type of string
+  autoscaling_policy = var.autoscaling_policy
+  # bid_price - (optional) is a type of string
+  bid_price = var.bid_price
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # configurations_json - (optional) is a type of string
   configurations_json = var.configurations_json
-  ebs_optimized       = var.ebs_optimized
-  instance_count      = var.instance_count
-  instance_type       = var.instance_type
-  name                = var.name
+  # ebs_optimized - (optional) is a type of bool
+  ebs_optimized = var.ebs_optimized
+  # instance_count - (optional) is a type of number
+  instance_count = var.instance_count
+  # instance_type - (required) is a type of string
+  instance_type = var.instance_type
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "ebs_config" {
     for_each = var.ebs_config
     content {
-      iops                 = ebs_config.value["iops"]
-      size                 = ebs_config.value["size"]
-      type                 = ebs_config.value["type"]
+      # iops - (optional) is a type of number
+      iops = ebs_config.value["iops"]
+      # size - (required) is a type of number
+      size = ebs_config.value["size"]
+      # type - (required) is a type of string
+      type = ebs_config.value["type"]
+      # volumes_per_instance - (optional) is a type of number
       volumes_per_instance = ebs_config.value["volumes_per_instance"]
     }
   }

@@ -70,15 +70,21 @@ variable "s3_destination" {
 
 ```terraform
 resource "aws_ssm_resource_data_sync" "this" {
+  # name - (required) is a type of string
   name = var.name
 
   dynamic "s3_destination" {
     for_each = var.s3_destination
     content {
+      # bucket_name - (required) is a type of string
       bucket_name = s3_destination.value["bucket_name"]
+      # kms_key_arn - (optional) is a type of string
       kms_key_arn = s3_destination.value["kms_key_arn"]
-      prefix      = s3_destination.value["prefix"]
-      region      = s3_destination.value["region"]
+      # prefix - (optional) is a type of string
+      prefix = s3_destination.value["prefix"]
+      # region - (required) is a type of string
+      region = s3_destination.value["region"]
+      # sync_format - (optional) is a type of string
       sync_format = s3_destination.value["sync_format"]
     }
   }

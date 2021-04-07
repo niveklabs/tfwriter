@@ -49,6 +49,7 @@ variable "network_security_group_id" {
 
 ```terraform
 data "oci_core_network_security_group" "this" {
+  # network_security_group_id - (required) is a type of string
   network_security_group_id = var.network_security_group_id
 }
 ```

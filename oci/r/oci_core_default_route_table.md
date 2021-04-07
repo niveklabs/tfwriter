@@ -113,18 +113,27 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_default_route_table" "this" {
-  defined_tags               = var.defined_tags
-  display_name               = var.display_name
-  freeform_tags              = var.freeform_tags
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # manage_default_resource_id - (required) is a type of string
   manage_default_resource_id = var.manage_default_resource_id
 
   dynamic "route_rules" {
     for_each = var.route_rules
     content {
-      cidr_block        = route_rules.value["cidr_block"]
-      description       = route_rules.value["description"]
-      destination       = route_rules.value["destination"]
-      destination_type  = route_rules.value["destination_type"]
+      # cidr_block - (optional) is a type of string
+      cidr_block = route_rules.value["cidr_block"]
+      # description - (optional) is a type of string
+      description = route_rules.value["description"]
+      # destination - (optional) is a type of string
+      destination = route_rules.value["destination"]
+      # destination_type - (optional) is a type of string
+      destination_type = route_rules.value["destination_type"]
+      # network_entity_id - (required) is a type of string
       network_entity_id = route_rules.value["network_entity_id"]
     }
   }
@@ -132,8 +141,11 @@ resource "oci_core_default_route_table" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -95,12 +95,19 @@ variable "workspace_id" {
 
 ```terraform
 resource "tfe_variable" "this" {
-  category     = var.category
-  description  = var.description
-  hcl          = var.hcl
-  key          = var.key
-  sensitive    = var.sensitive
-  value        = var.value
+  # category - (required) is a type of string
+  category = var.category
+  # description - (optional) is a type of string
+  description = var.description
+  # hcl - (optional) is a type of bool
+  hcl = var.hcl
+  # key - (required) is a type of string
+  key = var.key
+  # sensitive - (optional) is a type of bool
+  sensitive = var.sensitive
+  # value - (optional) is a type of string
+  value = var.value
+  # workspace_id - (required) is a type of string
   workspace_id = var.workspace_id
 }
 ```

@@ -86,12 +86,18 @@ variable "title" {
 
 ```terraform
 resource "google_organization_iam_custom_role" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  org_id      = var.org_id
+  # org_id - (required) is a type of string
+  org_id = var.org_id
+  # permissions - (required) is a type of set of string
   permissions = var.permissions
-  role_id     = var.role_id
-  stage       = var.stage
-  title       = var.title
+  # role_id - (required) is a type of string
+  role_id = var.role_id
+  # stage - (optional) is a type of string
+  stage = var.stage
+  # title - (required) is a type of string
+  title = var.title
 }
 ```
 

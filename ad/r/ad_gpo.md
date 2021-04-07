@@ -73,10 +73,14 @@ variable "status" {
 
 ```terraform
 resource "ad_gpo" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  domain      = var.domain
-  name        = var.name
-  status      = var.status
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # name - (required) is a type of string
+  name = var.name
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

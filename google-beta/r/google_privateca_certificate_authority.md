@@ -222,15 +222,24 @@ variable "timeouts" {
 
 ```terraform
 resource "google_privateca_certificate_authority" "this" {
+  # certificate_authority_id - (required) is a type of string
   certificate_authority_id = var.certificate_authority_id
-  disable_on_delete        = var.disable_on_delete
-  gcs_bucket               = var.gcs_bucket
-  labels                   = var.labels
-  lifetime                 = var.lifetime
-  location                 = var.location
-  project                  = var.project
-  tier                     = var.tier
-  type                     = var.type
+  # disable_on_delete - (optional) is a type of bool
+  disable_on_delete = var.disable_on_delete
+  # gcs_bucket - (optional) is a type of string
+  gcs_bucket = var.gcs_bucket
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # lifetime - (optional) is a type of string
+  lifetime = var.lifetime
+  # location - (required) is a type of string
+  location = var.location
+  # project - (optional) is a type of string
+  project = var.project
+  # tier - (optional) is a type of string
+  tier = var.tier
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "config" {
     for_each = var.config
@@ -239,6 +248,7 @@ resource "google_privateca_certificate_authority" "this" {
       dynamic "reusable_config" {
         for_each = config.value.reusable_config
         content {
+          # reusable_config - (required) is a type of string
           reusable_config = reusable_config.value["reusable_config"]
         }
       }
@@ -246,28 +256,40 @@ resource "google_privateca_certificate_authority" "this" {
       dynamic "subject_config" {
         for_each = config.value.subject_config
         content {
+          # common_name - (required) is a type of string
           common_name = subject_config.value["common_name"]
 
           dynamic "subject" {
             for_each = subject_config.value.subject
             content {
-              country_code        = subject.value["country_code"]
-              locality            = subject.value["locality"]
-              organization        = subject.value["organization"]
+              # country_code - (optional) is a type of string
+              country_code = subject.value["country_code"]
+              # locality - (optional) is a type of string
+              locality = subject.value["locality"]
+              # organization - (required) is a type of string
+              organization = subject.value["organization"]
+              # organizational_unit - (optional) is a type of string
               organizational_unit = subject.value["organizational_unit"]
-              postal_code         = subject.value["postal_code"]
-              province            = subject.value["province"]
-              street_address      = subject.value["street_address"]
+              # postal_code - (optional) is a type of string
+              postal_code = subject.value["postal_code"]
+              # province - (optional) is a type of string
+              province = subject.value["province"]
+              # street_address - (optional) is a type of string
+              street_address = subject.value["street_address"]
             }
           }
 
           dynamic "subject_alt_name" {
             for_each = subject_config.value.subject_alt_name
             content {
-              dns_names       = subject_alt_name.value["dns_names"]
+              # dns_names - (optional) is a type of list of string
+              dns_names = subject_alt_name.value["dns_names"]
+              # email_addresses - (optional) is a type of list of string
               email_addresses = subject_alt_name.value["email_addresses"]
-              ip_addresses    = subject_alt_name.value["ip_addresses"]
-              uris            = subject_alt_name.value["uris"]
+              # ip_addresses - (optional) is a type of list of string
+              ip_addresses = subject_alt_name.value["ip_addresses"]
+              # uris - (optional) is a type of list of string
+              uris = subject_alt_name.value["uris"]
             }
           }
 
@@ -280,7 +302,9 @@ resource "google_privateca_certificate_authority" "this" {
   dynamic "issuing_options" {
     for_each = var.issuing_options
     content {
-      include_ca_cert_url    = issuing_options.value["include_ca_cert_url"]
+      # include_ca_cert_url - (optional) is a type of bool
+      include_ca_cert_url = issuing_options.value["include_ca_cert_url"]
+      # include_crl_access_url - (optional) is a type of bool
       include_crl_access_url = issuing_options.value["include_crl_access_url"]
     }
   }
@@ -288,7 +312,9 @@ resource "google_privateca_certificate_authority" "this" {
   dynamic "key_spec" {
     for_each = var.key_spec
     content {
-      algorithm             = key_spec.value["algorithm"]
+      # algorithm - (optional) is a type of string
+      algorithm = key_spec.value["algorithm"]
+      # cloud_kms_key_version - (optional) is a type of string
       cloud_kms_key_version = key_spec.value["cloud_kms_key_version"]
     }
   }
@@ -296,8 +322,11 @@ resource "google_privateca_certificate_authority" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

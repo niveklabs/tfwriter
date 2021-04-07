@@ -207,31 +207,43 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_autoscaler" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  project     = var.project
-  target      = var.target
-  zone        = var.zone
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # target - (required) is a type of string
+  target = var.target
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "autoscaling_policy" {
     for_each = var.autoscaling_policy
     content {
+      # cooldown_period - (optional) is a type of number
       cooldown_period = autoscaling_policy.value["cooldown_period"]
-      max_replicas    = autoscaling_policy.value["max_replicas"]
-      min_replicas    = autoscaling_policy.value["min_replicas"]
-      mode            = autoscaling_policy.value["mode"]
+      # max_replicas - (required) is a type of number
+      max_replicas = autoscaling_policy.value["max_replicas"]
+      # min_replicas - (required) is a type of number
+      min_replicas = autoscaling_policy.value["min_replicas"]
+      # mode - (optional) is a type of string
+      mode = autoscaling_policy.value["mode"]
 
       dynamic "cpu_utilization" {
         for_each = autoscaling_policy.value.cpu_utilization
         content {
+          # predictive_method - (optional) is a type of string
           predictive_method = cpu_utilization.value["predictive_method"]
-          target            = cpu_utilization.value["target"]
+          # target - (required) is a type of number
+          target = cpu_utilization.value["target"]
         }
       }
 
       dynamic "load_balancing_utilization" {
         for_each = autoscaling_policy.value.load_balancing_utilization
         content {
+          # target - (required) is a type of number
           target = load_balancing_utilization.value["target"]
         }
       }
@@ -239,23 +251,31 @@ resource "google_compute_autoscaler" "this" {
       dynamic "metric" {
         for_each = autoscaling_policy.value.metric
         content {
-          filter                     = metric.value["filter"]
-          name                       = metric.value["name"]
+          # filter - (optional) is a type of string
+          filter = metric.value["filter"]
+          # name - (required) is a type of string
+          name = metric.value["name"]
+          # single_instance_assignment - (optional) is a type of number
           single_instance_assignment = metric.value["single_instance_assignment"]
-          target                     = metric.value["target"]
-          type                       = metric.value["type"]
+          # target - (optional) is a type of number
+          target = metric.value["target"]
+          # type - (optional) is a type of string
+          type = metric.value["type"]
         }
       }
 
       dynamic "scale_down_control" {
         for_each = autoscaling_policy.value.scale_down_control
         content {
+          # time_window_sec - (optional) is a type of number
           time_window_sec = scale_down_control.value["time_window_sec"]
 
           dynamic "max_scaled_down_replicas" {
             for_each = scale_down_control.value.max_scaled_down_replicas
             content {
-              fixed   = max_scaled_down_replicas.value["fixed"]
+              # fixed - (optional) is a type of number
+              fixed = max_scaled_down_replicas.value["fixed"]
+              # percent - (optional) is a type of number
               percent = max_scaled_down_replicas.value["percent"]
             }
           }
@@ -266,12 +286,15 @@ resource "google_compute_autoscaler" "this" {
       dynamic "scale_in_control" {
         for_each = autoscaling_policy.value.scale_in_control
         content {
+          # time_window_sec - (optional) is a type of number
           time_window_sec = scale_in_control.value["time_window_sec"]
 
           dynamic "max_scaled_in_replicas" {
             for_each = scale_in_control.value.max_scaled_in_replicas
             content {
-              fixed   = max_scaled_in_replicas.value["fixed"]
+              # fixed - (optional) is a type of number
+              fixed = max_scaled_in_replicas.value["fixed"]
+              # percent - (optional) is a type of number
               percent = max_scaled_in_replicas.value["percent"]
             }
           }
@@ -282,13 +305,20 @@ resource "google_compute_autoscaler" "this" {
       dynamic "scaling_schedules" {
         for_each = autoscaling_policy.value.scaling_schedules
         content {
-          description           = scaling_schedules.value["description"]
-          disabled              = scaling_schedules.value["disabled"]
-          duration_sec          = scaling_schedules.value["duration_sec"]
+          # description - (optional) is a type of string
+          description = scaling_schedules.value["description"]
+          # disabled - (optional) is a type of bool
+          disabled = scaling_schedules.value["disabled"]
+          # duration_sec - (required) is a type of number
+          duration_sec = scaling_schedules.value["duration_sec"]
+          # min_required_replicas - (required) is a type of number
           min_required_replicas = scaling_schedules.value["min_required_replicas"]
-          name                  = scaling_schedules.value["name"]
-          schedule              = scaling_schedules.value["schedule"]
-          time_zone             = scaling_schedules.value["time_zone"]
+          # name - (required) is a type of string
+          name = scaling_schedules.value["name"]
+          # schedule - (required) is a type of string
+          schedule = scaling_schedules.value["schedule"]
+          # time_zone - (optional) is a type of string
+          time_zone = scaling_schedules.value["time_zone"]
         }
       }
 
@@ -298,8 +328,11 @@ resource "google_compute_autoscaler" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

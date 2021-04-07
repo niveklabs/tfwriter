@@ -49,6 +49,7 @@ variable "category_id" {
 
 ```terraform
 data "oci_optimizer_category" "this" {
+  # category_id - (required) is a type of string
   category_id = var.category_id
 }
 ```

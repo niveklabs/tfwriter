@@ -127,17 +127,28 @@ variable "role_arns" {
 
 ```terraform
 resource "vault_aws_secret_backend_role" "this" {
-  backend         = var.backend
+  # backend - (required) is a type of string
+  backend = var.backend
+  # credential_type - (required) is a type of string
   credential_type = var.credential_type
+  # default_sts_ttl - (optional) is a type of number
   default_sts_ttl = var.default_sts_ttl
-  iam_groups      = var.iam_groups
-  max_sts_ttl     = var.max_sts_ttl
-  name            = var.name
-  policy          = var.policy
-  policy_arn      = var.policy_arn
-  policy_arns     = var.policy_arns
+  # iam_groups - (optional) is a type of set of string
+  iam_groups = var.iam_groups
+  # max_sts_ttl - (optional) is a type of number
+  max_sts_ttl = var.max_sts_ttl
+  # name - (required) is a type of string
+  name = var.name
+  # policy - (optional) is a type of string
+  policy = var.policy
+  # policy_arn - (optional) is a type of string
+  policy_arn = var.policy_arn
+  # policy_arns - (optional) is a type of set of string
+  policy_arns = var.policy_arns
+  # policy_document - (optional) is a type of string
   policy_document = var.policy_document
-  role_arns       = var.role_arns
+  # role_arns - (optional) is a type of set of string
+  role_arns = var.role_arns
 }
 ```
 

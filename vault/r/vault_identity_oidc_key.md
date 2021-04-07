@@ -81,11 +81,16 @@ variable "verification_ttl" {
 
 ```terraform
 resource "vault_identity_oidc_key" "this" {
-  algorithm          = var.algorithm
+  # algorithm - (optional) is a type of string
+  algorithm = var.algorithm
+  # allowed_client_ids - (optional) is a type of set of string
   allowed_client_ids = var.allowed_client_ids
-  name               = var.name
-  rotation_period    = var.rotation_period
-  verification_ttl   = var.verification_ttl
+  # name - (required) is a type of string
+  name = var.name
+  # rotation_period - (optional) is a type of number
+  rotation_period = var.rotation_period
+  # verification_ttl - (optional) is a type of number
+  verification_ttl = var.verification_ttl
 }
 ```
 

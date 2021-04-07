@@ -96,13 +96,20 @@ variable "tags" {
 
 ```terraform
 resource "aws_cloud9_environment_ec2" "this" {
+  # automatic_stop_time_minutes - (optional) is a type of number
   automatic_stop_time_minutes = var.automatic_stop_time_minutes
-  description                 = var.description
-  instance_type               = var.instance_type
-  name                        = var.name
-  owner_arn                   = var.owner_arn
-  subnet_id                   = var.subnet_id
-  tags                        = var.tags
+  # description - (optional) is a type of string
+  description = var.description
+  # instance_type - (required) is a type of string
+  instance_type = var.instance_type
+  # name - (required) is a type of string
+  name = var.name
+  # owner_arn - (optional) is a type of string
+  owner_arn = var.owner_arn
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

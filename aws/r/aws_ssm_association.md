@@ -161,30 +161,45 @@ variable "targets" {
 
 ```terraform
 resource "aws_ssm_association" "this" {
-  apply_only_at_cron_interval      = var.apply_only_at_cron_interval
-  association_name                 = var.association_name
+  # apply_only_at_cron_interval - (optional) is a type of bool
+  apply_only_at_cron_interval = var.apply_only_at_cron_interval
+  # association_name - (optional) is a type of string
+  association_name = var.association_name
+  # automation_target_parameter_name - (optional) is a type of string
   automation_target_parameter_name = var.automation_target_parameter_name
-  compliance_severity              = var.compliance_severity
-  document_version                 = var.document_version
-  instance_id                      = var.instance_id
-  max_concurrency                  = var.max_concurrency
-  max_errors                       = var.max_errors
-  name                             = var.name
-  parameters                       = var.parameters
-  schedule_expression              = var.schedule_expression
+  # compliance_severity - (optional) is a type of string
+  compliance_severity = var.compliance_severity
+  # document_version - (optional) is a type of string
+  document_version = var.document_version
+  # instance_id - (optional) is a type of string
+  instance_id = var.instance_id
+  # max_concurrency - (optional) is a type of string
+  max_concurrency = var.max_concurrency
+  # max_errors - (optional) is a type of string
+  max_errors = var.max_errors
+  # name - (required) is a type of string
+  name = var.name
+  # parameters - (optional) is a type of map of string
+  parameters = var.parameters
+  # schedule_expression - (optional) is a type of string
+  schedule_expression = var.schedule_expression
 
   dynamic "output_location" {
     for_each = var.output_location
     content {
+      # s3_bucket_name - (required) is a type of string
       s3_bucket_name = output_location.value["s3_bucket_name"]
-      s3_key_prefix  = output_location.value["s3_key_prefix"]
+      # s3_key_prefix - (optional) is a type of string
+      s3_key_prefix = output_location.value["s3_key_prefix"]
     }
   }
 
   dynamic "targets" {
     for_each = var.targets
     content {
-      key    = targets.value["key"]
+      # key - (required) is a type of string
+      key = targets.value["key"]
+      # values - (required) is a type of list of string
       values = targets.value["values"]
     }
   }

@@ -215,28 +215,50 @@ variable "ttl" {
 
 ```terraform
 resource "vault_ssh_secret_backend_role" "this" {
-  algorithm_signer         = var.algorithm_signer
-  allow_bare_domains       = var.allow_bare_domains
-  allow_host_certificates  = var.allow_host_certificates
-  allow_subdomains         = var.allow_subdomains
-  allow_user_certificates  = var.allow_user_certificates
-  allow_user_key_ids       = var.allow_user_key_ids
+  # algorithm_signer - (optional) is a type of string
+  algorithm_signer = var.algorithm_signer
+  # allow_bare_domains - (optional) is a type of bool
+  allow_bare_domains = var.allow_bare_domains
+  # allow_host_certificates - (optional) is a type of bool
+  allow_host_certificates = var.allow_host_certificates
+  # allow_subdomains - (optional) is a type of bool
+  allow_subdomains = var.allow_subdomains
+  # allow_user_certificates - (optional) is a type of bool
+  allow_user_certificates = var.allow_user_certificates
+  # allow_user_key_ids - (optional) is a type of bool
+  allow_user_key_ids = var.allow_user_key_ids
+  # allowed_critical_options - (optional) is a type of string
   allowed_critical_options = var.allowed_critical_options
-  allowed_domains          = var.allowed_domains
-  allowed_extensions       = var.allowed_extensions
+  # allowed_domains - (optional) is a type of string
+  allowed_domains = var.allowed_domains
+  # allowed_extensions - (optional) is a type of string
+  allowed_extensions = var.allowed_extensions
+  # allowed_user_key_lengths - (optional) is a type of map of string
   allowed_user_key_lengths = var.allowed_user_key_lengths
-  allowed_users            = var.allowed_users
-  allowed_users_template   = var.allowed_users_template
-  backend                  = var.backend
-  cidr_list                = var.cidr_list
+  # allowed_users - (optional) is a type of string
+  allowed_users = var.allowed_users
+  # allowed_users_template - (optional) is a type of bool
+  allowed_users_template = var.allowed_users_template
+  # backend - (required) is a type of string
+  backend = var.backend
+  # cidr_list - (optional) is a type of string
+  cidr_list = var.cidr_list
+  # default_critical_options - (optional) is a type of map of string
   default_critical_options = var.default_critical_options
-  default_extensions       = var.default_extensions
-  default_user             = var.default_user
-  key_id_format            = var.key_id_format
-  key_type                 = var.key_type
-  max_ttl                  = var.max_ttl
-  name                     = var.name
-  ttl                      = var.ttl
+  # default_extensions - (optional) is a type of map of string
+  default_extensions = var.default_extensions
+  # default_user - (optional) is a type of string
+  default_user = var.default_user
+  # key_id_format - (optional) is a type of string
+  key_id_format = var.key_id_format
+  # key_type - (required) is a type of string
+  key_type = var.key_type
+  # max_ttl - (optional) is a type of string
+  max_ttl = var.max_ttl
+  # name - (required) is a type of string
+  name = var.name
+  # ttl - (optional) is a type of string
+  ttl = var.ttl
 }
 ```
 

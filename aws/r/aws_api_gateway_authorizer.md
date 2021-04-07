@@ -112,15 +112,24 @@ variable "type" {
 
 ```terraform
 resource "aws_api_gateway_authorizer" "this" {
-  authorizer_credentials           = var.authorizer_credentials
+  # authorizer_credentials - (optional) is a type of string
+  authorizer_credentials = var.authorizer_credentials
+  # authorizer_result_ttl_in_seconds - (optional) is a type of number
   authorizer_result_ttl_in_seconds = var.authorizer_result_ttl_in_seconds
-  authorizer_uri                   = var.authorizer_uri
-  identity_source                  = var.identity_source
-  identity_validation_expression   = var.identity_validation_expression
-  name                             = var.name
-  provider_arns                    = var.provider_arns
-  rest_api_id                      = var.rest_api_id
-  type                             = var.type
+  # authorizer_uri - (optional) is a type of string
+  authorizer_uri = var.authorizer_uri
+  # identity_source - (optional) is a type of string
+  identity_source = var.identity_source
+  # identity_validation_expression - (optional) is a type of string
+  identity_validation_expression = var.identity_validation_expression
+  # name - (required) is a type of string
+  name = var.name
+  # provider_arns - (optional) is a type of set of string
+  provider_arns = var.provider_arns
+  # rest_api_id - (required) is a type of string
+  rest_api_id = var.rest_api_id
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

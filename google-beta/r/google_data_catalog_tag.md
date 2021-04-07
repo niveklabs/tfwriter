@@ -110,18 +110,27 @@ variable "timeouts" {
 
 ```terraform
 resource "google_data_catalog_tag" "this" {
-  column   = var.column
-  parent   = var.parent
+  # column - (optional) is a type of string
+  column = var.column
+  # parent - (optional) is a type of string
+  parent = var.parent
+  # template - (required) is a type of string
   template = var.template
 
   dynamic "fields" {
     for_each = var.fields
     content {
-      bool_value      = fields.value["bool_value"]
-      double_value    = fields.value["double_value"]
-      enum_value      = fields.value["enum_value"]
-      field_name      = fields.value["field_name"]
-      string_value    = fields.value["string_value"]
+      # bool_value - (optional) is a type of bool
+      bool_value = fields.value["bool_value"]
+      # double_value - (optional) is a type of number
+      double_value = fields.value["double_value"]
+      # enum_value - (optional) is a type of string
+      enum_value = fields.value["enum_value"]
+      # field_name - (required) is a type of string
+      field_name = fields.value["field_name"]
+      # string_value - (optional) is a type of string
+      string_value = fields.value["string_value"]
+      # timestamp_value - (optional) is a type of string
       timestamp_value = fields.value["timestamp_value"]
     }
   }
@@ -129,8 +138,11 @@ resource "google_data_catalog_tag" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -113,21 +113,28 @@ variable "timeouts" {
 
 ```terraform
 resource "google_container_analysis_occurrence" "this" {
-  note_name    = var.note_name
-  project      = var.project
-  remediation  = var.remediation
+  # note_name - (required) is a type of string
+  note_name = var.note_name
+  # project - (optional) is a type of string
+  project = var.project
+  # remediation - (optional) is a type of string
+  remediation = var.remediation
+  # resource_uri - (required) is a type of string
   resource_uri = var.resource_uri
 
   dynamic "attestation" {
     for_each = var.attestation
     content {
+      # serialized_payload - (required) is a type of string
       serialized_payload = attestation.value["serialized_payload"]
 
       dynamic "signatures" {
         for_each = attestation.value.signatures
         content {
+          # public_key_id - (required) is a type of string
           public_key_id = signatures.value["public_key_id"]
-          signature     = signatures.value["signature"]
+          # signature - (optional) is a type of string
+          signature = signatures.value["signature"]
         }
       }
 
@@ -137,8 +144,11 @@ resource "google_container_analysis_occurrence" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

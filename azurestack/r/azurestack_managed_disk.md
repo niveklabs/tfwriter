@@ -125,17 +125,28 @@ variable "tags" {
 
 ```terraform
 resource "azurestack_managed_disk" "this" {
-  create_option        = var.create_option
-  disk_size_gb         = var.disk_size_gb
-  image_reference_id   = var.image_reference_id
-  location             = var.location
-  name                 = var.name
-  os_type              = var.os_type
-  resource_group_name  = var.resource_group_name
-  source_resource_id   = var.source_resource_id
-  source_uri           = var.source_uri
+  # create_option - (required) is a type of string
+  create_option = var.create_option
+  # disk_size_gb - (optional) is a type of number
+  disk_size_gb = var.disk_size_gb
+  # image_reference_id - (optional) is a type of string
+  image_reference_id = var.image_reference_id
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # os_type - (optional) is a type of string
+  os_type = var.os_type
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # source_resource_id - (optional) is a type of string
+  source_resource_id = var.source_resource_id
+  # source_uri - (optional) is a type of string
+  source_uri = var.source_uri
+  # storage_account_type - (required) is a type of string
   storage_account_type = var.storage_account_type
-  tags                 = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

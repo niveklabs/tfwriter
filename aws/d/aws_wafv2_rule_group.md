@@ -56,7 +56,9 @@ variable "scope" {
 
 ```terraform
 data "aws_wafv2_rule_group" "this" {
-  name  = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # scope - (required) is a type of string
   scope = var.scope
 }
 ```

@@ -92,17 +92,25 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_application_insights_api_key" "this" {
+  # application_insights_id - (required) is a type of string
   application_insights_id = var.application_insights_id
-  name                    = var.name
-  read_permissions        = var.read_permissions
-  write_permissions       = var.write_permissions
+  # name - (required) is a type of string
+  name = var.name
+  # read_permissions - (optional) is a type of set of string
+  read_permissions = var.read_permissions
+  # write_permissions - (optional) is a type of set of string
+  write_permissions = var.write_permissions
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

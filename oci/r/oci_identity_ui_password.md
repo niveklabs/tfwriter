@@ -67,13 +67,17 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_identity_ui_password" "this" {
+  # user_id - (required) is a type of string
   user_id = var.user_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

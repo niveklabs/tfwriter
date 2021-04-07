@@ -108,29 +108,42 @@ resource "kubernetes_api_service" "this" {
   dynamic "metadata" {
     for_each = var.metadata
     content {
-      annotations   = metadata.value["annotations"]
+      # annotations - (optional) is a type of map of string
+      annotations = metadata.value["annotations"]
+      # generate_name - (optional) is a type of string
       generate_name = metadata.value["generate_name"]
-      labels        = metadata.value["labels"]
-      name          = metadata.value["name"]
+      # labels - (optional) is a type of map of string
+      labels = metadata.value["labels"]
+      # name - (optional) is a type of string
+      name = metadata.value["name"]
     }
   }
 
   dynamic "spec" {
     for_each = var.spec
     content {
-      ca_bundle                = spec.value["ca_bundle"]
-      group                    = spec.value["group"]
-      group_priority_minimum   = spec.value["group_priority_minimum"]
+      # ca_bundle - (optional) is a type of string
+      ca_bundle = spec.value["ca_bundle"]
+      # group - (required) is a type of string
+      group = spec.value["group"]
+      # group_priority_minimum - (required) is a type of number
+      group_priority_minimum = spec.value["group_priority_minimum"]
+      # insecure_skip_tls_verify - (optional) is a type of bool
       insecure_skip_tls_verify = spec.value["insecure_skip_tls_verify"]
-      version                  = spec.value["version"]
-      version_priority         = spec.value["version_priority"]
+      # version - (required) is a type of string
+      version = spec.value["version"]
+      # version_priority - (required) is a type of number
+      version_priority = spec.value["version_priority"]
 
       dynamic "service" {
         for_each = spec.value.service
         content {
-          name      = service.value["name"]
+          # name - (required) is a type of string
+          name = service.value["name"]
+          # namespace - (required) is a type of string
           namespace = service.value["namespace"]
-          port      = service.value["port"]
+          # port - (optional) is a type of number
+          port = service.value["port"]
         }
       }
 

@@ -138,23 +138,37 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_policy_definition" "this" {
-  description           = var.description
-  display_name          = var.display_name
-  management_group_id   = var.management_group_id
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # management_group_id - (optional) is a type of string
+  management_group_id = var.management_group_id
+  # management_group_name - (optional) is a type of string
   management_group_name = var.management_group_name
-  metadata              = var.metadata
-  mode                  = var.mode
-  name                  = var.name
-  parameters            = var.parameters
-  policy_rule           = var.policy_rule
-  policy_type           = var.policy_type
+  # metadata - (optional) is a type of string
+  metadata = var.metadata
+  # mode - (required) is a type of string
+  mode = var.mode
+  # name - (required) is a type of string
+  name = var.name
+  # parameters - (optional) is a type of string
+  parameters = var.parameters
+  # policy_rule - (optional) is a type of string
+  policy_rule = var.policy_rule
+  # policy_type - (required) is a type of string
+  policy_type = var.policy_type
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -66,9 +66,12 @@ variable "open" {
 
 ```terraform
 data "google_billing_account" "this" {
+  # billing_account - (optional) is a type of string
   billing_account = var.billing_account
-  display_name    = var.display_name
-  open            = var.open
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # open - (optional) is a type of bool
+  open = var.open
 }
 ```
 

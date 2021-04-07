@@ -65,9 +65,12 @@ variable "quota" {
 
 ```terraform
 resource "nomad_namespace" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  quota       = var.quota
+  # name - (required) is a type of string
+  name = var.name
+  # quota - (optional) is a type of string
+  quota = var.quota
 }
 ```
 

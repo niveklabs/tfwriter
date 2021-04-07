@@ -93,24 +93,32 @@ variable "organization_aggregation_source" {
 
 ```terraform
 resource "aws_config_configuration_aggregator" "this" {
+  # name - (required) is a type of string
   name = var.name
+  # tags - (optional) is a type of map of string
   tags = var.tags
 
   dynamic "account_aggregation_source" {
     for_each = var.account_aggregation_source
     content {
+      # account_ids - (required) is a type of list of string
       account_ids = account_aggregation_source.value["account_ids"]
+      # all_regions - (optional) is a type of bool
       all_regions = account_aggregation_source.value["all_regions"]
-      regions     = account_aggregation_source.value["regions"]
+      # regions - (optional) is a type of list of string
+      regions = account_aggregation_source.value["regions"]
     }
   }
 
   dynamic "organization_aggregation_source" {
     for_each = var.organization_aggregation_source
     content {
+      # all_regions - (optional) is a type of bool
       all_regions = organization_aggregation_source.value["all_regions"]
-      regions     = organization_aggregation_source.value["regions"]
-      role_arn    = organization_aggregation_source.value["role_arn"]
+      # regions - (optional) is a type of list of string
+      regions = organization_aggregation_source.value["regions"]
+      # role_arn - (required) is a type of string
+      role_arn = organization_aggregation_source.value["role_arn"]
     }
   }
 

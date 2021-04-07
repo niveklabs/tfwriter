@@ -197,26 +197,43 @@ variable "notification_property" {
 
 ```terraform
 resource "aws_glue_job" "this" {
-  connections               = var.connections
-  default_arguments         = var.default_arguments
-  description               = var.description
-  glue_version              = var.glue_version
-  max_capacity              = var.max_capacity
-  max_retries               = var.max_retries
-  name                      = var.name
+  # connections - (optional) is a type of list of string
+  connections = var.connections
+  # default_arguments - (optional) is a type of map of string
+  default_arguments = var.default_arguments
+  # description - (optional) is a type of string
+  description = var.description
+  # glue_version - (optional) is a type of string
+  glue_version = var.glue_version
+  # max_capacity - (optional) is a type of number
+  max_capacity = var.max_capacity
+  # max_retries - (optional) is a type of number
+  max_retries = var.max_retries
+  # name - (required) is a type of string
+  name = var.name
+  # non_overridable_arguments - (optional) is a type of map of string
   non_overridable_arguments = var.non_overridable_arguments
-  number_of_workers         = var.number_of_workers
-  role_arn                  = var.role_arn
-  security_configuration    = var.security_configuration
-  tags                      = var.tags
-  timeout                   = var.timeout
-  worker_type               = var.worker_type
+  # number_of_workers - (optional) is a type of number
+  number_of_workers = var.number_of_workers
+  # role_arn - (required) is a type of string
+  role_arn = var.role_arn
+  # security_configuration - (optional) is a type of string
+  security_configuration = var.security_configuration
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
+  # worker_type - (optional) is a type of string
+  worker_type = var.worker_type
 
   dynamic "command" {
     for_each = var.command
     content {
-      name            = command.value["name"]
-      python_version  = command.value["python_version"]
+      # name - (optional) is a type of string
+      name = command.value["name"]
+      # python_version - (optional) is a type of string
+      python_version = command.value["python_version"]
+      # script_location - (required) is a type of string
       script_location = command.value["script_location"]
     }
   }
@@ -224,6 +241,7 @@ resource "aws_glue_job" "this" {
   dynamic "execution_property" {
     for_each = var.execution_property
     content {
+      # max_concurrent_runs - (optional) is a type of number
       max_concurrent_runs = execution_property.value["max_concurrent_runs"]
     }
   }
@@ -231,6 +249,7 @@ resource "aws_glue_job" "this" {
   dynamic "notification_property" {
     for_each = var.notification_property
     content {
+      # notify_delay_after - (optional) is a type of number
       notify_delay_after = notification_property.value["notify_delay_after"]
     }
   }

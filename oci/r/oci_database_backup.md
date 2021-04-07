@@ -74,14 +74,19 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_database_backup" "this" {
-  database_id  = var.database_id
+  # database_id - (required) is a type of string
+  database_id = var.database_id
+  # display_name - (required) is a type of string
   display_name = var.display_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

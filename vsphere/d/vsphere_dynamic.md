@@ -65,9 +65,12 @@ variable "type" {
 
 ```terraform
 data "vsphere_dynamic" "this" {
-  filter     = var.filter
+  # filter - (required) is a type of set of string
+  filter = var.filter
+  # name_regex - (optional) is a type of string
   name_regex = var.name_regex
-  type       = var.type
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

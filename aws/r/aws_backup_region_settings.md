@@ -49,6 +49,7 @@ variable "resource_type_opt_in_preference" {
 
 ```terraform
 resource "aws_backup_region_settings" "this" {
+  # resource_type_opt_in_preference - (required) is a type of map of bool
   resource_type_opt_in_preference = var.resource_type_opt_in_preference
 }
 ```

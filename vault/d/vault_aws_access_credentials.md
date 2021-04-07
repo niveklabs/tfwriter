@@ -88,12 +88,18 @@ variable "type" {
 
 ```terraform
 data "vault_aws_access_credentials" "this" {
-  backend  = var.backend
-  region   = var.region
-  role     = var.role
+  # backend - (required) is a type of string
+  backend = var.backend
+  # region - (optional) is a type of string
+  region = var.region
+  # role - (required) is a type of string
+  role = var.role
+  # role_arn - (optional) is a type of string
   role_arn = var.role_arn
-  ttl      = var.ttl
-  type     = var.type
+  # ttl - (optional) is a type of string
+  ttl = var.ttl
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

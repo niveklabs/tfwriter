@@ -119,20 +119,31 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_datacatalog_connection" "this" {
-  catalog_id     = var.catalog_id
+  # catalog_id - (required) is a type of string
+  catalog_id = var.catalog_id
+  # data_asset_key - (required) is a type of string
   data_asset_key = var.data_asset_key
-  description    = var.description
-  display_name   = var.display_name
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # enc_properties - (optional) is a type of map of string
   enc_properties = var.enc_properties
-  is_default     = var.is_default
-  properties     = var.properties
-  type_key       = var.type_key
+  # is_default - (optional) is a type of bool
+  is_default = var.is_default
+  # properties - (required) is a type of map of string
+  properties = var.properties
+  # type_key - (required) is a type of string
+  type_key = var.type_key
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

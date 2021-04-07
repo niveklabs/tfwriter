@@ -84,14 +84,19 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_servicebus_subscription" "this" {
-  name                = var.name
-  namespace_name      = var.namespace_name
+  # name - (required) is a type of string
+  name = var.name
+  # namespace_name - (required) is a type of string
+  namespace_name = var.namespace_name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  topic_name          = var.topic_name
+  # topic_name - (required) is a type of string
+  topic_name = var.topic_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

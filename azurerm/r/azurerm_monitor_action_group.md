@@ -307,17 +307,25 @@ variable "webhook_receiver" {
 
 ```terraform
 resource "azurerm_monitor_action_group" "this" {
-  enabled             = var.enabled
-  name                = var.name
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  short_name          = var.short_name
-  tags                = var.tags
+  # short_name - (required) is a type of string
+  short_name = var.short_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "arm_role_receiver" {
     for_each = var.arm_role_receiver
     content {
-      name                    = arm_role_receiver.value["name"]
-      role_id                 = arm_role_receiver.value["role_id"]
+      # name - (required) is a type of string
+      name = arm_role_receiver.value["name"]
+      # role_id - (required) is a type of string
+      role_id = arm_role_receiver.value["role_id"]
+      # use_common_alert_schema - (optional) is a type of bool
       use_common_alert_schema = arm_role_receiver.value["use_common_alert_schema"]
     }
   }
@@ -325,40 +333,57 @@ resource "azurerm_monitor_action_group" "this" {
   dynamic "automation_runbook_receiver" {
     for_each = var.automation_runbook_receiver
     content {
-      automation_account_id   = automation_runbook_receiver.value["automation_account_id"]
-      is_global_runbook       = automation_runbook_receiver.value["is_global_runbook"]
-      name                    = automation_runbook_receiver.value["name"]
-      runbook_name            = automation_runbook_receiver.value["runbook_name"]
-      service_uri             = automation_runbook_receiver.value["service_uri"]
+      # automation_account_id - (required) is a type of string
+      automation_account_id = automation_runbook_receiver.value["automation_account_id"]
+      # is_global_runbook - (required) is a type of bool
+      is_global_runbook = automation_runbook_receiver.value["is_global_runbook"]
+      # name - (required) is a type of string
+      name = automation_runbook_receiver.value["name"]
+      # runbook_name - (required) is a type of string
+      runbook_name = automation_runbook_receiver.value["runbook_name"]
+      # service_uri - (required) is a type of string
+      service_uri = automation_runbook_receiver.value["service_uri"]
+      # use_common_alert_schema - (optional) is a type of bool
       use_common_alert_schema = automation_runbook_receiver.value["use_common_alert_schema"]
-      webhook_resource_id     = automation_runbook_receiver.value["webhook_resource_id"]
+      # webhook_resource_id - (required) is a type of string
+      webhook_resource_id = automation_runbook_receiver.value["webhook_resource_id"]
     }
   }
 
   dynamic "azure_app_push_receiver" {
     for_each = var.azure_app_push_receiver
     content {
+      # email_address - (required) is a type of string
       email_address = azure_app_push_receiver.value["email_address"]
-      name          = azure_app_push_receiver.value["name"]
+      # name - (required) is a type of string
+      name = azure_app_push_receiver.value["name"]
     }
   }
 
   dynamic "azure_function_receiver" {
     for_each = var.azure_function_receiver
     content {
+      # function_app_resource_id - (required) is a type of string
       function_app_resource_id = azure_function_receiver.value["function_app_resource_id"]
-      function_name            = azure_function_receiver.value["function_name"]
-      http_trigger_url         = azure_function_receiver.value["http_trigger_url"]
-      name                     = azure_function_receiver.value["name"]
-      use_common_alert_schema  = azure_function_receiver.value["use_common_alert_schema"]
+      # function_name - (required) is a type of string
+      function_name = azure_function_receiver.value["function_name"]
+      # http_trigger_url - (required) is a type of string
+      http_trigger_url = azure_function_receiver.value["http_trigger_url"]
+      # name - (required) is a type of string
+      name = azure_function_receiver.value["name"]
+      # use_common_alert_schema - (optional) is a type of bool
+      use_common_alert_schema = azure_function_receiver.value["use_common_alert_schema"]
     }
   }
 
   dynamic "email_receiver" {
     for_each = var.email_receiver
     content {
-      email_address           = email_receiver.value["email_address"]
-      name                    = email_receiver.value["name"]
+      # email_address - (required) is a type of string
+      email_address = email_receiver.value["email_address"]
+      # name - (required) is a type of string
+      name = email_receiver.value["name"]
+      # use_common_alert_schema - (optional) is a type of bool
       use_common_alert_schema = email_receiver.value["use_common_alert_schema"]
     }
   }
@@ -366,20 +391,29 @@ resource "azurerm_monitor_action_group" "this" {
   dynamic "itsm_receiver" {
     for_each = var.itsm_receiver
     content {
-      connection_id        = itsm_receiver.value["connection_id"]
-      name                 = itsm_receiver.value["name"]
-      region               = itsm_receiver.value["region"]
+      # connection_id - (required) is a type of string
+      connection_id = itsm_receiver.value["connection_id"]
+      # name - (required) is a type of string
+      name = itsm_receiver.value["name"]
+      # region - (required) is a type of string
+      region = itsm_receiver.value["region"]
+      # ticket_configuration - (required) is a type of string
       ticket_configuration = itsm_receiver.value["ticket_configuration"]
-      workspace_id         = itsm_receiver.value["workspace_id"]
+      # workspace_id - (required) is a type of string
+      workspace_id = itsm_receiver.value["workspace_id"]
     }
   }
 
   dynamic "logic_app_receiver" {
     for_each = var.logic_app_receiver
     content {
-      callback_url            = logic_app_receiver.value["callback_url"]
-      name                    = logic_app_receiver.value["name"]
-      resource_id             = logic_app_receiver.value["resource_id"]
+      # callback_url - (required) is a type of string
+      callback_url = logic_app_receiver.value["callback_url"]
+      # name - (required) is a type of string
+      name = logic_app_receiver.value["name"]
+      # resource_id - (required) is a type of string
+      resource_id = logic_app_receiver.value["resource_id"]
+      # use_common_alert_schema - (optional) is a type of bool
       use_common_alert_schema = logic_app_receiver.value["use_common_alert_schema"]
     }
   }
@@ -387,8 +421,11 @@ resource "azurerm_monitor_action_group" "this" {
   dynamic "sms_receiver" {
     for_each = var.sms_receiver
     content {
+      # country_code - (required) is a type of string
       country_code = sms_receiver.value["country_code"]
-      name         = sms_receiver.value["name"]
+      # name - (required) is a type of string
+      name = sms_receiver.value["name"]
+      # phone_number - (required) is a type of string
       phone_number = sms_receiver.value["phone_number"]
     }
   }
@@ -396,9 +433,13 @@ resource "azurerm_monitor_action_group" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -406,8 +447,11 @@ resource "azurerm_monitor_action_group" "this" {
   dynamic "voice_receiver" {
     for_each = var.voice_receiver
     content {
+      # country_code - (required) is a type of string
       country_code = voice_receiver.value["country_code"]
-      name         = voice_receiver.value["name"]
+      # name - (required) is a type of string
+      name = voice_receiver.value["name"]
+      # phone_number - (required) is a type of string
       phone_number = voice_receiver.value["phone_number"]
     }
   }
@@ -415,16 +459,22 @@ resource "azurerm_monitor_action_group" "this" {
   dynamic "webhook_receiver" {
     for_each = var.webhook_receiver
     content {
-      name                    = webhook_receiver.value["name"]
-      service_uri             = webhook_receiver.value["service_uri"]
+      # name - (required) is a type of string
+      name = webhook_receiver.value["name"]
+      # service_uri - (required) is a type of string
+      service_uri = webhook_receiver.value["service_uri"]
+      # use_common_alert_schema - (optional) is a type of bool
       use_common_alert_schema = webhook_receiver.value["use_common_alert_schema"]
 
       dynamic "aad_auth" {
         for_each = webhook_receiver.value.aad_auth
         content {
+          # identifier_uri - (optional) is a type of string
           identifier_uri = aad_auth.value["identifier_uri"]
-          object_id      = aad_auth.value["object_id"]
-          tenant_id      = aad_auth.value["tenant_id"]
+          # object_id - (required) is a type of string
+          object_id = aad_auth.value["object_id"]
+          # tenant_id - (optional) is a type of string
+          tenant_id = aad_auth.value["tenant_id"]
         }
       }
 

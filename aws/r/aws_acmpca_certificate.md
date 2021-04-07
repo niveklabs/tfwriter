@@ -86,15 +86,21 @@ variable "validity" {
 
 ```terraform
 resource "aws_acmpca_certificate" "this" {
-  certificate_authority_arn   = var.certificate_authority_arn
+  # certificate_authority_arn - (required) is a type of string
+  certificate_authority_arn = var.certificate_authority_arn
+  # certificate_signing_request - (required) is a type of string
   certificate_signing_request = var.certificate_signing_request
-  signing_algorithm           = var.signing_algorithm
-  template_arn                = var.template_arn
+  # signing_algorithm - (required) is a type of string
+  signing_algorithm = var.signing_algorithm
+  # template_arn - (optional) is a type of string
+  template_arn = var.template_arn
 
   dynamic "validity" {
     for_each = var.validity
     content {
-      type  = validity.value["type"]
+      # type - (required) is a type of string
+      type = validity.value["type"]
+      # value - (required) is a type of string
       value = validity.value["value"]
     }
   }

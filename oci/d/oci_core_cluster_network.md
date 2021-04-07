@@ -49,6 +49,7 @@ variable "cluster_network_id" {
 
 ```terraform
 data "oci_core_cluster_network" "this" {
+  # cluster_network_id - (required) is a type of string
   cluster_network_id = var.cluster_network_id
 }
 ```

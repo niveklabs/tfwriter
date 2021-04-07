@@ -64,8 +64,11 @@ variable "rate" {
 
 ```terraform
 resource "vault_quota_rate_limit" "this" {
+  # name - (required) is a type of string
   name = var.name
+  # path - (optional) is a type of string
   path = var.path
+  # rate - (required) is a type of number
   rate = var.rate
 }
 ```

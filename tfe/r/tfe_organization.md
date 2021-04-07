@@ -96,13 +96,20 @@ variable "session_timeout_minutes" {
 
 ```terraform
 resource "tfe_organization" "this" {
+  # collaborator_auth_policy - (optional) is a type of string
   collaborator_auth_policy = var.collaborator_auth_policy
-  cost_estimation_enabled  = var.cost_estimation_enabled
-  email                    = var.email
-  name                     = var.name
+  # cost_estimation_enabled - (optional) is a type of bool
+  cost_estimation_enabled = var.cost_estimation_enabled
+  # email - (required) is a type of string
+  email = var.email
+  # name - (required) is a type of string
+  name = var.name
+  # owners_team_saml_role_id - (optional) is a type of string
   owners_team_saml_role_id = var.owners_team_saml_role_id
+  # session_remember_minutes - (optional) is a type of number
   session_remember_minutes = var.session_remember_minutes
-  session_timeout_minutes  = var.session_timeout_minutes
+  # session_timeout_minutes - (optional) is a type of number
+  session_timeout_minutes = var.session_timeout_minutes
 }
 ```
 

@@ -112,15 +112,21 @@ variable "upstream" {
 
 ```terraform
 resource "aws_codeartifact_repository" "this" {
-  description  = var.description
-  domain       = var.domain
+  # description - (optional) is a type of string
+  description = var.description
+  # domain - (required) is a type of string
+  domain = var.domain
+  # domain_owner - (optional) is a type of string
   domain_owner = var.domain_owner
-  repository   = var.repository
-  tags         = var.tags
+  # repository - (required) is a type of string
+  repository = var.repository
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "external_connections" {
     for_each = var.external_connections
     content {
+      # external_connection_name - (required) is a type of string
       external_connection_name = external_connections.value["external_connection_name"]
     }
   }
@@ -128,6 +134,7 @@ resource "aws_codeartifact_repository" "this" {
   dynamic "upstream" {
     for_each = var.upstream
     content {
+      # repository_name - (required) is a type of string
       repository_name = upstream.value["repository_name"]
     }
   }

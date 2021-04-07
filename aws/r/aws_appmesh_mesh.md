@@ -77,7 +77,9 @@ variable "spec" {
 
 ```terraform
 resource "aws_appmesh_mesh" "this" {
+  # name - (required) is a type of string
   name = var.name
+  # tags - (optional) is a type of map of string
   tags = var.tags
 
   dynamic "spec" {
@@ -87,6 +89,7 @@ resource "aws_appmesh_mesh" "this" {
       dynamic "egress_filter" {
         for_each = spec.value.egress_filter
         content {
+          # type - (optional) is a type of string
           type = egress_filter.value["type"]
         }
       }

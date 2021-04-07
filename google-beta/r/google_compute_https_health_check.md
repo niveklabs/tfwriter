@@ -139,22 +139,35 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_https_health_check" "this" {
-  check_interval_sec  = var.check_interval_sec
-  description         = var.description
-  healthy_threshold   = var.healthy_threshold
-  host                = var.host
-  name                = var.name
-  port                = var.port
-  project             = var.project
-  request_path        = var.request_path
-  timeout_sec         = var.timeout_sec
+  # check_interval_sec - (optional) is a type of number
+  check_interval_sec = var.check_interval_sec
+  # description - (optional) is a type of string
+  description = var.description
+  # healthy_threshold - (optional) is a type of number
+  healthy_threshold = var.healthy_threshold
+  # host - (optional) is a type of string
+  host = var.host
+  # name - (required) is a type of string
+  name = var.name
+  # port - (optional) is a type of number
+  port = var.port
+  # project - (optional) is a type of string
+  project = var.project
+  # request_path - (optional) is a type of string
+  request_path = var.request_path
+  # timeout_sec - (optional) is a type of number
+  timeout_sec = var.timeout_sec
+  # unhealthy_threshold - (optional) is a type of number
   unhealthy_threshold = var.unhealthy_threshold
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

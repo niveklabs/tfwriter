@@ -56,8 +56,10 @@ variable "name" {
 
 ```terraform
 data "aws_lex_bot_alias" "this" {
+  # bot_name - (required) is a type of string
   bot_name = var.bot_name
-  name     = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

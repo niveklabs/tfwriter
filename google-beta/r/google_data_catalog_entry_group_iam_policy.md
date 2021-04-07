@@ -72,10 +72,14 @@ variable "region" {
 
 ```terraform
 resource "google_data_catalog_entry_group_iam_policy" "this" {
+  # entry_group - (required) is a type of string
   entry_group = var.entry_group
+  # policy_data - (required) is a type of string
   policy_data = var.policy_data
-  project     = var.project
-  region      = var.region
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
 }
 ```
 

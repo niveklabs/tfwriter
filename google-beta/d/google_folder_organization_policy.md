@@ -56,8 +56,10 @@ variable "folder" {
 
 ```terraform
 data "google_folder_organization_policy" "this" {
+  # constraint - (required) is a type of string
   constraint = var.constraint
-  folder     = var.folder
+  # folder - (required) is a type of string
+  folder = var.folder
 }
 ```
 

@@ -79,11 +79,16 @@ variable "repository" {
 
 ```terraform
 resource "aws_codeartifact_repository_permissions_policy" "this" {
-  domain          = var.domain
-  domain_owner    = var.domain_owner
+  # domain - (required) is a type of string
+  domain = var.domain
+  # domain_owner - (optional) is a type of string
+  domain_owner = var.domain_owner
+  # policy_document - (required) is a type of string
   policy_document = var.policy_document
+  # policy_revision - (optional) is a type of string
   policy_revision = var.policy_revision
-  repository      = var.repository
+  # repository - (required) is a type of string
+  repository = var.repository
 }
 ```
 

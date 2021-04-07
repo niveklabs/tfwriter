@@ -177,23 +177,40 @@ variable "vpc" {
 
 ```terraform
 data "aws_rds_orderable_db_instance" "this" {
-  availability_zone_group              = var.availability_zone_group
-  engine                               = var.engine
-  engine_version                       = var.engine_version
-  instance_class                       = var.instance_class
-  license_model                        = var.license_model
-  preferred_engine_versions            = var.preferred_engine_versions
-  preferred_instance_classes           = var.preferred_instance_classes
-  storage_type                         = var.storage_type
-  supports_enhanced_monitoring         = var.supports_enhanced_monitoring
-  supports_global_databases            = var.supports_global_databases
+  # availability_zone_group - (optional) is a type of string
+  availability_zone_group = var.availability_zone_group
+  # engine - (required) is a type of string
+  engine = var.engine
+  # engine_version - (optional) is a type of string
+  engine_version = var.engine_version
+  # instance_class - (optional) is a type of string
+  instance_class = var.instance_class
+  # license_model - (optional) is a type of string
+  license_model = var.license_model
+  # preferred_engine_versions - (optional) is a type of list of string
+  preferred_engine_versions = var.preferred_engine_versions
+  # preferred_instance_classes - (optional) is a type of list of string
+  preferred_instance_classes = var.preferred_instance_classes
+  # storage_type - (optional) is a type of string
+  storage_type = var.storage_type
+  # supports_enhanced_monitoring - (optional) is a type of bool
+  supports_enhanced_monitoring = var.supports_enhanced_monitoring
+  # supports_global_databases - (optional) is a type of bool
+  supports_global_databases = var.supports_global_databases
+  # supports_iam_database_authentication - (optional) is a type of bool
   supports_iam_database_authentication = var.supports_iam_database_authentication
-  supports_iops                        = var.supports_iops
-  supports_kerberos_authentication     = var.supports_kerberos_authentication
-  supports_performance_insights        = var.supports_performance_insights
-  supports_storage_autoscaling         = var.supports_storage_autoscaling
-  supports_storage_encryption          = var.supports_storage_encryption
-  vpc                                  = var.vpc
+  # supports_iops - (optional) is a type of bool
+  supports_iops = var.supports_iops
+  # supports_kerberos_authentication - (optional) is a type of bool
+  supports_kerberos_authentication = var.supports_kerberos_authentication
+  # supports_performance_insights - (optional) is a type of bool
+  supports_performance_insights = var.supports_performance_insights
+  # supports_storage_autoscaling - (optional) is a type of bool
+  supports_storage_autoscaling = var.supports_storage_autoscaling
+  # supports_storage_encryption - (optional) is a type of bool
+  supports_storage_encryption = var.supports_storage_encryption
+  # vpc - (optional) is a type of bool
+  vpc = var.vpc
 }
 ```
 

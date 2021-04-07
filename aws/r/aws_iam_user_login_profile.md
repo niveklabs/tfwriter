@@ -72,10 +72,14 @@ variable "user" {
 
 ```terraform
 resource "aws_iam_user_login_profile" "this" {
-  password_length         = var.password_length
+  # password_length - (optional) is a type of number
+  password_length = var.password_length
+  # password_reset_required - (optional) is a type of bool
   password_reset_required = var.password_reset_required
-  pgp_key                 = var.pgp_key
-  user                    = var.user
+  # pgp_key - (required) is a type of string
+  pgp_key = var.pgp_key
+  # user - (required) is a type of string
+  user = var.user
 }
 ```
 

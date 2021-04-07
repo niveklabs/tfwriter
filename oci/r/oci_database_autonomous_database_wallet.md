@@ -90,16 +90,23 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_database_autonomous_database_wallet" "this" {
+  # autonomous_database_id - (required) is a type of string
   autonomous_database_id = var.autonomous_database_id
-  base64_encode_content  = var.base64_encode_content
-  generate_type          = var.generate_type
-  password               = var.password
+  # base64_encode_content - (optional) is a type of bool
+  base64_encode_content = var.base64_encode_content
+  # generate_type - (optional) is a type of string
+  generate_type = var.generate_type
+  # password - (required) is a type of string
+  password = var.password
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

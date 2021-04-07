@@ -333,63 +333,99 @@ variable "vm_image" {
 
 ```terraform
 resource "google_notebooks_instance" "this" {
-  boot_disk_size_gb      = var.boot_disk_size_gb
-  boot_disk_type         = var.boot_disk_type
-  create_time            = var.create_time
+  # boot_disk_size_gb - (optional) is a type of number
+  boot_disk_size_gb = var.boot_disk_size_gb
+  # boot_disk_type - (optional) is a type of string
+  boot_disk_type = var.boot_disk_type
+  # create_time - (optional) is a type of string
+  create_time = var.create_time
+  # custom_gpu_driver_path - (optional) is a type of string
   custom_gpu_driver_path = var.custom_gpu_driver_path
-  data_disk_size_gb      = var.data_disk_size_gb
-  data_disk_type         = var.data_disk_type
-  disk_encryption        = var.disk_encryption
-  install_gpu_driver     = var.install_gpu_driver
-  instance_owners        = var.instance_owners
-  kms_key                = var.kms_key
-  labels                 = var.labels
-  location               = var.location
-  machine_type           = var.machine_type
-  metadata               = var.metadata
-  name                   = var.name
-  network                = var.network
-  no_proxy_access        = var.no_proxy_access
-  no_public_ip           = var.no_public_ip
-  no_remove_data_disk    = var.no_remove_data_disk
-  post_startup_script    = var.post_startup_script
-  project                = var.project
-  service_account        = var.service_account
+  # data_disk_size_gb - (optional) is a type of number
+  data_disk_size_gb = var.data_disk_size_gb
+  # data_disk_type - (optional) is a type of string
+  data_disk_type = var.data_disk_type
+  # disk_encryption - (optional) is a type of string
+  disk_encryption = var.disk_encryption
+  # install_gpu_driver - (optional) is a type of bool
+  install_gpu_driver = var.install_gpu_driver
+  # instance_owners - (optional) is a type of list of string
+  instance_owners = var.instance_owners
+  # kms_key - (optional) is a type of string
+  kms_key = var.kms_key
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # location - (required) is a type of string
+  location = var.location
+  # machine_type - (required) is a type of string
+  machine_type = var.machine_type
+  # metadata - (optional) is a type of map of string
+  metadata = var.metadata
+  # name - (required) is a type of string
+  name = var.name
+  # network - (optional) is a type of string
+  network = var.network
+  # no_proxy_access - (optional) is a type of bool
+  no_proxy_access = var.no_proxy_access
+  # no_public_ip - (optional) is a type of bool
+  no_public_ip = var.no_public_ip
+  # no_remove_data_disk - (optional) is a type of bool
+  no_remove_data_disk = var.no_remove_data_disk
+  # post_startup_script - (optional) is a type of string
+  post_startup_script = var.post_startup_script
+  # project - (optional) is a type of string
+  project = var.project
+  # service_account - (optional) is a type of string
+  service_account = var.service_account
+  # service_account_scopes - (optional) is a type of list of string
   service_account_scopes = var.service_account_scopes
-  subnet                 = var.subnet
-  tags                   = var.tags
-  update_time            = var.update_time
+  # subnet - (optional) is a type of string
+  subnet = var.subnet
+  # tags - (optional) is a type of list of string
+  tags = var.tags
+  # update_time - (optional) is a type of string
+  update_time = var.update_time
 
   dynamic "accelerator_config" {
     for_each = var.accelerator_config
     content {
+      # core_count - (required) is a type of number
       core_count = accelerator_config.value["core_count"]
-      type       = accelerator_config.value["type"]
+      # type - (required) is a type of string
+      type = accelerator_config.value["type"]
     }
   }
 
   dynamic "container_image" {
     for_each = var.container_image
     content {
+      # repository - (required) is a type of string
       repository = container_image.value["repository"]
-      tag        = container_image.value["tag"]
+      # tag - (optional) is a type of string
+      tag = container_image.value["tag"]
     }
   }
 
   dynamic "shielded_instance_config" {
     for_each = var.shielded_instance_config
     content {
+      # enable_integrity_monitoring - (optional) is a type of bool
       enable_integrity_monitoring = shielded_instance_config.value["enable_integrity_monitoring"]
-      enable_secure_boot          = shielded_instance_config.value["enable_secure_boot"]
-      enable_vtpm                 = shielded_instance_config.value["enable_vtpm"]
+      # enable_secure_boot - (optional) is a type of bool
+      enable_secure_boot = shielded_instance_config.value["enable_secure_boot"]
+      # enable_vtpm - (optional) is a type of bool
+      enable_vtpm = shielded_instance_config.value["enable_vtpm"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -397,9 +433,12 @@ resource "google_notebooks_instance" "this" {
   dynamic "vm_image" {
     for_each = var.vm_image
     content {
+      # image_family - (optional) is a type of string
       image_family = vm_image.value["image_family"]
-      image_name   = vm_image.value["image_name"]
-      project      = vm_image.value["project"]
+      # image_name - (optional) is a type of string
+      image_name = vm_image.value["image_name"]
+      # project - (required) is a type of string
+      project = vm_image.value["project"]
     }
   }
 

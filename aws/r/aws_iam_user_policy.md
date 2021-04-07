@@ -72,10 +72,14 @@ variable "user" {
 
 ```terraform
 resource "aws_iam_user_policy" "this" {
-  name        = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
   name_prefix = var.name_prefix
-  policy      = var.policy
-  user        = var.user
+  # policy - (required) is a type of string
+  policy = var.policy
+  # user - (required) is a type of string
+  user = var.user
 }
 ```
 

@@ -73,10 +73,14 @@ variable "owner" {
 
 ```terraform
 data "aws_ssm_patch_baseline" "this" {
+  # default_baseline - (optional) is a type of bool
   default_baseline = var.default_baseline
-  name_prefix      = var.name_prefix
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # operating_system - (optional) is a type of string
   operating_system = var.operating_system
-  owner            = var.owner
+  # owner - (required) is a type of string
+  owner = var.owner
 }
 ```
 

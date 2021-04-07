@@ -137,33 +137,44 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_bds_auto_scaling_configuration" "this" {
-  bds_instance_id        = var.bds_instance_id
+  # bds_instance_id - (required) is a type of string
+  bds_instance_id = var.bds_instance_id
+  # cluster_admin_password - (required) is a type of string
   cluster_admin_password = var.cluster_admin_password
-  display_name           = var.display_name
-  is_enabled             = var.is_enabled
-  node_type              = var.node_type
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # is_enabled - (required) is a type of bool
+  is_enabled = var.is_enabled
+  # node_type - (required) is a type of string
+  node_type = var.node_type
 
   dynamic "policy" {
     for_each = var.policy
     content {
+      # policy_type - (required) is a type of string
       policy_type = policy.value["policy_type"]
 
       dynamic "rules" {
         for_each = policy.value.rules
         content {
+          # action - (required) is a type of string
           action = rules.value["action"]
 
           dynamic "metric" {
             for_each = rules.value.metric
             content {
+              # metric_type - (required) is a type of string
               metric_type = metric.value["metric_type"]
 
               dynamic "threshold" {
                 for_each = metric.value.threshold
                 content {
+                  # duration_in_minutes - (required) is a type of number
                   duration_in_minutes = threshold.value["duration_in_minutes"]
-                  operator            = threshold.value["operator"]
-                  value               = threshold.value["value"]
+                  # operator - (required) is a type of string
+                  operator = threshold.value["operator"]
+                  # value - (required) is a type of number
+                  value = threshold.value["value"]
                 }
               }
 
@@ -179,8 +190,11 @@ resource "oci_bds_auto_scaling_configuration" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

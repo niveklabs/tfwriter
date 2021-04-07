@@ -106,27 +106,39 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_virtual_hub_route_table" "this" {
-  labels         = var.labels
-  name           = var.name
+  # labels - (optional) is a type of set of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # virtual_hub_id - (required) is a type of string
   virtual_hub_id = var.virtual_hub_id
 
   dynamic "route" {
     for_each = var.route
     content {
-      destinations      = route.value["destinations"]
+      # destinations - (required) is a type of set of string
+      destinations = route.value["destinations"]
+      # destinations_type - (required) is a type of string
       destinations_type = route.value["destinations_type"]
-      name              = route.value["name"]
-      next_hop          = route.value["next_hop"]
-      next_hop_type     = route.value["next_hop_type"]
+      # name - (required) is a type of string
+      name = route.value["name"]
+      # next_hop - (required) is a type of string
+      next_hop = route.value["next_hop"]
+      # next_hop_type - (optional) is a type of string
+      next_hop_type = route.value["next_hop_type"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -91,17 +91,25 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_sentinel_alert_rule_fusion" "this" {
-  alert_rule_template_guid   = var.alert_rule_template_guid
-  enabled                    = var.enabled
+  # alert_rule_template_guid - (required) is a type of string
+  alert_rule_template_guid = var.alert_rule_template_guid
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # log_analytics_workspace_id - (required) is a type of string
   log_analytics_workspace_id = var.log_analytics_workspace_id
-  name                       = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -82,15 +82,21 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_project_metadata_item" "this" {
-  key     = var.key
+  # key - (required) is a type of string
+  key = var.key
+  # project - (optional) is a type of string
   project = var.project
-  value   = var.value
+  # value - (required) is a type of string
+  value = var.value
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

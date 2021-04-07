@@ -80,11 +80,16 @@ variable "type" {
 
 ```terraform
 resource "vault_transform_template" "this" {
+  # alphabet - (optional) is a type of string
   alphabet = var.alphabet
-  name     = var.name
-  path     = var.path
-  pattern  = var.pattern
-  type     = var.type
+  # name - (required) is a type of string
+  name = var.name
+  # path - (required) is a type of string
+  path = var.path
+  # pattern - (optional) is a type of string
+  pattern = var.pattern
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

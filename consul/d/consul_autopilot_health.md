@@ -50,6 +50,7 @@ variable "datacenter" {
 
 ```terraform
 data "consul_autopilot_health" "this" {
+  # datacenter - (optional) is a type of string
   datacenter = var.datacenter
 }
 ```

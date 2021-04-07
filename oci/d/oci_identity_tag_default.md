@@ -49,6 +49,7 @@ variable "tag_default_id" {
 
 ```terraform
 data "oci_identity_tag_default" "this" {
+  # tag_default_id - (required) is a type of string
   tag_default_id = var.tag_default_id
 }
 ```

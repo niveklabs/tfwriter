@@ -74,13 +74,17 @@ variable "filter" {
 
 ```terraform
 data "aws_ec2_instance_type_offering" "this" {
-  location_type            = var.location_type
+  # location_type - (optional) is a type of string
+  location_type = var.location_type
+  # preferred_instance_types - (optional) is a type of list of string
   preferred_instance_types = var.preferred_instance_types
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

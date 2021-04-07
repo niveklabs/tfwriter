@@ -127,29 +127,43 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_waas_http_redirect" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  defined_tags   = var.defined_tags
-  display_name   = var.display_name
-  domain         = var.domain
-  freeform_tags  = var.freeform_tags
-  response_code  = var.response_code
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # domain - (required) is a type of string
+  domain = var.domain
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # response_code - (optional) is a type of number
+  response_code = var.response_code
 
   dynamic "target" {
     for_each = var.target
     content {
-      host     = target.value["host"]
-      path     = target.value["path"]
-      port     = target.value["port"]
+      # host - (required) is a type of string
+      host = target.value["host"]
+      # path - (required) is a type of string
+      path = target.value["path"]
+      # port - (optional) is a type of number
+      port = target.value["port"]
+      # protocol - (required) is a type of string
       protocol = target.value["protocol"]
-      query    = target.value["query"]
+      # query - (required) is a type of string
+      query = target.value["query"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

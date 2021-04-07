@@ -103,18 +103,27 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_objectstorage_replication_policy" "this" {
-  bucket                              = var.bucket
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # delete_object_in_destination_bucket - (optional) is a type of string
   delete_object_in_destination_bucket = var.delete_object_in_destination_bucket
-  destination_bucket_name             = var.destination_bucket_name
-  destination_region_name             = var.destination_region_name
-  name                                = var.name
-  namespace                           = var.namespace
+  # destination_bucket_name - (required) is a type of string
+  destination_bucket_name = var.destination_bucket_name
+  # destination_region_name - (required) is a type of string
+  destination_region_name = var.destination_region_name
+  # name - (required) is a type of string
+  name = var.name
+  # namespace - (required) is a type of string
+  namespace = var.namespace
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

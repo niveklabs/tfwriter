@@ -58,8 +58,10 @@ variable "type" {
 
 ```terraform
 data "nomad_scaling_policies" "this" {
+  # job_id - (optional) is a type of string
   job_id = var.job_id
-  type   = var.type
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

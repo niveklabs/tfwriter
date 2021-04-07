@@ -65,12 +65,15 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_shared_vpc_host_project" "this" {
+  # project - (required) is a type of string
   project = var.project
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

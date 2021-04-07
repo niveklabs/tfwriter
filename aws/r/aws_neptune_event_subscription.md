@@ -123,20 +123,31 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_neptune_event_subscription" "this" {
-  enabled          = var.enabled
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # event_categories - (optional) is a type of set of string
   event_categories = var.event_categories
-  name             = var.name
-  name_prefix      = var.name_prefix
-  sns_topic_arn    = var.sns_topic_arn
-  source_ids       = var.source_ids
-  source_type      = var.source_type
-  tags             = var.tags
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # sns_topic_arn - (required) is a type of string
+  sns_topic_arn = var.sns_topic_arn
+  # source_ids - (optional) is a type of set of string
+  source_ids = var.source_ids
+  # source_type - (optional) is a type of string
+  source_type = var.source_type
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

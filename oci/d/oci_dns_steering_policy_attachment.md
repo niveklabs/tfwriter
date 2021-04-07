@@ -49,6 +49,7 @@ variable "steering_policy_attachment_id" {
 
 ```terraform
 data "oci_dns_steering_policy_attachment" "this" {
+  # steering_policy_attachment_id - (required) is a type of string
   steering_policy_attachment_id = var.steering_policy_attachment_id
 }
 ```

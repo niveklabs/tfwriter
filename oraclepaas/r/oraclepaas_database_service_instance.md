@@ -351,110 +351,175 @@ variable "timeouts" {
 
 ```terraform
 resource "oraclepaas_database_service_instance" "this" {
-  availability_domain      = var.availability_domain
-  bring_your_own_license   = var.bring_your_own_license
-  description              = var.description
-  desired_state            = var.desired_state
-  edition                  = var.edition
+  # availability_domain - (optional) is a type of string
+  availability_domain = var.availability_domain
+  # bring_your_own_license - (optional) is a type of bool
+  bring_your_own_license = var.bring_your_own_license
+  # description - (optional) is a type of string
+  description = var.description
+  # desired_state - (optional) is a type of string
+  desired_state = var.desired_state
+  # edition - (required) is a type of string
+  edition = var.edition
+  # high_performance_storage - (optional) is a type of bool
   high_performance_storage = var.high_performance_storage
-  ip_network               = var.ip_network
-  ip_reservations          = var.ip_reservations
-  level                    = var.level
-  name                     = var.name
-  notification_email       = var.notification_email
-  region                   = var.region
-  shape                    = var.shape
-  ssh_public_key           = var.ssh_public_key
-  subnet                   = var.subnet
-  subscription_type        = var.subscription_type
-  version                  = var.version
+  # ip_network - (optional) is a type of string
+  ip_network = var.ip_network
+  # ip_reservations - (optional) is a type of list of string
+  ip_reservations = var.ip_reservations
+  # level - (optional) is a type of string
+  level = var.level
+  # name - (required) is a type of string
+  name = var.name
+  # notification_email - (optional) is a type of string
+  notification_email = var.notification_email
+  # region - (optional) is a type of string
+  region = var.region
+  # shape - (required) is a type of string
+  shape = var.shape
+  # ssh_public_key - (required) is a type of string
+  ssh_public_key = var.ssh_public_key
+  # subnet - (optional) is a type of string
+  subnet = var.subnet
+  # subscription_type - (required) is a type of string
+  subscription_type = var.subscription_type
+  # version - (required) is a type of string
+  version = var.version
 
   dynamic "backups" {
     for_each = var.backups
     content {
+      # cloud_storage_container - (required) is a type of string
       cloud_storage_container = backups.value["cloud_storage_container"]
-      cloud_storage_password  = backups.value["cloud_storage_password"]
-      cloud_storage_username  = backups.value["cloud_storage_username"]
-      create_if_missing       = backups.value["create_if_missing"]
+      # cloud_storage_password - (optional) is a type of string
+      cloud_storage_password = backups.value["cloud_storage_password"]
+      # cloud_storage_username - (optional) is a type of string
+      cloud_storage_username = backups.value["cloud_storage_username"]
+      # create_if_missing - (optional) is a type of bool
+      create_if_missing = backups.value["create_if_missing"]
     }
   }
 
   dynamic "database_configuration" {
     for_each = var.database_configuration
     content {
-      admin_password             = database_configuration.value["admin_password"]
-      backup_destination         = database_configuration.value["backup_destination"]
+      # admin_password - (required) is a type of string
+      admin_password = database_configuration.value["admin_password"]
+      # backup_destination - (optional) is a type of string
+      backup_destination = database_configuration.value["backup_destination"]
+      # backup_storage_volume_size - (optional) is a type of number
       backup_storage_volume_size = database_configuration.value["backup_storage_volume_size"]
-      character_set              = database_configuration.value["character_set"]
-      data_storage_volume_size   = database_configuration.value["data_storage_volume_size"]
-      db_demo                    = database_configuration.value["db_demo"]
-      disaster_recovery          = database_configuration.value["disaster_recovery"]
-      failover_database          = database_configuration.value["failover_database"]
-      golden_gate                = database_configuration.value["golden_gate"]
-      is_rac                     = database_configuration.value["is_rac"]
-      national_character_set     = database_configuration.value["national_character_set"]
-      pdb_name                   = database_configuration.value["pdb_name"]
-      sid                        = database_configuration.value["sid"]
-      snapshot_name              = database_configuration.value["snapshot_name"]
-      source_service_name        = database_configuration.value["source_service_name"]
-      timezone                   = database_configuration.value["timezone"]
-      type                       = database_configuration.value["type"]
-      usable_storage             = database_configuration.value["usable_storage"]
+      # character_set - (optional) is a type of string
+      character_set = database_configuration.value["character_set"]
+      # data_storage_volume_size - (optional) is a type of number
+      data_storage_volume_size = database_configuration.value["data_storage_volume_size"]
+      # db_demo - (optional) is a type of string
+      db_demo = database_configuration.value["db_demo"]
+      # disaster_recovery - (optional) is a type of bool
+      disaster_recovery = database_configuration.value["disaster_recovery"]
+      # failover_database - (optional) is a type of bool
+      failover_database = database_configuration.value["failover_database"]
+      # golden_gate - (optional) is a type of bool
+      golden_gate = database_configuration.value["golden_gate"]
+      # is_rac - (optional) is a type of bool
+      is_rac = database_configuration.value["is_rac"]
+      # national_character_set - (optional) is a type of string
+      national_character_set = database_configuration.value["national_character_set"]
+      # pdb_name - (optional) is a type of string
+      pdb_name = database_configuration.value["pdb_name"]
+      # sid - (optional) is a type of string
+      sid = database_configuration.value["sid"]
+      # snapshot_name - (optional) is a type of string
+      snapshot_name = database_configuration.value["snapshot_name"]
+      # source_service_name - (optional) is a type of string
+      source_service_name = database_configuration.value["source_service_name"]
+      # timezone - (optional) is a type of string
+      timezone = database_configuration.value["timezone"]
+      # type - (optional) is a type of string
+      type = database_configuration.value["type"]
+      # usable_storage - (required) is a type of number
+      usable_storage = database_configuration.value["usable_storage"]
     }
   }
 
   dynamic "default_access_rules" {
     for_each = var.default_access_rules
     content {
-      enable_db_console      = default_access_rules.value["enable_db_console"]
-      enable_db_express      = default_access_rules.value["enable_db_express"]
-      enable_db_listener     = default_access_rules.value["enable_db_listener"]
-      enable_em_console      = default_access_rules.value["enable_em_console"]
-      enable_http            = default_access_rules.value["enable_http"]
-      enable_http_ssl        = default_access_rules.value["enable_http_ssl"]
+      # enable_db_console - (optional) is a type of bool
+      enable_db_console = default_access_rules.value["enable_db_console"]
+      # enable_db_express - (optional) is a type of bool
+      enable_db_express = default_access_rules.value["enable_db_express"]
+      # enable_db_listener - (optional) is a type of bool
+      enable_db_listener = default_access_rules.value["enable_db_listener"]
+      # enable_em_console - (optional) is a type of bool
+      enable_em_console = default_access_rules.value["enable_em_console"]
+      # enable_http - (optional) is a type of bool
+      enable_http = default_access_rules.value["enable_http"]
+      # enable_http_ssl - (optional) is a type of bool
+      enable_http_ssl = default_access_rules.value["enable_http_ssl"]
+      # enable_rac_db_listener - (optional) is a type of bool
       enable_rac_db_listener = default_access_rules.value["enable_rac_db_listener"]
-      enable_rac_ons         = default_access_rules.value["enable_rac_ons"]
-      enable_scan_listener   = default_access_rules.value["enable_scan_listener"]
-      enable_ssh             = default_access_rules.value["enable_ssh"]
+      # enable_rac_ons - (optional) is a type of bool
+      enable_rac_ons = default_access_rules.value["enable_rac_ons"]
+      # enable_scan_listener - (optional) is a type of bool
+      enable_scan_listener = default_access_rules.value["enable_scan_listener"]
+      # enable_ssh - (optional) is a type of bool
+      enable_ssh = default_access_rules.value["enable_ssh"]
     }
   }
 
   dynamic "hybrid_disaster_recovery" {
     for_each = var.hybrid_disaster_recovery
     content {
+      # cloud_storage_container - (required) is a type of string
       cloud_storage_container = hybrid_disaster_recovery.value["cloud_storage_container"]
-      cloud_storage_password  = hybrid_disaster_recovery.value["cloud_storage_password"]
-      cloud_storage_username  = hybrid_disaster_recovery.value["cloud_storage_username"]
+      # cloud_storage_password - (optional) is a type of string
+      cloud_storage_password = hybrid_disaster_recovery.value["cloud_storage_password"]
+      # cloud_storage_username - (optional) is a type of string
+      cloud_storage_username = hybrid_disaster_recovery.value["cloud_storage_username"]
     }
   }
 
   dynamic "instantiate_from_backup" {
     for_each = var.instantiate_from_backup
     content {
+      # cloud_storage_container - (required) is a type of string
       cloud_storage_container = instantiate_from_backup.value["cloud_storage_container"]
-      cloud_storage_password  = instantiate_from_backup.value["cloud_storage_password"]
-      cloud_storage_username  = instantiate_from_backup.value["cloud_storage_username"]
-      database_id             = instantiate_from_backup.value["database_id"]
-      decryption_key          = instantiate_from_backup.value["decryption_key"]
-      on_premise              = instantiate_from_backup.value["on_premise"]
-      service_id              = instantiate_from_backup.value["service_id"]
-      wallet_file_content     = instantiate_from_backup.value["wallet_file_content"]
+      # cloud_storage_password - (optional) is a type of string
+      cloud_storage_password = instantiate_from_backup.value["cloud_storage_password"]
+      # cloud_storage_username - (optional) is a type of string
+      cloud_storage_username = instantiate_from_backup.value["cloud_storage_username"]
+      # database_id - (required) is a type of string
+      database_id = instantiate_from_backup.value["database_id"]
+      # decryption_key - (optional) is a type of string
+      decryption_key = instantiate_from_backup.value["decryption_key"]
+      # on_premise - (optional) is a type of bool
+      on_premise = instantiate_from_backup.value["on_premise"]
+      # service_id - (optional) is a type of string
+      service_id = instantiate_from_backup.value["service_id"]
+      # wallet_file_content - (optional) is a type of string
+      wallet_file_content = instantiate_from_backup.value["wallet_file_content"]
     }
   }
 
   dynamic "standby" {
     for_each = var.standby
     content {
+      # availability_domain - (required) is a type of string
       availability_domain = standby.value["availability_domain"]
-      subnet              = standby.value["subnet"]
+      # subnet - (required) is a type of string
+      subnet = standby.value["subnet"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

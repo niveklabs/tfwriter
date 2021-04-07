@@ -112,15 +112,21 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_backend_bucket" "this" {
+  # bucket_name - (required) is a type of string
   bucket_name = var.bucket_name
+  # description - (optional) is a type of string
   description = var.description
-  enable_cdn  = var.enable_cdn
-  name        = var.name
-  project     = var.project
+  # enable_cdn - (optional) is a type of bool
+  enable_cdn = var.enable_cdn
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "cdn_policy" {
     for_each = var.cdn_policy
     content {
+      # signed_url_cache_max_age_sec - (optional) is a type of number
       signed_url_cache_max_age_sec = cdn_policy.value["signed_url_cache_max_age_sec"]
     }
   }
@@ -128,8 +134,11 @@ resource "google_compute_backend_bucket" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

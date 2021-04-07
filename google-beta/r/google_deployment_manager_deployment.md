@@ -152,17 +152,25 @@ variable "timeouts" {
 
 ```terraform
 resource "google_deployment_manager_deployment" "this" {
+  # create_policy - (optional) is a type of string
   create_policy = var.create_policy
+  # delete_policy - (optional) is a type of string
   delete_policy = var.delete_policy
-  description   = var.description
-  name          = var.name
-  preview       = var.preview
-  project       = var.project
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # preview - (optional) is a type of bool
+  preview = var.preview
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "labels" {
     for_each = var.labels
     content {
-      key   = labels.value["key"]
+      # key - (optional) is a type of string
+      key = labels.value["key"]
+      # value - (optional) is a type of string
       value = labels.value["value"]
     }
   }
@@ -174,6 +182,7 @@ resource "google_deployment_manager_deployment" "this" {
       dynamic "config" {
         for_each = target.value.config
         content {
+          # content - (required) is a type of string
           content = config.value["content"]
         }
       }
@@ -181,8 +190,10 @@ resource "google_deployment_manager_deployment" "this" {
       dynamic "imports" {
         for_each = target.value.imports
         content {
+          # content - (optional) is a type of string
           content = imports.value["content"]
-          name    = imports.value["name"]
+          # name - (optional) is a type of string
+          name = imports.value["name"]
         }
       }
 
@@ -192,8 +203,11 @@ resource "google_deployment_manager_deployment" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

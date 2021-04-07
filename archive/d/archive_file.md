@@ -111,18 +111,27 @@ variable "source" {
 
 ```terraform
 data "archive_file" "this" {
-  excludes                = var.excludes
-  output_path             = var.output_path
-  source_content          = var.source_content
+  # excludes - (optional) is a type of set of string
+  excludes = var.excludes
+  # output_path - (required) is a type of string
+  output_path = var.output_path
+  # source_content - (optional) is a type of string
+  source_content = var.source_content
+  # source_content_filename - (optional) is a type of string
   source_content_filename = var.source_content_filename
-  source_dir              = var.source_dir
-  source_file             = var.source_file
-  type                    = var.type
+  # source_dir - (optional) is a type of string
+  source_dir = var.source_dir
+  # source_file - (optional) is a type of string
+  source_file = var.source_file
+  # type - (required) is a type of string
+  type = var.type
 
   dynamic "source" {
     for_each = var.source
     content {
-      content  = source.value["content"]
+      # content - (required) is a type of string
+      content = source.value["content"]
+      # filename - (required) is a type of string
       filename = source.value["filename"]
     }
   }

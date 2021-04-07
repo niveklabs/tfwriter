@@ -57,7 +57,9 @@ variable "compartment_id" {
 
 ```terraform
 data "oci_identity_availability_domain" "this" {
-  ad_number      = var.ad_number
+  # ad_number - (optional) is a type of number
+  ad_number = var.ad_number
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
 }
 ```

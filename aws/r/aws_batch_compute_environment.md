@@ -140,37 +140,60 @@ variable "compute_resources" {
 
 ```terraform
 resource "aws_batch_compute_environment" "this" {
-  compute_environment_name        = var.compute_environment_name
+  # compute_environment_name - (optional) is a type of string
+  compute_environment_name = var.compute_environment_name
+  # compute_environment_name_prefix - (optional) is a type of string
   compute_environment_name_prefix = var.compute_environment_name_prefix
-  service_role                    = var.service_role
-  state                           = var.state
-  tags                            = var.tags
-  type                            = var.type
+  # service_role - (required) is a type of string
+  service_role = var.service_role
+  # state - (optional) is a type of string
+  state = var.state
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (required) is a type of string
+  type = var.type
 
   dynamic "compute_resources" {
     for_each = var.compute_resources
     content {
+      # allocation_strategy - (optional) is a type of string
       allocation_strategy = compute_resources.value["allocation_strategy"]
-      bid_percentage      = compute_resources.value["bid_percentage"]
-      desired_vcpus       = compute_resources.value["desired_vcpus"]
-      ec2_key_pair        = compute_resources.value["ec2_key_pair"]
-      image_id            = compute_resources.value["image_id"]
-      instance_role       = compute_resources.value["instance_role"]
-      instance_type       = compute_resources.value["instance_type"]
-      max_vcpus           = compute_resources.value["max_vcpus"]
-      min_vcpus           = compute_resources.value["min_vcpus"]
-      security_group_ids  = compute_resources.value["security_group_ids"]
+      # bid_percentage - (optional) is a type of number
+      bid_percentage = compute_resources.value["bid_percentage"]
+      # desired_vcpus - (optional) is a type of number
+      desired_vcpus = compute_resources.value["desired_vcpus"]
+      # ec2_key_pair - (optional) is a type of string
+      ec2_key_pair = compute_resources.value["ec2_key_pair"]
+      # image_id - (optional) is a type of string
+      image_id = compute_resources.value["image_id"]
+      # instance_role - (required) is a type of string
+      instance_role = compute_resources.value["instance_role"]
+      # instance_type - (required) is a type of set of string
+      instance_type = compute_resources.value["instance_type"]
+      # max_vcpus - (required) is a type of number
+      max_vcpus = compute_resources.value["max_vcpus"]
+      # min_vcpus - (required) is a type of number
+      min_vcpus = compute_resources.value["min_vcpus"]
+      # security_group_ids - (required) is a type of set of string
+      security_group_ids = compute_resources.value["security_group_ids"]
+      # spot_iam_fleet_role - (optional) is a type of string
       spot_iam_fleet_role = compute_resources.value["spot_iam_fleet_role"]
-      subnets             = compute_resources.value["subnets"]
-      tags                = compute_resources.value["tags"]
-      type                = compute_resources.value["type"]
+      # subnets - (required) is a type of set of string
+      subnets = compute_resources.value["subnets"]
+      # tags - (optional) is a type of map of string
+      tags = compute_resources.value["tags"]
+      # type - (required) is a type of string
+      type = compute_resources.value["type"]
 
       dynamic "launch_template" {
         for_each = compute_resources.value.launch_template
         content {
-          launch_template_id   = launch_template.value["launch_template_id"]
+          # launch_template_id - (optional) is a type of string
+          launch_template_id = launch_template.value["launch_template_id"]
+          # launch_template_name - (optional) is a type of string
           launch_template_name = launch_template.value["launch_template_name"]
-          version              = launch_template.value["version"]
+          # version - (optional) is a type of string
+          version = launch_template.value["version"]
         }
       }
 

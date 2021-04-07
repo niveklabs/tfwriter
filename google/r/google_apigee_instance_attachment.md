@@ -72,13 +72,17 @@ variable "timeouts" {
 
 ```terraform
 resource "google_apigee_instance_attachment" "this" {
+  # environment - (required) is a type of string
   environment = var.environment
+  # instance_id - (required) is a type of string
   instance_id = var.instance_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

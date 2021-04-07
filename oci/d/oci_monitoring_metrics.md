@@ -115,19 +115,29 @@ variable "filter" {
 
 ```terraform
 data "oci_monitoring_metrics" "this" {
-  compartment_id            = var.compartment_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # compartment_id_in_subtree - (optional) is a type of bool
   compartment_id_in_subtree = var.compartment_id_in_subtree
-  dimension_filters         = var.dimension_filters
-  group_by                  = var.group_by
-  name                      = var.name
-  namespace                 = var.namespace
-  resource_group            = var.resource_group
+  # dimension_filters - (optional) is a type of map of string
+  dimension_filters = var.dimension_filters
+  # group_by - (optional) is a type of list of string
+  group_by = var.group_by
+  # name - (optional) is a type of string
+  name = var.name
+  # namespace - (optional) is a type of string
+  namespace = var.namespace
+  # resource_group - (optional) is a type of string
+  resource_group = var.resource_group
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

@@ -99,18 +99,27 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_bot_channel_ms_teams" "this" {
-  bot_name            = var.bot_name
-  calling_web_hook    = var.calling_web_hook
-  enable_calling      = var.enable_calling
-  location            = var.location
+  # bot_name - (required) is a type of string
+  bot_name = var.bot_name
+  # calling_web_hook - (optional) is a type of string
+  calling_web_hook = var.calling_web_hook
+  # enable_calling - (optional) is a type of bool
+  enable_calling = var.enable_calling
+  # location - (required) is a type of string
+  location = var.location
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

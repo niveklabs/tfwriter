@@ -64,8 +64,11 @@ variable "security_group_names" {
 
 ```terraform
 resource "aws_elasticache_security_group" "this" {
-  description          = var.description
-  name                 = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # security_group_names - (required) is a type of set of string
   security_group_names = var.security_group_names
 }
 ```

@@ -173,26 +173,39 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_marketplace_publication" "this" {
-  compartment_id            = var.compartment_id
-  defined_tags              = var.defined_tags
-  freeform_tags             = var.freeform_tags
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # is_agreement_acknowledged - (required) is a type of bool
   is_agreement_acknowledged = var.is_agreement_acknowledged
-  listing_type              = var.listing_type
-  long_description          = var.long_description
-  name                      = var.name
-  short_description         = var.short_description
+  # listing_type - (required) is a type of string
+  listing_type = var.listing_type
+  # long_description - (optional) is a type of string
+  long_description = var.long_description
+  # name - (required) is a type of string
+  name = var.name
+  # short_description - (required) is a type of string
+  short_description = var.short_description
 
   dynamic "package_details" {
     for_each = var.package_details
     content {
-      image_id        = package_details.value["image_id"]
-      package_type    = package_details.value["package_type"]
+      # image_id - (optional) is a type of string
+      image_id = package_details.value["image_id"]
+      # package_type - (required) is a type of string
+      package_type = package_details.value["package_type"]
+      # package_version - (required) is a type of string
       package_version = package_details.value["package_version"]
 
       dynamic "eula" {
         for_each = package_details.value.eula
         content {
-          eula_type    = eula.value["eula_type"]
+          # eula_type - (required) is a type of string
+          eula_type = eula.value["eula_type"]
+          # license_text - (optional) is a type of string
           license_text = eula.value["license_text"]
         }
       }
@@ -200,6 +213,7 @@ resource "oci_marketplace_publication" "this" {
       dynamic "operating_system" {
         for_each = package_details.value.operating_system
         content {
+          # name - (optional) is a type of string
           name = operating_system.value["name"]
         }
       }
@@ -210,9 +224,13 @@ resource "oci_marketplace_publication" "this" {
   dynamic "support_contacts" {
     for_each = var.support_contacts
     content {
-      email   = support_contacts.value["email"]
-      name    = support_contacts.value["name"]
-      phone   = support_contacts.value["phone"]
+      # email - (optional) is a type of string
+      email = support_contacts.value["email"]
+      # name - (optional) is a type of string
+      name = support_contacts.value["name"]
+      # phone - (optional) is a type of string
+      phone = support_contacts.value["phone"]
+      # subject - (optional) is a type of string
       subject = support_contacts.value["subject"]
     }
   }
@@ -220,8 +238,11 @@ resource "oci_marketplace_publication" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

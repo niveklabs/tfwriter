@@ -94,24 +94,33 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_database_database_upgrade" "this" {
-  action      = var.action
+  # action - (required) is a type of string
+  action = var.action
+  # database_id - (required) is a type of string
   database_id = var.database_id
 
   dynamic "database_upgrade_source_details" {
     for_each = var.database_upgrade_source_details
     content {
+      # database_software_image_id - (optional) is a type of string
       database_software_image_id = database_upgrade_source_details.value["database_software_image_id"]
-      db_version                 = database_upgrade_source_details.value["db_version"]
-      options                    = database_upgrade_source_details.value["options"]
-      source                     = database_upgrade_source_details.value["source"]
+      # db_version - (optional) is a type of string
+      db_version = database_upgrade_source_details.value["db_version"]
+      # options - (optional) is a type of string
+      options = database_upgrade_source_details.value["options"]
+      # source - (optional) is a type of string
+      source = database_upgrade_source_details.value["source"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

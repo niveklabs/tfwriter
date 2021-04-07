@@ -148,23 +148,37 @@ variable "mount_options" {
 
 ```terraform
 resource "nomad_volume" "this" {
-  access_mode           = var.access_mode
-  attachment_mode       = var.attachment_mode
-  context               = var.context
+  # access_mode - (required) is a type of string
+  access_mode = var.access_mode
+  # attachment_mode - (required) is a type of string
+  attachment_mode = var.attachment_mode
+  # context - (optional) is a type of map of string
+  context = var.context
+  # deregister_on_destroy - (optional) is a type of bool
   deregister_on_destroy = var.deregister_on_destroy
-  external_id           = var.external_id
-  name                  = var.name
-  namespace             = var.namespace
-  parameters            = var.parameters
-  plugin_id             = var.plugin_id
-  secrets               = var.secrets
-  type                  = var.type
-  volume_id             = var.volume_id
+  # external_id - (required) is a type of string
+  external_id = var.external_id
+  # name - (required) is a type of string
+  name = var.name
+  # namespace - (optional) is a type of string
+  namespace = var.namespace
+  # parameters - (optional) is a type of map of string
+  parameters = var.parameters
+  # plugin_id - (required) is a type of string
+  plugin_id = var.plugin_id
+  # secrets - (optional) is a type of map of string
+  secrets = var.secrets
+  # type - (optional) is a type of string
+  type = var.type
+  # volume_id - (required) is a type of string
+  volume_id = var.volume_id
 
   dynamic "mount_options" {
     for_each = var.mount_options
     content {
-      fs_type     = mount_options.value["fs_type"]
+      # fs_type - (optional) is a type of string
+      fs_type = mount_options.value["fs_type"]
+      # mount_flags - (optional) is a type of list of string
       mount_flags = mount_options.value["mount_flags"]
     }
   }

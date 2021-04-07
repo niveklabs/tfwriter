@@ -90,15 +90,21 @@ variable "filter" {
 
 ```terraform
 data "aws_vpc_endpoint_service" "this" {
-  service      = var.service
+  # service - (optional) is a type of string
+  service = var.service
+  # service_name - (optional) is a type of string
   service_name = var.service_name
+  # service_type - (optional) is a type of string
   service_type = var.service_type
-  tags         = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

@@ -49,6 +49,7 @@ variable "arn" {
 
 ```terraform
 data "aws_outposts_outpost_instance_types" "this" {
+  # arn - (required) is a type of string
   arn = var.arn
 }
 ```

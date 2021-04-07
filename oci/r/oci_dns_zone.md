@@ -143,27 +143,40 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_dns_zone" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  defined_tags   = var.defined_tags
-  freeform_tags  = var.freeform_tags
-  name           = var.name
-  scope          = var.scope
-  view_id        = var.view_id
-  zone_type      = var.zone_type
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # name - (required) is a type of string
+  name = var.name
+  # scope - (optional) is a type of string
+  scope = var.scope
+  # view_id - (optional) is a type of string
+  view_id = var.view_id
+  # zone_type - (required) is a type of string
+  zone_type = var.zone_type
 
   dynamic "external_masters" {
     for_each = var.external_masters
     content {
-      address     = external_masters.value["address"]
-      port        = external_masters.value["port"]
+      # address - (required) is a type of string
+      address = external_masters.value["address"]
+      # port - (optional) is a type of number
+      port = external_masters.value["port"]
+      # tsig_key_id - (optional) is a type of string
       tsig_key_id = external_masters.value["tsig_key_id"]
 
       dynamic "tsig" {
         for_each = external_masters.value.tsig
         content {
+          # algorithm - (required) is a type of string
           algorithm = tsig.value["algorithm"]
-          name      = tsig.value["name"]
-          secret    = tsig.value["secret"]
+          # name - (required) is a type of string
+          name = tsig.value["name"]
+          # secret - (required) is a type of string
+          secret = tsig.value["secret"]
         }
       }
 
@@ -173,8 +186,11 @@ resource "oci_dns_zone" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

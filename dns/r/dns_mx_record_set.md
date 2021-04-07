@@ -80,14 +80,19 @@ variable "mx" {
 
 ```terraform
 resource "dns_mx_record_set" "this" {
+  # name - (optional) is a type of string
   name = var.name
-  ttl  = var.ttl
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
+  # zone - (required) is a type of string
   zone = var.zone
 
   dynamic "mx" {
     for_each = var.mx
     content {
-      exchange   = mx.value["exchange"]
+      # exchange - (required) is a type of string
+      exchange = mx.value["exchange"]
+      # preference - (required) is a type of number
       preference = mx.value["preference"]
     }
   }

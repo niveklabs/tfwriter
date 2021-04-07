@@ -56,7 +56,9 @@ variable "vm_cluster_id" {
 
 ```terraform
 data "oci_database_vm_cluster_patch" "this" {
-  patch_id      = var.patch_id
+  # patch_id - (required) is a type of string
+  patch_id = var.patch_id
+  # vm_cluster_id - (required) is a type of string
   vm_cluster_id = var.vm_cluster_id
 }
 ```

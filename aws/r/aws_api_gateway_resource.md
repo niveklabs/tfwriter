@@ -63,8 +63,11 @@ variable "rest_api_id" {
 
 ```terraform
 resource "aws_api_gateway_resource" "this" {
-  parent_id   = var.parent_id
-  path_part   = var.path_part
+  # parent_id - (required) is a type of string
+  parent_id = var.parent_id
+  # path_part - (required) is a type of string
+  path_part = var.path_part
+  # rest_api_id - (required) is a type of string
   rest_api_id = var.rest_api_id
 }
 ```

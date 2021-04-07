@@ -72,10 +72,14 @@ variable "taxonomy" {
 
 ```terraform
 resource "google_data_catalog_taxonomy_iam_policy" "this" {
+  # policy_data - (required) is a type of string
   policy_data = var.policy_data
-  project     = var.project
-  region      = var.region
-  taxonomy    = var.taxonomy
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
+  # taxonomy - (required) is a type of string
+  taxonomy = var.taxonomy
 }
 ```
 

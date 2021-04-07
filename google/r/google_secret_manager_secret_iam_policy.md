@@ -64,9 +64,12 @@ variable "secret_id" {
 
 ```terraform
 resource "google_secret_manager_secret_iam_policy" "this" {
+  # policy_data - (required) is a type of string
   policy_data = var.policy_data
-  project     = var.project
-  secret_id   = var.secret_id
+  # project - (optional) is a type of string
+  project = var.project
+  # secret_id - (required) is a type of string
+  secret_id = var.secret_id
 }
 ```
 

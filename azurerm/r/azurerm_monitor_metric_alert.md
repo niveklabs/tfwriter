@@ -267,23 +267,37 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_monitor_metric_alert" "this" {
-  auto_mitigate            = var.auto_mitigate
-  description              = var.description
-  enabled                  = var.enabled
-  frequency                = var.frequency
-  name                     = var.name
-  resource_group_name      = var.resource_group_name
-  scopes                   = var.scopes
-  severity                 = var.severity
-  tags                     = var.tags
+  # auto_mitigate - (optional) is a type of bool
+  auto_mitigate = var.auto_mitigate
+  # description - (optional) is a type of string
+  description = var.description
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # frequency - (optional) is a type of string
+  frequency = var.frequency
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # scopes - (required) is a type of set of string
+  scopes = var.scopes
+  # severity - (optional) is a type of number
+  severity = var.severity
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # target_resource_location - (optional) is a type of string
   target_resource_location = var.target_resource_location
-  target_resource_type     = var.target_resource_type
-  window_size              = var.window_size
+  # target_resource_type - (optional) is a type of string
+  target_resource_type = var.target_resource_type
+  # window_size - (optional) is a type of string
+  window_size = var.window_size
 
   dynamic "action" {
     for_each = var.action
     content {
-      action_group_id    = action.value["action_group_id"]
+      # action_group_id - (required) is a type of string
+      action_group_id = action.value["action_group_id"]
+      # webhook_properties - (optional) is a type of map of string
       webhook_properties = action.value["webhook_properties"]
     }
   }
@@ -291,28 +305,40 @@ resource "azurerm_monitor_metric_alert" "this" {
   dynamic "application_insights_web_test_location_availability_criteria" {
     for_each = var.application_insights_web_test_location_availability_criteria
     content {
-      component_id          = application_insights_web_test_location_availability_criteria.value["component_id"]
+      # component_id - (required) is a type of string
+      component_id = application_insights_web_test_location_availability_criteria.value["component_id"]
+      # failed_location_count - (required) is a type of number
       failed_location_count = application_insights_web_test_location_availability_criteria.value["failed_location_count"]
-      web_test_id           = application_insights_web_test_location_availability_criteria.value["web_test_id"]
+      # web_test_id - (required) is a type of string
+      web_test_id = application_insights_web_test_location_availability_criteria.value["web_test_id"]
     }
   }
 
   dynamic "criteria" {
     for_each = var.criteria
     content {
-      aggregation            = criteria.value["aggregation"]
-      metric_name            = criteria.value["metric_name"]
-      metric_namespace       = criteria.value["metric_namespace"]
-      operator               = criteria.value["operator"]
+      # aggregation - (required) is a type of string
+      aggregation = criteria.value["aggregation"]
+      # metric_name - (required) is a type of string
+      metric_name = criteria.value["metric_name"]
+      # metric_namespace - (required) is a type of string
+      metric_namespace = criteria.value["metric_namespace"]
+      # operator - (required) is a type of string
+      operator = criteria.value["operator"]
+      # skip_metric_validation - (optional) is a type of bool
       skip_metric_validation = criteria.value["skip_metric_validation"]
-      threshold              = criteria.value["threshold"]
+      # threshold - (required) is a type of number
+      threshold = criteria.value["threshold"]
 
       dynamic "dimension" {
         for_each = criteria.value.dimension
         content {
-          name     = dimension.value["name"]
+          # name - (required) is a type of string
+          name = dimension.value["name"]
+          # operator - (required) is a type of string
           operator = dimension.value["operator"]
-          values   = dimension.value["values"]
+          # values - (required) is a type of list of string
+          values = dimension.value["values"]
         }
       }
 
@@ -322,22 +348,34 @@ resource "azurerm_monitor_metric_alert" "this" {
   dynamic "dynamic_criteria" {
     for_each = var.dynamic_criteria
     content {
-      aggregation              = dynamic_criteria.value["aggregation"]
-      alert_sensitivity        = dynamic_criteria.value["alert_sensitivity"]
+      # aggregation - (required) is a type of string
+      aggregation = dynamic_criteria.value["aggregation"]
+      # alert_sensitivity - (required) is a type of string
+      alert_sensitivity = dynamic_criteria.value["alert_sensitivity"]
+      # evaluation_failure_count - (optional) is a type of number
       evaluation_failure_count = dynamic_criteria.value["evaluation_failure_count"]
-      evaluation_total_count   = dynamic_criteria.value["evaluation_total_count"]
-      ignore_data_before       = dynamic_criteria.value["ignore_data_before"]
-      metric_name              = dynamic_criteria.value["metric_name"]
-      metric_namespace         = dynamic_criteria.value["metric_namespace"]
-      operator                 = dynamic_criteria.value["operator"]
-      skip_metric_validation   = dynamic_criteria.value["skip_metric_validation"]
+      # evaluation_total_count - (optional) is a type of number
+      evaluation_total_count = dynamic_criteria.value["evaluation_total_count"]
+      # ignore_data_before - (optional) is a type of string
+      ignore_data_before = dynamic_criteria.value["ignore_data_before"]
+      # metric_name - (required) is a type of string
+      metric_name = dynamic_criteria.value["metric_name"]
+      # metric_namespace - (required) is a type of string
+      metric_namespace = dynamic_criteria.value["metric_namespace"]
+      # operator - (required) is a type of string
+      operator = dynamic_criteria.value["operator"]
+      # skip_metric_validation - (optional) is a type of bool
+      skip_metric_validation = dynamic_criteria.value["skip_metric_validation"]
 
       dynamic "dimension" {
         for_each = dynamic_criteria.value.dimension
         content {
-          name     = dimension.value["name"]
+          # name - (required) is a type of string
+          name = dimension.value["name"]
+          # operator - (required) is a type of string
           operator = dimension.value["operator"]
-          values   = dimension.value["values"]
+          # values - (required) is a type of list of string
+          values = dimension.value["values"]
         }
       }
 
@@ -347,9 +385,13 @@ resource "azurerm_monitor_metric_alert" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

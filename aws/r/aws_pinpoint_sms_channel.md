@@ -73,10 +73,14 @@ variable "short_code" {
 
 ```terraform
 resource "aws_pinpoint_sms_channel" "this" {
+  # application_id - (required) is a type of string
   application_id = var.application_id
-  enabled        = var.enabled
-  sender_id      = var.sender_id
-  short_code     = var.short_code
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # sender_id - (optional) is a type of string
+  sender_id = var.sender_id
+  # short_code - (optional) is a type of string
+  short_code = var.short_code
 }
 ```
 

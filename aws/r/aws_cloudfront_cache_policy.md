@@ -153,27 +153,37 @@ variable "parameters_in_cache_key_and_forwarded_to_origin" {
 
 ```terraform
 resource "aws_cloudfront_cache_policy" "this" {
-  comment     = var.comment
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # default_ttl - (optional) is a type of number
   default_ttl = var.default_ttl
-  etag        = var.etag
-  max_ttl     = var.max_ttl
-  min_ttl     = var.min_ttl
-  name        = var.name
+  # etag - (optional) is a type of string
+  etag = var.etag
+  # max_ttl - (optional) is a type of number
+  max_ttl = var.max_ttl
+  # min_ttl - (optional) is a type of number
+  min_ttl = var.min_ttl
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "parameters_in_cache_key_and_forwarded_to_origin" {
     for_each = var.parameters_in_cache_key_and_forwarded_to_origin
     content {
+      # enable_accept_encoding_brotli - (optional) is a type of bool
       enable_accept_encoding_brotli = parameters_in_cache_key_and_forwarded_to_origin.value["enable_accept_encoding_brotli"]
-      enable_accept_encoding_gzip   = parameters_in_cache_key_and_forwarded_to_origin.value["enable_accept_encoding_gzip"]
+      # enable_accept_encoding_gzip - (optional) is a type of bool
+      enable_accept_encoding_gzip = parameters_in_cache_key_and_forwarded_to_origin.value["enable_accept_encoding_gzip"]
 
       dynamic "cookies_config" {
         for_each = parameters_in_cache_key_and_forwarded_to_origin.value.cookies_config
         content {
+          # cookie_behavior - (required) is a type of string
           cookie_behavior = cookies_config.value["cookie_behavior"]
 
           dynamic "cookies" {
             for_each = cookies_config.value.cookies
             content {
+              # items - (optional) is a type of set of string
               items = cookies.value["items"]
             }
           }
@@ -184,11 +194,13 @@ resource "aws_cloudfront_cache_policy" "this" {
       dynamic "headers_config" {
         for_each = parameters_in_cache_key_and_forwarded_to_origin.value.headers_config
         content {
+          # header_behavior - (optional) is a type of string
           header_behavior = headers_config.value["header_behavior"]
 
           dynamic "headers" {
             for_each = headers_config.value.headers
             content {
+              # items - (optional) is a type of set of string
               items = headers.value["items"]
             }
           }
@@ -199,11 +211,13 @@ resource "aws_cloudfront_cache_policy" "this" {
       dynamic "query_strings_config" {
         for_each = parameters_in_cache_key_and_forwarded_to_origin.value.query_strings_config
         content {
+          # query_string_behavior - (required) is a type of string
           query_string_behavior = query_strings_config.value["query_string_behavior"]
 
           dynamic "query_strings" {
             for_each = query_strings_config.value.query_strings
             content {
+              # items - (optional) is a type of set of string
               items = query_strings.value["items"]
             }
           }

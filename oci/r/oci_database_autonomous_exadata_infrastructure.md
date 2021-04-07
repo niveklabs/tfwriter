@@ -172,28 +172,43 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_database_autonomous_exadata_infrastructure" "this" {
+  # availability_domain - (required) is a type of string
   availability_domain = var.availability_domain
-  compartment_id      = var.compartment_id
-  defined_tags        = var.defined_tags
-  display_name        = var.display_name
-  domain              = var.domain
-  freeform_tags       = var.freeform_tags
-  license_model       = var.license_model
-  nsg_ids             = var.nsg_ids
-  shape               = var.shape
-  subnet_id           = var.subnet_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # license_model - (optional) is a type of string
+  license_model = var.license_model
+  # nsg_ids - (optional) is a type of set of string
+  nsg_ids = var.nsg_ids
+  # shape - (required) is a type of string
+  shape = var.shape
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
 
   dynamic "maintenance_window_details" {
     for_each = var.maintenance_window_details
     content {
-      hours_of_day       = maintenance_window_details.value["hours_of_day"]
+      # hours_of_day - (optional) is a type of list of number
+      hours_of_day = maintenance_window_details.value["hours_of_day"]
+      # lead_time_in_weeks - (optional) is a type of number
       lead_time_in_weeks = maintenance_window_details.value["lead_time_in_weeks"]
-      preference         = maintenance_window_details.value["preference"]
-      weeks_of_month     = maintenance_window_details.value["weeks_of_month"]
+      # preference - (required) is a type of string
+      preference = maintenance_window_details.value["preference"]
+      # weeks_of_month - (optional) is a type of list of number
+      weeks_of_month = maintenance_window_details.value["weeks_of_month"]
 
       dynamic "days_of_week" {
         for_each = maintenance_window_details.value.days_of_week
         content {
+          # name - (required) is a type of string
           name = days_of_week.value["name"]
         }
       }
@@ -201,6 +216,7 @@ resource "oci_database_autonomous_exadata_infrastructure" "this" {
       dynamic "months" {
         for_each = maintenance_window_details.value.months
         content {
+          # name - (required) is a type of string
           name = months.value["name"]
         }
       }
@@ -211,8 +227,11 @@ resource "oci_database_autonomous_exadata_infrastructure" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

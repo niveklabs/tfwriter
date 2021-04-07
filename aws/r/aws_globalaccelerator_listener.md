@@ -97,23 +97,31 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_globalaccelerator_listener" "this" {
+  # accelerator_arn - (required) is a type of string
   accelerator_arn = var.accelerator_arn
+  # client_affinity - (optional) is a type of string
   client_affinity = var.client_affinity
-  protocol        = var.protocol
+  # protocol - (required) is a type of string
+  protocol = var.protocol
 
   dynamic "port_range" {
     for_each = var.port_range
     content {
+      # from_port - (optional) is a type of number
       from_port = port_range.value["from_port"]
-      to_port   = port_range.value["to_port"]
+      # to_port - (optional) is a type of number
+      to_port = port_range.value["to_port"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

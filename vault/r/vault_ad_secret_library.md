@@ -87,12 +87,18 @@ variable "ttl" {
 
 ```terraform
 resource "vault_ad_secret_library" "this" {
-  backend                      = var.backend
+  # backend - (required) is a type of string
+  backend = var.backend
+  # disable_check_in_enforcement - (optional) is a type of bool
   disable_check_in_enforcement = var.disable_check_in_enforcement
-  max_ttl                      = var.max_ttl
-  name                         = var.name
-  service_account_names        = var.service_account_names
-  ttl                          = var.ttl
+  # max_ttl - (optional) is a type of number
+  max_ttl = var.max_ttl
+  # name - (required) is a type of string
+  name = var.name
+  # service_account_names - (required) is a type of list of string
+  service_account_names = var.service_account_names
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
 }
 ```
 

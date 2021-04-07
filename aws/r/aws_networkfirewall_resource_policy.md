@@ -56,7 +56,9 @@ variable "resource_arn" {
 
 ```terraform
 resource "aws_networkfirewall_resource_policy" "this" {
-  policy       = var.policy
+  # policy - (required) is a type of string
+  policy = var.policy
+  # resource_arn - (required) is a type of string
   resource_arn = var.resource_arn
 }
 ```

@@ -131,21 +131,33 @@ variable "filter" {
 
 ```terraform
 data "oci_artifacts_container_images" "this" {
-  compartment_id            = var.compartment_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # compartment_id_in_subtree - (optional) is a type of bool
   compartment_id_in_subtree = var.compartment_id_in_subtree
-  display_name              = var.display_name
-  image_id                  = var.image_id
-  is_versioned              = var.is_versioned
-  repository_id             = var.repository_id
-  repository_name           = var.repository_name
-  state                     = var.state
-  version                   = var.version
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # image_id - (optional) is a type of string
+  image_id = var.image_id
+  # is_versioned - (optional) is a type of bool
+  is_versioned = var.is_versioned
+  # repository_id - (optional) is a type of string
+  repository_id = var.repository_id
+  # repository_name - (optional) is a type of string
+  repository_name = var.repository_name
+  # state - (optional) is a type of string
+  state = var.state
+  # version - (optional) is a type of string
+  version = var.version
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

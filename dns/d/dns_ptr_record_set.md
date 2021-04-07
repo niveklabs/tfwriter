@@ -49,6 +49,7 @@ variable "ip_address" {
 
 ```terraform
 data "dns_ptr_record_set" "this" {
+  # ip_address - (required) is a type of string
   ip_address = var.ip_address
 }
 ```

@@ -50,6 +50,7 @@ variable "region" {
 
 ```terraform
 data "aws_elb_service_account" "this" {
+  # region - (optional) is a type of string
   region = var.region
 }
 ```

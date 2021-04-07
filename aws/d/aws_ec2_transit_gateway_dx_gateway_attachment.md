@@ -82,14 +82,19 @@ variable "filter" {
 
 ```terraform
 data "aws_ec2_transit_gateway_dx_gateway_attachment" "this" {
-  dx_gateway_id      = var.dx_gateway_id
-  tags               = var.tags
+  # dx_gateway_id - (optional) is a type of string
+  dx_gateway_id = var.dx_gateway_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # transit_gateway_id - (optional) is a type of string
   transit_gateway_id = var.transit_gateway_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

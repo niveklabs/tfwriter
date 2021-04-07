@@ -49,6 +49,7 @@ variable "capacity_reservation_id" {
 
 ```terraform
 data "oci_core_compute_capacity_reservation" "this" {
+  # capacity_reservation_id - (required) is a type of string
   capacity_reservation_id = var.capacity_reservation_id
 }
 ```

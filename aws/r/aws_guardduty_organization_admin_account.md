@@ -49,6 +49,7 @@ variable "admin_account_id" {
 
 ```terraform
 resource "aws_guardduty_organization_admin_account" "this" {
+  # admin_account_id - (required) is a type of string
   admin_account_id = var.admin_account_id
 }
 ```

@@ -210,46 +210,71 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_dev_test_linux_virtual_machine" "this" {
-  allow_claim                = var.allow_claim
+  # allow_claim - (optional) is a type of bool
+  allow_claim = var.allow_claim
+  # disallow_public_ip_address - (optional) is a type of bool
   disallow_public_ip_address = var.disallow_public_ip_address
-  lab_name                   = var.lab_name
-  lab_subnet_name            = var.lab_subnet_name
-  lab_virtual_network_id     = var.lab_virtual_network_id
-  location                   = var.location
-  name                       = var.name
-  notes                      = var.notes
-  password                   = var.password
-  resource_group_name        = var.resource_group_name
-  size                       = var.size
-  ssh_key                    = var.ssh_key
-  storage_type               = var.storage_type
-  tags                       = var.tags
-  username                   = var.username
+  # lab_name - (required) is a type of string
+  lab_name = var.lab_name
+  # lab_subnet_name - (required) is a type of string
+  lab_subnet_name = var.lab_subnet_name
+  # lab_virtual_network_id - (required) is a type of string
+  lab_virtual_network_id = var.lab_virtual_network_id
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # notes - (optional) is a type of string
+  notes = var.notes
+  # password - (optional) is a type of string
+  password = var.password
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # size - (required) is a type of string
+  size = var.size
+  # ssh_key - (optional) is a type of string
+  ssh_key = var.ssh_key
+  # storage_type - (required) is a type of string
+  storage_type = var.storage_type
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # username - (required) is a type of string
+  username = var.username
 
   dynamic "gallery_image_reference" {
     for_each = var.gallery_image_reference
     content {
-      offer     = gallery_image_reference.value["offer"]
+      # offer - (required) is a type of string
+      offer = gallery_image_reference.value["offer"]
+      # publisher - (required) is a type of string
       publisher = gallery_image_reference.value["publisher"]
-      sku       = gallery_image_reference.value["sku"]
-      version   = gallery_image_reference.value["version"]
+      # sku - (required) is a type of string
+      sku = gallery_image_reference.value["sku"]
+      # version - (required) is a type of string
+      version = gallery_image_reference.value["version"]
     }
   }
 
   dynamic "inbound_nat_rule" {
     for_each = var.inbound_nat_rule
     content {
+      # backend_port - (required) is a type of number
       backend_port = inbound_nat_rule.value["backend_port"]
-      protocol     = inbound_nat_rule.value["protocol"]
+      # protocol - (required) is a type of string
+      protocol = inbound_nat_rule.value["protocol"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

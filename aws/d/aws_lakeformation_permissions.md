@@ -139,14 +139,19 @@ variable "table_with_columns" {
 
 ```terraform
 data "aws_lakeformation_permissions" "this" {
-  catalog_id       = var.catalog_id
+  # catalog_id - (optional) is a type of string
+  catalog_id = var.catalog_id
+  # catalog_resource - (optional) is a type of bool
   catalog_resource = var.catalog_resource
-  principal        = var.principal
+  # principal - (required) is a type of string
+  principal = var.principal
 
   dynamic "data_location" {
     for_each = var.data_location
     content {
-      arn        = data_location.value["arn"]
+      # arn - (required) is a type of string
+      arn = data_location.value["arn"]
+      # catalog_id - (optional) is a type of string
       catalog_id = data_location.value["catalog_id"]
     }
   }
@@ -154,29 +159,40 @@ data "aws_lakeformation_permissions" "this" {
   dynamic "database" {
     for_each = var.database
     content {
+      # catalog_id - (optional) is a type of string
       catalog_id = database.value["catalog_id"]
-      name       = database.value["name"]
+      # name - (required) is a type of string
+      name = database.value["name"]
     }
   }
 
   dynamic "table" {
     for_each = var.table
     content {
-      catalog_id    = table.value["catalog_id"]
+      # catalog_id - (optional) is a type of string
+      catalog_id = table.value["catalog_id"]
+      # database_name - (required) is a type of string
       database_name = table.value["database_name"]
-      name          = table.value["name"]
-      wildcard      = table.value["wildcard"]
+      # name - (optional) is a type of string
+      name = table.value["name"]
+      # wildcard - (optional) is a type of bool
+      wildcard = table.value["wildcard"]
     }
   }
 
   dynamic "table_with_columns" {
     for_each = var.table_with_columns
     content {
-      catalog_id            = table_with_columns.value["catalog_id"]
-      column_names          = table_with_columns.value["column_names"]
-      database_name         = table_with_columns.value["database_name"]
+      # catalog_id - (optional) is a type of string
+      catalog_id = table_with_columns.value["catalog_id"]
+      # column_names - (optional) is a type of list of string
+      column_names = table_with_columns.value["column_names"]
+      # database_name - (required) is a type of string
+      database_name = table_with_columns.value["database_name"]
+      # excluded_column_names - (optional) is a type of list of string
       excluded_column_names = table_with_columns.value["excluded_column_names"]
-      name                  = table_with_columns.value["name"]
+      # name - (required) is a type of string
+      name = table_with_columns.value["name"]
     }
   }
 

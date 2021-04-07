@@ -89,15 +89,21 @@ variable "service_identities" {
 
 ```terraform
 resource "consul_acl_role" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  namespace   = var.namespace
-  policies    = var.policies
+  # name - (required) is a type of string
+  name = var.name
+  # namespace - (optional) is a type of string
+  namespace = var.namespace
+  # policies - (optional) is a type of set of string
+  policies = var.policies
 
   dynamic "service_identities" {
     for_each = var.service_identities
     content {
-      datacenters  = service_identities.value["datacenters"]
+      # datacenters - (optional) is a type of set of string
+      datacenters = service_identities.value["datacenters"]
+      # service_name - (required) is a type of string
       service_name = service_identities.value["service_name"]
     }
   }

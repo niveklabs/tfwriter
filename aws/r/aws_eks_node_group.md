@@ -211,25 +211,41 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_eks_node_group" "this" {
-  ami_type             = var.ami_type
-  capacity_type        = var.capacity_type
-  cluster_name         = var.cluster_name
-  disk_size            = var.disk_size
+  # ami_type - (optional) is a type of string
+  ami_type = var.ami_type
+  # capacity_type - (optional) is a type of string
+  capacity_type = var.capacity_type
+  # cluster_name - (required) is a type of string
+  cluster_name = var.cluster_name
+  # disk_size - (optional) is a type of number
+  disk_size = var.disk_size
+  # force_update_version - (optional) is a type of bool
   force_update_version = var.force_update_version
-  instance_types       = var.instance_types
-  labels               = var.labels
-  node_group_name      = var.node_group_name
-  node_role_arn        = var.node_role_arn
-  release_version      = var.release_version
-  subnet_ids           = var.subnet_ids
-  tags                 = var.tags
-  version              = var.version
+  # instance_types - (optional) is a type of list of string
+  instance_types = var.instance_types
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # node_group_name - (required) is a type of string
+  node_group_name = var.node_group_name
+  # node_role_arn - (required) is a type of string
+  node_role_arn = var.node_role_arn
+  # release_version - (optional) is a type of string
+  release_version = var.release_version
+  # subnet_ids - (required) is a type of set of string
+  subnet_ids = var.subnet_ids
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # version - (optional) is a type of string
+  version = var.version
 
   dynamic "launch_template" {
     for_each = var.launch_template
     content {
-      id      = launch_template.value["id"]
-      name    = launch_template.value["name"]
+      # id - (optional) is a type of string
+      id = launch_template.value["id"]
+      # name - (optional) is a type of string
+      name = launch_template.value["name"]
+      # version - (required) is a type of string
       version = launch_template.value["version"]
     }
   }
@@ -237,7 +253,9 @@ resource "aws_eks_node_group" "this" {
   dynamic "remote_access" {
     for_each = var.remote_access
     content {
-      ec2_ssh_key               = remote_access.value["ec2_ssh_key"]
+      # ec2_ssh_key - (optional) is a type of string
+      ec2_ssh_key = remote_access.value["ec2_ssh_key"]
+      # source_security_group_ids - (optional) is a type of set of string
       source_security_group_ids = remote_access.value["source_security_group_ids"]
     }
   }
@@ -245,17 +263,23 @@ resource "aws_eks_node_group" "this" {
   dynamic "scaling_config" {
     for_each = var.scaling_config
     content {
+      # desired_size - (required) is a type of number
       desired_size = scaling_config.value["desired_size"]
-      max_size     = scaling_config.value["max_size"]
-      min_size     = scaling_config.value["min_size"]
+      # max_size - (required) is a type of number
+      max_size = scaling_config.value["max_size"]
+      # min_size - (required) is a type of number
+      min_size = scaling_config.value["min_size"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

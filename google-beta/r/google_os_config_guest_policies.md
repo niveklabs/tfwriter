@@ -434,21 +434,29 @@ variable "timeouts" {
 
 ```terraform
 resource "google_os_config_guest_policies" "this" {
-  description     = var.description
-  etag            = var.etag
+  # description - (optional) is a type of string
+  description = var.description
+  # etag - (optional) is a type of string
+  etag = var.etag
+  # guest_policy_id - (required) is a type of string
   guest_policy_id = var.guest_policy_id
-  project         = var.project
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "assignment" {
     for_each = var.assignment
     content {
+      # instance_name_prefixes - (optional) is a type of list of string
       instance_name_prefixes = assignment.value["instance_name_prefixes"]
-      instances              = assignment.value["instances"]
-      zones                  = assignment.value["zones"]
+      # instances - (optional) is a type of list of string
+      instances = assignment.value["instances"]
+      # zones - (optional) is a type of list of string
+      zones = assignment.value["zones"]
 
       dynamic "group_labels" {
         for_each = assignment.value.group_labels
         content {
+          # labels - (required) is a type of map of string
           labels = group_labels.value["labels"]
         }
       }
@@ -456,9 +464,12 @@ resource "google_os_config_guest_policies" "this" {
       dynamic "os_types" {
         for_each = assignment.value.os_types
         content {
+          # os_architecture - (optional) is a type of string
           os_architecture = os_types.value["os_architecture"]
-          os_short_name   = os_types.value["os_short_name"]
-          os_version      = os_types.value["os_version"]
+          # os_short_name - (optional) is a type of string
+          os_short_name = os_types.value["os_short_name"]
+          # os_version - (optional) is a type of string
+          os_version = os_types.value["os_version"]
         }
       }
 
@@ -472,39 +483,54 @@ resource "google_os_config_guest_policies" "this" {
       dynamic "apt" {
         for_each = package_repositories.value.apt
         content {
+          # archive_type - (optional) is a type of string
           archive_type = apt.value["archive_type"]
-          components   = apt.value["components"]
+          # components - (required) is a type of list of string
+          components = apt.value["components"]
+          # distribution - (required) is a type of string
           distribution = apt.value["distribution"]
-          gpg_key      = apt.value["gpg_key"]
-          uri          = apt.value["uri"]
+          # gpg_key - (optional) is a type of string
+          gpg_key = apt.value["gpg_key"]
+          # uri - (required) is a type of string
+          uri = apt.value["uri"]
         }
       }
 
       dynamic "goo" {
         for_each = package_repositories.value.goo
         content {
+          # name - (required) is a type of string
           name = goo.value["name"]
-          url  = goo.value["url"]
+          # url - (required) is a type of string
+          url = goo.value["url"]
         }
       }
 
       dynamic "yum" {
         for_each = package_repositories.value.yum
         content {
-          base_url     = yum.value["base_url"]
+          # base_url - (required) is a type of string
+          base_url = yum.value["base_url"]
+          # display_name - (optional) is a type of string
           display_name = yum.value["display_name"]
-          gpg_keys     = yum.value["gpg_keys"]
-          id           = yum.value["id"]
+          # gpg_keys - (optional) is a type of list of string
+          gpg_keys = yum.value["gpg_keys"]
+          # id - (required) is a type of string
+          id = yum.value["id"]
         }
       }
 
       dynamic "zypper" {
         for_each = package_repositories.value.zypper
         content {
-          base_url     = zypper.value["base_url"]
+          # base_url - (required) is a type of string
+          base_url = zypper.value["base_url"]
+          # display_name - (optional) is a type of string
           display_name = zypper.value["display_name"]
-          gpg_keys     = zypper.value["gpg_keys"]
-          id           = zypper.value["id"]
+          # gpg_keys - (optional) is a type of list of string
+          gpg_keys = zypper.value["gpg_keys"]
+          # id - (required) is a type of string
+          id = zypper.value["id"]
         }
       }
 
@@ -514,39 +540,52 @@ resource "google_os_config_guest_policies" "this" {
   dynamic "packages" {
     for_each = var.packages
     content {
+      # desired_state - (optional) is a type of string
       desired_state = packages.value["desired_state"]
-      manager       = packages.value["manager"]
-      name          = packages.value["name"]
+      # manager - (optional) is a type of string
+      manager = packages.value["manager"]
+      # name - (required) is a type of string
+      name = packages.value["name"]
     }
   }
 
   dynamic "recipes" {
     for_each = var.recipes
     content {
+      # desired_state - (optional) is a type of string
       desired_state = recipes.value["desired_state"]
-      name          = recipes.value["name"]
-      version       = recipes.value["version"]
+      # name - (required) is a type of string
+      name = recipes.value["name"]
+      # version - (optional) is a type of string
+      version = recipes.value["version"]
 
       dynamic "artifacts" {
         for_each = recipes.value.artifacts
         content {
+          # allow_insecure - (optional) is a type of bool
           allow_insecure = artifacts.value["allow_insecure"]
-          id             = artifacts.value["id"]
+          # id - (required) is a type of string
+          id = artifacts.value["id"]
 
           dynamic "gcs" {
             for_each = artifacts.value.gcs
             content {
-              bucket     = gcs.value["bucket"]
+              # bucket - (optional) is a type of string
+              bucket = gcs.value["bucket"]
+              # generation - (optional) is a type of number
               generation = gcs.value["generation"]
-              object     = gcs.value["object"]
+              # object - (optional) is a type of string
+              object = gcs.value["object"]
             }
           }
 
           dynamic "remote" {
             for_each = artifacts.value.remote
             content {
+              # check_sum - (optional) is a type of string
               check_sum = remote.value["check_sum"]
-              uri       = remote.value["uri"]
+              # uri - (optional) is a type of string
+              uri = remote.value["uri"]
             }
           }
 
@@ -560,15 +599,19 @@ resource "google_os_config_guest_policies" "this" {
           dynamic "archive_extraction" {
             for_each = install_steps.value.archive_extraction
             content {
+              # artifact_id - (required) is a type of string
               artifact_id = archive_extraction.value["artifact_id"]
+              # destination - (optional) is a type of string
               destination = archive_extraction.value["destination"]
-              type        = archive_extraction.value["type"]
+              # type - (required) is a type of string
+              type = archive_extraction.value["type"]
             }
           }
 
           dynamic "dpkg_installation" {
             for_each = install_steps.value.dpkg_installation
             content {
+              # artifact_id - (required) is a type of string
               artifact_id = dpkg_installation.value["artifact_id"]
             }
           }
@@ -576,9 +619,13 @@ resource "google_os_config_guest_policies" "this" {
           dynamic "file_copy" {
             for_each = install_steps.value.file_copy
             content {
+              # artifact_id - (required) is a type of string
               artifact_id = file_copy.value["artifact_id"]
+              # destination - (required) is a type of string
               destination = file_copy.value["destination"]
-              overwrite   = file_copy.value["overwrite"]
+              # overwrite - (optional) is a type of bool
+              overwrite = file_copy.value["overwrite"]
+              # permissions - (optional) is a type of string
               permissions = file_copy.value["permissions"]
             }
           }
@@ -586,25 +633,33 @@ resource "google_os_config_guest_policies" "this" {
           dynamic "file_exec" {
             for_each = install_steps.value.file_exec
             content {
+              # allowed_exit_codes - (optional) is a type of string
               allowed_exit_codes = file_exec.value["allowed_exit_codes"]
-              args               = file_exec.value["args"]
-              artifact_id        = file_exec.value["artifact_id"]
-              local_path         = file_exec.value["local_path"]
+              # args - (optional) is a type of list of string
+              args = file_exec.value["args"]
+              # artifact_id - (optional) is a type of string
+              artifact_id = file_exec.value["artifact_id"]
+              # local_path - (optional) is a type of string
+              local_path = file_exec.value["local_path"]
             }
           }
 
           dynamic "msi_installation" {
             for_each = install_steps.value.msi_installation
             content {
+              # allowed_exit_codes - (optional) is a type of list of number
               allowed_exit_codes = msi_installation.value["allowed_exit_codes"]
-              artifact_id        = msi_installation.value["artifact_id"]
-              flags              = msi_installation.value["flags"]
+              # artifact_id - (required) is a type of string
+              artifact_id = msi_installation.value["artifact_id"]
+              # flags - (optional) is a type of list of string
+              flags = msi_installation.value["flags"]
             }
           }
 
           dynamic "rpm_installation" {
             for_each = install_steps.value.rpm_installation
             content {
+              # artifact_id - (required) is a type of string
               artifact_id = rpm_installation.value["artifact_id"]
             }
           }
@@ -612,9 +667,12 @@ resource "google_os_config_guest_policies" "this" {
           dynamic "script_run" {
             for_each = install_steps.value.script_run
             content {
+              # allowed_exit_codes - (optional) is a type of list of number
               allowed_exit_codes = script_run.value["allowed_exit_codes"]
-              interpreter        = script_run.value["interpreter"]
-              script             = script_run.value["script"]
+              # interpreter - (optional) is a type of string
+              interpreter = script_run.value["interpreter"]
+              # script - (required) is a type of string
+              script = script_run.value["script"]
             }
           }
 
@@ -628,15 +686,19 @@ resource "google_os_config_guest_policies" "this" {
           dynamic "archive_extraction" {
             for_each = update_steps.value.archive_extraction
             content {
+              # artifact_id - (required) is a type of string
               artifact_id = archive_extraction.value["artifact_id"]
+              # destination - (optional) is a type of string
               destination = archive_extraction.value["destination"]
-              type        = archive_extraction.value["type"]
+              # type - (required) is a type of string
+              type = archive_extraction.value["type"]
             }
           }
 
           dynamic "dpkg_installation" {
             for_each = update_steps.value.dpkg_installation
             content {
+              # artifact_id - (required) is a type of string
               artifact_id = dpkg_installation.value["artifact_id"]
             }
           }
@@ -644,9 +706,13 @@ resource "google_os_config_guest_policies" "this" {
           dynamic "file_copy" {
             for_each = update_steps.value.file_copy
             content {
+              # artifact_id - (required) is a type of string
               artifact_id = file_copy.value["artifact_id"]
+              # destination - (required) is a type of string
               destination = file_copy.value["destination"]
-              overwrite   = file_copy.value["overwrite"]
+              # overwrite - (optional) is a type of bool
+              overwrite = file_copy.value["overwrite"]
+              # permissions - (optional) is a type of string
               permissions = file_copy.value["permissions"]
             }
           }
@@ -654,25 +720,33 @@ resource "google_os_config_guest_policies" "this" {
           dynamic "file_exec" {
             for_each = update_steps.value.file_exec
             content {
+              # allowed_exit_codes - (optional) is a type of list of number
               allowed_exit_codes = file_exec.value["allowed_exit_codes"]
-              args               = file_exec.value["args"]
-              artifact_id        = file_exec.value["artifact_id"]
-              local_path         = file_exec.value["local_path"]
+              # args - (optional) is a type of list of string
+              args = file_exec.value["args"]
+              # artifact_id - (optional) is a type of string
+              artifact_id = file_exec.value["artifact_id"]
+              # local_path - (optional) is a type of string
+              local_path = file_exec.value["local_path"]
             }
           }
 
           dynamic "msi_installation" {
             for_each = update_steps.value.msi_installation
             content {
+              # allowed_exit_codes - (optional) is a type of list of number
               allowed_exit_codes = msi_installation.value["allowed_exit_codes"]
-              artifact_id        = msi_installation.value["artifact_id"]
-              flags              = msi_installation.value["flags"]
+              # artifact_id - (required) is a type of string
+              artifact_id = msi_installation.value["artifact_id"]
+              # flags - (optional) is a type of list of string
+              flags = msi_installation.value["flags"]
             }
           }
 
           dynamic "rpm_installation" {
             for_each = update_steps.value.rpm_installation
             content {
+              # artifact_id - (required) is a type of string
               artifact_id = rpm_installation.value["artifact_id"]
             }
           }
@@ -680,9 +754,12 @@ resource "google_os_config_guest_policies" "this" {
           dynamic "script_run" {
             for_each = update_steps.value.script_run
             content {
+              # allowed_exit_codes - (optional) is a type of list of number
               allowed_exit_codes = script_run.value["allowed_exit_codes"]
-              interpreter        = script_run.value["interpreter"]
-              script             = script_run.value["script"]
+              # interpreter - (optional) is a type of string
+              interpreter = script_run.value["interpreter"]
+              # script - (required) is a type of string
+              script = script_run.value["script"]
             }
           }
 
@@ -695,8 +772,11 @@ resource "google_os_config_guest_policies" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

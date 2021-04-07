@@ -72,10 +72,14 @@ variable "user_arn" {
 
 ```terraform
 resource "aws_opsworks_user_profile" "this" {
+  # allow_self_management - (optional) is a type of bool
   allow_self_management = var.allow_self_management
-  ssh_public_key        = var.ssh_public_key
-  ssh_username          = var.ssh_username
-  user_arn              = var.user_arn
+  # ssh_public_key - (optional) is a type of string
+  ssh_public_key = var.ssh_public_key
+  # ssh_username - (required) is a type of string
+  ssh_username = var.ssh_username
+  # user_arn - (required) is a type of string
+  user_arn = var.user_arn
 }
 ```
 

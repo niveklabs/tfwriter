@@ -71,10 +71,14 @@ variable "project" {
 
 ```terraform
 data "google_monitoring_istio_canonical_service" "this" {
-  canonical_service           = var.canonical_service
+  # canonical_service - (required) is a type of string
+  canonical_service = var.canonical_service
+  # canonical_service_namespace - (required) is a type of string
   canonical_service_namespace = var.canonical_service_namespace
-  mesh_uid                    = var.mesh_uid
-  project                     = var.project
+  # mesh_uid - (required) is a type of string
+  mesh_uid = var.mesh_uid
+  # project - (optional) is a type of string
+  project = var.project
 }
 ```
 

@@ -150,36 +150,57 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_servicebus_subscription_rule" "this" {
-  action              = var.action
-  filter_type         = var.filter_type
-  name                = var.name
-  namespace_name      = var.namespace_name
+  # action - (optional) is a type of string
+  action = var.action
+  # filter_type - (required) is a type of string
+  filter_type = var.filter_type
+  # name - (required) is a type of string
+  name = var.name
+  # namespace_name - (required) is a type of string
+  namespace_name = var.namespace_name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  sql_filter          = var.sql_filter
-  subscription_name   = var.subscription_name
-  topic_name          = var.topic_name
+  # sql_filter - (optional) is a type of string
+  sql_filter = var.sql_filter
+  # subscription_name - (required) is a type of string
+  subscription_name = var.subscription_name
+  # topic_name - (required) is a type of string
+  topic_name = var.topic_name
 
   dynamic "correlation_filter" {
     for_each = var.correlation_filter
     content {
-      content_type        = correlation_filter.value["content_type"]
-      correlation_id      = correlation_filter.value["correlation_id"]
-      label               = correlation_filter.value["label"]
-      message_id          = correlation_filter.value["message_id"]
-      properties          = correlation_filter.value["properties"]
-      reply_to            = correlation_filter.value["reply_to"]
+      # content_type - (optional) is a type of string
+      content_type = correlation_filter.value["content_type"]
+      # correlation_id - (optional) is a type of string
+      correlation_id = correlation_filter.value["correlation_id"]
+      # label - (optional) is a type of string
+      label = correlation_filter.value["label"]
+      # message_id - (optional) is a type of string
+      message_id = correlation_filter.value["message_id"]
+      # properties - (optional) is a type of map of string
+      properties = correlation_filter.value["properties"]
+      # reply_to - (optional) is a type of string
+      reply_to = correlation_filter.value["reply_to"]
+      # reply_to_session_id - (optional) is a type of string
       reply_to_session_id = correlation_filter.value["reply_to_session_id"]
-      session_id          = correlation_filter.value["session_id"]
-      to                  = correlation_filter.value["to"]
+      # session_id - (optional) is a type of string
+      session_id = correlation_filter.value["session_id"]
+      # to - (optional) is a type of string
+      to = correlation_filter.value["to"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -66,14 +66,18 @@ variable "git_config" {
 
 ```terraform
 resource "aws_sagemaker_code_repository" "this" {
+  # code_repository_name - (required) is a type of string
   code_repository_name = var.code_repository_name
 
   dynamic "git_config" {
     for_each = var.git_config
     content {
-      branch         = git_config.value["branch"]
+      # branch - (optional) is a type of string
+      branch = git_config.value["branch"]
+      # repository_url - (required) is a type of string
       repository_url = git_config.value["repository_url"]
-      secret_arn     = git_config.value["secret_arn"]
+      # secret_arn - (optional) is a type of string
+      secret_arn = git_config.value["secret_arn"]
     }
   }
 

@@ -261,24 +261,39 @@ variable "user" {
 
 ```terraform
 resource "aws_mq_broker" "this" {
-  apply_immediately          = var.apply_immediately
-  authentication_strategy    = var.authentication_strategy
+  # apply_immediately - (optional) is a type of bool
+  apply_immediately = var.apply_immediately
+  # authentication_strategy - (optional) is a type of string
+  authentication_strategy = var.authentication_strategy
+  # auto_minor_version_upgrade - (optional) is a type of bool
   auto_minor_version_upgrade = var.auto_minor_version_upgrade
-  broker_name                = var.broker_name
-  deployment_mode            = var.deployment_mode
-  engine_type                = var.engine_type
-  engine_version             = var.engine_version
-  host_instance_type         = var.host_instance_type
-  publicly_accessible        = var.publicly_accessible
-  security_groups            = var.security_groups
-  storage_type               = var.storage_type
-  subnet_ids                 = var.subnet_ids
-  tags                       = var.tags
+  # broker_name - (required) is a type of string
+  broker_name = var.broker_name
+  # deployment_mode - (optional) is a type of string
+  deployment_mode = var.deployment_mode
+  # engine_type - (required) is a type of string
+  engine_type = var.engine_type
+  # engine_version - (required) is a type of string
+  engine_version = var.engine_version
+  # host_instance_type - (required) is a type of string
+  host_instance_type = var.host_instance_type
+  # publicly_accessible - (optional) is a type of bool
+  publicly_accessible = var.publicly_accessible
+  # security_groups - (optional) is a type of set of string
+  security_groups = var.security_groups
+  # storage_type - (optional) is a type of string
+  storage_type = var.storage_type
+  # subnet_ids - (optional) is a type of set of string
+  subnet_ids = var.subnet_ids
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "configuration" {
     for_each = var.configuration
     content {
-      id       = configuration.value["id"]
+      # id - (optional) is a type of string
+      id = configuration.value["id"]
+      # revision - (optional) is a type of number
       revision = configuration.value["revision"]
     }
   }
@@ -286,7 +301,9 @@ resource "aws_mq_broker" "this" {
   dynamic "encryption_options" {
     for_each = var.encryption_options
     content {
-      kms_key_id        = encryption_options.value["kms_key_id"]
+      # kms_key_id - (optional) is a type of string
+      kms_key_id = encryption_options.value["kms_key_id"]
+      # use_aws_owned_key - (optional) is a type of bool
       use_aws_owned_key = encryption_options.value["use_aws_owned_key"]
     }
   }
@@ -294,24 +311,37 @@ resource "aws_mq_broker" "this" {
   dynamic "ldap_server_metadata" {
     for_each = var.ldap_server_metadata
     content {
-      hosts                    = ldap_server_metadata.value["hosts"]
-      role_base                = ldap_server_metadata.value["role_base"]
-      role_name                = ldap_server_metadata.value["role_name"]
-      role_search_matching     = ldap_server_metadata.value["role_search_matching"]
-      role_search_subtree      = ldap_server_metadata.value["role_search_subtree"]
+      # hosts - (optional) is a type of list of string
+      hosts = ldap_server_metadata.value["hosts"]
+      # role_base - (optional) is a type of string
+      role_base = ldap_server_metadata.value["role_base"]
+      # role_name - (optional) is a type of string
+      role_name = ldap_server_metadata.value["role_name"]
+      # role_search_matching - (optional) is a type of string
+      role_search_matching = ldap_server_metadata.value["role_search_matching"]
+      # role_search_subtree - (optional) is a type of bool
+      role_search_subtree = ldap_server_metadata.value["role_search_subtree"]
+      # service_account_password - (optional) is a type of string
       service_account_password = ldap_server_metadata.value["service_account_password"]
+      # service_account_username - (optional) is a type of string
       service_account_username = ldap_server_metadata.value["service_account_username"]
-      user_base                = ldap_server_metadata.value["user_base"]
-      user_role_name           = ldap_server_metadata.value["user_role_name"]
-      user_search_matching     = ldap_server_metadata.value["user_search_matching"]
-      user_search_subtree      = ldap_server_metadata.value["user_search_subtree"]
+      # user_base - (optional) is a type of string
+      user_base = ldap_server_metadata.value["user_base"]
+      # user_role_name - (optional) is a type of string
+      user_role_name = ldap_server_metadata.value["user_role_name"]
+      # user_search_matching - (optional) is a type of string
+      user_search_matching = ldap_server_metadata.value["user_search_matching"]
+      # user_search_subtree - (optional) is a type of bool
+      user_search_subtree = ldap_server_metadata.value["user_search_subtree"]
     }
   }
 
   dynamic "logs" {
     for_each = var.logs
     content {
-      audit   = logs.value["audit"]
+      # audit - (optional) is a type of bool
+      audit = logs.value["audit"]
+      # general - (optional) is a type of bool
       general = logs.value["general"]
     }
   }
@@ -319,19 +349,26 @@ resource "aws_mq_broker" "this" {
   dynamic "maintenance_window_start_time" {
     for_each = var.maintenance_window_start_time
     content {
+      # day_of_week - (required) is a type of string
       day_of_week = maintenance_window_start_time.value["day_of_week"]
+      # time_of_day - (required) is a type of string
       time_of_day = maintenance_window_start_time.value["time_of_day"]
-      time_zone   = maintenance_window_start_time.value["time_zone"]
+      # time_zone - (required) is a type of string
+      time_zone = maintenance_window_start_time.value["time_zone"]
     }
   }
 
   dynamic "user" {
     for_each = var.user
     content {
+      # console_access - (optional) is a type of bool
       console_access = user.value["console_access"]
-      groups         = user.value["groups"]
-      password       = user.value["password"]
-      username       = user.value["username"]
+      # groups - (optional) is a type of set of string
+      groups = user.value["groups"]
+      # password - (required) is a type of string
+      password = user.value["password"]
+      # username - (required) is a type of string
+      username = user.value["username"]
     }
   }
 

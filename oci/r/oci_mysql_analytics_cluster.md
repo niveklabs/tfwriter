@@ -89,16 +89,23 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_mysql_analytics_cluster" "this" {
+  # cluster_size - (required) is a type of number
   cluster_size = var.cluster_size
+  # db_system_id - (required) is a type of string
   db_system_id = var.db_system_id
-  shape_name   = var.shape_name
-  state        = var.state
+  # shape_name - (required) is a type of string
+  shape_name = var.shape_name
+  # state - (optional) is a type of string
+  state = var.state
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

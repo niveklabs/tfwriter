@@ -98,16 +98,23 @@ variable "filter" {
 
 ```terraform
 data "aws_route_table" "this" {
-  gateway_id     = var.gateway_id
+  # gateway_id - (optional) is a type of string
+  gateway_id = var.gateway_id
+  # route_table_id - (optional) is a type of string
   route_table_id = var.route_table_id
-  subnet_id      = var.subnet_id
-  tags           = var.tags
-  vpc_id         = var.vpc_id
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of set of string
       values = filter.value["values"]
     }
   }

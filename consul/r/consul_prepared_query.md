@@ -190,23 +190,37 @@ variable "template" {
 
 ```terraform
 resource "consul_prepared_query" "this" {
-  connect          = var.connect
-  datacenter       = var.datacenter
+  # connect - (optional) is a type of bool
+  connect = var.connect
+  # datacenter - (optional) is a type of string
+  datacenter = var.datacenter
+  # ignore_check_ids - (optional) is a type of list of string
   ignore_check_ids = var.ignore_check_ids
-  name             = var.name
-  near             = var.near
-  node_meta        = var.node_meta
-  only_passing     = var.only_passing
-  service          = var.service
-  service_meta     = var.service_meta
-  session          = var.session
-  stored_token     = var.stored_token
-  tags             = var.tags
-  token            = var.token
+  # name - (required) is a type of string
+  name = var.name
+  # near - (optional) is a type of string
+  near = var.near
+  # node_meta - (optional) is a type of map of string
+  node_meta = var.node_meta
+  # only_passing - (optional) is a type of bool
+  only_passing = var.only_passing
+  # service - (required) is a type of string
+  service = var.service
+  # service_meta - (optional) is a type of map of string
+  service_meta = var.service_meta
+  # session - (optional) is a type of string
+  session = var.session
+  # stored_token - (optional) is a type of string
+  stored_token = var.stored_token
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # token - (optional) is a type of string
+  token = var.token
 
   dynamic "dns" {
     for_each = var.dns
     content {
+      # ttl - (optional) is a type of string
       ttl = dns.value["ttl"]
     }
   }
@@ -214,16 +228,20 @@ resource "consul_prepared_query" "this" {
   dynamic "failover" {
     for_each = var.failover
     content {
+      # datacenters - (optional) is a type of list of string
       datacenters = failover.value["datacenters"]
-      nearest_n   = failover.value["nearest_n"]
+      # nearest_n - (optional) is a type of number
+      nearest_n = failover.value["nearest_n"]
     }
   }
 
   dynamic "template" {
     for_each = var.template
     content {
+      # regexp - (required) is a type of string
       regexp = template.value["regexp"]
-      type   = template.value["type"]
+      # type - (required) is a type of string
+      type = template.value["type"]
     }
   }
 

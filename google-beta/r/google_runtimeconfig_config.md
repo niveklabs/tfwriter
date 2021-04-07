@@ -65,9 +65,12 @@ variable "project" {
 
 ```terraform
 resource "google_runtimeconfig_config" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  project     = var.project
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
 }
 ```
 

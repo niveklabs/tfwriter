@@ -130,21 +130,33 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_kinesis_stream" "this" {
-  arn                       = var.arn
-  encryption_type           = var.encryption_type
+  # arn - (optional) is a type of string
+  arn = var.arn
+  # encryption_type - (optional) is a type of string
+  encryption_type = var.encryption_type
+  # enforce_consumer_deletion - (optional) is a type of bool
   enforce_consumer_deletion = var.enforce_consumer_deletion
-  kms_key_id                = var.kms_key_id
-  name                      = var.name
-  retention_period          = var.retention_period
-  shard_count               = var.shard_count
-  shard_level_metrics       = var.shard_level_metrics
-  tags                      = var.tags
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # name - (required) is a type of string
+  name = var.name
+  # retention_period - (optional) is a type of number
+  retention_period = var.retention_period
+  # shard_count - (required) is a type of number
+  shard_count = var.shard_count
+  # shard_level_metrics - (optional) is a type of set of string
+  shard_level_metrics = var.shard_level_metrics
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

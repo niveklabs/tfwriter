@@ -99,17 +99,25 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_target_grpc_proxy" "this" {
-  description            = var.description
-  name                   = var.name
-  project                = var.project
-  url_map                = var.url_map
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # url_map - (optional) is a type of string
+  url_map = var.url_map
+  # validate_for_proxyless - (optional) is a type of bool
   validate_for_proxyless = var.validate_for_proxyless
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

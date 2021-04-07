@@ -88,12 +88,18 @@ variable "protocol" {
 
 ```terraform
 resource "opc_compute_security_application" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  dport       = var.dport
-  icmpcode    = var.icmpcode
-  icmptype    = var.icmptype
-  name        = var.name
-  protocol    = var.protocol
+  # dport - (optional) is a type of string
+  dport = var.dport
+  # icmpcode - (optional) is a type of string
+  icmpcode = var.icmpcode
+  # icmptype - (optional) is a type of string
+  icmptype = var.icmptype
+  # name - (required) is a type of string
+  name = var.name
+  # protocol - (required) is a type of string
+  protocol = var.protocol
 }
 ```
 

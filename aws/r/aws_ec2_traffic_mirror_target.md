@@ -74,10 +74,14 @@ variable "tags" {
 
 ```terraform
 resource "aws_ec2_traffic_mirror_target" "this" {
-  description               = var.description
-  network_interface_id      = var.network_interface_id
+  # description - (optional) is a type of string
+  description = var.description
+  # network_interface_id - (optional) is a type of string
+  network_interface_id = var.network_interface_id
+  # network_load_balancer_arn - (optional) is a type of string
   network_load_balancer_arn = var.network_load_balancer_arn
-  tags                      = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

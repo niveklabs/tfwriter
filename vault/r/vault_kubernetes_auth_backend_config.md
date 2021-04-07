@@ -105,14 +105,22 @@ variable "token_reviewer_jwt" {
 
 ```terraform
 resource "vault_kubernetes_auth_backend_config" "this" {
-  backend                = var.backend
+  # backend - (optional) is a type of string
+  backend = var.backend
+  # disable_iss_validation - (optional) is a type of bool
   disable_iss_validation = var.disable_iss_validation
-  disable_local_ca_jwt   = var.disable_local_ca_jwt
-  issuer                 = var.issuer
-  kubernetes_ca_cert     = var.kubernetes_ca_cert
-  kubernetes_host        = var.kubernetes_host
-  pem_keys               = var.pem_keys
-  token_reviewer_jwt     = var.token_reviewer_jwt
+  # disable_local_ca_jwt - (optional) is a type of bool
+  disable_local_ca_jwt = var.disable_local_ca_jwt
+  # issuer - (optional) is a type of string
+  issuer = var.issuer
+  # kubernetes_ca_cert - (optional) is a type of string
+  kubernetes_ca_cert = var.kubernetes_ca_cert
+  # kubernetes_host - (required) is a type of string
+  kubernetes_host = var.kubernetes_host
+  # pem_keys - (optional) is a type of list of string
+  pem_keys = var.pem_keys
+  # token_reviewer_jwt - (optional) is a type of string
+  token_reviewer_jwt = var.token_reviewer_jwt
 }
 ```
 

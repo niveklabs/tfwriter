@@ -154,24 +154,39 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_docdb_cluster_instance" "this" {
-  apply_immediately            = var.apply_immediately
-  auto_minor_version_upgrade   = var.auto_minor_version_upgrade
-  availability_zone            = var.availability_zone
-  ca_cert_identifier           = var.ca_cert_identifier
-  cluster_identifier           = var.cluster_identifier
-  engine                       = var.engine
-  identifier                   = var.identifier
-  identifier_prefix            = var.identifier_prefix
-  instance_class               = var.instance_class
+  # apply_immediately - (optional) is a type of bool
+  apply_immediately = var.apply_immediately
+  # auto_minor_version_upgrade - (optional) is a type of bool
+  auto_minor_version_upgrade = var.auto_minor_version_upgrade
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # ca_cert_identifier - (optional) is a type of string
+  ca_cert_identifier = var.ca_cert_identifier
+  # cluster_identifier - (required) is a type of string
+  cluster_identifier = var.cluster_identifier
+  # engine - (optional) is a type of string
+  engine = var.engine
+  # identifier - (optional) is a type of string
+  identifier = var.identifier
+  # identifier_prefix - (optional) is a type of string
+  identifier_prefix = var.identifier_prefix
+  # instance_class - (required) is a type of string
+  instance_class = var.instance_class
+  # preferred_maintenance_window - (optional) is a type of string
   preferred_maintenance_window = var.preferred_maintenance_window
-  promotion_tier               = var.promotion_tier
-  tags                         = var.tags
+  # promotion_tier - (optional) is a type of number
+  promotion_tier = var.promotion_tier
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

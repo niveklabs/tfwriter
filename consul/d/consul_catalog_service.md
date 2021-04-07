@@ -103,23 +103,36 @@ variable "query_options" {
 
 ```terraform
 data "consul_catalog_service" "this" {
+  # datacenter - (optional) is a type of string
   datacenter = var.datacenter
-  filter     = var.filter
-  name       = var.name
-  tag        = var.tag
+  # filter - (optional) is a type of string
+  filter = var.filter
+  # name - (required) is a type of string
+  name = var.name
+  # tag - (optional) is a type of string
+  tag = var.tag
 
   dynamic "query_options" {
     for_each = var.query_options
     content {
-      allow_stale        = query_options.value["allow_stale"]
-      datacenter         = query_options.value["datacenter"]
-      namespace          = query_options.value["namespace"]
-      near               = query_options.value["near"]
-      node_meta          = query_options.value["node_meta"]
+      # allow_stale - (optional) is a type of bool
+      allow_stale = query_options.value["allow_stale"]
+      # datacenter - (optional) is a type of string
+      datacenter = query_options.value["datacenter"]
+      # namespace - (optional) is a type of string
+      namespace = query_options.value["namespace"]
+      # near - (optional) is a type of string
+      near = query_options.value["near"]
+      # node_meta - (optional) is a type of map of string
+      node_meta = query_options.value["node_meta"]
+      # require_consistent - (optional) is a type of bool
       require_consistent = query_options.value["require_consistent"]
-      token              = query_options.value["token"]
-      wait_index         = query_options.value["wait_index"]
-      wait_time          = query_options.value["wait_time"]
+      # token - (optional) is a type of string
+      token = query_options.value["token"]
+      # wait_index - (optional) is a type of number
+      wait_index = query_options.value["wait_index"]
+      # wait_time - (optional) is a type of string
+      wait_time = query_options.value["wait_time"]
     }
   }
 

@@ -49,6 +49,7 @@ variable "user_id" {
 
 ```terraform
 data "oci_identity_ui_password" "this" {
+  # user_id - (required) is a type of string
   user_id = var.user_id
 }
 ```

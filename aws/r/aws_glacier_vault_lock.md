@@ -71,10 +71,14 @@ variable "vault_name" {
 
 ```terraform
 resource "aws_glacier_vault_lock" "this" {
-  complete_lock         = var.complete_lock
+  # complete_lock - (required) is a type of bool
+  complete_lock = var.complete_lock
+  # ignore_deletion_error - (optional) is a type of bool
   ignore_deletion_error = var.ignore_deletion_error
-  policy                = var.policy
-  vault_name            = var.vault_name
+  # policy - (required) is a type of string
+  policy = var.policy
+  # vault_name - (required) is a type of string
+  vault_name = var.vault_name
 }
 ```
 

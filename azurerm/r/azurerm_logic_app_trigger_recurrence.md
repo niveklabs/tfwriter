@@ -124,28 +124,41 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_logic_app_trigger_recurrence" "this" {
-  frequency    = var.frequency
-  interval     = var.interval
+  # frequency - (required) is a type of string
+  frequency = var.frequency
+  # interval - (required) is a type of number
+  interval = var.interval
+  # logic_app_id - (required) is a type of string
   logic_app_id = var.logic_app_id
-  name         = var.name
-  start_time   = var.start_time
-  time_zone    = var.time_zone
+  # name - (required) is a type of string
+  name = var.name
+  # start_time - (optional) is a type of string
+  start_time = var.start_time
+  # time_zone - (optional) is a type of string
+  time_zone = var.time_zone
 
   dynamic "schedule" {
     for_each = var.schedule
     content {
-      at_these_hours   = schedule.value["at_these_hours"]
+      # at_these_hours - (optional) is a type of set of number
+      at_these_hours = schedule.value["at_these_hours"]
+      # at_these_minutes - (optional) is a type of set of number
       at_these_minutes = schedule.value["at_these_minutes"]
-      on_these_days    = schedule.value["on_these_days"]
+      # on_these_days - (optional) is a type of set of string
+      on_these_days = schedule.value["on_these_days"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

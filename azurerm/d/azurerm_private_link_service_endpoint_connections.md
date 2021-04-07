@@ -70,12 +70,15 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_private_link_service_endpoint_connections" "this" {
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  service_id          = var.service_id
+  # service_id - (required) is a type of string
+  service_id = var.service_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

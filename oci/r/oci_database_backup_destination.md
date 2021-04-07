@@ -141,30 +141,45 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_database_backup_destination" "this" {
-  compartment_id         = var.compartment_id
-  connection_string      = var.connection_string
-  defined_tags           = var.defined_tags
-  display_name           = var.display_name
-  freeform_tags          = var.freeform_tags
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # connection_string - (optional) is a type of string
+  connection_string = var.connection_string
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # local_mount_point_path - (optional) is a type of string
   local_mount_point_path = var.local_mount_point_path
-  type                   = var.type
-  vpc_users              = var.vpc_users
+  # type - (required) is a type of string
+  type = var.type
+  # vpc_users - (optional) is a type of list of string
+  vpc_users = var.vpc_users
 
   dynamic "mount_type_details" {
     for_each = var.mount_type_details
     content {
+      # local_mount_point_path - (optional) is a type of string
       local_mount_point_path = mount_type_details.value["local_mount_point_path"]
-      mount_type             = mount_type_details.value["mount_type"]
-      nfs_server             = mount_type_details.value["nfs_server"]
-      nfs_server_export      = mount_type_details.value["nfs_server_export"]
+      # mount_type - (required) is a type of string
+      mount_type = mount_type_details.value["mount_type"]
+      # nfs_server - (optional) is a type of list of string
+      nfs_server = mount_type_details.value["nfs_server"]
+      # nfs_server_export - (optional) is a type of string
+      nfs_server_export = mount_type_details.value["nfs_server_export"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

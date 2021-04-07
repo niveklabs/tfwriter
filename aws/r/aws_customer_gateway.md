@@ -79,11 +79,16 @@ variable "type" {
 
 ```terraform
 resource "aws_customer_gateway" "this" {
-  bgp_asn     = var.bgp_asn
+  # bgp_asn - (required) is a type of string
+  bgp_asn = var.bgp_asn
+  # device_name - (optional) is a type of string
   device_name = var.device_name
-  ip_address  = var.ip_address
-  tags        = var.tags
-  type        = var.type
+  # ip_address - (required) is a type of string
+  ip_address = var.ip_address
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

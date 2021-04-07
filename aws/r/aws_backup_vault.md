@@ -65,9 +65,12 @@ variable "tags" {
 
 ```terraform
 resource "aws_backup_vault" "this" {
+  # kms_key_arn - (optional) is a type of string
   kms_key_arn = var.kms_key_arn
-  name        = var.name
-  tags        = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

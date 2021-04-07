@@ -57,7 +57,9 @@ variable "exadata_infrastructure_id" {
 
 ```terraform
 data "oci_database_exadata_infrastructure_download_config_file" "this" {
-  base64_encode_content     = var.base64_encode_content
+  # base64_encode_content - (optional) is a type of bool
+  base64_encode_content = var.base64_encode_content
+  # exadata_infrastructure_id - (required) is a type of string
   exadata_infrastructure_id = var.exadata_infrastructure_id
 }
 ```

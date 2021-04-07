@@ -196,18 +196,27 @@ variable "unique_key" {
 
 ```terraform
 resource "azurerm_cosmosdb_sql_container" "this" {
-  account_name          = var.account_name
-  database_name         = var.database_name
-  default_ttl           = var.default_ttl
-  name                  = var.name
-  partition_key_path    = var.partition_key_path
+  # account_name - (required) is a type of string
+  account_name = var.account_name
+  # database_name - (required) is a type of string
+  database_name = var.database_name
+  # default_ttl - (optional) is a type of number
+  default_ttl = var.default_ttl
+  # name - (required) is a type of string
+  name = var.name
+  # partition_key_path - (optional) is a type of string
+  partition_key_path = var.partition_key_path
+  # partition_key_version - (optional) is a type of number
   partition_key_version = var.partition_key_version
-  resource_group_name   = var.resource_group_name
-  throughput            = var.throughput
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # throughput - (optional) is a type of number
+  throughput = var.throughput
 
   dynamic "autoscale_settings" {
     for_each = var.autoscale_settings
     content {
+      # max_throughput - (optional) is a type of number
       max_throughput = autoscale_settings.value["max_throughput"]
     }
   }
@@ -215,6 +224,7 @@ resource "azurerm_cosmosdb_sql_container" "this" {
   dynamic "indexing_policy" {
     for_each = var.indexing_policy
     content {
+      # indexing_mode - (optional) is a type of string
       indexing_mode = indexing_policy.value["indexing_mode"]
 
       dynamic "composite_index" {
@@ -224,8 +234,10 @@ resource "azurerm_cosmosdb_sql_container" "this" {
           dynamic "index" {
             for_each = composite_index.value.index
             content {
+              # order - (required) is a type of string
               order = index.value["order"]
-              path  = index.value["path"]
+              # path - (required) is a type of string
+              path = index.value["path"]
             }
           }
 
@@ -235,6 +247,7 @@ resource "azurerm_cosmosdb_sql_container" "this" {
       dynamic "excluded_path" {
         for_each = indexing_policy.value.excluded_path
         content {
+          # path - (required) is a type of string
           path = excluded_path.value["path"]
         }
       }
@@ -242,6 +255,7 @@ resource "azurerm_cosmosdb_sql_container" "this" {
       dynamic "included_path" {
         for_each = indexing_policy.value.included_path
         content {
+          # path - (required) is a type of string
           path = included_path.value["path"]
         }
       }
@@ -252,9 +266,13 @@ resource "azurerm_cosmosdb_sql_container" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -262,6 +280,7 @@ resource "azurerm_cosmosdb_sql_container" "this" {
   dynamic "unique_key" {
     for_each = var.unique_key
     content {
+      # paths - (required) is a type of set of string
       paths = unique_key.value["paths"]
     }
   }

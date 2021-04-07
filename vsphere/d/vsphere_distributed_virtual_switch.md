@@ -57,8 +57,10 @@ variable "name" {
 
 ```terraform
 data "vsphere_distributed_virtual_switch" "this" {
+  # datacenter_id - (optional) is a type of string
   datacenter_id = var.datacenter_id
-  name          = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

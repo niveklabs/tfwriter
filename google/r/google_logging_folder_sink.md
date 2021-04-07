@@ -129,17 +129,25 @@ variable "exclusions" {
 
 ```terraform
 resource "google_logging_folder_sink" "this" {
-  description      = var.description
-  destination      = var.destination
-  disabled         = var.disabled
-  filter           = var.filter
-  folder           = var.folder
+  # description - (optional) is a type of string
+  description = var.description
+  # destination - (required) is a type of string
+  destination = var.destination
+  # disabled - (optional) is a type of bool
+  disabled = var.disabled
+  # filter - (optional) is a type of string
+  filter = var.filter
+  # folder - (required) is a type of string
+  folder = var.folder
+  # include_children - (optional) is a type of bool
   include_children = var.include_children
-  name             = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "bigquery_options" {
     for_each = var.bigquery_options
     content {
+      # use_partitioned_tables - (required) is a type of bool
       use_partitioned_tables = bigquery_options.value["use_partitioned_tables"]
     }
   }
@@ -147,10 +155,14 @@ resource "google_logging_folder_sink" "this" {
   dynamic "exclusions" {
     for_each = var.exclusions
     content {
+      # description - (optional) is a type of string
       description = exclusions.value["description"]
-      disabled    = exclusions.value["disabled"]
-      filter      = exclusions.value["filter"]
-      name        = exclusions.value["name"]
+      # disabled - (optional) is a type of bool
+      disabled = exclusions.value["disabled"]
+      # filter - (required) is a type of string
+      filter = exclusions.value["filter"]
+      # name - (required) is a type of string
+      name = exclusions.value["name"]
     }
   }
 

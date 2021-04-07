@@ -845,32 +845,58 @@ variable "workload_identity_config" {
 
 ```terraform
 resource "google_container_cluster" "this" {
-  cluster_ipv4_cidr           = var.cluster_ipv4_cidr
-  datapath_provider           = var.datapath_provider
-  default_max_pods_per_node   = var.default_max_pods_per_node
-  description                 = var.description
-  enable_autopilot            = var.enable_autopilot
+  # cluster_ipv4_cidr - (optional) is a type of string
+  cluster_ipv4_cidr = var.cluster_ipv4_cidr
+  # datapath_provider - (optional) is a type of string
+  datapath_provider = var.datapath_provider
+  # default_max_pods_per_node - (optional) is a type of number
+  default_max_pods_per_node = var.default_max_pods_per_node
+  # description - (optional) is a type of string
+  description = var.description
+  # enable_autopilot - (optional) is a type of bool
+  enable_autopilot = var.enable_autopilot
+  # enable_binary_authorization - (optional) is a type of bool
   enable_binary_authorization = var.enable_binary_authorization
+  # enable_intranode_visibility - (optional) is a type of bool
   enable_intranode_visibility = var.enable_intranode_visibility
-  enable_kubernetes_alpha     = var.enable_kubernetes_alpha
-  enable_legacy_abac          = var.enable_legacy_abac
-  enable_shielded_nodes       = var.enable_shielded_nodes
-  enable_tpu                  = var.enable_tpu
-  initial_node_count          = var.initial_node_count
-  location                    = var.location
-  logging_service             = var.logging_service
-  min_master_version          = var.min_master_version
-  monitoring_service          = var.monitoring_service
-  name                        = var.name
-  network                     = var.network
-  networking_mode             = var.networking_mode
-  node_locations              = var.node_locations
-  node_version                = var.node_version
-  private_ipv6_google_access  = var.private_ipv6_google_access
-  project                     = var.project
-  remove_default_node_pool    = var.remove_default_node_pool
-  resource_labels             = var.resource_labels
-  subnetwork                  = var.subnetwork
+  # enable_kubernetes_alpha - (optional) is a type of bool
+  enable_kubernetes_alpha = var.enable_kubernetes_alpha
+  # enable_legacy_abac - (optional) is a type of bool
+  enable_legacy_abac = var.enable_legacy_abac
+  # enable_shielded_nodes - (optional) is a type of bool
+  enable_shielded_nodes = var.enable_shielded_nodes
+  # enable_tpu - (optional) is a type of bool
+  enable_tpu = var.enable_tpu
+  # initial_node_count - (optional) is a type of number
+  initial_node_count = var.initial_node_count
+  # location - (optional) is a type of string
+  location = var.location
+  # logging_service - (optional) is a type of string
+  logging_service = var.logging_service
+  # min_master_version - (optional) is a type of string
+  min_master_version = var.min_master_version
+  # monitoring_service - (optional) is a type of string
+  monitoring_service = var.monitoring_service
+  # name - (required) is a type of string
+  name = var.name
+  # network - (optional) is a type of string
+  network = var.network
+  # networking_mode - (optional) is a type of string
+  networking_mode = var.networking_mode
+  # node_locations - (optional) is a type of set of string
+  node_locations = var.node_locations
+  # node_version - (optional) is a type of string
+  node_version = var.node_version
+  # private_ipv6_google_access - (optional) is a type of string
+  private_ipv6_google_access = var.private_ipv6_google_access
+  # project - (optional) is a type of string
+  project = var.project
+  # remove_default_node_pool - (optional) is a type of bool
+  remove_default_node_pool = var.remove_default_node_pool
+  # resource_labels - (optional) is a type of map of string
+  resource_labels = var.resource_labels
+  # subnetwork - (optional) is a type of string
+  subnetwork = var.subnetwork
 
   dynamic "addons_config" {
     for_each = var.addons_config
@@ -879,7 +905,9 @@ resource "google_container_cluster" "this" {
       dynamic "cloudrun_config" {
         for_each = addons_config.value.cloudrun_config
         content {
-          disabled           = cloudrun_config.value["disabled"]
+          # disabled - (required) is a type of bool
+          disabled = cloudrun_config.value["disabled"]
+          # load_balancer_type - (optional) is a type of string
           load_balancer_type = cloudrun_config.value["load_balancer_type"]
         }
       }
@@ -887,6 +915,7 @@ resource "google_container_cluster" "this" {
       dynamic "horizontal_pod_autoscaling" {
         for_each = addons_config.value.horizontal_pod_autoscaling
         content {
+          # disabled - (required) is a type of bool
           disabled = horizontal_pod_autoscaling.value["disabled"]
         }
       }
@@ -894,6 +923,7 @@ resource "google_container_cluster" "this" {
       dynamic "http_load_balancing" {
         for_each = addons_config.value.http_load_balancing
         content {
+          # disabled - (required) is a type of bool
           disabled = http_load_balancing.value["disabled"]
         }
       }
@@ -901,6 +931,7 @@ resource "google_container_cluster" "this" {
       dynamic "network_policy_config" {
         for_each = addons_config.value.network_policy_config
         content {
+          # disabled - (required) is a type of bool
           disabled = network_policy_config.value["disabled"]
         }
       }
@@ -911,6 +942,7 @@ resource "google_container_cluster" "this" {
   dynamic "authenticator_groups_config" {
     for_each = var.authenticator_groups_config
     content {
+      # security_group - (required) is a type of string
       security_group = authenticator_groups_config.value["security_group"]
     }
   }
@@ -918,12 +950,15 @@ resource "google_container_cluster" "this" {
   dynamic "cluster_autoscaling" {
     for_each = var.cluster_autoscaling
     content {
+      # enabled - (required) is a type of bool
       enabled = cluster_autoscaling.value["enabled"]
 
       dynamic "auto_provisioning_defaults" {
         for_each = cluster_autoscaling.value.auto_provisioning_defaults
         content {
-          oauth_scopes    = auto_provisioning_defaults.value["oauth_scopes"]
+          # oauth_scopes - (optional) is a type of list of string
+          oauth_scopes = auto_provisioning_defaults.value["oauth_scopes"]
+          # service_account - (optional) is a type of string
           service_account = auto_provisioning_defaults.value["service_account"]
         }
       }
@@ -931,8 +966,11 @@ resource "google_container_cluster" "this" {
       dynamic "resource_limits" {
         for_each = cluster_autoscaling.value.resource_limits
         content {
-          maximum       = resource_limits.value["maximum"]
-          minimum       = resource_limits.value["minimum"]
+          # maximum - (optional) is a type of number
+          maximum = resource_limits.value["maximum"]
+          # minimum - (optional) is a type of number
+          minimum = resource_limits.value["minimum"]
+          # resource_type - (required) is a type of string
           resource_type = resource_limits.value["resource_type"]
         }
       }
@@ -943,14 +981,17 @@ resource "google_container_cluster" "this" {
   dynamic "database_encryption" {
     for_each = var.database_encryption
     content {
+      # key_name - (optional) is a type of string
       key_name = database_encryption.value["key_name"]
-      state    = database_encryption.value["state"]
+      # state - (required) is a type of string
+      state = database_encryption.value["state"]
     }
   }
 
   dynamic "default_snat_status" {
     for_each = var.default_snat_status
     content {
+      # disabled - (required) is a type of bool
       disabled = default_snat_status.value["disabled"]
     }
   }
@@ -958,9 +999,13 @@ resource "google_container_cluster" "this" {
   dynamic "ip_allocation_policy" {
     for_each = var.ip_allocation_policy
     content {
-      cluster_ipv4_cidr_block       = ip_allocation_policy.value["cluster_ipv4_cidr_block"]
-      cluster_secondary_range_name  = ip_allocation_policy.value["cluster_secondary_range_name"]
-      services_ipv4_cidr_block      = ip_allocation_policy.value["services_ipv4_cidr_block"]
+      # cluster_ipv4_cidr_block - (optional) is a type of string
+      cluster_ipv4_cidr_block = ip_allocation_policy.value["cluster_ipv4_cidr_block"]
+      # cluster_secondary_range_name - (optional) is a type of string
+      cluster_secondary_range_name = ip_allocation_policy.value["cluster_secondary_range_name"]
+      # services_ipv4_cidr_block - (optional) is a type of string
+      services_ipv4_cidr_block = ip_allocation_policy.value["services_ipv4_cidr_block"]
+      # services_secondary_range_name - (optional) is a type of string
       services_secondary_range_name = ip_allocation_policy.value["services_secondary_range_name"]
     }
   }
@@ -972,6 +1017,7 @@ resource "google_container_cluster" "this" {
       dynamic "daily_maintenance_window" {
         for_each = maintenance_policy.value.daily_maintenance_window
         content {
+          # start_time - (required) is a type of string
           start_time = daily_maintenance_window.value["start_time"]
         }
       }
@@ -979,17 +1025,23 @@ resource "google_container_cluster" "this" {
       dynamic "maintenance_exclusion" {
         for_each = maintenance_policy.value.maintenance_exclusion
         content {
-          end_time       = maintenance_exclusion.value["end_time"]
+          # end_time - (required) is a type of string
+          end_time = maintenance_exclusion.value["end_time"]
+          # exclusion_name - (required) is a type of string
           exclusion_name = maintenance_exclusion.value["exclusion_name"]
-          start_time     = maintenance_exclusion.value["start_time"]
+          # start_time - (required) is a type of string
+          start_time = maintenance_exclusion.value["start_time"]
         }
       }
 
       dynamic "recurring_window" {
         for_each = maintenance_policy.value.recurring_window
         content {
-          end_time   = recurring_window.value["end_time"]
+          # end_time - (required) is a type of string
+          end_time = recurring_window.value["end_time"]
+          # recurrence - (required) is a type of string
           recurrence = recurring_window.value["recurrence"]
+          # start_time - (required) is a type of string
           start_time = recurring_window.value["start_time"]
         }
       }
@@ -1000,12 +1052,15 @@ resource "google_container_cluster" "this" {
   dynamic "master_auth" {
     for_each = var.master_auth
     content {
+      # password - (optional) is a type of string
       password = master_auth.value["password"]
+      # username - (optional) is a type of string
       username = master_auth.value["username"]
 
       dynamic "client_certificate_config" {
         for_each = master_auth.value.client_certificate_config
         content {
+          # issue_client_certificate - (required) is a type of bool
           issue_client_certificate = client_certificate_config.value["issue_client_certificate"]
         }
       }
@@ -1020,7 +1075,9 @@ resource "google_container_cluster" "this" {
       dynamic "cidr_blocks" {
         for_each = master_authorized_networks_config.value.cidr_blocks
         content {
-          cidr_block   = cidr_blocks.value["cidr_block"]
+          # cidr_block - (required) is a type of string
+          cidr_block = cidr_blocks.value["cidr_block"]
+          # display_name - (optional) is a type of string
           display_name = cidr_blocks.value["display_name"]
         }
       }
@@ -1031,7 +1088,9 @@ resource "google_container_cluster" "this" {
   dynamic "network_policy" {
     for_each = var.network_policy
     content {
-      enabled  = network_policy.value["enabled"]
+      # enabled - (required) is a type of bool
+      enabled = network_policy.value["enabled"]
+      # provider - (optional) is a type of string
       provider = network_policy.value["provider"]
     }
   }
@@ -1039,32 +1098,49 @@ resource "google_container_cluster" "this" {
   dynamic "node_config" {
     for_each = var.node_config
     content {
-      disk_size_gb      = node_config.value["disk_size_gb"]
-      disk_type         = node_config.value["disk_type"]
+      # disk_size_gb - (optional) is a type of number
+      disk_size_gb = node_config.value["disk_size_gb"]
+      # disk_type - (optional) is a type of string
+      disk_type = node_config.value["disk_type"]
+      # guest_accelerator - (optional) is a type of list of object
       guest_accelerator = node_config.value["guest_accelerator"]
-      image_type        = node_config.value["image_type"]
-      labels            = node_config.value["labels"]
-      local_ssd_count   = node_config.value["local_ssd_count"]
-      machine_type      = node_config.value["machine_type"]
-      metadata          = node_config.value["metadata"]
-      min_cpu_platform  = node_config.value["min_cpu_platform"]
-      oauth_scopes      = node_config.value["oauth_scopes"]
-      preemptible       = node_config.value["preemptible"]
-      service_account   = node_config.value["service_account"]
-      tags              = node_config.value["tags"]
-      taint             = node_config.value["taint"]
+      # image_type - (optional) is a type of string
+      image_type = node_config.value["image_type"]
+      # labels - (optional) is a type of map of string
+      labels = node_config.value["labels"]
+      # local_ssd_count - (optional) is a type of number
+      local_ssd_count = node_config.value["local_ssd_count"]
+      # machine_type - (optional) is a type of string
+      machine_type = node_config.value["machine_type"]
+      # metadata - (optional) is a type of map of string
+      metadata = node_config.value["metadata"]
+      # min_cpu_platform - (optional) is a type of string
+      min_cpu_platform = node_config.value["min_cpu_platform"]
+      # oauth_scopes - (optional) is a type of set of string
+      oauth_scopes = node_config.value["oauth_scopes"]
+      # preemptible - (optional) is a type of bool
+      preemptible = node_config.value["preemptible"]
+      # service_account - (optional) is a type of string
+      service_account = node_config.value["service_account"]
+      # tags - (optional) is a type of list of string
+      tags = node_config.value["tags"]
+      # taint - (optional) is a type of list of object
+      taint = node_config.value["taint"]
 
       dynamic "shielded_instance_config" {
         for_each = node_config.value.shielded_instance_config
         content {
+          # enable_integrity_monitoring - (optional) is a type of bool
           enable_integrity_monitoring = shielded_instance_config.value["enable_integrity_monitoring"]
-          enable_secure_boot          = shielded_instance_config.value["enable_secure_boot"]
+          # enable_secure_boot - (optional) is a type of bool
+          enable_secure_boot = shielded_instance_config.value["enable_secure_boot"]
         }
       }
 
       dynamic "workload_metadata_config" {
         for_each = node_config.value.workload_metadata_config
         content {
+          # node_metadata - (required) is a type of string
           node_metadata = workload_metadata_config.value["node_metadata"]
         }
       }
@@ -1075,18 +1151,27 @@ resource "google_container_cluster" "this" {
   dynamic "node_pool" {
     for_each = var.node_pool
     content {
+      # initial_node_count - (optional) is a type of number
       initial_node_count = node_pool.value["initial_node_count"]
-      max_pods_per_node  = node_pool.value["max_pods_per_node"]
-      name               = node_pool.value["name"]
-      name_prefix        = node_pool.value["name_prefix"]
-      node_count         = node_pool.value["node_count"]
-      node_locations     = node_pool.value["node_locations"]
-      version            = node_pool.value["version"]
+      # max_pods_per_node - (optional) is a type of number
+      max_pods_per_node = node_pool.value["max_pods_per_node"]
+      # name - (optional) is a type of string
+      name = node_pool.value["name"]
+      # name_prefix - (optional) is a type of string
+      name_prefix = node_pool.value["name_prefix"]
+      # node_count - (optional) is a type of number
+      node_count = node_pool.value["node_count"]
+      # node_locations - (optional) is a type of set of string
+      node_locations = node_pool.value["node_locations"]
+      # version - (optional) is a type of string
+      version = node_pool.value["version"]
 
       dynamic "autoscaling" {
         for_each = node_pool.value.autoscaling
         content {
+          # max_node_count - (required) is a type of number
           max_node_count = autoscaling.value["max_node_count"]
+          # min_node_count - (required) is a type of number
           min_node_count = autoscaling.value["min_node_count"]
         }
       }
@@ -1094,7 +1179,9 @@ resource "google_container_cluster" "this" {
       dynamic "management" {
         for_each = node_pool.value.management
         content {
-          auto_repair  = management.value["auto_repair"]
+          # auto_repair - (optional) is a type of bool
+          auto_repair = management.value["auto_repair"]
+          # auto_upgrade - (optional) is a type of bool
           auto_upgrade = management.value["auto_upgrade"]
         }
       }
@@ -1102,32 +1189,49 @@ resource "google_container_cluster" "this" {
       dynamic "node_config" {
         for_each = node_pool.value.node_config
         content {
-          disk_size_gb      = node_config.value["disk_size_gb"]
-          disk_type         = node_config.value["disk_type"]
+          # disk_size_gb - (optional) is a type of number
+          disk_size_gb = node_config.value["disk_size_gb"]
+          # disk_type - (optional) is a type of string
+          disk_type = node_config.value["disk_type"]
+          # guest_accelerator - (optional) is a type of list of object
           guest_accelerator = node_config.value["guest_accelerator"]
-          image_type        = node_config.value["image_type"]
-          labels            = node_config.value["labels"]
-          local_ssd_count   = node_config.value["local_ssd_count"]
-          machine_type      = node_config.value["machine_type"]
-          metadata          = node_config.value["metadata"]
-          min_cpu_platform  = node_config.value["min_cpu_platform"]
-          oauth_scopes      = node_config.value["oauth_scopes"]
-          preemptible       = node_config.value["preemptible"]
-          service_account   = node_config.value["service_account"]
-          tags              = node_config.value["tags"]
-          taint             = node_config.value["taint"]
+          # image_type - (optional) is a type of string
+          image_type = node_config.value["image_type"]
+          # labels - (optional) is a type of map of string
+          labels = node_config.value["labels"]
+          # local_ssd_count - (optional) is a type of number
+          local_ssd_count = node_config.value["local_ssd_count"]
+          # machine_type - (optional) is a type of string
+          machine_type = node_config.value["machine_type"]
+          # metadata - (optional) is a type of map of string
+          metadata = node_config.value["metadata"]
+          # min_cpu_platform - (optional) is a type of string
+          min_cpu_platform = node_config.value["min_cpu_platform"]
+          # oauth_scopes - (optional) is a type of set of string
+          oauth_scopes = node_config.value["oauth_scopes"]
+          # preemptible - (optional) is a type of bool
+          preemptible = node_config.value["preemptible"]
+          # service_account - (optional) is a type of string
+          service_account = node_config.value["service_account"]
+          # tags - (optional) is a type of list of string
+          tags = node_config.value["tags"]
+          # taint - (optional) is a type of list of object
+          taint = node_config.value["taint"]
 
           dynamic "shielded_instance_config" {
             for_each = node_config.value.shielded_instance_config
             content {
+              # enable_integrity_monitoring - (optional) is a type of bool
               enable_integrity_monitoring = shielded_instance_config.value["enable_integrity_monitoring"]
-              enable_secure_boot          = shielded_instance_config.value["enable_secure_boot"]
+              # enable_secure_boot - (optional) is a type of bool
+              enable_secure_boot = shielded_instance_config.value["enable_secure_boot"]
             }
           }
 
           dynamic "workload_metadata_config" {
             for_each = node_config.value.workload_metadata_config
             content {
+              # node_metadata - (required) is a type of string
               node_metadata = workload_metadata_config.value["node_metadata"]
             }
           }
@@ -1138,7 +1242,9 @@ resource "google_container_cluster" "this" {
       dynamic "upgrade_settings" {
         for_each = node_pool.value.upgrade_settings
         content {
-          max_surge       = upgrade_settings.value["max_surge"]
+          # max_surge - (required) is a type of number
+          max_surge = upgrade_settings.value["max_surge"]
+          # max_unavailable - (required) is a type of number
           max_unavailable = upgrade_settings.value["max_unavailable"]
         }
       }
@@ -1149,6 +1255,7 @@ resource "google_container_cluster" "this" {
   dynamic "pod_security_policy_config" {
     for_each = var.pod_security_policy_config
     content {
+      # enabled - (required) is a type of bool
       enabled = pod_security_policy_config.value["enabled"]
     }
   }
@@ -1156,13 +1263,17 @@ resource "google_container_cluster" "this" {
   dynamic "private_cluster_config" {
     for_each = var.private_cluster_config
     content {
+      # enable_private_endpoint - (required) is a type of bool
       enable_private_endpoint = private_cluster_config.value["enable_private_endpoint"]
-      enable_private_nodes    = private_cluster_config.value["enable_private_nodes"]
-      master_ipv4_cidr_block  = private_cluster_config.value["master_ipv4_cidr_block"]
+      # enable_private_nodes - (optional) is a type of bool
+      enable_private_nodes = private_cluster_config.value["enable_private_nodes"]
+      # master_ipv4_cidr_block - (optional) is a type of string
+      master_ipv4_cidr_block = private_cluster_config.value["master_ipv4_cidr_block"]
 
       dynamic "master_global_access_config" {
         for_each = private_cluster_config.value.master_global_access_config
         content {
+          # enabled - (required) is a type of bool
           enabled = master_global_access_config.value["enabled"]
         }
       }
@@ -1173,6 +1284,7 @@ resource "google_container_cluster" "this" {
   dynamic "release_channel" {
     for_each = var.release_channel
     content {
+      # channel - (required) is a type of string
       channel = release_channel.value["channel"]
     }
   }
@@ -1180,12 +1292,15 @@ resource "google_container_cluster" "this" {
   dynamic "resource_usage_export_config" {
     for_each = var.resource_usage_export_config
     content {
-      enable_network_egress_metering       = resource_usage_export_config.value["enable_network_egress_metering"]
+      # enable_network_egress_metering - (optional) is a type of bool
+      enable_network_egress_metering = resource_usage_export_config.value["enable_network_egress_metering"]
+      # enable_resource_consumption_metering - (optional) is a type of bool
       enable_resource_consumption_metering = resource_usage_export_config.value["enable_resource_consumption_metering"]
 
       dynamic "bigquery_destination" {
         for_each = resource_usage_export_config.value.bigquery_destination
         content {
+          # dataset_id - (required) is a type of string
           dataset_id = bigquery_destination.value["dataset_id"]
         }
       }
@@ -1196,9 +1311,13 @@ resource "google_container_cluster" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -1206,6 +1325,7 @@ resource "google_container_cluster" "this" {
   dynamic "vertical_pod_autoscaling" {
     for_each = var.vertical_pod_autoscaling
     content {
+      # enabled - (required) is a type of bool
       enabled = vertical_pod_autoscaling.value["enabled"]
     }
   }
@@ -1213,6 +1333,7 @@ resource "google_container_cluster" "this" {
   dynamic "workload_identity_config" {
     for_each = var.workload_identity_config
     content {
+      # identity_namespace - (required) is a type of string
       identity_namespace = workload_identity_config.value["identity_namespace"]
     }
   }

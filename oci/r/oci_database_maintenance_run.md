@@ -99,17 +99,25 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_database_maintenance_run" "this" {
-  is_enabled           = var.is_enabled
+  # is_enabled - (optional) is a type of bool
+  is_enabled = var.is_enabled
+  # is_patch_now_enabled - (optional) is a type of bool
   is_patch_now_enabled = var.is_patch_now_enabled
-  maintenance_run_id   = var.maintenance_run_id
-  patch_id             = var.patch_id
-  time_scheduled       = var.time_scheduled
+  # maintenance_run_id - (required) is a type of string
+  maintenance_run_id = var.maintenance_run_id
+  # patch_id - (optional) is a type of string
+  patch_id = var.patch_id
+  # time_scheduled - (optional) is a type of string
+  time_scheduled = var.time_scheduled
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -348,51 +348,92 @@ variable "grant" {
 
 ```terraform
 resource "aws_s3_object_copy" "this" {
-  acl                           = var.acl
-  bucket                        = var.bucket
-  cache_control                 = var.cache_control
-  content_disposition           = var.content_disposition
-  content_encoding              = var.content_encoding
-  content_language              = var.content_language
-  content_type                  = var.content_type
-  copy_if_match                 = var.copy_if_match
-  copy_if_modified_since        = var.copy_if_modified_since
-  copy_if_none_match            = var.copy_if_none_match
-  copy_if_unmodified_since      = var.copy_if_unmodified_since
-  customer_algorithm            = var.customer_algorithm
-  customer_key                  = var.customer_key
-  customer_key_md5              = var.customer_key_md5
-  expected_bucket_owner         = var.expected_bucket_owner
-  expected_source_bucket_owner  = var.expected_source_bucket_owner
-  expires                       = var.expires
-  force_destroy                 = var.force_destroy
-  key                           = var.key
-  kms_encryption_context        = var.kms_encryption_context
-  kms_key_id                    = var.kms_key_id
-  metadata                      = var.metadata
-  metadata_directive            = var.metadata_directive
+  # acl - (optional) is a type of string
+  acl = var.acl
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # cache_control - (optional) is a type of string
+  cache_control = var.cache_control
+  # content_disposition - (optional) is a type of string
+  content_disposition = var.content_disposition
+  # content_encoding - (optional) is a type of string
+  content_encoding = var.content_encoding
+  # content_language - (optional) is a type of string
+  content_language = var.content_language
+  # content_type - (optional) is a type of string
+  content_type = var.content_type
+  # copy_if_match - (optional) is a type of string
+  copy_if_match = var.copy_if_match
+  # copy_if_modified_since - (optional) is a type of string
+  copy_if_modified_since = var.copy_if_modified_since
+  # copy_if_none_match - (optional) is a type of string
+  copy_if_none_match = var.copy_if_none_match
+  # copy_if_unmodified_since - (optional) is a type of string
+  copy_if_unmodified_since = var.copy_if_unmodified_since
+  # customer_algorithm - (optional) is a type of string
+  customer_algorithm = var.customer_algorithm
+  # customer_key - (optional) is a type of string
+  customer_key = var.customer_key
+  # customer_key_md5 - (optional) is a type of string
+  customer_key_md5 = var.customer_key_md5
+  # expected_bucket_owner - (optional) is a type of string
+  expected_bucket_owner = var.expected_bucket_owner
+  # expected_source_bucket_owner - (optional) is a type of string
+  expected_source_bucket_owner = var.expected_source_bucket_owner
+  # expires - (optional) is a type of string
+  expires = var.expires
+  # force_destroy - (optional) is a type of bool
+  force_destroy = var.force_destroy
+  # key - (required) is a type of string
+  key = var.key
+  # kms_encryption_context - (optional) is a type of string
+  kms_encryption_context = var.kms_encryption_context
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # metadata - (optional) is a type of map of string
+  metadata = var.metadata
+  # metadata_directive - (optional) is a type of string
+  metadata_directive = var.metadata_directive
+  # object_lock_legal_hold_status - (optional) is a type of string
   object_lock_legal_hold_status = var.object_lock_legal_hold_status
-  object_lock_mode              = var.object_lock_mode
+  # object_lock_mode - (optional) is a type of string
+  object_lock_mode = var.object_lock_mode
+  # object_lock_retain_until_date - (optional) is a type of string
   object_lock_retain_until_date = var.object_lock_retain_until_date
-  request_payer                 = var.request_payer
-  server_side_encryption        = var.server_side_encryption
-  source                        = var.source
-  source_customer_algorithm     = var.source_customer_algorithm
-  source_customer_key           = var.source_customer_key
-  source_customer_key_md5       = var.source_customer_key_md5
-  storage_class                 = var.storage_class
-  tagging_directive             = var.tagging_directive
-  tags                          = var.tags
-  website_redirect              = var.website_redirect
+  # request_payer - (optional) is a type of string
+  request_payer = var.request_payer
+  # server_side_encryption - (optional) is a type of string
+  server_side_encryption = var.server_side_encryption
+  # source - (required) is a type of string
+  source = var.source
+  # source_customer_algorithm - (optional) is a type of string
+  source_customer_algorithm = var.source_customer_algorithm
+  # source_customer_key - (optional) is a type of string
+  source_customer_key = var.source_customer_key
+  # source_customer_key_md5 - (optional) is a type of string
+  source_customer_key_md5 = var.source_customer_key_md5
+  # storage_class - (optional) is a type of string
+  storage_class = var.storage_class
+  # tagging_directive - (optional) is a type of string
+  tagging_directive = var.tagging_directive
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # website_redirect - (optional) is a type of string
+  website_redirect = var.website_redirect
 
   dynamic "grant" {
     for_each = var.grant
     content {
-      email       = grant.value["email"]
-      id          = grant.value["id"]
+      # email - (optional) is a type of string
+      email = grant.value["email"]
+      # id - (optional) is a type of string
+      id = grant.value["id"]
+      # permissions - (required) is a type of set of string
       permissions = grant.value["permissions"]
-      type        = grant.value["type"]
-      uri         = grant.value["uri"]
+      # type - (required) is a type of string
+      type = grant.value["type"]
+      # uri - (optional) is a type of string
+      uri = grant.value["uri"]
     }
   }
 

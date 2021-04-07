@@ -83,16 +83,23 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_network_interface_nat_rule_association" "this" {
+  # ip_configuration_name - (required) is a type of string
   ip_configuration_name = var.ip_configuration_name
-  nat_rule_id           = var.nat_rule_id
-  network_interface_id  = var.network_interface_id
+  # nat_rule_id - (required) is a type of string
+  nat_rule_id = var.nat_rule_id
+  # network_interface_id - (required) is a type of string
+  network_interface_id = var.network_interface_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

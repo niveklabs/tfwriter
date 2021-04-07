@@ -65,9 +65,12 @@ variable "offset" {
 
 ```terraform
 data "oci_core_console_history_data" "this" {
+  # console_history_id - (required) is a type of string
   console_history_id = var.console_history_id
-  length             = var.length
-  offset             = var.offset
+  # length - (optional) is a type of number
+  length = var.length
+  # offset - (optional) is a type of number
+  offset = var.offset
 }
 ```
 

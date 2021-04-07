@@ -75,14 +75,19 @@ variable "filter" {
 
 ```terraform
 data "oci_identity_tags" "this" {
-  state            = var.state
+  # state - (optional) is a type of string
+  state = var.state
+  # tag_namespace_id - (required) is a type of string
   tag_namespace_id = var.tag_namespace_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

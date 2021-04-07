@@ -145,22 +145,31 @@ variable "timeouts" {
 
 ```terraform
 resource "google_identity_platform_tenant_inbound_saml_config" "this" {
+  # display_name - (required) is a type of string
   display_name = var.display_name
-  enabled      = var.enabled
-  name         = var.name
-  project      = var.project
-  tenant       = var.tenant
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # tenant - (required) is a type of string
+  tenant = var.tenant
 
   dynamic "idp_config" {
     for_each = var.idp_config
     content {
+      # idp_entity_id - (required) is a type of string
       idp_entity_id = idp_config.value["idp_entity_id"]
-      sign_request  = idp_config.value["sign_request"]
-      sso_url       = idp_config.value["sso_url"]
+      # sign_request - (optional) is a type of bool
+      sign_request = idp_config.value["sign_request"]
+      # sso_url - (required) is a type of string
+      sso_url = idp_config.value["sso_url"]
 
       dynamic "idp_certificates" {
         for_each = idp_config.value.idp_certificates
         content {
+          # x509_certificate - (optional) is a type of string
           x509_certificate = idp_certificates.value["x509_certificate"]
         }
       }
@@ -171,7 +180,9 @@ resource "google_identity_platform_tenant_inbound_saml_config" "this" {
   dynamic "sp_config" {
     for_each = var.sp_config
     content {
+      # callback_uri - (required) is a type of string
       callback_uri = sp_config.value["callback_uri"]
+      # sp_entity_id - (required) is a type of string
       sp_entity_id = sp_config.value["sp_entity_id"]
     }
   }
@@ -179,8 +190,11 @@ resource "google_identity_platform_tenant_inbound_saml_config" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

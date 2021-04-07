@@ -66,8 +66,11 @@ variable "path" {
 
 ```terraform
 data "ad_ou" "this" {
-  dn   = var.dn
+  # dn - (optional) is a type of string
+  dn = var.dn
+  # name - (optional) is a type of string
   name = var.name
+  # path - (optional) is a type of string
   path = var.path
 }
 ```

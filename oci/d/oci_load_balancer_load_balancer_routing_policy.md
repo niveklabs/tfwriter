@@ -56,7 +56,9 @@ variable "routing_policy_name" {
 
 ```terraform
 data "oci_load_balancer_load_balancer_routing_policy" "this" {
-  load_balancer_id    = var.load_balancer_id
+  # load_balancer_id - (required) is a type of string
+  load_balancer_id = var.load_balancer_id
+  # routing_policy_name - (required) is a type of string
   routing_policy_name = var.routing_policy_name
 }
 ```

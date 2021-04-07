@@ -159,26 +159,43 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_application_insights_web_test" "this" {
+  # application_insights_id - (required) is a type of string
   application_insights_id = var.application_insights_id
-  configuration           = var.configuration
-  description             = var.description
-  enabled                 = var.enabled
-  frequency               = var.frequency
-  geo_locations           = var.geo_locations
-  kind                    = var.kind
-  location                = var.location
-  name                    = var.name
-  resource_group_name     = var.resource_group_name
-  retry_enabled           = var.retry_enabled
-  tags                    = var.tags
-  timeout                 = var.timeout
+  # configuration - (required) is a type of string
+  configuration = var.configuration
+  # description - (optional) is a type of string
+  description = var.description
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # frequency - (optional) is a type of number
+  frequency = var.frequency
+  # geo_locations - (required) is a type of list of string
+  geo_locations = var.geo_locations
+  # kind - (required) is a type of string
+  kind = var.kind
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # retry_enabled - (optional) is a type of bool
+  retry_enabled = var.retry_enabled
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

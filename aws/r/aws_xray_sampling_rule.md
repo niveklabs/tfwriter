@@ -136,19 +136,32 @@ variable "version" {
 
 ```terraform
 resource "aws_xray_sampling_rule" "this" {
-  attributes     = var.attributes
-  fixed_rate     = var.fixed_rate
-  host           = var.host
-  http_method    = var.http_method
-  priority       = var.priority
+  # attributes - (optional) is a type of map of string
+  attributes = var.attributes
+  # fixed_rate - (required) is a type of number
+  fixed_rate = var.fixed_rate
+  # host - (required) is a type of string
+  host = var.host
+  # http_method - (required) is a type of string
+  http_method = var.http_method
+  # priority - (required) is a type of number
+  priority = var.priority
+  # reservoir_size - (required) is a type of number
   reservoir_size = var.reservoir_size
-  resource_arn   = var.resource_arn
-  rule_name      = var.rule_name
-  service_name   = var.service_name
-  service_type   = var.service_type
-  tags           = var.tags
-  url_path       = var.url_path
-  version        = var.version
+  # resource_arn - (required) is a type of string
+  resource_arn = var.resource_arn
+  # rule_name - (optional) is a type of string
+  rule_name = var.rule_name
+  # service_name - (required) is a type of string
+  service_name = var.service_name
+  # service_type - (required) is a type of string
+  service_type = var.service_type
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # url_path - (required) is a type of string
+  url_path = var.url_path
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

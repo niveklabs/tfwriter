@@ -67,13 +67,17 @@ variable "filter" {
 
 ```terraform
 data "oci_database_db_home_patches" "this" {
+  # db_home_id - (required) is a type of string
   db_home_id = var.db_home_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

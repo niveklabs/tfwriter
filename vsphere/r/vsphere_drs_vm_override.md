@@ -72,10 +72,14 @@ variable "virtual_machine_id" {
 
 ```terraform
 resource "vsphere_drs_vm_override" "this" {
-  compute_cluster_id   = var.compute_cluster_id
+  # compute_cluster_id - (required) is a type of string
+  compute_cluster_id = var.compute_cluster_id
+  # drs_automation_level - (optional) is a type of string
   drs_automation_level = var.drs_automation_level
-  drs_enabled          = var.drs_enabled
-  virtual_machine_id   = var.virtual_machine_id
+  # drs_enabled - (optional) is a type of bool
+  drs_enabled = var.drs_enabled
+  # virtual_machine_id - (required) is a type of string
+  virtual_machine_id = var.virtual_machine_id
 }
 ```
 

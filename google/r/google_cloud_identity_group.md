@@ -105,15 +105,21 @@ variable "timeouts" {
 
 ```terraform
 resource "google_cloud_identity_group" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
   display_name = var.display_name
-  labels       = var.labels
-  parent       = var.parent
+  # labels - (required) is a type of map of string
+  labels = var.labels
+  # parent - (required) is a type of string
+  parent = var.parent
 
   dynamic "group_key" {
     for_each = var.group_key
     content {
-      id        = group_key.value["id"]
+      # id - (required) is a type of string
+      id = group_key.value["id"]
+      # namespace - (optional) is a type of string
       namespace = group_key.value["namespace"]
     }
   }
@@ -121,8 +127,11 @@ resource "google_cloud_identity_group" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -114,19 +114,29 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_streaming_stream" "this" {
-  compartment_id     = var.compartment_id
-  defined_tags       = var.defined_tags
-  freeform_tags      = var.freeform_tags
-  name               = var.name
-  partitions         = var.partitions
+  # compartment_id - (optional) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # name - (required) is a type of string
+  name = var.name
+  # partitions - (required) is a type of number
+  partitions = var.partitions
+  # retention_in_hours - (optional) is a type of number
   retention_in_hours = var.retention_in_hours
-  stream_pool_id     = var.stream_pool_id
+  # stream_pool_id - (optional) is a type of string
+  stream_pool_id = var.stream_pool_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

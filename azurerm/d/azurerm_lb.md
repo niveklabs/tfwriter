@@ -70,12 +70,15 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_lb" "this" {
-  name                = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

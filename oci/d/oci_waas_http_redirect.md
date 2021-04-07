@@ -49,6 +49,7 @@ variable "http_redirect_id" {
 
 ```terraform
 data "oci_waas_http_redirect" "this" {
+  # http_redirect_id - (required) is a type of string
   http_redirect_id = var.http_redirect_id
 }
 ```

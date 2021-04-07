@@ -252,19 +252,29 @@ variable "open_monitoring" {
 
 ```terraform
 resource "aws_msk_cluster" "this" {
-  cluster_name           = var.cluster_name
-  enhanced_monitoring    = var.enhanced_monitoring
-  kafka_version          = var.kafka_version
+  # cluster_name - (required) is a type of string
+  cluster_name = var.cluster_name
+  # enhanced_monitoring - (optional) is a type of string
+  enhanced_monitoring = var.enhanced_monitoring
+  # kafka_version - (required) is a type of string
+  kafka_version = var.kafka_version
+  # number_of_broker_nodes - (required) is a type of number
   number_of_broker_nodes = var.number_of_broker_nodes
-  tags                   = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "broker_node_group_info" {
     for_each = var.broker_node_group_info
     content {
+      # az_distribution - (optional) is a type of string
       az_distribution = broker_node_group_info.value["az_distribution"]
-      client_subnets  = broker_node_group_info.value["client_subnets"]
+      # client_subnets - (required) is a type of list of string
+      client_subnets = broker_node_group_info.value["client_subnets"]
+      # ebs_volume_size - (required) is a type of number
       ebs_volume_size = broker_node_group_info.value["ebs_volume_size"]
-      instance_type   = broker_node_group_info.value["instance_type"]
+      # instance_type - (required) is a type of string
+      instance_type = broker_node_group_info.value["instance_type"]
+      # security_groups - (required) is a type of list of string
       security_groups = broker_node_group_info.value["security_groups"]
     }
   }
@@ -276,6 +286,7 @@ resource "aws_msk_cluster" "this" {
       dynamic "sasl" {
         for_each = client_authentication.value.sasl
         content {
+          # scram - (optional) is a type of bool
           scram = sasl.value["scram"]
         }
       }
@@ -283,6 +294,7 @@ resource "aws_msk_cluster" "this" {
       dynamic "tls" {
         for_each = client_authentication.value.tls
         content {
+          # certificate_authority_arns - (optional) is a type of set of string
           certificate_authority_arns = tls.value["certificate_authority_arns"]
         }
       }
@@ -293,7 +305,9 @@ resource "aws_msk_cluster" "this" {
   dynamic "configuration_info" {
     for_each = var.configuration_info
     content {
-      arn      = configuration_info.value["arn"]
+      # arn - (required) is a type of string
+      arn = configuration_info.value["arn"]
+      # revision - (required) is a type of number
       revision = configuration_info.value["revision"]
     }
   }
@@ -301,13 +315,16 @@ resource "aws_msk_cluster" "this" {
   dynamic "encryption_info" {
     for_each = var.encryption_info
     content {
+      # encryption_at_rest_kms_key_arn - (optional) is a type of string
       encryption_at_rest_kms_key_arn = encryption_info.value["encryption_at_rest_kms_key_arn"]
 
       dynamic "encryption_in_transit" {
         for_each = encryption_info.value.encryption_in_transit
         content {
+          # client_broker - (optional) is a type of string
           client_broker = encryption_in_transit.value["client_broker"]
-          in_cluster    = encryption_in_transit.value["in_cluster"]
+          # in_cluster - (optional) is a type of bool
+          in_cluster = encryption_in_transit.value["in_cluster"]
         }
       }
 
@@ -325,7 +342,9 @@ resource "aws_msk_cluster" "this" {
           dynamic "cloudwatch_logs" {
             for_each = broker_logs.value.cloudwatch_logs
             content {
-              enabled   = cloudwatch_logs.value["enabled"]
+              # enabled - (required) is a type of bool
+              enabled = cloudwatch_logs.value["enabled"]
+              # log_group - (optional) is a type of string
               log_group = cloudwatch_logs.value["log_group"]
             }
           }
@@ -333,17 +352,22 @@ resource "aws_msk_cluster" "this" {
           dynamic "firehose" {
             for_each = broker_logs.value.firehose
             content {
+              # delivery_stream - (optional) is a type of string
               delivery_stream = firehose.value["delivery_stream"]
-              enabled         = firehose.value["enabled"]
+              # enabled - (required) is a type of bool
+              enabled = firehose.value["enabled"]
             }
           }
 
           dynamic "s3" {
             for_each = broker_logs.value.s3
             content {
-              bucket  = s3.value["bucket"]
+              # bucket - (optional) is a type of string
+              bucket = s3.value["bucket"]
+              # enabled - (required) is a type of bool
               enabled = s3.value["enabled"]
-              prefix  = s3.value["prefix"]
+              # prefix - (optional) is a type of string
+              prefix = s3.value["prefix"]
             }
           }
 
@@ -364,6 +388,7 @@ resource "aws_msk_cluster" "this" {
           dynamic "jmx_exporter" {
             for_each = prometheus.value.jmx_exporter
             content {
+              # enabled_in_broker - (required) is a type of bool
               enabled_in_broker = jmx_exporter.value["enabled_in_broker"]
             }
           }
@@ -371,6 +396,7 @@ resource "aws_msk_cluster" "this" {
           dynamic "node_exporter" {
             for_each = prometheus.value.node_exporter
             content {
+              # enabled_in_broker - (required) is a type of bool
               enabled_in_broker = node_exporter.value["enabled_in_broker"]
             }
           }

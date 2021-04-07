@@ -142,23 +142,33 @@ variable "timeouts" {
 
 ```terraform
 resource "google_data_catalog_tag_template" "this" {
-  display_name    = var.display_name
-  force_delete    = var.force_delete
-  project         = var.project
-  region          = var.region
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # force_delete - (optional) is a type of bool
+  force_delete = var.force_delete
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
+  # tag_template_id - (required) is a type of string
   tag_template_id = var.tag_template_id
 
   dynamic "fields" {
     for_each = var.fields
     content {
+      # display_name - (optional) is a type of string
       display_name = fields.value["display_name"]
-      field_id     = fields.value["field_id"]
-      is_required  = fields.value["is_required"]
-      order        = fields.value["order"]
+      # field_id - (required) is a type of string
+      field_id = fields.value["field_id"]
+      # is_required - (optional) is a type of bool
+      is_required = fields.value["is_required"]
+      # order - (optional) is a type of number
+      order = fields.value["order"]
 
       dynamic "type" {
         for_each = fields.value.type
         content {
+          # primitive_type - (optional) is a type of string
           primitive_type = type.value["primitive_type"]
 
           dynamic "enum_type" {
@@ -168,6 +178,7 @@ resource "google_data_catalog_tag_template" "this" {
               dynamic "allowed_values" {
                 for_each = enum_type.value.allowed_values
                 content {
+                  # display_name - (required) is a type of string
                   display_name = allowed_values.value["display_name"]
                 }
               }
@@ -184,8 +195,11 @@ resource "google_data_catalog_tag_template" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

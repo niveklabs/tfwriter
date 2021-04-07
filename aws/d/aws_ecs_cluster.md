@@ -49,6 +49,7 @@ variable "cluster_name" {
 
 ```terraform
 data "aws_ecs_cluster" "this" {
+  # cluster_name - (required) is a type of string
   cluster_name = var.cluster_name
 }
 ```

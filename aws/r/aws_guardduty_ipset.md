@@ -85,12 +85,18 @@ variable "tags" {
 
 ```terraform
 resource "aws_guardduty_ipset" "this" {
-  activate    = var.activate
+  # activate - (required) is a type of bool
+  activate = var.activate
+  # detector_id - (required) is a type of string
   detector_id = var.detector_id
-  format      = var.format
-  location    = var.location
-  name        = var.name
-  tags        = var.tags
+  # format - (required) is a type of string
+  format = var.format
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

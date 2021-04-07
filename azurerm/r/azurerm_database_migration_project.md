@@ -112,20 +112,31 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_database_migration_project" "this" {
-  location            = var.location
-  name                = var.name
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  service_name        = var.service_name
-  source_platform     = var.source_platform
-  tags                = var.tags
-  target_platform     = var.target_platform
+  # service_name - (required) is a type of string
+  service_name = var.service_name
+  # source_platform - (required) is a type of string
+  source_platform = var.source_platform
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # target_platform - (required) is a type of string
+  target_platform = var.target_platform
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

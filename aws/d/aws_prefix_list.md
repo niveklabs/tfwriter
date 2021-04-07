@@ -74,13 +74,17 @@ variable "filter" {
 
 ```terraform
 data "aws_prefix_list" "this" {
-  name           = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # prefix_list_id - (optional) is a type of string
   prefix_list_id = var.prefix_list_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

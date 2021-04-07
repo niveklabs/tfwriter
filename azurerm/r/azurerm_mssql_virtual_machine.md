@@ -246,31 +246,49 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_mssql_virtual_machine" "this" {
-  r_services_enabled               = var.r_services_enabled
-  sql_connectivity_port            = var.sql_connectivity_port
-  sql_connectivity_type            = var.sql_connectivity_type
+  # r_services_enabled - (optional) is a type of bool
+  r_services_enabled = var.r_services_enabled
+  # sql_connectivity_port - (optional) is a type of number
+  sql_connectivity_port = var.sql_connectivity_port
+  # sql_connectivity_type - (optional) is a type of string
+  sql_connectivity_type = var.sql_connectivity_type
+  # sql_connectivity_update_password - (optional) is a type of string
   sql_connectivity_update_password = var.sql_connectivity_update_password
+  # sql_connectivity_update_username - (optional) is a type of string
   sql_connectivity_update_username = var.sql_connectivity_update_username
-  sql_license_type                 = var.sql_license_type
-  tags                             = var.tags
-  virtual_machine_id               = var.virtual_machine_id
+  # sql_license_type - (required) is a type of string
+  sql_license_type = var.sql_license_type
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # virtual_machine_id - (required) is a type of string
+  virtual_machine_id = var.virtual_machine_id
 
   dynamic "auto_backup" {
     for_each = var.auto_backup
     content {
-      encryption_enabled              = auto_backup.value["encryption_enabled"]
-      encryption_password             = auto_backup.value["encryption_password"]
-      retention_period_in_days        = auto_backup.value["retention_period_in_days"]
-      storage_account_access_key      = auto_backup.value["storage_account_access_key"]
-      storage_blob_endpoint           = auto_backup.value["storage_blob_endpoint"]
+      # encryption_enabled - (optional) is a type of bool
+      encryption_enabled = auto_backup.value["encryption_enabled"]
+      # encryption_password - (optional) is a type of string
+      encryption_password = auto_backup.value["encryption_password"]
+      # retention_period_in_days - (required) is a type of number
+      retention_period_in_days = auto_backup.value["retention_period_in_days"]
+      # storage_account_access_key - (required) is a type of string
+      storage_account_access_key = auto_backup.value["storage_account_access_key"]
+      # storage_blob_endpoint - (required) is a type of string
+      storage_blob_endpoint = auto_backup.value["storage_blob_endpoint"]
+      # system_databases_backup_enabled - (optional) is a type of bool
       system_databases_backup_enabled = auto_backup.value["system_databases_backup_enabled"]
 
       dynamic "manual_schedule" {
         for_each = auto_backup.value.manual_schedule
         content {
-          full_backup_frequency           = manual_schedule.value["full_backup_frequency"]
-          full_backup_start_hour          = manual_schedule.value["full_backup_start_hour"]
-          full_backup_window_in_hours     = manual_schedule.value["full_backup_window_in_hours"]
+          # full_backup_frequency - (required) is a type of string
+          full_backup_frequency = manual_schedule.value["full_backup_frequency"]
+          # full_backup_start_hour - (required) is a type of number
+          full_backup_start_hour = manual_schedule.value["full_backup_start_hour"]
+          # full_backup_window_in_hours - (required) is a type of number
+          full_backup_window_in_hours = manual_schedule.value["full_backup_window_in_hours"]
+          # log_backup_frequency_in_minutes - (required) is a type of number
           log_backup_frequency_in_minutes = manual_schedule.value["log_backup_frequency_in_minutes"]
         }
       }
@@ -281,18 +299,25 @@ resource "azurerm_mssql_virtual_machine" "this" {
   dynamic "auto_patching" {
     for_each = var.auto_patching
     content {
-      day_of_week                            = auto_patching.value["day_of_week"]
+      # day_of_week - (required) is a type of string
+      day_of_week = auto_patching.value["day_of_week"]
+      # maintenance_window_duration_in_minutes - (required) is a type of number
       maintenance_window_duration_in_minutes = auto_patching.value["maintenance_window_duration_in_minutes"]
-      maintenance_window_starting_hour       = auto_patching.value["maintenance_window_starting_hour"]
+      # maintenance_window_starting_hour - (required) is a type of number
+      maintenance_window_starting_hour = auto_patching.value["maintenance_window_starting_hour"]
     }
   }
 
   dynamic "key_vault_credential" {
     for_each = var.key_vault_credential
     content {
-      key_vault_url            = key_vault_credential.value["key_vault_url"]
-      name                     = key_vault_credential.value["name"]
-      service_principal_name   = key_vault_credential.value["service_principal_name"]
+      # key_vault_url - (required) is a type of string
+      key_vault_url = key_vault_credential.value["key_vault_url"]
+      # name - (required) is a type of string
+      name = key_vault_credential.value["name"]
+      # service_principal_name - (required) is a type of string
+      service_principal_name = key_vault_credential.value["service_principal_name"]
+      # service_principal_secret - (required) is a type of string
       service_principal_secret = key_vault_credential.value["service_principal_secret"]
     }
   }
@@ -300,30 +325,38 @@ resource "azurerm_mssql_virtual_machine" "this" {
   dynamic "storage_configuration" {
     for_each = var.storage_configuration
     content {
-      disk_type             = storage_configuration.value["disk_type"]
+      # disk_type - (required) is a type of string
+      disk_type = storage_configuration.value["disk_type"]
+      # storage_workload_type - (required) is a type of string
       storage_workload_type = storage_configuration.value["storage_workload_type"]
 
       dynamic "data_settings" {
         for_each = storage_configuration.value.data_settings
         content {
+          # default_file_path - (required) is a type of string
           default_file_path = data_settings.value["default_file_path"]
-          luns              = data_settings.value["luns"]
+          # luns - (required) is a type of list of number
+          luns = data_settings.value["luns"]
         }
       }
 
       dynamic "log_settings" {
         for_each = storage_configuration.value.log_settings
         content {
+          # default_file_path - (required) is a type of string
           default_file_path = log_settings.value["default_file_path"]
-          luns              = log_settings.value["luns"]
+          # luns - (required) is a type of list of number
+          luns = log_settings.value["luns"]
         }
       }
 
       dynamic "temp_db_settings" {
         for_each = storage_configuration.value.temp_db_settings
         content {
+          # default_file_path - (required) is a type of string
           default_file_path = temp_db_settings.value["default_file_path"]
-          luns              = temp_db_settings.value["luns"]
+          # luns - (required) is a type of list of number
+          luns = temp_db_settings.value["luns"]
         }
       }
 
@@ -333,9 +366,13 @@ resource "azurerm_mssql_virtual_machine" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

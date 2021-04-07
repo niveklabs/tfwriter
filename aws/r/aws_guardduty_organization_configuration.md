@@ -56,7 +56,9 @@ variable "detector_id" {
 
 ```terraform
 resource "aws_guardduty_organization_configuration" "this" {
+  # auto_enable - (required) is a type of bool
   auto_enable = var.auto_enable
+  # detector_id - (required) is a type of string
   detector_id = var.detector_id
 }
 ```

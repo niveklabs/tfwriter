@@ -126,17 +126,28 @@ variable "to_port" {
 
 ```terraform
 resource "aws_network_acl_rule" "this" {
-  cidr_block      = var.cidr_block
-  egress          = var.egress
-  from_port       = var.from_port
-  icmp_code       = var.icmp_code
-  icmp_type       = var.icmp_type
+  # cidr_block - (optional) is a type of string
+  cidr_block = var.cidr_block
+  # egress - (optional) is a type of bool
+  egress = var.egress
+  # from_port - (optional) is a type of number
+  from_port = var.from_port
+  # icmp_code - (optional) is a type of string
+  icmp_code = var.icmp_code
+  # icmp_type - (optional) is a type of string
+  icmp_type = var.icmp_type
+  # ipv6_cidr_block - (optional) is a type of string
   ipv6_cidr_block = var.ipv6_cidr_block
-  network_acl_id  = var.network_acl_id
-  protocol        = var.protocol
-  rule_action     = var.rule_action
-  rule_number     = var.rule_number
-  to_port         = var.to_port
+  # network_acl_id - (required) is a type of string
+  network_acl_id = var.network_acl_id
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # rule_action - (required) is a type of string
+  rule_action = var.rule_action
+  # rule_number - (required) is a type of number
+  rule_number = var.rule_number
+  # to_port - (optional) is a type of number
+  to_port = var.to_port
 }
 ```
 

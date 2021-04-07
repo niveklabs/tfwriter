@@ -56,7 +56,9 @@ variable "resource_share_arn" {
 
 ```terraform
 resource "aws_ram_principal_association" "this" {
-  principal          = var.principal
+  # principal - (required) is a type of string
+  principal = var.principal
+  # resource_share_arn - (required) is a type of string
   resource_share_arn = var.resource_share_arn
 }
 ```

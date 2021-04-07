@@ -56,8 +56,10 @@ variable "name" {
 
 ```terraform
 data "google_kms_crypto_key" "this" {
+  # key_ring - (required) is a type of string
   key_ring = var.key_ring
-  name     = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

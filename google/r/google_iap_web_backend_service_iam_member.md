@@ -89,17 +89,24 @@ variable "condition" {
 
 ```terraform
 resource "google_iap_web_backend_service_iam_member" "this" {
-  member              = var.member
-  project             = var.project
-  role                = var.role
+  # member - (required) is a type of string
+  member = var.member
+  # project - (optional) is a type of string
+  project = var.project
+  # role - (required) is a type of string
+  role = var.role
+  # web_backend_service - (required) is a type of string
   web_backend_service = var.web_backend_service
 
   dynamic "condition" {
     for_each = var.condition
     content {
+      # description - (optional) is a type of string
       description = condition.value["description"]
-      expression  = condition.value["expression"]
-      title       = condition.value["title"]
+      # expression - (required) is a type of string
+      expression = condition.value["expression"]
+      # title - (required) is a type of string
+      title = condition.value["title"]
     }
   }
 

@@ -120,26 +120,35 @@ variable "timeouts" {
 
 ```terraform
 resource "google_binary_authorization_attestor" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  project     = var.project
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "attestation_authority_note" {
     for_each = var.attestation_authority_note
     content {
+      # note_reference - (required) is a type of string
       note_reference = attestation_authority_note.value["note_reference"]
 
       dynamic "public_keys" {
         for_each = attestation_authority_note.value.public_keys
         content {
+          # ascii_armored_pgp_public_key - (optional) is a type of string
           ascii_armored_pgp_public_key = public_keys.value["ascii_armored_pgp_public_key"]
-          comment                      = public_keys.value["comment"]
-          id                           = public_keys.value["id"]
+          # comment - (optional) is a type of string
+          comment = public_keys.value["comment"]
+          # id - (optional) is a type of string
+          id = public_keys.value["id"]
 
           dynamic "pkix_public_key" {
             for_each = public_keys.value.pkix_public_key
             content {
-              public_key_pem      = pkix_public_key.value["public_key_pem"]
+              # public_key_pem - (optional) is a type of string
+              public_key_pem = pkix_public_key.value["public_key_pem"]
+              # signature_algorithm - (optional) is a type of string
               signature_algorithm = pkix_public_key.value["signature_algorithm"]
             }
           }
@@ -153,8 +162,11 @@ resource "google_binary_authorization_attestor" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -83,16 +83,23 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_marketplace_agreement" "this" {
-  offer     = var.offer
-  plan      = var.plan
+  # offer - (required) is a type of string
+  offer = var.offer
+  # plan - (required) is a type of string
+  plan = var.plan
+  # publisher - (required) is a type of string
   publisher = var.publisher
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

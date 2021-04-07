@@ -177,24 +177,39 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_dataflow_invoke_run" "this" {
-  application_id       = var.application_id
-  arguments            = var.arguments
-  asynchronous         = var.asynchronous
-  compartment_id       = var.compartment_id
-  configuration        = var.configuration
-  defined_tags         = var.defined_tags
-  display_name         = var.display_name
-  driver_shape         = var.driver_shape
-  executor_shape       = var.executor_shape
-  freeform_tags        = var.freeform_tags
-  logs_bucket_uri      = var.logs_bucket_uri
-  num_executors        = var.num_executors
+  # application_id - (required) is a type of string
+  application_id = var.application_id
+  # arguments - (optional) is a type of list of string
+  arguments = var.arguments
+  # asynchronous - (optional) is a type of bool
+  asynchronous = var.asynchronous
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # configuration - (optional) is a type of map of string
+  configuration = var.configuration
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # driver_shape - (optional) is a type of string
+  driver_shape = var.driver_shape
+  # executor_shape - (optional) is a type of string
+  executor_shape = var.executor_shape
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # logs_bucket_uri - (optional) is a type of string
+  logs_bucket_uri = var.logs_bucket_uri
+  # num_executors - (optional) is a type of number
+  num_executors = var.num_executors
+  # warehouse_bucket_uri - (optional) is a type of string
   warehouse_bucket_uri = var.warehouse_bucket_uri
 
   dynamic "parameters" {
     for_each = var.parameters
     content {
-      name  = parameters.value["name"]
+      # name - (required) is a type of string
+      name = parameters.value["name"]
+      # value - (required) is a type of string
       value = parameters.value["value"]
     }
   }
@@ -202,8 +217,11 @@ resource "oci_dataflow_invoke_run" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

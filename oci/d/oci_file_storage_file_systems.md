@@ -106,18 +106,27 @@ variable "filter" {
 
 ```terraform
 data "oci_file_storage_file_systems" "this" {
-  availability_domain   = var.availability_domain
-  compartment_id        = var.compartment_id
-  display_name          = var.display_name
+  # availability_domain - (required) is a type of string
+  availability_domain = var.availability_domain
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # parent_file_system_id - (optional) is a type of string
   parent_file_system_id = var.parent_file_system_id
-  source_snapshot_id    = var.source_snapshot_id
-  state                 = var.state
+  # source_snapshot_id - (optional) is a type of string
+  source_snapshot_id = var.source_snapshot_id
+  # state - (optional) is a type of string
+  state = var.state
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

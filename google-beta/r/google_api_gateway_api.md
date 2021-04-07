@@ -99,17 +99,25 @@ variable "timeouts" {
 
 ```terraform
 resource "google_api_gateway_api" "this" {
-  api_id          = var.api_id
-  display_name    = var.display_name
-  labels          = var.labels
+  # api_id - (required) is a type of string
+  api_id = var.api_id
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # managed_service - (optional) is a type of string
   managed_service = var.managed_service
-  project         = var.project
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

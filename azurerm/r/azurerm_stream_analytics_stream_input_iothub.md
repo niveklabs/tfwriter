@@ -135,30 +135,45 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_stream_analytics_stream_input_iothub" "this" {
-  endpoint                     = var.endpoint
+  # endpoint - (required) is a type of string
+  endpoint = var.endpoint
+  # eventhub_consumer_group_name - (required) is a type of string
   eventhub_consumer_group_name = var.eventhub_consumer_group_name
-  iothub_namespace             = var.iothub_namespace
-  name                         = var.name
-  resource_group_name          = var.resource_group_name
-  shared_access_policy_key     = var.shared_access_policy_key
-  shared_access_policy_name    = var.shared_access_policy_name
-  stream_analytics_job_name    = var.stream_analytics_job_name
+  # iothub_namespace - (required) is a type of string
+  iothub_namespace = var.iothub_namespace
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # shared_access_policy_key - (required) is a type of string
+  shared_access_policy_key = var.shared_access_policy_key
+  # shared_access_policy_name - (required) is a type of string
+  shared_access_policy_name = var.shared_access_policy_name
+  # stream_analytics_job_name - (required) is a type of string
+  stream_analytics_job_name = var.stream_analytics_job_name
 
   dynamic "serialization" {
     for_each = var.serialization
     content {
-      encoding        = serialization.value["encoding"]
+      # encoding - (optional) is a type of string
+      encoding = serialization.value["encoding"]
+      # field_delimiter - (optional) is a type of string
       field_delimiter = serialization.value["field_delimiter"]
-      type            = serialization.value["type"]
+      # type - (required) is a type of string
+      type = serialization.value["type"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -71,10 +71,14 @@ variable "tags" {
 
 ```terraform
 resource "aws_apigatewayv2_vpc_link" "this" {
-  name               = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # security_group_ids - (required) is a type of set of string
   security_group_ids = var.security_group_ids
-  subnet_ids         = var.subnet_ids
-  tags               = var.tags
+  # subnet_ids - (required) is a type of set of string
+  subnet_ids = var.subnet_ids
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

@@ -56,8 +56,10 @@ variable "policy_name" {
 
 ```terraform
 resource "aws_cloudwatch_log_resource_policy" "this" {
+  # policy_document - (required) is a type of string
   policy_document = var.policy_document
-  policy_name     = var.policy_name
+  # policy_name - (required) is a type of string
+  policy_name = var.policy_name
 }
 ```
 

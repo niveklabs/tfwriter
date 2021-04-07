@@ -57,7 +57,9 @@ variable "transit_gateway_id" {
 
 ```terraform
 resource "aws_ec2_transit_gateway_route_table" "this" {
-  tags               = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # transit_gateway_id - (required) is a type of string
   transit_gateway_id = var.transit_gateway_id
 }
 ```

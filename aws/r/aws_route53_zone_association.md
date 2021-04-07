@@ -64,9 +64,12 @@ variable "zone_id" {
 
 ```terraform
 resource "aws_route53_zone_association" "this" {
-  vpc_id     = var.vpc_id
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
+  # vpc_region - (optional) is a type of string
   vpc_region = var.vpc_region
-  zone_id    = var.zone_id
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

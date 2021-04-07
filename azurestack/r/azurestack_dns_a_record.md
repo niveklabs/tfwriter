@@ -85,12 +85,18 @@ variable "zone_name" {
 
 ```terraform
 resource "azurestack_dns_a_record" "this" {
-  name                = var.name
-  records             = var.records
+  # name - (required) is a type of string
+  name = var.name
+  # records - (required) is a type of set of string
+  records = var.records
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  tags                = var.tags
-  ttl                 = var.ttl
-  zone_name           = var.zone_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # ttl - (required) is a type of number
+  ttl = var.ttl
+  # zone_name - (required) is a type of string
+  zone_name = var.zone_name
 }
 ```
 

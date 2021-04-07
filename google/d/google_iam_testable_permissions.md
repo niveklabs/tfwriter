@@ -65,9 +65,12 @@ variable "stages" {
 
 ```terraform
 data "google_iam_testable_permissions" "this" {
+  # custom_support_level - (optional) is a type of string
   custom_support_level = var.custom_support_level
-  full_resource_name   = var.full_resource_name
-  stages               = var.stages
+  # full_resource_name - (required) is a type of string
+  full_resource_name = var.full_resource_name
+  # stages - (optional) is a type of list of string
+  stages = var.stages
 }
 ```
 

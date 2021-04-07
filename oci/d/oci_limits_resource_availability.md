@@ -71,10 +71,14 @@ variable "service_name" {
 
 ```terraform
 data "oci_limits_resource_availability" "this" {
+  # availability_domain - (optional) is a type of string
   availability_domain = var.availability_domain
-  compartment_id      = var.compartment_id
-  limit_name          = var.limit_name
-  service_name        = var.service_name
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # limit_name - (required) is a type of string
+  limit_name = var.limit_name
+  # service_name - (required) is a type of string
+  service_name = var.service_name
 }
 ```
 

@@ -104,18 +104,27 @@ variable "timeouts" {
 
 ```terraform
 resource "google_identity_platform_tenant_default_supported_idp_config" "this" {
-  client_id     = var.client_id
+  # client_id - (required) is a type of string
+  client_id = var.client_id
+  # client_secret - (required) is a type of string
   client_secret = var.client_secret
-  enabled       = var.enabled
-  idp_id        = var.idp_id
-  project       = var.project
-  tenant        = var.tenant
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # idp_id - (required) is a type of string
+  idp_id = var.idp_id
+  # project - (optional) is a type of string
+  project = var.project
+  # tenant - (required) is a type of string
+  tenant = var.tenant
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

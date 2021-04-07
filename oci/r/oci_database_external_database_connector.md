@@ -145,39 +145,57 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_database_external_database_connector" "this" {
-  connector_agent_id   = var.connector_agent_id
-  connector_type       = var.connector_type
-  defined_tags         = var.defined_tags
-  display_name         = var.display_name
+  # connector_agent_id - (required) is a type of string
+  connector_agent_id = var.connector_agent_id
+  # connector_type - (optional) is a type of string
+  connector_type = var.connector_type
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # external_database_id - (required) is a type of string
   external_database_id = var.external_database_id
-  freeform_tags        = var.freeform_tags
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
 
   dynamic "connection_credentials" {
     for_each = var.connection_credentials
     content {
+      # credential_name - (optional) is a type of string
       credential_name = connection_credentials.value["credential_name"]
+      # credential_type - (optional) is a type of string
       credential_type = connection_credentials.value["credential_type"]
-      password        = connection_credentials.value["password"]
-      role            = connection_credentials.value["role"]
-      username        = connection_credentials.value["username"]
+      # password - (optional) is a type of string
+      password = connection_credentials.value["password"]
+      # role - (optional) is a type of string
+      role = connection_credentials.value["role"]
+      # username - (optional) is a type of string
+      username = connection_credentials.value["username"]
     }
   }
 
   dynamic "connection_string" {
     for_each = var.connection_string
     content {
+      # hostname - (required) is a type of string
       hostname = connection_string.value["hostname"]
-      port     = connection_string.value["port"]
+      # port - (required) is a type of number
+      port = connection_string.value["port"]
+      # protocol - (required) is a type of string
       protocol = connection_string.value["protocol"]
-      service  = connection_string.value["service"]
+      # service - (required) is a type of string
+      service = connection_string.value["service"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -179,23 +179,37 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_virtual_desktop_host_pool" "this" {
-  custom_rdp_properties            = var.custom_rdp_properties
-  description                      = var.description
-  friendly_name                    = var.friendly_name
-  load_balancer_type               = var.load_balancer_type
-  location                         = var.location
-  maximum_sessions_allowed         = var.maximum_sessions_allowed
-  name                             = var.name
+  # custom_rdp_properties - (optional) is a type of string
+  custom_rdp_properties = var.custom_rdp_properties
+  # description - (optional) is a type of string
+  description = var.description
+  # friendly_name - (optional) is a type of string
+  friendly_name = var.friendly_name
+  # load_balancer_type - (required) is a type of string
+  load_balancer_type = var.load_balancer_type
+  # location - (required) is a type of string
+  location = var.location
+  # maximum_sessions_allowed - (optional) is a type of number
+  maximum_sessions_allowed = var.maximum_sessions_allowed
+  # name - (required) is a type of string
+  name = var.name
+  # personal_desktop_assignment_type - (optional) is a type of string
   personal_desktop_assignment_type = var.personal_desktop_assignment_type
-  preferred_app_group_type         = var.preferred_app_group_type
-  resource_group_name              = var.resource_group_name
-  tags                             = var.tags
-  type                             = var.type
-  validate_environment             = var.validate_environment
+  # preferred_app_group_type - (optional) is a type of string
+  preferred_app_group_type = var.preferred_app_group_type
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (required) is a type of string
+  type = var.type
+  # validate_environment - (optional) is a type of bool
+  validate_environment = var.validate_environment
 
   dynamic "registration_info" {
     for_each = var.registration_info
     content {
+      # expiration_date - (required) is a type of string
       expiration_date = registration_info.value["expiration_date"]
     }
   }
@@ -203,9 +217,13 @@ resource "azurerm_virtual_desktop_host_pool" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

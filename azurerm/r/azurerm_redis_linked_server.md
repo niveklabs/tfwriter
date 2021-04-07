@@ -97,18 +97,27 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_redis_linked_server" "this" {
-  linked_redis_cache_id       = var.linked_redis_cache_id
+  # linked_redis_cache_id - (required) is a type of string
+  linked_redis_cache_id = var.linked_redis_cache_id
+  # linked_redis_cache_location - (required) is a type of string
   linked_redis_cache_location = var.linked_redis_cache_location
-  resource_group_name         = var.resource_group_name
-  server_role                 = var.server_role
-  target_redis_cache_name     = var.target_redis_cache_name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # server_role - (required) is a type of string
+  server_role = var.server_role
+  # target_redis_cache_name - (required) is a type of string
+  target_redis_cache_name = var.target_redis_cache_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

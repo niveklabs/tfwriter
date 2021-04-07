@@ -94,13 +94,20 @@ variable "value" {
 
 ```terraform
 resource "azuread_application_app_role" "this" {
-  allowed_member_types  = var.allowed_member_types
+  # allowed_member_types - (required) is a type of set of string
+  allowed_member_types = var.allowed_member_types
+  # application_object_id - (required) is a type of string
   application_object_id = var.application_object_id
-  description           = var.description
-  display_name          = var.display_name
-  is_enabled            = var.is_enabled
-  role_id               = var.role_id
-  value                 = var.value
+  # description - (required) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # is_enabled - (optional) is a type of bool
+  is_enabled = var.is_enabled
+  # role_id - (optional) is a type of string
+  role_id = var.role_id
+  # value - (optional) is a type of string
+  value = var.value
 }
 ```
 

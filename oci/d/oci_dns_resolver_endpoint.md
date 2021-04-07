@@ -63,9 +63,12 @@ variable "scope" {
 
 ```terraform
 data "oci_dns_resolver_endpoint" "this" {
+  # resolver_endpoint_name - (required) is a type of string
   resolver_endpoint_name = var.resolver_endpoint_name
-  resolver_id            = var.resolver_id
-  scope                  = var.scope
+  # resolver_id - (required) is a type of string
+  resolver_id = var.resolver_id
+  # scope - (required) is a type of string
+  scope = var.scope
 }
 ```
 

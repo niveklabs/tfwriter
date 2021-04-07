@@ -81,11 +81,16 @@ variable "tag" {
 
 ```terraform
 data "google_container_registry_image" "this" {
-  digest  = var.digest
-  name    = var.name
+  # digest - (optional) is a type of string
+  digest = var.digest
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
   project = var.project
-  region  = var.region
-  tag     = var.tag
+  # region - (optional) is a type of string
+  region = var.region
+  # tag - (optional) is a type of string
+  tag = var.tag
 }
 ```
 

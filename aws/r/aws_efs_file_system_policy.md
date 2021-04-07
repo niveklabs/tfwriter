@@ -56,8 +56,10 @@ variable "policy" {
 
 ```terraform
 resource "aws_efs_file_system_policy" "this" {
+  # file_system_id - (required) is a type of string
   file_system_id = var.file_system_id
-  policy         = var.policy
+  # policy - (required) is a type of string
+  policy = var.policy
 }
 ```
 

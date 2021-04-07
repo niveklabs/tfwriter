@@ -64,9 +64,12 @@ variable "vcable" {
 
 ```terraform
 resource "opc_compute_ip_association" "this" {
-  name        = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # parent_pool - (required) is a type of string
   parent_pool = var.parent_pool
-  vcable      = var.vcable
+  # vcable - (required) is a type of string
+  vcable = var.vcable
 }
 ```
 

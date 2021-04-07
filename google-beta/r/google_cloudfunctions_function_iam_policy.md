@@ -72,10 +72,14 @@ variable "region" {
 
 ```terraform
 resource "google_cloudfunctions_function_iam_policy" "this" {
+  # cloud_function - (required) is a type of string
   cloud_function = var.cloud_function
-  policy_data    = var.policy_data
-  project        = var.project
-  region         = var.region
+  # policy_data - (required) is a type of string
+  policy_data = var.policy_data
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
 }
 ```
 

@@ -127,17 +127,25 @@ variable "timeouts" {
 
 ```terraform
 resource "google_ml_engine_model" "this" {
-  description                       = var.description
-  labels                            = var.labels
-  name                              = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # online_prediction_console_logging - (optional) is a type of bool
   online_prediction_console_logging = var.online_prediction_console_logging
-  online_prediction_logging         = var.online_prediction_logging
-  project                           = var.project
-  regions                           = var.regions
+  # online_prediction_logging - (optional) is a type of bool
+  online_prediction_logging = var.online_prediction_logging
+  # project - (optional) is a type of string
+  project = var.project
+  # regions - (optional) is a type of list of string
+  regions = var.regions
 
   dynamic "default_version" {
     for_each = var.default_version
     content {
+      # name - (required) is a type of string
       name = default_version.value["name"]
     }
   }
@@ -145,7 +153,9 @@ resource "google_ml_engine_model" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

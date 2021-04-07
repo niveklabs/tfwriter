@@ -119,24 +119,33 @@ variable "sns_destination" {
 
 ```terraform
 resource "aws_ses_event_destination" "this" {
+  # configuration_set_name - (required) is a type of string
   configuration_set_name = var.configuration_set_name
-  enabled                = var.enabled
-  matching_types         = var.matching_types
-  name                   = var.name
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # matching_types - (required) is a type of set of string
+  matching_types = var.matching_types
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "cloudwatch_destination" {
     for_each = var.cloudwatch_destination
     content {
-      default_value  = cloudwatch_destination.value["default_value"]
+      # default_value - (required) is a type of string
+      default_value = cloudwatch_destination.value["default_value"]
+      # dimension_name - (required) is a type of string
       dimension_name = cloudwatch_destination.value["dimension_name"]
-      value_source   = cloudwatch_destination.value["value_source"]
+      # value_source - (required) is a type of string
+      value_source = cloudwatch_destination.value["value_source"]
     }
   }
 
   dynamic "kinesis_destination" {
     for_each = var.kinesis_destination
     content {
-      role_arn   = kinesis_destination.value["role_arn"]
+      # role_arn - (required) is a type of string
+      role_arn = kinesis_destination.value["role_arn"]
+      # stream_arn - (required) is a type of string
       stream_arn = kinesis_destination.value["stream_arn"]
     }
   }
@@ -144,6 +153,7 @@ resource "aws_ses_event_destination" "this" {
   dynamic "sns_destination" {
     for_each = var.sns_destination
     content {
+      # topic_arn - (required) is a type of string
       topic_arn = sns_destination.value["topic_arn"]
     }
   }

@@ -135,11 +135,16 @@ variable "timeouts" {
 
 ```terraform
 resource "google_dns_policy" "this" {
-  description               = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # enable_inbound_forwarding - (optional) is a type of bool
   enable_inbound_forwarding = var.enable_inbound_forwarding
-  enable_logging            = var.enable_logging
-  name                      = var.name
-  project                   = var.project
+  # enable_logging - (optional) is a type of bool
+  enable_logging = var.enable_logging
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "alternative_name_server_config" {
     for_each = var.alternative_name_server_config
@@ -148,8 +153,10 @@ resource "google_dns_policy" "this" {
       dynamic "target_name_servers" {
         for_each = alternative_name_server_config.value.target_name_servers
         content {
+          # forwarding_path - (optional) is a type of string
           forwarding_path = target_name_servers.value["forwarding_path"]
-          ipv4_address    = target_name_servers.value["ipv4_address"]
+          # ipv4_address - (required) is a type of string
+          ipv4_address = target_name_servers.value["ipv4_address"]
         }
       }
 
@@ -159,6 +166,7 @@ resource "google_dns_policy" "this" {
   dynamic "networks" {
     for_each = var.networks
     content {
+      # network_url - (required) is a type of string
       network_url = networks.value["network_url"]
     }
   }
@@ -166,8 +174,11 @@ resource "google_dns_policy" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

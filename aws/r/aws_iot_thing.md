@@ -65,8 +65,11 @@ variable "thing_type_name" {
 
 ```terraform
 resource "aws_iot_thing" "this" {
-  attributes      = var.attributes
-  name            = var.name
+  # attributes - (optional) is a type of map of string
+  attributes = var.attributes
+  # name - (required) is a type of string
+  name = var.name
+  # thing_type_name - (optional) is a type of string
   thing_type_name = var.thing_type_name
 }
 ```

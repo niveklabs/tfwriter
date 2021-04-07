@@ -63,8 +63,11 @@ variable "table_name_or_id" {
 
 ```terraform
 data "oci_nosql_index" "this" {
-  compartment_id   = var.compartment_id
-  index_name       = var.index_name
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # index_name - (required) is a type of string
+  index_name = var.index_name
+  # table_name_or_id - (required) is a type of string
   table_name_or_id = var.table_name_or_id
 }
 ```

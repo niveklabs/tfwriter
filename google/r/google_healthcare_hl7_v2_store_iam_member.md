@@ -81,16 +81,22 @@ variable "condition" {
 
 ```terraform
 resource "google_healthcare_hl7_v2_store_iam_member" "this" {
+  # hl7_v2_store_id - (required) is a type of string
   hl7_v2_store_id = var.hl7_v2_store_id
-  member          = var.member
-  role            = var.role
+  # member - (required) is a type of string
+  member = var.member
+  # role - (required) is a type of string
+  role = var.role
 
   dynamic "condition" {
     for_each = var.condition
     content {
+      # description - (optional) is a type of string
       description = condition.value["description"]
-      expression  = condition.value["expression"]
-      title       = condition.value["title"]
+      # expression - (required) is a type of string
+      expression = condition.value["expression"]
+      # title - (required) is a type of string
+      title = condition.value["title"]
     }
   }
 

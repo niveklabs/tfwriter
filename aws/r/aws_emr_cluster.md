@@ -535,31 +535,53 @@ variable "master_instance_group" {
 
 ```terraform
 resource "aws_emr_cluster" "this" {
-  additional_info                   = var.additional_info
-  applications                      = var.applications
-  autoscaling_role                  = var.autoscaling_role
-  configurations                    = var.configurations
-  configurations_json               = var.configurations_json
-  custom_ami_id                     = var.custom_ami_id
-  ebs_root_volume_size              = var.ebs_root_volume_size
+  # additional_info - (optional) is a type of string
+  additional_info = var.additional_info
+  # applications - (optional) is a type of set of string
+  applications = var.applications
+  # autoscaling_role - (optional) is a type of string
+  autoscaling_role = var.autoscaling_role
+  # configurations - (optional) is a type of string
+  configurations = var.configurations
+  # configurations_json - (optional) is a type of string
+  configurations_json = var.configurations_json
+  # custom_ami_id - (optional) is a type of string
+  custom_ami_id = var.custom_ami_id
+  # ebs_root_volume_size - (optional) is a type of number
+  ebs_root_volume_size = var.ebs_root_volume_size
+  # keep_job_flow_alive_when_no_steps - (optional) is a type of bool
   keep_job_flow_alive_when_no_steps = var.keep_job_flow_alive_when_no_steps
-  log_uri                           = var.log_uri
-  name                              = var.name
-  release_label                     = var.release_label
-  scale_down_behavior               = var.scale_down_behavior
-  security_configuration            = var.security_configuration
-  service_role                      = var.service_role
-  step                              = var.step
-  step_concurrency_level            = var.step_concurrency_level
-  tags                              = var.tags
-  termination_protection            = var.termination_protection
-  visible_to_all_users              = var.visible_to_all_users
+  # log_uri - (optional) is a type of string
+  log_uri = var.log_uri
+  # name - (required) is a type of string
+  name = var.name
+  # release_label - (required) is a type of string
+  release_label = var.release_label
+  # scale_down_behavior - (optional) is a type of string
+  scale_down_behavior = var.scale_down_behavior
+  # security_configuration - (optional) is a type of string
+  security_configuration = var.security_configuration
+  # service_role - (required) is a type of string
+  service_role = var.service_role
+  # step - (optional) is a type of list of object
+  step = var.step
+  # step_concurrency_level - (optional) is a type of number
+  step_concurrency_level = var.step_concurrency_level
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # termination_protection - (optional) is a type of bool
+  termination_protection = var.termination_protection
+  # visible_to_all_users - (optional) is a type of bool
+  visible_to_all_users = var.visible_to_all_users
 
   dynamic "bootstrap_action" {
     for_each = var.bootstrap_action
     content {
+      # args - (optional) is a type of list of string
       args = bootstrap_action.value["args"]
+      # name - (required) is a type of string
       name = bootstrap_action.value["name"]
+      # path - (required) is a type of string
       path = bootstrap_action.value["path"]
     }
   }
@@ -567,32 +589,45 @@ resource "aws_emr_cluster" "this" {
   dynamic "core_instance_fleet" {
     for_each = var.core_instance_fleet
     content {
-      name                      = core_instance_fleet.value["name"]
+      # name - (optional) is a type of string
+      name = core_instance_fleet.value["name"]
+      # target_on_demand_capacity - (optional) is a type of number
       target_on_demand_capacity = core_instance_fleet.value["target_on_demand_capacity"]
-      target_spot_capacity      = core_instance_fleet.value["target_spot_capacity"]
+      # target_spot_capacity - (optional) is a type of number
+      target_spot_capacity = core_instance_fleet.value["target_spot_capacity"]
 
       dynamic "instance_type_configs" {
         for_each = core_instance_fleet.value.instance_type_configs
         content {
-          bid_price                                  = instance_type_configs.value["bid_price"]
+          # bid_price - (optional) is a type of string
+          bid_price = instance_type_configs.value["bid_price"]
+          # bid_price_as_percentage_of_on_demand_price - (optional) is a type of number
           bid_price_as_percentage_of_on_demand_price = instance_type_configs.value["bid_price_as_percentage_of_on_demand_price"]
-          instance_type                              = instance_type_configs.value["instance_type"]
-          weighted_capacity                          = instance_type_configs.value["weighted_capacity"]
+          # instance_type - (required) is a type of string
+          instance_type = instance_type_configs.value["instance_type"]
+          # weighted_capacity - (optional) is a type of number
+          weighted_capacity = instance_type_configs.value["weighted_capacity"]
 
           dynamic "configurations" {
             for_each = instance_type_configs.value.configurations
             content {
+              # classification - (optional) is a type of string
               classification = configurations.value["classification"]
-              properties     = configurations.value["properties"]
+              # properties - (optional) is a type of map of string
+              properties = configurations.value["properties"]
             }
           }
 
           dynamic "ebs_config" {
             for_each = instance_type_configs.value.ebs_config
             content {
-              iops                 = ebs_config.value["iops"]
-              size                 = ebs_config.value["size"]
-              type                 = ebs_config.value["type"]
+              # iops - (optional) is a type of number
+              iops = ebs_config.value["iops"]
+              # size - (required) is a type of number
+              size = ebs_config.value["size"]
+              # type - (required) is a type of string
+              type = ebs_config.value["type"]
+              # volumes_per_instance - (optional) is a type of number
               volumes_per_instance = ebs_config.value["volumes_per_instance"]
             }
           }
@@ -607,6 +642,7 @@ resource "aws_emr_cluster" "this" {
           dynamic "on_demand_specification" {
             for_each = launch_specifications.value.on_demand_specification
             content {
+              # allocation_strategy - (required) is a type of string
               allocation_strategy = on_demand_specification.value["allocation_strategy"]
             }
           }
@@ -614,9 +650,13 @@ resource "aws_emr_cluster" "this" {
           dynamic "spot_specification" {
             for_each = launch_specifications.value.spot_specification
             content {
-              allocation_strategy      = spot_specification.value["allocation_strategy"]
-              block_duration_minutes   = spot_specification.value["block_duration_minutes"]
-              timeout_action           = spot_specification.value["timeout_action"]
+              # allocation_strategy - (required) is a type of string
+              allocation_strategy = spot_specification.value["allocation_strategy"]
+              # block_duration_minutes - (optional) is a type of number
+              block_duration_minutes = spot_specification.value["block_duration_minutes"]
+              # timeout_action - (required) is a type of string
+              timeout_action = spot_specification.value["timeout_action"]
+              # timeout_duration_minutes - (required) is a type of number
               timeout_duration_minutes = spot_specification.value["timeout_duration_minutes"]
             }
           }
@@ -630,18 +670,27 @@ resource "aws_emr_cluster" "this" {
   dynamic "core_instance_group" {
     for_each = var.core_instance_group
     content {
+      # autoscaling_policy - (optional) is a type of string
       autoscaling_policy = core_instance_group.value["autoscaling_policy"]
-      bid_price          = core_instance_group.value["bid_price"]
-      instance_count     = core_instance_group.value["instance_count"]
-      instance_type      = core_instance_group.value["instance_type"]
-      name               = core_instance_group.value["name"]
+      # bid_price - (optional) is a type of string
+      bid_price = core_instance_group.value["bid_price"]
+      # instance_count - (optional) is a type of number
+      instance_count = core_instance_group.value["instance_count"]
+      # instance_type - (required) is a type of string
+      instance_type = core_instance_group.value["instance_type"]
+      # name - (optional) is a type of string
+      name = core_instance_group.value["name"]
 
       dynamic "ebs_config" {
         for_each = core_instance_group.value.ebs_config
         content {
-          iops                 = ebs_config.value["iops"]
-          size                 = ebs_config.value["size"]
-          type                 = ebs_config.value["type"]
+          # iops - (optional) is a type of number
+          iops = ebs_config.value["iops"]
+          # size - (required) is a type of number
+          size = ebs_config.value["size"]
+          # type - (required) is a type of string
+          type = ebs_config.value["type"]
+          # volumes_per_instance - (optional) is a type of number
           volumes_per_instance = ebs_config.value["volumes_per_instance"]
         }
       }
@@ -652,57 +701,83 @@ resource "aws_emr_cluster" "this" {
   dynamic "ec2_attributes" {
     for_each = var.ec2_attributes
     content {
+      # additional_master_security_groups - (optional) is a type of string
       additional_master_security_groups = ec2_attributes.value["additional_master_security_groups"]
-      additional_slave_security_groups  = ec2_attributes.value["additional_slave_security_groups"]
+      # additional_slave_security_groups - (optional) is a type of string
+      additional_slave_security_groups = ec2_attributes.value["additional_slave_security_groups"]
+      # emr_managed_master_security_group - (optional) is a type of string
       emr_managed_master_security_group = ec2_attributes.value["emr_managed_master_security_group"]
-      emr_managed_slave_security_group  = ec2_attributes.value["emr_managed_slave_security_group"]
-      instance_profile                  = ec2_attributes.value["instance_profile"]
-      key_name                          = ec2_attributes.value["key_name"]
-      service_access_security_group     = ec2_attributes.value["service_access_security_group"]
-      subnet_id                         = ec2_attributes.value["subnet_id"]
+      # emr_managed_slave_security_group - (optional) is a type of string
+      emr_managed_slave_security_group = ec2_attributes.value["emr_managed_slave_security_group"]
+      # instance_profile - (required) is a type of string
+      instance_profile = ec2_attributes.value["instance_profile"]
+      # key_name - (optional) is a type of string
+      key_name = ec2_attributes.value["key_name"]
+      # service_access_security_group - (optional) is a type of string
+      service_access_security_group = ec2_attributes.value["service_access_security_group"]
+      # subnet_id - (optional) is a type of string
+      subnet_id = ec2_attributes.value["subnet_id"]
     }
   }
 
   dynamic "kerberos_attributes" {
     for_each = var.kerberos_attributes
     content {
-      ad_domain_join_password              = kerberos_attributes.value["ad_domain_join_password"]
-      ad_domain_join_user                  = kerberos_attributes.value["ad_domain_join_user"]
+      # ad_domain_join_password - (optional) is a type of string
+      ad_domain_join_password = kerberos_attributes.value["ad_domain_join_password"]
+      # ad_domain_join_user - (optional) is a type of string
+      ad_domain_join_user = kerberos_attributes.value["ad_domain_join_user"]
+      # cross_realm_trust_principal_password - (optional) is a type of string
       cross_realm_trust_principal_password = kerberos_attributes.value["cross_realm_trust_principal_password"]
-      kdc_admin_password                   = kerberos_attributes.value["kdc_admin_password"]
-      realm                                = kerberos_attributes.value["realm"]
+      # kdc_admin_password - (required) is a type of string
+      kdc_admin_password = kerberos_attributes.value["kdc_admin_password"]
+      # realm - (required) is a type of string
+      realm = kerberos_attributes.value["realm"]
     }
   }
 
   dynamic "master_instance_fleet" {
     for_each = var.master_instance_fleet
     content {
-      name                      = master_instance_fleet.value["name"]
+      # name - (optional) is a type of string
+      name = master_instance_fleet.value["name"]
+      # target_on_demand_capacity - (optional) is a type of number
       target_on_demand_capacity = master_instance_fleet.value["target_on_demand_capacity"]
-      target_spot_capacity      = master_instance_fleet.value["target_spot_capacity"]
+      # target_spot_capacity - (optional) is a type of number
+      target_spot_capacity = master_instance_fleet.value["target_spot_capacity"]
 
       dynamic "instance_type_configs" {
         for_each = master_instance_fleet.value.instance_type_configs
         content {
-          bid_price                                  = instance_type_configs.value["bid_price"]
+          # bid_price - (optional) is a type of string
+          bid_price = instance_type_configs.value["bid_price"]
+          # bid_price_as_percentage_of_on_demand_price - (optional) is a type of number
           bid_price_as_percentage_of_on_demand_price = instance_type_configs.value["bid_price_as_percentage_of_on_demand_price"]
-          instance_type                              = instance_type_configs.value["instance_type"]
-          weighted_capacity                          = instance_type_configs.value["weighted_capacity"]
+          # instance_type - (required) is a type of string
+          instance_type = instance_type_configs.value["instance_type"]
+          # weighted_capacity - (optional) is a type of number
+          weighted_capacity = instance_type_configs.value["weighted_capacity"]
 
           dynamic "configurations" {
             for_each = instance_type_configs.value.configurations
             content {
+              # classification - (optional) is a type of string
               classification = configurations.value["classification"]
-              properties     = configurations.value["properties"]
+              # properties - (optional) is a type of map of string
+              properties = configurations.value["properties"]
             }
           }
 
           dynamic "ebs_config" {
             for_each = instance_type_configs.value.ebs_config
             content {
-              iops                 = ebs_config.value["iops"]
-              size                 = ebs_config.value["size"]
-              type                 = ebs_config.value["type"]
+              # iops - (optional) is a type of number
+              iops = ebs_config.value["iops"]
+              # size - (required) is a type of number
+              size = ebs_config.value["size"]
+              # type - (required) is a type of string
+              type = ebs_config.value["type"]
+              # volumes_per_instance - (optional) is a type of number
               volumes_per_instance = ebs_config.value["volumes_per_instance"]
             }
           }
@@ -717,6 +792,7 @@ resource "aws_emr_cluster" "this" {
           dynamic "on_demand_specification" {
             for_each = launch_specifications.value.on_demand_specification
             content {
+              # allocation_strategy - (required) is a type of string
               allocation_strategy = on_demand_specification.value["allocation_strategy"]
             }
           }
@@ -724,9 +800,13 @@ resource "aws_emr_cluster" "this" {
           dynamic "spot_specification" {
             for_each = launch_specifications.value.spot_specification
             content {
-              allocation_strategy      = spot_specification.value["allocation_strategy"]
-              block_duration_minutes   = spot_specification.value["block_duration_minutes"]
-              timeout_action           = spot_specification.value["timeout_action"]
+              # allocation_strategy - (required) is a type of string
+              allocation_strategy = spot_specification.value["allocation_strategy"]
+              # block_duration_minutes - (optional) is a type of number
+              block_duration_minutes = spot_specification.value["block_duration_minutes"]
+              # timeout_action - (required) is a type of string
+              timeout_action = spot_specification.value["timeout_action"]
+              # timeout_duration_minutes - (required) is a type of number
               timeout_duration_minutes = spot_specification.value["timeout_duration_minutes"]
             }
           }
@@ -740,17 +820,25 @@ resource "aws_emr_cluster" "this" {
   dynamic "master_instance_group" {
     for_each = var.master_instance_group
     content {
-      bid_price      = master_instance_group.value["bid_price"]
+      # bid_price - (optional) is a type of string
+      bid_price = master_instance_group.value["bid_price"]
+      # instance_count - (optional) is a type of number
       instance_count = master_instance_group.value["instance_count"]
-      instance_type  = master_instance_group.value["instance_type"]
-      name           = master_instance_group.value["name"]
+      # instance_type - (required) is a type of string
+      instance_type = master_instance_group.value["instance_type"]
+      # name - (optional) is a type of string
+      name = master_instance_group.value["name"]
 
       dynamic "ebs_config" {
         for_each = master_instance_group.value.ebs_config
         content {
-          iops                 = ebs_config.value["iops"]
-          size                 = ebs_config.value["size"]
-          type                 = ebs_config.value["type"]
+          # iops - (optional) is a type of number
+          iops = ebs_config.value["iops"]
+          # size - (required) is a type of number
+          size = ebs_config.value["size"]
+          # type - (required) is a type of string
+          type = ebs_config.value["type"]
+          # volumes_per_instance - (optional) is a type of number
           volumes_per_instance = ebs_config.value["volumes_per_instance"]
         }
       }

@@ -79,11 +79,16 @@ variable "virtual_machine_ids" {
 
 ```terraform
 resource "vsphere_datastore_cluster_vm_anti_affinity_rule" "this" {
+  # datastore_cluster_id - (required) is a type of string
   datastore_cluster_id = var.datastore_cluster_id
-  enabled              = var.enabled
-  mandatory            = var.mandatory
-  name                 = var.name
-  virtual_machine_ids  = var.virtual_machine_ids
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # mandatory - (optional) is a type of bool
+  mandatory = var.mandatory
+  # name - (required) is a type of string
+  name = var.name
+  # virtual_machine_ids - (required) is a type of set of string
+  virtual_machine_ids = var.virtual_machine_ids
 }
 ```
 

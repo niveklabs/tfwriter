@@ -49,6 +49,7 @@ variable "catalog_private_endpoint_id" {
 
 ```terraform
 data "oci_datacatalog_catalog_private_endpoint" "this" {
+  # catalog_private_endpoint_id - (required) is a type of string
   catalog_private_endpoint_id = var.catalog_private_endpoint_id
 }
 ```

@@ -140,22 +140,35 @@ variable "filter" {
 
 ```terraform
 data "oci_marketplace_listings" "this" {
-  category          = var.category
-  compartment_id    = var.compartment_id
-  is_featured       = var.is_featured
-  listing_id        = var.listing_id
-  listing_types     = var.listing_types
-  name              = var.name
+  # category - (optional) is a type of list of string
+  category = var.category
+  # compartment_id - (optional) is a type of string
+  compartment_id = var.compartment_id
+  # is_featured - (optional) is a type of bool
+  is_featured = var.is_featured
+  # listing_id - (optional) is a type of string
+  listing_id = var.listing_id
+  # listing_types - (optional) is a type of list of string
+  listing_types = var.listing_types
+  # name - (optional) is a type of list of string
+  name = var.name
+  # operating_systems - (optional) is a type of list of string
   operating_systems = var.operating_systems
-  package_type      = var.package_type
-  pricing           = var.pricing
-  publisher_id      = var.publisher_id
+  # package_type - (optional) is a type of string
+  package_type = var.package_type
+  # pricing - (optional) is a type of list of string
+  pricing = var.pricing
+  # publisher_id - (optional) is a type of string
+  publisher_id = var.publisher_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

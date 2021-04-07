@@ -56,8 +56,10 @@ variable "budget_id" {
 
 ```terraform
 data "oci_budget_alert_rule" "this" {
+  # alert_rule_id - (required) is a type of string
   alert_rule_id = var.alert_rule_id
-  budget_id     = var.budget_id
+  # budget_id - (required) is a type of string
+  budget_id = var.budget_id
 }
 ```
 

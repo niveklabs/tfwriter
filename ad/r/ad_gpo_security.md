@@ -295,58 +295,83 @@ variable "system_services" {
 
 ```terraform
 resource "ad_gpo_security" "this" {
+  # gpo_container - (required) is a type of string
   gpo_container = var.gpo_container
 
   dynamic "account_lockout" {
     for_each = var.account_lockout
     content {
+      # force_logoff_when_hour_expire - (optional) is a type of string
       force_logoff_when_hour_expire = account_lockout.value["force_logoff_when_hour_expire"]
-      lockout_bad_count             = account_lockout.value["lockout_bad_count"]
-      lockout_duration              = account_lockout.value["lockout_duration"]
-      reset_lockout_count           = account_lockout.value["reset_lockout_count"]
+      # lockout_bad_count - (optional) is a type of string
+      lockout_bad_count = account_lockout.value["lockout_bad_count"]
+      # lockout_duration - (optional) is a type of string
+      lockout_duration = account_lockout.value["lockout_duration"]
+      # reset_lockout_count - (optional) is a type of string
+      reset_lockout_count = account_lockout.value["reset_lockout_count"]
     }
   }
 
   dynamic "application_log" {
     for_each = var.application_log
     content {
+      # audit_log_retention_period - (optional) is a type of string
       audit_log_retention_period = application_log.value["audit_log_retention_period"]
-      maximum_log_size           = application_log.value["maximum_log_size"]
-      restrict_guest_access      = application_log.value["restrict_guest_access"]
-      retention_days             = application_log.value["retention_days"]
+      # maximum_log_size - (optional) is a type of string
+      maximum_log_size = application_log.value["maximum_log_size"]
+      # restrict_guest_access - (optional) is a type of string
+      restrict_guest_access = application_log.value["restrict_guest_access"]
+      # retention_days - (optional) is a type of string
+      retention_days = application_log.value["retention_days"]
     }
   }
 
   dynamic "audit_log" {
     for_each = var.audit_log
     content {
+      # audit_log_retention_period - (optional) is a type of string
       audit_log_retention_period = audit_log.value["audit_log_retention_period"]
-      maximum_log_size           = audit_log.value["maximum_log_size"]
-      restrict_guest_access      = audit_log.value["restrict_guest_access"]
-      retention_days             = audit_log.value["retention_days"]
+      # maximum_log_size - (optional) is a type of string
+      maximum_log_size = audit_log.value["maximum_log_size"]
+      # restrict_guest_access - (optional) is a type of string
+      restrict_guest_access = audit_log.value["restrict_guest_access"]
+      # retention_days - (optional) is a type of string
+      retention_days = audit_log.value["retention_days"]
     }
   }
 
   dynamic "event_audit" {
     for_each = var.event_audit
     content {
-      audit_account_logon    = event_audit.value["audit_account_logon"]
-      audit_account_manage   = event_audit.value["audit_account_manage"]
-      audit_ds_access        = event_audit.value["audit_ds_access"]
-      audit_logon_events     = event_audit.value["audit_logon_events"]
-      audit_object_access    = event_audit.value["audit_object_access"]
-      audit_policy_change    = event_audit.value["audit_policy_change"]
-      audit_privilege_use    = event_audit.value["audit_privilege_use"]
+      # audit_account_logon - (optional) is a type of string
+      audit_account_logon = event_audit.value["audit_account_logon"]
+      # audit_account_manage - (optional) is a type of string
+      audit_account_manage = event_audit.value["audit_account_manage"]
+      # audit_ds_access - (optional) is a type of string
+      audit_ds_access = event_audit.value["audit_ds_access"]
+      # audit_logon_events - (optional) is a type of string
+      audit_logon_events = event_audit.value["audit_logon_events"]
+      # audit_object_access - (optional) is a type of string
+      audit_object_access = event_audit.value["audit_object_access"]
+      # audit_policy_change - (optional) is a type of string
+      audit_policy_change = event_audit.value["audit_policy_change"]
+      # audit_privilege_use - (optional) is a type of string
+      audit_privilege_use = event_audit.value["audit_privilege_use"]
+      # audit_process_tracking - (optional) is a type of string
       audit_process_tracking = event_audit.value["audit_process_tracking"]
-      audit_system_events    = event_audit.value["audit_system_events"]
+      # audit_system_events - (optional) is a type of string
+      audit_system_events = event_audit.value["audit_system_events"]
     }
   }
 
   dynamic "filesystem" {
     for_each = var.filesystem
     content {
-      acl              = filesystem.value["acl"]
-      path             = filesystem.value["path"]
+      # acl - (required) is a type of string
+      acl = filesystem.value["acl"]
+      # path - (required) is a type of string
+      path = filesystem.value["path"]
+      # propagation_mode - (required) is a type of string
       propagation_mode = filesystem.value["propagation_mode"]
     }
   }
@@ -354,10 +379,15 @@ resource "ad_gpo_security" "this" {
   dynamic "kerberos_policy" {
     for_each = var.kerberos_policy
     content {
-      max_clock_skew         = kerberos_policy.value["max_clock_skew"]
-      max_renew_age          = kerberos_policy.value["max_renew_age"]
-      max_service_age        = kerberos_policy.value["max_service_age"]
-      max_ticket_age         = kerberos_policy.value["max_ticket_age"]
+      # max_clock_skew - (optional) is a type of string
+      max_clock_skew = kerberos_policy.value["max_clock_skew"]
+      # max_renew_age - (optional) is a type of string
+      max_renew_age = kerberos_policy.value["max_renew_age"]
+      # max_service_age - (optional) is a type of string
+      max_service_age = kerberos_policy.value["max_service_age"]
+      # max_ticket_age - (optional) is a type of string
+      max_ticket_age = kerberos_policy.value["max_ticket_age"]
+      # ticket_validate_client - (optional) is a type of string
       ticket_validate_client = kerberos_policy.value["ticket_validate_client"]
     }
   }
@@ -365,20 +395,29 @@ resource "ad_gpo_security" "this" {
   dynamic "password_policies" {
     for_each = var.password_policies
     content {
-      clear_text_password     = password_policies.value["clear_text_password"]
-      maximum_password_age    = password_policies.value["maximum_password_age"]
-      minimum_password_age    = password_policies.value["minimum_password_age"]
+      # clear_text_password - (optional) is a type of string
+      clear_text_password = password_policies.value["clear_text_password"]
+      # maximum_password_age - (optional) is a type of string
+      maximum_password_age = password_policies.value["maximum_password_age"]
+      # minimum_password_age - (optional) is a type of string
+      minimum_password_age = password_policies.value["minimum_password_age"]
+      # minimum_password_length - (optional) is a type of string
       minimum_password_length = password_policies.value["minimum_password_length"]
-      password_complexity     = password_policies.value["password_complexity"]
-      password_history_size   = password_policies.value["password_history_size"]
+      # password_complexity - (optional) is a type of string
+      password_complexity = password_policies.value["password_complexity"]
+      # password_history_size - (optional) is a type of string
+      password_history_size = password_policies.value["password_history_size"]
     }
   }
 
   dynamic "registry_keys" {
     for_each = var.registry_keys
     content {
-      acl              = registry_keys.value["acl"]
-      key_name         = registry_keys.value["key_name"]
+      # acl - (required) is a type of string
+      acl = registry_keys.value["acl"]
+      # key_name - (required) is a type of string
+      key_name = registry_keys.value["key_name"]
+      # propagation_mode - (required) is a type of string
       propagation_mode = registry_keys.value["propagation_mode"]
     }
   }
@@ -386,8 +425,11 @@ resource "ad_gpo_security" "this" {
   dynamic "registry_values" {
     for_each = var.registry_values
     content {
-      key_name   = registry_values.value["key_name"]
-      value      = registry_values.value["value"]
+      # key_name - (required) is a type of string
+      key_name = registry_values.value["key_name"]
+      # value - (required) is a type of string
+      value = registry_values.value["value"]
+      # value_type - (required) is a type of string
       value_type = registry_values.value["value_type"]
     }
   }
@@ -395,27 +437,37 @@ resource "ad_gpo_security" "this" {
   dynamic "restricted_groups" {
     for_each = var.restricted_groups
     content {
+      # group_memberof - (required) is a type of string
       group_memberof = restricted_groups.value["group_memberof"]
-      group_members  = restricted_groups.value["group_members"]
-      group_name     = restricted_groups.value["group_name"]
+      # group_members - (required) is a type of string
+      group_members = restricted_groups.value["group_members"]
+      # group_name - (required) is a type of string
+      group_name = restricted_groups.value["group_name"]
     }
   }
 
   dynamic "system_log" {
     for_each = var.system_log
     content {
+      # audit_log_retention_period - (optional) is a type of string
       audit_log_retention_period = system_log.value["audit_log_retention_period"]
-      maximum_log_size           = system_log.value["maximum_log_size"]
-      restrict_guest_access      = system_log.value["restrict_guest_access"]
-      retention_days             = system_log.value["retention_days"]
+      # maximum_log_size - (optional) is a type of string
+      maximum_log_size = system_log.value["maximum_log_size"]
+      # restrict_guest_access - (optional) is a type of string
+      restrict_guest_access = system_log.value["restrict_guest_access"]
+      # retention_days - (optional) is a type of string
+      retention_days = system_log.value["retention_days"]
     }
   }
 
   dynamic "system_services" {
     for_each = var.system_services
     content {
-      acl          = system_services.value["acl"]
+      # acl - (required) is a type of string
+      acl = system_services.value["acl"]
+      # service_name - (required) is a type of string
       service_name = system_services.value["service_name"]
+      # startup_mode - (required) is a type of string
       startup_mode = system_services.value["startup_mode"]
     }
   }

@@ -49,6 +49,7 @@ variable "managed_database_group_id" {
 
 ```terraform
 data "oci_database_management_managed_database_group" "this" {
+  # managed_database_group_id - (required) is a type of string
   managed_database_group_id = var.managed_database_group_id
 }
 ```

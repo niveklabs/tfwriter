@@ -57,7 +57,9 @@ variable "lookup_organization" {
 
 ```terraform
 data "google_folder" "this" {
-  folder              = var.folder
+  # folder - (required) is a type of string
+  folder = var.folder
+  # lookup_organization - (optional) is a type of bool
   lookup_organization = var.lookup_organization
 }
 ```

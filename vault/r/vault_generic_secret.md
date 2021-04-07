@@ -72,10 +72,14 @@ variable "path" {
 
 ```terraform
 resource "vault_generic_secret" "this" {
-  allow_read   = var.allow_read
-  data_json    = var.data_json
+  # allow_read - (optional) is a type of bool
+  allow_read = var.allow_read
+  # data_json - (required) is a type of string
+  data_json = var.data_json
+  # disable_read - (optional) is a type of bool
   disable_read = var.disable_read
-  path         = var.path
+  # path - (required) is a type of string
+  path = var.path
 }
 ```
 

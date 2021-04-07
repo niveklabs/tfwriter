@@ -118,21 +118,33 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_lb_nat_pool" "this" {
-  backend_port                   = var.backend_port
+  # backend_port - (required) is a type of number
+  backend_port = var.backend_port
+  # frontend_ip_configuration_name - (required) is a type of string
   frontend_ip_configuration_name = var.frontend_ip_configuration_name
-  frontend_port_end              = var.frontend_port_end
-  frontend_port_start            = var.frontend_port_start
-  loadbalancer_id                = var.loadbalancer_id
-  name                           = var.name
-  protocol                       = var.protocol
-  resource_group_name            = var.resource_group_name
+  # frontend_port_end - (required) is a type of number
+  frontend_port_end = var.frontend_port_end
+  # frontend_port_start - (required) is a type of number
+  frontend_port_start = var.frontend_port_start
+  # loadbalancer_id - (required) is a type of string
+  loadbalancer_id = var.loadbalancer_id
+  # name - (required) is a type of string
+  name = var.name
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -86,14 +86,19 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_traffic_manager_profile" "this" {
-  name                 = var.name
-  resource_group_name  = var.resource_group_name
-  tags                 = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # traffic_view_enabled - (optional) is a type of bool
   traffic_view_enabled = var.traffic_view_enabled
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

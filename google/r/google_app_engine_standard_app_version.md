@@ -339,33 +339,53 @@ variable "vpc_access_connector" {
 
 ```terraform
 resource "google_app_engine_standard_app_version" "this" {
+  # delete_service_on_destroy - (optional) is a type of bool
   delete_service_on_destroy = var.delete_service_on_destroy
-  env_variables             = var.env_variables
-  inbound_services          = var.inbound_services
-  instance_class            = var.instance_class
-  noop_on_destroy           = var.noop_on_destroy
-  project                   = var.project
-  runtime                   = var.runtime
-  runtime_api_version       = var.runtime_api_version
-  service                   = var.service
-  threadsafe                = var.threadsafe
-  version_id                = var.version_id
+  # env_variables - (optional) is a type of map of string
+  env_variables = var.env_variables
+  # inbound_services - (optional) is a type of set of string
+  inbound_services = var.inbound_services
+  # instance_class - (optional) is a type of string
+  instance_class = var.instance_class
+  # noop_on_destroy - (optional) is a type of bool
+  noop_on_destroy = var.noop_on_destroy
+  # project - (optional) is a type of string
+  project = var.project
+  # runtime - (required) is a type of string
+  runtime = var.runtime
+  # runtime_api_version - (optional) is a type of string
+  runtime_api_version = var.runtime_api_version
+  # service - (required) is a type of string
+  service = var.service
+  # threadsafe - (optional) is a type of bool
+  threadsafe = var.threadsafe
+  # version_id - (optional) is a type of string
+  version_id = var.version_id
 
   dynamic "automatic_scaling" {
     for_each = var.automatic_scaling
     content {
+      # max_concurrent_requests - (optional) is a type of number
       max_concurrent_requests = automatic_scaling.value["max_concurrent_requests"]
-      max_idle_instances      = automatic_scaling.value["max_idle_instances"]
-      max_pending_latency     = automatic_scaling.value["max_pending_latency"]
-      min_idle_instances      = automatic_scaling.value["min_idle_instances"]
-      min_pending_latency     = automatic_scaling.value["min_pending_latency"]
+      # max_idle_instances - (optional) is a type of number
+      max_idle_instances = automatic_scaling.value["max_idle_instances"]
+      # max_pending_latency - (optional) is a type of string
+      max_pending_latency = automatic_scaling.value["max_pending_latency"]
+      # min_idle_instances - (optional) is a type of number
+      min_idle_instances = automatic_scaling.value["min_idle_instances"]
+      # min_pending_latency - (optional) is a type of string
+      min_pending_latency = automatic_scaling.value["min_pending_latency"]
 
       dynamic "standard_scheduler_settings" {
         for_each = automatic_scaling.value.standard_scheduler_settings
         content {
-          max_instances                 = standard_scheduler_settings.value["max_instances"]
-          min_instances                 = standard_scheduler_settings.value["min_instances"]
-          target_cpu_utilization        = standard_scheduler_settings.value["target_cpu_utilization"]
+          # max_instances - (optional) is a type of number
+          max_instances = standard_scheduler_settings.value["max_instances"]
+          # min_instances - (optional) is a type of number
+          min_instances = standard_scheduler_settings.value["min_instances"]
+          # target_cpu_utilization - (optional) is a type of number
+          target_cpu_utilization = standard_scheduler_settings.value["target_cpu_utilization"]
+          # target_throughput_utilization - (optional) is a type of number
           target_throughput_utilization = standard_scheduler_settings.value["target_throughput_utilization"]
         }
       }
@@ -376,7 +396,9 @@ resource "google_app_engine_standard_app_version" "this" {
   dynamic "basic_scaling" {
     for_each = var.basic_scaling
     content {
-      idle_timeout  = basic_scaling.value["idle_timeout"]
+      # idle_timeout - (optional) is a type of string
+      idle_timeout = basic_scaling.value["idle_timeout"]
+      # max_instances - (required) is a type of number
       max_instances = basic_scaling.value["max_instances"]
     }
   }
@@ -388,8 +410,11 @@ resource "google_app_engine_standard_app_version" "this" {
       dynamic "files" {
         for_each = deployment.value.files
         content {
-          name       = files.value["name"]
-          sha1_sum   = files.value["sha1_sum"]
+          # name - (required) is a type of string
+          name = files.value["name"]
+          # sha1_sum - (optional) is a type of string
+          sha1_sum = files.value["sha1_sum"]
+          # source_url - (required) is a type of string
           source_url = files.value["source_url"]
         }
       }
@@ -397,8 +422,10 @@ resource "google_app_engine_standard_app_version" "this" {
       dynamic "zip" {
         for_each = deployment.value.zip
         content {
+          # files_count - (optional) is a type of number
           files_count = zip.value["files_count"]
-          source_url  = zip.value["source_url"]
+          # source_url - (required) is a type of string
+          source_url = zip.value["source_url"]
         }
       }
 
@@ -408,6 +435,7 @@ resource "google_app_engine_standard_app_version" "this" {
   dynamic "entrypoint" {
     for_each = var.entrypoint
     content {
+      # shell - (required) is a type of string
       shell = entrypoint.value["shell"]
     }
   }
@@ -415,15 +443,21 @@ resource "google_app_engine_standard_app_version" "this" {
   dynamic "handlers" {
     for_each = var.handlers
     content {
-      auth_fail_action            = handlers.value["auth_fail_action"]
-      login                       = handlers.value["login"]
+      # auth_fail_action - (optional) is a type of string
+      auth_fail_action = handlers.value["auth_fail_action"]
+      # login - (optional) is a type of string
+      login = handlers.value["login"]
+      # redirect_http_response_code - (optional) is a type of string
       redirect_http_response_code = handlers.value["redirect_http_response_code"]
-      security_level              = handlers.value["security_level"]
-      url_regex                   = handlers.value["url_regex"]
+      # security_level - (optional) is a type of string
+      security_level = handlers.value["security_level"]
+      # url_regex - (optional) is a type of string
+      url_regex = handlers.value["url_regex"]
 
       dynamic "script" {
         for_each = handlers.value.script
         content {
+          # script_path - (required) is a type of string
           script_path = script.value["script_path"]
         }
       }
@@ -431,13 +465,20 @@ resource "google_app_engine_standard_app_version" "this" {
       dynamic "static_files" {
         for_each = handlers.value.static_files
         content {
-          application_readable  = static_files.value["application_readable"]
-          expiration            = static_files.value["expiration"]
-          http_headers          = static_files.value["http_headers"]
-          mime_type             = static_files.value["mime_type"]
-          path                  = static_files.value["path"]
+          # application_readable - (optional) is a type of bool
+          application_readable = static_files.value["application_readable"]
+          # expiration - (optional) is a type of string
+          expiration = static_files.value["expiration"]
+          # http_headers - (optional) is a type of map of string
+          http_headers = static_files.value["http_headers"]
+          # mime_type - (optional) is a type of string
+          mime_type = static_files.value["mime_type"]
+          # path - (optional) is a type of string
+          path = static_files.value["path"]
+          # require_matching_file - (optional) is a type of bool
           require_matching_file = static_files.value["require_matching_file"]
-          upload_path_regex     = static_files.value["upload_path_regex"]
+          # upload_path_regex - (optional) is a type of string
+          upload_path_regex = static_files.value["upload_path_regex"]
         }
       }
 
@@ -447,7 +488,9 @@ resource "google_app_engine_standard_app_version" "this" {
   dynamic "libraries" {
     for_each = var.libraries
     content {
-      name    = libraries.value["name"]
+      # name - (optional) is a type of string
+      name = libraries.value["name"]
+      # version - (optional) is a type of string
       version = libraries.value["version"]
     }
   }
@@ -455,6 +498,7 @@ resource "google_app_engine_standard_app_version" "this" {
   dynamic "manual_scaling" {
     for_each = var.manual_scaling
     content {
+      # instances - (required) is a type of number
       instances = manual_scaling.value["instances"]
     }
   }
@@ -462,8 +506,11 @@ resource "google_app_engine_standard_app_version" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -471,6 +518,7 @@ resource "google_app_engine_standard_app_version" "this" {
   dynamic "vpc_access_connector" {
     for_each = var.vpc_access_connector
     content {
+      # name - (required) is a type of string
       name = vpc_access_connector.value["name"]
     }
   }

@@ -57,8 +57,10 @@ variable "csr" {
 
 ```terraform
 resource "aws_iot_certificate" "this" {
+  # active - (required) is a type of bool
   active = var.active
-  csr    = var.csr
+  # csr - (optional) is a type of string
+  csr = var.csr
 }
 ```
 

@@ -81,16 +81,22 @@ variable "condition" {
 
 ```terraform
 resource "google_endpoints_service_iam_binding" "this" {
-  members      = var.members
-  role         = var.role
+  # members - (required) is a type of set of string
+  members = var.members
+  # role - (required) is a type of string
+  role = var.role
+  # service_name - (required) is a type of string
   service_name = var.service_name
 
   dynamic "condition" {
     for_each = var.condition
     content {
+      # description - (optional) is a type of string
       description = condition.value["description"]
-      expression  = condition.value["expression"]
-      title       = condition.value["title"]
+      # expression - (required) is a type of string
+      expression = condition.value["expression"]
+      # title - (required) is a type of string
+      title = condition.value["title"]
     }
   }
 

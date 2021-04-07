@@ -73,10 +73,14 @@ variable "policy" {
 
 ```terraform
 resource "opc_compute_security_list" "this" {
-  description          = var.description
-  name                 = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # outbound_cidr_policy - (optional) is a type of string
   outbound_cidr_policy = var.outbound_cidr_policy
-  policy               = var.policy
+  # policy - (optional) is a type of string
+  policy = var.policy
 }
 ```
 

@@ -56,7 +56,9 @@ variable "pem_bundle" {
 
 ```terraform
 resource "vault_pki_secret_backend_config_ca" "this" {
-  backend    = var.backend
+  # backend - (required) is a type of string
+  backend = var.backend
+  # pem_bundle - (required) is a type of string
   pem_bundle = var.pem_bundle
 }
 ```

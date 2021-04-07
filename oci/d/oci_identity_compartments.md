@@ -99,17 +99,25 @@ variable "filter" {
 
 ```terraform
 data "oci_identity_compartments" "this" {
-  access_level              = var.access_level
-  compartment_id            = var.compartment_id
+  # access_level - (optional) is a type of string
+  access_level = var.access_level
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # compartment_id_in_subtree - (optional) is a type of bool
   compartment_id_in_subtree = var.compartment_id_in_subtree
-  name                      = var.name
-  state                     = var.state
+  # name - (optional) is a type of string
+  name = var.name
+  # state - (optional) is a type of string
+  state = var.state
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

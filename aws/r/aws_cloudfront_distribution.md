@@ -441,57 +441,91 @@ variable "viewer_certificate" {
 
 ```terraform
 resource "aws_cloudfront_distribution" "this" {
-  aliases             = var.aliases
-  comment             = var.comment
+  # aliases - (optional) is a type of set of string
+  aliases = var.aliases
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # default_root_object - (optional) is a type of string
   default_root_object = var.default_root_object
-  enabled             = var.enabled
-  http_version        = var.http_version
-  is_ipv6_enabled     = var.is_ipv6_enabled
-  price_class         = var.price_class
-  retain_on_delete    = var.retain_on_delete
-  tags                = var.tags
+  # enabled - (required) is a type of bool
+  enabled = var.enabled
+  # http_version - (optional) is a type of string
+  http_version = var.http_version
+  # is_ipv6_enabled - (optional) is a type of bool
+  is_ipv6_enabled = var.is_ipv6_enabled
+  # price_class - (optional) is a type of string
+  price_class = var.price_class
+  # retain_on_delete - (optional) is a type of bool
+  retain_on_delete = var.retain_on_delete
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # wait_for_deployment - (optional) is a type of bool
   wait_for_deployment = var.wait_for_deployment
-  web_acl_id          = var.web_acl_id
+  # web_acl_id - (optional) is a type of string
+  web_acl_id = var.web_acl_id
 
   dynamic "custom_error_response" {
     for_each = var.custom_error_response
     content {
+      # error_caching_min_ttl - (optional) is a type of number
       error_caching_min_ttl = custom_error_response.value["error_caching_min_ttl"]
-      error_code            = custom_error_response.value["error_code"]
-      response_code         = custom_error_response.value["response_code"]
-      response_page_path    = custom_error_response.value["response_page_path"]
+      # error_code - (required) is a type of number
+      error_code = custom_error_response.value["error_code"]
+      # response_code - (optional) is a type of number
+      response_code = custom_error_response.value["response_code"]
+      # response_page_path - (optional) is a type of string
+      response_page_path = custom_error_response.value["response_page_path"]
     }
   }
 
   dynamic "default_cache_behavior" {
     for_each = var.default_cache_behavior
     content {
-      allowed_methods           = default_cache_behavior.value["allowed_methods"]
-      cache_policy_id           = default_cache_behavior.value["cache_policy_id"]
-      cached_methods            = default_cache_behavior.value["cached_methods"]
-      compress                  = default_cache_behavior.value["compress"]
-      default_ttl               = default_cache_behavior.value["default_ttl"]
+      # allowed_methods - (required) is a type of set of string
+      allowed_methods = default_cache_behavior.value["allowed_methods"]
+      # cache_policy_id - (optional) is a type of string
+      cache_policy_id = default_cache_behavior.value["cache_policy_id"]
+      # cached_methods - (required) is a type of set of string
+      cached_methods = default_cache_behavior.value["cached_methods"]
+      # compress - (optional) is a type of bool
+      compress = default_cache_behavior.value["compress"]
+      # default_ttl - (optional) is a type of number
+      default_ttl = default_cache_behavior.value["default_ttl"]
+      # field_level_encryption_id - (optional) is a type of string
       field_level_encryption_id = default_cache_behavior.value["field_level_encryption_id"]
-      max_ttl                   = default_cache_behavior.value["max_ttl"]
-      min_ttl                   = default_cache_behavior.value["min_ttl"]
-      origin_request_policy_id  = default_cache_behavior.value["origin_request_policy_id"]
-      realtime_log_config_arn   = default_cache_behavior.value["realtime_log_config_arn"]
-      smooth_streaming          = default_cache_behavior.value["smooth_streaming"]
-      target_origin_id          = default_cache_behavior.value["target_origin_id"]
-      trusted_signers           = default_cache_behavior.value["trusted_signers"]
-      viewer_protocol_policy    = default_cache_behavior.value["viewer_protocol_policy"]
+      # max_ttl - (optional) is a type of number
+      max_ttl = default_cache_behavior.value["max_ttl"]
+      # min_ttl - (optional) is a type of number
+      min_ttl = default_cache_behavior.value["min_ttl"]
+      # origin_request_policy_id - (optional) is a type of string
+      origin_request_policy_id = default_cache_behavior.value["origin_request_policy_id"]
+      # realtime_log_config_arn - (optional) is a type of string
+      realtime_log_config_arn = default_cache_behavior.value["realtime_log_config_arn"]
+      # smooth_streaming - (optional) is a type of bool
+      smooth_streaming = default_cache_behavior.value["smooth_streaming"]
+      # target_origin_id - (required) is a type of string
+      target_origin_id = default_cache_behavior.value["target_origin_id"]
+      # trusted_signers - (optional) is a type of list of string
+      trusted_signers = default_cache_behavior.value["trusted_signers"]
+      # viewer_protocol_policy - (required) is a type of string
+      viewer_protocol_policy = default_cache_behavior.value["viewer_protocol_policy"]
 
       dynamic "forwarded_values" {
         for_each = default_cache_behavior.value.forwarded_values
         content {
-          headers                 = forwarded_values.value["headers"]
-          query_string            = forwarded_values.value["query_string"]
+          # headers - (optional) is a type of set of string
+          headers = forwarded_values.value["headers"]
+          # query_string - (required) is a type of bool
+          query_string = forwarded_values.value["query_string"]
+          # query_string_cache_keys - (optional) is a type of list of string
           query_string_cache_keys = forwarded_values.value["query_string_cache_keys"]
 
           dynamic "cookies" {
             for_each = forwarded_values.value.cookies
             content {
-              forward           = cookies.value["forward"]
+              # forward - (required) is a type of string
+              forward = cookies.value["forward"]
+              # whitelisted_names - (optional) is a type of set of string
               whitelisted_names = cookies.value["whitelisted_names"]
             }
           }
@@ -502,9 +536,12 @@ resource "aws_cloudfront_distribution" "this" {
       dynamic "lambda_function_association" {
         for_each = default_cache_behavior.value.lambda_function_association
         content {
-          event_type   = lambda_function_association.value["event_type"]
+          # event_type - (required) is a type of string
+          event_type = lambda_function_association.value["event_type"]
+          # include_body - (optional) is a type of bool
           include_body = lambda_function_association.value["include_body"]
-          lambda_arn   = lambda_function_association.value["lambda_arn"]
+          # lambda_arn - (required) is a type of string
+          lambda_arn = lambda_function_association.value["lambda_arn"]
         }
       }
 
@@ -514,42 +551,65 @@ resource "aws_cloudfront_distribution" "this" {
   dynamic "logging_config" {
     for_each = var.logging_config
     content {
-      bucket          = logging_config.value["bucket"]
+      # bucket - (required) is a type of string
+      bucket = logging_config.value["bucket"]
+      # include_cookies - (optional) is a type of bool
       include_cookies = logging_config.value["include_cookies"]
-      prefix          = logging_config.value["prefix"]
+      # prefix - (optional) is a type of string
+      prefix = logging_config.value["prefix"]
     }
   }
 
   dynamic "ordered_cache_behavior" {
     for_each = var.ordered_cache_behavior
     content {
-      allowed_methods           = ordered_cache_behavior.value["allowed_methods"]
-      cache_policy_id           = ordered_cache_behavior.value["cache_policy_id"]
-      cached_methods            = ordered_cache_behavior.value["cached_methods"]
-      compress                  = ordered_cache_behavior.value["compress"]
-      default_ttl               = ordered_cache_behavior.value["default_ttl"]
+      # allowed_methods - (required) is a type of set of string
+      allowed_methods = ordered_cache_behavior.value["allowed_methods"]
+      # cache_policy_id - (optional) is a type of string
+      cache_policy_id = ordered_cache_behavior.value["cache_policy_id"]
+      # cached_methods - (required) is a type of set of string
+      cached_methods = ordered_cache_behavior.value["cached_methods"]
+      # compress - (optional) is a type of bool
+      compress = ordered_cache_behavior.value["compress"]
+      # default_ttl - (optional) is a type of number
+      default_ttl = ordered_cache_behavior.value["default_ttl"]
+      # field_level_encryption_id - (optional) is a type of string
       field_level_encryption_id = ordered_cache_behavior.value["field_level_encryption_id"]
-      max_ttl                   = ordered_cache_behavior.value["max_ttl"]
-      min_ttl                   = ordered_cache_behavior.value["min_ttl"]
-      origin_request_policy_id  = ordered_cache_behavior.value["origin_request_policy_id"]
-      path_pattern              = ordered_cache_behavior.value["path_pattern"]
-      realtime_log_config_arn   = ordered_cache_behavior.value["realtime_log_config_arn"]
-      smooth_streaming          = ordered_cache_behavior.value["smooth_streaming"]
-      target_origin_id          = ordered_cache_behavior.value["target_origin_id"]
-      trusted_signers           = ordered_cache_behavior.value["trusted_signers"]
-      viewer_protocol_policy    = ordered_cache_behavior.value["viewer_protocol_policy"]
+      # max_ttl - (optional) is a type of number
+      max_ttl = ordered_cache_behavior.value["max_ttl"]
+      # min_ttl - (optional) is a type of number
+      min_ttl = ordered_cache_behavior.value["min_ttl"]
+      # origin_request_policy_id - (optional) is a type of string
+      origin_request_policy_id = ordered_cache_behavior.value["origin_request_policy_id"]
+      # path_pattern - (required) is a type of string
+      path_pattern = ordered_cache_behavior.value["path_pattern"]
+      # realtime_log_config_arn - (optional) is a type of string
+      realtime_log_config_arn = ordered_cache_behavior.value["realtime_log_config_arn"]
+      # smooth_streaming - (optional) is a type of bool
+      smooth_streaming = ordered_cache_behavior.value["smooth_streaming"]
+      # target_origin_id - (required) is a type of string
+      target_origin_id = ordered_cache_behavior.value["target_origin_id"]
+      # trusted_signers - (optional) is a type of list of string
+      trusted_signers = ordered_cache_behavior.value["trusted_signers"]
+      # viewer_protocol_policy - (required) is a type of string
+      viewer_protocol_policy = ordered_cache_behavior.value["viewer_protocol_policy"]
 
       dynamic "forwarded_values" {
         for_each = ordered_cache_behavior.value.forwarded_values
         content {
-          headers                 = forwarded_values.value["headers"]
-          query_string            = forwarded_values.value["query_string"]
+          # headers - (optional) is a type of set of string
+          headers = forwarded_values.value["headers"]
+          # query_string - (required) is a type of bool
+          query_string = forwarded_values.value["query_string"]
+          # query_string_cache_keys - (optional) is a type of list of string
           query_string_cache_keys = forwarded_values.value["query_string_cache_keys"]
 
           dynamic "cookies" {
             for_each = forwarded_values.value.cookies
             content {
-              forward           = cookies.value["forward"]
+              # forward - (required) is a type of string
+              forward = cookies.value["forward"]
+              # whitelisted_names - (optional) is a type of set of string
               whitelisted_names = cookies.value["whitelisted_names"]
             }
           }
@@ -560,9 +620,12 @@ resource "aws_cloudfront_distribution" "this" {
       dynamic "lambda_function_association" {
         for_each = ordered_cache_behavior.value.lambda_function_association
         content {
-          event_type   = lambda_function_association.value["event_type"]
+          # event_type - (required) is a type of string
+          event_type = lambda_function_association.value["event_type"]
+          # include_body - (optional) is a type of bool
           include_body = lambda_function_association.value["include_body"]
-          lambda_arn   = lambda_function_association.value["lambda_arn"]
+          # lambda_arn - (required) is a type of string
+          lambda_arn = lambda_function_association.value["lambda_arn"]
         }
       }
 
@@ -572,14 +635,19 @@ resource "aws_cloudfront_distribution" "this" {
   dynamic "origin" {
     for_each = var.origin
     content {
+      # domain_name - (required) is a type of string
       domain_name = origin.value["domain_name"]
-      origin_id   = origin.value["origin_id"]
+      # origin_id - (required) is a type of string
+      origin_id = origin.value["origin_id"]
+      # origin_path - (optional) is a type of string
       origin_path = origin.value["origin_path"]
 
       dynamic "custom_header" {
         for_each = origin.value.custom_header
         content {
-          name  = custom_header.value["name"]
+          # name - (required) is a type of string
+          name = custom_header.value["name"]
+          # value - (required) is a type of string
           value = custom_header.value["value"]
         }
       }
@@ -587,18 +655,25 @@ resource "aws_cloudfront_distribution" "this" {
       dynamic "custom_origin_config" {
         for_each = origin.value.custom_origin_config
         content {
-          http_port                = custom_origin_config.value["http_port"]
-          https_port               = custom_origin_config.value["https_port"]
+          # http_port - (required) is a type of number
+          http_port = custom_origin_config.value["http_port"]
+          # https_port - (required) is a type of number
+          https_port = custom_origin_config.value["https_port"]
+          # origin_keepalive_timeout - (optional) is a type of number
           origin_keepalive_timeout = custom_origin_config.value["origin_keepalive_timeout"]
-          origin_protocol_policy   = custom_origin_config.value["origin_protocol_policy"]
-          origin_read_timeout      = custom_origin_config.value["origin_read_timeout"]
-          origin_ssl_protocols     = custom_origin_config.value["origin_ssl_protocols"]
+          # origin_protocol_policy - (required) is a type of string
+          origin_protocol_policy = custom_origin_config.value["origin_protocol_policy"]
+          # origin_read_timeout - (optional) is a type of number
+          origin_read_timeout = custom_origin_config.value["origin_read_timeout"]
+          # origin_ssl_protocols - (required) is a type of set of string
+          origin_ssl_protocols = custom_origin_config.value["origin_ssl_protocols"]
         }
       }
 
       dynamic "s3_origin_config" {
         for_each = origin.value.s3_origin_config
         content {
+          # origin_access_identity - (required) is a type of string
           origin_access_identity = s3_origin_config.value["origin_access_identity"]
         }
       }
@@ -609,11 +684,13 @@ resource "aws_cloudfront_distribution" "this" {
   dynamic "origin_group" {
     for_each = var.origin_group
     content {
+      # origin_id - (required) is a type of string
       origin_id = origin_group.value["origin_id"]
 
       dynamic "failover_criteria" {
         for_each = origin_group.value.failover_criteria
         content {
+          # status_codes - (required) is a type of set of number
           status_codes = failover_criteria.value["status_codes"]
         }
       }
@@ -621,6 +698,7 @@ resource "aws_cloudfront_distribution" "this" {
       dynamic "member" {
         for_each = origin_group.value.member
         content {
+          # origin_id - (required) is a type of string
           origin_id = member.value["origin_id"]
         }
       }
@@ -635,7 +713,9 @@ resource "aws_cloudfront_distribution" "this" {
       dynamic "geo_restriction" {
         for_each = restrictions.value.geo_restriction
         content {
-          locations        = geo_restriction.value["locations"]
+          # locations - (optional) is a type of set of string
+          locations = geo_restriction.value["locations"]
+          # restriction_type - (required) is a type of string
           restriction_type = geo_restriction.value["restriction_type"]
         }
       }
@@ -646,11 +726,16 @@ resource "aws_cloudfront_distribution" "this" {
   dynamic "viewer_certificate" {
     for_each = var.viewer_certificate
     content {
-      acm_certificate_arn            = viewer_certificate.value["acm_certificate_arn"]
+      # acm_certificate_arn - (optional) is a type of string
+      acm_certificate_arn = viewer_certificate.value["acm_certificate_arn"]
+      # cloudfront_default_certificate - (optional) is a type of bool
       cloudfront_default_certificate = viewer_certificate.value["cloudfront_default_certificate"]
-      iam_certificate_id             = viewer_certificate.value["iam_certificate_id"]
-      minimum_protocol_version       = viewer_certificate.value["minimum_protocol_version"]
-      ssl_support_method             = viewer_certificate.value["ssl_support_method"]
+      # iam_certificate_id - (optional) is a type of string
+      iam_certificate_id = viewer_certificate.value["iam_certificate_id"]
+      # minimum_protocol_version - (optional) is a type of string
+      minimum_protocol_version = viewer_certificate.value["minimum_protocol_version"]
+      # ssl_support_method - (optional) is a type of string
+      ssl_support_method = viewer_certificate.value["ssl_support_method"]
     }
   }
 

@@ -161,43 +161,65 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_image" "this" {
-  hyper_v_generation        = var.hyper_v_generation
-  location                  = var.location
-  name                      = var.name
-  resource_group_name       = var.resource_group_name
+  # hyper_v_generation - (optional) is a type of string
+  hyper_v_generation = var.hyper_v_generation
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # source_virtual_machine_id - (optional) is a type of string
   source_virtual_machine_id = var.source_virtual_machine_id
-  tags                      = var.tags
-  zone_resilient            = var.zone_resilient
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # zone_resilient - (optional) is a type of bool
+  zone_resilient = var.zone_resilient
 
   dynamic "data_disk" {
     for_each = var.data_disk
     content {
-      blob_uri        = data_disk.value["blob_uri"]
-      caching         = data_disk.value["caching"]
-      lun             = data_disk.value["lun"]
+      # blob_uri - (optional) is a type of string
+      blob_uri = data_disk.value["blob_uri"]
+      # caching - (optional) is a type of string
+      caching = data_disk.value["caching"]
+      # lun - (optional) is a type of number
+      lun = data_disk.value["lun"]
+      # managed_disk_id - (optional) is a type of string
       managed_disk_id = data_disk.value["managed_disk_id"]
-      size_gb         = data_disk.value["size_gb"]
+      # size_gb - (optional) is a type of number
+      size_gb = data_disk.value["size_gb"]
     }
   }
 
   dynamic "os_disk" {
     for_each = var.os_disk
     content {
-      blob_uri        = os_disk.value["blob_uri"]
-      caching         = os_disk.value["caching"]
+      # blob_uri - (optional) is a type of string
+      blob_uri = os_disk.value["blob_uri"]
+      # caching - (optional) is a type of string
+      caching = os_disk.value["caching"]
+      # managed_disk_id - (optional) is a type of string
       managed_disk_id = os_disk.value["managed_disk_id"]
-      os_state        = os_disk.value["os_state"]
-      os_type         = os_disk.value["os_type"]
-      size_gb         = os_disk.value["size_gb"]
+      # os_state - (optional) is a type of string
+      os_state = os_disk.value["os_state"]
+      # os_type - (optional) is a type of string
+      os_type = os_disk.value["os_type"]
+      # size_gb - (optional) is a type of number
+      size_gb = os_disk.value["size_gb"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

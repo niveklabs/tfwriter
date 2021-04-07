@@ -101,28 +101,37 @@ variable "root_directory" {
 
 ```terraform
 resource "aws_efs_access_point" "this" {
+  # file_system_id - (required) is a type of string
   file_system_id = var.file_system_id
-  tags           = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "posix_user" {
     for_each = var.posix_user
     content {
-      gid            = posix_user.value["gid"]
+      # gid - (required) is a type of number
+      gid = posix_user.value["gid"]
+      # secondary_gids - (optional) is a type of set of number
       secondary_gids = posix_user.value["secondary_gids"]
-      uid            = posix_user.value["uid"]
+      # uid - (required) is a type of number
+      uid = posix_user.value["uid"]
     }
   }
 
   dynamic "root_directory" {
     for_each = var.root_directory
     content {
+      # path - (optional) is a type of string
       path = root_directory.value["path"]
 
       dynamic "creation_info" {
         for_each = root_directory.value.creation_info
         content {
-          owner_gid   = creation_info.value["owner_gid"]
-          owner_uid   = creation_info.value["owner_uid"]
+          # owner_gid - (required) is a type of number
+          owner_gid = creation_info.value["owner_gid"]
+          # owner_uid - (required) is a type of number
+          owner_uid = creation_info.value["owner_uid"]
+          # permissions - (required) is a type of string
           permissions = creation_info.value["permissions"]
         }
       }

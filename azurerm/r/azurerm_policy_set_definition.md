@@ -175,44 +175,67 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_policy_set_definition" "this" {
-  description           = var.description
-  display_name          = var.display_name
-  management_group_id   = var.management_group_id
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # management_group_id - (optional) is a type of string
+  management_group_id = var.management_group_id
+  # management_group_name - (optional) is a type of string
   management_group_name = var.management_group_name
-  metadata              = var.metadata
-  name                  = var.name
-  parameters            = var.parameters
-  policy_definitions    = var.policy_definitions
-  policy_type           = var.policy_type
+  # metadata - (optional) is a type of string
+  metadata = var.metadata
+  # name - (required) is a type of string
+  name = var.name
+  # parameters - (optional) is a type of string
+  parameters = var.parameters
+  # policy_definitions - (optional) is a type of string
+  policy_definitions = var.policy_definitions
+  # policy_type - (required) is a type of string
+  policy_type = var.policy_type
 
   dynamic "policy_definition_group" {
     for_each = var.policy_definition_group
     content {
+      # additional_metadata_resource_id - (optional) is a type of string
       additional_metadata_resource_id = policy_definition_group.value["additional_metadata_resource_id"]
-      category                        = policy_definition_group.value["category"]
-      description                     = policy_definition_group.value["description"]
-      display_name                    = policy_definition_group.value["display_name"]
-      name                            = policy_definition_group.value["name"]
+      # category - (optional) is a type of string
+      category = policy_definition_group.value["category"]
+      # description - (optional) is a type of string
+      description = policy_definition_group.value["description"]
+      # display_name - (optional) is a type of string
+      display_name = policy_definition_group.value["display_name"]
+      # name - (required) is a type of string
+      name = policy_definition_group.value["name"]
     }
   }
 
   dynamic "policy_definition_reference" {
     for_each = var.policy_definition_reference
     content {
-      parameter_values     = policy_definition_reference.value["parameter_values"]
-      parameters           = policy_definition_reference.value["parameters"]
+      # parameter_values - (optional) is a type of string
+      parameter_values = policy_definition_reference.value["parameter_values"]
+      # parameters - (optional) is a type of map of string
+      parameters = policy_definition_reference.value["parameters"]
+      # policy_definition_id - (required) is a type of string
       policy_definition_id = policy_definition_reference.value["policy_definition_id"]
-      policy_group_names   = policy_definition_reference.value["policy_group_names"]
-      reference_id         = policy_definition_reference.value["reference_id"]
+      # policy_group_names - (optional) is a type of set of string
+      policy_group_names = policy_definition_reference.value["policy_group_names"]
+      # reference_id - (optional) is a type of string
+      reference_id = policy_definition_reference.value["reference_id"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

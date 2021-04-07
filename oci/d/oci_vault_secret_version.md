@@ -56,7 +56,9 @@ variable "secret_version_number" {
 
 ```terraform
 data "oci_vault_secret_version" "this" {
-  secret_id             = var.secret_id
+  # secret_id - (required) is a type of string
+  secret_id = var.secret_id
+  # secret_version_number - (required) is a type of string
   secret_version_number = var.secret_version_number
 }
 ```

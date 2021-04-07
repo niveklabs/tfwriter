@@ -151,24 +151,39 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_dx_private_virtual_interface" "this" {
-  address_family   = var.address_family
-  amazon_address   = var.amazon_address
-  bgp_asn          = var.bgp_asn
-  bgp_auth_key     = var.bgp_auth_key
-  connection_id    = var.connection_id
+  # address_family - (required) is a type of string
+  address_family = var.address_family
+  # amazon_address - (optional) is a type of string
+  amazon_address = var.amazon_address
+  # bgp_asn - (required) is a type of number
+  bgp_asn = var.bgp_asn
+  # bgp_auth_key - (optional) is a type of string
+  bgp_auth_key = var.bgp_auth_key
+  # connection_id - (required) is a type of string
+  connection_id = var.connection_id
+  # customer_address - (optional) is a type of string
   customer_address = var.customer_address
-  dx_gateway_id    = var.dx_gateway_id
-  mtu              = var.mtu
-  name             = var.name
-  tags             = var.tags
-  vlan             = var.vlan
-  vpn_gateway_id   = var.vpn_gateway_id
+  # dx_gateway_id - (optional) is a type of string
+  dx_gateway_id = var.dx_gateway_id
+  # mtu - (optional) is a type of number
+  mtu = var.mtu
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vlan - (required) is a type of number
+  vlan = var.vlan
+  # vpn_gateway_id - (optional) is a type of string
+  vpn_gateway_id = var.vpn_gateway_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

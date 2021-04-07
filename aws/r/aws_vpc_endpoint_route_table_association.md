@@ -56,7 +56,9 @@ variable "vpc_endpoint_id" {
 
 ```terraform
 resource "aws_vpc_endpoint_route_table_association" "this" {
-  route_table_id  = var.route_table_id
+  # route_table_id - (required) is a type of string
+  route_table_id = var.route_table_id
+  # vpc_endpoint_id - (required) is a type of string
   vpc_endpoint_id = var.vpc_endpoint_id
 }
 ```

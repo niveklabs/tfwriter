@@ -78,13 +78,17 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_key_vault_certificate_data" "this" {
+  # key_vault_id - (required) is a type of string
   key_vault_id = var.key_vault_id
-  name         = var.name
-  version      = var.version
+  # name - (required) is a type of string
+  name = var.name
+  # version - (optional) is a type of string
+  version = var.version
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

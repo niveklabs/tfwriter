@@ -98,16 +98,23 @@ variable "filter" {
 
 ```terraform
 data "aws_vpn_gateway" "this" {
-  amazon_side_asn   = var.amazon_side_asn
-  attached_vpc_id   = var.attached_vpc_id
+  # amazon_side_asn - (optional) is a type of string
+  amazon_side_asn = var.amazon_side_asn
+  # attached_vpc_id - (optional) is a type of string
+  attached_vpc_id = var.attached_vpc_id
+  # availability_zone - (optional) is a type of string
   availability_zone = var.availability_zone
-  state             = var.state
-  tags              = var.tags
+  # state - (optional) is a type of string
+  state = var.state
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of set of string
       values = filter.value["values"]
     }
   }

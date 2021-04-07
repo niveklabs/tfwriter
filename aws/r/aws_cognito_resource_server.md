@@ -79,15 +79,20 @@ variable "scope" {
 
 ```terraform
 resource "aws_cognito_resource_server" "this" {
-  identifier   = var.identifier
-  name         = var.name
+  # identifier - (required) is a type of string
+  identifier = var.identifier
+  # name - (required) is a type of string
+  name = var.name
+  # user_pool_id - (required) is a type of string
   user_pool_id = var.user_pool_id
 
   dynamic "scope" {
     for_each = var.scope
     content {
+      # scope_description - (required) is a type of string
       scope_description = scope.value["scope_description"]
-      scope_name        = scope.value["scope_name"]
+      # scope_name - (required) is a type of string
+      scope_name = scope.value["scope_name"]
     }
   }
 

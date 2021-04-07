@@ -64,9 +64,12 @@ variable "vcable" {
 
 ```terraform
 resource "opc_compute_security_association" "this" {
-  name    = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # seclist - (required) is a type of string
   seclist = var.seclist
-  vcable  = var.vcable
+  # vcable - (required) is a type of string
+  vcable = var.vcable
 }
 ```
 

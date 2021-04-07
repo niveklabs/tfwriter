@@ -56,7 +56,9 @@ variable "vpc_endpoint_service_id" {
 
 ```terraform
 resource "aws_vpc_endpoint_service_allowed_principal" "this" {
-  principal_arn           = var.principal_arn
+  # principal_arn - (required) is a type of string
+  principal_arn = var.principal_arn
+  # vpc_endpoint_service_id - (required) is a type of string
   vpc_endpoint_service_id = var.vpc_endpoint_service_id
 }
 ```

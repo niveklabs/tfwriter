@@ -64,9 +64,12 @@ variable "secret_arn" {
 
 ```terraform
 resource "aws_secretsmanager_secret_policy" "this" {
+  # block_public_policy - (optional) is a type of bool
   block_public_policy = var.block_public_policy
-  policy              = var.policy
-  secret_arn          = var.secret_arn
+  # policy - (required) is a type of string
+  policy = var.policy
+  # secret_arn - (required) is a type of string
+  secret_arn = var.secret_arn
 }
 ```
 

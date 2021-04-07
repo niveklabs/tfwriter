@@ -73,10 +73,14 @@ variable "tags" {
 
 ```terraform
 resource "aws_dms_certificate" "this" {
-  certificate_id     = var.certificate_id
-  certificate_pem    = var.certificate_pem
+  # certificate_id - (required) is a type of string
+  certificate_id = var.certificate_id
+  # certificate_pem - (optional) is a type of string
+  certificate_pem = var.certificate_pem
+  # certificate_wallet - (optional) is a type of string
   certificate_wallet = var.certificate_wallet
-  tags               = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

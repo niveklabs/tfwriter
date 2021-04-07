@@ -56,8 +56,10 @@ variable "domain_name" {
 
 ```terraform
 resource "aws_elasticsearch_domain_policy" "this" {
+  # access_policies - (required) is a type of string
   access_policies = var.access_policies
-  domain_name     = var.domain_name
+  # domain_name - (required) is a type of string
+  domain_name = var.domain_name
 }
 ```
 

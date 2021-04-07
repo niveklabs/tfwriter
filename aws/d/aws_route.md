@@ -145,19 +145,32 @@ variable "vpc_peering_connection_id" {
 
 ```terraform
 data "aws_route" "this" {
-  carrier_gateway_id          = var.carrier_gateway_id
-  destination_cidr_block      = var.destination_cidr_block
+  # carrier_gateway_id - (optional) is a type of string
+  carrier_gateway_id = var.carrier_gateway_id
+  # destination_cidr_block - (optional) is a type of string
+  destination_cidr_block = var.destination_cidr_block
+  # destination_ipv6_cidr_block - (optional) is a type of string
   destination_ipv6_cidr_block = var.destination_ipv6_cidr_block
-  destination_prefix_list_id  = var.destination_prefix_list_id
-  egress_only_gateway_id      = var.egress_only_gateway_id
-  gateway_id                  = var.gateway_id
-  instance_id                 = var.instance_id
-  local_gateway_id            = var.local_gateway_id
-  nat_gateway_id              = var.nat_gateway_id
-  network_interface_id        = var.network_interface_id
-  route_table_id              = var.route_table_id
-  transit_gateway_id          = var.transit_gateway_id
-  vpc_peering_connection_id   = var.vpc_peering_connection_id
+  # destination_prefix_list_id - (optional) is a type of string
+  destination_prefix_list_id = var.destination_prefix_list_id
+  # egress_only_gateway_id - (optional) is a type of string
+  egress_only_gateway_id = var.egress_only_gateway_id
+  # gateway_id - (optional) is a type of string
+  gateway_id = var.gateway_id
+  # instance_id - (optional) is a type of string
+  instance_id = var.instance_id
+  # local_gateway_id - (optional) is a type of string
+  local_gateway_id = var.local_gateway_id
+  # nat_gateway_id - (optional) is a type of string
+  nat_gateway_id = var.nat_gateway_id
+  # network_interface_id - (optional) is a type of string
+  network_interface_id = var.network_interface_id
+  # route_table_id - (required) is a type of string
+  route_table_id = var.route_table_id
+  # transit_gateway_id - (optional) is a type of string
+  transit_gateway_id = var.transit_gateway_id
+  # vpc_peering_connection_id - (optional) is a type of string
+  vpc_peering_connection_id = var.vpc_peering_connection_id
 }
 ```
 

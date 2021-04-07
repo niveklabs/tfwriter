@@ -214,28 +214,43 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_lex_bot" "this" {
-  child_directed                  = var.child_directed
-  create_version                  = var.create_version
-  description                     = var.description
-  detect_sentiment                = var.detect_sentiment
-  enable_model_improvements       = var.enable_model_improvements
-  idle_session_ttl_in_seconds     = var.idle_session_ttl_in_seconds
-  locale                          = var.locale
-  name                            = var.name
+  # child_directed - (required) is a type of bool
+  child_directed = var.child_directed
+  # create_version - (optional) is a type of bool
+  create_version = var.create_version
+  # description - (optional) is a type of string
+  description = var.description
+  # detect_sentiment - (optional) is a type of bool
+  detect_sentiment = var.detect_sentiment
+  # enable_model_improvements - (optional) is a type of bool
+  enable_model_improvements = var.enable_model_improvements
+  # idle_session_ttl_in_seconds - (optional) is a type of number
+  idle_session_ttl_in_seconds = var.idle_session_ttl_in_seconds
+  # locale - (optional) is a type of string
+  locale = var.locale
+  # name - (required) is a type of string
+  name = var.name
+  # nlu_intent_confidence_threshold - (optional) is a type of number
   nlu_intent_confidence_threshold = var.nlu_intent_confidence_threshold
-  process_behavior                = var.process_behavior
-  voice_id                        = var.voice_id
+  # process_behavior - (optional) is a type of string
+  process_behavior = var.process_behavior
+  # voice_id - (optional) is a type of string
+  voice_id = var.voice_id
 
   dynamic "abort_statement" {
     for_each = var.abort_statement
     content {
+      # response_card - (optional) is a type of string
       response_card = abort_statement.value["response_card"]
 
       dynamic "message" {
         for_each = abort_statement.value.message
         content {
-          content      = message.value["content"]
+          # content - (required) is a type of string
+          content = message.value["content"]
+          # content_type - (required) is a type of string
           content_type = message.value["content_type"]
+          # group_number - (optional) is a type of number
           group_number = message.value["group_number"]
         }
       }
@@ -246,14 +261,19 @@ resource "aws_lex_bot" "this" {
   dynamic "clarification_prompt" {
     for_each = var.clarification_prompt
     content {
-      max_attempts  = clarification_prompt.value["max_attempts"]
+      # max_attempts - (required) is a type of number
+      max_attempts = clarification_prompt.value["max_attempts"]
+      # response_card - (optional) is a type of string
       response_card = clarification_prompt.value["response_card"]
 
       dynamic "message" {
         for_each = clarification_prompt.value.message
         content {
-          content      = message.value["content"]
+          # content - (required) is a type of string
+          content = message.value["content"]
+          # content_type - (required) is a type of string
           content_type = message.value["content_type"]
+          # group_number - (optional) is a type of number
           group_number = message.value["group_number"]
         }
       }
@@ -264,7 +284,9 @@ resource "aws_lex_bot" "this" {
   dynamic "intent" {
     for_each = var.intent
     content {
-      intent_name    = intent.value["intent_name"]
+      # intent_name - (required) is a type of string
+      intent_name = intent.value["intent_name"]
+      # intent_version - (required) is a type of string
       intent_version = intent.value["intent_version"]
     }
   }
@@ -272,8 +294,11 @@ resource "aws_lex_bot" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -80,14 +80,19 @@ variable "timeouts" {
 
 ```terraform
 resource "google_kms_secret_ciphertext" "this" {
+  # additional_authenticated_data - (optional) is a type of string
   additional_authenticated_data = var.additional_authenticated_data
-  crypto_key                    = var.crypto_key
-  plaintext                     = var.plaintext
+  # crypto_key - (required) is a type of string
+  crypto_key = var.crypto_key
+  # plaintext - (required) is a type of string
+  plaintext = var.plaintext
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

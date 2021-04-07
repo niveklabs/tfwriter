@@ -166,19 +166,29 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_security_group" "this" {
-  description            = var.description
-  egress                 = var.egress
-  ingress                = var.ingress
-  name                   = var.name
-  name_prefix            = var.name_prefix
+  # description - (optional) is a type of string
+  description = var.description
+  # egress - (optional) is a type of set of object
+  egress = var.egress
+  # ingress - (optional) is a type of set of object
+  ingress = var.ingress
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # revoke_rules_on_delete - (optional) is a type of bool
   revoke_rules_on_delete = var.revoke_rules_on_delete
-  tags                   = var.tags
-  vpc_id                 = var.vpc_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

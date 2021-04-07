@@ -103,24 +103,33 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_analytics_analytics_instance_private_access_channel" "this" {
+  # analytics_instance_id - (required) is a type of string
   analytics_instance_id = var.analytics_instance_id
-  display_name          = var.display_name
-  subnet_id             = var.subnet_id
-  vcn_id                = var.vcn_id
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
+  # vcn_id - (required) is a type of string
+  vcn_id = var.vcn_id
 
   dynamic "private_source_dns_zones" {
     for_each = var.private_source_dns_zones
     content {
+      # description - (optional) is a type of string
       description = private_source_dns_zones.value["description"]
-      dns_zone    = private_source_dns_zones.value["dns_zone"]
+      # dns_zone - (required) is a type of string
+      dns_zone = private_source_dns_zones.value["dns_zone"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

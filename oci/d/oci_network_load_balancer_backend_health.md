@@ -63,8 +63,11 @@ variable "network_load_balancer_id" {
 
 ```terraform
 data "oci_network_load_balancer_backend_health" "this" {
-  backend_name             = var.backend_name
-  backend_set_name         = var.backend_set_name
+  # backend_name - (required) is a type of string
+  backend_name = var.backend_name
+  # backend_set_name - (required) is a type of string
+  backend_set_name = var.backend_set_name
+  # network_load_balancer_id - (required) is a type of string
   network_load_balancer_id = var.network_load_balancer_id
 }
 ```

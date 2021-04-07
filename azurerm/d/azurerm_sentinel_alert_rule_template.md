@@ -79,13 +79,17 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_sentinel_alert_rule_template" "this" {
-  display_name               = var.display_name
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # log_analytics_workspace_id - (required) is a type of string
   log_analytics_workspace_id = var.log_analytics_workspace_id
-  name                       = var.name
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

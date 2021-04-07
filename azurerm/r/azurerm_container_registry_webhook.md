@@ -136,23 +136,37 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_container_registry_webhook" "this" {
-  actions             = var.actions
-  custom_headers      = var.custom_headers
-  location            = var.location
-  name                = var.name
-  registry_name       = var.registry_name
+  # actions - (required) is a type of set of string
+  actions = var.actions
+  # custom_headers - (optional) is a type of map of string
+  custom_headers = var.custom_headers
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # registry_name - (required) is a type of string
+  registry_name = var.registry_name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  scope               = var.scope
-  service_uri         = var.service_uri
-  status              = var.status
-  tags                = var.tags
+  # scope - (optional) is a type of string
+  scope = var.scope
+  # service_uri - (required) is a type of string
+  service_uri = var.service_uri
+  # status - (optional) is a type of string
+  status = var.status
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

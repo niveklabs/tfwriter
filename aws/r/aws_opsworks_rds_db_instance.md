@@ -70,10 +70,14 @@ variable "stack_id" {
 
 ```terraform
 resource "aws_opsworks_rds_db_instance" "this" {
-  db_password         = var.db_password
-  db_user             = var.db_user
+  # db_password - (required) is a type of string
+  db_password = var.db_password
+  # db_user - (required) is a type of string
+  db_user = var.db_user
+  # rds_db_instance_arn - (required) is a type of string
   rds_db_instance_arn = var.rds_db_instance_arn
-  stack_id            = var.stack_id
+  # stack_id - (required) is a type of string
+  stack_id = var.stack_id
 }
 ```
 

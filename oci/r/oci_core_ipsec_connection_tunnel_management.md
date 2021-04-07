@@ -143,26 +143,37 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_ipsec_connection_tunnel_management" "this" {
-  display_name  = var.display_name
-  ike_version   = var.ike_version
-  ipsec_id      = var.ipsec_id
-  routing       = var.routing
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # ike_version - (optional) is a type of string
+  ike_version = var.ike_version
+  # ipsec_id - (required) is a type of string
+  ipsec_id = var.ipsec_id
+  # routing - (required) is a type of string
+  routing = var.routing
+  # shared_secret - (optional) is a type of string
   shared_secret = var.shared_secret
-  tunnel_id     = var.tunnel_id
+  # tunnel_id - (required) is a type of string
+  tunnel_id = var.tunnel_id
 
   dynamic "bgp_session_info" {
     for_each = var.bgp_session_info
     content {
-      customer_bgp_asn      = bgp_session_info.value["customer_bgp_asn"]
+      # customer_bgp_asn - (optional) is a type of string
+      customer_bgp_asn = bgp_session_info.value["customer_bgp_asn"]
+      # customer_interface_ip - (optional) is a type of string
       customer_interface_ip = bgp_session_info.value["customer_interface_ip"]
-      oracle_interface_ip   = bgp_session_info.value["oracle_interface_ip"]
+      # oracle_interface_ip - (optional) is a type of string
+      oracle_interface_ip = bgp_session_info.value["oracle_interface_ip"]
     }
   }
 
   dynamic "encryption_domain_config" {
     for_each = var.encryption_domain_config
     content {
-      cpe_traffic_selector    = encryption_domain_config.value["cpe_traffic_selector"]
+      # cpe_traffic_selector - (optional) is a type of list of string
+      cpe_traffic_selector = encryption_domain_config.value["cpe_traffic_selector"]
+      # oracle_traffic_selector - (optional) is a type of list of string
       oracle_traffic_selector = encryption_domain_config.value["oracle_traffic_selector"]
     }
   }
@@ -170,8 +181,11 @@ resource "oci_core_ipsec_connection_tunnel_management" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

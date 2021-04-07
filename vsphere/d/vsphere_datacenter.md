@@ -50,6 +50,7 @@ variable "name" {
 
 ```terraform
 data "vsphere_datacenter" "this" {
+  # name - (optional) is a type of string
   name = var.name
 }
 ```

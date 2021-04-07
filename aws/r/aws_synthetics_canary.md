@@ -192,25 +192,41 @@ variable "vpc_config" {
 
 ```terraform
 resource "aws_synthetics_canary" "this" {
-  artifact_s3_location     = var.artifact_s3_location
-  execution_role_arn       = var.execution_role_arn
+  # artifact_s3_location - (required) is a type of string
+  artifact_s3_location = var.artifact_s3_location
+  # execution_role_arn - (required) is a type of string
+  execution_role_arn = var.execution_role_arn
+  # failure_retention_period - (optional) is a type of number
   failure_retention_period = var.failure_retention_period
-  handler                  = var.handler
-  name                     = var.name
-  runtime_version          = var.runtime_version
-  s3_bucket                = var.s3_bucket
-  s3_key                   = var.s3_key
-  s3_version               = var.s3_version
-  start_canary             = var.start_canary
+  # handler - (required) is a type of string
+  handler = var.handler
+  # name - (required) is a type of string
+  name = var.name
+  # runtime_version - (required) is a type of string
+  runtime_version = var.runtime_version
+  # s3_bucket - (optional) is a type of string
+  s3_bucket = var.s3_bucket
+  # s3_key - (optional) is a type of string
+  s3_key = var.s3_key
+  # s3_version - (optional) is a type of string
+  s3_version = var.s3_version
+  # start_canary - (optional) is a type of bool
+  start_canary = var.start_canary
+  # success_retention_period - (optional) is a type of number
   success_retention_period = var.success_retention_period
-  tags                     = var.tags
-  zip_file                 = var.zip_file
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # zip_file - (optional) is a type of string
+  zip_file = var.zip_file
 
   dynamic "run_config" {
     for_each = var.run_config
     content {
-      active_tracing     = run_config.value["active_tracing"]
-      memory_in_mb       = run_config.value["memory_in_mb"]
+      # active_tracing - (optional) is a type of bool
+      active_tracing = run_config.value["active_tracing"]
+      # memory_in_mb - (optional) is a type of number
+      memory_in_mb = run_config.value["memory_in_mb"]
+      # timeout_in_seconds - (optional) is a type of number
       timeout_in_seconds = run_config.value["timeout_in_seconds"]
     }
   }
@@ -218,16 +234,20 @@ resource "aws_synthetics_canary" "this" {
   dynamic "schedule" {
     for_each = var.schedule
     content {
+      # duration_in_seconds - (optional) is a type of number
       duration_in_seconds = schedule.value["duration_in_seconds"]
-      expression          = schedule.value["expression"]
+      # expression - (required) is a type of string
+      expression = schedule.value["expression"]
     }
   }
 
   dynamic "vpc_config" {
     for_each = var.vpc_config
     content {
+      # security_group_ids - (optional) is a type of set of string
       security_group_ids = vpc_config.value["security_group_ids"]
-      subnet_ids         = vpc_config.value["subnet_ids"]
+      # subnet_ids - (optional) is a type of set of string
+      subnet_ids = vpc_config.value["subnet_ids"]
     }
   }
 

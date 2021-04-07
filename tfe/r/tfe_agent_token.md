@@ -56,8 +56,10 @@ variable "description" {
 
 ```terraform
 resource "tfe_agent_token" "this" {
+  # agent_pool_id - (required) is a type of string
   agent_pool_id = var.agent_pool_id
-  description   = var.description
+  # description - (required) is a type of string
+  description = var.description
 }
 ```
 

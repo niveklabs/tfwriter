@@ -49,6 +49,7 @@ variable "external_pluggable_database_id" {
 
 ```terraform
 data "oci_database_external_pluggable_database" "this" {
+  # external_pluggable_database_id - (required) is a type of string
   external_pluggable_database_id = var.external_pluggable_database_id
 }
 ```

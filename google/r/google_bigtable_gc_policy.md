@@ -109,16 +109,23 @@ variable "max_version" {
 
 ```terraform
 resource "google_bigtable_gc_policy" "this" {
+  # column_family - (required) is a type of string
   column_family = var.column_family
+  # instance_name - (required) is a type of string
   instance_name = var.instance_name
-  mode          = var.mode
-  project       = var.project
-  table         = var.table
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # project - (optional) is a type of string
+  project = var.project
+  # table - (required) is a type of string
+  table = var.table
 
   dynamic "max_age" {
     for_each = var.max_age
     content {
-      days     = max_age.value["days"]
+      # days - (optional) is a type of number
+      days = max_age.value["days"]
+      # duration - (optional) is a type of string
       duration = max_age.value["duration"]
     }
   }
@@ -126,6 +133,7 @@ resource "google_bigtable_gc_policy" "this" {
   dynamic "max_version" {
     for_each = var.max_version
     content {
+      # number - (required) is a type of number
       number = max_version.value["number"]
     }
   }

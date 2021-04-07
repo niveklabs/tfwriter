@@ -189,28 +189,41 @@ variable "weighted_routing_policy" {
 
 ```terraform
 resource "aws_route53_record" "this" {
-  allow_overwrite                  = var.allow_overwrite
-  health_check_id                  = var.health_check_id
+  # allow_overwrite - (optional) is a type of bool
+  allow_overwrite = var.allow_overwrite
+  # health_check_id - (optional) is a type of string
+  health_check_id = var.health_check_id
+  # multivalue_answer_routing_policy - (optional) is a type of bool
   multivalue_answer_routing_policy = var.multivalue_answer_routing_policy
-  name                             = var.name
-  records                          = var.records
-  set_identifier                   = var.set_identifier
-  ttl                              = var.ttl
-  type                             = var.type
-  zone_id                          = var.zone_id
+  # name - (required) is a type of string
+  name = var.name
+  # records - (optional) is a type of set of string
+  records = var.records
+  # set_identifier - (optional) is a type of string
+  set_identifier = var.set_identifier
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
+  # type - (required) is a type of string
+  type = var.type
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 
   dynamic "alias" {
     for_each = var.alias
     content {
+      # evaluate_target_health - (required) is a type of bool
       evaluate_target_health = alias.value["evaluate_target_health"]
-      name                   = alias.value["name"]
-      zone_id                = alias.value["zone_id"]
+      # name - (required) is a type of string
+      name = alias.value["name"]
+      # zone_id - (required) is a type of string
+      zone_id = alias.value["zone_id"]
     }
   }
 
   dynamic "failover_routing_policy" {
     for_each = var.failover_routing_policy
     content {
+      # type - (required) is a type of string
       type = failover_routing_policy.value["type"]
     }
   }
@@ -218,8 +231,11 @@ resource "aws_route53_record" "this" {
   dynamic "geolocation_routing_policy" {
     for_each = var.geolocation_routing_policy
     content {
-      continent   = geolocation_routing_policy.value["continent"]
-      country     = geolocation_routing_policy.value["country"]
+      # continent - (optional) is a type of string
+      continent = geolocation_routing_policy.value["continent"]
+      # country - (optional) is a type of string
+      country = geolocation_routing_policy.value["country"]
+      # subdivision - (optional) is a type of string
       subdivision = geolocation_routing_policy.value["subdivision"]
     }
   }
@@ -227,6 +243,7 @@ resource "aws_route53_record" "this" {
   dynamic "latency_routing_policy" {
     for_each = var.latency_routing_policy
     content {
+      # region - (required) is a type of string
       region = latency_routing_policy.value["region"]
     }
   }
@@ -234,6 +251,7 @@ resource "aws_route53_record" "this" {
   dynamic "weighted_routing_policy" {
     for_each = var.weighted_routing_policy
     content {
+      # weight - (required) is a type of number
       weight = weighted_routing_policy.value["weight"]
     }
   }

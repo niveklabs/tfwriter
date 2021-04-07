@@ -72,10 +72,14 @@ variable "project" {
 
 ```terraform
 resource "google_notebooks_instance_iam_policy" "this" {
+  # instance_name - (required) is a type of string
   instance_name = var.instance_name
-  location      = var.location
-  policy_data   = var.policy_data
-  project       = var.project
+  # location - (optional) is a type of string
+  location = var.location
+  # policy_data - (required) is a type of string
+  policy_data = var.policy_data
+  # project - (optional) is a type of string
+  project = var.project
 }
 ```
 

@@ -89,15 +89,21 @@ variable "signature_validity_period" {
 
 ```terraform
 resource "aws_signer_signing_profile" "this" {
-  name        = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
   name_prefix = var.name_prefix
+  # platform_id - (required) is a type of string
   platform_id = var.platform_id
-  tags        = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "signature_validity_period" {
     for_each = var.signature_validity_period
     content {
-      type  = signature_validity_period.value["type"]
+      # type - (required) is a type of string
+      type = signature_validity_period.value["type"]
+      # value - (required) is a type of number
       value = signature_validity_period.value["value"]
     }
   }

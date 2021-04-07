@@ -56,8 +56,10 @@ variable "vpc_id" {
 
 ```terraform
 resource "aws_vpc_dhcp_options_association" "this" {
+  # dhcp_options_id - (required) is a type of string
   dhcp_options_id = var.dhcp_options_id
-  vpc_id          = var.vpc_id
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

@@ -71,12 +71,15 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_acm_certificate_validation" "this" {
-  certificate_arn         = var.certificate_arn
+  # certificate_arn - (required) is a type of string
+  certificate_arn = var.certificate_arn
+  # validation_record_fqdns - (optional) is a type of set of string
   validation_record_fqdns = var.validation_record_fqdns
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

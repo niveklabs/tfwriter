@@ -56,7 +56,9 @@ variable "client_id" {
 
 ```terraform
 data "google_iap_client" "this" {
-  brand     = var.brand
+  # brand - (required) is a type of string
+  brand = var.brand
+  # client_id - (required) is a type of string
   client_id = var.client_id
 }
 ```

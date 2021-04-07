@@ -83,15 +83,21 @@ variable "filter" {
 
 ```terraform
 data "oci_logging_log_saved_searches" "this" {
-  compartment_id      = var.compartment_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # log_saved_search_id - (optional) is a type of string
   log_saved_search_id = var.log_saved_search_id
-  name                = var.name
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

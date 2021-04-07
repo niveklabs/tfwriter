@@ -198,28 +198,47 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_monitoring_alarm" "this" {
-  body                             = var.body
-  compartment_id                   = var.compartment_id
-  defined_tags                     = var.defined_tags
-  destinations                     = var.destinations
-  display_name                     = var.display_name
-  freeform_tags                    = var.freeform_tags
-  is_enabled                       = var.is_enabled
-  metric_compartment_id            = var.metric_compartment_id
+  # body - (optional) is a type of string
+  body = var.body
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # destinations - (required) is a type of list of string
+  destinations = var.destinations
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # is_enabled - (required) is a type of bool
+  is_enabled = var.is_enabled
+  # metric_compartment_id - (required) is a type of string
+  metric_compartment_id = var.metric_compartment_id
+  # metric_compartment_id_in_subtree - (optional) is a type of bool
   metric_compartment_id_in_subtree = var.metric_compartment_id_in_subtree
-  namespace                        = var.namespace
-  pending_duration                 = var.pending_duration
-  query                            = var.query
-  repeat_notification_duration     = var.repeat_notification_duration
-  resolution                       = var.resolution
-  resource_group                   = var.resource_group
-  severity                         = var.severity
+  # namespace - (required) is a type of string
+  namespace = var.namespace
+  # pending_duration - (optional) is a type of string
+  pending_duration = var.pending_duration
+  # query - (required) is a type of string
+  query = var.query
+  # repeat_notification_duration - (optional) is a type of string
+  repeat_notification_duration = var.repeat_notification_duration
+  # resolution - (optional) is a type of string
+  resolution = var.resolution
+  # resource_group - (optional) is a type of string
+  resource_group = var.resource_group
+  # severity - (required) is a type of string
+  severity = var.severity
 
   dynamic "suppression" {
     for_each = var.suppression
     content {
-      description         = suppression.value["description"]
-      time_suppress_from  = suppression.value["time_suppress_from"]
+      # description - (optional) is a type of string
+      description = suppression.value["description"]
+      # time_suppress_from - (required) is a type of string
+      time_suppress_from = suppression.value["time_suppress_from"]
+      # time_suppress_until - (required) is a type of string
       time_suppress_until = suppression.value["time_suppress_until"]
     }
   }
@@ -227,8 +246,11 @@ resource "oci_monitoring_alarm" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -70,10 +70,14 @@ variable "name" {
 
 ```terraform
 resource "aws_app_cookie_stickiness_policy" "this" {
-  cookie_name   = var.cookie_name
-  lb_port       = var.lb_port
+  # cookie_name - (required) is a type of string
+  cookie_name = var.cookie_name
+  # lb_port - (required) is a type of number
+  lb_port = var.lb_port
+  # load_balancer - (required) is a type of string
   load_balancer = var.load_balancer
-  name          = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

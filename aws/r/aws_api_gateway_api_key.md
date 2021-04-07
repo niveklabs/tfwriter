@@ -81,11 +81,16 @@ variable "value" {
 
 ```terraform
 resource "aws_api_gateway_api_key" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  enabled     = var.enabled
-  name        = var.name
-  tags        = var.tags
-  value       = var.value
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # value - (optional) is a type of string
+  value = var.value
 }
 ```
 

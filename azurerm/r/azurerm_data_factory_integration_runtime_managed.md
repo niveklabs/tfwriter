@@ -189,41 +189,61 @@ variable "vnet_integration" {
 
 ```terraform
 resource "azurerm_data_factory_integration_runtime_managed" "this" {
-  data_factory_name                = var.data_factory_name
-  description                      = var.description
-  edition                          = var.edition
-  license_type                     = var.license_type
-  location                         = var.location
+  # data_factory_name - (required) is a type of string
+  data_factory_name = var.data_factory_name
+  # description - (optional) is a type of string
+  description = var.description
+  # edition - (optional) is a type of string
+  edition = var.edition
+  # license_type - (optional) is a type of string
+  license_type = var.license_type
+  # location - (required) is a type of string
+  location = var.location
+  # max_parallel_executions_per_node - (optional) is a type of number
   max_parallel_executions_per_node = var.max_parallel_executions_per_node
-  name                             = var.name
-  node_size                        = var.node_size
-  number_of_nodes                  = var.number_of_nodes
-  resource_group_name              = var.resource_group_name
+  # name - (required) is a type of string
+  name = var.name
+  # node_size - (required) is a type of string
+  node_size = var.node_size
+  # number_of_nodes - (optional) is a type of number
+  number_of_nodes = var.number_of_nodes
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
 
   dynamic "catalog_info" {
     for_each = var.catalog_info
     content {
-      administrator_login    = catalog_info.value["administrator_login"]
+      # administrator_login - (optional) is a type of string
+      administrator_login = catalog_info.value["administrator_login"]
+      # administrator_password - (optional) is a type of string
       administrator_password = catalog_info.value["administrator_password"]
-      pricing_tier           = catalog_info.value["pricing_tier"]
-      server_endpoint        = catalog_info.value["server_endpoint"]
+      # pricing_tier - (optional) is a type of string
+      pricing_tier = catalog_info.value["pricing_tier"]
+      # server_endpoint - (required) is a type of string
+      server_endpoint = catalog_info.value["server_endpoint"]
     }
   }
 
   dynamic "custom_setup_script" {
     for_each = var.custom_setup_script
     content {
+      # blob_container_uri - (required) is a type of string
       blob_container_uri = custom_setup_script.value["blob_container_uri"]
-      sas_token          = custom_setup_script.value["sas_token"]
+      # sas_token - (required) is a type of string
+      sas_token = custom_setup_script.value["sas_token"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -231,8 +251,10 @@ resource "azurerm_data_factory_integration_runtime_managed" "this" {
   dynamic "vnet_integration" {
     for_each = var.vnet_integration
     content {
+      # subnet_name - (required) is a type of string
       subnet_name = vnet_integration.value["subnet_name"]
-      vnet_id     = vnet_integration.value["vnet_id"]
+      # vnet_id - (required) is a type of string
+      vnet_id = vnet_integration.value["vnet_id"]
     }
   }
 

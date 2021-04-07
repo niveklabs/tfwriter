@@ -89,12 +89,18 @@ variable "tags" {
 
 ```terraform
 resource "aws_vpc_endpoint_service" "this" {
-  acceptance_required        = var.acceptance_required
-  allowed_principals         = var.allowed_principals
+  # acceptance_required - (required) is a type of bool
+  acceptance_required = var.acceptance_required
+  # allowed_principals - (optional) is a type of set of string
+  allowed_principals = var.allowed_principals
+  # gateway_load_balancer_arns - (optional) is a type of set of string
   gateway_load_balancer_arns = var.gateway_load_balancer_arns
+  # network_load_balancer_arns - (optional) is a type of set of string
   network_load_balancer_arns = var.network_load_balancer_arns
-  private_dns_name           = var.private_dns_name
-  tags                       = var.tags
+  # private_dns_name - (optional) is a type of string
+  private_dns_name = var.private_dns_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

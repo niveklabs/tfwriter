@@ -64,9 +64,12 @@ variable "name" {
 
 ```terraform
 resource "opc_compute_ssh_key" "this" {
+  # enabled - (optional) is a type of bool
   enabled = var.enabled
-  key     = var.key
-  name    = var.name
+  # key - (required) is a type of string
+  key = var.key
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

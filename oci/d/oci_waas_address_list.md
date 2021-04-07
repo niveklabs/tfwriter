@@ -49,6 +49,7 @@ variable "address_list_id" {
 
 ```terraform
 data "oci_waas_address_list" "this" {
+  # address_list_id - (required) is a type of string
   address_list_id = var.address_list_id
 }
 ```

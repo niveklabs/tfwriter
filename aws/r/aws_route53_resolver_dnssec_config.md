@@ -49,6 +49,7 @@ variable "resource_id" {
 
 ```terraform
 resource "aws_route53_resolver_dnssec_config" "this" {
+  # resource_id - (required) is a type of string
   resource_id = var.resource_id
 }
 ```

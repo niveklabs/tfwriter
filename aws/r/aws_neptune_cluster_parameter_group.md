@@ -99,18 +99,26 @@ variable "parameter" {
 
 ```terraform
 resource "aws_neptune_cluster_parameter_group" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  family      = var.family
-  name        = var.name
+  # family - (required) is a type of string
+  family = var.family
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
   name_prefix = var.name_prefix
-  tags        = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "parameter" {
     for_each = var.parameter
     content {
+      # apply_method - (optional) is a type of string
       apply_method = parameter.value["apply_method"]
-      name         = parameter.value["name"]
-      value        = parameter.value["value"]
+      # name - (required) is a type of string
+      name = parameter.value["name"]
+      # value - (required) is a type of string
+      value = parameter.value["value"]
     }
   }
 

@@ -72,13 +72,17 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_vpc_ipv4_cidr_block_association" "this" {
+  # cidr_block - (required) is a type of string
   cidr_block = var.cidr_block
-  vpc_id     = var.vpc_id
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

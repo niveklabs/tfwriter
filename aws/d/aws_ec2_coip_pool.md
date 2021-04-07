@@ -82,14 +82,19 @@ variable "filter" {
 
 ```terraform
 data "aws_ec2_coip_pool" "this" {
+  # local_gateway_route_table_id - (optional) is a type of string
   local_gateway_route_table_id = var.local_gateway_route_table_id
-  pool_id                      = var.pool_id
-  tags                         = var.tags
+  # pool_id - (optional) is a type of string
+  pool_id = var.pool_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of set of string
       values = filter.value["values"]
     }
   }

@@ -75,18 +75,23 @@ variable "regex_match_tuple" {
 
 ```terraform
 resource "aws_wafregional_regex_match_set" "this" {
+  # name - (required) is a type of string
   name = var.name
 
   dynamic "regex_match_tuple" {
     for_each = var.regex_match_tuple
     content {
+      # regex_pattern_set_id - (required) is a type of string
       regex_pattern_set_id = regex_match_tuple.value["regex_pattern_set_id"]
-      text_transformation  = regex_match_tuple.value["text_transformation"]
+      # text_transformation - (required) is a type of string
+      text_transformation = regex_match_tuple.value["text_transformation"]
 
       dynamic "field_to_match" {
         for_each = regex_match_tuple.value.field_to_match
         content {
+          # data - (optional) is a type of string
           data = field_to_match.value["data"]
+          # type - (required) is a type of string
           type = field_to_match.value["type"]
         }
       }

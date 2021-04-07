@@ -49,6 +49,7 @@ variable "key_arn" {
 
 ```terraform
 resource "aws_ebs_default_kms_key" "this" {
+  # key_arn - (required) is a type of string
   key_arn = var.key_arn
 }
 ```

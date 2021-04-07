@@ -79,11 +79,16 @@ variable "policy" {
 
 ```terraform
 resource "tfe_sentinel_policy" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # enforce_mode - (optional) is a type of string
   enforce_mode = var.enforce_mode
-  name         = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # organization - (required) is a type of string
   organization = var.organization
-  policy       = var.policy
+  # policy - (required) is a type of string
+  policy = var.policy
 }
 ```
 

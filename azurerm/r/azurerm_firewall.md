@@ -207,42 +207,63 @@ variable "virtual_hub" {
 
 ```terraform
 resource "azurerm_firewall" "this" {
-  dns_servers         = var.dns_servers
-  firewall_policy_id  = var.firewall_policy_id
-  location            = var.location
-  name                = var.name
-  private_ip_ranges   = var.private_ip_ranges
+  # dns_servers - (optional) is a type of list of string
+  dns_servers = var.dns_servers
+  # firewall_policy_id - (optional) is a type of string
+  firewall_policy_id = var.firewall_policy_id
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # private_ip_ranges - (optional) is a type of set of string
+  private_ip_ranges = var.private_ip_ranges
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  sku_name            = var.sku_name
-  sku_tier            = var.sku_tier
-  tags                = var.tags
-  threat_intel_mode   = var.threat_intel_mode
-  zones               = var.zones
+  # sku_name - (optional) is a type of string
+  sku_name = var.sku_name
+  # sku_tier - (optional) is a type of string
+  sku_tier = var.sku_tier
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # threat_intel_mode - (optional) is a type of string
+  threat_intel_mode = var.threat_intel_mode
+  # zones - (optional) is a type of list of string
+  zones = var.zones
 
   dynamic "ip_configuration" {
     for_each = var.ip_configuration
     content {
-      name                 = ip_configuration.value["name"]
+      # name - (required) is a type of string
+      name = ip_configuration.value["name"]
+      # public_ip_address_id - (required) is a type of string
       public_ip_address_id = ip_configuration.value["public_ip_address_id"]
-      subnet_id            = ip_configuration.value["subnet_id"]
+      # subnet_id - (optional) is a type of string
+      subnet_id = ip_configuration.value["subnet_id"]
     }
   }
 
   dynamic "management_ip_configuration" {
     for_each = var.management_ip_configuration
     content {
-      name                 = management_ip_configuration.value["name"]
+      # name - (required) is a type of string
+      name = management_ip_configuration.value["name"]
+      # public_ip_address_id - (required) is a type of string
       public_ip_address_id = management_ip_configuration.value["public_ip_address_id"]
-      subnet_id            = management_ip_configuration.value["subnet_id"]
+      # subnet_id - (required) is a type of string
+      subnet_id = management_ip_configuration.value["subnet_id"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -250,8 +271,10 @@ resource "azurerm_firewall" "this" {
   dynamic "virtual_hub" {
     for_each = var.virtual_hub
     content {
+      # public_ip_count - (optional) is a type of number
       public_ip_count = virtual_hub.value["public_ip_count"]
-      virtual_hub_id  = virtual_hub.value["virtual_hub_id"]
+      # virtual_hub_id - (required) is a type of string
+      virtual_hub_id = virtual_hub.value["virtual_hub_id"]
     }
   }
 

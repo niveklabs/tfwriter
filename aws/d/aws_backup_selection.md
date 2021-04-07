@@ -56,7 +56,9 @@ variable "selection_id" {
 
 ```terraform
 data "aws_backup_selection" "this" {
-  plan_id      = var.plan_id
+  # plan_id - (required) is a type of string
+  plan_id = var.plan_id
+  # selection_id - (required) is a type of string
   selection_id = var.selection_id
 }
 ```

@@ -113,15 +113,24 @@ variable "tags_all" {
 
 ```terraform
 resource "aws_vpc" "this" {
+  # assign_generated_ipv6_cidr_block - (optional) is a type of bool
   assign_generated_ipv6_cidr_block = var.assign_generated_ipv6_cidr_block
-  cidr_block                       = var.cidr_block
-  enable_classiclink               = var.enable_classiclink
-  enable_classiclink_dns_support   = var.enable_classiclink_dns_support
-  enable_dns_hostnames             = var.enable_dns_hostnames
-  enable_dns_support               = var.enable_dns_support
-  instance_tenancy                 = var.instance_tenancy
-  tags                             = var.tags
-  tags_all                         = var.tags_all
+  # cidr_block - (required) is a type of string
+  cidr_block = var.cidr_block
+  # enable_classiclink - (optional) is a type of bool
+  enable_classiclink = var.enable_classiclink
+  # enable_classiclink_dns_support - (optional) is a type of bool
+  enable_classiclink_dns_support = var.enable_classiclink_dns_support
+  # enable_dns_hostnames - (optional) is a type of bool
+  enable_dns_hostnames = var.enable_dns_hostnames
+  # enable_dns_support - (optional) is a type of bool
+  enable_dns_support = var.enable_dns_support
+  # instance_tenancy - (optional) is a type of string
+  instance_tenancy = var.instance_tenancy
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # tags_all - (optional) is a type of map of string
+  tags_all = var.tags_all
 }
 ```
 

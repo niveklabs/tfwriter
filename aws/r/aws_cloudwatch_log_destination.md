@@ -63,8 +63,11 @@ variable "target_arn" {
 
 ```terraform
 resource "aws_cloudwatch_log_destination" "this" {
-  name       = var.name
-  role_arn   = var.role_arn
+  # name - (required) is a type of string
+  name = var.name
+  # role_arn - (required) is a type of string
+  role_arn = var.role_arn
+  # target_arn - (required) is a type of string
   target_arn = var.target_arn
 }
 ```

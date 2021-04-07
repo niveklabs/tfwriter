@@ -103,19 +103,28 @@ variable "timeouts" {
 
 ```terraform
 resource "hcp_aws_network_peering" "this" {
-  hvn_id              = var.hvn_id
-  peer_account_id     = var.peer_account_id
+  # hvn_id - (required) is a type of string
+  hvn_id = var.hvn_id
+  # peer_account_id - (required) is a type of string
+  peer_account_id = var.peer_account_id
+  # peer_vpc_cidr_block - (required) is a type of string
   peer_vpc_cidr_block = var.peer_vpc_cidr_block
-  peer_vpc_id         = var.peer_vpc_id
-  peer_vpc_region     = var.peer_vpc_region
-  peering_id          = var.peering_id
+  # peer_vpc_id - (required) is a type of string
+  peer_vpc_id = var.peer_vpc_id
+  # peer_vpc_region - (required) is a type of string
+  peer_vpc_region = var.peer_vpc_region
+  # peering_id - (optional) is a type of string
+  peering_id = var.peering_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
-      create  = timeouts.value["create"]
+      # create - (optional) is a type of string
+      create = timeouts.value["create"]
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
-      delete  = timeouts.value["delete"]
+      # delete - (optional) is a type of string
+      delete = timeouts.value["delete"]
     }
   }
 

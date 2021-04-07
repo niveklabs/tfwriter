@@ -77,13 +77,17 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_kubernetes_cluster_node_pool" "this" {
+  # kubernetes_cluster_name - (required) is a type of string
   kubernetes_cluster_name = var.kubernetes_cluster_name
-  name                    = var.name
-  resource_group_name     = var.resource_group_name
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

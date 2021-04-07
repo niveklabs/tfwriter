@@ -72,9 +72,13 @@ variable "zone" {
 
 ```terraform
 resource "dns_ptr_record" "this" {
+  # name - (optional) is a type of string
   name = var.name
-  ptr  = var.ptr
-  ttl  = var.ttl
+  # ptr - (required) is a type of string
+  ptr = var.ptr
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
+  # zone - (required) is a type of string
   zone = var.zone
 }
 ```

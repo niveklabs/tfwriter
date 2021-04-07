@@ -63,8 +63,11 @@ variable "organization" {
 
 ```terraform
 resource "tfe_ssh_key" "this" {
-  key          = var.key
-  name         = var.name
+  # key - (required) is a type of string
+  key = var.key
+  # name - (required) is a type of string
+  name = var.name
+  # organization - (required) is a type of string
   organization = var.organization
 }
 ```

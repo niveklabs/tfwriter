@@ -129,14 +129,18 @@ resource "kubernetes_cluster_role" "this" {
       dynamic "cluster_role_selectors" {
         for_each = aggregation_rule.value.cluster_role_selectors
         content {
+          # match_labels - (optional) is a type of map of string
           match_labels = cluster_role_selectors.value["match_labels"]
 
           dynamic "match_expressions" {
             for_each = cluster_role_selectors.value.match_expressions
             content {
-              key      = match_expressions.value["key"]
+              # key - (optional) is a type of string
+              key = match_expressions.value["key"]
+              # operator - (optional) is a type of string
               operator = match_expressions.value["operator"]
-              values   = match_expressions.value["values"]
+              # values - (optional) is a type of set of string
+              values = match_expressions.value["values"]
             }
           }
 
@@ -149,20 +153,28 @@ resource "kubernetes_cluster_role" "this" {
   dynamic "metadata" {
     for_each = var.metadata
     content {
+      # annotations - (optional) is a type of map of string
       annotations = metadata.value["annotations"]
-      labels      = metadata.value["labels"]
-      name        = metadata.value["name"]
+      # labels - (optional) is a type of map of string
+      labels = metadata.value["labels"]
+      # name - (optional) is a type of string
+      name = metadata.value["name"]
     }
   }
 
   dynamic "rule" {
     for_each = var.rule
     content {
-      api_groups        = rule.value["api_groups"]
+      # api_groups - (optional) is a type of list of string
+      api_groups = rule.value["api_groups"]
+      # non_resource_urls - (optional) is a type of list of string
       non_resource_urls = rule.value["non_resource_urls"]
-      resource_names    = rule.value["resource_names"]
-      resources         = rule.value["resources"]
-      verbs             = rule.value["verbs"]
+      # resource_names - (optional) is a type of list of string
+      resource_names = rule.value["resource_names"]
+      # resources - (optional) is a type of list of string
+      resources = rule.value["resources"]
+      # verbs - (required) is a type of list of string
+      verbs = rule.value["verbs"]
     }
   }
 

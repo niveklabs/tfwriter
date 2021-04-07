@@ -74,14 +74,19 @@ variable "filter" {
 
 ```terraform
 data "oci_database_autonomous_container_patches" "this" {
+  # autonomous_container_database_id - (required) is a type of string
   autonomous_container_database_id = var.autonomous_container_database_id
-  compartment_id                   = var.compartment_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

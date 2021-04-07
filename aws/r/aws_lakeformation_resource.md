@@ -57,7 +57,9 @@ variable "role_arn" {
 
 ```terraform
 resource "aws_lakeformation_resource" "this" {
-  arn      = var.arn
+  # arn - (required) is a type of string
+  arn = var.arn
+  # role_arn - (optional) is a type of string
   role_arn = var.role_arn
 }
 ```

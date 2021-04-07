@@ -482,21 +482,30 @@ resource "kubernetes_persistent_volume" "this" {
   dynamic "metadata" {
     for_each = var.metadata
     content {
+      # annotations - (optional) is a type of map of string
       annotations = metadata.value["annotations"]
-      labels      = metadata.value["labels"]
-      name        = metadata.value["name"]
+      # labels - (optional) is a type of map of string
+      labels = metadata.value["labels"]
+      # name - (optional) is a type of string
+      name = metadata.value["name"]
     }
   }
 
   dynamic "spec" {
     for_each = var.spec
     content {
-      access_modes                     = spec.value["access_modes"]
-      capacity                         = spec.value["capacity"]
-      mount_options                    = spec.value["mount_options"]
+      # access_modes - (required) is a type of set of string
+      access_modes = spec.value["access_modes"]
+      # capacity - (required) is a type of map of string
+      capacity = spec.value["capacity"]
+      # mount_options - (optional) is a type of set of string
+      mount_options = spec.value["mount_options"]
+      # persistent_volume_reclaim_policy - (optional) is a type of string
       persistent_volume_reclaim_policy = spec.value["persistent_volume_reclaim_policy"]
-      storage_class_name               = spec.value["storage_class_name"]
-      volume_mode                      = spec.value["volume_mode"]
+      # storage_class_name - (optional) is a type of string
+      storage_class_name = spec.value["storage_class_name"]
+      # volume_mode - (optional) is a type of string
+      volume_mode = spec.value["volume_mode"]
 
       dynamic "node_affinity" {
         for_each = spec.value.node_affinity
@@ -513,18 +522,24 @@ resource "kubernetes_persistent_volume" "this" {
                   dynamic "match_expressions" {
                     for_each = node_selector_term.value.match_expressions
                     content {
-                      key      = match_expressions.value["key"]
+                      # key - (required) is a type of string
+                      key = match_expressions.value["key"]
+                      # operator - (required) is a type of string
                       operator = match_expressions.value["operator"]
-                      values   = match_expressions.value["values"]
+                      # values - (optional) is a type of set of string
+                      values = match_expressions.value["values"]
                     }
                   }
 
                   dynamic "match_fields" {
                     for_each = node_selector_term.value.match_fields
                     content {
-                      key      = match_fields.value["key"]
+                      # key - (required) is a type of string
+                      key = match_fields.value["key"]
+                      # operator - (required) is a type of string
                       operator = match_fields.value["operator"]
-                      values   = match_fields.value["values"]
+                      # values - (optional) is a type of set of string
+                      values = match_fields.value["values"]
                     }
                   }
 
@@ -544,9 +559,13 @@ resource "kubernetes_persistent_volume" "this" {
           dynamic "aws_elastic_block_store" {
             for_each = persistent_volume_source.value.aws_elastic_block_store
             content {
-              fs_type   = aws_elastic_block_store.value["fs_type"]
+              # fs_type - (optional) is a type of string
+              fs_type = aws_elastic_block_store.value["fs_type"]
+              # partition - (optional) is a type of number
               partition = aws_elastic_block_store.value["partition"]
+              # read_only - (optional) is a type of bool
               read_only = aws_elastic_block_store.value["read_only"]
+              # volume_id - (required) is a type of string
               volume_id = aws_elastic_block_store.value["volume_id"]
             }
           }
@@ -554,37 +573,53 @@ resource "kubernetes_persistent_volume" "this" {
           dynamic "azure_disk" {
             for_each = persistent_volume_source.value.azure_disk
             content {
-              caching_mode  = azure_disk.value["caching_mode"]
+              # caching_mode - (required) is a type of string
+              caching_mode = azure_disk.value["caching_mode"]
+              # data_disk_uri - (required) is a type of string
               data_disk_uri = azure_disk.value["data_disk_uri"]
-              disk_name     = azure_disk.value["disk_name"]
-              fs_type       = azure_disk.value["fs_type"]
-              kind          = azure_disk.value["kind"]
-              read_only     = azure_disk.value["read_only"]
+              # disk_name - (required) is a type of string
+              disk_name = azure_disk.value["disk_name"]
+              # fs_type - (optional) is a type of string
+              fs_type = azure_disk.value["fs_type"]
+              # kind - (optional) is a type of string
+              kind = azure_disk.value["kind"]
+              # read_only - (optional) is a type of bool
+              read_only = azure_disk.value["read_only"]
             }
           }
 
           dynamic "azure_file" {
             for_each = persistent_volume_source.value.azure_file
             content {
-              read_only   = azure_file.value["read_only"]
+              # read_only - (optional) is a type of bool
+              read_only = azure_file.value["read_only"]
+              # secret_name - (required) is a type of string
               secret_name = azure_file.value["secret_name"]
-              share_name  = azure_file.value["share_name"]
+              # share_name - (required) is a type of string
+              share_name = azure_file.value["share_name"]
             }
           }
 
           dynamic "ceph_fs" {
             for_each = persistent_volume_source.value.ceph_fs
             content {
-              monitors    = ceph_fs.value["monitors"]
-              path        = ceph_fs.value["path"]
-              read_only   = ceph_fs.value["read_only"]
+              # monitors - (required) is a type of set of string
+              monitors = ceph_fs.value["monitors"]
+              # path - (optional) is a type of string
+              path = ceph_fs.value["path"]
+              # read_only - (optional) is a type of bool
+              read_only = ceph_fs.value["read_only"]
+              # secret_file - (optional) is a type of string
               secret_file = ceph_fs.value["secret_file"]
-              user        = ceph_fs.value["user"]
+              # user - (optional) is a type of string
+              user = ceph_fs.value["user"]
 
               dynamic "secret_ref" {
                 for_each = ceph_fs.value.secret_ref
                 content {
-                  name      = secret_ref.value["name"]
+                  # name - (optional) is a type of string
+                  name = secret_ref.value["name"]
+                  # namespace - (optional) is a type of string
                   namespace = secret_ref.value["namespace"]
                 }
               }
@@ -595,8 +630,11 @@ resource "kubernetes_persistent_volume" "this" {
           dynamic "cinder" {
             for_each = persistent_volume_source.value.cinder
             content {
-              fs_type   = cinder.value["fs_type"]
+              # fs_type - (optional) is a type of string
+              fs_type = cinder.value["fs_type"]
+              # read_only - (optional) is a type of bool
               read_only = cinder.value["read_only"]
+              # volume_id - (required) is a type of string
               volume_id = cinder.value["volume_id"]
             }
           }
@@ -604,16 +642,23 @@ resource "kubernetes_persistent_volume" "this" {
           dynamic "csi" {
             for_each = persistent_volume_source.value.csi
             content {
-              driver            = csi.value["driver"]
-              fs_type           = csi.value["fs_type"]
-              read_only         = csi.value["read_only"]
+              # driver - (required) is a type of string
+              driver = csi.value["driver"]
+              # fs_type - (optional) is a type of string
+              fs_type = csi.value["fs_type"]
+              # read_only - (optional) is a type of bool
+              read_only = csi.value["read_only"]
+              # volume_attributes - (optional) is a type of map of string
               volume_attributes = csi.value["volume_attributes"]
-              volume_handle     = csi.value["volume_handle"]
+              # volume_handle - (required) is a type of string
+              volume_handle = csi.value["volume_handle"]
 
               dynamic "controller_expand_secret_ref" {
                 for_each = csi.value.controller_expand_secret_ref
                 content {
-                  name      = controller_expand_secret_ref.value["name"]
+                  # name - (optional) is a type of string
+                  name = controller_expand_secret_ref.value["name"]
+                  # namespace - (optional) is a type of string
                   namespace = controller_expand_secret_ref.value["namespace"]
                 }
               }
@@ -621,7 +666,9 @@ resource "kubernetes_persistent_volume" "this" {
               dynamic "controller_publish_secret_ref" {
                 for_each = csi.value.controller_publish_secret_ref
                 content {
-                  name      = controller_publish_secret_ref.value["name"]
+                  # name - (optional) is a type of string
+                  name = controller_publish_secret_ref.value["name"]
+                  # namespace - (optional) is a type of string
                   namespace = controller_publish_secret_ref.value["namespace"]
                 }
               }
@@ -629,7 +676,9 @@ resource "kubernetes_persistent_volume" "this" {
               dynamic "node_publish_secret_ref" {
                 for_each = csi.value.node_publish_secret_ref
                 content {
-                  name      = node_publish_secret_ref.value["name"]
+                  # name - (optional) is a type of string
+                  name = node_publish_secret_ref.value["name"]
+                  # namespace - (optional) is a type of string
                   namespace = node_publish_secret_ref.value["namespace"]
                 }
               }
@@ -637,7 +686,9 @@ resource "kubernetes_persistent_volume" "this" {
               dynamic "node_stage_secret_ref" {
                 for_each = csi.value.node_stage_secret_ref
                 content {
-                  name      = node_stage_secret_ref.value["name"]
+                  # name - (optional) is a type of string
+                  name = node_stage_secret_ref.value["name"]
+                  # namespace - (optional) is a type of string
                   namespace = node_stage_secret_ref.value["namespace"]
                 }
               }
@@ -648,9 +699,13 @@ resource "kubernetes_persistent_volume" "this" {
           dynamic "fc" {
             for_each = persistent_volume_source.value.fc
             content {
-              fs_type      = fc.value["fs_type"]
-              lun          = fc.value["lun"]
-              read_only    = fc.value["read_only"]
+              # fs_type - (optional) is a type of string
+              fs_type = fc.value["fs_type"]
+              # lun - (required) is a type of number
+              lun = fc.value["lun"]
+              # read_only - (optional) is a type of bool
+              read_only = fc.value["read_only"]
+              # target_ww_ns - (required) is a type of set of string
               target_ww_ns = fc.value["target_ww_ns"]
             }
           }
@@ -658,15 +713,21 @@ resource "kubernetes_persistent_volume" "this" {
           dynamic "flex_volume" {
             for_each = persistent_volume_source.value.flex_volume
             content {
-              driver    = flex_volume.value["driver"]
-              fs_type   = flex_volume.value["fs_type"]
-              options   = flex_volume.value["options"]
+              # driver - (required) is a type of string
+              driver = flex_volume.value["driver"]
+              # fs_type - (optional) is a type of string
+              fs_type = flex_volume.value["fs_type"]
+              # options - (optional) is a type of map of string
+              options = flex_volume.value["options"]
+              # read_only - (optional) is a type of bool
               read_only = flex_volume.value["read_only"]
 
               dynamic "secret_ref" {
                 for_each = flex_volume.value.secret_ref
                 content {
-                  name      = secret_ref.value["name"]
+                  # name - (optional) is a type of string
+                  name = secret_ref.value["name"]
+                  # namespace - (optional) is a type of string
                   namespace = secret_ref.value["namespace"]
                 }
               }
@@ -677,7 +738,9 @@ resource "kubernetes_persistent_volume" "this" {
           dynamic "flocker" {
             for_each = persistent_volume_source.value.flocker
             content {
+              # dataset_name - (optional) is a type of string
               dataset_name = flocker.value["dataset_name"]
+              # dataset_uuid - (optional) is a type of string
               dataset_uuid = flocker.value["dataset_uuid"]
             }
           }
@@ -685,9 +748,13 @@ resource "kubernetes_persistent_volume" "this" {
           dynamic "gce_persistent_disk" {
             for_each = persistent_volume_source.value.gce_persistent_disk
             content {
-              fs_type   = gce_persistent_disk.value["fs_type"]
+              # fs_type - (optional) is a type of string
+              fs_type = gce_persistent_disk.value["fs_type"]
+              # partition - (optional) is a type of number
               partition = gce_persistent_disk.value["partition"]
-              pd_name   = gce_persistent_disk.value["pd_name"]
+              # pd_name - (required) is a type of string
+              pd_name = gce_persistent_disk.value["pd_name"]
+              # read_only - (optional) is a type of bool
               read_only = gce_persistent_disk.value["read_only"]
             }
           }
@@ -695,16 +762,21 @@ resource "kubernetes_persistent_volume" "this" {
           dynamic "glusterfs" {
             for_each = persistent_volume_source.value.glusterfs
             content {
+              # endpoints_name - (required) is a type of string
               endpoints_name = glusterfs.value["endpoints_name"]
-              path           = glusterfs.value["path"]
-              read_only      = glusterfs.value["read_only"]
+              # path - (required) is a type of string
+              path = glusterfs.value["path"]
+              # read_only - (optional) is a type of bool
+              read_only = glusterfs.value["read_only"]
             }
           }
 
           dynamic "host_path" {
             for_each = persistent_volume_source.value.host_path
             content {
+              # path - (optional) is a type of string
               path = host_path.value["path"]
+              # type - (optional) is a type of string
               type = host_path.value["type"]
             }
           }
@@ -712,18 +784,25 @@ resource "kubernetes_persistent_volume" "this" {
           dynamic "iscsi" {
             for_each = persistent_volume_source.value.iscsi
             content {
-              fs_type         = iscsi.value["fs_type"]
-              iqn             = iscsi.value["iqn"]
+              # fs_type - (optional) is a type of string
+              fs_type = iscsi.value["fs_type"]
+              # iqn - (required) is a type of string
+              iqn = iscsi.value["iqn"]
+              # iscsi_interface - (optional) is a type of string
               iscsi_interface = iscsi.value["iscsi_interface"]
-              lun             = iscsi.value["lun"]
-              read_only       = iscsi.value["read_only"]
-              target_portal   = iscsi.value["target_portal"]
+              # lun - (optional) is a type of number
+              lun = iscsi.value["lun"]
+              # read_only - (optional) is a type of bool
+              read_only = iscsi.value["read_only"]
+              # target_portal - (required) is a type of string
+              target_portal = iscsi.value["target_portal"]
             }
           }
 
           dynamic "local" {
             for_each = persistent_volume_source.value.local
             content {
+              # path - (optional) is a type of string
               path = local.value["path"]
             }
           }
@@ -731,46 +810,65 @@ resource "kubernetes_persistent_volume" "this" {
           dynamic "nfs" {
             for_each = persistent_volume_source.value.nfs
             content {
-              path      = nfs.value["path"]
+              # path - (required) is a type of string
+              path = nfs.value["path"]
+              # read_only - (optional) is a type of bool
               read_only = nfs.value["read_only"]
-              server    = nfs.value["server"]
+              # server - (required) is a type of string
+              server = nfs.value["server"]
             }
           }
 
           dynamic "photon_persistent_disk" {
             for_each = persistent_volume_source.value.photon_persistent_disk
             content {
+              # fs_type - (optional) is a type of string
               fs_type = photon_persistent_disk.value["fs_type"]
-              pd_id   = photon_persistent_disk.value["pd_id"]
+              # pd_id - (required) is a type of string
+              pd_id = photon_persistent_disk.value["pd_id"]
             }
           }
 
           dynamic "quobyte" {
             for_each = persistent_volume_source.value.quobyte
             content {
-              group     = quobyte.value["group"]
+              # group - (optional) is a type of string
+              group = quobyte.value["group"]
+              # read_only - (optional) is a type of bool
               read_only = quobyte.value["read_only"]
-              registry  = quobyte.value["registry"]
-              user      = quobyte.value["user"]
-              volume    = quobyte.value["volume"]
+              # registry - (required) is a type of string
+              registry = quobyte.value["registry"]
+              # user - (optional) is a type of string
+              user = quobyte.value["user"]
+              # volume - (required) is a type of string
+              volume = quobyte.value["volume"]
             }
           }
 
           dynamic "rbd" {
             for_each = persistent_volume_source.value.rbd
             content {
+              # ceph_monitors - (required) is a type of set of string
               ceph_monitors = rbd.value["ceph_monitors"]
-              fs_type       = rbd.value["fs_type"]
-              keyring       = rbd.value["keyring"]
-              rados_user    = rbd.value["rados_user"]
-              rbd_image     = rbd.value["rbd_image"]
-              rbd_pool      = rbd.value["rbd_pool"]
-              read_only     = rbd.value["read_only"]
+              # fs_type - (optional) is a type of string
+              fs_type = rbd.value["fs_type"]
+              # keyring - (optional) is a type of string
+              keyring = rbd.value["keyring"]
+              # rados_user - (optional) is a type of string
+              rados_user = rbd.value["rados_user"]
+              # rbd_image - (required) is a type of string
+              rbd_image = rbd.value["rbd_image"]
+              # rbd_pool - (optional) is a type of string
+              rbd_pool = rbd.value["rbd_pool"]
+              # read_only - (optional) is a type of bool
+              read_only = rbd.value["read_only"]
 
               dynamic "secret_ref" {
                 for_each = rbd.value.secret_ref
                 content {
-                  name      = secret_ref.value["name"]
+                  # name - (optional) is a type of string
+                  name = secret_ref.value["name"]
+                  # namespace - (optional) is a type of string
                   namespace = secret_ref.value["namespace"]
                 }
               }
@@ -781,7 +879,9 @@ resource "kubernetes_persistent_volume" "this" {
           dynamic "vsphere_volume" {
             for_each = persistent_volume_source.value.vsphere_volume
             content {
-              fs_type     = vsphere_volume.value["fs_type"]
+              # fs_type - (optional) is a type of string
+              fs_type = vsphere_volume.value["fs_type"]
+              # volume_path - (required) is a type of string
               volume_path = vsphere_volume.value["volume_path"]
             }
           }
@@ -795,6 +895,7 @@ resource "kubernetes_persistent_volume" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

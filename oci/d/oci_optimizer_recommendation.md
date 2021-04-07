@@ -49,6 +49,7 @@ variable "recommendation_id" {
 
 ```terraform
 data "oci_optimizer_recommendation" "this" {
+  # recommendation_id - (required) is a type of string
   recommendation_id = var.recommendation_id
 }
 ```

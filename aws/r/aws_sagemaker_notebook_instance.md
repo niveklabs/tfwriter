@@ -143,19 +143,32 @@ variable "volume_size" {
 
 ```terraform
 resource "aws_sagemaker_notebook_instance" "this" {
+  # additional_code_repositories - (optional) is a type of set of string
   additional_code_repositories = var.additional_code_repositories
-  default_code_repository      = var.default_code_repository
-  direct_internet_access       = var.direct_internet_access
-  instance_type                = var.instance_type
-  kms_key_id                   = var.kms_key_id
-  lifecycle_config_name        = var.lifecycle_config_name
-  name                         = var.name
-  role_arn                     = var.role_arn
-  root_access                  = var.root_access
-  security_groups              = var.security_groups
-  subnet_id                    = var.subnet_id
-  tags                         = var.tags
-  volume_size                  = var.volume_size
+  # default_code_repository - (optional) is a type of string
+  default_code_repository = var.default_code_repository
+  # direct_internet_access - (optional) is a type of string
+  direct_internet_access = var.direct_internet_access
+  # instance_type - (required) is a type of string
+  instance_type = var.instance_type
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # lifecycle_config_name - (optional) is a type of string
+  lifecycle_config_name = var.lifecycle_config_name
+  # name - (required) is a type of string
+  name = var.name
+  # role_arn - (required) is a type of string
+  role_arn = var.role_arn
+  # root_access - (optional) is a type of string
+  root_access = var.root_access
+  # security_groups - (optional) is a type of set of string
+  security_groups = var.security_groups
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # volume_size - (optional) is a type of number
+  volume_size = var.volume_size
 }
 ```
 

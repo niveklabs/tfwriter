@@ -64,9 +64,12 @@ variable "project" {
 
 ```terraform
 resource "google_compute_image_iam_policy" "this" {
-  image       = var.image
+  # image - (required) is a type of string
+  image = var.image
+  # policy_data - (required) is a type of string
   policy_data = var.policy_data
-  project     = var.project
+  # project - (optional) is a type of string
+  project = var.project
 }
 ```
 

@@ -200,37 +200,59 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_storagegateway_gateway" "this" {
-  activation_key                              = var.activation_key
+  # activation_key - (optional) is a type of string
+  activation_key = var.activation_key
+  # average_download_rate_limit_in_bits_per_sec - (optional) is a type of number
   average_download_rate_limit_in_bits_per_sec = var.average_download_rate_limit_in_bits_per_sec
-  average_upload_rate_limit_in_bits_per_sec   = var.average_upload_rate_limit_in_bits_per_sec
-  cloudwatch_log_group_arn                    = var.cloudwatch_log_group_arn
-  gateway_ip_address                          = var.gateway_ip_address
-  gateway_name                                = var.gateway_name
-  gateway_timezone                            = var.gateway_timezone
-  gateway_type                                = var.gateway_type
-  gateway_vpc_endpoint                        = var.gateway_vpc_endpoint
-  medium_changer_type                         = var.medium_changer_type
-  smb_file_share_visibility                   = var.smb_file_share_visibility
-  smb_guest_password                          = var.smb_guest_password
-  smb_security_strategy                       = var.smb_security_strategy
-  tags                                        = var.tags
-  tape_drive_type                             = var.tape_drive_type
+  # average_upload_rate_limit_in_bits_per_sec - (optional) is a type of number
+  average_upload_rate_limit_in_bits_per_sec = var.average_upload_rate_limit_in_bits_per_sec
+  # cloudwatch_log_group_arn - (optional) is a type of string
+  cloudwatch_log_group_arn = var.cloudwatch_log_group_arn
+  # gateway_ip_address - (optional) is a type of string
+  gateway_ip_address = var.gateway_ip_address
+  # gateway_name - (required) is a type of string
+  gateway_name = var.gateway_name
+  # gateway_timezone - (required) is a type of string
+  gateway_timezone = var.gateway_timezone
+  # gateway_type - (optional) is a type of string
+  gateway_type = var.gateway_type
+  # gateway_vpc_endpoint - (optional) is a type of string
+  gateway_vpc_endpoint = var.gateway_vpc_endpoint
+  # medium_changer_type - (optional) is a type of string
+  medium_changer_type = var.medium_changer_type
+  # smb_file_share_visibility - (optional) is a type of bool
+  smb_file_share_visibility = var.smb_file_share_visibility
+  # smb_guest_password - (optional) is a type of string
+  smb_guest_password = var.smb_guest_password
+  # smb_security_strategy - (optional) is a type of string
+  smb_security_strategy = var.smb_security_strategy
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # tape_drive_type - (optional) is a type of string
+  tape_drive_type = var.tape_drive_type
 
   dynamic "smb_active_directory_settings" {
     for_each = var.smb_active_directory_settings
     content {
-      domain_controllers  = smb_active_directory_settings.value["domain_controllers"]
-      domain_name         = smb_active_directory_settings.value["domain_name"]
+      # domain_controllers - (optional) is a type of set of string
+      domain_controllers = smb_active_directory_settings.value["domain_controllers"]
+      # domain_name - (required) is a type of string
+      domain_name = smb_active_directory_settings.value["domain_name"]
+      # organizational_unit - (optional) is a type of string
       organizational_unit = smb_active_directory_settings.value["organizational_unit"]
-      password            = smb_active_directory_settings.value["password"]
-      timeout_in_seconds  = smb_active_directory_settings.value["timeout_in_seconds"]
-      username            = smb_active_directory_settings.value["username"]
+      # password - (required) is a type of string
+      password = smb_active_directory_settings.value["password"]
+      # timeout_in_seconds - (optional) is a type of number
+      timeout_in_seconds = smb_active_directory_settings.value["timeout_in_seconds"]
+      # username - (required) is a type of string
+      username = smb_active_directory_settings.value["username"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

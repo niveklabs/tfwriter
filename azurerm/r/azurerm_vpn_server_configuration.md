@@ -264,26 +264,37 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_vpn_server_configuration" "this" {
-  location                 = var.location
-  name                     = var.name
-  resource_group_name      = var.resource_group_name
-  tags                     = var.tags
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpn_authentication_types - (required) is a type of list of string
   vpn_authentication_types = var.vpn_authentication_types
-  vpn_protocols            = var.vpn_protocols
+  # vpn_protocols - (optional) is a type of set of string
+  vpn_protocols = var.vpn_protocols
 
   dynamic "azure_active_directory_authentication" {
     for_each = var.azure_active_directory_authentication
     content {
+      # audience - (required) is a type of string
       audience = azure_active_directory_authentication.value["audience"]
-      issuer   = azure_active_directory_authentication.value["issuer"]
-      tenant   = azure_active_directory_authentication.value["tenant"]
+      # issuer - (required) is a type of string
+      issuer = azure_active_directory_authentication.value["issuer"]
+      # tenant - (required) is a type of string
+      tenant = azure_active_directory_authentication.value["tenant"]
     }
   }
 
   dynamic "client_revoked_certificate" {
     for_each = var.client_revoked_certificate
     content {
-      name       = client_revoked_certificate.value["name"]
+      # name - (required) is a type of string
+      name = client_revoked_certificate.value["name"]
+      # thumbprint - (required) is a type of string
       thumbprint = client_revoked_certificate.value["thumbprint"]
     }
   }
@@ -291,7 +302,9 @@ resource "azurerm_vpn_server_configuration" "this" {
   dynamic "client_root_certificate" {
     for_each = var.client_root_certificate
     content {
-      name             = client_root_certificate.value["name"]
+      # name - (required) is a type of string
+      name = client_root_certificate.value["name"]
+      # public_cert_data - (required) is a type of string
       public_cert_data = client_root_certificate.value["public_cert_data"]
     }
   }
@@ -299,14 +312,22 @@ resource "azurerm_vpn_server_configuration" "this" {
   dynamic "ipsec_policy" {
     for_each = var.ipsec_policy
     content {
-      dh_group               = ipsec_policy.value["dh_group"]
-      ike_encryption         = ipsec_policy.value["ike_encryption"]
-      ike_integrity          = ipsec_policy.value["ike_integrity"]
-      ipsec_encryption       = ipsec_policy.value["ipsec_encryption"]
-      ipsec_integrity        = ipsec_policy.value["ipsec_integrity"]
-      pfs_group              = ipsec_policy.value["pfs_group"]
+      # dh_group - (required) is a type of string
+      dh_group = ipsec_policy.value["dh_group"]
+      # ike_encryption - (required) is a type of string
+      ike_encryption = ipsec_policy.value["ike_encryption"]
+      # ike_integrity - (required) is a type of string
+      ike_integrity = ipsec_policy.value["ike_integrity"]
+      # ipsec_encryption - (required) is a type of string
+      ipsec_encryption = ipsec_policy.value["ipsec_encryption"]
+      # ipsec_integrity - (required) is a type of string
+      ipsec_integrity = ipsec_policy.value["ipsec_integrity"]
+      # pfs_group - (required) is a type of string
+      pfs_group = ipsec_policy.value["pfs_group"]
+      # sa_data_size_kilobytes - (required) is a type of number
       sa_data_size_kilobytes = ipsec_policy.value["sa_data_size_kilobytes"]
-      sa_lifetime_seconds    = ipsec_policy.value["sa_lifetime_seconds"]
+      # sa_lifetime_seconds - (required) is a type of number
+      sa_lifetime_seconds = ipsec_policy.value["sa_lifetime_seconds"]
     }
   }
 
@@ -317,7 +338,9 @@ resource "azurerm_vpn_server_configuration" "this" {
       dynamic "client_root_certificate" {
         for_each = radius.value.client_root_certificate
         content {
-          name       = client_root_certificate.value["name"]
+          # name - (required) is a type of string
+          name = client_root_certificate.value["name"]
+          # thumbprint - (required) is a type of string
           thumbprint = client_root_certificate.value["thumbprint"]
         }
       }
@@ -325,16 +348,21 @@ resource "azurerm_vpn_server_configuration" "this" {
       dynamic "server" {
         for_each = radius.value.server
         content {
+          # address - (required) is a type of string
           address = server.value["address"]
-          score   = server.value["score"]
-          secret  = server.value["secret"]
+          # score - (required) is a type of number
+          score = server.value["score"]
+          # secret - (required) is a type of string
+          secret = server.value["secret"]
         }
       }
 
       dynamic "server_root_certificate" {
         for_each = radius.value.server_root_certificate
         content {
-          name             = server_root_certificate.value["name"]
+          # name - (required) is a type of string
+          name = server_root_certificate.value["name"]
+          # public_cert_data - (required) is a type of string
           public_cert_data = server_root_certificate.value["public_cert_data"]
         }
       }
@@ -345,13 +373,17 @@ resource "azurerm_vpn_server_configuration" "this" {
   dynamic "radius_server" {
     for_each = var.radius_server
     content {
+      # address - (required) is a type of string
       address = radius_server.value["address"]
-      secret  = radius_server.value["secret"]
+      # secret - (required) is a type of string
+      secret = radius_server.value["secret"]
 
       dynamic "client_root_certificate" {
         for_each = radius_server.value.client_root_certificate
         content {
-          name       = client_root_certificate.value["name"]
+          # name - (required) is a type of string
+          name = client_root_certificate.value["name"]
+          # thumbprint - (required) is a type of string
           thumbprint = client_root_certificate.value["thumbprint"]
         }
       }
@@ -359,7 +391,9 @@ resource "azurerm_vpn_server_configuration" "this" {
       dynamic "server_root_certificate" {
         for_each = radius_server.value.server_root_certificate
         content {
-          name             = server_root_certificate.value["name"]
+          # name - (required) is a type of string
+          name = server_root_certificate.value["name"]
+          # public_cert_data - (required) is a type of string
           public_cert_data = server_root_certificate.value["public_cert_data"]
         }
       }
@@ -370,9 +404,13 @@ resource "azurerm_vpn_server_configuration" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -137,22 +137,35 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_network_load_balancer_backend" "this" {
-  backend_set_name         = var.backend_set_name
-  ip_address               = var.ip_address
-  is_backup                = var.is_backup
-  is_drain                 = var.is_drain
-  is_offline               = var.is_offline
-  name                     = var.name
+  # backend_set_name - (required) is a type of string
+  backend_set_name = var.backend_set_name
+  # ip_address - (optional) is a type of string
+  ip_address = var.ip_address
+  # is_backup - (optional) is a type of bool
+  is_backup = var.is_backup
+  # is_drain - (optional) is a type of bool
+  is_drain = var.is_drain
+  # is_offline - (optional) is a type of bool
+  is_offline = var.is_offline
+  # name - (optional) is a type of string
+  name = var.name
+  # network_load_balancer_id - (required) is a type of string
   network_load_balancer_id = var.network_load_balancer_id
-  port                     = var.port
-  target_id                = var.target_id
-  weight                   = var.weight
+  # port - (required) is a type of number
+  port = var.port
+  # target_id - (optional) is a type of string
+  target_id = var.target_id
+  # weight - (optional) is a type of number
+  weight = var.weight
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

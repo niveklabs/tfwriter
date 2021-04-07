@@ -49,6 +49,7 @@ variable "certificate_id" {
 
 ```terraform
 data "oci_waas_certificate" "this" {
+  # certificate_id - (required) is a type of string
   certificate_id = var.certificate_id
 }
 ```

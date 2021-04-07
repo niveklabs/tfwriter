@@ -142,29 +142,43 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_blueprint_assignment" "this" {
-  location                = var.location
+  # location - (required) is a type of string
+  location = var.location
+  # lock_exclude_principals - (optional) is a type of list of string
   lock_exclude_principals = var.lock_exclude_principals
-  lock_mode               = var.lock_mode
-  name                    = var.name
-  parameter_values        = var.parameter_values
-  resource_groups         = var.resource_groups
-  target_subscription_id  = var.target_subscription_id
-  version_id              = var.version_id
+  # lock_mode - (optional) is a type of string
+  lock_mode = var.lock_mode
+  # name - (required) is a type of string
+  name = var.name
+  # parameter_values - (optional) is a type of string
+  parameter_values = var.parameter_values
+  # resource_groups - (optional) is a type of string
+  resource_groups = var.resource_groups
+  # target_subscription_id - (required) is a type of string
+  target_subscription_id = var.target_subscription_id
+  # version_id - (required) is a type of string
+  version_id = var.version_id
 
   dynamic "identity" {
     for_each = var.identity
     content {
+      # identity_ids - (required) is a type of list of string
       identity_ids = identity.value["identity_ids"]
-      type         = identity.value["type"]
+      # type - (required) is a type of string
+      type = identity.value["type"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -120,18 +120,27 @@ variable "options" {
 
 ```terraform
 resource "aws_acm_certificate" "this" {
+  # certificate_authority_arn - (optional) is a type of string
   certificate_authority_arn = var.certificate_authority_arn
-  certificate_body          = var.certificate_body
-  certificate_chain         = var.certificate_chain
-  domain_name               = var.domain_name
-  private_key               = var.private_key
+  # certificate_body - (optional) is a type of string
+  certificate_body = var.certificate_body
+  # certificate_chain - (optional) is a type of string
+  certificate_chain = var.certificate_chain
+  # domain_name - (optional) is a type of string
+  domain_name = var.domain_name
+  # private_key - (optional) is a type of string
+  private_key = var.private_key
+  # subject_alternative_names - (optional) is a type of set of string
   subject_alternative_names = var.subject_alternative_names
-  tags                      = var.tags
-  validation_method         = var.validation_method
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # validation_method - (optional) is a type of string
+  validation_method = var.validation_method
 
   dynamic "options" {
     for_each = var.options
     content {
+      # certificate_transparency_logging_preference - (optional) is a type of string
       certificate_transparency_logging_preference = options.value["certificate_transparency_logging_preference"]
     }
   }

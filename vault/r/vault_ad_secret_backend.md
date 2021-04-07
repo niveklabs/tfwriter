@@ -312,40 +312,74 @@ variable "userdn" {
 
 ```terraform
 resource "vault_ad_secret_backend" "this" {
-  anonymous_group_search       = var.anonymous_group_search
-  backend                      = var.backend
-  binddn                       = var.binddn
-  bindpass                     = var.bindpass
-  case_sensitive_names         = var.case_sensitive_names
-  certificate                  = var.certificate
-  client_tls_cert              = var.client_tls_cert
-  client_tls_key               = var.client_tls_key
-  default_lease_ttl_seconds    = var.default_lease_ttl_seconds
-  deny_null_bind               = var.deny_null_bind
-  description                  = var.description
-  discoverdn                   = var.discoverdn
-  formatter                    = var.formatter
-  groupattr                    = var.groupattr
-  groupdn                      = var.groupdn
-  groupfilter                  = var.groupfilter
-  insecure_tls                 = var.insecure_tls
-  last_rotation_tolerance      = var.last_rotation_tolerance
-  length                       = var.length
-  local                        = var.local
-  max_lease_ttl_seconds        = var.max_lease_ttl_seconds
-  max_ttl                      = var.max_ttl
-  password_policy              = var.password_policy
-  request_timeout              = var.request_timeout
-  starttls                     = var.starttls
-  tls_max_version              = var.tls_max_version
-  tls_min_version              = var.tls_min_version
-  ttl                          = var.ttl
-  upndomain                    = var.upndomain
-  url                          = var.url
+  # anonymous_group_search - (optional) is a type of bool
+  anonymous_group_search = var.anonymous_group_search
+  # backend - (optional) is a type of string
+  backend = var.backend
+  # binddn - (required) is a type of string
+  binddn = var.binddn
+  # bindpass - (required) is a type of string
+  bindpass = var.bindpass
+  # case_sensitive_names - (optional) is a type of bool
+  case_sensitive_names = var.case_sensitive_names
+  # certificate - (optional) is a type of string
+  certificate = var.certificate
+  # client_tls_cert - (optional) is a type of string
+  client_tls_cert = var.client_tls_cert
+  # client_tls_key - (optional) is a type of string
+  client_tls_key = var.client_tls_key
+  # default_lease_ttl_seconds - (optional) is a type of number
+  default_lease_ttl_seconds = var.default_lease_ttl_seconds
+  # deny_null_bind - (optional) is a type of bool
+  deny_null_bind = var.deny_null_bind
+  # description - (optional) is a type of string
+  description = var.description
+  # discoverdn - (optional) is a type of bool
+  discoverdn = var.discoverdn
+  # formatter - (optional) is a type of string
+  formatter = var.formatter
+  # groupattr - (optional) is a type of string
+  groupattr = var.groupattr
+  # groupdn - (optional) is a type of string
+  groupdn = var.groupdn
+  # groupfilter - (optional) is a type of string
+  groupfilter = var.groupfilter
+  # insecure_tls - (optional) is a type of bool
+  insecure_tls = var.insecure_tls
+  # last_rotation_tolerance - (optional) is a type of number
+  last_rotation_tolerance = var.last_rotation_tolerance
+  # length - (optional) is a type of number
+  length = var.length
+  # local - (optional) is a type of bool
+  local = var.local
+  # max_lease_ttl_seconds - (optional) is a type of number
+  max_lease_ttl_seconds = var.max_lease_ttl_seconds
+  # max_ttl - (optional) is a type of number
+  max_ttl = var.max_ttl
+  # password_policy - (optional) is a type of string
+  password_policy = var.password_policy
+  # request_timeout - (optional) is a type of number
+  request_timeout = var.request_timeout
+  # starttls - (optional) is a type of bool
+  starttls = var.starttls
+  # tls_max_version - (optional) is a type of string
+  tls_max_version = var.tls_max_version
+  # tls_min_version - (optional) is a type of string
+  tls_min_version = var.tls_min_version
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
+  # upndomain - (optional) is a type of string
+  upndomain = var.upndomain
+  # url - (optional) is a type of string
+  url = var.url
+  # use_pre111_group_cn_behavior - (optional) is a type of bool
   use_pre111_group_cn_behavior = var.use_pre111_group_cn_behavior
-  use_token_groups             = var.use_token_groups
-  userattr                     = var.userattr
-  userdn                       = var.userdn
+  # use_token_groups - (optional) is a type of bool
+  use_token_groups = var.use_token_groups
+  # userattr - (optional) is a type of string
+  userattr = var.userattr
+  # userdn - (optional) is a type of string
+  userdn = var.userdn
 }
 ```
 

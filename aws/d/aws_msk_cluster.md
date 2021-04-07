@@ -57,8 +57,10 @@ variable "tags" {
 
 ```terraform
 data "aws_msk_cluster" "this" {
+  # cluster_name - (required) is a type of string
   cluster_name = var.cluster_name
-  tags         = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

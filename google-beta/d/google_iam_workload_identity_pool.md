@@ -57,7 +57,9 @@ variable "workload_identity_pool_id" {
 
 ```terraform
 data "google_iam_workload_identity_pool" "this" {
-  project                   = var.project
+  # project - (optional) is a type of string
+  project = var.project
+  # workload_identity_pool_id - (required) is a type of string
   workload_identity_pool_id = var.workload_identity_pool_id
 }
 ```

@@ -155,24 +155,39 @@ variable "timeouts" {
 
 ```terraform
 resource "google_dialogflow_intent" "this" {
-  action                      = var.action
-  default_response_platforms  = var.default_response_platforms
-  display_name                = var.display_name
-  events                      = var.events
-  input_context_names         = var.input_context_names
-  is_fallback                 = var.is_fallback
-  ml_disabled                 = var.ml_disabled
+  # action - (optional) is a type of string
+  action = var.action
+  # default_response_platforms - (optional) is a type of list of string
+  default_response_platforms = var.default_response_platforms
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # events - (optional) is a type of list of string
+  events = var.events
+  # input_context_names - (optional) is a type of list of string
+  input_context_names = var.input_context_names
+  # is_fallback - (optional) is a type of bool
+  is_fallback = var.is_fallback
+  # ml_disabled - (optional) is a type of bool
+  ml_disabled = var.ml_disabled
+  # parent_followup_intent_name - (optional) is a type of string
   parent_followup_intent_name = var.parent_followup_intent_name
-  priority                    = var.priority
-  project                     = var.project
-  reset_contexts              = var.reset_contexts
-  webhook_state               = var.webhook_state
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # project - (optional) is a type of string
+  project = var.project
+  # reset_contexts - (optional) is a type of bool
+  reset_contexts = var.reset_contexts
+  # webhook_state - (optional) is a type of string
+  webhook_state = var.webhook_state
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

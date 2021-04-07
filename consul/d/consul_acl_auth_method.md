@@ -57,7 +57,9 @@ variable "namespace" {
 
 ```terraform
 data "consul_acl_auth_method" "this" {
-  name      = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # namespace - (optional) is a type of string
   namespace = var.namespace
 }
 ```

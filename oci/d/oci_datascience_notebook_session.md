@@ -49,6 +49,7 @@ variable "notebook_session_id" {
 
 ```terraform
 data "oci_datascience_notebook_session" "this" {
+  # notebook_session_id - (required) is a type of string
   notebook_session_id = var.notebook_session_id
 }
 ```

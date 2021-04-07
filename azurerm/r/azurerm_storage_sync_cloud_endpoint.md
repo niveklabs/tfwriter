@@ -96,18 +96,26 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_storage_sync_cloud_endpoint" "this" {
-  file_share_name           = var.file_share_name
-  name                      = var.name
-  storage_account_id        = var.storage_account_id
+  # file_share_name - (required) is a type of string
+  file_share_name = var.file_share_name
+  # name - (required) is a type of string
+  name = var.name
+  # storage_account_id - (required) is a type of string
+  storage_account_id = var.storage_account_id
+  # storage_account_tenant_id - (optional) is a type of string
   storage_account_tenant_id = var.storage_account_tenant_id
-  storage_sync_group_id     = var.storage_sync_group_id
+  # storage_sync_group_id - (required) is a type of string
+  storage_sync_group_id = var.storage_sync_group_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

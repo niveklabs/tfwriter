@@ -49,6 +49,7 @@ variable "filename" {
 
 ```terraform
 data "local_file" "this" {
+  # filename - (required) is a type of string
   filename = var.filename
 }
 ```

@@ -251,20 +251,31 @@ variable "ttl" {
 
 ```terraform
 resource "aws_dynamodb_table" "this" {
-  billing_mode     = var.billing_mode
-  hash_key         = var.hash_key
-  name             = var.name
-  range_key        = var.range_key
-  read_capacity    = var.read_capacity
-  stream_enabled   = var.stream_enabled
+  # billing_mode - (optional) is a type of string
+  billing_mode = var.billing_mode
+  # hash_key - (required) is a type of string
+  hash_key = var.hash_key
+  # name - (required) is a type of string
+  name = var.name
+  # range_key - (optional) is a type of string
+  range_key = var.range_key
+  # read_capacity - (optional) is a type of number
+  read_capacity = var.read_capacity
+  # stream_enabled - (optional) is a type of bool
+  stream_enabled = var.stream_enabled
+  # stream_view_type - (optional) is a type of string
   stream_view_type = var.stream_view_type
-  tags             = var.tags
-  write_capacity   = var.write_capacity
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # write_capacity - (optional) is a type of number
+  write_capacity = var.write_capacity
 
   dynamic "attribute" {
     for_each = var.attribute
     content {
+      # name - (required) is a type of string
       name = attribute.value["name"]
+      # type - (required) is a type of string
       type = attribute.value["type"]
     }
   }
@@ -272,29 +283,41 @@ resource "aws_dynamodb_table" "this" {
   dynamic "global_secondary_index" {
     for_each = var.global_secondary_index
     content {
-      hash_key           = global_secondary_index.value["hash_key"]
-      name               = global_secondary_index.value["name"]
+      # hash_key - (required) is a type of string
+      hash_key = global_secondary_index.value["hash_key"]
+      # name - (required) is a type of string
+      name = global_secondary_index.value["name"]
+      # non_key_attributes - (optional) is a type of set of string
       non_key_attributes = global_secondary_index.value["non_key_attributes"]
-      projection_type    = global_secondary_index.value["projection_type"]
-      range_key          = global_secondary_index.value["range_key"]
-      read_capacity      = global_secondary_index.value["read_capacity"]
-      write_capacity     = global_secondary_index.value["write_capacity"]
+      # projection_type - (required) is a type of string
+      projection_type = global_secondary_index.value["projection_type"]
+      # range_key - (optional) is a type of string
+      range_key = global_secondary_index.value["range_key"]
+      # read_capacity - (optional) is a type of number
+      read_capacity = global_secondary_index.value["read_capacity"]
+      # write_capacity - (optional) is a type of number
+      write_capacity = global_secondary_index.value["write_capacity"]
     }
   }
 
   dynamic "local_secondary_index" {
     for_each = var.local_secondary_index
     content {
-      name               = local_secondary_index.value["name"]
+      # name - (required) is a type of string
+      name = local_secondary_index.value["name"]
+      # non_key_attributes - (optional) is a type of list of string
       non_key_attributes = local_secondary_index.value["non_key_attributes"]
-      projection_type    = local_secondary_index.value["projection_type"]
-      range_key          = local_secondary_index.value["range_key"]
+      # projection_type - (required) is a type of string
+      projection_type = local_secondary_index.value["projection_type"]
+      # range_key - (required) is a type of string
+      range_key = local_secondary_index.value["range_key"]
     }
   }
 
   dynamic "point_in_time_recovery" {
     for_each = var.point_in_time_recovery
     content {
+      # enabled - (required) is a type of bool
       enabled = point_in_time_recovery.value["enabled"]
     }
   }
@@ -302,6 +325,7 @@ resource "aws_dynamodb_table" "this" {
   dynamic "replica" {
     for_each = var.replica
     content {
+      # region_name - (required) is a type of string
       region_name = replica.value["region_name"]
     }
   }
@@ -309,7 +333,9 @@ resource "aws_dynamodb_table" "this" {
   dynamic "server_side_encryption" {
     for_each = var.server_side_encryption
     content {
-      enabled     = server_side_encryption.value["enabled"]
+      # enabled - (required) is a type of bool
+      enabled = server_side_encryption.value["enabled"]
+      # kms_key_arn - (optional) is a type of string
       kms_key_arn = server_side_encryption.value["kms_key_arn"]
     }
   }
@@ -317,8 +343,11 @@ resource "aws_dynamodb_table" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -326,8 +355,10 @@ resource "aws_dynamodb_table" "this" {
   dynamic "ttl" {
     for_each = var.ttl
     content {
+      # attribute_name - (required) is a type of string
       attribute_name = ttl.value["attribute_name"]
-      enabled        = ttl.value["enabled"]
+      # enabled - (optional) is a type of bool
+      enabled = ttl.value["enabled"]
     }
   }
 

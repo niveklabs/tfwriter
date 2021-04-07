@@ -64,8 +64,11 @@ variable "plaintext" {
 
 ```terraform
 data "aws_kms_ciphertext" "this" {
-  context   = var.context
-  key_id    = var.key_id
+  # context - (optional) is a type of map of string
+  context = var.context
+  # key_id - (required) is a type of string
+  key_id = var.key_id
+  # plaintext - (required) is a type of string
   plaintext = var.plaintext
 }
 ```

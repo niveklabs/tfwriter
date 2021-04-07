@@ -169,22 +169,35 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_machine_learning_workspace" "this" {
+  # application_insights_id - (required) is a type of string
   application_insights_id = var.application_insights_id
-  container_registry_id   = var.container_registry_id
-  description             = var.description
-  friendly_name           = var.friendly_name
-  high_business_impact    = var.high_business_impact
-  key_vault_id            = var.key_vault_id
-  location                = var.location
-  name                    = var.name
-  resource_group_name     = var.resource_group_name
-  sku_name                = var.sku_name
-  storage_account_id      = var.storage_account_id
-  tags                    = var.tags
+  # container_registry_id - (optional) is a type of string
+  container_registry_id = var.container_registry_id
+  # description - (optional) is a type of string
+  description = var.description
+  # friendly_name - (optional) is a type of string
+  friendly_name = var.friendly_name
+  # high_business_impact - (optional) is a type of bool
+  high_business_impact = var.high_business_impact
+  # key_vault_id - (required) is a type of string
+  key_vault_id = var.key_vault_id
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # sku_name - (optional) is a type of string
+  sku_name = var.sku_name
+  # storage_account_id - (required) is a type of string
+  storage_account_id = var.storage_account_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "identity" {
     for_each = var.identity
     content {
+      # type - (required) is a type of string
       type = identity.value["type"]
     }
   }
@@ -192,9 +205,13 @@ resource "azurerm_machine_learning_workspace" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

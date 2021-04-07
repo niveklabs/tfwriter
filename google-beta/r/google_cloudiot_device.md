@@ -142,22 +142,30 @@ variable "timeouts" {
 
 ```terraform
 resource "google_cloudiot_device" "this" {
-  blocked   = var.blocked
+  # blocked - (optional) is a type of bool
+  blocked = var.blocked
+  # log_level - (optional) is a type of string
   log_level = var.log_level
-  metadata  = var.metadata
-  name      = var.name
-  registry  = var.registry
+  # metadata - (optional) is a type of map of string
+  metadata = var.metadata
+  # name - (required) is a type of string
+  name = var.name
+  # registry - (required) is a type of string
+  registry = var.registry
 
   dynamic "credentials" {
     for_each = var.credentials
     content {
+      # expiration_time - (optional) is a type of string
       expiration_time = credentials.value["expiration_time"]
 
       dynamic "public_key" {
         for_each = credentials.value.public_key
         content {
+          # format - (required) is a type of string
           format = public_key.value["format"]
-          key    = public_key.value["key"]
+          # key - (required) is a type of string
+          key = public_key.value["key"]
         }
       }
 
@@ -167,16 +175,21 @@ resource "google_cloudiot_device" "this" {
   dynamic "gateway_config" {
     for_each = var.gateway_config
     content {
+      # gateway_auth_method - (optional) is a type of string
       gateway_auth_method = gateway_config.value["gateway_auth_method"]
-      gateway_type        = gateway_config.value["gateway_type"]
+      # gateway_type - (optional) is a type of string
+      gateway_type = gateway_config.value["gateway_type"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -49,6 +49,7 @@ variable "compute_global_image_capability_schema_id" {
 
 ```terraform
 data "oci_core_compute_global_image_capability_schema" "this" {
+  # compute_global_image_capability_schema_id - (required) is a type of string
   compute_global_image_capability_schema_id = var.compute_global_image_capability_schema_id
 }
 ```

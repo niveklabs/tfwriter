@@ -65,9 +65,12 @@ variable "triggers" {
 
 ```terraform
 resource "aws_apigatewayv2_deployment" "this" {
-  api_id      = var.api_id
+  # api_id - (required) is a type of string
+  api_id = var.api_id
+  # description - (optional) is a type of string
   description = var.description
-  triggers    = var.triggers
+  # triggers - (optional) is a type of map of string
+  triggers = var.triggers
 }
 ```
 

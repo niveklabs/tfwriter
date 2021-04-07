@@ -90,17 +90,25 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_site_recovery_protection_container" "this" {
-  name                 = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # recovery_fabric_name - (required) is a type of string
   recovery_fabric_name = var.recovery_fabric_name
-  recovery_vault_name  = var.recovery_vault_name
-  resource_group_name  = var.resource_group_name
+  # recovery_vault_name - (required) is a type of string
+  recovery_vault_name = var.recovery_vault_name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

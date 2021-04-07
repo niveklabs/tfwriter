@@ -86,12 +86,18 @@ variable "role_arn" {
 
 ```terraform
 resource "aws_pinpoint_email_channel" "this" {
-  application_id    = var.application_id
+  # application_id - (required) is a type of string
+  application_id = var.application_id
+  # configuration_set - (optional) is a type of string
   configuration_set = var.configuration_set
-  enabled           = var.enabled
-  from_address      = var.from_address
-  identity          = var.identity
-  role_arn          = var.role_arn
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # from_address - (required) is a type of string
+  from_address = var.from_address
+  # identity - (required) is a type of string
+  identity = var.identity
+  # role_arn - (required) is a type of string
+  role_arn = var.role_arn
 }
 ```
 

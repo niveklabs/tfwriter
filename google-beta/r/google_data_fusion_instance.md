@@ -170,32 +170,49 @@ variable "timeouts" {
 
 ```terraform
 resource "google_data_fusion_instance" "this" {
-  dataproc_service_account      = var.dataproc_service_account
-  description                   = var.description
-  enable_stackdriver_logging    = var.enable_stackdriver_logging
+  # dataproc_service_account - (optional) is a type of string
+  dataproc_service_account = var.dataproc_service_account
+  # description - (optional) is a type of string
+  description = var.description
+  # enable_stackdriver_logging - (optional) is a type of bool
+  enable_stackdriver_logging = var.enable_stackdriver_logging
+  # enable_stackdriver_monitoring - (optional) is a type of bool
   enable_stackdriver_monitoring = var.enable_stackdriver_monitoring
-  labels                        = var.labels
-  name                          = var.name
-  options                       = var.options
-  private_instance              = var.private_instance
-  project                       = var.project
-  region                        = var.region
-  type                          = var.type
-  version                       = var.version
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # options - (optional) is a type of map of string
+  options = var.options
+  # private_instance - (optional) is a type of bool
+  private_instance = var.private_instance
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
+  # type - (required) is a type of string
+  type = var.type
+  # version - (optional) is a type of string
+  version = var.version
 
   dynamic "network_config" {
     for_each = var.network_config
     content {
+      # ip_allocation - (required) is a type of string
       ip_allocation = network_config.value["ip_allocation"]
-      network       = network_config.value["network"]
+      # network - (required) is a type of string
+      network = network_config.value["network"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

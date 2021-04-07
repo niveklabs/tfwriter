@@ -106,19 +106,29 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_data_lake_analytics_account" "this" {
+  # default_store_account_name - (required) is a type of string
   default_store_account_name = var.default_store_account_name
-  location                   = var.location
-  name                       = var.name
-  resource_group_name        = var.resource_group_name
-  tags                       = var.tags
-  tier                       = var.tier
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # tier - (optional) is a type of string
+  tier = var.tier
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

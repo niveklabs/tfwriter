@@ -155,26 +155,39 @@ variable "timeouts" {
 
 ```terraform
 resource "google_filestore_instance" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  labels      = var.labels
-  name        = var.name
-  project     = var.project
-  tier        = var.tier
-  zone        = var.zone
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # tier - (required) is a type of string
+  tier = var.tier
+  # zone - (required) is a type of string
+  zone = var.zone
 
   dynamic "file_shares" {
     for_each = var.file_shares
     content {
+      # capacity_gb - (required) is a type of number
       capacity_gb = file_shares.value["capacity_gb"]
-      name        = file_shares.value["name"]
+      # name - (required) is a type of string
+      name = file_shares.value["name"]
 
       dynamic "nfs_export_options" {
         for_each = file_shares.value.nfs_export_options
         content {
+          # access_mode - (optional) is a type of string
           access_mode = nfs_export_options.value["access_mode"]
-          anon_gid    = nfs_export_options.value["anon_gid"]
-          anon_uid    = nfs_export_options.value["anon_uid"]
-          ip_ranges   = nfs_export_options.value["ip_ranges"]
+          # anon_gid - (optional) is a type of number
+          anon_gid = nfs_export_options.value["anon_gid"]
+          # anon_uid - (optional) is a type of number
+          anon_uid = nfs_export_options.value["anon_uid"]
+          # ip_ranges - (optional) is a type of list of string
+          ip_ranges = nfs_export_options.value["ip_ranges"]
+          # squash_mode - (optional) is a type of string
           squash_mode = nfs_export_options.value["squash_mode"]
         }
       }
@@ -185,8 +198,11 @@ resource "google_filestore_instance" "this" {
   dynamic "networks" {
     for_each = var.networks
     content {
-      modes             = networks.value["modes"]
-      network           = networks.value["network"]
+      # modes - (required) is a type of list of string
+      modes = networks.value["modes"]
+      # network - (required) is a type of string
+      network = networks.value["network"]
+      # reserved_ip_range - (optional) is a type of string
       reserved_ip_range = networks.value["reserved_ip_range"]
     }
   }
@@ -194,8 +210,11 @@ resource "google_filestore_instance" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

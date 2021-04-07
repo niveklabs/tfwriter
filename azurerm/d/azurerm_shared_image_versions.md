@@ -85,14 +85,19 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_shared_image_versions" "this" {
-  gallery_name        = var.gallery_name
-  image_name          = var.image_name
+  # gallery_name - (required) is a type of string
+  gallery_name = var.gallery_name
+  # image_name - (required) is a type of string
+  image_name = var.image_name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  tags_filter         = var.tags_filter
+  # tags_filter - (optional) is a type of map of string
+  tags_filter = var.tags_filter
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

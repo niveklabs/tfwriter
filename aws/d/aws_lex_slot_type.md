@@ -57,7 +57,9 @@ variable "version" {
 
 ```terraform
 data "aws_lex_slot_type" "this" {
-  name    = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # version - (optional) is a type of string
   version = var.version
 }
 ```

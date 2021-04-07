@@ -58,8 +58,10 @@ variable "project" {
 
 ```terraform
 resource "google_container_registry" "this" {
+  # location - (optional) is a type of string
   location = var.location
-  project  = var.project
+  # project - (optional) is a type of string
+  project = var.project
 }
 ```
 

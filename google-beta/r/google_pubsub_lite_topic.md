@@ -131,20 +131,27 @@ variable "timeouts" {
 
 ```terraform
 resource "google_pubsub_lite_topic" "this" {
-  name    = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
   project = var.project
-  region  = var.region
-  zone    = var.zone
+  # region - (optional) is a type of string
+  region = var.region
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "partition_config" {
     for_each = var.partition_config
     content {
+      # count - (required) is a type of number
       count = partition_config.value["count"]
 
       dynamic "capacity" {
         for_each = partition_config.value.capacity
         content {
-          publish_mib_per_sec   = capacity.value["publish_mib_per_sec"]
+          # publish_mib_per_sec - (required) is a type of number
+          publish_mib_per_sec = capacity.value["publish_mib_per_sec"]
+          # subscribe_mib_per_sec - (required) is a type of number
           subscribe_mib_per_sec = capacity.value["subscribe_mib_per_sec"]
         }
       }
@@ -155,16 +162,21 @@ resource "google_pubsub_lite_topic" "this" {
   dynamic "retention_config" {
     for_each = var.retention_config
     content {
+      # per_partition_bytes - (required) is a type of string
       per_partition_bytes = retention_config.value["per_partition_bytes"]
-      period              = retention_config.value["period"]
+      # period - (optional) is a type of string
+      period = retention_config.value["period"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

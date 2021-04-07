@@ -87,12 +87,18 @@ variable "topic" {
 
 ```terraform
 resource "google_storage_notification" "this" {
-  bucket             = var.bucket
-  custom_attributes  = var.custom_attributes
-  event_types        = var.event_types
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # custom_attributes - (optional) is a type of map of string
+  custom_attributes = var.custom_attributes
+  # event_types - (optional) is a type of set of string
+  event_types = var.event_types
+  # object_name_prefix - (optional) is a type of string
   object_name_prefix = var.object_name_prefix
-  payload_format     = var.payload_format
-  topic              = var.topic
+  # payload_format - (required) is a type of string
+  payload_format = var.payload_format
+  # topic - (required) is a type of string
+  topic = var.topic
 }
 ```
 

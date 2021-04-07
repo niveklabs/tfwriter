@@ -63,11 +63,13 @@ variable "delivery_options" {
 
 ```terraform
 resource "aws_ses_configuration_set" "this" {
+  # name - (required) is a type of string
   name = var.name
 
   dynamic "delivery_options" {
     for_each = var.delivery_options
     content {
+      # tls_policy - (optional) is a type of string
       tls_policy = delivery_options.value["tls_policy"]
     }
   }

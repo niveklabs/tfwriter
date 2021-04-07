@@ -110,26 +110,37 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_frontdoor_custom_https_configuration" "this" {
+  # custom_https_provisioning_enabled - (required) is a type of bool
   custom_https_provisioning_enabled = var.custom_https_provisioning_enabled
-  frontend_endpoint_id              = var.frontend_endpoint_id
-  resource_group_name               = var.resource_group_name
+  # frontend_endpoint_id - (required) is a type of string
+  frontend_endpoint_id = var.frontend_endpoint_id
+  # resource_group_name - (optional) is a type of string
+  resource_group_name = var.resource_group_name
 
   dynamic "custom_https_configuration" {
     for_each = var.custom_https_configuration
     content {
-      azure_key_vault_certificate_secret_name    = custom_https_configuration.value["azure_key_vault_certificate_secret_name"]
+      # azure_key_vault_certificate_secret_name - (optional) is a type of string
+      azure_key_vault_certificate_secret_name = custom_https_configuration.value["azure_key_vault_certificate_secret_name"]
+      # azure_key_vault_certificate_secret_version - (optional) is a type of string
       azure_key_vault_certificate_secret_version = custom_https_configuration.value["azure_key_vault_certificate_secret_version"]
-      azure_key_vault_certificate_vault_id       = custom_https_configuration.value["azure_key_vault_certificate_vault_id"]
-      certificate_source                         = custom_https_configuration.value["certificate_source"]
+      # azure_key_vault_certificate_vault_id - (optional) is a type of string
+      azure_key_vault_certificate_vault_id = custom_https_configuration.value["azure_key_vault_certificate_vault_id"]
+      # certificate_source - (optional) is a type of string
+      certificate_source = custom_https_configuration.value["certificate_source"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

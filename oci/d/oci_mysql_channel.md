@@ -49,6 +49,7 @@ variable "channel_id" {
 
 ```terraform
 data "oci_mysql_channel" "this" {
+  # channel_id - (required) is a type of string
   channel_id = var.channel_id
 }
 ```

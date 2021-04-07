@@ -56,8 +56,10 @@ variable "plaintext" {
 
 ```terraform
 data "google_kms_secret_ciphertext" "this" {
+  # crypto_key - (required) is a type of string
   crypto_key = var.crypto_key
-  plaintext  = var.plaintext
+  # plaintext - (required) is a type of string
+  plaintext = var.plaintext
 }
 ```
 

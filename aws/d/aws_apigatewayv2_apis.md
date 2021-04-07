@@ -66,9 +66,12 @@ variable "tags" {
 
 ```terraform
 data "aws_apigatewayv2_apis" "this" {
-  name          = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # protocol_type - (optional) is a type of string
   protocol_type = var.protocol_type
-  tags          = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

@@ -111,16 +111,23 @@ variable "type_details" {
 
 ```terraform
 resource "oci_database_key_store" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  defined_tags   = var.defined_tags
-  display_name   = var.display_name
-  freeform_tags  = var.freeform_tags
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -128,11 +135,16 @@ resource "oci_database_key_store" "this" {
   dynamic "type_details" {
     for_each = var.type_details
     content {
+      # admin_username - (required) is a type of string
       admin_username = type_details.value["admin_username"]
+      # connection_ips - (required) is a type of set of string
       connection_ips = type_details.value["connection_ips"]
-      secret_id      = type_details.value["secret_id"]
-      type           = type_details.value["type"]
-      vault_id       = type_details.value["vault_id"]
+      # secret_id - (required) is a type of string
+      secret_id = type_details.value["secret_id"]
+      # type - (required) is a type of string
+      type = type_details.value["type"]
+      # vault_id - (required) is a type of string
+      vault_id = type_details.value["vault_id"]
     }
   }
 

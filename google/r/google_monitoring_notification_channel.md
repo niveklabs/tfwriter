@@ -133,19 +133,29 @@ variable "timeouts" {
 
 ```terraform
 resource "google_monitoring_notification_channel" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
   display_name = var.display_name
-  enabled      = var.enabled
-  labels       = var.labels
-  project      = var.project
-  type         = var.type
-  user_labels  = var.user_labels
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # project - (optional) is a type of string
+  project = var.project
+  # type - (required) is a type of string
+  type = var.type
+  # user_labels - (optional) is a type of map of string
+  user_labels = var.user_labels
 
   dynamic "sensitive_labels" {
     for_each = var.sensitive_labels
     content {
-      auth_token  = sensitive_labels.value["auth_token"]
-      password    = sensitive_labels.value["password"]
+      # auth_token - (optional) is a type of string
+      auth_token = sensitive_labels.value["auth_token"]
+      # password - (optional) is a type of string
+      password = sensitive_labels.value["password"]
+      # service_key - (optional) is a type of string
       service_key = sensitive_labels.value["service_key"]
     }
   }
@@ -153,8 +163,11 @@ resource "google_monitoring_notification_channel" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

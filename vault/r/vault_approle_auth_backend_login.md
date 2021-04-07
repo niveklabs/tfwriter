@@ -65,8 +65,11 @@ variable "secret_id" {
 
 ```terraform
 resource "vault_approle_auth_backend_login" "this" {
-  backend   = var.backend
-  role_id   = var.role_id
+  # backend - (optional) is a type of string
+  backend = var.backend
+  # role_id - (required) is a type of string
+  role_id = var.role_id
+  # secret_id - (optional) is a type of string
   secret_id = var.secret_id
 }
 ```

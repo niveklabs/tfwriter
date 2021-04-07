@@ -129,17 +129,28 @@ variable "write_acls" {
 
 ```terraform
 resource "opc_storage_container" "this" {
+  # allowed_origins - (optional) is a type of list of string
   allowed_origins = var.allowed_origins
+  # exposed_headers - (optional) is a type of list of string
   exposed_headers = var.exposed_headers
-  max_age         = var.max_age
-  metadata        = var.metadata
-  name            = var.name
-  primary_key     = var.primary_key
-  quota_bytes     = var.quota_bytes
-  quota_count     = var.quota_count
-  read_acls       = var.read_acls
-  secondary_key   = var.secondary_key
-  write_acls      = var.write_acls
+  # max_age - (optional) is a type of number
+  max_age = var.max_age
+  # metadata - (optional) is a type of map of string
+  metadata = var.metadata
+  # name - (required) is a type of string
+  name = var.name
+  # primary_key - (optional) is a type of string
+  primary_key = var.primary_key
+  # quota_bytes - (optional) is a type of number
+  quota_bytes = var.quota_bytes
+  # quota_count - (optional) is a type of number
+  quota_count = var.quota_count
+  # read_acls - (optional) is a type of list of string
+  read_acls = var.read_acls
+  # secondary_key - (optional) is a type of string
+  secondary_key = var.secondary_key
+  # write_acls - (optional) is a type of list of string
+  write_acls = var.write_acls
 }
 ```
 

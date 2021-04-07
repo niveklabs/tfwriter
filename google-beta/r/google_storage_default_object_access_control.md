@@ -89,16 +89,23 @@ variable "timeouts" {
 
 ```terraform
 resource "google_storage_default_object_access_control" "this" {
+  # bucket - (required) is a type of string
   bucket = var.bucket
+  # entity - (required) is a type of string
   entity = var.entity
+  # object - (optional) is a type of string
   object = var.object
-  role   = var.role
+  # role - (required) is a type of string
+  role = var.role
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

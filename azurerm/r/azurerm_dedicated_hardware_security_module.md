@@ -129,28 +129,41 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_dedicated_hardware_security_module" "this" {
-  location            = var.location
-  name                = var.name
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  sku_name            = var.sku_name
-  stamp_id            = var.stamp_id
-  tags                = var.tags
-  zones               = var.zones
+  # sku_name - (required) is a type of string
+  sku_name = var.sku_name
+  # stamp_id - (optional) is a type of string
+  stamp_id = var.stamp_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # zones - (optional) is a type of list of string
+  zones = var.zones
 
   dynamic "network_profile" {
     for_each = var.network_profile
     content {
+      # network_interface_private_ip_addresses - (required) is a type of set of string
       network_interface_private_ip_addresses = network_profile.value["network_interface_private_ip_addresses"]
-      subnet_id                              = network_profile.value["subnet_id"]
+      # subnet_id - (required) is a type of string
+      subnet_id = network_profile.value["subnet_id"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

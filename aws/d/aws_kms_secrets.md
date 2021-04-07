@@ -65,10 +65,14 @@ data "aws_kms_secrets" "this" {
   dynamic "secret" {
     for_each = var.secret
     content {
-      context      = secret.value["context"]
+      # context - (optional) is a type of map of string
+      context = secret.value["context"]
+      # grant_tokens - (optional) is a type of list of string
       grant_tokens = secret.value["grant_tokens"]
-      name         = secret.value["name"]
-      payload      = secret.value["payload"]
+      # name - (required) is a type of string
+      name = secret.value["name"]
+      # payload - (required) is a type of string
+      payload = secret.value["payload"]
     }
   }
 

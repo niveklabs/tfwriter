@@ -90,16 +90,23 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_instance_pool_instance" "this" {
+  # auto_terminate_instance_on_delete - (optional) is a type of bool
   auto_terminate_instance_on_delete = var.auto_terminate_instance_on_delete
-  decrement_size_on_delete          = var.decrement_size_on_delete
-  instance_id                       = var.instance_id
-  instance_pool_id                  = var.instance_pool_id
+  # decrement_size_on_delete - (optional) is a type of bool
+  decrement_size_on_delete = var.decrement_size_on_delete
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # instance_pool_id - (required) is a type of string
+  instance_pool_id = var.instance_pool_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

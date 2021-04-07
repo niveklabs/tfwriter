@@ -203,30 +203,51 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_forwarding_rule" "this" {
-  all_ports              = var.all_ports
-  allow_global_access    = var.allow_global_access
-  backend_service        = var.backend_service
-  description            = var.description
-  ip_address             = var.ip_address
-  ip_protocol            = var.ip_protocol
+  # all_ports - (optional) is a type of bool
+  all_ports = var.all_ports
+  # allow_global_access - (optional) is a type of bool
+  allow_global_access = var.allow_global_access
+  # backend_service - (optional) is a type of string
+  backend_service = var.backend_service
+  # description - (optional) is a type of string
+  description = var.description
+  # ip_address - (optional) is a type of string
+  ip_address = var.ip_address
+  # ip_protocol - (optional) is a type of string
+  ip_protocol = var.ip_protocol
+  # is_mirroring_collector - (optional) is a type of bool
   is_mirroring_collector = var.is_mirroring_collector
-  load_balancing_scheme  = var.load_balancing_scheme
-  name                   = var.name
-  network                = var.network
-  network_tier           = var.network_tier
-  port_range             = var.port_range
-  ports                  = var.ports
-  project                = var.project
-  region                 = var.region
-  service_label          = var.service_label
-  subnetwork             = var.subnetwork
-  target                 = var.target
+  # load_balancing_scheme - (optional) is a type of string
+  load_balancing_scheme = var.load_balancing_scheme
+  # name - (required) is a type of string
+  name = var.name
+  # network - (optional) is a type of string
+  network = var.network
+  # network_tier - (optional) is a type of string
+  network_tier = var.network_tier
+  # port_range - (optional) is a type of string
+  port_range = var.port_range
+  # ports - (optional) is a type of set of string
+  ports = var.ports
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
+  # service_label - (optional) is a type of string
+  service_label = var.service_label
+  # subnetwork - (optional) is a type of string
+  subnetwork = var.subnetwork
+  # target - (optional) is a type of string
+  target = var.target
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

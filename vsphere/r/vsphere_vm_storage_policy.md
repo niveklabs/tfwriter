@@ -74,15 +74,20 @@ variable "tag_rules" {
 
 ```terraform
 resource "vsphere_vm_storage_policy" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "tag_rules" {
     for_each = var.tag_rules
     content {
+      # include_datastores_with_tags - (optional) is a type of bool
       include_datastores_with_tags = tag_rules.value["include_datastores_with_tags"]
-      tag_category                 = tag_rules.value["tag_category"]
-      tags                         = tag_rules.value["tags"]
+      # tag_category - (required) is a type of string
+      tag_category = tag_rules.value["tag_category"]
+      # tags - (required) is a type of list of string
+      tags = tag_rules.value["tags"]
     }
   }
 

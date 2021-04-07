@@ -99,17 +99,25 @@ variable "filter" {
 
 ```terraform
 data "oci_database_db_versions" "this" {
-  compartment_id       = var.compartment_id
-  db_system_id         = var.db_system_id
-  db_system_shape      = var.db_system_shape
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # db_system_id - (optional) is a type of string
+  db_system_id = var.db_system_id
+  # db_system_shape - (optional) is a type of string
+  db_system_shape = var.db_system_shape
+  # is_upgrade_supported - (optional) is a type of bool
   is_upgrade_supported = var.is_upgrade_supported
-  storage_management   = var.storage_management
+  # storage_management - (optional) is a type of string
+  storage_management = var.storage_management
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

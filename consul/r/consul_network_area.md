@@ -81,11 +81,16 @@ variable "use_tls" {
 
 ```terraform
 resource "consul_network_area" "this" {
-  datacenter      = var.datacenter
+  # datacenter - (optional) is a type of string
+  datacenter = var.datacenter
+  # peer_datacenter - (required) is a type of string
   peer_datacenter = var.peer_datacenter
-  retry_join      = var.retry_join
-  token           = var.token
-  use_tls         = var.use_tls
+  # retry_join - (optional) is a type of list of string
+  retry_join = var.retry_join
+  # token - (optional) is a type of string
+  token = var.token
+  # use_tls - (optional) is a type of bool
+  use_tls = var.use_tls
 }
 ```
 

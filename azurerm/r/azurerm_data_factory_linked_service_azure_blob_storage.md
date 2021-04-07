@@ -179,28 +179,47 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_data_factory_linked_service_azure_blob_storage" "this" {
-  additional_properties    = var.additional_properties
-  annotations              = var.annotations
-  connection_string        = var.connection_string
-  data_factory_name        = var.data_factory_name
-  description              = var.description
+  # additional_properties - (optional) is a type of map of string
+  additional_properties = var.additional_properties
+  # annotations - (optional) is a type of list of string
+  annotations = var.annotations
+  # connection_string - (optional) is a type of string
+  connection_string = var.connection_string
+  # data_factory_name - (required) is a type of string
+  data_factory_name = var.data_factory_name
+  # description - (optional) is a type of string
+  description = var.description
+  # integration_runtime_name - (optional) is a type of string
   integration_runtime_name = var.integration_runtime_name
-  name                     = var.name
-  parameters               = var.parameters
-  resource_group_name      = var.resource_group_name
-  sas_uri                  = var.sas_uri
-  service_endpoint         = var.service_endpoint
-  service_principal_id     = var.service_principal_id
-  service_principal_key    = var.service_principal_key
-  tenant_id                = var.tenant_id
-  use_managed_identity     = var.use_managed_identity
+  # name - (required) is a type of string
+  name = var.name
+  # parameters - (optional) is a type of map of string
+  parameters = var.parameters
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # sas_uri - (optional) is a type of string
+  sas_uri = var.sas_uri
+  # service_endpoint - (optional) is a type of string
+  service_endpoint = var.service_endpoint
+  # service_principal_id - (optional) is a type of string
+  service_principal_id = var.service_principal_id
+  # service_principal_key - (optional) is a type of string
+  service_principal_key = var.service_principal_key
+  # tenant_id - (optional) is a type of string
+  tenant_id = var.tenant_id
+  # use_managed_identity - (optional) is a type of bool
+  use_managed_identity = var.use_managed_identity
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

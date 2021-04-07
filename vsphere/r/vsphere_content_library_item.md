@@ -88,12 +88,18 @@ variable "type" {
 
 ```terraform
 resource "vsphere_content_library_item" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  file_url    = var.file_url
-  library_id  = var.library_id
-  name        = var.name
+  # file_url - (optional) is a type of string
+  file_url = var.file_url
+  # library_id - (required) is a type of string
+  library_id = var.library_id
+  # name - (required) is a type of string
+  name = var.name
+  # source_uuid - (optional) is a type of string
   source_uuid = var.source_uuid
-  type        = var.type
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

@@ -157,23 +157,31 @@ variable "timeouts" {
 
 ```terraform
 resource "google_cloud_tasks_queue" "this" {
+  # location - (required) is a type of string
   location = var.location
-  name     = var.name
-  project  = var.project
+  # name - (optional) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "app_engine_routing_override" {
     for_each = var.app_engine_routing_override
     content {
+      # instance - (optional) is a type of string
       instance = app_engine_routing_override.value["instance"]
-      service  = app_engine_routing_override.value["service"]
-      version  = app_engine_routing_override.value["version"]
+      # service - (optional) is a type of string
+      service = app_engine_routing_override.value["service"]
+      # version - (optional) is a type of string
+      version = app_engine_routing_override.value["version"]
     }
   }
 
   dynamic "rate_limits" {
     for_each = var.rate_limits
     content {
+      # max_concurrent_dispatches - (optional) is a type of number
       max_concurrent_dispatches = rate_limits.value["max_concurrent_dispatches"]
+      # max_dispatches_per_second - (optional) is a type of number
       max_dispatches_per_second = rate_limits.value["max_dispatches_per_second"]
     }
   }
@@ -181,17 +189,23 @@ resource "google_cloud_tasks_queue" "this" {
   dynamic "retry_config" {
     for_each = var.retry_config
     content {
-      max_attempts       = retry_config.value["max_attempts"]
-      max_backoff        = retry_config.value["max_backoff"]
-      max_doublings      = retry_config.value["max_doublings"]
+      # max_attempts - (optional) is a type of number
+      max_attempts = retry_config.value["max_attempts"]
+      # max_backoff - (optional) is a type of string
+      max_backoff = retry_config.value["max_backoff"]
+      # max_doublings - (optional) is a type of number
+      max_doublings = retry_config.value["max_doublings"]
+      # max_retry_duration - (optional) is a type of string
       max_retry_duration = retry_config.value["max_retry_duration"]
-      min_backoff        = retry_config.value["min_backoff"]
+      # min_backoff - (optional) is a type of string
+      min_backoff = retry_config.value["min_backoff"]
     }
   }
 
   dynamic "stackdriver_logging_config" {
     for_each = var.stackdriver_logging_config
     content {
+      # sampling_ratio - (required) is a type of number
       sampling_ratio = stackdriver_logging_config.value["sampling_ratio"]
     }
   }
@@ -199,8 +213,11 @@ resource "google_cloud_tasks_queue" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

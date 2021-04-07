@@ -109,19 +109,29 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_artifacts_container_image_signature" "this" {
-  compartment_id     = var.compartment_id
-  image_id           = var.image_id
-  kms_key_id         = var.kms_key_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # image_id - (required) is a type of string
+  image_id = var.image_id
+  # kms_key_id - (required) is a type of string
+  kms_key_id = var.kms_key_id
+  # kms_key_version_id - (required) is a type of string
   kms_key_version_id = var.kms_key_version_id
-  message            = var.message
-  signature          = var.signature
-  signing_algorithm  = var.signing_algorithm
+  # message - (required) is a type of string
+  message = var.message
+  # signature - (required) is a type of string
+  signature = var.signature
+  # signing_algorithm - (required) is a type of string
+  signing_algorithm = var.signing_algorithm
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

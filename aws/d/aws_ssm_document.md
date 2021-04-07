@@ -65,9 +65,12 @@ variable "name" {
 
 ```terraform
 data "aws_ssm_document" "this" {
-  document_format  = var.document_format
+  # document_format - (optional) is a type of string
+  document_format = var.document_format
+  # document_version - (optional) is a type of string
   document_version = var.document_version
-  name             = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

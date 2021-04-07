@@ -121,21 +121,33 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_log_analytics_saved_search" "this" {
-  category                   = var.category
-  display_name               = var.display_name
-  function_alias             = var.function_alias
-  function_parameters        = var.function_parameters
+  # category - (required) is a type of string
+  category = var.category
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # function_alias - (optional) is a type of string
+  function_alias = var.function_alias
+  # function_parameters - (optional) is a type of set of string
+  function_parameters = var.function_parameters
+  # log_analytics_workspace_id - (required) is a type of string
   log_analytics_workspace_id = var.log_analytics_workspace_id
-  name                       = var.name
-  query                      = var.query
-  tags                       = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # query - (required) is a type of string
+  query = var.query
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

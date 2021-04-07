@@ -116,18 +116,27 @@ variable "subnet_mapping" {
 
 ```terraform
 resource "aws_networkfirewall_firewall" "this" {
-  delete_protection                 = var.delete_protection
-  description                       = var.description
-  firewall_policy_arn               = var.firewall_policy_arn
+  # delete_protection - (optional) is a type of bool
+  delete_protection = var.delete_protection
+  # description - (optional) is a type of string
+  description = var.description
+  # firewall_policy_arn - (required) is a type of string
+  firewall_policy_arn = var.firewall_policy_arn
+  # firewall_policy_change_protection - (optional) is a type of bool
   firewall_policy_change_protection = var.firewall_policy_change_protection
-  name                              = var.name
-  subnet_change_protection          = var.subnet_change_protection
-  tags                              = var.tags
-  vpc_id                            = var.vpc_id
+  # name - (required) is a type of string
+  name = var.name
+  # subnet_change_protection - (optional) is a type of bool
+  subnet_change_protection = var.subnet_change_protection
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 
   dynamic "subnet_mapping" {
     for_each = var.subnet_mapping
     content {
+      # subnet_id - (required) is a type of string
       subnet_id = subnet_mapping.value["subnet_id"]
     }
   }

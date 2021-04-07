@@ -139,22 +139,34 @@ variable "attachment" {
 
 ```terraform
 resource "aws_network_interface" "this" {
-  description        = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # ipv6_address_count - (optional) is a type of number
   ipv6_address_count = var.ipv6_address_count
-  ipv6_addresses     = var.ipv6_addresses
-  private_ip         = var.private_ip
-  private_ips        = var.private_ips
-  private_ips_count  = var.private_ips_count
-  security_groups    = var.security_groups
-  source_dest_check  = var.source_dest_check
-  subnet_id          = var.subnet_id
-  tags               = var.tags
+  # ipv6_addresses - (optional) is a type of set of string
+  ipv6_addresses = var.ipv6_addresses
+  # private_ip - (optional) is a type of string
+  private_ip = var.private_ip
+  # private_ips - (optional) is a type of set of string
+  private_ips = var.private_ips
+  # private_ips_count - (optional) is a type of number
+  private_ips_count = var.private_ips_count
+  # security_groups - (optional) is a type of set of string
+  security_groups = var.security_groups
+  # source_dest_check - (optional) is a type of bool
+  source_dest_check = var.source_dest_check
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "attachment" {
     for_each = var.attachment
     content {
+      # device_index - (required) is a type of number
       device_index = attachment.value["device_index"]
-      instance     = attachment.value["instance"]
+      # instance - (required) is a type of string
+      instance = attachment.value["instance"]
     }
   }
 

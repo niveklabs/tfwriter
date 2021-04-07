@@ -49,6 +49,7 @@ variable "unified_agent_configuration_id" {
 
 ```terraform
 data "oci_logging_unified_agent_configuration" "this" {
+  # unified_agent_configuration_id - (required) is a type of string
   unified_agent_configuration_id = var.unified_agent_configuration_id
 }
 ```

@@ -167,26 +167,43 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_health_checks_http_monitor" "this" {
-  compartment_id      = var.compartment_id
-  defined_tags        = var.defined_tags
-  display_name        = var.display_name
-  freeform_tags       = var.freeform_tags
-  headers             = var.headers
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # headers - (optional) is a type of map of string
+  headers = var.headers
+  # interval_in_seconds - (required) is a type of number
   interval_in_seconds = var.interval_in_seconds
-  is_enabled          = var.is_enabled
-  method              = var.method
-  path                = var.path
-  port                = var.port
-  protocol            = var.protocol
-  targets             = var.targets
-  timeout_in_seconds  = var.timeout_in_seconds
+  # is_enabled - (optional) is a type of bool
+  is_enabled = var.is_enabled
+  # method - (optional) is a type of string
+  method = var.method
+  # path - (optional) is a type of string
+  path = var.path
+  # port - (optional) is a type of number
+  port = var.port
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # targets - (required) is a type of list of string
+  targets = var.targets
+  # timeout_in_seconds - (optional) is a type of number
+  timeout_in_seconds = var.timeout_in_seconds
+  # vantage_point_names - (optional) is a type of list of string
   vantage_point_names = var.vantage_point_names
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

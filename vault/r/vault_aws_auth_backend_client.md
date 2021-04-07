@@ -106,14 +106,22 @@ variable "sts_region" {
 
 ```terraform
 resource "vault_aws_auth_backend_client" "this" {
-  access_key                 = var.access_key
-  backend                    = var.backend
-  ec2_endpoint               = var.ec2_endpoint
-  iam_endpoint               = var.iam_endpoint
+  # access_key - (optional) is a type of string
+  access_key = var.access_key
+  # backend - (optional) is a type of string
+  backend = var.backend
+  # ec2_endpoint - (optional) is a type of string
+  ec2_endpoint = var.ec2_endpoint
+  # iam_endpoint - (optional) is a type of string
+  iam_endpoint = var.iam_endpoint
+  # iam_server_id_header_value - (optional) is a type of string
   iam_server_id_header_value = var.iam_server_id_header_value
-  secret_key                 = var.secret_key
-  sts_endpoint               = var.sts_endpoint
-  sts_region                 = var.sts_region
+  # secret_key - (optional) is a type of string
+  secret_key = var.secret_key
+  # sts_endpoint - (optional) is a type of string
+  sts_endpoint = var.sts_endpoint
+  # sts_region - (optional) is a type of string
+  sts_region = var.sts_region
 }
 ```
 

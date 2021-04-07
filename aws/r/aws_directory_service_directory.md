@@ -162,32 +162,48 @@ variable "vpc_settings" {
 
 ```terraform
 resource "aws_directory_service_directory" "this" {
-  alias       = var.alias
+  # alias - (optional) is a type of string
+  alias = var.alias
+  # description - (optional) is a type of string
   description = var.description
-  edition     = var.edition
-  enable_sso  = var.enable_sso
-  name        = var.name
-  password    = var.password
-  short_name  = var.short_name
-  size        = var.size
-  tags        = var.tags
-  type        = var.type
+  # edition - (optional) is a type of string
+  edition = var.edition
+  # enable_sso - (optional) is a type of bool
+  enable_sso = var.enable_sso
+  # name - (required) is a type of string
+  name = var.name
+  # password - (required) is a type of string
+  password = var.password
+  # short_name - (optional) is a type of string
+  short_name = var.short_name
+  # size - (optional) is a type of string
+  size = var.size
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "connect_settings" {
     for_each = var.connect_settings
     content {
-      customer_dns_ips  = connect_settings.value["customer_dns_ips"]
+      # customer_dns_ips - (required) is a type of set of string
+      customer_dns_ips = connect_settings.value["customer_dns_ips"]
+      # customer_username - (required) is a type of string
       customer_username = connect_settings.value["customer_username"]
-      subnet_ids        = connect_settings.value["subnet_ids"]
-      vpc_id            = connect_settings.value["vpc_id"]
+      # subnet_ids - (required) is a type of set of string
+      subnet_ids = connect_settings.value["subnet_ids"]
+      # vpc_id - (required) is a type of string
+      vpc_id = connect_settings.value["vpc_id"]
     }
   }
 
   dynamic "vpc_settings" {
     for_each = var.vpc_settings
     content {
+      # subnet_ids - (required) is a type of set of string
       subnet_ids = vpc_settings.value["subnet_ids"]
-      vpc_id     = vpc_settings.value["vpc_id"]
+      # vpc_id - (required) is a type of string
+      vpc_id = vpc_settings.value["vpc_id"]
     }
   }
 

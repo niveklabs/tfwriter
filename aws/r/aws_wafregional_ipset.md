@@ -65,12 +65,15 @@ variable "ip_set_descriptor" {
 
 ```terraform
 resource "aws_wafregional_ipset" "this" {
+  # name - (required) is a type of string
   name = var.name
 
   dynamic "ip_set_descriptor" {
     for_each = var.ip_set_descriptor
     content {
-      type  = ip_set_descriptor.value["type"]
+      # type - (required) is a type of string
+      type = ip_set_descriptor.value["type"]
+      # value - (required) is a type of string
       value = ip_set_descriptor.value["value"]
     }
   }

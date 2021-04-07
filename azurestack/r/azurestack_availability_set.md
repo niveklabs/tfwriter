@@ -95,13 +95,20 @@ variable "tags" {
 
 ```terraform
 resource "azurestack_availability_set" "this" {
-  location                     = var.location
-  managed                      = var.managed
-  name                         = var.name
-  platform_fault_domain_count  = var.platform_fault_domain_count
+  # location - (required) is a type of string
+  location = var.location
+  # managed - (optional) is a type of bool
+  managed = var.managed
+  # name - (required) is a type of string
+  name = var.name
+  # platform_fault_domain_count - (optional) is a type of number
+  platform_fault_domain_count = var.platform_fault_domain_count
+  # platform_update_domain_count - (optional) is a type of number
   platform_update_domain_count = var.platform_update_domain_count
-  resource_group_name          = var.resource_group_name
-  tags                         = var.tags
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

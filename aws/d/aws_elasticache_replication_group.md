@@ -49,6 +49,7 @@ variable "replication_group_id" {
 
 ```terraform
 data "aws_elasticache_replication_group" "this" {
+  # replication_group_id - (required) is a type of string
   replication_group_id = var.replication_group_id
 }
 ```

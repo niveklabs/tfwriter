@@ -101,24 +101,34 @@ variable "export_config" {
 
 ```terraform
 resource "aws_codebuild_report_group" "this" {
+  # delete_reports - (optional) is a type of bool
   delete_reports = var.delete_reports
-  name           = var.name
-  tags           = var.tags
-  type           = var.type
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (required) is a type of string
+  type = var.type
 
   dynamic "export_config" {
     for_each = var.export_config
     content {
+      # type - (required) is a type of string
       type = export_config.value["type"]
 
       dynamic "s3_destination" {
         for_each = export_config.value.s3_destination
         content {
-          bucket              = s3_destination.value["bucket"]
+          # bucket - (required) is a type of string
+          bucket = s3_destination.value["bucket"]
+          # encryption_disabled - (optional) is a type of bool
           encryption_disabled = s3_destination.value["encryption_disabled"]
-          encryption_key      = s3_destination.value["encryption_key"]
-          packaging           = s3_destination.value["packaging"]
-          path                = s3_destination.value["path"]
+          # encryption_key - (required) is a type of string
+          encryption_key = s3_destination.value["encryption_key"]
+          # packaging - (optional) is a type of string
+          packaging = s3_destination.value["packaging"]
+          # path - (optional) is a type of string
+          path = s3_destination.value["path"]
         }
       }
 

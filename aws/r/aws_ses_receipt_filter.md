@@ -63,8 +63,11 @@ variable "policy" {
 
 ```terraform
 resource "aws_ses_receipt_filter" "this" {
-  cidr   = var.cidr
-  name   = var.name
+  # cidr - (required) is a type of string
+  cidr = var.cidr
+  # name - (required) is a type of string
+  name = var.name
+  # policy - (required) is a type of string
   policy = var.policy
 }
 ```

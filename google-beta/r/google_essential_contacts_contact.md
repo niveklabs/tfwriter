@@ -88,16 +88,23 @@ variable "timeouts" {
 
 ```terraform
 resource "google_essential_contacts_contact" "this" {
-  email                               = var.email
-  language_tag                        = var.language_tag
+  # email - (required) is a type of string
+  email = var.email
+  # language_tag - (required) is a type of string
+  language_tag = var.language_tag
+  # notification_category_subscriptions - (required) is a type of list of string
   notification_category_subscriptions = var.notification_category_subscriptions
-  parent                              = var.parent
+  # parent - (required) is a type of string
+  parent = var.parent
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

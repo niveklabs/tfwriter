@@ -66,9 +66,12 @@ variable "tags" {
 
 ```terraform
 resource "aws_qldb_ledger" "this" {
+  # deletion_protection - (optional) is a type of bool
   deletion_protection = var.deletion_protection
-  name                = var.name
-  tags                = var.tags
+  # name - (optional) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

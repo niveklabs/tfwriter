@@ -64,9 +64,12 @@ variable "tags" {
 
 ```terraform
 resource "aws_xray_group" "this" {
+  # filter_expression - (required) is a type of string
   filter_expression = var.filter_expression
-  group_name        = var.group_name
-  tags              = var.tags
+  # group_name - (required) is a type of string
+  group_name = var.group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

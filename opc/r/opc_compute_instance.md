@@ -202,41 +202,67 @@ variable "timeouts" {
 
 ```terraform
 resource "opc_compute_instance" "this" {
-  boot_order          = var.boot_order
-  desired_state       = var.desired_state
-  hostname            = var.hostname
-  image_list          = var.image_list
+  # boot_order - (optional) is a type of list of number
+  boot_order = var.boot_order
+  # desired_state - (optional) is a type of string
+  desired_state = var.desired_state
+  # hostname - (optional) is a type of string
+  hostname = var.hostname
+  # image_list - (optional) is a type of string
+  image_list = var.image_list
+  # instance_attributes - (optional) is a type of string
   instance_attributes = var.instance_attributes
-  label               = var.label
-  name                = var.name
-  reverse_dns         = var.reverse_dns
-  shape               = var.shape
-  ssh_keys            = var.ssh_keys
-  tags                = var.tags
+  # label - (optional) is a type of string
+  label = var.label
+  # name - (required) is a type of string
+  name = var.name
+  # reverse_dns - (optional) is a type of bool
+  reverse_dns = var.reverse_dns
+  # shape - (required) is a type of string
+  shape = var.shape
+  # ssh_keys - (optional) is a type of list of string
+  ssh_keys = var.ssh_keys
+  # tags - (optional) is a type of list of string
+  tags = var.tags
 
   dynamic "networking_info" {
     for_each = var.networking_info
     content {
-      dns                = networking_info.value["dns"]
-      index              = networking_info.value["index"]
-      ip_address         = networking_info.value["ip_address"]
-      ip_network         = networking_info.value["ip_network"]
+      # dns - (optional) is a type of list of string
+      dns = networking_info.value["dns"]
+      # index - (required) is a type of number
+      index = networking_info.value["index"]
+      # ip_address - (optional) is a type of string
+      ip_address = networking_info.value["ip_address"]
+      # ip_network - (optional) is a type of string
+      ip_network = networking_info.value["ip_network"]
+      # is_default_gateway - (optional) is a type of bool
       is_default_gateway = networking_info.value["is_default_gateway"]
-      mac_address        = networking_info.value["mac_address"]
-      name_servers       = networking_info.value["name_servers"]
-      nat                = networking_info.value["nat"]
-      search_domains     = networking_info.value["search_domains"]
-      sec_lists          = networking_info.value["sec_lists"]
-      shared_network     = networking_info.value["shared_network"]
-      vnic               = networking_info.value["vnic"]
-      vnic_sets          = networking_info.value["vnic_sets"]
+      # mac_address - (optional) is a type of string
+      mac_address = networking_info.value["mac_address"]
+      # name_servers - (optional) is a type of list of string
+      name_servers = networking_info.value["name_servers"]
+      # nat - (optional) is a type of list of string
+      nat = networking_info.value["nat"]
+      # search_domains - (optional) is a type of list of string
+      search_domains = networking_info.value["search_domains"]
+      # sec_lists - (optional) is a type of list of string
+      sec_lists = networking_info.value["sec_lists"]
+      # shared_network - (optional) is a type of bool
+      shared_network = networking_info.value["shared_network"]
+      # vnic - (optional) is a type of string
+      vnic = networking_info.value["vnic"]
+      # vnic_sets - (optional) is a type of list of string
+      vnic_sets = networking_info.value["vnic_sets"]
     }
   }
 
   dynamic "storage" {
     for_each = var.storage
     content {
-      index  = storage.value["index"]
+      # index - (required) is a type of number
+      index = storage.value["index"]
+      # volume - (required) is a type of string
       volume = storage.value["volume"]
     }
   }
@@ -244,8 +270,11 @@ resource "opc_compute_instance" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -66,9 +66,12 @@ variable "tags" {
 
 ```terraform
 resource "aws_guardduty_detector" "this" {
-  enable                       = var.enable
+  # enable - (optional) is a type of bool
+  enable = var.enable
+  # finding_publishing_frequency - (optional) is a type of string
   finding_publishing_frequency = var.finding_publishing_frequency
-  tags                         = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

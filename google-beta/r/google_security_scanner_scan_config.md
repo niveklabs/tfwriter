@@ -172,14 +172,22 @@ variable "timeouts" {
 
 ```terraform
 resource "google_security_scanner_scan_config" "this" {
-  blacklist_patterns                = var.blacklist_patterns
-  display_name                      = var.display_name
+  # blacklist_patterns - (optional) is a type of list of string
+  blacklist_patterns = var.blacklist_patterns
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # export_to_security_command_center - (optional) is a type of string
   export_to_security_command_center = var.export_to_security_command_center
-  max_qps                           = var.max_qps
-  project                           = var.project
-  starting_urls                     = var.starting_urls
-  target_platforms                  = var.target_platforms
-  user_agent                        = var.user_agent
+  # max_qps - (optional) is a type of number
+  max_qps = var.max_qps
+  # project - (optional) is a type of string
+  project = var.project
+  # starting_urls - (required) is a type of list of string
+  starting_urls = var.starting_urls
+  # target_platforms - (optional) is a type of list of string
+  target_platforms = var.target_platforms
+  # user_agent - (optional) is a type of string
+  user_agent = var.user_agent
 
   dynamic "authentication" {
     for_each = var.authentication
@@ -188,16 +196,21 @@ resource "google_security_scanner_scan_config" "this" {
       dynamic "custom_account" {
         for_each = authentication.value.custom_account
         content {
+          # login_url - (required) is a type of string
           login_url = custom_account.value["login_url"]
-          password  = custom_account.value["password"]
-          username  = custom_account.value["username"]
+          # password - (required) is a type of string
+          password = custom_account.value["password"]
+          # username - (required) is a type of string
+          username = custom_account.value["username"]
         }
       }
 
       dynamic "google_account" {
         for_each = authentication.value.google_account
         content {
+          # password - (required) is a type of string
           password = google_account.value["password"]
+          # username - (required) is a type of string
           username = google_account.value["username"]
         }
       }
@@ -208,16 +221,21 @@ resource "google_security_scanner_scan_config" "this" {
   dynamic "schedule" {
     for_each = var.schedule
     content {
+      # interval_duration_days - (required) is a type of number
       interval_duration_days = schedule.value["interval_duration_days"]
-      schedule_time          = schedule.value["schedule_time"]
+      # schedule_time - (optional) is a type of string
+      schedule_time = schedule.value["schedule_time"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

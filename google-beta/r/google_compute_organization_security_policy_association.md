@@ -79,14 +79,19 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_organization_security_policy_association" "this" {
+  # attachment_id - (required) is a type of string
   attachment_id = var.attachment_id
-  name          = var.name
-  policy_id     = var.policy_id
+  # name - (required) is a type of string
+  name = var.name
+  # policy_id - (required) is a type of string
+  policy_id = var.policy_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

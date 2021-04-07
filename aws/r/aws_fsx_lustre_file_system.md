@@ -192,28 +192,47 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_fsx_lustre_file_system" "this" {
-  auto_import_policy                = var.auto_import_policy
-  automatic_backup_retention_days   = var.automatic_backup_retention_days
-  copy_tags_to_backups              = var.copy_tags_to_backups
+  # auto_import_policy - (optional) is a type of string
+  auto_import_policy = var.auto_import_policy
+  # automatic_backup_retention_days - (optional) is a type of number
+  automatic_backup_retention_days = var.automatic_backup_retention_days
+  # copy_tags_to_backups - (optional) is a type of bool
+  copy_tags_to_backups = var.copy_tags_to_backups
+  # daily_automatic_backup_start_time - (optional) is a type of string
   daily_automatic_backup_start_time = var.daily_automatic_backup_start_time
-  deployment_type                   = var.deployment_type
-  drive_cache_type                  = var.drive_cache_type
-  export_path                       = var.export_path
-  import_path                       = var.import_path
-  imported_file_chunk_size          = var.imported_file_chunk_size
-  kms_key_id                        = var.kms_key_id
-  per_unit_storage_throughput       = var.per_unit_storage_throughput
-  security_group_ids                = var.security_group_ids
-  storage_capacity                  = var.storage_capacity
-  storage_type                      = var.storage_type
-  subnet_ids                        = var.subnet_ids
-  tags                              = var.tags
-  weekly_maintenance_start_time     = var.weekly_maintenance_start_time
+  # deployment_type - (optional) is a type of string
+  deployment_type = var.deployment_type
+  # drive_cache_type - (optional) is a type of string
+  drive_cache_type = var.drive_cache_type
+  # export_path - (optional) is a type of string
+  export_path = var.export_path
+  # import_path - (optional) is a type of string
+  import_path = var.import_path
+  # imported_file_chunk_size - (optional) is a type of number
+  imported_file_chunk_size = var.imported_file_chunk_size
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # per_unit_storage_throughput - (optional) is a type of number
+  per_unit_storage_throughput = var.per_unit_storage_throughput
+  # security_group_ids - (optional) is a type of set of string
+  security_group_ids = var.security_group_ids
+  # storage_capacity - (required) is a type of number
+  storage_capacity = var.storage_capacity
+  # storage_type - (optional) is a type of string
+  storage_type = var.storage_type
+  # subnet_ids - (required) is a type of list of string
+  subnet_ids = var.subnet_ids
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # weekly_maintenance_start_time - (optional) is a type of string
+  weekly_maintenance_start_time = var.weekly_maintenance_start_time
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

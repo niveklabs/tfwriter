@@ -72,10 +72,14 @@ variable "password" {
 
 ```terraform
 data "oci_database_autonomous_database_wallet" "this" {
+  # autonomous_database_id - (required) is a type of string
   autonomous_database_id = var.autonomous_database_id
-  base64_encode_content  = var.base64_encode_content
-  generate_type          = var.generate_type
-  password               = var.password
+  # base64_encode_content - (optional) is a type of bool
+  base64_encode_content = var.base64_encode_content
+  # generate_type - (optional) is a type of string
+  generate_type = var.generate_type
+  # password - (required) is a type of string
+  password = var.password
 }
 ```
 

@@ -97,18 +97,26 @@ variable "condition" {
 
 ```terraform
 resource "google_data_catalog_entry_group_iam_binding" "this" {
+  # entry_group - (required) is a type of string
   entry_group = var.entry_group
-  members     = var.members
-  project     = var.project
-  region      = var.region
-  role        = var.role
+  # members - (required) is a type of set of string
+  members = var.members
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
+  # role - (required) is a type of string
+  role = var.role
 
   dynamic "condition" {
     for_each = var.condition
     content {
+      # description - (optional) is a type of string
       description = condition.value["description"]
-      expression  = condition.value["expression"]
-      title       = condition.value["title"]
+      # expression - (required) is a type of string
+      expression = condition.value["expression"]
+      # title - (required) is a type of string
+      title = condition.value["title"]
     }
   }
 

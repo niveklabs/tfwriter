@@ -78,13 +78,17 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_db_snapshot" "this" {
+  # db_instance_identifier - (required) is a type of string
   db_instance_identifier = var.db_instance_identifier
+  # db_snapshot_identifier - (required) is a type of string
   db_snapshot_identifier = var.db_snapshot_identifier
-  tags                   = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

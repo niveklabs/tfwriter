@@ -49,6 +49,7 @@ variable "report_name" {
 
 ```terraform
 data "aws_cur_report_definition" "this" {
+  # report_name - (required) is a type of string
   report_name = var.report_name
 }
 ```

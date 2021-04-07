@@ -57,8 +57,10 @@ variable "url" {
 
 ```terraform
 data "http" "this" {
+  # request_headers - (optional) is a type of map of string
   request_headers = var.request_headers
-  url             = var.url
+  # url - (required) is a type of string
+  url = var.url
 }
 ```
 

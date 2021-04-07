@@ -94,21 +94,30 @@ resource "kubernetes_role" "this" {
   dynamic "metadata" {
     for_each = var.metadata
     content {
-      annotations   = metadata.value["annotations"]
+      # annotations - (optional) is a type of map of string
+      annotations = metadata.value["annotations"]
+      # generate_name - (optional) is a type of string
       generate_name = metadata.value["generate_name"]
-      labels        = metadata.value["labels"]
-      name          = metadata.value["name"]
-      namespace     = metadata.value["namespace"]
+      # labels - (optional) is a type of map of string
+      labels = metadata.value["labels"]
+      # name - (optional) is a type of string
+      name = metadata.value["name"]
+      # namespace - (optional) is a type of string
+      namespace = metadata.value["namespace"]
     }
   }
 
   dynamic "rule" {
     for_each = var.rule
     content {
-      api_groups     = rule.value["api_groups"]
+      # api_groups - (required) is a type of set of string
+      api_groups = rule.value["api_groups"]
+      # resource_names - (optional) is a type of set of string
       resource_names = rule.value["resource_names"]
-      resources      = rule.value["resources"]
-      verbs          = rule.value["verbs"]
+      # resources - (required) is a type of set of string
+      resources = rule.value["resources"]
+      # verbs - (required) is a type of set of string
+      verbs = rule.value["verbs"]
     }
   }
 

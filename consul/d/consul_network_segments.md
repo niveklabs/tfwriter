@@ -58,8 +58,10 @@ variable "token" {
 
 ```terraform
 data "consul_network_segments" "this" {
+  # datacenter - (optional) is a type of string
   datacenter = var.datacenter
-  token      = var.token
+  # token - (optional) is a type of string
+  token = var.token
 }
 ```
 

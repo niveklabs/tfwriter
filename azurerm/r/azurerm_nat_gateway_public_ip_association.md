@@ -74,15 +74,20 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_nat_gateway_public_ip_association" "this" {
-  nat_gateway_id       = var.nat_gateway_id
+  # nat_gateway_id - (required) is a type of string
+  nat_gateway_id = var.nat_gateway_id
+  # public_ip_address_id - (required) is a type of string
   public_ip_address_id = var.public_ip_address_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

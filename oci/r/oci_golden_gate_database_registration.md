@@ -190,29 +190,49 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_golden_gate_database_registration" "this" {
-  alias_name            = var.alias_name
-  compartment_id        = var.compartment_id
-  connection_string     = var.connection_string
-  database_id           = var.database_id
-  defined_tags          = var.defined_tags
-  description           = var.description
-  display_name          = var.display_name
-  fqdn                  = var.fqdn
-  freeform_tags         = var.freeform_tags
-  ip_address            = var.ip_address
-  key_id                = var.key_id
-  password              = var.password
+  # alias_name - (required) is a type of string
+  alias_name = var.alias_name
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # connection_string - (optional) is a type of string
+  connection_string = var.connection_string
+  # database_id - (optional) is a type of string
+  database_id = var.database_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # fqdn - (required) is a type of string
+  fqdn = var.fqdn
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # ip_address - (optional) is a type of string
+  ip_address = var.ip_address
+  # key_id - (optional) is a type of string
+  key_id = var.key_id
+  # password - (required) is a type of string
+  password = var.password
+  # secret_compartment_id - (optional) is a type of string
   secret_compartment_id = var.secret_compartment_id
-  subnet_id             = var.subnet_id
-  username              = var.username
-  vault_id              = var.vault_id
-  wallet                = var.wallet
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # username - (required) is a type of string
+  username = var.username
+  # vault_id - (optional) is a type of string
+  vault_id = var.vault_id
+  # wallet - (optional) is a type of string
+  wallet = var.wallet
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

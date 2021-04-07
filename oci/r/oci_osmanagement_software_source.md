@@ -145,23 +145,37 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_osmanagement_software_source" "this" {
-  arch_type        = var.arch_type
-  checksum_type    = var.checksum_type
-  compartment_id   = var.compartment_id
-  defined_tags     = var.defined_tags
-  description      = var.description
-  display_name     = var.display_name
-  freeform_tags    = var.freeform_tags
+  # arch_type - (required) is a type of string
+  arch_type = var.arch_type
+  # checksum_type - (optional) is a type of string
+  checksum_type = var.checksum_type
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # maintainer_email - (optional) is a type of string
   maintainer_email = var.maintainer_email
-  maintainer_name  = var.maintainer_name
+  # maintainer_name - (optional) is a type of string
+  maintainer_name = var.maintainer_name
+  # maintainer_phone - (optional) is a type of string
   maintainer_phone = var.maintainer_phone
-  parent_id        = var.parent_id
+  # parent_id - (optional) is a type of string
+  parent_id = var.parent_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

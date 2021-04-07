@@ -300,17 +300,25 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_hdinsight_storm_cluster" "this" {
-  cluster_version     = var.cluster_version
-  location            = var.location
-  name                = var.name
+  # cluster_version - (required) is a type of string
+  cluster_version = var.cluster_version
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  tags                = var.tags
-  tier                = var.tier
-  tls_min_version     = var.tls_min_version
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # tier - (required) is a type of string
+  tier = var.tier
+  # tls_min_version - (optional) is a type of string
+  tls_min_version = var.tls_min_version
 
   dynamic "component_version" {
     for_each = var.component_version
     content {
+      # storm - (required) is a type of string
       storm = component_version.value["storm"]
     }
   }
@@ -318,8 +326,11 @@ resource "azurerm_hdinsight_storm_cluster" "this" {
   dynamic "gateway" {
     for_each = var.gateway
     content {
-      enabled  = gateway.value["enabled"]
+      # enabled - (optional) is a type of bool
+      enabled = gateway.value["enabled"]
+      # password - (required) is a type of string
       password = gateway.value["password"]
+      # username - (required) is a type of string
       username = gateway.value["username"]
     }
   }
@@ -331,30 +342,42 @@ resource "azurerm_hdinsight_storm_cluster" "this" {
       dynamic "ambari" {
         for_each = metastores.value.ambari
         content {
+          # database_name - (required) is a type of string
           database_name = ambari.value["database_name"]
-          password      = ambari.value["password"]
-          server        = ambari.value["server"]
-          username      = ambari.value["username"]
+          # password - (required) is a type of string
+          password = ambari.value["password"]
+          # server - (required) is a type of string
+          server = ambari.value["server"]
+          # username - (required) is a type of string
+          username = ambari.value["username"]
         }
       }
 
       dynamic "hive" {
         for_each = metastores.value.hive
         content {
+          # database_name - (required) is a type of string
           database_name = hive.value["database_name"]
-          password      = hive.value["password"]
-          server        = hive.value["server"]
-          username      = hive.value["username"]
+          # password - (required) is a type of string
+          password = hive.value["password"]
+          # server - (required) is a type of string
+          server = hive.value["server"]
+          # username - (required) is a type of string
+          username = hive.value["username"]
         }
       }
 
       dynamic "oozie" {
         for_each = metastores.value.oozie
         content {
+          # database_name - (required) is a type of string
           database_name = oozie.value["database_name"]
-          password      = oozie.value["password"]
-          server        = oozie.value["server"]
-          username      = oozie.value["username"]
+          # password - (required) is a type of string
+          password = oozie.value["password"]
+          # server - (required) is a type of string
+          server = oozie.value["server"]
+          # username - (required) is a type of string
+          username = oozie.value["username"]
         }
       }
 
@@ -364,8 +387,10 @@ resource "azurerm_hdinsight_storm_cluster" "this" {
   dynamic "monitor" {
     for_each = var.monitor
     content {
+      # log_analytics_workspace_id - (required) is a type of string
       log_analytics_workspace_id = monitor.value["log_analytics_workspace_id"]
-      primary_key                = monitor.value["primary_key"]
+      # primary_key - (required) is a type of string
+      primary_key = monitor.value["primary_key"]
     }
   }
 
@@ -376,38 +401,58 @@ resource "azurerm_hdinsight_storm_cluster" "this" {
       dynamic "head_node" {
         for_each = roles.value.head_node
         content {
-          password           = head_node.value["password"]
-          ssh_keys           = head_node.value["ssh_keys"]
-          subnet_id          = head_node.value["subnet_id"]
-          username           = head_node.value["username"]
+          # password - (optional) is a type of string
+          password = head_node.value["password"]
+          # ssh_keys - (optional) is a type of set of string
+          ssh_keys = head_node.value["ssh_keys"]
+          # subnet_id - (optional) is a type of string
+          subnet_id = head_node.value["subnet_id"]
+          # username - (required) is a type of string
+          username = head_node.value["username"]
+          # virtual_network_id - (optional) is a type of string
           virtual_network_id = head_node.value["virtual_network_id"]
-          vm_size            = head_node.value["vm_size"]
+          # vm_size - (required) is a type of string
+          vm_size = head_node.value["vm_size"]
         }
       }
 
       dynamic "worker_node" {
         for_each = roles.value.worker_node
         content {
-          min_instance_count    = worker_node.value["min_instance_count"]
-          password              = worker_node.value["password"]
-          ssh_keys              = worker_node.value["ssh_keys"]
-          subnet_id             = worker_node.value["subnet_id"]
+          # min_instance_count - (optional) is a type of number
+          min_instance_count = worker_node.value["min_instance_count"]
+          # password - (optional) is a type of string
+          password = worker_node.value["password"]
+          # ssh_keys - (optional) is a type of set of string
+          ssh_keys = worker_node.value["ssh_keys"]
+          # subnet_id - (optional) is a type of string
+          subnet_id = worker_node.value["subnet_id"]
+          # target_instance_count - (required) is a type of number
           target_instance_count = worker_node.value["target_instance_count"]
-          username              = worker_node.value["username"]
-          virtual_network_id    = worker_node.value["virtual_network_id"]
-          vm_size               = worker_node.value["vm_size"]
+          # username - (required) is a type of string
+          username = worker_node.value["username"]
+          # virtual_network_id - (optional) is a type of string
+          virtual_network_id = worker_node.value["virtual_network_id"]
+          # vm_size - (required) is a type of string
+          vm_size = worker_node.value["vm_size"]
         }
       }
 
       dynamic "zookeeper_node" {
         for_each = roles.value.zookeeper_node
         content {
-          password           = zookeeper_node.value["password"]
-          ssh_keys           = zookeeper_node.value["ssh_keys"]
-          subnet_id          = zookeeper_node.value["subnet_id"]
-          username           = zookeeper_node.value["username"]
+          # password - (optional) is a type of string
+          password = zookeeper_node.value["password"]
+          # ssh_keys - (optional) is a type of set of string
+          ssh_keys = zookeeper_node.value["ssh_keys"]
+          # subnet_id - (optional) is a type of string
+          subnet_id = zookeeper_node.value["subnet_id"]
+          # username - (required) is a type of string
+          username = zookeeper_node.value["username"]
+          # virtual_network_id - (optional) is a type of string
           virtual_network_id = zookeeper_node.value["virtual_network_id"]
-          vm_size            = zookeeper_node.value["vm_size"]
+          # vm_size - (required) is a type of string
+          vm_size = zookeeper_node.value["vm_size"]
         }
       }
 
@@ -417,8 +462,11 @@ resource "azurerm_hdinsight_storm_cluster" "this" {
   dynamic "storage_account" {
     for_each = var.storage_account
     content {
-      is_default           = storage_account.value["is_default"]
-      storage_account_key  = storage_account.value["storage_account_key"]
+      # is_default - (required) is a type of bool
+      is_default = storage_account.value["is_default"]
+      # storage_account_key - (required) is a type of string
+      storage_account_key = storage_account.value["storage_account_key"]
+      # storage_container_id - (required) is a type of string
       storage_container_id = storage_account.value["storage_container_id"]
     }
   }
@@ -426,9 +474,13 @@ resource "azurerm_hdinsight_storm_cluster" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

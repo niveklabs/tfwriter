@@ -105,19 +105,29 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_log_analytics_data_export_rule" "this" {
+  # destination_resource_id - (required) is a type of string
   destination_resource_id = var.destination_resource_id
-  enabled                 = var.enabled
-  name                    = var.name
-  resource_group_name     = var.resource_group_name
-  table_names             = var.table_names
-  workspace_resource_id   = var.workspace_resource_id
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # table_names - (required) is a type of set of string
+  table_names = var.table_names
+  # workspace_resource_id - (required) is a type of string
+  workspace_resource_id = var.workspace_resource_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

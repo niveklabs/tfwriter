@@ -126,18 +126,27 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_volume_backup" "this" {
+  # compartment_id - (optional) is a type of string
   compartment_id = var.compartment_id
-  defined_tags   = var.defined_tags
-  display_name   = var.display_name
-  freeform_tags  = var.freeform_tags
-  type           = var.type
-  volume_id      = var.volume_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # type - (optional) is a type of string
+  type = var.type
+  # volume_id - (optional) is a type of string
+  volume_id = var.volume_id
 
   dynamic "source_details" {
     for_each = var.source_details
     content {
-      kms_key_id       = source_details.value["kms_key_id"]
-      region           = source_details.value["region"]
+      # kms_key_id - (optional) is a type of string
+      kms_key_id = source_details.value["kms_key_id"]
+      # region - (required) is a type of string
+      region = source_details.value["region"]
+      # volume_backup_id - (required) is a type of string
       volume_backup_id = source_details.value["volume_backup_id"]
     }
   }
@@ -145,8 +154,11 @@ resource "oci_core_volume_backup" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

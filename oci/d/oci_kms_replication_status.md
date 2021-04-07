@@ -56,8 +56,10 @@ variable "replication_id" {
 
 ```terraform
 data "oci_kms_replication_status" "this" {
+  # management_endpoint - (required) is a type of string
   management_endpoint = var.management_endpoint
-  replication_id      = var.replication_id
+  # replication_id - (required) is a type of string
+  replication_id = var.replication_id
 }
 ```
 

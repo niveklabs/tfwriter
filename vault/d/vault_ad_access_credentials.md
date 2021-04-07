@@ -56,8 +56,10 @@ variable "role" {
 
 ```terraform
 data "vault_ad_access_credentials" "this" {
+  # backend - (required) is a type of string
   backend = var.backend
-  role    = var.role
+  # role - (required) is a type of string
+  role = var.role
 }
 ```
 

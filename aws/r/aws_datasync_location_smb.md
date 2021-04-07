@@ -107,17 +107,25 @@ variable "mount_options" {
 
 ```terraform
 resource "aws_datasync_location_smb" "this" {
-  agent_arns      = var.agent_arns
-  domain          = var.domain
-  password        = var.password
+  # agent_arns - (required) is a type of set of string
+  agent_arns = var.agent_arns
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # password - (required) is a type of string
+  password = var.password
+  # server_hostname - (required) is a type of string
   server_hostname = var.server_hostname
-  subdirectory    = var.subdirectory
-  tags            = var.tags
-  user            = var.user
+  # subdirectory - (required) is a type of string
+  subdirectory = var.subdirectory
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # user - (required) is a type of string
+  user = var.user
 
   dynamic "mount_options" {
     for_each = var.mount_options
     content {
+      # version - (optional) is a type of string
       version = mount_options.value["version"]
     }
   }

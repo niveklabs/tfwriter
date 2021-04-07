@@ -65,8 +65,11 @@ variable "wait_for_registration" {
 
 ```terraform
 data "nomad_plugin" "this" {
-  plugin_id             = var.plugin_id
-  wait_for_healthy      = var.wait_for_healthy
+  # plugin_id - (required) is a type of string
+  plugin_id = var.plugin_id
+  # wait_for_healthy - (optional) is a type of bool
+  wait_for_healthy = var.wait_for_healthy
+  # wait_for_registration - (optional) is a type of bool
   wait_for_registration = var.wait_for_registration
 }
 ```

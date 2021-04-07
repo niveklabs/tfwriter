@@ -57,7 +57,9 @@ variable "path" {
 
 ```terraform
 resource "aws_iam_group" "this" {
+  # name - (required) is a type of string
   name = var.name
+  # path - (optional) is a type of string
   path = var.path
 }
 ```

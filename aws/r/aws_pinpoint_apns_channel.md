@@ -113,15 +113,24 @@ variable "token_key_id" {
 
 ```terraform
 resource "aws_pinpoint_apns_channel" "this" {
-  application_id                = var.application_id
-  bundle_id                     = var.bundle_id
-  certificate                   = var.certificate
+  # application_id - (required) is a type of string
+  application_id = var.application_id
+  # bundle_id - (optional) is a type of string
+  bundle_id = var.bundle_id
+  # certificate - (optional) is a type of string
+  certificate = var.certificate
+  # default_authentication_method - (optional) is a type of string
   default_authentication_method = var.default_authentication_method
-  enabled                       = var.enabled
-  private_key                   = var.private_key
-  team_id                       = var.team_id
-  token_key                     = var.token_key
-  token_key_id                  = var.token_key_id
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # private_key - (optional) is a type of string
+  private_key = var.private_key
+  # team_id - (optional) is a type of string
+  team_id = var.team_id
+  # token_key - (optional) is a type of string
+  token_key = var.token_key
+  # token_key_id - (optional) is a type of string
+  token_key_id = var.token_key_id
 }
 ```
 

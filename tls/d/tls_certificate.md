@@ -57,7 +57,9 @@ variable "verify_chain" {
 
 ```terraform
 data "tls_certificate" "this" {
-  url          = var.url
+  # url - (required) is a type of string
+  url = var.url
+  # verify_chain - (optional) is a type of bool
   verify_chain = var.verify_chain
 }
 ```

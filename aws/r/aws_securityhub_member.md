@@ -64,9 +64,12 @@ variable "invite" {
 
 ```terraform
 resource "aws_securityhub_member" "this" {
+  # account_id - (required) is a type of string
   account_id = var.account_id
-  email      = var.email
-  invite     = var.invite
+  # email - (required) is a type of string
+  email = var.email
+  # invite - (optional) is a type of bool
+  invite = var.invite
 }
 ```
 

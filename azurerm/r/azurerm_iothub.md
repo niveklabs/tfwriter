@@ -272,64 +272,95 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_iothub" "this" {
-  endpoint                      = var.endpoint
-  enrichment                    = var.enrichment
-  event_hub_partition_count     = var.event_hub_partition_count
-  event_hub_retention_in_days   = var.event_hub_retention_in_days
-  location                      = var.location
-  min_tls_version               = var.min_tls_version
-  name                          = var.name
+  # endpoint - (optional) is a type of list of object
+  endpoint = var.endpoint
+  # enrichment - (optional) is a type of list of object
+  enrichment = var.enrichment
+  # event_hub_partition_count - (optional) is a type of number
+  event_hub_partition_count = var.event_hub_partition_count
+  # event_hub_retention_in_days - (optional) is a type of number
+  event_hub_retention_in_days = var.event_hub_retention_in_days
+  # location - (required) is a type of string
+  location = var.location
+  # min_tls_version - (optional) is a type of string
+  min_tls_version = var.min_tls_version
+  # name - (required) is a type of string
+  name = var.name
+  # public_network_access_enabled - (optional) is a type of bool
   public_network_access_enabled = var.public_network_access_enabled
-  resource_group_name           = var.resource_group_name
-  route                         = var.route
-  tags                          = var.tags
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # route - (optional) is a type of list of object
+  route = var.route
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "fallback_route" {
     for_each = var.fallback_route
     content {
-      condition      = fallback_route.value["condition"]
-      enabled        = fallback_route.value["enabled"]
+      # condition - (optional) is a type of string
+      condition = fallback_route.value["condition"]
+      # enabled - (optional) is a type of bool
+      enabled = fallback_route.value["enabled"]
+      # endpoint_names - (optional) is a type of list of string
       endpoint_names = fallback_route.value["endpoint_names"]
-      source         = fallback_route.value["source"]
+      # source - (optional) is a type of string
+      source = fallback_route.value["source"]
     }
   }
 
   dynamic "file_upload" {
     for_each = var.file_upload
     content {
-      connection_string  = file_upload.value["connection_string"]
-      container_name     = file_upload.value["container_name"]
-      default_ttl        = file_upload.value["default_ttl"]
-      lock_duration      = file_upload.value["lock_duration"]
+      # connection_string - (required) is a type of string
+      connection_string = file_upload.value["connection_string"]
+      # container_name - (required) is a type of string
+      container_name = file_upload.value["container_name"]
+      # default_ttl - (optional) is a type of string
+      default_ttl = file_upload.value["default_ttl"]
+      # lock_duration - (optional) is a type of string
+      lock_duration = file_upload.value["lock_duration"]
+      # max_delivery_count - (optional) is a type of number
       max_delivery_count = file_upload.value["max_delivery_count"]
-      notifications      = file_upload.value["notifications"]
-      sas_ttl            = file_upload.value["sas_ttl"]
+      # notifications - (optional) is a type of bool
+      notifications = file_upload.value["notifications"]
+      # sas_ttl - (optional) is a type of string
+      sas_ttl = file_upload.value["sas_ttl"]
     }
   }
 
   dynamic "ip_filter_rule" {
     for_each = var.ip_filter_rule
     content {
-      action  = ip_filter_rule.value["action"]
+      # action - (required) is a type of string
+      action = ip_filter_rule.value["action"]
+      # ip_mask - (required) is a type of string
       ip_mask = ip_filter_rule.value["ip_mask"]
-      name    = ip_filter_rule.value["name"]
+      # name - (required) is a type of string
+      name = ip_filter_rule.value["name"]
     }
   }
 
   dynamic "sku" {
     for_each = var.sku
     content {
+      # capacity - (required) is a type of number
       capacity = sku.value["capacity"]
-      name     = sku.value["name"]
+      # name - (required) is a type of string
+      name = sku.value["name"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -123,24 +123,33 @@ variable "throttle_settings" {
 
 ```terraform
 resource "aws_api_gateway_usage_plan" "this" {
-  description  = var.description
-  name         = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # product_code - (optional) is a type of string
   product_code = var.product_code
-  tags         = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "api_stages" {
     for_each = var.api_stages
     content {
+      # api_id - (required) is a type of string
       api_id = api_stages.value["api_id"]
-      stage  = api_stages.value["stage"]
+      # stage - (required) is a type of string
+      stage = api_stages.value["stage"]
     }
   }
 
   dynamic "quota_settings" {
     for_each = var.quota_settings
     content {
-      limit  = quota_settings.value["limit"]
+      # limit - (required) is a type of number
+      limit = quota_settings.value["limit"]
+      # offset - (optional) is a type of number
       offset = quota_settings.value["offset"]
+      # period - (required) is a type of string
       period = quota_settings.value["period"]
     }
   }
@@ -148,8 +157,10 @@ resource "aws_api_gateway_usage_plan" "this" {
   dynamic "throttle_settings" {
     for_each = var.throttle_settings
     content {
+      # burst_limit - (optional) is a type of number
       burst_limit = throttle_settings.value["burst_limit"]
-      rate_limit  = throttle_settings.value["rate_limit"]
+      # rate_limit - (optional) is a type of number
+      rate_limit = throttle_settings.value["rate_limit"]
     }
   }
 

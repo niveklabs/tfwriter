@@ -160,15 +160,21 @@ variable "vpn_link" {
 
 ```terraform
 resource "azurerm_vpn_gateway_connection" "this" {
+  # internet_security_enabled - (optional) is a type of bool
   internet_security_enabled = var.internet_security_enabled
-  name                      = var.name
-  remote_vpn_site_id        = var.remote_vpn_site_id
-  vpn_gateway_id            = var.vpn_gateway_id
+  # name - (required) is a type of string
+  name = var.name
+  # remote_vpn_site_id - (required) is a type of string
+  remote_vpn_site_id = var.remote_vpn_site_id
+  # vpn_gateway_id - (required) is a type of string
+  vpn_gateway_id = var.vpn_gateway_id
 
   dynamic "routing" {
     for_each = var.routing
     content {
-      associated_route_table  = routing.value["associated_route_table"]
+      # associated_route_table - (required) is a type of string
+      associated_route_table = routing.value["associated_route_table"]
+      # propagated_route_tables - (required) is a type of list of string
       propagated_route_tables = routing.value["propagated_route_tables"]
     }
   }
@@ -176,9 +182,13 @@ resource "azurerm_vpn_gateway_connection" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -186,28 +196,46 @@ resource "azurerm_vpn_gateway_connection" "this" {
   dynamic "vpn_link" {
     for_each = var.vpn_link
     content {
-      bandwidth_mbps                        = vpn_link.value["bandwidth_mbps"]
-      bgp_enabled                           = vpn_link.value["bgp_enabled"]
-      local_azure_ip_address_enabled        = vpn_link.value["local_azure_ip_address_enabled"]
-      name                                  = vpn_link.value["name"]
+      # bandwidth_mbps - (optional) is a type of number
+      bandwidth_mbps = vpn_link.value["bandwidth_mbps"]
+      # bgp_enabled - (optional) is a type of bool
+      bgp_enabled = vpn_link.value["bgp_enabled"]
+      # local_azure_ip_address_enabled - (optional) is a type of bool
+      local_azure_ip_address_enabled = vpn_link.value["local_azure_ip_address_enabled"]
+      # name - (required) is a type of string
+      name = vpn_link.value["name"]
+      # policy_based_traffic_selector_enabled - (optional) is a type of bool
       policy_based_traffic_selector_enabled = vpn_link.value["policy_based_traffic_selector_enabled"]
-      protocol                              = vpn_link.value["protocol"]
-      ratelimit_enabled                     = vpn_link.value["ratelimit_enabled"]
-      route_weight                          = vpn_link.value["route_weight"]
-      shared_key                            = vpn_link.value["shared_key"]
-      vpn_site_link_id                      = vpn_link.value["vpn_site_link_id"]
+      # protocol - (optional) is a type of string
+      protocol = vpn_link.value["protocol"]
+      # ratelimit_enabled - (optional) is a type of bool
+      ratelimit_enabled = vpn_link.value["ratelimit_enabled"]
+      # route_weight - (optional) is a type of number
+      route_weight = vpn_link.value["route_weight"]
+      # shared_key - (optional) is a type of string
+      shared_key = vpn_link.value["shared_key"]
+      # vpn_site_link_id - (required) is a type of string
+      vpn_site_link_id = vpn_link.value["vpn_site_link_id"]
 
       dynamic "ipsec_policy" {
         for_each = vpn_link.value.ipsec_policy
         content {
-          dh_group                 = ipsec_policy.value["dh_group"]
-          encryption_algorithm     = ipsec_policy.value["encryption_algorithm"]
+          # dh_group - (required) is a type of string
+          dh_group = ipsec_policy.value["dh_group"]
+          # encryption_algorithm - (required) is a type of string
+          encryption_algorithm = ipsec_policy.value["encryption_algorithm"]
+          # ike_encryption_algorithm - (required) is a type of string
           ike_encryption_algorithm = ipsec_policy.value["ike_encryption_algorithm"]
-          ike_integrity_algorithm  = ipsec_policy.value["ike_integrity_algorithm"]
-          integrity_algorithm      = ipsec_policy.value["integrity_algorithm"]
-          pfs_group                = ipsec_policy.value["pfs_group"]
-          sa_data_size_kb          = ipsec_policy.value["sa_data_size_kb"]
-          sa_lifetime_sec          = ipsec_policy.value["sa_lifetime_sec"]
+          # ike_integrity_algorithm - (required) is a type of string
+          ike_integrity_algorithm = ipsec_policy.value["ike_integrity_algorithm"]
+          # integrity_algorithm - (required) is a type of string
+          integrity_algorithm = ipsec_policy.value["integrity_algorithm"]
+          # pfs_group - (required) is a type of string
+          pfs_group = ipsec_policy.value["pfs_group"]
+          # sa_data_size_kb - (required) is a type of number
+          sa_data_size_kb = ipsec_policy.value["sa_data_size_kb"]
+          # sa_lifetime_sec - (required) is a type of number
+          sa_lifetime_sec = ipsec_policy.value["sa_lifetime_sec"]
         }
       }
 

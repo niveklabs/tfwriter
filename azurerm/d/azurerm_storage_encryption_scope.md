@@ -70,12 +70,15 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_storage_encryption_scope" "this" {
-  name               = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # storage_account_id - (required) is a type of string
   storage_account_id = var.storage_account_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

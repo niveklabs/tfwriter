@@ -50,6 +50,7 @@ variable "comment" {
 
 ```terraform
 resource "aws_cloudfront_origin_access_identity" "this" {
+  # comment - (optional) is a type of string
   comment = var.comment
 }
 ```

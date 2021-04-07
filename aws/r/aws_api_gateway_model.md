@@ -79,11 +79,16 @@ variable "schema" {
 
 ```terraform
 resource "aws_api_gateway_model" "this" {
+  # content_type - (required) is a type of string
   content_type = var.content_type
-  description  = var.description
-  name         = var.name
-  rest_api_id  = var.rest_api_id
-  schema       = var.schema
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # rest_api_id - (required) is a type of string
+  rest_api_id = var.rest_api_id
+  # schema - (optional) is a type of string
+  schema = var.schema
 }
 ```
 

@@ -66,9 +66,12 @@ variable "feature_set" {
 
 ```terraform
 resource "aws_organizations_organization" "this" {
+  # aws_service_access_principals - (optional) is a type of set of string
   aws_service_access_principals = var.aws_service_access_principals
-  enabled_policy_types          = var.enabled_policy_types
-  feature_set                   = var.feature_set
+  # enabled_policy_types - (optional) is a type of set of string
+  enabled_policy_types = var.enabled_policy_types
+  # feature_set - (optional) is a type of string
+  feature_set = var.feature_set
 }
 ```
 

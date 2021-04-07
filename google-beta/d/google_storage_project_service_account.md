@@ -58,7 +58,9 @@ variable "user_project" {
 
 ```terraform
 data "google_storage_project_service_account" "this" {
-  project      = var.project
+  # project - (optional) is a type of string
+  project = var.project
+  # user_project - (optional) is a type of string
   user_project = var.user_project
 }
 ```

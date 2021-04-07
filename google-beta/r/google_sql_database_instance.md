@@ -326,19 +326,29 @@ variable "timeouts" {
 
 ```terraform
 resource "google_sql_database_instance" "this" {
-  database_version     = var.database_version
-  deletion_protection  = var.deletion_protection
-  encryption_key_name  = var.encryption_key_name
+  # database_version - (optional) is a type of string
+  database_version = var.database_version
+  # deletion_protection - (optional) is a type of bool
+  deletion_protection = var.deletion_protection
+  # encryption_key_name - (optional) is a type of string
+  encryption_key_name = var.encryption_key_name
+  # master_instance_name - (optional) is a type of string
   master_instance_name = var.master_instance_name
-  name                 = var.name
-  project              = var.project
-  region               = var.region
-  root_password        = var.root_password
+  # name - (optional) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
+  # root_password - (optional) is a type of string
+  root_password = var.root_password
 
   dynamic "clone" {
     for_each = var.clone
     content {
-      point_in_time        = clone.value["point_in_time"]
+      # point_in_time - (required) is a type of string
+      point_in_time = clone.value["point_in_time"]
+      # source_instance_name - (required) is a type of string
       source_instance_name = clone.value["source_instance_name"]
     }
   }
@@ -346,16 +356,27 @@ resource "google_sql_database_instance" "this" {
   dynamic "replica_configuration" {
     for_each = var.replica_configuration
     content {
-      ca_certificate            = replica_configuration.value["ca_certificate"]
-      client_certificate        = replica_configuration.value["client_certificate"]
-      client_key                = replica_configuration.value["client_key"]
-      connect_retry_interval    = replica_configuration.value["connect_retry_interval"]
-      dump_file_path            = replica_configuration.value["dump_file_path"]
-      failover_target           = replica_configuration.value["failover_target"]
-      master_heartbeat_period   = replica_configuration.value["master_heartbeat_period"]
-      password                  = replica_configuration.value["password"]
-      ssl_cipher                = replica_configuration.value["ssl_cipher"]
-      username                  = replica_configuration.value["username"]
+      # ca_certificate - (optional) is a type of string
+      ca_certificate = replica_configuration.value["ca_certificate"]
+      # client_certificate - (optional) is a type of string
+      client_certificate = replica_configuration.value["client_certificate"]
+      # client_key - (optional) is a type of string
+      client_key = replica_configuration.value["client_key"]
+      # connect_retry_interval - (optional) is a type of number
+      connect_retry_interval = replica_configuration.value["connect_retry_interval"]
+      # dump_file_path - (optional) is a type of string
+      dump_file_path = replica_configuration.value["dump_file_path"]
+      # failover_target - (optional) is a type of bool
+      failover_target = replica_configuration.value["failover_target"]
+      # master_heartbeat_period - (optional) is a type of number
+      master_heartbeat_period = replica_configuration.value["master_heartbeat_period"]
+      # password - (optional) is a type of string
+      password = replica_configuration.value["password"]
+      # ssl_cipher - (optional) is a type of string
+      ssl_cipher = replica_configuration.value["ssl_cipher"]
+      # username - (optional) is a type of string
+      username = replica_configuration.value["username"]
+      # verify_server_certificate - (optional) is a type of bool
       verify_server_certificate = replica_configuration.value["verify_server_certificate"]
     }
   }
@@ -363,42 +384,64 @@ resource "google_sql_database_instance" "this" {
   dynamic "restore_backup_context" {
     for_each = var.restore_backup_context
     content {
+      # backup_run_id - (required) is a type of number
       backup_run_id = restore_backup_context.value["backup_run_id"]
-      instance_id   = restore_backup_context.value["instance_id"]
-      project       = restore_backup_context.value["project"]
+      # instance_id - (optional) is a type of string
+      instance_id = restore_backup_context.value["instance_id"]
+      # project - (optional) is a type of string
+      project = restore_backup_context.value["project"]
     }
   }
 
   dynamic "settings" {
     for_each = var.settings
     content {
-      activation_policy           = settings.value["activation_policy"]
+      # activation_policy - (optional) is a type of string
+      activation_policy = settings.value["activation_policy"]
+      # authorized_gae_applications - (optional) is a type of list of string
       authorized_gae_applications = settings.value["authorized_gae_applications"]
-      availability_type           = settings.value["availability_type"]
-      crash_safe_replication      = settings.value["crash_safe_replication"]
-      disk_autoresize             = settings.value["disk_autoresize"]
-      disk_size                   = settings.value["disk_size"]
-      disk_type                   = settings.value["disk_type"]
-      pricing_plan                = settings.value["pricing_plan"]
-      replication_type            = settings.value["replication_type"]
-      tier                        = settings.value["tier"]
-      user_labels                 = settings.value["user_labels"]
+      # availability_type - (optional) is a type of string
+      availability_type = settings.value["availability_type"]
+      # crash_safe_replication - (optional) is a type of bool
+      crash_safe_replication = settings.value["crash_safe_replication"]
+      # disk_autoresize - (optional) is a type of bool
+      disk_autoresize = settings.value["disk_autoresize"]
+      # disk_size - (optional) is a type of number
+      disk_size = settings.value["disk_size"]
+      # disk_type - (optional) is a type of string
+      disk_type = settings.value["disk_type"]
+      # pricing_plan - (optional) is a type of string
+      pricing_plan = settings.value["pricing_plan"]
+      # replication_type - (optional) is a type of string
+      replication_type = settings.value["replication_type"]
+      # tier - (required) is a type of string
+      tier = settings.value["tier"]
+      # user_labels - (optional) is a type of map of string
+      user_labels = settings.value["user_labels"]
 
       dynamic "backup_configuration" {
         for_each = settings.value.backup_configuration
         content {
-          binary_log_enabled             = backup_configuration.value["binary_log_enabled"]
-          enabled                        = backup_configuration.value["enabled"]
-          location                       = backup_configuration.value["location"]
+          # binary_log_enabled - (optional) is a type of bool
+          binary_log_enabled = backup_configuration.value["binary_log_enabled"]
+          # enabled - (optional) is a type of bool
+          enabled = backup_configuration.value["enabled"]
+          # location - (optional) is a type of string
+          location = backup_configuration.value["location"]
+          # point_in_time_recovery_enabled - (optional) is a type of bool
           point_in_time_recovery_enabled = backup_configuration.value["point_in_time_recovery_enabled"]
-          start_time                     = backup_configuration.value["start_time"]
+          # start_time - (optional) is a type of string
+          start_time = backup_configuration.value["start_time"]
+          # transaction_log_retention_days - (optional) is a type of number
           transaction_log_retention_days = backup_configuration.value["transaction_log_retention_days"]
 
           dynamic "backup_retention_settings" {
             for_each = backup_configuration.value.backup_retention_settings
             content {
+              # retained_backups - (required) is a type of number
               retained_backups = backup_retention_settings.value["retained_backups"]
-              retention_unit   = backup_retention_settings.value["retention_unit"]
+              # retention_unit - (optional) is a type of string
+              retention_unit = backup_retention_settings.value["retention_unit"]
             }
           }
 
@@ -408,7 +451,9 @@ resource "google_sql_database_instance" "this" {
       dynamic "database_flags" {
         for_each = settings.value.database_flags
         content {
-          name  = database_flags.value["name"]
+          # name - (required) is a type of string
+          name = database_flags.value["name"]
+          # value - (required) is a type of string
           value = database_flags.value["value"]
         }
       }
@@ -416,26 +461,36 @@ resource "google_sql_database_instance" "this" {
       dynamic "insights_config" {
         for_each = settings.value.insights_config
         content {
-          query_insights_enabled  = insights_config.value["query_insights_enabled"]
-          query_string_length     = insights_config.value["query_string_length"]
+          # query_insights_enabled - (optional) is a type of bool
+          query_insights_enabled = insights_config.value["query_insights_enabled"]
+          # query_string_length - (optional) is a type of number
+          query_string_length = insights_config.value["query_string_length"]
+          # record_application_tags - (optional) is a type of bool
           record_application_tags = insights_config.value["record_application_tags"]
-          record_client_address   = insights_config.value["record_client_address"]
+          # record_client_address - (optional) is a type of bool
+          record_client_address = insights_config.value["record_client_address"]
         }
       }
 
       dynamic "ip_configuration" {
         for_each = settings.value.ip_configuration
         content {
-          ipv4_enabled    = ip_configuration.value["ipv4_enabled"]
+          # ipv4_enabled - (optional) is a type of bool
+          ipv4_enabled = ip_configuration.value["ipv4_enabled"]
+          # private_network - (optional) is a type of string
           private_network = ip_configuration.value["private_network"]
-          require_ssl     = ip_configuration.value["require_ssl"]
+          # require_ssl - (optional) is a type of bool
+          require_ssl = ip_configuration.value["require_ssl"]
 
           dynamic "authorized_networks" {
             for_each = ip_configuration.value.authorized_networks
             content {
+              # expiration_time - (optional) is a type of string
               expiration_time = authorized_networks.value["expiration_time"]
-              name            = authorized_networks.value["name"]
-              value           = authorized_networks.value["value"]
+              # name - (optional) is a type of string
+              name = authorized_networks.value["name"]
+              # value - (required) is a type of string
+              value = authorized_networks.value["value"]
             }
           }
 
@@ -445,16 +500,21 @@ resource "google_sql_database_instance" "this" {
       dynamic "location_preference" {
         for_each = settings.value.location_preference
         content {
+          # follow_gae_application - (optional) is a type of string
           follow_gae_application = location_preference.value["follow_gae_application"]
-          zone                   = location_preference.value["zone"]
+          # zone - (optional) is a type of string
+          zone = location_preference.value["zone"]
         }
       }
 
       dynamic "maintenance_window" {
         for_each = settings.value.maintenance_window
         content {
-          day          = maintenance_window.value["day"]
-          hour         = maintenance_window.value["hour"]
+          # day - (optional) is a type of number
+          day = maintenance_window.value["day"]
+          # hour - (optional) is a type of number
+          hour = maintenance_window.value["hour"]
+          # update_track - (optional) is a type of string
           update_track = maintenance_window.value["update_track"]
         }
       }
@@ -465,8 +525,11 @@ resource "google_sql_database_instance" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

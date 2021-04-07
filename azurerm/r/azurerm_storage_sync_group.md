@@ -74,15 +74,20 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_storage_sync_group" "this" {
-  name            = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # storage_sync_id - (required) is a type of string
   storage_sync_id = var.storage_sync_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

@@ -111,14 +111,23 @@ variable "statement_id_prefix" {
 
 ```terraform
 resource "aws_lambda_permission" "this" {
-  action              = var.action
-  event_source_token  = var.event_source_token
-  function_name       = var.function_name
-  principal           = var.principal
-  qualifier           = var.qualifier
-  source_account      = var.source_account
-  source_arn          = var.source_arn
-  statement_id        = var.statement_id
+  # action - (required) is a type of string
+  action = var.action
+  # event_source_token - (optional) is a type of string
+  event_source_token = var.event_source_token
+  # function_name - (required) is a type of string
+  function_name = var.function_name
+  # principal - (required) is a type of string
+  principal = var.principal
+  # qualifier - (optional) is a type of string
+  qualifier = var.qualifier
+  # source_account - (optional) is a type of string
+  source_account = var.source_account
+  # source_arn - (optional) is a type of string
+  source_arn = var.source_arn
+  # statement_id - (optional) is a type of string
+  statement_id = var.statement_id
+  # statement_id_prefix - (optional) is a type of string
   statement_id_prefix = var.statement_id_prefix
 }
 ```

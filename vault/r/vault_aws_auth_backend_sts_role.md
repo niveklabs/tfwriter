@@ -64,9 +64,12 @@ variable "sts_role" {
 
 ```terraform
 resource "vault_aws_auth_backend_sts_role" "this" {
+  # account_id - (required) is a type of string
   account_id = var.account_id
-  backend    = var.backend
-  sts_role   = var.sts_role
+  # backend - (optional) is a type of string
+  backend = var.backend
+  # sts_role - (required) is a type of string
+  sts_role = var.sts_role
 }
 ```
 

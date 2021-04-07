@@ -139,16 +139,26 @@ variable "user" {
 
 ```terraform
 resource "vault_okta_auth_backend" "this" {
-  base_url        = var.base_url
+  # base_url - (optional) is a type of string
+  base_url = var.base_url
+  # bypass_okta_mfa - (optional) is a type of bool
   bypass_okta_mfa = var.bypass_okta_mfa
-  description     = var.description
-  group           = var.group
-  max_ttl         = var.max_ttl
-  organization    = var.organization
-  path            = var.path
-  token           = var.token
-  ttl             = var.ttl
-  user            = var.user
+  # description - (optional) is a type of string
+  description = var.description
+  # group - (optional) is a type of set of object
+  group = var.group
+  # max_ttl - (optional) is a type of string
+  max_ttl = var.max_ttl
+  # organization - (required) is a type of string
+  organization = var.organization
+  # path - (optional) is a type of string
+  path = var.path
+  # token - (optional) is a type of string
+  token = var.token
+  # ttl - (optional) is a type of string
+  ttl = var.ttl
+  # user - (optional) is a type of set of object
+  user = var.user
 }
 ```
 

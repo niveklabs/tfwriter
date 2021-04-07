@@ -90,11 +90,17 @@ variable "prevent_duplicate_names" {
 
 ```terraform
 resource "azuread_group" "this" {
-  description             = var.description
-  display_name            = var.display_name
-  members                 = var.members
-  name                    = var.name
-  owners                  = var.owners
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # members - (optional) is a type of set of string
+  members = var.members
+  # name - (optional) is a type of string
+  name = var.name
+  # owners - (optional) is a type of set of string
+  owners = var.owners
+  # prevent_duplicate_names - (optional) is a type of bool
   prevent_duplicate_names = var.prevent_duplicate_names
 }
 ```

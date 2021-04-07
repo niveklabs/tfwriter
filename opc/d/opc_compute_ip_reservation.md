@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "opc_compute_ip_reservation" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

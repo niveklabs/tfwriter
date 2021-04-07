@@ -103,14 +103,22 @@ variable "source_namespace" {
 
 ```terraform
 resource "consul_intention" "this" {
-  action                = var.action
-  datacenter            = var.datacenter
-  description           = var.description
-  destination_name      = var.destination_name
+  # action - (required) is a type of string
+  action = var.action
+  # datacenter - (optional) is a type of string
+  datacenter = var.datacenter
+  # description - (optional) is a type of string
+  description = var.description
+  # destination_name - (required) is a type of string
+  destination_name = var.destination_name
+  # destination_namespace - (optional) is a type of string
   destination_namespace = var.destination_namespace
-  meta                  = var.meta
-  source_name           = var.source_name
-  source_namespace      = var.source_namespace
+  # meta - (optional) is a type of map of string
+  meta = var.meta
+  # source_name - (required) is a type of string
+  source_name = var.source_name
+  # source_namespace - (optional) is a type of string
+  source_namespace = var.source_namespace
 }
 ```
 

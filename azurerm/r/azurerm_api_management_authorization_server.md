@@ -213,31 +213,53 @@ variable "token_body_parameter" {
 
 ```terraform
 resource "azurerm_api_management_authorization_server" "this" {
-  api_management_name          = var.api_management_name
-  authorization_endpoint       = var.authorization_endpoint
-  authorization_methods        = var.authorization_methods
+  # api_management_name - (required) is a type of string
+  api_management_name = var.api_management_name
+  # authorization_endpoint - (required) is a type of string
+  authorization_endpoint = var.authorization_endpoint
+  # authorization_methods - (required) is a type of set of string
+  authorization_methods = var.authorization_methods
+  # bearer_token_sending_methods - (optional) is a type of set of string
   bearer_token_sending_methods = var.bearer_token_sending_methods
+  # client_authentication_method - (optional) is a type of set of string
   client_authentication_method = var.client_authentication_method
-  client_id                    = var.client_id
+  # client_id - (required) is a type of string
+  client_id = var.client_id
+  # client_registration_endpoint - (required) is a type of string
   client_registration_endpoint = var.client_registration_endpoint
-  client_secret                = var.client_secret
-  default_scope                = var.default_scope
-  description                  = var.description
-  display_name                 = var.display_name
-  grant_types                  = var.grant_types
-  name                         = var.name
-  resource_group_name          = var.resource_group_name
-  resource_owner_password      = var.resource_owner_password
-  resource_owner_username      = var.resource_owner_username
-  support_state                = var.support_state
-  token_endpoint               = var.token_endpoint
+  # client_secret - (optional) is a type of string
+  client_secret = var.client_secret
+  # default_scope - (optional) is a type of string
+  default_scope = var.default_scope
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # grant_types - (required) is a type of set of string
+  grant_types = var.grant_types
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # resource_owner_password - (optional) is a type of string
+  resource_owner_password = var.resource_owner_password
+  # resource_owner_username - (optional) is a type of string
+  resource_owner_username = var.resource_owner_username
+  # support_state - (optional) is a type of bool
+  support_state = var.support_state
+  # token_endpoint - (optional) is a type of string
+  token_endpoint = var.token_endpoint
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -245,7 +267,9 @@ resource "azurerm_api_management_authorization_server" "this" {
   dynamic "token_body_parameter" {
     for_each = var.token_body_parameter
     content {
-      name  = token_body_parameter.value["name"]
+      # name - (required) is a type of string
+      name = token_body_parameter.value["name"]
+      # value - (required) is a type of string
       value = token_body_parameter.value["value"]
     }
   }

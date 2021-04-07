@@ -71,10 +71,14 @@ variable "repository" {
 
 ```terraform
 data "aws_codeartifact_repository_endpoint" "this" {
-  domain       = var.domain
+  # domain - (required) is a type of string
+  domain = var.domain
+  # domain_owner - (optional) is a type of string
   domain_owner = var.domain_owner
-  format       = var.format
-  repository   = var.repository
+  # format - (required) is a type of string
+  format = var.format
+  # repository - (required) is a type of string
+  repository = var.repository
 }
 ```
 

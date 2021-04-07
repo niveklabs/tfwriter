@@ -147,13 +147,20 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_events_rule" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  condition      = var.condition
-  defined_tags   = var.defined_tags
-  description    = var.description
-  display_name   = var.display_name
-  freeform_tags  = var.freeform_tags
-  is_enabled     = var.is_enabled
+  # condition - (required) is a type of string
+  condition = var.condition
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # is_enabled - (required) is a type of bool
+  is_enabled = var.is_enabled
 
   dynamic "actions" {
     for_each = var.actions
@@ -162,12 +169,18 @@ resource "oci_events_rule" "this" {
       dynamic "actions" {
         for_each = actions.value.actions
         content {
+          # action_type - (required) is a type of string
           action_type = actions.value["action_type"]
+          # description - (optional) is a type of string
           description = actions.value["description"]
+          # function_id - (optional) is a type of string
           function_id = actions.value["function_id"]
-          is_enabled  = actions.value["is_enabled"]
-          stream_id   = actions.value["stream_id"]
-          topic_id    = actions.value["topic_id"]
+          # is_enabled - (required) is a type of bool
+          is_enabled = actions.value["is_enabled"]
+          # stream_id - (optional) is a type of string
+          stream_id = actions.value["stream_id"]
+          # topic_id - (optional) is a type of string
+          topic_id = actions.value["topic_id"]
         }
       }
 
@@ -177,8 +190,11 @@ resource "oci_events_rule" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

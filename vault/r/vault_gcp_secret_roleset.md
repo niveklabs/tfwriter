@@ -94,17 +94,24 @@ variable "binding" {
 
 ```terraform
 resource "vault_gcp_secret_roleset" "this" {
-  backend      = var.backend
-  project      = var.project
-  roleset      = var.roleset
-  secret_type  = var.secret_type
+  # backend - (required) is a type of string
+  backend = var.backend
+  # project - (required) is a type of string
+  project = var.project
+  # roleset - (required) is a type of string
+  roleset = var.roleset
+  # secret_type - (optional) is a type of string
+  secret_type = var.secret_type
+  # token_scopes - (optional) is a type of set of string
   token_scopes = var.token_scopes
 
   dynamic "binding" {
     for_each = var.binding
     content {
+      # resource - (required) is a type of string
       resource = binding.value["resource"]
-      roles    = binding.value["roles"]
+      # roles - (required) is a type of set of string
+      roles = binding.value["roles"]
     }
   }
 

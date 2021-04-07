@@ -73,10 +73,14 @@ variable "vendor_id" {
 
 ```terraform
 data "vsphere_host_pci_device" "this" {
-  class_id   = var.class_id
-  host_id    = var.host_id
+  # class_id - (optional) is a type of string
+  class_id = var.class_id
+  # host_id - (required) is a type of string
+  host_id = var.host_id
+  # name_regex - (optional) is a type of string
   name_regex = var.name_regex
-  vendor_id  = var.vendor_id
+  # vendor_id - (optional) is a type of string
+  vendor_id = var.vendor_id
 }
 ```
 

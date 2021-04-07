@@ -72,10 +72,14 @@ variable "vpc" {
 
 ```terraform
 resource "aws_service_discovery_private_dns_namespace" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  tags        = var.tags
-  vpc         = var.vpc
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc - (required) is a type of string
+  vpc = var.vpc
 }
 ```
 

@@ -107,18 +107,27 @@ variable "filter" {
 
 ```terraform
 data "oci_mysql_channels" "this" {
-  channel_id     = var.channel_id
+  # channel_id - (optional) is a type of string
+  channel_id = var.channel_id
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  db_system_id   = var.db_system_id
-  display_name   = var.display_name
-  is_enabled     = var.is_enabled
-  state          = var.state
+  # db_system_id - (optional) is a type of string
+  db_system_id = var.db_system_id
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # is_enabled - (optional) is a type of bool
+  is_enabled = var.is_enabled
+  # state - (optional) is a type of string
+  state = var.state
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

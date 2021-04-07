@@ -49,6 +49,7 @@ variable "compartment_id" {
 
 ```terraform
 data "oci_artifacts_container_configuration" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
 }
 ```

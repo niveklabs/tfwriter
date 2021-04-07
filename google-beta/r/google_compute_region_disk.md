@@ -174,38 +174,55 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_region_disk" "this" {
-  description               = var.description
-  labels                    = var.labels
-  name                      = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # physical_block_size_bytes - (optional) is a type of number
   physical_block_size_bytes = var.physical_block_size_bytes
-  project                   = var.project
-  region                    = var.region
-  replica_zones             = var.replica_zones
-  size                      = var.size
-  snapshot                  = var.snapshot
-  type                      = var.type
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
+  # replica_zones - (required) is a type of list of string
+  replica_zones = var.replica_zones
+  # size - (optional) is a type of number
+  size = var.size
+  # snapshot - (optional) is a type of string
+  snapshot = var.snapshot
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "disk_encryption_key" {
     for_each = var.disk_encryption_key
     content {
+      # kms_key_name - (optional) is a type of string
       kms_key_name = disk_encryption_key.value["kms_key_name"]
-      raw_key      = disk_encryption_key.value["raw_key"]
+      # raw_key - (optional) is a type of string
+      raw_key = disk_encryption_key.value["raw_key"]
     }
   }
 
   dynamic "source_snapshot_encryption_key" {
     for_each = var.source_snapshot_encryption_key
     content {
+      # kms_key_name - (optional) is a type of string
       kms_key_name = source_snapshot_encryption_key.value["kms_key_name"]
-      raw_key      = source_snapshot_encryption_key.value["raw_key"]
+      # raw_key - (optional) is a type of string
+      raw_key = source_snapshot_encryption_key.value["raw_key"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

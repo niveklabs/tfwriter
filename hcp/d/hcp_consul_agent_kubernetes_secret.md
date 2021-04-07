@@ -63,11 +63,13 @@ variable "timeouts" {
 
 ```terraform
 data "hcp_consul_agent_kubernetes_secret" "this" {
+  # cluster_id - (required) is a type of string
   cluster_id = var.cluster_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

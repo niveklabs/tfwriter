@@ -72,9 +72,13 @@ variable "validate_request_parameters" {
 
 ```terraform
 resource "aws_api_gateway_request_validator" "this" {
-  name                        = var.name
-  rest_api_id                 = var.rest_api_id
-  validate_request_body       = var.validate_request_body
+  # name - (required) is a type of string
+  name = var.name
+  # rest_api_id - (required) is a type of string
+  rest_api_id = var.rest_api_id
+  # validate_request_body - (optional) is a type of bool
+  validate_request_body = var.validate_request_body
+  # validate_request_parameters - (optional) is a type of bool
   validate_request_parameters = var.validate_request_parameters
 }
 ```

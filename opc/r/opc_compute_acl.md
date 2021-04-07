@@ -73,10 +73,14 @@ variable "tags" {
 
 ```terraform
 resource "opc_compute_acl" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  enabled     = var.enabled
-  name        = var.name
-  tags        = var.tags
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of list of string
+  tags = var.tags
 }
 ```
 

@@ -126,22 +126,34 @@ variable "endpoint_details" {
 
 ```terraform
 resource "aws_transfer_server" "this" {
-  endpoint_type          = var.endpoint_type
-  force_destroy          = var.force_destroy
-  host_key               = var.host_key
+  # endpoint_type - (optional) is a type of string
+  endpoint_type = var.endpoint_type
+  # force_destroy - (optional) is a type of bool
+  force_destroy = var.force_destroy
+  # host_key - (optional) is a type of string
+  host_key = var.host_key
+  # identity_provider_type - (optional) is a type of string
   identity_provider_type = var.identity_provider_type
-  invocation_role        = var.invocation_role
-  logging_role           = var.logging_role
-  tags                   = var.tags
-  url                    = var.url
+  # invocation_role - (optional) is a type of string
+  invocation_role = var.invocation_role
+  # logging_role - (optional) is a type of string
+  logging_role = var.logging_role
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # url - (optional) is a type of string
+  url = var.url
 
   dynamic "endpoint_details" {
     for_each = var.endpoint_details
     content {
+      # address_allocation_ids - (optional) is a type of set of string
       address_allocation_ids = endpoint_details.value["address_allocation_ids"]
-      subnet_ids             = endpoint_details.value["subnet_ids"]
-      vpc_endpoint_id        = endpoint_details.value["vpc_endpoint_id"]
-      vpc_id                 = endpoint_details.value["vpc_id"]
+      # subnet_ids - (optional) is a type of set of string
+      subnet_ids = endpoint_details.value["subnet_ids"]
+      # vpc_endpoint_id - (optional) is a type of string
+      vpc_endpoint_id = endpoint_details.value["vpc_endpoint_id"]
+      # vpc_id - (optional) is a type of string
+      vpc_id = endpoint_details.value["vpc_id"]
     }
   }
 

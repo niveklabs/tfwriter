@@ -65,8 +65,11 @@ variable "version_stage" {
 
 ```terraform
 data "aws_secretsmanager_secret_version" "this" {
-  secret_id     = var.secret_id
-  version_id    = var.version_id
+  # secret_id - (required) is a type of string
+  secret_id = var.secret_id
+  # version_id - (optional) is a type of string
+  version_id = var.version_id
+  # version_stage - (optional) is a type of string
   version_stage = var.version_stage
 }
 ```

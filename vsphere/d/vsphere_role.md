@@ -73,9 +73,13 @@ variable "role_privileges" {
 
 ```terraform
 data "vsphere_role" "this" {
-  description     = var.description
-  label           = var.label
-  name            = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # label - (required) is a type of string
+  label = var.label
+  # name - (optional) is a type of string
+  name = var.name
+  # role_privileges - (optional) is a type of list of string
   role_privileges = var.role_privileges
 }
 ```

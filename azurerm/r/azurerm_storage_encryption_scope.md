@@ -90,17 +90,25 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_storage_encryption_scope" "this" {
-  key_vault_key_id   = var.key_vault_key_id
-  name               = var.name
-  source             = var.source
+  # key_vault_key_id - (optional) is a type of string
+  key_vault_key_id = var.key_vault_key_id
+  # name - (required) is a type of string
+  name = var.name
+  # source - (required) is a type of string
+  source = var.source
+  # storage_account_id - (required) is a type of string
   storage_account_id = var.storage_account_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

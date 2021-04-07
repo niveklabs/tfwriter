@@ -50,6 +50,7 @@ variable "project" {
 
 ```terraform
 data "google_app_engine_default_service_account" "this" {
+  # project - (optional) is a type of string
   project = var.project
 }
 ```

@@ -94,13 +94,20 @@ variable "tags" {
 
 ```terraform
 resource "aws_elastic_beanstalk_application_version" "this" {
-  application  = var.application
-  bucket       = var.bucket
-  description  = var.description
+  # application - (required) is a type of string
+  application = var.application
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # description - (optional) is a type of string
+  description = var.description
+  # force_delete - (optional) is a type of bool
   force_delete = var.force_delete
-  key          = var.key
-  name         = var.name
-  tags         = var.tags
+  # key - (required) is a type of string
+  key = var.key
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

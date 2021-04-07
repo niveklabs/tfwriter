@@ -322,22 +322,31 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_lex_intent" "this" {
-  create_version          = var.create_version
-  description             = var.description
-  name                    = var.name
+  # create_version - (optional) is a type of bool
+  create_version = var.create_version
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # parent_intent_signature - (optional) is a type of string
   parent_intent_signature = var.parent_intent_signature
-  sample_utterances       = var.sample_utterances
+  # sample_utterances - (optional) is a type of set of string
+  sample_utterances = var.sample_utterances
 
   dynamic "conclusion_statement" {
     for_each = var.conclusion_statement
     content {
+      # response_card - (optional) is a type of string
       response_card = conclusion_statement.value["response_card"]
 
       dynamic "message" {
         for_each = conclusion_statement.value.message
         content {
-          content      = message.value["content"]
+          # content - (required) is a type of string
+          content = message.value["content"]
+          # content_type - (required) is a type of string
           content_type = message.value["content_type"]
+          # group_number - (optional) is a type of number
           group_number = message.value["group_number"]
         }
       }
@@ -348,14 +357,19 @@ resource "aws_lex_intent" "this" {
   dynamic "confirmation_prompt" {
     for_each = var.confirmation_prompt
     content {
-      max_attempts  = confirmation_prompt.value["max_attempts"]
+      # max_attempts - (required) is a type of number
+      max_attempts = confirmation_prompt.value["max_attempts"]
+      # response_card - (optional) is a type of string
       response_card = confirmation_prompt.value["response_card"]
 
       dynamic "message" {
         for_each = confirmation_prompt.value.message
         content {
-          content      = message.value["content"]
+          # content - (required) is a type of string
+          content = message.value["content"]
+          # content_type - (required) is a type of string
           content_type = message.value["content_type"]
+          # group_number - (optional) is a type of number
           group_number = message.value["group_number"]
         }
       }
@@ -366,8 +380,10 @@ resource "aws_lex_intent" "this" {
   dynamic "dialog_code_hook" {
     for_each = var.dialog_code_hook
     content {
+      # message_version - (required) is a type of string
       message_version = dialog_code_hook.value["message_version"]
-      uri             = dialog_code_hook.value["uri"]
+      # uri - (required) is a type of string
+      uri = dialog_code_hook.value["uri"]
     }
   }
 
@@ -378,14 +394,19 @@ resource "aws_lex_intent" "this" {
       dynamic "prompt" {
         for_each = follow_up_prompt.value.prompt
         content {
-          max_attempts  = prompt.value["max_attempts"]
+          # max_attempts - (required) is a type of number
+          max_attempts = prompt.value["max_attempts"]
+          # response_card - (optional) is a type of string
           response_card = prompt.value["response_card"]
 
           dynamic "message" {
             for_each = prompt.value.message
             content {
-              content      = message.value["content"]
+              # content - (required) is a type of string
+              content = message.value["content"]
+              # content_type - (required) is a type of string
               content_type = message.value["content_type"]
+              # group_number - (optional) is a type of number
               group_number = message.value["group_number"]
             }
           }
@@ -396,13 +417,17 @@ resource "aws_lex_intent" "this" {
       dynamic "rejection_statement" {
         for_each = follow_up_prompt.value.rejection_statement
         content {
+          # response_card - (optional) is a type of string
           response_card = rejection_statement.value["response_card"]
 
           dynamic "message" {
             for_each = rejection_statement.value.message
             content {
-              content      = message.value["content"]
+              # content - (required) is a type of string
+              content = message.value["content"]
+              # content_type - (required) is a type of string
               content_type = message.value["content_type"]
+              # group_number - (optional) is a type of number
               group_number = message.value["group_number"]
             }
           }
@@ -416,13 +441,16 @@ resource "aws_lex_intent" "this" {
   dynamic "fulfillment_activity" {
     for_each = var.fulfillment_activity
     content {
+      # type - (required) is a type of string
       type = fulfillment_activity.value["type"]
 
       dynamic "code_hook" {
         for_each = fulfillment_activity.value.code_hook
         content {
+          # message_version - (required) is a type of string
           message_version = code_hook.value["message_version"]
-          uri             = code_hook.value["uri"]
+          # uri - (required) is a type of string
+          uri = code_hook.value["uri"]
         }
       }
 
@@ -432,13 +460,17 @@ resource "aws_lex_intent" "this" {
   dynamic "rejection_statement" {
     for_each = var.rejection_statement
     content {
+      # response_card - (optional) is a type of string
       response_card = rejection_statement.value["response_card"]
 
       dynamic "message" {
         for_each = rejection_statement.value.message
         content {
-          content      = message.value["content"]
+          # content - (required) is a type of string
+          content = message.value["content"]
+          # content_type - (required) is a type of string
           content_type = message.value["content_type"]
+          # group_number - (optional) is a type of number
           group_number = message.value["group_number"]
         }
       }
@@ -449,26 +481,39 @@ resource "aws_lex_intent" "this" {
   dynamic "slot" {
     for_each = var.slot
     content {
-      description       = slot.value["description"]
-      name              = slot.value["name"]
-      priority          = slot.value["priority"]
-      response_card     = slot.value["response_card"]
+      # description - (optional) is a type of string
+      description = slot.value["description"]
+      # name - (required) is a type of string
+      name = slot.value["name"]
+      # priority - (optional) is a type of number
+      priority = slot.value["priority"]
+      # response_card - (optional) is a type of string
+      response_card = slot.value["response_card"]
+      # sample_utterances - (optional) is a type of list of string
       sample_utterances = slot.value["sample_utterances"]
-      slot_constraint   = slot.value["slot_constraint"]
-      slot_type         = slot.value["slot_type"]
+      # slot_constraint - (required) is a type of string
+      slot_constraint = slot.value["slot_constraint"]
+      # slot_type - (required) is a type of string
+      slot_type = slot.value["slot_type"]
+      # slot_type_version - (optional) is a type of string
       slot_type_version = slot.value["slot_type_version"]
 
       dynamic "value_elicitation_prompt" {
         for_each = slot.value.value_elicitation_prompt
         content {
-          max_attempts  = value_elicitation_prompt.value["max_attempts"]
+          # max_attempts - (required) is a type of number
+          max_attempts = value_elicitation_prompt.value["max_attempts"]
+          # response_card - (optional) is a type of string
           response_card = value_elicitation_prompt.value["response_card"]
 
           dynamic "message" {
             for_each = value_elicitation_prompt.value.message
             content {
-              content      = message.value["content"]
+              # content - (required) is a type of string
+              content = message.value["content"]
+              # content_type - (required) is a type of string
               content_type = message.value["content_type"]
+              # group_number - (optional) is a type of number
               group_number = message.value["group_number"]
             }
           }
@@ -482,8 +527,11 @@ resource "aws_lex_intent" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

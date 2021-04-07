@@ -141,17 +141,25 @@ variable "lambda_config" {
 
 ```terraform
 resource "aws_appsync_datasource" "this" {
-  api_id           = var.api_id
-  description      = var.description
-  name             = var.name
+  # api_id - (required) is a type of string
+  api_id = var.api_id
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # service_role_arn - (optional) is a type of string
   service_role_arn = var.service_role_arn
-  type             = var.type
+  # type - (required) is a type of string
+  type = var.type
 
   dynamic "dynamodb_config" {
     for_each = var.dynamodb_config
     content {
-      region                 = dynamodb_config.value["region"]
-      table_name             = dynamodb_config.value["table_name"]
+      # region - (optional) is a type of string
+      region = dynamodb_config.value["region"]
+      # table_name - (required) is a type of string
+      table_name = dynamodb_config.value["table_name"]
+      # use_caller_credentials - (optional) is a type of bool
       use_caller_credentials = dynamodb_config.value["use_caller_credentials"]
     }
   }
@@ -159,14 +167,17 @@ resource "aws_appsync_datasource" "this" {
   dynamic "elasticsearch_config" {
     for_each = var.elasticsearch_config
     content {
+      # endpoint - (required) is a type of string
       endpoint = elasticsearch_config.value["endpoint"]
-      region   = elasticsearch_config.value["region"]
+      # region - (optional) is a type of string
+      region = elasticsearch_config.value["region"]
     }
   }
 
   dynamic "http_config" {
     for_each = var.http_config
     content {
+      # endpoint - (required) is a type of string
       endpoint = http_config.value["endpoint"]
     }
   }
@@ -174,6 +185,7 @@ resource "aws_appsync_datasource" "this" {
   dynamic "lambda_config" {
     for_each = var.lambda_config
     content {
+      # function_arn - (required) is a type of string
       function_arn = lambda_config.value["function_arn"]
     }
   }

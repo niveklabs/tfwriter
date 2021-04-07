@@ -172,15 +172,21 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_packet_mirroring" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  priority    = var.priority
-  project     = var.project
-  region      = var.region
+  # name - (required) is a type of string
+  name = var.name
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
 
   dynamic "collector_ilb" {
     for_each = var.collector_ilb
     content {
+      # url - (required) is a type of string
       url = collector_ilb.value["url"]
     }
   }
@@ -188,8 +194,11 @@ resource "google_compute_packet_mirroring" "this" {
   dynamic "filter" {
     for_each = var.filter
     content {
-      cidr_ranges  = filter.value["cidr_ranges"]
-      direction    = filter.value["direction"]
+      # cidr_ranges - (optional) is a type of list of string
+      cidr_ranges = filter.value["cidr_ranges"]
+      # direction - (optional) is a type of string
+      direction = filter.value["direction"]
+      # ip_protocols - (optional) is a type of list of string
       ip_protocols = filter.value["ip_protocols"]
     }
   }
@@ -197,11 +206,13 @@ resource "google_compute_packet_mirroring" "this" {
   dynamic "mirrored_resources" {
     for_each = var.mirrored_resources
     content {
+      # tags - (optional) is a type of list of string
       tags = mirrored_resources.value["tags"]
 
       dynamic "instances" {
         for_each = mirrored_resources.value.instances
         content {
+          # url - (required) is a type of string
           url = instances.value["url"]
         }
       }
@@ -209,6 +220,7 @@ resource "google_compute_packet_mirroring" "this" {
       dynamic "subnetworks" {
         for_each = mirrored_resources.value.subnetworks
         content {
+          # url - (required) is a type of string
           url = subnetworks.value["url"]
         }
       }
@@ -219,6 +231,7 @@ resource "google_compute_packet_mirroring" "this" {
   dynamic "network" {
     for_each = var.network
     content {
+      # url - (required) is a type of string
       url = network.value["url"]
     }
   }
@@ -226,8 +239,11 @@ resource "google_compute_packet_mirroring" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

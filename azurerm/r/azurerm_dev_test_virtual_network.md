@@ -117,26 +117,37 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_dev_test_virtual_network" "this" {
-  description         = var.description
-  lab_name            = var.lab_name
-  name                = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # lab_name - (required) is a type of string
+  lab_name = var.lab_name
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  tags                = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "subnet" {
     for_each = var.subnet
     content {
+      # use_in_virtual_machine_creation - (optional) is a type of string
       use_in_virtual_machine_creation = subnet.value["use_in_virtual_machine_creation"]
-      use_public_ip_address           = subnet.value["use_public_ip_address"]
+      # use_public_ip_address - (optional) is a type of string
+      use_public_ip_address = subnet.value["use_public_ip_address"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

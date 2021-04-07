@@ -113,19 +113,29 @@ variable "timeouts" {
 
 ```terraform
 resource "google_active_directory_domain" "this" {
-  admin               = var.admin
+  # admin - (optional) is a type of string
+  admin = var.admin
+  # authorized_networks - (optional) is a type of set of string
   authorized_networks = var.authorized_networks
-  domain_name         = var.domain_name
-  labels              = var.labels
-  locations           = var.locations
-  project             = var.project
-  reserved_ip_range   = var.reserved_ip_range
+  # domain_name - (required) is a type of string
+  domain_name = var.domain_name
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # locations - (required) is a type of list of string
+  locations = var.locations
+  # project - (optional) is a type of string
+  project = var.project
+  # reserved_ip_range - (required) is a type of string
+  reserved_ip_range = var.reserved_ip_range
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -83,16 +83,23 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_data_lake_store_file" "this" {
-  account_name     = var.account_name
-  local_file_path  = var.local_file_path
+  # account_name - (required) is a type of string
+  account_name = var.account_name
+  # local_file_path - (required) is a type of string
+  local_file_path = var.local_file_path
+  # remote_file_path - (required) is a type of string
   remote_file_path = var.remote_file_path
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

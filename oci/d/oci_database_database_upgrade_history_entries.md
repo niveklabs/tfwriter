@@ -83,15 +83,21 @@ variable "filter" {
 
 ```terraform
 data "oci_database_database_upgrade_history_entries" "this" {
-  database_id    = var.database_id
-  state          = var.state
+  # database_id - (required) is a type of string
+  database_id = var.database_id
+  # state - (optional) is a type of string
+  state = var.state
+  # upgrade_action - (optional) is a type of string
   upgrade_action = var.upgrade_action
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

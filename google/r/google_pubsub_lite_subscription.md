@@ -112,15 +112,21 @@ variable "timeouts" {
 
 ```terraform
 resource "google_pubsub_lite_subscription" "this" {
-  name    = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
   project = var.project
-  region  = var.region
-  topic   = var.topic
-  zone    = var.zone
+  # region - (optional) is a type of string
+  region = var.region
+  # topic - (required) is a type of string
+  topic = var.topic
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "delivery_config" {
     for_each = var.delivery_config
     content {
+      # delivery_requirement - (required) is a type of string
       delivery_requirement = delivery_config.value["delivery_requirement"]
     }
   }
@@ -128,8 +134,11 @@ resource "google_pubsub_lite_subscription" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

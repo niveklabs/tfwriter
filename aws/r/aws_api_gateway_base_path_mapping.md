@@ -72,10 +72,14 @@ variable "stage_name" {
 
 ```terraform
 resource "aws_api_gateway_base_path_mapping" "this" {
-  api_id      = var.api_id
-  base_path   = var.base_path
+  # api_id - (required) is a type of string
+  api_id = var.api_id
+  # base_path - (optional) is a type of string
+  base_path = var.base_path
+  # domain_name - (required) is a type of string
   domain_name = var.domain_name
-  stage_name  = var.stage_name
+  # stage_name - (optional) is a type of string
+  stage_name = var.stage_name
 }
 ```
 

@@ -49,6 +49,7 @@ variable "snapshot_id" {
 
 ```terraform
 data "oci_file_storage_snapshot" "this" {
+  # snapshot_id - (required) is a type of string
   snapshot_id = var.snapshot_id
 }
 ```

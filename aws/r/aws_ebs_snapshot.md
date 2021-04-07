@@ -81,14 +81,19 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_ebs_snapshot" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  tags        = var.tags
-  volume_id   = var.volume_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # volume_id - (required) is a type of string
+  volume_id = var.volume_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

@@ -123,26 +123,37 @@ variable "timeouts" {
 
 ```terraform
 resource "google_bigtable_app_profile" "this" {
-  app_profile_id                = var.app_profile_id
-  description                   = var.description
-  ignore_warnings               = var.ignore_warnings
-  instance                      = var.instance
+  # app_profile_id - (required) is a type of string
+  app_profile_id = var.app_profile_id
+  # description - (optional) is a type of string
+  description = var.description
+  # ignore_warnings - (optional) is a type of bool
+  ignore_warnings = var.ignore_warnings
+  # instance - (optional) is a type of string
+  instance = var.instance
+  # multi_cluster_routing_use_any - (optional) is a type of bool
   multi_cluster_routing_use_any = var.multi_cluster_routing_use_any
-  project                       = var.project
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "single_cluster_routing" {
     for_each = var.single_cluster_routing
     content {
+      # allow_transactional_writes - (optional) is a type of bool
       allow_transactional_writes = single_cluster_routing.value["allow_transactional_writes"]
-      cluster_id                 = single_cluster_routing.value["cluster_id"]
+      # cluster_id - (required) is a type of string
+      cluster_id = single_cluster_routing.value["cluster_id"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

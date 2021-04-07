@@ -142,41 +142,63 @@ variable "timeouts" {
 
 ```terraform
 resource "kubernetes_service" "this" {
+  # wait_for_load_balancer - (optional) is a type of bool
   wait_for_load_balancer = var.wait_for_load_balancer
 
   dynamic "metadata" {
     for_each = var.metadata
     content {
-      annotations   = metadata.value["annotations"]
+      # annotations - (optional) is a type of map of string
+      annotations = metadata.value["annotations"]
+      # generate_name - (optional) is a type of string
       generate_name = metadata.value["generate_name"]
-      labels        = metadata.value["labels"]
-      name          = metadata.value["name"]
-      namespace     = metadata.value["namespace"]
+      # labels - (optional) is a type of map of string
+      labels = metadata.value["labels"]
+      # name - (optional) is a type of string
+      name = metadata.value["name"]
+      # namespace - (optional) is a type of string
+      namespace = metadata.value["namespace"]
     }
   }
 
   dynamic "spec" {
     for_each = var.spec
     content {
-      cluster_ip                  = spec.value["cluster_ip"]
-      external_ips                = spec.value["external_ips"]
-      external_name               = spec.value["external_name"]
-      external_traffic_policy     = spec.value["external_traffic_policy"]
-      health_check_node_port      = spec.value["health_check_node_port"]
-      load_balancer_ip            = spec.value["load_balancer_ip"]
+      # cluster_ip - (optional) is a type of string
+      cluster_ip = spec.value["cluster_ip"]
+      # external_ips - (optional) is a type of set of string
+      external_ips = spec.value["external_ips"]
+      # external_name - (optional) is a type of string
+      external_name = spec.value["external_name"]
+      # external_traffic_policy - (optional) is a type of string
+      external_traffic_policy = spec.value["external_traffic_policy"]
+      # health_check_node_port - (optional) is a type of number
+      health_check_node_port = spec.value["health_check_node_port"]
+      # load_balancer_ip - (optional) is a type of string
+      load_balancer_ip = spec.value["load_balancer_ip"]
+      # load_balancer_source_ranges - (optional) is a type of set of string
       load_balancer_source_ranges = spec.value["load_balancer_source_ranges"]
+      # publish_not_ready_addresses - (optional) is a type of bool
       publish_not_ready_addresses = spec.value["publish_not_ready_addresses"]
-      selector                    = spec.value["selector"]
-      session_affinity            = spec.value["session_affinity"]
-      type                        = spec.value["type"]
+      # selector - (optional) is a type of map of string
+      selector = spec.value["selector"]
+      # session_affinity - (optional) is a type of string
+      session_affinity = spec.value["session_affinity"]
+      # type - (optional) is a type of string
+      type = spec.value["type"]
 
       dynamic "port" {
         for_each = spec.value.port
         content {
-          name        = port.value["name"]
-          node_port   = port.value["node_port"]
-          port        = port.value["port"]
-          protocol    = port.value["protocol"]
+          # name - (optional) is a type of string
+          name = port.value["name"]
+          # node_port - (optional) is a type of number
+          node_port = port.value["node_port"]
+          # port - (required) is a type of number
+          port = port.value["port"]
+          # protocol - (optional) is a type of string
+          protocol = port.value["protocol"]
+          # target_port - (optional) is a type of string
           target_port = port.value["target_port"]
         }
       }
@@ -187,6 +209,7 @@ resource "kubernetes_service" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

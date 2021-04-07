@@ -56,7 +56,9 @@ variable "upgrade_history_entry_id" {
 
 ```terraform
 data "oci_database_database_upgrade_history_entry" "this" {
-  database_id              = var.database_id
+  # database_id - (required) is a type of string
+  database_id = var.database_id
+  # upgrade_history_entry_id - (required) is a type of string
   upgrade_history_entry_id = var.upgrade_history_entry_id
 }
 ```

@@ -123,20 +123,31 @@ variable "filter" {
 
 ```terraform
 data "oci_dns_steering_policies" "this" {
-  compartment_id                        = var.compartment_id
-  display_name                          = var.display_name
-  display_name_contains                 = var.display_name_contains
-  health_check_monitor_id               = var.health_check_monitor_id
-  state                                 = var.state
-  template                              = var.template
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # display_name_contains - (optional) is a type of string
+  display_name_contains = var.display_name_contains
+  # health_check_monitor_id - (optional) is a type of string
+  health_check_monitor_id = var.health_check_monitor_id
+  # state - (optional) is a type of string
+  state = var.state
+  # template - (optional) is a type of string
+  template = var.template
+  # time_created_greater_than_or_equal_to - (optional) is a type of string
   time_created_greater_than_or_equal_to = var.time_created_greater_than_or_equal_to
-  time_created_less_than                = var.time_created_less_than
+  # time_created_less_than - (optional) is a type of string
+  time_created_less_than = var.time_created_less_than
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

@@ -88,17 +88,24 @@ variable "condition" {
 
 ```terraform
 resource "google_healthcare_consent_store_iam_binding" "this" {
+  # consent_store_id - (required) is a type of string
   consent_store_id = var.consent_store_id
-  dataset          = var.dataset
-  members          = var.members
-  role             = var.role
+  # dataset - (required) is a type of string
+  dataset = var.dataset
+  # members - (required) is a type of set of string
+  members = var.members
+  # role - (required) is a type of string
+  role = var.role
 
   dynamic "condition" {
     for_each = var.condition
     content {
+      # description - (optional) is a type of string
       description = condition.value["description"]
-      expression  = condition.value["expression"]
-      title       = condition.value["title"]
+      # expression - (required) is a type of string
+      expression = condition.value["expression"]
+      # title - (required) is a type of string
+      title = condition.value["title"]
     }
   }
 

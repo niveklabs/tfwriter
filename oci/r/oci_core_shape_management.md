@@ -81,15 +81,21 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_shape_management" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  image_id       = var.image_id
-  shape_name     = var.shape_name
+  # image_id - (required) is a type of string
+  image_id = var.image_id
+  # shape_name - (required) is a type of string
+  shape_name = var.shape_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

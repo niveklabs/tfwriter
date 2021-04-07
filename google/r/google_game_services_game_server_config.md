@@ -157,40 +157,55 @@ variable "timeouts" {
 
 ```terraform
 resource "google_game_services_game_server_config" "this" {
-  config_id     = var.config_id
+  # config_id - (required) is a type of string
+  config_id = var.config_id
+  # deployment_id - (required) is a type of string
   deployment_id = var.deployment_id
-  description   = var.description
-  labels        = var.labels
-  location      = var.location
-  project       = var.project
+  # description - (optional) is a type of string
+  description = var.description
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # location - (optional) is a type of string
+  location = var.location
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "fleet_configs" {
     for_each = var.fleet_configs
     content {
+      # fleet_spec - (required) is a type of string
       fleet_spec = fleet_configs.value["fleet_spec"]
-      name       = fleet_configs.value["name"]
+      # name - (optional) is a type of string
+      name = fleet_configs.value["name"]
     }
   }
 
   dynamic "scaling_configs" {
     for_each = var.scaling_configs
     content {
+      # fleet_autoscaler_spec - (required) is a type of string
       fleet_autoscaler_spec = scaling_configs.value["fleet_autoscaler_spec"]
-      name                  = scaling_configs.value["name"]
+      # name - (required) is a type of string
+      name = scaling_configs.value["name"]
 
       dynamic "schedules" {
         for_each = scaling_configs.value.schedules
         content {
+          # cron_job_duration - (optional) is a type of string
           cron_job_duration = schedules.value["cron_job_duration"]
-          cron_spec         = schedules.value["cron_spec"]
-          end_time          = schedules.value["end_time"]
-          start_time        = schedules.value["start_time"]
+          # cron_spec - (optional) is a type of string
+          cron_spec = schedules.value["cron_spec"]
+          # end_time - (optional) is a type of string
+          end_time = schedules.value["end_time"]
+          # start_time - (optional) is a type of string
+          start_time = schedules.value["start_time"]
         }
       }
 
       dynamic "selectors" {
         for_each = scaling_configs.value.selectors
         content {
+          # labels - (optional) is a type of map of string
           labels = selectors.value["labels"]
         }
       }
@@ -201,7 +216,9 @@ resource "google_game_services_game_server_config" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

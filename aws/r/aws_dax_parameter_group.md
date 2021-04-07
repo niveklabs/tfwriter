@@ -73,13 +73,17 @@ variable "parameters" {
 
 ```terraform
 resource "aws_dax_parameter_group" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "parameters" {
     for_each = var.parameters
     content {
-      name  = parameters.value["name"]
+      # name - (required) is a type of string
+      name = parameters.value["name"]
+      # value - (required) is a type of string
       value = parameters.value["value"]
     }
   }

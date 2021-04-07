@@ -56,8 +56,10 @@ variable "user" {
 
 ```terraform
 resource "aws_iam_user_policy_attachment" "this" {
+  # policy_arn - (required) is a type of string
   policy_arn = var.policy_arn
-  user       = var.user
+  # user - (required) is a type of string
+  user = var.user
 }
 ```
 

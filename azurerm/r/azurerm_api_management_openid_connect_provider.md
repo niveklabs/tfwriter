@@ -119,21 +119,33 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_api_management_openid_connect_provider" "this" {
+  # api_management_name - (required) is a type of string
   api_management_name = var.api_management_name
-  client_id           = var.client_id
-  client_secret       = var.client_secret
-  description         = var.description
-  display_name        = var.display_name
-  metadata_endpoint   = var.metadata_endpoint
-  name                = var.name
+  # client_id - (required) is a type of string
+  client_id = var.client_id
+  # client_secret - (required) is a type of string
+  client_secret = var.client_secret
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # metadata_endpoint - (required) is a type of string
+  metadata_endpoint = var.metadata_endpoint
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

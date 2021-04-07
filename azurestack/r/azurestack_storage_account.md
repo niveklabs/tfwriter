@@ -133,21 +133,33 @@ variable "custom_domain" {
 
 ```terraform
 resource "azurestack_storage_account" "this" {
+  # account_encryption_source - (optional) is a type of string
   account_encryption_source = var.account_encryption_source
-  account_kind              = var.account_kind
-  account_replication_type  = var.account_replication_type
-  account_tier              = var.account_tier
-  account_type              = var.account_type
-  enable_blob_encryption    = var.enable_blob_encryption
-  location                  = var.location
-  name                      = var.name
-  resource_group_name       = var.resource_group_name
-  tags                      = var.tags
+  # account_kind - (optional) is a type of string
+  account_kind = var.account_kind
+  # account_replication_type - (required) is a type of string
+  account_replication_type = var.account_replication_type
+  # account_tier - (required) is a type of string
+  account_tier = var.account_tier
+  # account_type - (optional) is a type of string
+  account_type = var.account_type
+  # enable_blob_encryption - (optional) is a type of bool
+  enable_blob_encryption = var.enable_blob_encryption
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "custom_domain" {
     for_each = var.custom_domain
     content {
-      name          = custom_domain.value["name"]
+      # name - (required) is a type of string
+      name = custom_domain.value["name"]
+      # use_subdomain - (optional) is a type of bool
       use_subdomain = custom_domain.value["use_subdomain"]
     }
   }

@@ -121,16 +121,23 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_service_gateway" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  defined_tags   = var.defined_tags
-  display_name   = var.display_name
-  freeform_tags  = var.freeform_tags
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # route_table_id - (optional) is a type of string
   route_table_id = var.route_table_id
-  vcn_id         = var.vcn_id
+  # vcn_id - (required) is a type of string
+  vcn_id = var.vcn_id
 
   dynamic "services" {
     for_each = var.services
     content {
+      # service_id - (required) is a type of string
       service_id = services.value["service_id"]
     }
   }
@@ -138,8 +145,11 @@ resource "oci_core_service_gateway" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -71,10 +71,14 @@ variable "project" {
 
 ```terraform
 resource "google_spanner_database_iam_policy" "this" {
-  database    = var.database
-  instance    = var.instance
+  # database - (required) is a type of string
+  database = var.database
+  # instance - (required) is a type of string
+  instance = var.instance
+  # policy_data - (required) is a type of string
   policy_data = var.policy_data
-  project     = var.project
+  # project - (optional) is a type of string
+  project = var.project
 }
 ```
 

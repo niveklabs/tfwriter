@@ -142,26 +142,38 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_region_per_instance_config" "this" {
-  minimal_action                   = var.minimal_action
-  most_disruptive_allowed_action   = var.most_disruptive_allowed_action
-  name                             = var.name
-  project                          = var.project
-  region                           = var.region
-  region_instance_group_manager    = var.region_instance_group_manager
+  # minimal_action - (optional) is a type of string
+  minimal_action = var.minimal_action
+  # most_disruptive_allowed_action - (optional) is a type of string
+  most_disruptive_allowed_action = var.most_disruptive_allowed_action
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
+  # region_instance_group_manager - (required) is a type of string
+  region_instance_group_manager = var.region_instance_group_manager
+  # remove_instance_state_on_destroy - (optional) is a type of bool
   remove_instance_state_on_destroy = var.remove_instance_state_on_destroy
 
   dynamic "preserved_state" {
     for_each = var.preserved_state
     content {
+      # metadata - (optional) is a type of map of string
       metadata = preserved_state.value["metadata"]
 
       dynamic "disk" {
         for_each = preserved_state.value.disk
         content {
+          # delete_rule - (optional) is a type of string
           delete_rule = disk.value["delete_rule"]
+          # device_name - (required) is a type of string
           device_name = disk.value["device_name"]
-          mode        = disk.value["mode"]
-          source      = disk.value["source"]
+          # mode - (optional) is a type of string
+          mode = disk.value["mode"]
+          # source - (required) is a type of string
+          source = disk.value["source"]
         }
       }
 
@@ -171,8 +183,11 @@ resource "google_compute_region_per_instance_config" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

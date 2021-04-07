@@ -181,29 +181,44 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_automation_runbook" "this" {
+  # automation_account_name - (required) is a type of string
   automation_account_name = var.automation_account_name
-  content                 = var.content
-  description             = var.description
-  job_schedule            = var.job_schedule
-  location                = var.location
-  log_progress            = var.log_progress
-  log_verbose             = var.log_verbose
-  name                    = var.name
-  resource_group_name     = var.resource_group_name
-  runbook_type            = var.runbook_type
-  tags                    = var.tags
+  # content - (optional) is a type of string
+  content = var.content
+  # description - (optional) is a type of string
+  description = var.description
+  # job_schedule - (optional) is a type of set of object
+  job_schedule = var.job_schedule
+  # location - (required) is a type of string
+  location = var.location
+  # log_progress - (required) is a type of bool
+  log_progress = var.log_progress
+  # log_verbose - (required) is a type of bool
+  log_verbose = var.log_verbose
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # runbook_type - (required) is a type of string
+  runbook_type = var.runbook_type
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "publish_content_link" {
     for_each = var.publish_content_link
     content {
-      uri     = publish_content_link.value["uri"]
+      # uri - (required) is a type of string
+      uri = publish_content_link.value["uri"]
+      # version - (optional) is a type of string
       version = publish_content_link.value["version"]
 
       dynamic "hash" {
         for_each = publish_content_link.value.hash
         content {
+          # algorithm - (required) is a type of string
           algorithm = hash.value["algorithm"]
-          value     = hash.value["value"]
+          # value - (required) is a type of string
+          value = hash.value["value"]
         }
       }
 
@@ -213,9 +228,13 @@ resource "azurerm_automation_runbook" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

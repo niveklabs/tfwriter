@@ -92,22 +92,29 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_database_exadata_iorm_config" "this" {
+  # db_system_id - (required) is a type of string
   db_system_id = var.db_system_id
-  objective    = var.objective
+  # objective - (optional) is a type of string
+  objective = var.objective
 
   dynamic "db_plans" {
     for_each = var.db_plans
     content {
+      # db_name - (required) is a type of string
       db_name = db_plans.value["db_name"]
-      share   = db_plans.value["share"]
+      # share - (required) is a type of number
+      share = db_plans.value["share"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -141,25 +141,37 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_logging_log" "this" {
-  defined_tags       = var.defined_tags
-  display_name       = var.display_name
-  freeform_tags      = var.freeform_tags
-  is_enabled         = var.is_enabled
-  log_group_id       = var.log_group_id
-  log_type           = var.log_type
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # is_enabled - (optional) is a type of bool
+  is_enabled = var.is_enabled
+  # log_group_id - (required) is a type of string
+  log_group_id = var.log_group_id
+  # log_type - (required) is a type of string
+  log_type = var.log_type
+  # retention_duration - (optional) is a type of number
   retention_duration = var.retention_duration
 
   dynamic "configuration" {
     for_each = var.configuration
     content {
+      # compartment_id - (optional) is a type of string
       compartment_id = configuration.value["compartment_id"]
 
       dynamic "source" {
         for_each = configuration.value.source
         content {
-          category    = source.value["category"]
-          resource    = source.value["resource"]
-          service     = source.value["service"]
+          # category - (required) is a type of string
+          category = source.value["category"]
+          # resource - (required) is a type of string
+          resource = source.value["resource"]
+          # service - (required) is a type of string
+          service = source.value["service"]
+          # source_type - (required) is a type of string
           source_type = source.value["source_type"]
         }
       }
@@ -170,8 +182,11 @@ resource "oci_logging_log" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

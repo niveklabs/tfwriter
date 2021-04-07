@@ -253,47 +253,69 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_media_live_event" "this" {
-  auto_start_enabled          = var.auto_start_enabled
-  description                 = var.description
-  hostname_prefix             = var.hostname_prefix
-  location                    = var.location
+  # auto_start_enabled - (optional) is a type of bool
+  auto_start_enabled = var.auto_start_enabled
+  # description - (optional) is a type of string
+  description = var.description
+  # hostname_prefix - (optional) is a type of string
+  hostname_prefix = var.hostname_prefix
+  # location - (required) is a type of string
+  location = var.location
+  # media_services_account_name - (required) is a type of string
   media_services_account_name = var.media_services_account_name
-  name                        = var.name
-  resource_group_name         = var.resource_group_name
-  tags                        = var.tags
-  transcription_languages     = var.transcription_languages
-  use_static_hostname         = var.use_static_hostname
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # transcription_languages - (optional) is a type of list of string
+  transcription_languages = var.transcription_languages
+  # use_static_hostname - (optional) is a type of bool
+  use_static_hostname = var.use_static_hostname
 
   dynamic "cross_site_access_policy" {
     for_each = var.cross_site_access_policy
     content {
+      # client_access_policy - (optional) is a type of string
       client_access_policy = cross_site_access_policy.value["client_access_policy"]
-      cross_domain_policy  = cross_site_access_policy.value["cross_domain_policy"]
+      # cross_domain_policy - (optional) is a type of string
+      cross_domain_policy = cross_site_access_policy.value["cross_domain_policy"]
     }
   }
 
   dynamic "encoding" {
     for_each = var.encoding
     content {
+      # key_frame_interval - (optional) is a type of string
       key_frame_interval = encoding.value["key_frame_interval"]
-      preset_name        = encoding.value["preset_name"]
-      stretch_mode       = encoding.value["stretch_mode"]
-      type               = encoding.value["type"]
+      # preset_name - (optional) is a type of string
+      preset_name = encoding.value["preset_name"]
+      # stretch_mode - (optional) is a type of string
+      stretch_mode = encoding.value["stretch_mode"]
+      # type - (optional) is a type of string
+      type = encoding.value["type"]
     }
   }
 
   dynamic "input" {
     for_each = var.input
     content {
-      access_token                = input.value["access_token"]
+      # access_token - (optional) is a type of string
+      access_token = input.value["access_token"]
+      # key_frame_interval_duration - (optional) is a type of string
       key_frame_interval_duration = input.value["key_frame_interval_duration"]
-      streaming_protocol          = input.value["streaming_protocol"]
+      # streaming_protocol - (optional) is a type of string
+      streaming_protocol = input.value["streaming_protocol"]
 
       dynamic "ip_access_control_allow" {
         for_each = input.value.ip_access_control_allow
         content {
-          address              = ip_access_control_allow.value["address"]
-          name                 = ip_access_control_allow.value["name"]
+          # address - (optional) is a type of string
+          address = ip_access_control_allow.value["address"]
+          # name - (optional) is a type of string
+          name = ip_access_control_allow.value["name"]
+          # subnet_prefix_length - (optional) is a type of number
           subnet_prefix_length = ip_access_control_allow.value["subnet_prefix_length"]
         }
       }
@@ -304,15 +326,21 @@ resource "azurerm_media_live_event" "this" {
   dynamic "preview" {
     for_each = var.preview
     content {
-      alternative_media_id  = preview.value["alternative_media_id"]
-      preview_locator       = preview.value["preview_locator"]
+      # alternative_media_id - (optional) is a type of string
+      alternative_media_id = preview.value["alternative_media_id"]
+      # preview_locator - (optional) is a type of string
+      preview_locator = preview.value["preview_locator"]
+      # streaming_policy_name - (optional) is a type of string
       streaming_policy_name = preview.value["streaming_policy_name"]
 
       dynamic "ip_access_control_allow" {
         for_each = preview.value.ip_access_control_allow
         content {
-          address              = ip_access_control_allow.value["address"]
-          name                 = ip_access_control_allow.value["name"]
+          # address - (optional) is a type of string
+          address = ip_access_control_allow.value["address"]
+          # name - (optional) is a type of string
+          name = ip_access_control_allow.value["name"]
+          # subnet_prefix_length - (optional) is a type of number
           subnet_prefix_length = ip_access_control_allow.value["subnet_prefix_length"]
         }
       }
@@ -323,9 +351,13 @@ resource "azurerm_media_live_event" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

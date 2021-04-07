@@ -56,8 +56,10 @@ variable "security_group_id" {
 
 ```terraform
 resource "aws_network_interface_sg_attachment" "this" {
+  # network_interface_id - (required) is a type of string
   network_interface_id = var.network_interface_id
-  security_group_id    = var.security_group_id
+  # security_group_id - (required) is a type of string
+  security_group_id = var.security_group_id
 }
 ```
 

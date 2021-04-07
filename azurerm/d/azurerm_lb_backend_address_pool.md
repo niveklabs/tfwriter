@@ -70,12 +70,15 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_lb_backend_address_pool" "this" {
+  # loadbalancer_id - (required) is a type of string
   loadbalancer_id = var.loadbalancer_id
-  name            = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

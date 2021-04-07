@@ -113,19 +113,29 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_waas_certificate" "this" {
-  certificate_data               = var.certificate_data
-  compartment_id                 = var.compartment_id
-  defined_tags                   = var.defined_tags
-  display_name                   = var.display_name
-  freeform_tags                  = var.freeform_tags
+  # certificate_data - (required) is a type of string
+  certificate_data = var.certificate_data
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # is_trust_verification_disabled - (optional) is a type of bool
   is_trust_verification_disabled = var.is_trust_verification_disabled
-  private_key_data               = var.private_key_data
+  # private_key_data - (required) is a type of string
+  private_key_data = var.private_key_data
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

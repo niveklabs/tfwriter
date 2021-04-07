@@ -128,21 +128,33 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_database_autonomous_vm_cluster" "this" {
-  compartment_id            = var.compartment_id
-  defined_tags              = var.defined_tags
-  display_name              = var.display_name
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # exadata_infrastructure_id - (required) is a type of string
   exadata_infrastructure_id = var.exadata_infrastructure_id
-  freeform_tags             = var.freeform_tags
-  is_local_backup_enabled   = var.is_local_backup_enabled
-  license_model             = var.license_model
-  time_zone                 = var.time_zone
-  vm_cluster_network_id     = var.vm_cluster_network_id
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # is_local_backup_enabled - (optional) is a type of bool
+  is_local_backup_enabled = var.is_local_backup_enabled
+  # license_model - (optional) is a type of string
+  license_model = var.license_model
+  # time_zone - (optional) is a type of string
+  time_zone = var.time_zone
+  # vm_cluster_network_id - (required) is a type of string
+  vm_cluster_network_id = var.vm_cluster_network_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

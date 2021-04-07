@@ -98,16 +98,23 @@ variable "filter" {
 
 ```terraform
 data "aws_ec2_local_gateway_route_table" "this" {
-  local_gateway_id             = var.local_gateway_id
+  # local_gateway_id - (optional) is a type of string
+  local_gateway_id = var.local_gateway_id
+  # local_gateway_route_table_id - (optional) is a type of string
   local_gateway_route_table_id = var.local_gateway_route_table_id
-  outpost_arn                  = var.outpost_arn
-  state                        = var.state
-  tags                         = var.tags
+  # outpost_arn - (optional) is a type of string
+  outpost_arn = var.outpost_arn
+  # state - (optional) is a type of string
+  state = var.state
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of set of string
       values = filter.value["values"]
     }
   }

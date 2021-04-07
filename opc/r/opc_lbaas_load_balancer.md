@@ -135,18 +135,30 @@ variable "tags" {
 
 ```terraform
 resource "opc_lbaas_load_balancer" "this" {
-  description          = var.description
-  enabled              = var.enabled
-  ip_network           = var.ip_network
-  name                 = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # ip_network - (optional) is a type of string
+  ip_network = var.ip_network
+  # name - (required) is a type of string
+  name = var.name
+  # parent_load_balancer - (optional) is a type of string
   parent_load_balancer = var.parent_load_balancer
-  permitted_clients    = var.permitted_clients
-  permitted_methods    = var.permitted_methods
-  policies             = var.policies
-  region               = var.region
-  scheme               = var.scheme
-  server_pool          = var.server_pool
-  tags                 = var.tags
+  # permitted_clients - (optional) is a type of set of string
+  permitted_clients = var.permitted_clients
+  # permitted_methods - (optional) is a type of set of string
+  permitted_methods = var.permitted_methods
+  # policies - (optional) is a type of set of string
+  policies = var.policies
+  # region - (required) is a type of string
+  region = var.region
+  # scheme - (required) is a type of string
+  scheme = var.scheme
+  # server_pool - (optional) is a type of string
+  server_pool = var.server_pool
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 }
 ```
 

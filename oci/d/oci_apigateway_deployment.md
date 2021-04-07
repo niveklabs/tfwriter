@@ -49,6 +49,7 @@ variable "deployment_id" {
 
 ```terraform
 data "oci_apigateway_deployment" "this" {
+  # deployment_id - (required) is a type of string
   deployment_id = var.deployment_id
 }
 ```

@@ -88,15 +88,21 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_disk_resource_policy_attachment" "this" {
-  disk    = var.disk
-  name    = var.name
+  # disk - (required) is a type of string
+  disk = var.disk
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
   project = var.project
-  zone    = var.zone
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

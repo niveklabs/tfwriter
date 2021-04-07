@@ -80,14 +80,19 @@ variable "filter" {
 
 ```terraform
 data "aws_ram_resource_share" "this" {
-  name           = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # resource_owner - (required) is a type of string
   resource_owner = var.resource_owner
-  tags           = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

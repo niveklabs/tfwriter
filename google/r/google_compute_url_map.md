@@ -1051,10 +1051,14 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_url_map" "this" {
+  # default_service - (optional) is a type of string
   default_service = var.default_service
-  description     = var.description
-  name            = var.name
-  project         = var.project
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "default_route_action" {
     for_each = var.default_route_action
@@ -1063,14 +1067,22 @@ resource "google_compute_url_map" "this" {
       dynamic "cors_policy" {
         for_each = default_route_action.value.cors_policy
         content {
-          allow_credentials    = cors_policy.value["allow_credentials"]
-          allow_headers        = cors_policy.value["allow_headers"]
-          allow_methods        = cors_policy.value["allow_methods"]
+          # allow_credentials - (optional) is a type of bool
+          allow_credentials = cors_policy.value["allow_credentials"]
+          # allow_headers - (optional) is a type of list of string
+          allow_headers = cors_policy.value["allow_headers"]
+          # allow_methods - (optional) is a type of list of string
+          allow_methods = cors_policy.value["allow_methods"]
+          # allow_origin_regexes - (optional) is a type of list of string
           allow_origin_regexes = cors_policy.value["allow_origin_regexes"]
-          allow_origins        = cors_policy.value["allow_origins"]
-          disabled             = cors_policy.value["disabled"]
-          expose_headers       = cors_policy.value["expose_headers"]
-          max_age              = cors_policy.value["max_age"]
+          # allow_origins - (optional) is a type of list of string
+          allow_origins = cors_policy.value["allow_origins"]
+          # disabled - (optional) is a type of bool
+          disabled = cors_policy.value["disabled"]
+          # expose_headers - (optional) is a type of list of string
+          expose_headers = cors_policy.value["expose_headers"]
+          # max_age - (optional) is a type of number
+          max_age = cors_policy.value["max_age"]
         }
       }
 
@@ -1081,20 +1093,25 @@ resource "google_compute_url_map" "this" {
           dynamic "abort" {
             for_each = fault_injection_policy.value.abort
             content {
+              # http_status - (optional) is a type of number
               http_status = abort.value["http_status"]
-              percentage  = abort.value["percentage"]
+              # percentage - (optional) is a type of number
+              percentage = abort.value["percentage"]
             }
           }
 
           dynamic "delay" {
             for_each = fault_injection_policy.value.delay
             content {
+              # percentage - (optional) is a type of number
               percentage = delay.value["percentage"]
 
               dynamic "fixed_delay" {
                 for_each = delay.value.fixed_delay
                 content {
-                  nanos   = fixed_delay.value["nanos"]
+                  # nanos - (optional) is a type of number
+                  nanos = fixed_delay.value["nanos"]
+                  # seconds - (optional) is a type of string
                   seconds = fixed_delay.value["seconds"]
                 }
               }
@@ -1108,6 +1125,7 @@ resource "google_compute_url_map" "this" {
       dynamic "request_mirror_policy" {
         for_each = default_route_action.value.request_mirror_policy
         content {
+          # backend_service - (required) is a type of string
           backend_service = request_mirror_policy.value["backend_service"]
         }
       }
@@ -1115,13 +1133,17 @@ resource "google_compute_url_map" "this" {
       dynamic "retry_policy" {
         for_each = default_route_action.value.retry_policy
         content {
-          num_retries      = retry_policy.value["num_retries"]
+          # num_retries - (optional) is a type of number
+          num_retries = retry_policy.value["num_retries"]
+          # retry_conditions - (optional) is a type of list of string
           retry_conditions = retry_policy.value["retry_conditions"]
 
           dynamic "per_try_timeout" {
             for_each = retry_policy.value.per_try_timeout
             content {
-              nanos   = per_try_timeout.value["nanos"]
+              # nanos - (optional) is a type of number
+              nanos = per_try_timeout.value["nanos"]
+              # seconds - (optional) is a type of string
               seconds = per_try_timeout.value["seconds"]
             }
           }
@@ -1132,7 +1154,9 @@ resource "google_compute_url_map" "this" {
       dynamic "timeout" {
         for_each = default_route_action.value.timeout
         content {
-          nanos   = timeout.value["nanos"]
+          # nanos - (optional) is a type of number
+          nanos = timeout.value["nanos"]
+          # seconds - (optional) is a type of string
           seconds = timeout.value["seconds"]
         }
       }
@@ -1140,7 +1164,9 @@ resource "google_compute_url_map" "this" {
       dynamic "url_rewrite" {
         for_each = default_route_action.value.url_rewrite
         content {
-          host_rewrite        = url_rewrite.value["host_rewrite"]
+          # host_rewrite - (optional) is a type of string
+          host_rewrite = url_rewrite.value["host_rewrite"]
+          # path_prefix_rewrite - (optional) is a type of string
           path_prefix_rewrite = url_rewrite.value["path_prefix_rewrite"]
         }
       }
@@ -1148,30 +1174,40 @@ resource "google_compute_url_map" "this" {
       dynamic "weighted_backend_services" {
         for_each = default_route_action.value.weighted_backend_services
         content {
+          # backend_service - (optional) is a type of string
           backend_service = weighted_backend_services.value["backend_service"]
-          weight          = weighted_backend_services.value["weight"]
+          # weight - (optional) is a type of number
+          weight = weighted_backend_services.value["weight"]
 
           dynamic "header_action" {
             for_each = weighted_backend_services.value.header_action
             content {
-              request_headers_to_remove  = header_action.value["request_headers_to_remove"]
+              # request_headers_to_remove - (optional) is a type of list of string
+              request_headers_to_remove = header_action.value["request_headers_to_remove"]
+              # response_headers_to_remove - (optional) is a type of list of string
               response_headers_to_remove = header_action.value["response_headers_to_remove"]
 
               dynamic "request_headers_to_add" {
                 for_each = header_action.value.request_headers_to_add
                 content {
-                  header_name  = request_headers_to_add.value["header_name"]
+                  # header_name - (optional) is a type of string
+                  header_name = request_headers_to_add.value["header_name"]
+                  # header_value - (optional) is a type of string
                   header_value = request_headers_to_add.value["header_value"]
-                  replace      = request_headers_to_add.value["replace"]
+                  # replace - (optional) is a type of bool
+                  replace = request_headers_to_add.value["replace"]
                 }
               }
 
               dynamic "response_headers_to_add" {
                 for_each = header_action.value.response_headers_to_add
                 content {
-                  header_name  = response_headers_to_add.value["header_name"]
+                  # header_name - (optional) is a type of string
+                  header_name = response_headers_to_add.value["header_name"]
+                  # header_value - (optional) is a type of string
                   header_value = response_headers_to_add.value["header_value"]
-                  replace      = response_headers_to_add.value["replace"]
+                  # replace - (optional) is a type of bool
+                  replace = response_headers_to_add.value["replace"]
                 }
               }
 
@@ -1187,36 +1223,50 @@ resource "google_compute_url_map" "this" {
   dynamic "default_url_redirect" {
     for_each = var.default_url_redirect
     content {
-      host_redirect          = default_url_redirect.value["host_redirect"]
-      https_redirect         = default_url_redirect.value["https_redirect"]
-      path_redirect          = default_url_redirect.value["path_redirect"]
-      prefix_redirect        = default_url_redirect.value["prefix_redirect"]
+      # host_redirect - (optional) is a type of string
+      host_redirect = default_url_redirect.value["host_redirect"]
+      # https_redirect - (optional) is a type of bool
+      https_redirect = default_url_redirect.value["https_redirect"]
+      # path_redirect - (optional) is a type of string
+      path_redirect = default_url_redirect.value["path_redirect"]
+      # prefix_redirect - (optional) is a type of string
+      prefix_redirect = default_url_redirect.value["prefix_redirect"]
+      # redirect_response_code - (optional) is a type of string
       redirect_response_code = default_url_redirect.value["redirect_response_code"]
-      strip_query            = default_url_redirect.value["strip_query"]
+      # strip_query - (required) is a type of bool
+      strip_query = default_url_redirect.value["strip_query"]
     }
   }
 
   dynamic "header_action" {
     for_each = var.header_action
     content {
-      request_headers_to_remove  = header_action.value["request_headers_to_remove"]
+      # request_headers_to_remove - (optional) is a type of list of string
+      request_headers_to_remove = header_action.value["request_headers_to_remove"]
+      # response_headers_to_remove - (optional) is a type of list of string
       response_headers_to_remove = header_action.value["response_headers_to_remove"]
 
       dynamic "request_headers_to_add" {
         for_each = header_action.value.request_headers_to_add
         content {
-          header_name  = request_headers_to_add.value["header_name"]
+          # header_name - (required) is a type of string
+          header_name = request_headers_to_add.value["header_name"]
+          # header_value - (required) is a type of string
           header_value = request_headers_to_add.value["header_value"]
-          replace      = request_headers_to_add.value["replace"]
+          # replace - (required) is a type of bool
+          replace = request_headers_to_add.value["replace"]
         }
       }
 
       dynamic "response_headers_to_add" {
         for_each = header_action.value.response_headers_to_add
         content {
-          header_name  = response_headers_to_add.value["header_name"]
+          # header_name - (required) is a type of string
+          header_name = response_headers_to_add.value["header_name"]
+          # header_value - (required) is a type of string
           header_value = response_headers_to_add.value["header_value"]
-          replace      = response_headers_to_add.value["replace"]
+          # replace - (required) is a type of bool
+          replace = response_headers_to_add.value["replace"]
         }
       }
 
@@ -1226,8 +1276,11 @@ resource "google_compute_url_map" "this" {
   dynamic "host_rule" {
     for_each = var.host_rule
     content {
-      description  = host_rule.value["description"]
-      hosts        = host_rule.value["hosts"]
+      # description - (optional) is a type of string
+      description = host_rule.value["description"]
+      # hosts - (required) is a type of set of string
+      hosts = host_rule.value["hosts"]
+      # path_matcher - (required) is a type of string
       path_matcher = host_rule.value["path_matcher"]
     }
   }
@@ -1235,9 +1288,12 @@ resource "google_compute_url_map" "this" {
   dynamic "path_matcher" {
     for_each = var.path_matcher
     content {
+      # default_service - (optional) is a type of string
       default_service = path_matcher.value["default_service"]
-      description     = path_matcher.value["description"]
-      name            = path_matcher.value["name"]
+      # description - (optional) is a type of string
+      description = path_matcher.value["description"]
+      # name - (required) is a type of string
+      name = path_matcher.value["name"]
 
       dynamic "default_route_action" {
         for_each = path_matcher.value.default_route_action
@@ -1246,14 +1302,22 @@ resource "google_compute_url_map" "this" {
           dynamic "cors_policy" {
             for_each = default_route_action.value.cors_policy
             content {
-              allow_credentials    = cors_policy.value["allow_credentials"]
-              allow_headers        = cors_policy.value["allow_headers"]
-              allow_methods        = cors_policy.value["allow_methods"]
+              # allow_credentials - (optional) is a type of bool
+              allow_credentials = cors_policy.value["allow_credentials"]
+              # allow_headers - (optional) is a type of list of string
+              allow_headers = cors_policy.value["allow_headers"]
+              # allow_methods - (optional) is a type of list of string
+              allow_methods = cors_policy.value["allow_methods"]
+              # allow_origin_regexes - (optional) is a type of list of string
               allow_origin_regexes = cors_policy.value["allow_origin_regexes"]
-              allow_origins        = cors_policy.value["allow_origins"]
-              disabled             = cors_policy.value["disabled"]
-              expose_headers       = cors_policy.value["expose_headers"]
-              max_age              = cors_policy.value["max_age"]
+              # allow_origins - (optional) is a type of list of string
+              allow_origins = cors_policy.value["allow_origins"]
+              # disabled - (optional) is a type of bool
+              disabled = cors_policy.value["disabled"]
+              # expose_headers - (optional) is a type of list of string
+              expose_headers = cors_policy.value["expose_headers"]
+              # max_age - (optional) is a type of number
+              max_age = cors_policy.value["max_age"]
             }
           }
 
@@ -1264,20 +1328,25 @@ resource "google_compute_url_map" "this" {
               dynamic "abort" {
                 for_each = fault_injection_policy.value.abort
                 content {
+                  # http_status - (optional) is a type of number
                   http_status = abort.value["http_status"]
-                  percentage  = abort.value["percentage"]
+                  # percentage - (optional) is a type of number
+                  percentage = abort.value["percentage"]
                 }
               }
 
               dynamic "delay" {
                 for_each = fault_injection_policy.value.delay
                 content {
+                  # percentage - (optional) is a type of number
                   percentage = delay.value["percentage"]
 
                   dynamic "fixed_delay" {
                     for_each = delay.value.fixed_delay
                     content {
-                      nanos   = fixed_delay.value["nanos"]
+                      # nanos - (optional) is a type of number
+                      nanos = fixed_delay.value["nanos"]
+                      # seconds - (optional) is a type of string
                       seconds = fixed_delay.value["seconds"]
                     }
                   }
@@ -1291,6 +1360,7 @@ resource "google_compute_url_map" "this" {
           dynamic "request_mirror_policy" {
             for_each = default_route_action.value.request_mirror_policy
             content {
+              # backend_service - (required) is a type of string
               backend_service = request_mirror_policy.value["backend_service"]
             }
           }
@@ -1298,13 +1368,17 @@ resource "google_compute_url_map" "this" {
           dynamic "retry_policy" {
             for_each = default_route_action.value.retry_policy
             content {
-              num_retries      = retry_policy.value["num_retries"]
+              # num_retries - (optional) is a type of number
+              num_retries = retry_policy.value["num_retries"]
+              # retry_conditions - (optional) is a type of list of string
               retry_conditions = retry_policy.value["retry_conditions"]
 
               dynamic "per_try_timeout" {
                 for_each = retry_policy.value.per_try_timeout
                 content {
-                  nanos   = per_try_timeout.value["nanos"]
+                  # nanos - (optional) is a type of number
+                  nanos = per_try_timeout.value["nanos"]
+                  # seconds - (optional) is a type of string
                   seconds = per_try_timeout.value["seconds"]
                 }
               }
@@ -1315,7 +1389,9 @@ resource "google_compute_url_map" "this" {
           dynamic "timeout" {
             for_each = default_route_action.value.timeout
             content {
-              nanos   = timeout.value["nanos"]
+              # nanos - (optional) is a type of number
+              nanos = timeout.value["nanos"]
+              # seconds - (optional) is a type of string
               seconds = timeout.value["seconds"]
             }
           }
@@ -1323,7 +1399,9 @@ resource "google_compute_url_map" "this" {
           dynamic "url_rewrite" {
             for_each = default_route_action.value.url_rewrite
             content {
-              host_rewrite        = url_rewrite.value["host_rewrite"]
+              # host_rewrite - (optional) is a type of string
+              host_rewrite = url_rewrite.value["host_rewrite"]
+              # path_prefix_rewrite - (optional) is a type of string
               path_prefix_rewrite = url_rewrite.value["path_prefix_rewrite"]
             }
           }
@@ -1331,30 +1409,40 @@ resource "google_compute_url_map" "this" {
           dynamic "weighted_backend_services" {
             for_each = default_route_action.value.weighted_backend_services
             content {
+              # backend_service - (optional) is a type of string
               backend_service = weighted_backend_services.value["backend_service"]
-              weight          = weighted_backend_services.value["weight"]
+              # weight - (optional) is a type of number
+              weight = weighted_backend_services.value["weight"]
 
               dynamic "header_action" {
                 for_each = weighted_backend_services.value.header_action
                 content {
-                  request_headers_to_remove  = header_action.value["request_headers_to_remove"]
+                  # request_headers_to_remove - (optional) is a type of list of string
+                  request_headers_to_remove = header_action.value["request_headers_to_remove"]
+                  # response_headers_to_remove - (optional) is a type of list of string
                   response_headers_to_remove = header_action.value["response_headers_to_remove"]
 
                   dynamic "request_headers_to_add" {
                     for_each = header_action.value.request_headers_to_add
                     content {
-                      header_name  = request_headers_to_add.value["header_name"]
+                      # header_name - (optional) is a type of string
+                      header_name = request_headers_to_add.value["header_name"]
+                      # header_value - (optional) is a type of string
                       header_value = request_headers_to_add.value["header_value"]
-                      replace      = request_headers_to_add.value["replace"]
+                      # replace - (optional) is a type of bool
+                      replace = request_headers_to_add.value["replace"]
                     }
                   }
 
                   dynamic "response_headers_to_add" {
                     for_each = header_action.value.response_headers_to_add
                     content {
-                      header_name  = response_headers_to_add.value["header_name"]
+                      # header_name - (optional) is a type of string
+                      header_name = response_headers_to_add.value["header_name"]
+                      # header_value - (optional) is a type of string
                       header_value = response_headers_to_add.value["header_value"]
-                      replace      = response_headers_to_add.value["replace"]
+                      # replace - (optional) is a type of bool
+                      replace = response_headers_to_add.value["replace"]
                     }
                   }
 
@@ -1370,36 +1458,50 @@ resource "google_compute_url_map" "this" {
       dynamic "default_url_redirect" {
         for_each = path_matcher.value.default_url_redirect
         content {
-          host_redirect          = default_url_redirect.value["host_redirect"]
-          https_redirect         = default_url_redirect.value["https_redirect"]
-          path_redirect          = default_url_redirect.value["path_redirect"]
-          prefix_redirect        = default_url_redirect.value["prefix_redirect"]
+          # host_redirect - (optional) is a type of string
+          host_redirect = default_url_redirect.value["host_redirect"]
+          # https_redirect - (optional) is a type of bool
+          https_redirect = default_url_redirect.value["https_redirect"]
+          # path_redirect - (optional) is a type of string
+          path_redirect = default_url_redirect.value["path_redirect"]
+          # prefix_redirect - (optional) is a type of string
+          prefix_redirect = default_url_redirect.value["prefix_redirect"]
+          # redirect_response_code - (optional) is a type of string
           redirect_response_code = default_url_redirect.value["redirect_response_code"]
-          strip_query            = default_url_redirect.value["strip_query"]
+          # strip_query - (required) is a type of bool
+          strip_query = default_url_redirect.value["strip_query"]
         }
       }
 
       dynamic "header_action" {
         for_each = path_matcher.value.header_action
         content {
-          request_headers_to_remove  = header_action.value["request_headers_to_remove"]
+          # request_headers_to_remove - (optional) is a type of list of string
+          request_headers_to_remove = header_action.value["request_headers_to_remove"]
+          # response_headers_to_remove - (optional) is a type of list of string
           response_headers_to_remove = header_action.value["response_headers_to_remove"]
 
           dynamic "request_headers_to_add" {
             for_each = header_action.value.request_headers_to_add
             content {
-              header_name  = request_headers_to_add.value["header_name"]
+              # header_name - (required) is a type of string
+              header_name = request_headers_to_add.value["header_name"]
+              # header_value - (required) is a type of string
               header_value = request_headers_to_add.value["header_value"]
-              replace      = request_headers_to_add.value["replace"]
+              # replace - (required) is a type of bool
+              replace = request_headers_to_add.value["replace"]
             }
           }
 
           dynamic "response_headers_to_add" {
             for_each = header_action.value.response_headers_to_add
             content {
-              header_name  = response_headers_to_add.value["header_name"]
+              # header_name - (required) is a type of string
+              header_name = response_headers_to_add.value["header_name"]
+              # header_value - (required) is a type of string
               header_value = response_headers_to_add.value["header_value"]
-              replace      = response_headers_to_add.value["replace"]
+              # replace - (required) is a type of bool
+              replace = response_headers_to_add.value["replace"]
             }
           }
 
@@ -1409,7 +1511,9 @@ resource "google_compute_url_map" "this" {
       dynamic "path_rule" {
         for_each = path_matcher.value.path_rule
         content {
-          paths   = path_rule.value["paths"]
+          # paths - (required) is a type of set of string
+          paths = path_rule.value["paths"]
+          # service - (optional) is a type of string
           service = path_rule.value["service"]
 
           dynamic "route_action" {
@@ -1419,14 +1523,22 @@ resource "google_compute_url_map" "this" {
               dynamic "cors_policy" {
                 for_each = route_action.value.cors_policy
                 content {
-                  allow_credentials    = cors_policy.value["allow_credentials"]
-                  allow_headers        = cors_policy.value["allow_headers"]
-                  allow_methods        = cors_policy.value["allow_methods"]
+                  # allow_credentials - (optional) is a type of bool
+                  allow_credentials = cors_policy.value["allow_credentials"]
+                  # allow_headers - (optional) is a type of list of string
+                  allow_headers = cors_policy.value["allow_headers"]
+                  # allow_methods - (optional) is a type of list of string
+                  allow_methods = cors_policy.value["allow_methods"]
+                  # allow_origin_regexes - (optional) is a type of list of string
                   allow_origin_regexes = cors_policy.value["allow_origin_regexes"]
-                  allow_origins        = cors_policy.value["allow_origins"]
-                  disabled             = cors_policy.value["disabled"]
-                  expose_headers       = cors_policy.value["expose_headers"]
-                  max_age              = cors_policy.value["max_age"]
+                  # allow_origins - (optional) is a type of list of string
+                  allow_origins = cors_policy.value["allow_origins"]
+                  # disabled - (required) is a type of bool
+                  disabled = cors_policy.value["disabled"]
+                  # expose_headers - (optional) is a type of list of string
+                  expose_headers = cors_policy.value["expose_headers"]
+                  # max_age - (optional) is a type of number
+                  max_age = cors_policy.value["max_age"]
                 }
               }
 
@@ -1437,20 +1549,25 @@ resource "google_compute_url_map" "this" {
                   dynamic "abort" {
                     for_each = fault_injection_policy.value.abort
                     content {
+                      # http_status - (required) is a type of number
                       http_status = abort.value["http_status"]
-                      percentage  = abort.value["percentage"]
+                      # percentage - (required) is a type of number
+                      percentage = abort.value["percentage"]
                     }
                   }
 
                   dynamic "delay" {
                     for_each = fault_injection_policy.value.delay
                     content {
+                      # percentage - (required) is a type of number
                       percentage = delay.value["percentage"]
 
                       dynamic "fixed_delay" {
                         for_each = delay.value.fixed_delay
                         content {
-                          nanos   = fixed_delay.value["nanos"]
+                          # nanos - (optional) is a type of number
+                          nanos = fixed_delay.value["nanos"]
+                          # seconds - (required) is a type of string
                           seconds = fixed_delay.value["seconds"]
                         }
                       }
@@ -1464,6 +1581,7 @@ resource "google_compute_url_map" "this" {
               dynamic "request_mirror_policy" {
                 for_each = route_action.value.request_mirror_policy
                 content {
+                  # backend_service - (required) is a type of string
                   backend_service = request_mirror_policy.value["backend_service"]
                 }
               }
@@ -1471,13 +1589,17 @@ resource "google_compute_url_map" "this" {
               dynamic "retry_policy" {
                 for_each = route_action.value.retry_policy
                 content {
-                  num_retries      = retry_policy.value["num_retries"]
+                  # num_retries - (optional) is a type of number
+                  num_retries = retry_policy.value["num_retries"]
+                  # retry_conditions - (optional) is a type of list of string
                   retry_conditions = retry_policy.value["retry_conditions"]
 
                   dynamic "per_try_timeout" {
                     for_each = retry_policy.value.per_try_timeout
                     content {
-                      nanos   = per_try_timeout.value["nanos"]
+                      # nanos - (optional) is a type of number
+                      nanos = per_try_timeout.value["nanos"]
+                      # seconds - (required) is a type of string
                       seconds = per_try_timeout.value["seconds"]
                     }
                   }
@@ -1488,7 +1610,9 @@ resource "google_compute_url_map" "this" {
               dynamic "timeout" {
                 for_each = route_action.value.timeout
                 content {
-                  nanos   = timeout.value["nanos"]
+                  # nanos - (optional) is a type of number
+                  nanos = timeout.value["nanos"]
+                  # seconds - (required) is a type of string
                   seconds = timeout.value["seconds"]
                 }
               }
@@ -1496,7 +1620,9 @@ resource "google_compute_url_map" "this" {
               dynamic "url_rewrite" {
                 for_each = route_action.value.url_rewrite
                 content {
-                  host_rewrite        = url_rewrite.value["host_rewrite"]
+                  # host_rewrite - (optional) is a type of string
+                  host_rewrite = url_rewrite.value["host_rewrite"]
+                  # path_prefix_rewrite - (optional) is a type of string
                   path_prefix_rewrite = url_rewrite.value["path_prefix_rewrite"]
                 }
               }
@@ -1504,30 +1630,40 @@ resource "google_compute_url_map" "this" {
               dynamic "weighted_backend_services" {
                 for_each = route_action.value.weighted_backend_services
                 content {
+                  # backend_service - (required) is a type of string
                   backend_service = weighted_backend_services.value["backend_service"]
-                  weight          = weighted_backend_services.value["weight"]
+                  # weight - (required) is a type of number
+                  weight = weighted_backend_services.value["weight"]
 
                   dynamic "header_action" {
                     for_each = weighted_backend_services.value.header_action
                     content {
-                      request_headers_to_remove  = header_action.value["request_headers_to_remove"]
+                      # request_headers_to_remove - (optional) is a type of list of string
+                      request_headers_to_remove = header_action.value["request_headers_to_remove"]
+                      # response_headers_to_remove - (optional) is a type of list of string
                       response_headers_to_remove = header_action.value["response_headers_to_remove"]
 
                       dynamic "request_headers_to_add" {
                         for_each = header_action.value.request_headers_to_add
                         content {
-                          header_name  = request_headers_to_add.value["header_name"]
+                          # header_name - (required) is a type of string
+                          header_name = request_headers_to_add.value["header_name"]
+                          # header_value - (required) is a type of string
                           header_value = request_headers_to_add.value["header_value"]
-                          replace      = request_headers_to_add.value["replace"]
+                          # replace - (required) is a type of bool
+                          replace = request_headers_to_add.value["replace"]
                         }
                       }
 
                       dynamic "response_headers_to_add" {
                         for_each = header_action.value.response_headers_to_add
                         content {
-                          header_name  = response_headers_to_add.value["header_name"]
+                          # header_name - (required) is a type of string
+                          header_name = response_headers_to_add.value["header_name"]
+                          # header_value - (required) is a type of string
                           header_value = response_headers_to_add.value["header_value"]
-                          replace      = response_headers_to_add.value["replace"]
+                          # replace - (required) is a type of bool
+                          replace = response_headers_to_add.value["replace"]
                         }
                       }
 
@@ -1543,12 +1679,18 @@ resource "google_compute_url_map" "this" {
           dynamic "url_redirect" {
             for_each = path_rule.value.url_redirect
             content {
-              host_redirect          = url_redirect.value["host_redirect"]
-              https_redirect         = url_redirect.value["https_redirect"]
-              path_redirect          = url_redirect.value["path_redirect"]
-              prefix_redirect        = url_redirect.value["prefix_redirect"]
+              # host_redirect - (optional) is a type of string
+              host_redirect = url_redirect.value["host_redirect"]
+              # https_redirect - (optional) is a type of bool
+              https_redirect = url_redirect.value["https_redirect"]
+              # path_redirect - (optional) is a type of string
+              path_redirect = url_redirect.value["path_redirect"]
+              # prefix_redirect - (optional) is a type of string
+              prefix_redirect = url_redirect.value["prefix_redirect"]
+              # redirect_response_code - (optional) is a type of string
               redirect_response_code = url_redirect.value["redirect_response_code"]
-              strip_query            = url_redirect.value["strip_query"]
+              # strip_query - (required) is a type of bool
+              strip_query = url_redirect.value["strip_query"]
             }
           }
 
@@ -1558,30 +1700,40 @@ resource "google_compute_url_map" "this" {
       dynamic "route_rules" {
         for_each = path_matcher.value.route_rules
         content {
+          # priority - (required) is a type of number
           priority = route_rules.value["priority"]
-          service  = route_rules.value["service"]
+          # service - (optional) is a type of string
+          service = route_rules.value["service"]
 
           dynamic "header_action" {
             for_each = route_rules.value.header_action
             content {
-              request_headers_to_remove  = header_action.value["request_headers_to_remove"]
+              # request_headers_to_remove - (optional) is a type of list of string
+              request_headers_to_remove = header_action.value["request_headers_to_remove"]
+              # response_headers_to_remove - (optional) is a type of list of string
               response_headers_to_remove = header_action.value["response_headers_to_remove"]
 
               dynamic "request_headers_to_add" {
                 for_each = header_action.value.request_headers_to_add
                 content {
-                  header_name  = request_headers_to_add.value["header_name"]
+                  # header_name - (required) is a type of string
+                  header_name = request_headers_to_add.value["header_name"]
+                  # header_value - (required) is a type of string
                   header_value = request_headers_to_add.value["header_value"]
-                  replace      = request_headers_to_add.value["replace"]
+                  # replace - (required) is a type of bool
+                  replace = request_headers_to_add.value["replace"]
                 }
               }
 
               dynamic "response_headers_to_add" {
                 for_each = header_action.value.response_headers_to_add
                 content {
-                  header_name  = response_headers_to_add.value["header_name"]
+                  # header_name - (required) is a type of string
+                  header_name = response_headers_to_add.value["header_name"]
+                  # header_value - (required) is a type of string
                   header_value = response_headers_to_add.value["header_value"]
-                  replace      = response_headers_to_add.value["replace"]
+                  # replace - (required) is a type of bool
+                  replace = response_headers_to_add.value["replace"]
                 }
               }
 
@@ -1591,26 +1743,39 @@ resource "google_compute_url_map" "this" {
           dynamic "match_rules" {
             for_each = route_rules.value.match_rules
             content {
+              # full_path_match - (optional) is a type of string
               full_path_match = match_rules.value["full_path_match"]
-              ignore_case     = match_rules.value["ignore_case"]
-              prefix_match    = match_rules.value["prefix_match"]
-              regex_match     = match_rules.value["regex_match"]
+              # ignore_case - (optional) is a type of bool
+              ignore_case = match_rules.value["ignore_case"]
+              # prefix_match - (optional) is a type of string
+              prefix_match = match_rules.value["prefix_match"]
+              # regex_match - (optional) is a type of string
+              regex_match = match_rules.value["regex_match"]
 
               dynamic "header_matches" {
                 for_each = match_rules.value.header_matches
                 content {
-                  exact_match   = header_matches.value["exact_match"]
-                  header_name   = header_matches.value["header_name"]
-                  invert_match  = header_matches.value["invert_match"]
-                  prefix_match  = header_matches.value["prefix_match"]
+                  # exact_match - (optional) is a type of string
+                  exact_match = header_matches.value["exact_match"]
+                  # header_name - (required) is a type of string
+                  header_name = header_matches.value["header_name"]
+                  # invert_match - (optional) is a type of bool
+                  invert_match = header_matches.value["invert_match"]
+                  # prefix_match - (optional) is a type of string
+                  prefix_match = header_matches.value["prefix_match"]
+                  # present_match - (optional) is a type of bool
                   present_match = header_matches.value["present_match"]
-                  regex_match   = header_matches.value["regex_match"]
-                  suffix_match  = header_matches.value["suffix_match"]
+                  # regex_match - (optional) is a type of string
+                  regex_match = header_matches.value["regex_match"]
+                  # suffix_match - (optional) is a type of string
+                  suffix_match = header_matches.value["suffix_match"]
 
                   dynamic "range_match" {
                     for_each = header_matches.value.range_match
                     content {
-                      range_end   = range_match.value["range_end"]
+                      # range_end - (required) is a type of number
+                      range_end = range_match.value["range_end"]
+                      # range_start - (required) is a type of number
                       range_start = range_match.value["range_start"]
                     }
                   }
@@ -1621,12 +1786,15 @@ resource "google_compute_url_map" "this" {
               dynamic "metadata_filters" {
                 for_each = match_rules.value.metadata_filters
                 content {
+                  # filter_match_criteria - (required) is a type of string
                   filter_match_criteria = metadata_filters.value["filter_match_criteria"]
 
                   dynamic "filter_labels" {
                     for_each = metadata_filters.value.filter_labels
                     content {
-                      name  = filter_labels.value["name"]
+                      # name - (required) is a type of string
+                      name = filter_labels.value["name"]
+                      # value - (required) is a type of string
                       value = filter_labels.value["value"]
                     }
                   }
@@ -1637,10 +1805,14 @@ resource "google_compute_url_map" "this" {
               dynamic "query_parameter_matches" {
                 for_each = match_rules.value.query_parameter_matches
                 content {
-                  exact_match   = query_parameter_matches.value["exact_match"]
-                  name          = query_parameter_matches.value["name"]
+                  # exact_match - (optional) is a type of string
+                  exact_match = query_parameter_matches.value["exact_match"]
+                  # name - (required) is a type of string
+                  name = query_parameter_matches.value["name"]
+                  # present_match - (optional) is a type of bool
                   present_match = query_parameter_matches.value["present_match"]
-                  regex_match   = query_parameter_matches.value["regex_match"]
+                  # regex_match - (optional) is a type of string
+                  regex_match = query_parameter_matches.value["regex_match"]
                 }
               }
 
@@ -1654,14 +1826,22 @@ resource "google_compute_url_map" "this" {
               dynamic "cors_policy" {
                 for_each = route_action.value.cors_policy
                 content {
-                  allow_credentials    = cors_policy.value["allow_credentials"]
-                  allow_headers        = cors_policy.value["allow_headers"]
-                  allow_methods        = cors_policy.value["allow_methods"]
+                  # allow_credentials - (optional) is a type of bool
+                  allow_credentials = cors_policy.value["allow_credentials"]
+                  # allow_headers - (optional) is a type of list of string
+                  allow_headers = cors_policy.value["allow_headers"]
+                  # allow_methods - (optional) is a type of list of string
+                  allow_methods = cors_policy.value["allow_methods"]
+                  # allow_origin_regexes - (optional) is a type of list of string
                   allow_origin_regexes = cors_policy.value["allow_origin_regexes"]
-                  allow_origins        = cors_policy.value["allow_origins"]
-                  disabled             = cors_policy.value["disabled"]
-                  expose_headers       = cors_policy.value["expose_headers"]
-                  max_age              = cors_policy.value["max_age"]
+                  # allow_origins - (optional) is a type of list of string
+                  allow_origins = cors_policy.value["allow_origins"]
+                  # disabled - (optional) is a type of bool
+                  disabled = cors_policy.value["disabled"]
+                  # expose_headers - (optional) is a type of list of string
+                  expose_headers = cors_policy.value["expose_headers"]
+                  # max_age - (optional) is a type of number
+                  max_age = cors_policy.value["max_age"]
                 }
               }
 
@@ -1672,20 +1852,25 @@ resource "google_compute_url_map" "this" {
                   dynamic "abort" {
                     for_each = fault_injection_policy.value.abort
                     content {
+                      # http_status - (optional) is a type of number
                       http_status = abort.value["http_status"]
-                      percentage  = abort.value["percentage"]
+                      # percentage - (optional) is a type of number
+                      percentage = abort.value["percentage"]
                     }
                   }
 
                   dynamic "delay" {
                     for_each = fault_injection_policy.value.delay
                     content {
+                      # percentage - (optional) is a type of number
                       percentage = delay.value["percentage"]
 
                       dynamic "fixed_delay" {
                         for_each = delay.value.fixed_delay
                         content {
-                          nanos   = fixed_delay.value["nanos"]
+                          # nanos - (optional) is a type of number
+                          nanos = fixed_delay.value["nanos"]
+                          # seconds - (required) is a type of string
                           seconds = fixed_delay.value["seconds"]
                         }
                       }
@@ -1699,6 +1884,7 @@ resource "google_compute_url_map" "this" {
               dynamic "request_mirror_policy" {
                 for_each = route_action.value.request_mirror_policy
                 content {
+                  # backend_service - (required) is a type of string
                   backend_service = request_mirror_policy.value["backend_service"]
                 }
               }
@@ -1706,13 +1892,17 @@ resource "google_compute_url_map" "this" {
               dynamic "retry_policy" {
                 for_each = route_action.value.retry_policy
                 content {
-                  num_retries      = retry_policy.value["num_retries"]
+                  # num_retries - (required) is a type of number
+                  num_retries = retry_policy.value["num_retries"]
+                  # retry_conditions - (optional) is a type of list of string
                   retry_conditions = retry_policy.value["retry_conditions"]
 
                   dynamic "per_try_timeout" {
                     for_each = retry_policy.value.per_try_timeout
                     content {
-                      nanos   = per_try_timeout.value["nanos"]
+                      # nanos - (optional) is a type of number
+                      nanos = per_try_timeout.value["nanos"]
+                      # seconds - (required) is a type of string
                       seconds = per_try_timeout.value["seconds"]
                     }
                   }
@@ -1723,7 +1913,9 @@ resource "google_compute_url_map" "this" {
               dynamic "timeout" {
                 for_each = route_action.value.timeout
                 content {
-                  nanos   = timeout.value["nanos"]
+                  # nanos - (optional) is a type of number
+                  nanos = timeout.value["nanos"]
+                  # seconds - (required) is a type of string
                   seconds = timeout.value["seconds"]
                 }
               }
@@ -1731,7 +1923,9 @@ resource "google_compute_url_map" "this" {
               dynamic "url_rewrite" {
                 for_each = route_action.value.url_rewrite
                 content {
-                  host_rewrite        = url_rewrite.value["host_rewrite"]
+                  # host_rewrite - (optional) is a type of string
+                  host_rewrite = url_rewrite.value["host_rewrite"]
+                  # path_prefix_rewrite - (optional) is a type of string
                   path_prefix_rewrite = url_rewrite.value["path_prefix_rewrite"]
                 }
               }
@@ -1739,30 +1933,40 @@ resource "google_compute_url_map" "this" {
               dynamic "weighted_backend_services" {
                 for_each = route_action.value.weighted_backend_services
                 content {
+                  # backend_service - (required) is a type of string
                   backend_service = weighted_backend_services.value["backend_service"]
-                  weight          = weighted_backend_services.value["weight"]
+                  # weight - (required) is a type of number
+                  weight = weighted_backend_services.value["weight"]
 
                   dynamic "header_action" {
                     for_each = weighted_backend_services.value.header_action
                     content {
-                      request_headers_to_remove  = header_action.value["request_headers_to_remove"]
+                      # request_headers_to_remove - (optional) is a type of list of string
+                      request_headers_to_remove = header_action.value["request_headers_to_remove"]
+                      # response_headers_to_remove - (optional) is a type of list of string
                       response_headers_to_remove = header_action.value["response_headers_to_remove"]
 
                       dynamic "request_headers_to_add" {
                         for_each = header_action.value.request_headers_to_add
                         content {
-                          header_name  = request_headers_to_add.value["header_name"]
+                          # header_name - (required) is a type of string
+                          header_name = request_headers_to_add.value["header_name"]
+                          # header_value - (required) is a type of string
                           header_value = request_headers_to_add.value["header_value"]
-                          replace      = request_headers_to_add.value["replace"]
+                          # replace - (required) is a type of bool
+                          replace = request_headers_to_add.value["replace"]
                         }
                       }
 
                       dynamic "response_headers_to_add" {
                         for_each = header_action.value.response_headers_to_add
                         content {
-                          header_name  = response_headers_to_add.value["header_name"]
+                          # header_name - (required) is a type of string
+                          header_name = response_headers_to_add.value["header_name"]
+                          # header_value - (required) is a type of string
                           header_value = response_headers_to_add.value["header_value"]
-                          replace      = response_headers_to_add.value["replace"]
+                          # replace - (required) is a type of bool
+                          replace = response_headers_to_add.value["replace"]
                         }
                       }
 
@@ -1778,12 +1982,18 @@ resource "google_compute_url_map" "this" {
           dynamic "url_redirect" {
             for_each = route_rules.value.url_redirect
             content {
-              host_redirect          = url_redirect.value["host_redirect"]
-              https_redirect         = url_redirect.value["https_redirect"]
-              path_redirect          = url_redirect.value["path_redirect"]
-              prefix_redirect        = url_redirect.value["prefix_redirect"]
+              # host_redirect - (optional) is a type of string
+              host_redirect = url_redirect.value["host_redirect"]
+              # https_redirect - (optional) is a type of bool
+              https_redirect = url_redirect.value["https_redirect"]
+              # path_redirect - (optional) is a type of string
+              path_redirect = url_redirect.value["path_redirect"]
+              # prefix_redirect - (optional) is a type of string
+              prefix_redirect = url_redirect.value["prefix_redirect"]
+              # redirect_response_code - (optional) is a type of string
               redirect_response_code = url_redirect.value["redirect_response_code"]
-              strip_query            = url_redirect.value["strip_query"]
+              # strip_query - (optional) is a type of bool
+              strip_query = url_redirect.value["strip_query"]
             }
           }
 
@@ -1796,18 +2006,25 @@ resource "google_compute_url_map" "this" {
   dynamic "test" {
     for_each = var.test
     content {
+      # description - (optional) is a type of string
       description = test.value["description"]
-      host        = test.value["host"]
-      path        = test.value["path"]
-      service     = test.value["service"]
+      # host - (required) is a type of string
+      host = test.value["host"]
+      # path - (required) is a type of string
+      path = test.value["path"]
+      # service - (required) is a type of string
+      service = test.value["service"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

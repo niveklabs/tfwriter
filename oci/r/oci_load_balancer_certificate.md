@@ -106,18 +106,27 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_load_balancer_certificate" "this" {
-  ca_certificate     = var.ca_certificate
-  certificate_name   = var.certificate_name
-  load_balancer_id   = var.load_balancer_id
-  passphrase         = var.passphrase
-  private_key        = var.private_key
+  # ca_certificate - (optional) is a type of string
+  ca_certificate = var.ca_certificate
+  # certificate_name - (required) is a type of string
+  certificate_name = var.certificate_name
+  # load_balancer_id - (required) is a type of string
+  load_balancer_id = var.load_balancer_id
+  # passphrase - (optional) is a type of string
+  passphrase = var.passphrase
+  # private_key - (optional) is a type of string
+  private_key = var.private_key
+  # public_certificate - (optional) is a type of string
   public_certificate = var.public_certificate
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

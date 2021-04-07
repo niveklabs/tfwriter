@@ -98,13 +98,17 @@ variable "timeouts" {
 
 ```terraform
 resource "google_monitoring_custom_service" "this" {
+  # display_name - (optional) is a type of string
   display_name = var.display_name
-  project      = var.project
-  service_id   = var.service_id
+  # project - (optional) is a type of string
+  project = var.project
+  # service_id - (optional) is a type of string
+  service_id = var.service_id
 
   dynamic "telemetry" {
     for_each = var.telemetry
     content {
+      # resource_name - (optional) is a type of string
       resource_name = telemetry.value["resource_name"]
     }
   }
@@ -112,8 +116,11 @@ resource "google_monitoring_custom_service" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

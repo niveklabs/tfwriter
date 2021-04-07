@@ -114,16 +114,23 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_route53_resolver_rule" "this" {
-  domain_name          = var.domain_name
-  name                 = var.name
+  # domain_name - (required) is a type of string
+  domain_name = var.domain_name
+  # name - (optional) is a type of string
+  name = var.name
+  # resolver_endpoint_id - (optional) is a type of string
   resolver_endpoint_id = var.resolver_endpoint_id
-  rule_type            = var.rule_type
-  tags                 = var.tags
+  # rule_type - (required) is a type of string
+  rule_type = var.rule_type
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "target_ip" {
     for_each = var.target_ip
     content {
-      ip   = target_ip.value["ip"]
+      # ip - (required) is a type of string
+      ip = target_ip.value["ip"]
+      # port - (optional) is a type of number
       port = target_ip.value["port"]
     }
   }
@@ -131,8 +138,11 @@ resource "aws_route53_resolver_rule" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

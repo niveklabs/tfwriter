@@ -252,36 +252,63 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_docdb_cluster" "this" {
-  apply_immediately               = var.apply_immediately
-  availability_zones              = var.availability_zones
-  backup_retention_period         = var.backup_retention_period
-  cluster_identifier              = var.cluster_identifier
-  cluster_identifier_prefix       = var.cluster_identifier_prefix
-  cluster_members                 = var.cluster_members
+  # apply_immediately - (optional) is a type of bool
+  apply_immediately = var.apply_immediately
+  # availability_zones - (optional) is a type of set of string
+  availability_zones = var.availability_zones
+  # backup_retention_period - (optional) is a type of number
+  backup_retention_period = var.backup_retention_period
+  # cluster_identifier - (optional) is a type of string
+  cluster_identifier = var.cluster_identifier
+  # cluster_identifier_prefix - (optional) is a type of string
+  cluster_identifier_prefix = var.cluster_identifier_prefix
+  # cluster_members - (optional) is a type of set of string
+  cluster_members = var.cluster_members
+  # db_cluster_parameter_group_name - (optional) is a type of string
   db_cluster_parameter_group_name = var.db_cluster_parameter_group_name
-  db_subnet_group_name            = var.db_subnet_group_name
-  deletion_protection             = var.deletion_protection
+  # db_subnet_group_name - (optional) is a type of string
+  db_subnet_group_name = var.db_subnet_group_name
+  # deletion_protection - (optional) is a type of bool
+  deletion_protection = var.deletion_protection
+  # enabled_cloudwatch_logs_exports - (optional) is a type of list of string
   enabled_cloudwatch_logs_exports = var.enabled_cloudwatch_logs_exports
-  engine                          = var.engine
-  engine_version                  = var.engine_version
-  final_snapshot_identifier       = var.final_snapshot_identifier
-  kms_key_id                      = var.kms_key_id
-  master_password                 = var.master_password
-  master_username                 = var.master_username
-  port                            = var.port
-  preferred_backup_window         = var.preferred_backup_window
-  preferred_maintenance_window    = var.preferred_maintenance_window
-  skip_final_snapshot             = var.skip_final_snapshot
-  snapshot_identifier             = var.snapshot_identifier
-  storage_encrypted               = var.storage_encrypted
-  tags                            = var.tags
-  vpc_security_group_ids          = var.vpc_security_group_ids
+  # engine - (optional) is a type of string
+  engine = var.engine
+  # engine_version - (optional) is a type of string
+  engine_version = var.engine_version
+  # final_snapshot_identifier - (optional) is a type of string
+  final_snapshot_identifier = var.final_snapshot_identifier
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # master_password - (optional) is a type of string
+  master_password = var.master_password
+  # master_username - (optional) is a type of string
+  master_username = var.master_username
+  # port - (optional) is a type of number
+  port = var.port
+  # preferred_backup_window - (optional) is a type of string
+  preferred_backup_window = var.preferred_backup_window
+  # preferred_maintenance_window - (optional) is a type of string
+  preferred_maintenance_window = var.preferred_maintenance_window
+  # skip_final_snapshot - (optional) is a type of bool
+  skip_final_snapshot = var.skip_final_snapshot
+  # snapshot_identifier - (optional) is a type of string
+  snapshot_identifier = var.snapshot_identifier
+  # storage_encrypted - (optional) is a type of bool
+  storage_encrypted = var.storage_encrypted
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_security_group_ids - (optional) is a type of set of string
+  vpc_security_group_ids = var.vpc_security_group_ids
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

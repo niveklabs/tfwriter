@@ -76,14 +76,19 @@ variable "timeouts" {
 
 ```terraform
 data "oci_core_public_ip" "this" {
-  ip_address    = var.ip_address
+  # ip_address - (optional) is a type of string
+  ip_address = var.ip_address
+  # private_ip_id - (optional) is a type of string
   private_ip_id = var.private_ip_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

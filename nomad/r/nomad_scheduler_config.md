@@ -58,7 +58,9 @@ variable "scheduler_algorithm" {
 
 ```terraform
 resource "nomad_scheduler_config" "this" {
-  preemption_config   = var.preemption_config
+  # preemption_config - (optional) is a type of map of bool
+  preemption_config = var.preemption_config
+  # scheduler_algorithm - (optional) is a type of string
   scheduler_algorithm = var.scheduler_algorithm
 }
 ```

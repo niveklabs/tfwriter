@@ -154,20 +154,34 @@ variable "visibility_timeout_seconds" {
 
 ```terraform
 resource "aws_sqs_queue" "this" {
-  content_based_deduplication       = var.content_based_deduplication
-  delay_seconds                     = var.delay_seconds
-  fifo_queue                        = var.fifo_queue
+  # content_based_deduplication - (optional) is a type of bool
+  content_based_deduplication = var.content_based_deduplication
+  # delay_seconds - (optional) is a type of number
+  delay_seconds = var.delay_seconds
+  # fifo_queue - (optional) is a type of bool
+  fifo_queue = var.fifo_queue
+  # kms_data_key_reuse_period_seconds - (optional) is a type of number
   kms_data_key_reuse_period_seconds = var.kms_data_key_reuse_period_seconds
-  kms_master_key_id                 = var.kms_master_key_id
-  max_message_size                  = var.max_message_size
-  message_retention_seconds         = var.message_retention_seconds
-  name                              = var.name
-  name_prefix                       = var.name_prefix
-  policy                            = var.policy
-  receive_wait_time_seconds         = var.receive_wait_time_seconds
-  redrive_policy                    = var.redrive_policy
-  tags                              = var.tags
-  visibility_timeout_seconds        = var.visibility_timeout_seconds
+  # kms_master_key_id - (optional) is a type of string
+  kms_master_key_id = var.kms_master_key_id
+  # max_message_size - (optional) is a type of number
+  max_message_size = var.max_message_size
+  # message_retention_seconds - (optional) is a type of number
+  message_retention_seconds = var.message_retention_seconds
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # policy - (optional) is a type of string
+  policy = var.policy
+  # receive_wait_time_seconds - (optional) is a type of number
+  receive_wait_time_seconds = var.receive_wait_time_seconds
+  # redrive_policy - (optional) is a type of string
+  redrive_policy = var.redrive_policy
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # visibility_timeout_seconds - (optional) is a type of number
+  visibility_timeout_seconds = var.visibility_timeout_seconds
 }
 ```
 

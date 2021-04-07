@@ -82,10 +82,15 @@ variable "restrict_public_buckets" {
 
 ```terraform
 resource "aws_s3_account_public_access_block" "this" {
-  account_id              = var.account_id
-  block_public_acls       = var.block_public_acls
-  block_public_policy     = var.block_public_policy
-  ignore_public_acls      = var.ignore_public_acls
+  # account_id - (optional) is a type of string
+  account_id = var.account_id
+  # block_public_acls - (optional) is a type of bool
+  block_public_acls = var.block_public_acls
+  # block_public_policy - (optional) is a type of bool
+  block_public_policy = var.block_public_policy
+  # ignore_public_acls - (optional) is a type of bool
+  ignore_public_acls = var.ignore_public_acls
+  # restrict_public_buckets - (optional) is a type of bool
   restrict_public_buckets = var.restrict_public_buckets
 }
 ```

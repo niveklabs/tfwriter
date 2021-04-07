@@ -64,9 +64,12 @@ variable "tags" {
 
 ```terraform
 resource "aws_route53_resolver_query_log_config" "this" {
+  # destination_arn - (required) is a type of string
   destination_arn = var.destination_arn
-  name            = var.name
-  tags            = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

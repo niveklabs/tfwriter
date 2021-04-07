@@ -141,24 +141,39 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_api_management_identity_provider_aadb2c" "this" {
-  allowed_tenant         = var.allowed_tenant
-  api_management_name    = var.api_management_name
-  authority              = var.authority
-  client_id              = var.client_id
-  client_secret          = var.client_secret
-  password_reset_policy  = var.password_reset_policy
+  # allowed_tenant - (required) is a type of string
+  allowed_tenant = var.allowed_tenant
+  # api_management_name - (required) is a type of string
+  api_management_name = var.api_management_name
+  # authority - (required) is a type of string
+  authority = var.authority
+  # client_id - (required) is a type of string
+  client_id = var.client_id
+  # client_secret - (required) is a type of string
+  client_secret = var.client_secret
+  # password_reset_policy - (optional) is a type of string
+  password_reset_policy = var.password_reset_policy
+  # profile_editing_policy - (optional) is a type of string
   profile_editing_policy = var.profile_editing_policy
-  resource_group_name    = var.resource_group_name
-  signin_policy          = var.signin_policy
-  signin_tenant          = var.signin_tenant
-  signup_policy          = var.signup_policy
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # signin_policy - (required) is a type of string
+  signin_policy = var.signin_policy
+  # signin_tenant - (required) is a type of string
+  signin_tenant = var.signin_tenant
+  # signup_policy - (required) is a type of string
+  signup_policy = var.signup_policy
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

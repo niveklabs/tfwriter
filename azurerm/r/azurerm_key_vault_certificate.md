@@ -189,14 +189,19 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_key_vault_certificate" "this" {
+  # key_vault_id - (required) is a type of string
   key_vault_id = var.key_vault_id
-  name         = var.name
-  tags         = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "certificate" {
     for_each = var.certificate
     content {
+      # contents - (required) is a type of string
       contents = certificate.value["contents"]
+      # password - (optional) is a type of string
       password = certificate.value["password"]
     }
   }
@@ -208,6 +213,7 @@ resource "azurerm_key_vault_certificate" "this" {
       dynamic "issuer_parameters" {
         for_each = certificate_policy.value.issuer_parameters
         content {
+          # name - (required) is a type of string
           name = issuer_parameters.value["name"]
         }
       }
@@ -215,10 +221,14 @@ resource "azurerm_key_vault_certificate" "this" {
       dynamic "key_properties" {
         for_each = certificate_policy.value.key_properties
         content {
+          # exportable - (required) is a type of bool
           exportable = key_properties.value["exportable"]
-          key_size   = key_properties.value["key_size"]
-          key_type   = key_properties.value["key_type"]
-          reuse_key  = key_properties.value["reuse_key"]
+          # key_size - (required) is a type of number
+          key_size = key_properties.value["key_size"]
+          # key_type - (required) is a type of string
+          key_type = key_properties.value["key_type"]
+          # reuse_key - (required) is a type of bool
+          reuse_key = key_properties.value["reuse_key"]
         }
       }
 
@@ -229,6 +239,7 @@ resource "azurerm_key_vault_certificate" "this" {
           dynamic "action" {
             for_each = lifetime_action.value.action
             content {
+              # action_type - (required) is a type of string
               action_type = action.value["action_type"]
             }
           }
@@ -236,7 +247,9 @@ resource "azurerm_key_vault_certificate" "this" {
           dynamic "trigger" {
             for_each = lifetime_action.value.trigger
             content {
-              days_before_expiry  = trigger.value["days_before_expiry"]
+              # days_before_expiry - (optional) is a type of number
+              days_before_expiry = trigger.value["days_before_expiry"]
+              # lifetime_percentage - (optional) is a type of number
               lifetime_percentage = trigger.value["lifetime_percentage"]
             }
           }
@@ -247,6 +260,7 @@ resource "azurerm_key_vault_certificate" "this" {
       dynamic "secret_properties" {
         for_each = certificate_policy.value.secret_properties
         content {
+          # content_type - (required) is a type of string
           content_type = secret_properties.value["content_type"]
         }
       }
@@ -254,17 +268,24 @@ resource "azurerm_key_vault_certificate" "this" {
       dynamic "x509_certificate_properties" {
         for_each = certificate_policy.value.x509_certificate_properties
         content {
+          # extended_key_usage - (optional) is a type of list of string
           extended_key_usage = x509_certificate_properties.value["extended_key_usage"]
-          key_usage          = x509_certificate_properties.value["key_usage"]
-          subject            = x509_certificate_properties.value["subject"]
+          # key_usage - (required) is a type of list of string
+          key_usage = x509_certificate_properties.value["key_usage"]
+          # subject - (required) is a type of string
+          subject = x509_certificate_properties.value["subject"]
+          # validity_in_months - (required) is a type of number
           validity_in_months = x509_certificate_properties.value["validity_in_months"]
 
           dynamic "subject_alternative_names" {
             for_each = x509_certificate_properties.value.subject_alternative_names
             content {
+              # dns_names - (optional) is a type of set of string
               dns_names = subject_alternative_names.value["dns_names"]
-              emails    = subject_alternative_names.value["emails"]
-              upns      = subject_alternative_names.value["upns"]
+              # emails - (optional) is a type of set of string
+              emails = subject_alternative_names.value["emails"]
+              # upns - (optional) is a type of set of string
+              upns = subject_alternative_names.value["upns"]
             }
           }
 
@@ -277,9 +298,12 @@ resource "azurerm_key_vault_certificate" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

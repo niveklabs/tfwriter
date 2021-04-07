@@ -90,16 +90,23 @@ variable "timeouts" {
 
 ```terraform
 resource "google_service_directory_namespace" "this" {
-  labels       = var.labels
-  location     = var.location
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # location - (required) is a type of string
+  location = var.location
+  # namespace_id - (required) is a type of string
   namespace_id = var.namespace_id
-  project      = var.project
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -123,17 +123,28 @@ variable "virtual_machine_name" {
 
 ```terraform
 resource "azurestack_virtual_machine_extension" "this" {
+  # auto_upgrade_minor_version - (optional) is a type of bool
   auto_upgrade_minor_version = var.auto_upgrade_minor_version
-  location                   = var.location
-  name                       = var.name
-  protected_settings         = var.protected_settings
-  publisher                  = var.publisher
-  resource_group_name        = var.resource_group_name
-  settings                   = var.settings
-  tags                       = var.tags
-  type                       = var.type
-  type_handler_version       = var.type_handler_version
-  virtual_machine_name       = var.virtual_machine_name
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # protected_settings - (optional) is a type of string
+  protected_settings = var.protected_settings
+  # publisher - (required) is a type of string
+  publisher = var.publisher
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # settings - (optional) is a type of string
+  settings = var.settings
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (required) is a type of string
+  type = var.type
+  # type_handler_version - (required) is a type of string
+  type_handler_version = var.type_handler_version
+  # virtual_machine_name - (required) is a type of string
+  virtual_machine_name = var.virtual_machine_name
 }
 ```
 

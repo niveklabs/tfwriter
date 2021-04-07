@@ -88,12 +88,18 @@ variable "tags" {
 
 ```terraform
 resource "aws_ssoadmin_permission_set" "this" {
-  description      = var.description
-  instance_arn     = var.instance_arn
-  name             = var.name
-  relay_state      = var.relay_state
+  # description - (optional) is a type of string
+  description = var.description
+  # instance_arn - (required) is a type of string
+  instance_arn = var.instance_arn
+  # name - (required) is a type of string
+  name = var.name
+  # relay_state - (optional) is a type of string
+  relay_state = var.relay_state
+  # session_duration - (optional) is a type of string
   session_duration = var.session_duration
-  tags             = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

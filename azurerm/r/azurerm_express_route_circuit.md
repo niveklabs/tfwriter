@@ -135,29 +135,43 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_express_route_circuit" "this" {
+  # allow_classic_operations - (optional) is a type of bool
   allow_classic_operations = var.allow_classic_operations
-  bandwidth_in_mbps        = var.bandwidth_in_mbps
-  location                 = var.location
-  name                     = var.name
-  peering_location         = var.peering_location
-  resource_group_name      = var.resource_group_name
-  service_provider_name    = var.service_provider_name
-  tags                     = var.tags
+  # bandwidth_in_mbps - (required) is a type of number
+  bandwidth_in_mbps = var.bandwidth_in_mbps
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # peering_location - (required) is a type of string
+  peering_location = var.peering_location
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # service_provider_name - (required) is a type of string
+  service_provider_name = var.service_provider_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "sku" {
     for_each = var.sku
     content {
+      # family - (required) is a type of string
       family = sku.value["family"]
-      tier   = sku.value["tier"]
+      # tier - (required) is a type of string
+      tier = sku.value["tier"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

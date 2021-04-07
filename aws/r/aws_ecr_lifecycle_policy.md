@@ -56,7 +56,9 @@ variable "repository" {
 
 ```terraform
 resource "aws_ecr_lifecycle_policy" "this" {
-  policy     = var.policy
+  # policy - (required) is a type of string
+  policy = var.policy
+  # repository - (required) is a type of string
   repository = var.repository
 }
 ```

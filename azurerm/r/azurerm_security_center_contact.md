@@ -91,17 +91,25 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_security_center_contact" "this" {
+  # alert_notifications - (required) is a type of bool
   alert_notifications = var.alert_notifications
-  alerts_to_admins    = var.alerts_to_admins
-  email               = var.email
-  phone               = var.phone
+  # alerts_to_admins - (required) is a type of bool
+  alerts_to_admins = var.alerts_to_admins
+  # email - (required) is a type of string
+  email = var.email
+  # phone - (optional) is a type of string
+  phone = var.phone
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

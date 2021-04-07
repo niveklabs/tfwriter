@@ -138,21 +138,33 @@ variable "filter" {
 
 ```terraform
 data "aws_vpc_peering_connection" "this" {
-  cidr_block      = var.cidr_block
-  owner_id        = var.owner_id
+  # cidr_block - (optional) is a type of string
+  cidr_block = var.cidr_block
+  # owner_id - (optional) is a type of string
+  owner_id = var.owner_id
+  # peer_cidr_block - (optional) is a type of string
   peer_cidr_block = var.peer_cidr_block
-  peer_owner_id   = var.peer_owner_id
-  peer_region     = var.peer_region
-  peer_vpc_id     = var.peer_vpc_id
-  region          = var.region
-  status          = var.status
-  tags            = var.tags
-  vpc_id          = var.vpc_id
+  # peer_owner_id - (optional) is a type of string
+  peer_owner_id = var.peer_owner_id
+  # peer_region - (optional) is a type of string
+  peer_region = var.peer_region
+  # peer_vpc_id - (optional) is a type of string
+  peer_vpc_id = var.peer_vpc_id
+  # region - (optional) is a type of string
+  region = var.region
+  # status - (optional) is a type of string
+  status = var.status
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of set of string
       values = filter.value["values"]
     }
   }

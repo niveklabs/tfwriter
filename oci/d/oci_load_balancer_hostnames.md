@@ -67,13 +67,17 @@ variable "filter" {
 
 ```terraform
 data "oci_load_balancer_hostnames" "this" {
+  # load_balancer_id - (required) is a type of string
   load_balancer_id = var.load_balancer_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

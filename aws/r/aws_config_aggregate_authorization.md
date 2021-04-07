@@ -64,9 +64,12 @@ variable "tags" {
 
 ```terraform
 resource "aws_config_aggregate_authorization" "this" {
+  # account_id - (required) is a type of string
   account_id = var.account_id
-  region     = var.region
-  tags       = var.tags
+  # region - (required) is a type of string
+  region = var.region
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

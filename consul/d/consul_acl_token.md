@@ -89,10 +89,14 @@ variable "policies" {
 
 ```terraform
 data "consul_acl_token" "this" {
+  # accessor_id - (required) is a type of string
   accessor_id = var.accessor_id
+  # description - (optional) is a type of string
   description = var.description
-  local       = var.local
-  namespace   = var.namespace
+  # local - (optional) is a type of bool
+  local = var.local
+  # namespace - (optional) is a type of string
+  namespace = var.namespace
 
   dynamic "policies" {
     for_each = var.policies

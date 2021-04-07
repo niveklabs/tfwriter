@@ -137,22 +137,35 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_volume_attachment" "this" {
-  attachment_type                     = var.attachment_type
-  compartment_id                      = var.compartment_id
-  device                              = var.device
-  display_name                        = var.display_name
-  instance_id                         = var.instance_id
+  # attachment_type - (required) is a type of string
+  attachment_type = var.attachment_type
+  # compartment_id - (optional) is a type of string
+  compartment_id = var.compartment_id
+  # device - (optional) is a type of string
+  device = var.device
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # is_pv_encryption_in_transit_enabled - (optional) is a type of bool
   is_pv_encryption_in_transit_enabled = var.is_pv_encryption_in_transit_enabled
-  is_read_only                        = var.is_read_only
-  is_shareable                        = var.is_shareable
-  use_chap                            = var.use_chap
-  volume_id                           = var.volume_id
+  # is_read_only - (optional) is a type of bool
+  is_read_only = var.is_read_only
+  # is_shareable - (optional) is a type of bool
+  is_shareable = var.is_shareable
+  # use_chap - (optional) is a type of bool
+  use_chap = var.use_chap
+  # volume_id - (required) is a type of string
+  volume_id = var.volume_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

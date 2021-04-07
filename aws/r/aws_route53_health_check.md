@@ -201,26 +201,46 @@ variable "type" {
 
 ```terraform
 resource "aws_route53_health_check" "this" {
-  child_health_threshold          = var.child_health_threshold
-  child_healthchecks              = var.child_healthchecks
-  cloudwatch_alarm_name           = var.cloudwatch_alarm_name
-  cloudwatch_alarm_region         = var.cloudwatch_alarm_region
-  disabled                        = var.disabled
-  enable_sni                      = var.enable_sni
-  failure_threshold               = var.failure_threshold
-  fqdn                            = var.fqdn
+  # child_health_threshold - (optional) is a type of number
+  child_health_threshold = var.child_health_threshold
+  # child_healthchecks - (optional) is a type of set of string
+  child_healthchecks = var.child_healthchecks
+  # cloudwatch_alarm_name - (optional) is a type of string
+  cloudwatch_alarm_name = var.cloudwatch_alarm_name
+  # cloudwatch_alarm_region - (optional) is a type of string
+  cloudwatch_alarm_region = var.cloudwatch_alarm_region
+  # disabled - (optional) is a type of bool
+  disabled = var.disabled
+  # enable_sni - (optional) is a type of bool
+  enable_sni = var.enable_sni
+  # failure_threshold - (optional) is a type of number
+  failure_threshold = var.failure_threshold
+  # fqdn - (optional) is a type of string
+  fqdn = var.fqdn
+  # insufficient_data_health_status - (optional) is a type of string
   insufficient_data_health_status = var.insufficient_data_health_status
-  invert_healthcheck              = var.invert_healthcheck
-  ip_address                      = var.ip_address
-  measure_latency                 = var.measure_latency
-  port                            = var.port
-  reference_name                  = var.reference_name
-  regions                         = var.regions
-  request_interval                = var.request_interval
-  resource_path                   = var.resource_path
-  search_string                   = var.search_string
-  tags                            = var.tags
-  type                            = var.type
+  # invert_healthcheck - (optional) is a type of bool
+  invert_healthcheck = var.invert_healthcheck
+  # ip_address - (optional) is a type of string
+  ip_address = var.ip_address
+  # measure_latency - (optional) is a type of bool
+  measure_latency = var.measure_latency
+  # port - (optional) is a type of number
+  port = var.port
+  # reference_name - (optional) is a type of string
+  reference_name = var.reference_name
+  # regions - (optional) is a type of set of string
+  regions = var.regions
+  # request_interval - (optional) is a type of number
+  request_interval = var.request_interval
+  # resource_path - (optional) is a type of string
+  resource_path = var.resource_path
+  # search_string - (optional) is a type of string
+  search_string = var.search_string
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

@@ -144,20 +144,30 @@ variable "timeouts" {
 
 ```terraform
 resource "google_cloud_asset_organization_feed" "this" {
-  asset_names     = var.asset_names
-  asset_types     = var.asset_types
+  # asset_names - (optional) is a type of list of string
+  asset_names = var.asset_names
+  # asset_types - (optional) is a type of list of string
+  asset_types = var.asset_types
+  # billing_project - (required) is a type of string
   billing_project = var.billing_project
-  content_type    = var.content_type
-  feed_id         = var.feed_id
-  org_id          = var.org_id
+  # content_type - (optional) is a type of string
+  content_type = var.content_type
+  # feed_id - (required) is a type of string
+  feed_id = var.feed_id
+  # org_id - (required) is a type of string
+  org_id = var.org_id
 
   dynamic "condition" {
     for_each = var.condition
     content {
+      # description - (optional) is a type of string
       description = condition.value["description"]
-      expression  = condition.value["expression"]
-      location    = condition.value["location"]
-      title       = condition.value["title"]
+      # expression - (required) is a type of string
+      expression = condition.value["expression"]
+      # location - (optional) is a type of string
+      location = condition.value["location"]
+      # title - (optional) is a type of string
+      title = condition.value["title"]
     }
   }
 
@@ -168,6 +178,7 @@ resource "google_cloud_asset_organization_feed" "this" {
       dynamic "pubsub_destination" {
         for_each = feed_output_config.value.pubsub_destination
         content {
+          # topic - (required) is a type of string
           topic = pubsub_destination.value["topic"]
         }
       }
@@ -178,8 +189,11 @@ resource "google_cloud_asset_organization_feed" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

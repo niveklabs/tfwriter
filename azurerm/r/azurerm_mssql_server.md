@@ -194,30 +194,45 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_mssql_server" "this" {
-  administrator_login           = var.administrator_login
-  administrator_login_password  = var.administrator_login_password
-  connection_policy             = var.connection_policy
-  extended_auditing_policy      = var.extended_auditing_policy
-  location                      = var.location
-  minimum_tls_version           = var.minimum_tls_version
-  name                          = var.name
+  # administrator_login - (required) is a type of string
+  administrator_login = var.administrator_login
+  # administrator_login_password - (required) is a type of string
+  administrator_login_password = var.administrator_login_password
+  # connection_policy - (optional) is a type of string
+  connection_policy = var.connection_policy
+  # extended_auditing_policy - (optional) is a type of list of object
+  extended_auditing_policy = var.extended_auditing_policy
+  # location - (required) is a type of string
+  location = var.location
+  # minimum_tls_version - (optional) is a type of string
+  minimum_tls_version = var.minimum_tls_version
+  # name - (required) is a type of string
+  name = var.name
+  # public_network_access_enabled - (optional) is a type of bool
   public_network_access_enabled = var.public_network_access_enabled
-  resource_group_name           = var.resource_group_name
-  tags                          = var.tags
-  version                       = var.version
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # version - (required) is a type of string
+  version = var.version
 
   dynamic "azuread_administrator" {
     for_each = var.azuread_administrator
     content {
+      # login_username - (required) is a type of string
       login_username = azuread_administrator.value["login_username"]
-      object_id      = azuread_administrator.value["object_id"]
-      tenant_id      = azuread_administrator.value["tenant_id"]
+      # object_id - (required) is a type of string
+      object_id = azuread_administrator.value["object_id"]
+      # tenant_id - (optional) is a type of string
+      tenant_id = azuread_administrator.value["tenant_id"]
     }
   }
 
   dynamic "identity" {
     for_each = var.identity
     content {
+      # type - (required) is a type of string
       type = identity.value["type"]
     }
   }
@@ -225,9 +240,13 @@ resource "azurerm_mssql_server" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -65,9 +65,12 @@ variable "tags" {
 
 ```terraform
 resource "aws_media_package_channel" "this" {
-  channel_id  = var.channel_id
+  # channel_id - (required) is a type of string
+  channel_id = var.channel_id
+  # description - (optional) is a type of string
   description = var.description
-  tags        = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

@@ -113,19 +113,29 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_apigateway_certificate" "this" {
-  certificate               = var.certificate
-  compartment_id            = var.compartment_id
-  defined_tags              = var.defined_tags
-  display_name              = var.display_name
-  freeform_tags             = var.freeform_tags
+  # certificate - (required) is a type of string
+  certificate = var.certificate
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # intermediate_certificates - (optional) is a type of string
   intermediate_certificates = var.intermediate_certificates
-  private_key               = var.private_key
+  # private_key - (required) is a type of string
+  private_key = var.private_key
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

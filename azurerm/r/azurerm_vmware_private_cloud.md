@@ -146,19 +146,29 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_vmware_private_cloud" "this" {
+  # internet_connection_enabled - (optional) is a type of bool
   internet_connection_enabled = var.internet_connection_enabled
-  location                    = var.location
-  name                        = var.name
-  network_subnet_cidr         = var.network_subnet_cidr
-  nsxt_password               = var.nsxt_password
-  resource_group_name         = var.resource_group_name
-  sku_name                    = var.sku_name
-  tags                        = var.tags
-  vcenter_password            = var.vcenter_password
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # network_subnet_cidr - (required) is a type of string
+  network_subnet_cidr = var.network_subnet_cidr
+  # nsxt_password - (optional) is a type of string
+  nsxt_password = var.nsxt_password
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # sku_name - (required) is a type of string
+  sku_name = var.sku_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vcenter_password - (optional) is a type of string
+  vcenter_password = var.vcenter_password
 
   dynamic "management_cluster" {
     for_each = var.management_cluster
     content {
+      # size - (required) is a type of number
       size = management_cluster.value["size"]
     }
   }
@@ -166,9 +176,13 @@ resource "azurerm_vmware_private_cloud" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

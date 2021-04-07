@@ -76,14 +76,19 @@ variable "filter" {
 
 ```terraform
 data "oci_health_checks_vantage_points" "this" {
+  # display_name - (optional) is a type of string
   display_name = var.display_name
-  name         = var.name
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

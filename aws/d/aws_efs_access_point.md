@@ -57,8 +57,10 @@ variable "tags" {
 
 ```terraform
 data "aws_efs_access_point" "this" {
+  # access_point_id - (required) is a type of string
   access_point_id = var.access_point_id
-  tags            = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

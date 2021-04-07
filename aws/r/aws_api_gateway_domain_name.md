@@ -151,20 +151,31 @@ variable "mutual_tls_authentication" {
 
 ```terraform
 resource "aws_api_gateway_domain_name" "this" {
-  certificate_arn           = var.certificate_arn
-  certificate_body          = var.certificate_body
-  certificate_chain         = var.certificate_chain
-  certificate_name          = var.certificate_name
-  certificate_private_key   = var.certificate_private_key
-  domain_name               = var.domain_name
-  regional_certificate_arn  = var.regional_certificate_arn
+  # certificate_arn - (optional) is a type of string
+  certificate_arn = var.certificate_arn
+  # certificate_body - (optional) is a type of string
+  certificate_body = var.certificate_body
+  # certificate_chain - (optional) is a type of string
+  certificate_chain = var.certificate_chain
+  # certificate_name - (optional) is a type of string
+  certificate_name = var.certificate_name
+  # certificate_private_key - (optional) is a type of string
+  certificate_private_key = var.certificate_private_key
+  # domain_name - (required) is a type of string
+  domain_name = var.domain_name
+  # regional_certificate_arn - (optional) is a type of string
+  regional_certificate_arn = var.regional_certificate_arn
+  # regional_certificate_name - (optional) is a type of string
   regional_certificate_name = var.regional_certificate_name
-  security_policy           = var.security_policy
-  tags                      = var.tags
+  # security_policy - (optional) is a type of string
+  security_policy = var.security_policy
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "endpoint_configuration" {
     for_each = var.endpoint_configuration
     content {
+      # types - (required) is a type of list of string
       types = endpoint_configuration.value["types"]
     }
   }
@@ -172,7 +183,9 @@ resource "aws_api_gateway_domain_name" "this" {
   dynamic "mutual_tls_authentication" {
     for_each = var.mutual_tls_authentication
     content {
-      truststore_uri     = mutual_tls_authentication.value["truststore_uri"]
+      # truststore_uri - (required) is a type of string
+      truststore_uri = mutual_tls_authentication.value["truststore_uri"]
+      # truststore_version - (optional) is a type of string
       truststore_version = mutual_tls_authentication.value["truststore_version"]
     }
   }

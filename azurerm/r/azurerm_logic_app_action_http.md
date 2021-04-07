@@ -122,17 +122,25 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_logic_app_action_http" "this" {
-  body         = var.body
-  headers      = var.headers
+  # body - (optional) is a type of string
+  body = var.body
+  # headers - (optional) is a type of map of string
+  headers = var.headers
+  # logic_app_id - (required) is a type of string
   logic_app_id = var.logic_app_id
-  method       = var.method
-  name         = var.name
-  uri          = var.uri
+  # method - (required) is a type of string
+  method = var.method
+  # name - (required) is a type of string
+  name = var.name
+  # uri - (required) is a type of string
+  uri = var.uri
 
   dynamic "run_after" {
     for_each = var.run_after
     content {
-      action_name   = run_after.value["action_name"]
+      # action_name - (required) is a type of string
+      action_name = run_after.value["action_name"]
+      # action_result - (required) is a type of string
       action_result = run_after.value["action_result"]
     }
   }
@@ -140,9 +148,13 @@ resource "azurerm_logic_app_action_http" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

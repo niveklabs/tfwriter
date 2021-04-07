@@ -74,9 +74,13 @@ variable "self_link" {
 
 ```terraform
 data "google_compute_region_instance_group" "this" {
-  name      = var.name
-  project   = var.project
-  region    = var.region
+  # name - (optional) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
+  # self_link - (optional) is a type of string
   self_link = var.self_link
 }
 ```

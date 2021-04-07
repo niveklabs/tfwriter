@@ -56,8 +56,10 @@ variable "project" {
 
 ```terraform
 resource "google_project_iam_policy" "this" {
+  # policy_data - (required) is a type of string
   policy_data = var.policy_data
-  project     = var.project
+  # project - (required) is a type of string
+  project = var.project
 }
 ```
 

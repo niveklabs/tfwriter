@@ -181,14 +181,22 @@ variable "instance_disks" {
 
 ```terraform
 data "aws_ec2_instance_type" "this" {
-  default_cores                        = var.default_cores
-  default_threads_per_core             = var.default_threads_per_core
-  hypervisor                           = var.hypervisor
-  instance_type                        = var.instance_type
+  # default_cores - (optional) is a type of number
+  default_cores = var.default_cores
+  # default_threads_per_core - (optional) is a type of number
+  default_threads_per_core = var.default_threads_per_core
+  # hypervisor - (optional) is a type of string
+  hypervisor = var.hypervisor
+  # instance_type - (required) is a type of string
+  instance_type = var.instance_type
+  # maximum_ipv6_addresses_per_interface - (optional) is a type of number
   maximum_ipv6_addresses_per_interface = var.maximum_ipv6_addresses_per_interface
-  total_fpga_memory                    = var.total_fpga_memory
-  total_gpu_memory                     = var.total_gpu_memory
-  total_instance_storage               = var.total_instance_storage
+  # total_fpga_memory - (optional) is a type of number
+  total_fpga_memory = var.total_fpga_memory
+  # total_gpu_memory - (optional) is a type of number
+  total_gpu_memory = var.total_gpu_memory
+  # total_instance_storage - (optional) is a type of number
+  total_instance_storage = var.total_instance_storage
 
   dynamic "fpgas" {
     for_each = var.fpgas

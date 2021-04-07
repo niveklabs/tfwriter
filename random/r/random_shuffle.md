@@ -73,10 +73,14 @@ variable "seed" {
 
 ```terraform
 resource "random_shuffle" "this" {
-  input        = var.input
-  keepers      = var.keepers
+  # input - (required) is a type of list of string
+  input = var.input
+  # keepers - (optional) is a type of map of string
+  keepers = var.keepers
+  # result_count - (optional) is a type of number
   result_count = var.result_count
-  seed         = var.seed
+  # seed - (optional) is a type of string
+  seed = var.seed
 }
 ```
 

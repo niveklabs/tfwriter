@@ -74,10 +74,14 @@ variable "vpc_id" {
 
 ```terraform
 resource "aws_vpn_gateway" "this" {
-  amazon_side_asn   = var.amazon_side_asn
+  # amazon_side_asn - (optional) is a type of string
+  amazon_side_asn = var.amazon_side_asn
+  # availability_zone - (optional) is a type of string
   availability_zone = var.availability_zone
-  tags              = var.tags
-  vpc_id            = var.vpc_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

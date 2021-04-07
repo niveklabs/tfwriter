@@ -81,16 +81,22 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_app_service_certificate_binding" "this" {
-  certificate_id      = var.certificate_id
+  # certificate_id - (required) is a type of string
+  certificate_id = var.certificate_id
+  # hostname_binding_id - (required) is a type of string
   hostname_binding_id = var.hostname_binding_id
-  ssl_state           = var.ssl_state
+  # ssl_state - (required) is a type of string
+  ssl_state = var.ssl_state
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

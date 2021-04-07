@@ -64,9 +64,12 @@ variable "project" {
 
 ```terraform
 resource "google_runtimeconfig_config_iam_policy" "this" {
-  config      = var.config
+  # config - (required) is a type of string
+  config = var.config
+  # policy_data - (required) is a type of string
   policy_data = var.policy_data
-  project     = var.project
+  # project - (optional) is a type of string
+  project = var.project
 }
 ```
 

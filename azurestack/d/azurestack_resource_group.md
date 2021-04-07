@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "azurestack_resource_group" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

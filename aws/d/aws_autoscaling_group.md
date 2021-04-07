@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "aws_autoscaling_group" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

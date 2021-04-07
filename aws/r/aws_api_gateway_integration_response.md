@@ -102,14 +102,22 @@ variable "status_code" {
 
 ```terraform
 resource "aws_api_gateway_integration_response" "this" {
-  content_handling    = var.content_handling
-  http_method         = var.http_method
-  resource_id         = var.resource_id
+  # content_handling - (optional) is a type of string
+  content_handling = var.content_handling
+  # http_method - (required) is a type of string
+  http_method = var.http_method
+  # resource_id - (required) is a type of string
+  resource_id = var.resource_id
+  # response_parameters - (optional) is a type of map of string
   response_parameters = var.response_parameters
-  response_templates  = var.response_templates
-  rest_api_id         = var.rest_api_id
-  selection_pattern   = var.selection_pattern
-  status_code         = var.status_code
+  # response_templates - (optional) is a type of map of string
+  response_templates = var.response_templates
+  # rest_api_id - (required) is a type of string
+  rest_api_id = var.rest_api_id
+  # selection_pattern - (optional) is a type of string
+  selection_pattern = var.selection_pattern
+  # status_code - (required) is a type of string
+  status_code = var.status_code
 }
 ```
 

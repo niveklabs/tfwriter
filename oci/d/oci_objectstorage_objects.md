@@ -114,19 +114,29 @@ variable "filter" {
 
 ```terraform
 data "oci_objectstorage_objects" "this" {
-  bucket      = var.bucket
-  delimiter   = var.delimiter
-  end         = var.end
-  namespace   = var.namespace
-  prefix      = var.prefix
-  start       = var.start
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # delimiter - (optional) is a type of string
+  delimiter = var.delimiter
+  # end - (optional) is a type of string
+  end = var.end
+  # namespace - (required) is a type of string
+  namespace = var.namespace
+  # prefix - (optional) is a type of string
+  prefix = var.prefix
+  # start - (optional) is a type of string
+  start = var.start
+  # start_after - (optional) is a type of string
   start_after = var.start_after
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

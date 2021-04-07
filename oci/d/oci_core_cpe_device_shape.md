@@ -49,6 +49,7 @@ variable "cpe_device_shape_id" {
 
 ```terraform
 data "oci_core_cpe_device_shape" "this" {
+  # cpe_device_shape_id - (required) is a type of string
   cpe_device_shape_id = var.cpe_device_shape_id
 }
 ```

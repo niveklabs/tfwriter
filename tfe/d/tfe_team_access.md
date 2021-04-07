@@ -56,7 +56,9 @@ variable "workspace_id" {
 
 ```terraform
 data "tfe_team_access" "this" {
-  team_id      = var.team_id
+  # team_id - (required) is a type of string
+  team_id = var.team_id
+  # workspace_id - (required) is a type of string
   workspace_id = var.workspace_id
 }
 ```

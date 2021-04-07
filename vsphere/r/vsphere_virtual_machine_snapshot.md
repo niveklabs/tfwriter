@@ -93,12 +93,19 @@ variable "virtual_machine_uuid" {
 
 ```terraform
 resource "vsphere_virtual_machine_snapshot" "this" {
-  consolidate          = var.consolidate
-  description          = var.description
-  memory               = var.memory
-  quiesce              = var.quiesce
-  remove_children      = var.remove_children
-  snapshot_name        = var.snapshot_name
+  # consolidate - (optional) is a type of bool
+  consolidate = var.consolidate
+  # description - (required) is a type of string
+  description = var.description
+  # memory - (required) is a type of bool
+  memory = var.memory
+  # quiesce - (required) is a type of bool
+  quiesce = var.quiesce
+  # remove_children - (optional) is a type of bool
+  remove_children = var.remove_children
+  # snapshot_name - (required) is a type of string
+  snapshot_name = var.snapshot_name
+  # virtual_machine_uuid - (required) is a type of string
   virtual_machine_uuid = var.virtual_machine_uuid
 }
 ```

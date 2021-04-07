@@ -139,19 +139,32 @@ variable "source_port_range" {
 
 ```terraform
 resource "azurestack_network_security_rule" "this" {
-  access                                = var.access
-  description                           = var.description
-  destination_address_prefix            = var.destination_address_prefix
-  destination_port_range                = var.destination_port_range
-  direction                             = var.direction
-  name                                  = var.name
-  network_security_group_name           = var.network_security_group_name
-  priority                              = var.priority
-  protocol                              = var.protocol
-  resource_group_name                   = var.resource_group_name
-  source_address_prefix                 = var.source_address_prefix
+  # access - (required) is a type of string
+  access = var.access
+  # description - (optional) is a type of string
+  description = var.description
+  # destination_address_prefix - (optional) is a type of string
+  destination_address_prefix = var.destination_address_prefix
+  # destination_port_range - (optional) is a type of string
+  destination_port_range = var.destination_port_range
+  # direction - (required) is a type of string
+  direction = var.direction
+  # name - (required) is a type of string
+  name = var.name
+  # network_security_group_name - (required) is a type of string
+  network_security_group_name = var.network_security_group_name
+  # priority - (required) is a type of number
+  priority = var.priority
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # source_address_prefix - (optional) is a type of string
+  source_address_prefix = var.source_address_prefix
+  # source_application_security_group_ids - (optional) is a type of set of string
   source_application_security_group_ids = var.source_application_security_group_ids
-  source_port_range                     = var.source_port_range
+  # source_port_range - (optional) is a type of string
+  source_port_range = var.source_port_range
 }
 ```
 

@@ -106,19 +106,29 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_kusto_database" "this" {
-  cluster_name        = var.cluster_name
-  hot_cache_period    = var.hot_cache_period
-  location            = var.location
-  name                = var.name
+  # cluster_name - (required) is a type of string
+  cluster_name = var.cluster_name
+  # hot_cache_period - (optional) is a type of string
+  hot_cache_period = var.hot_cache_period
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  soft_delete_period  = var.soft_delete_period
+  # soft_delete_period - (optional) is a type of string
+  soft_delete_period = var.soft_delete_period
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

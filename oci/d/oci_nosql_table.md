@@ -56,7 +56,9 @@ variable "table_name_or_id" {
 
 ```terraform
 data "oci_nosql_table" "this" {
-  compartment_id   = var.compartment_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # table_name_or_id - (required) is a type of string
   table_name_or_id = var.table_name_or_id
 }
 ```

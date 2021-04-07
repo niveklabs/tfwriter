@@ -63,9 +63,12 @@ variable "plugin_name" {
 
 ```terraform
 data "oci_computeinstanceagent_instance_agent_plugin" "this" {
-  compartment_id   = var.compartment_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # instanceagent_id - (required) is a type of string
   instanceagent_id = var.instanceagent_id
-  plugin_name      = var.plugin_name
+  # plugin_name - (required) is a type of string
+  plugin_name = var.plugin_name
 }
 ```
 

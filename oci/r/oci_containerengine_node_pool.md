@@ -217,22 +217,35 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_containerengine_node_pool" "this" {
-  cluster_id          = var.cluster_id
-  compartment_id      = var.compartment_id
-  kubernetes_version  = var.kubernetes_version
-  name                = var.name
-  node_image_id       = var.node_image_id
-  node_image_name     = var.node_image_name
-  node_metadata       = var.node_metadata
-  node_shape          = var.node_shape
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # kubernetes_version - (required) is a type of string
+  kubernetes_version = var.kubernetes_version
+  # name - (required) is a type of string
+  name = var.name
+  # node_image_id - (optional) is a type of string
+  node_image_id = var.node_image_id
+  # node_image_name - (optional) is a type of string
+  node_image_name = var.node_image_name
+  # node_metadata - (optional) is a type of map of string
+  node_metadata = var.node_metadata
+  # node_shape - (required) is a type of string
+  node_shape = var.node_shape
+  # quantity_per_subnet - (optional) is a type of number
   quantity_per_subnet = var.quantity_per_subnet
-  ssh_public_key      = var.ssh_public_key
-  subnet_ids          = var.subnet_ids
+  # ssh_public_key - (optional) is a type of string
+  ssh_public_key = var.ssh_public_key
+  # subnet_ids - (optional) is a type of set of string
+  subnet_ids = var.subnet_ids
 
   dynamic "initial_node_labels" {
     for_each = var.initial_node_labels
     content {
-      key   = initial_node_labels.value["key"]
+      # key - (optional) is a type of string
+      key = initial_node_labels.value["key"]
+      # value - (optional) is a type of string
       value = initial_node_labels.value["value"]
     }
   }
@@ -240,13 +253,16 @@ resource "oci_containerengine_node_pool" "this" {
   dynamic "node_config_details" {
     for_each = var.node_config_details
     content {
+      # size - (required) is a type of number
       size = node_config_details.value["size"]
 
       dynamic "placement_configs" {
         for_each = node_config_details.value.placement_configs
         content {
+          # availability_domain - (required) is a type of string
           availability_domain = placement_configs.value["availability_domain"]
-          subnet_id           = placement_configs.value["subnet_id"]
+          # subnet_id - (required) is a type of string
+          subnet_id = placement_configs.value["subnet_id"]
         }
       }
 
@@ -256,25 +272,33 @@ resource "oci_containerengine_node_pool" "this" {
   dynamic "node_shape_config" {
     for_each = var.node_shape_config
     content {
+      # memory_in_gbs - (optional) is a type of number
       memory_in_gbs = node_shape_config.value["memory_in_gbs"]
-      ocpus         = node_shape_config.value["ocpus"]
+      # ocpus - (optional) is a type of number
+      ocpus = node_shape_config.value["ocpus"]
     }
   }
 
   dynamic "node_source_details" {
     for_each = var.node_source_details
     content {
+      # boot_volume_size_in_gbs - (optional) is a type of string
       boot_volume_size_in_gbs = node_source_details.value["boot_volume_size_in_gbs"]
-      image_id                = node_source_details.value["image_id"]
-      source_type             = node_source_details.value["source_type"]
+      # image_id - (required) is a type of string
+      image_id = node_source_details.value["image_id"]
+      # source_type - (required) is a type of string
+      source_type = node_source_details.value["source_type"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -269,21 +269,33 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_region_health_check" "this" {
-  check_interval_sec  = var.check_interval_sec
-  description         = var.description
-  healthy_threshold   = var.healthy_threshold
-  name                = var.name
-  project             = var.project
-  region              = var.region
-  timeout_sec         = var.timeout_sec
+  # check_interval_sec - (optional) is a type of number
+  check_interval_sec = var.check_interval_sec
+  # description - (optional) is a type of string
+  description = var.description
+  # healthy_threshold - (optional) is a type of number
+  healthy_threshold = var.healthy_threshold
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
+  # timeout_sec - (optional) is a type of number
+  timeout_sec = var.timeout_sec
+  # unhealthy_threshold - (optional) is a type of number
   unhealthy_threshold = var.unhealthy_threshold
 
   dynamic "grpc_health_check" {
     for_each = var.grpc_health_check
     content {
-      grpc_service_name  = grpc_health_check.value["grpc_service_name"]
-      port               = grpc_health_check.value["port"]
-      port_name          = grpc_health_check.value["port_name"]
+      # grpc_service_name - (optional) is a type of string
+      grpc_service_name = grpc_health_check.value["grpc_service_name"]
+      # port - (optional) is a type of number
+      port = grpc_health_check.value["port"]
+      # port_name - (optional) is a type of string
+      port_name = grpc_health_check.value["port_name"]
+      # port_specification - (optional) is a type of string
       port_specification = grpc_health_check.value["port_specification"]
     }
   }
@@ -291,71 +303,107 @@ resource "google_compute_region_health_check" "this" {
   dynamic "http2_health_check" {
     for_each = var.http2_health_check
     content {
-      host               = http2_health_check.value["host"]
-      port               = http2_health_check.value["port"]
-      port_name          = http2_health_check.value["port_name"]
+      # host - (optional) is a type of string
+      host = http2_health_check.value["host"]
+      # port - (optional) is a type of number
+      port = http2_health_check.value["port"]
+      # port_name - (optional) is a type of string
+      port_name = http2_health_check.value["port_name"]
+      # port_specification - (optional) is a type of string
       port_specification = http2_health_check.value["port_specification"]
-      proxy_header       = http2_health_check.value["proxy_header"]
-      request_path       = http2_health_check.value["request_path"]
-      response           = http2_health_check.value["response"]
+      # proxy_header - (optional) is a type of string
+      proxy_header = http2_health_check.value["proxy_header"]
+      # request_path - (optional) is a type of string
+      request_path = http2_health_check.value["request_path"]
+      # response - (optional) is a type of string
+      response = http2_health_check.value["response"]
     }
   }
 
   dynamic "http_health_check" {
     for_each = var.http_health_check
     content {
-      host               = http_health_check.value["host"]
-      port               = http_health_check.value["port"]
-      port_name          = http_health_check.value["port_name"]
+      # host - (optional) is a type of string
+      host = http_health_check.value["host"]
+      # port - (optional) is a type of number
+      port = http_health_check.value["port"]
+      # port_name - (optional) is a type of string
+      port_name = http_health_check.value["port_name"]
+      # port_specification - (optional) is a type of string
       port_specification = http_health_check.value["port_specification"]
-      proxy_header       = http_health_check.value["proxy_header"]
-      request_path       = http_health_check.value["request_path"]
-      response           = http_health_check.value["response"]
+      # proxy_header - (optional) is a type of string
+      proxy_header = http_health_check.value["proxy_header"]
+      # request_path - (optional) is a type of string
+      request_path = http_health_check.value["request_path"]
+      # response - (optional) is a type of string
+      response = http_health_check.value["response"]
     }
   }
 
   dynamic "https_health_check" {
     for_each = var.https_health_check
     content {
-      host               = https_health_check.value["host"]
-      port               = https_health_check.value["port"]
-      port_name          = https_health_check.value["port_name"]
+      # host - (optional) is a type of string
+      host = https_health_check.value["host"]
+      # port - (optional) is a type of number
+      port = https_health_check.value["port"]
+      # port_name - (optional) is a type of string
+      port_name = https_health_check.value["port_name"]
+      # port_specification - (optional) is a type of string
       port_specification = https_health_check.value["port_specification"]
-      proxy_header       = https_health_check.value["proxy_header"]
-      request_path       = https_health_check.value["request_path"]
-      response           = https_health_check.value["response"]
+      # proxy_header - (optional) is a type of string
+      proxy_header = https_health_check.value["proxy_header"]
+      # request_path - (optional) is a type of string
+      request_path = https_health_check.value["request_path"]
+      # response - (optional) is a type of string
+      response = https_health_check.value["response"]
     }
   }
 
   dynamic "ssl_health_check" {
     for_each = var.ssl_health_check
     content {
-      port               = ssl_health_check.value["port"]
-      port_name          = ssl_health_check.value["port_name"]
+      # port - (optional) is a type of number
+      port = ssl_health_check.value["port"]
+      # port_name - (optional) is a type of string
+      port_name = ssl_health_check.value["port_name"]
+      # port_specification - (optional) is a type of string
       port_specification = ssl_health_check.value["port_specification"]
-      proxy_header       = ssl_health_check.value["proxy_header"]
-      request            = ssl_health_check.value["request"]
-      response           = ssl_health_check.value["response"]
+      # proxy_header - (optional) is a type of string
+      proxy_header = ssl_health_check.value["proxy_header"]
+      # request - (optional) is a type of string
+      request = ssl_health_check.value["request"]
+      # response - (optional) is a type of string
+      response = ssl_health_check.value["response"]
     }
   }
 
   dynamic "tcp_health_check" {
     for_each = var.tcp_health_check
     content {
-      port               = tcp_health_check.value["port"]
-      port_name          = tcp_health_check.value["port_name"]
+      # port - (optional) is a type of number
+      port = tcp_health_check.value["port"]
+      # port_name - (optional) is a type of string
+      port_name = tcp_health_check.value["port_name"]
+      # port_specification - (optional) is a type of string
       port_specification = tcp_health_check.value["port_specification"]
-      proxy_header       = tcp_health_check.value["proxy_header"]
-      request            = tcp_health_check.value["request"]
-      response           = tcp_health_check.value["response"]
+      # proxy_header - (optional) is a type of string
+      proxy_header = tcp_health_check.value["proxy_header"]
+      # request - (optional) is a type of string
+      request = tcp_health_check.value["request"]
+      # response - (optional) is a type of string
+      response = tcp_health_check.value["response"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

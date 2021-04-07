@@ -96,13 +96,20 @@ variable "region" {
 
 ```terraform
 resource "google_dataflow_flex_template_job" "this" {
+  # container_spec_gcs_path - (required) is a type of string
   container_spec_gcs_path = var.container_spec_gcs_path
-  labels                  = var.labels
-  name                    = var.name
-  on_delete               = var.on_delete
-  parameters              = var.parameters
-  project                 = var.project
-  region                  = var.region
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # on_delete - (optional) is a type of string
+  on_delete = var.on_delete
+  # parameters - (optional) is a type of map of string
+  parameters = var.parameters
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
 }
 ```
 

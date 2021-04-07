@@ -56,7 +56,9 @@ variable "organization" {
 
 ```terraform
 data "tfe_organization_membership" "this" {
-  email        = var.email
+  # email - (required) is a type of string
+  email = var.email
+  # organization - (required) is a type of string
   organization = var.organization
 }
 ```

@@ -213,19 +213,32 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_media_streaming_endpoint" "this" {
-  auto_start_enabled          = var.auto_start_enabled
-  cdn_enabled                 = var.cdn_enabled
-  cdn_profile                 = var.cdn_profile
-  cdn_provider                = var.cdn_provider
-  custom_host_names           = var.custom_host_names
-  description                 = var.description
-  location                    = var.location
-  max_cache_age_seconds       = var.max_cache_age_seconds
+  # auto_start_enabled - (optional) is a type of bool
+  auto_start_enabled = var.auto_start_enabled
+  # cdn_enabled - (optional) is a type of bool
+  cdn_enabled = var.cdn_enabled
+  # cdn_profile - (optional) is a type of string
+  cdn_profile = var.cdn_profile
+  # cdn_provider - (optional) is a type of string
+  cdn_provider = var.cdn_provider
+  # custom_host_names - (optional) is a type of set of string
+  custom_host_names = var.custom_host_names
+  # description - (optional) is a type of string
+  description = var.description
+  # location - (required) is a type of string
+  location = var.location
+  # max_cache_age_seconds - (optional) is a type of number
+  max_cache_age_seconds = var.max_cache_age_seconds
+  # media_services_account_name - (required) is a type of string
   media_services_account_name = var.media_services_account_name
-  name                        = var.name
-  resource_group_name         = var.resource_group_name
-  scale_units                 = var.scale_units
-  tags                        = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # scale_units - (required) is a type of number
+  scale_units = var.scale_units
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "access_control" {
     for_each = var.access_control
@@ -234,8 +247,11 @@ resource "azurerm_media_streaming_endpoint" "this" {
       dynamic "akamai_signature_header_authentication_key" {
         for_each = access_control.value.akamai_signature_header_authentication_key
         content {
+          # base64_key - (optional) is a type of string
           base64_key = akamai_signature_header_authentication_key.value["base64_key"]
+          # expiration - (optional) is a type of string
           expiration = akamai_signature_header_authentication_key.value["expiration"]
+          # identifier - (optional) is a type of string
           identifier = akamai_signature_header_authentication_key.value["identifier"]
         }
       }
@@ -243,8 +259,11 @@ resource "azurerm_media_streaming_endpoint" "this" {
       dynamic "ip_allow" {
         for_each = access_control.value.ip_allow
         content {
-          address              = ip_allow.value["address"]
-          name                 = ip_allow.value["name"]
+          # address - (optional) is a type of string
+          address = ip_allow.value["address"]
+          # name - (optional) is a type of string
+          name = ip_allow.value["name"]
+          # subnet_prefix_length - (optional) is a type of number
           subnet_prefix_length = ip_allow.value["subnet_prefix_length"]
         }
       }
@@ -255,17 +274,23 @@ resource "azurerm_media_streaming_endpoint" "this" {
   dynamic "cross_site_access_policy" {
     for_each = var.cross_site_access_policy
     content {
+      # client_access_policy - (optional) is a type of string
       client_access_policy = cross_site_access_policy.value["client_access_policy"]
-      cross_domain_policy  = cross_site_access_policy.value["cross_domain_policy"]
+      # cross_domain_policy - (optional) is a type of string
+      cross_domain_policy = cross_site_access_policy.value["cross_domain_policy"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

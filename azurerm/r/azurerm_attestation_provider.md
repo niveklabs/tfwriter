@@ -99,18 +99,27 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_attestation_provider" "this" {
-  location                        = var.location
-  name                            = var.name
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # policy_signing_certificate_data - (optional) is a type of string
   policy_signing_certificate_data = var.policy_signing_certificate_data
-  resource_group_name             = var.resource_group_name
-  tags                            = var.tags
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

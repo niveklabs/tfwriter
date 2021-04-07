@@ -65,12 +65,15 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_ram_resource_share_accepter" "this" {
+  # share_arn - (required) is a type of string
   share_arn = var.share_arn
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

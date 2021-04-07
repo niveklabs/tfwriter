@@ -137,21 +137,33 @@ variable "endpoint_configuration" {
 
 ```terraform
 resource "aws_api_gateway_rest_api" "this" {
-  api_key_source               = var.api_key_source
-  binary_media_types           = var.binary_media_types
-  body                         = var.body
-  description                  = var.description
+  # api_key_source - (optional) is a type of string
+  api_key_source = var.api_key_source
+  # binary_media_types - (optional) is a type of list of string
+  binary_media_types = var.binary_media_types
+  # body - (optional) is a type of string
+  body = var.body
+  # description - (optional) is a type of string
+  description = var.description
+  # disable_execute_api_endpoint - (optional) is a type of bool
   disable_execute_api_endpoint = var.disable_execute_api_endpoint
-  minimum_compression_size     = var.minimum_compression_size
-  name                         = var.name
-  parameters                   = var.parameters
-  policy                       = var.policy
-  tags                         = var.tags
+  # minimum_compression_size - (optional) is a type of number
+  minimum_compression_size = var.minimum_compression_size
+  # name - (required) is a type of string
+  name = var.name
+  # parameters - (optional) is a type of map of string
+  parameters = var.parameters
+  # policy - (optional) is a type of string
+  policy = var.policy
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "endpoint_configuration" {
     for_each = var.endpoint_configuration
     content {
-      types            = endpoint_configuration.value["types"]
+      # types - (required) is a type of list of string
+      types = endpoint_configuration.value["types"]
+      # vpc_endpoint_ids - (optional) is a type of set of string
       vpc_endpoint_ids = endpoint_configuration.value["vpc_endpoint_ids"]
     }
   }

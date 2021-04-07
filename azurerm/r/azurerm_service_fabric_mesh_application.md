@@ -142,22 +142,30 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_service_fabric_mesh_application" "this" {
-  location            = var.location
-  name                = var.name
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  tags                = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "service" {
     for_each = var.service
     content {
-      name    = service.value["name"]
+      # name - (required) is a type of string
+      name = service.value["name"]
+      # os_type - (required) is a type of string
       os_type = service.value["os_type"]
 
       dynamic "code_package" {
         for_each = service.value.code_package
         content {
+          # image_name - (required) is a type of string
           image_name = code_package.value["image_name"]
-          name       = code_package.value["name"]
+          # name - (required) is a type of string
+          name = code_package.value["name"]
 
           dynamic "resources" {
             for_each = code_package.value.resources
@@ -166,7 +174,9 @@ resource "azurerm_service_fabric_mesh_application" "this" {
               dynamic "limits" {
                 for_each = resources.value.limits
                 content {
-                  cpu    = limits.value["cpu"]
+                  # cpu - (required) is a type of number
+                  cpu = limits.value["cpu"]
+                  # memory - (required) is a type of number
                   memory = limits.value["memory"]
                 }
               }
@@ -174,7 +184,9 @@ resource "azurerm_service_fabric_mesh_application" "this" {
               dynamic "requests" {
                 for_each = resources.value.requests
                 content {
-                  cpu    = requests.value["cpu"]
+                  # cpu - (required) is a type of number
+                  cpu = requests.value["cpu"]
+                  # memory - (required) is a type of number
                   memory = requests.value["memory"]
                 }
               }
@@ -191,9 +203,13 @@ resource "azurerm_service_fabric_mesh_application" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

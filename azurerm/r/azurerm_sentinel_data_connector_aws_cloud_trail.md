@@ -83,16 +83,23 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_sentinel_data_connector_aws_cloud_trail" "this" {
-  aws_role_arn               = var.aws_role_arn
+  # aws_role_arn - (required) is a type of string
+  aws_role_arn = var.aws_role_arn
+  # log_analytics_workspace_id - (required) is a type of string
   log_analytics_workspace_id = var.log_analytics_workspace_id
-  name                       = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

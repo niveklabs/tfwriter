@@ -105,14 +105,19 @@ variable "timeouts" {
 
 ```terraform
 resource "google_pubsub_topic" "this" {
+  # kms_key_name - (optional) is a type of string
   kms_key_name = var.kms_key_name
-  labels       = var.labels
-  name         = var.name
-  project      = var.project
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "message_storage_policy" {
     for_each = var.message_storage_policy
     content {
+      # allowed_persistence_regions - (required) is a type of list of string
       allowed_persistence_regions = message_storage_policy.value["allowed_persistence_regions"]
     }
   }
@@ -120,8 +125,11 @@ resource "google_pubsub_topic" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

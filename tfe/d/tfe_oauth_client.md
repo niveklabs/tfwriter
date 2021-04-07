@@ -49,6 +49,7 @@ variable "oauth_client_id" {
 
 ```terraform
 data "tfe_oauth_client" "this" {
+  # oauth_client_id - (required) is a type of string
   oauth_client_id = var.oauth_client_id
 }
 ```

@@ -71,10 +71,14 @@ variable "name" {
 
 ```terraform
 resource "vsphere_tag_category" "this" {
+  # associable_types - (required) is a type of set of string
   associable_types = var.associable_types
-  cardinality      = var.cardinality
-  description      = var.description
-  name             = var.name
+  # cardinality - (required) is a type of string
+  cardinality = var.cardinality
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

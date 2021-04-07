@@ -123,20 +123,31 @@ variable "filter" {
 
 ```terraform
 data "oci_mysql_mysql_db_systems" "this" {
-  compartment_id                = var.compartment_id
-  configuration_id              = var.configuration_id
-  db_system_id                  = var.db_system_id
-  display_name                  = var.display_name
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # configuration_id - (optional) is a type of string
+  configuration_id = var.configuration_id
+  # db_system_id - (optional) is a type of string
+  db_system_id = var.db_system_id
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # is_analytics_cluster_attached - (optional) is a type of bool
   is_analytics_cluster_attached = var.is_analytics_cluster_attached
+  # is_heat_wave_cluster_attached - (optional) is a type of bool
   is_heat_wave_cluster_attached = var.is_heat_wave_cluster_attached
-  is_up_to_date                 = var.is_up_to_date
-  state                         = var.state
+  # is_up_to_date - (optional) is a type of bool
+  is_up_to_date = var.is_up_to_date
+  # state - (optional) is a type of string
+  state = var.state
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

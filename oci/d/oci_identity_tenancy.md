@@ -49,6 +49,7 @@ variable "tenancy_id" {
 
 ```terraform
 data "oci_identity_tenancy" "this" {
+  # tenancy_id - (required) is a type of string
   tenancy_id = var.tenancy_id
 }
 ```

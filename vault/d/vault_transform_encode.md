@@ -104,14 +104,22 @@ variable "value" {
 
 ```terraform
 data "vault_transform_encode" "this" {
-  batch_input    = var.batch_input
-  batch_results  = var.batch_results
-  encoded_value  = var.encoded_value
-  path           = var.path
-  role_name      = var.role_name
+  # batch_input - (optional) is a type of list of map of string
+  batch_input = var.batch_input
+  # batch_results - (optional) is a type of list of map of string
+  batch_results = var.batch_results
+  # encoded_value - (optional) is a type of string
+  encoded_value = var.encoded_value
+  # path - (required) is a type of string
+  path = var.path
+  # role_name - (required) is a type of string
+  role_name = var.role_name
+  # transformation - (optional) is a type of string
   transformation = var.transformation
-  tweak          = var.tweak
-  value          = var.value
+  # tweak - (optional) is a type of string
+  tweak = var.tweak
+  # value - (optional) is a type of string
+  value = var.value
 }
 ```
 

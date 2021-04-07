@@ -67,13 +67,17 @@ variable "filter" {
 
 ```terraform
 data "oci_dataflow_run_logs" "this" {
+  # run_id - (required) is a type of string
   run_id = var.run_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

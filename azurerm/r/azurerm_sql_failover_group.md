@@ -145,15 +145,21 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_sql_failover_group" "this" {
-  databases           = var.databases
-  name                = var.name
+  # databases - (optional) is a type of set of string
+  databases = var.databases
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  server_name         = var.server_name
-  tags                = var.tags
+  # server_name - (required) is a type of string
+  server_name = var.server_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "partner_servers" {
     for_each = var.partner_servers
     content {
+      # id - (required) is a type of string
       id = partner_servers.value["id"]
     }
   }
@@ -161,14 +167,17 @@ resource "azurerm_sql_failover_group" "this" {
   dynamic "read_write_endpoint_failover_policy" {
     for_each = var.read_write_endpoint_failover_policy
     content {
+      # grace_minutes - (optional) is a type of number
       grace_minutes = read_write_endpoint_failover_policy.value["grace_minutes"]
-      mode          = read_write_endpoint_failover_policy.value["mode"]
+      # mode - (required) is a type of string
+      mode = read_write_endpoint_failover_policy.value["mode"]
     }
   }
 
   dynamic "readonly_endpoint_failover_policy" {
     for_each = var.readonly_endpoint_failover_policy
     content {
+      # mode - (required) is a type of string
       mode = readonly_endpoint_failover_policy.value["mode"]
     }
   }
@@ -176,9 +185,13 @@ resource "azurerm_sql_failover_group" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

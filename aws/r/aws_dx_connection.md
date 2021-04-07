@@ -71,10 +71,14 @@ variable "tags" {
 
 ```terraform
 resource "aws_dx_connection" "this" {
+  # bandwidth - (required) is a type of string
   bandwidth = var.bandwidth
-  location  = var.location
-  name      = var.name
-  tags      = var.tags
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

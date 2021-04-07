@@ -115,19 +115,29 @@ variable "filter" {
 
 ```terraform
 data "oci_database_db_homes" "this" {
-  backup_id      = var.backup_id
+  # backup_id - (optional) is a type of string
+  backup_id = var.backup_id
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  db_system_id   = var.db_system_id
-  db_version     = var.db_version
-  display_name   = var.display_name
-  state          = var.state
-  vm_cluster_id  = var.vm_cluster_id
+  # db_system_id - (optional) is a type of string
+  db_system_id = var.db_system_id
+  # db_version - (optional) is a type of string
+  db_version = var.db_version
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # state - (optional) is a type of string
+  state = var.state
+  # vm_cluster_id - (optional) is a type of string
+  vm_cluster_id = var.vm_cluster_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

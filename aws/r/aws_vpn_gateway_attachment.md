@@ -56,7 +56,9 @@ variable "vpn_gateway_id" {
 
 ```terraform
 resource "aws_vpn_gateway_attachment" "this" {
-  vpc_id         = var.vpc_id
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
+  # vpn_gateway_id - (required) is a type of string
   vpn_gateway_id = var.vpn_gateway_id
 }
 ```

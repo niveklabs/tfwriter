@@ -96,18 +96,26 @@ variable "predicates" {
 
 ```terraform
 resource "aws_waf_rate_based_rule" "this" {
+  # metric_name - (required) is a type of string
   metric_name = var.metric_name
-  name        = var.name
-  rate_key    = var.rate_key
-  rate_limit  = var.rate_limit
-  tags        = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # rate_key - (required) is a type of string
+  rate_key = var.rate_key
+  # rate_limit - (required) is a type of number
+  rate_limit = var.rate_limit
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "predicates" {
     for_each = var.predicates
     content {
+      # data_id - (required) is a type of string
       data_id = predicates.value["data_id"]
+      # negated - (required) is a type of bool
       negated = predicates.value["negated"]
-      type    = predicates.value["type"]
+      # type - (required) is a type of string
+      type = predicates.value["type"]
     }
   }
 

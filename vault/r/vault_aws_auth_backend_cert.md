@@ -72,10 +72,14 @@ variable "type" {
 
 ```terraform
 resource "vault_aws_auth_backend_cert" "this" {
+  # aws_public_cert - (required) is a type of string
   aws_public_cert = var.aws_public_cert
-  backend         = var.backend
-  cert_name       = var.cert_name
-  type            = var.type
+  # backend - (optional) is a type of string
+  backend = var.backend
+  # cert_name - (required) is a type of string
+  cert_name = var.cert_name
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

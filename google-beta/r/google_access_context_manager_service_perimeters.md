@@ -325,22 +325,31 @@ variable "timeouts" {
 
 ```terraform
 resource "google_access_context_manager_service_perimeters" "this" {
+  # parent - (required) is a type of string
   parent = var.parent
 
   dynamic "service_perimeters" {
     for_each = var.service_perimeters
     content {
-      description               = service_perimeters.value["description"]
-      name                      = service_perimeters.value["name"]
-      perimeter_type            = service_perimeters.value["perimeter_type"]
-      title                     = service_perimeters.value["title"]
+      # description - (optional) is a type of string
+      description = service_perimeters.value["description"]
+      # name - (required) is a type of string
+      name = service_perimeters.value["name"]
+      # perimeter_type - (optional) is a type of string
+      perimeter_type = service_perimeters.value["perimeter_type"]
+      # title - (required) is a type of string
+      title = service_perimeters.value["title"]
+      # use_explicit_dry_run_spec - (optional) is a type of bool
       use_explicit_dry_run_spec = service_perimeters.value["use_explicit_dry_run_spec"]
 
       dynamic "spec" {
         for_each = service_perimeters.value.spec
         content {
-          access_levels       = spec.value["access_levels"]
-          resources           = spec.value["resources"]
+          # access_levels - (optional) is a type of list of string
+          access_levels = spec.value["access_levels"]
+          # resources - (optional) is a type of list of string
+          resources = spec.value["resources"]
+          # restricted_services - (optional) is a type of list of string
           restricted_services = spec.value["restricted_services"]
 
           dynamic "egress_policies" {
@@ -350,7 +359,9 @@ resource "google_access_context_manager_service_perimeters" "this" {
               dynamic "egress_from" {
                 for_each = egress_policies.value.egress_from
                 content {
-                  identities    = egress_from.value["identities"]
+                  # identities - (optional) is a type of list of string
+                  identities = egress_from.value["identities"]
+                  # identity_type - (optional) is a type of string
                   identity_type = egress_from.value["identity_type"]
                 }
               }
@@ -358,17 +369,21 @@ resource "google_access_context_manager_service_perimeters" "this" {
               dynamic "egress_to" {
                 for_each = egress_policies.value.egress_to
                 content {
+                  # resources - (optional) is a type of list of string
                   resources = egress_to.value["resources"]
 
                   dynamic "operations" {
                     for_each = egress_to.value.operations
                     content {
+                      # service_name - (optional) is a type of string
                       service_name = operations.value["service_name"]
 
                       dynamic "method_selectors" {
                         for_each = operations.value.method_selectors
                         content {
-                          method     = method_selectors.value["method"]
+                          # method - (optional) is a type of string
+                          method = method_selectors.value["method"]
+                          # permission - (optional) is a type of string
                           permission = method_selectors.value["permission"]
                         }
                       }
@@ -389,14 +404,18 @@ resource "google_access_context_manager_service_perimeters" "this" {
               dynamic "ingress_from" {
                 for_each = ingress_policies.value.ingress_from
                 content {
-                  identities    = ingress_from.value["identities"]
+                  # identities - (optional) is a type of list of string
+                  identities = ingress_from.value["identities"]
+                  # identity_type - (optional) is a type of string
                   identity_type = ingress_from.value["identity_type"]
 
                   dynamic "sources" {
                     for_each = ingress_from.value.sources
                     content {
+                      # access_level - (optional) is a type of string
                       access_level = sources.value["access_level"]
-                      resource     = sources.value["resource"]
+                      # resource - (optional) is a type of string
+                      resource = sources.value["resource"]
                     }
                   }
 
@@ -406,17 +425,21 @@ resource "google_access_context_manager_service_perimeters" "this" {
               dynamic "ingress_to" {
                 for_each = ingress_policies.value.ingress_to
                 content {
+                  # resources - (optional) is a type of list of string
                   resources = ingress_to.value["resources"]
 
                   dynamic "operations" {
                     for_each = ingress_to.value.operations
                     content {
+                      # service_name - (optional) is a type of string
                       service_name = operations.value["service_name"]
 
                       dynamic "method_selectors" {
                         for_each = operations.value.method_selectors
                         content {
-                          method     = method_selectors.value["method"]
+                          # method - (optional) is a type of string
+                          method = method_selectors.value["method"]
+                          # permission - (optional) is a type of string
                           permission = method_selectors.value["permission"]
                         }
                       }
@@ -433,7 +456,9 @@ resource "google_access_context_manager_service_perimeters" "this" {
           dynamic "vpc_accessible_services" {
             for_each = spec.value.vpc_accessible_services
             content {
-              allowed_services   = vpc_accessible_services.value["allowed_services"]
+              # allowed_services - (optional) is a type of list of string
+              allowed_services = vpc_accessible_services.value["allowed_services"]
+              # enable_restriction - (optional) is a type of bool
               enable_restriction = vpc_accessible_services.value["enable_restriction"]
             }
           }
@@ -444,8 +469,11 @@ resource "google_access_context_manager_service_perimeters" "this" {
       dynamic "status" {
         for_each = service_perimeters.value.status
         content {
-          access_levels       = status.value["access_levels"]
-          resources           = status.value["resources"]
+          # access_levels - (optional) is a type of list of string
+          access_levels = status.value["access_levels"]
+          # resources - (optional) is a type of list of string
+          resources = status.value["resources"]
+          # restricted_services - (optional) is a type of set of string
           restricted_services = status.value["restricted_services"]
 
           dynamic "egress_policies" {
@@ -455,7 +483,9 @@ resource "google_access_context_manager_service_perimeters" "this" {
               dynamic "egress_from" {
                 for_each = egress_policies.value.egress_from
                 content {
-                  identities    = egress_from.value["identities"]
+                  # identities - (optional) is a type of list of string
+                  identities = egress_from.value["identities"]
+                  # identity_type - (optional) is a type of string
                   identity_type = egress_from.value["identity_type"]
                 }
               }
@@ -463,17 +493,21 @@ resource "google_access_context_manager_service_perimeters" "this" {
               dynamic "egress_to" {
                 for_each = egress_policies.value.egress_to
                 content {
+                  # resources - (optional) is a type of list of string
                   resources = egress_to.value["resources"]
 
                   dynamic "operations" {
                     for_each = egress_to.value.operations
                     content {
+                      # service_name - (optional) is a type of string
                       service_name = operations.value["service_name"]
 
                       dynamic "method_selectors" {
                         for_each = operations.value.method_selectors
                         content {
-                          method     = method_selectors.value["method"]
+                          # method - (optional) is a type of string
+                          method = method_selectors.value["method"]
+                          # permission - (optional) is a type of string
                           permission = method_selectors.value["permission"]
                         }
                       }
@@ -494,14 +528,18 @@ resource "google_access_context_manager_service_perimeters" "this" {
               dynamic "ingress_from" {
                 for_each = ingress_policies.value.ingress_from
                 content {
-                  identities    = ingress_from.value["identities"]
+                  # identities - (optional) is a type of list of string
+                  identities = ingress_from.value["identities"]
+                  # identity_type - (optional) is a type of string
                   identity_type = ingress_from.value["identity_type"]
 
                   dynamic "sources" {
                     for_each = ingress_from.value.sources
                     content {
+                      # access_level - (optional) is a type of string
                       access_level = sources.value["access_level"]
-                      resource     = sources.value["resource"]
+                      # resource - (optional) is a type of string
+                      resource = sources.value["resource"]
                     }
                   }
 
@@ -511,17 +549,21 @@ resource "google_access_context_manager_service_perimeters" "this" {
               dynamic "ingress_to" {
                 for_each = ingress_policies.value.ingress_to
                 content {
+                  # resources - (optional) is a type of list of string
                   resources = ingress_to.value["resources"]
 
                   dynamic "operations" {
                     for_each = ingress_to.value.operations
                     content {
+                      # service_name - (optional) is a type of string
                       service_name = operations.value["service_name"]
 
                       dynamic "method_selectors" {
                         for_each = operations.value.method_selectors
                         content {
-                          method     = method_selectors.value["method"]
+                          # method - (optional) is a type of string
+                          method = method_selectors.value["method"]
+                          # permission - (optional) is a type of string
                           permission = method_selectors.value["permission"]
                         }
                       }
@@ -538,7 +580,9 @@ resource "google_access_context_manager_service_perimeters" "this" {
           dynamic "vpc_accessible_services" {
             for_each = status.value.vpc_accessible_services
             content {
-              allowed_services   = vpc_accessible_services.value["allowed_services"]
+              # allowed_services - (optional) is a type of set of string
+              allowed_services = vpc_accessible_services.value["allowed_services"]
+              # enable_restriction - (optional) is a type of bool
               enable_restriction = vpc_accessible_services.value["enable_restriction"]
             }
           }
@@ -552,8 +596,11 @@ resource "google_access_context_manager_service_perimeters" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

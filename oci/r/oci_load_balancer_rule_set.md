@@ -135,41 +135,62 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_load_balancer_rule_set" "this" {
+  # load_balancer_id - (required) is a type of string
   load_balancer_id = var.load_balancer_id
-  name             = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "items" {
     for_each = var.items
     content {
-      action                         = items.value["action"]
-      allowed_methods                = items.value["allowed_methods"]
+      # action - (required) is a type of string
+      action = items.value["action"]
+      # allowed_methods - (optional) is a type of set of string
+      allowed_methods = items.value["allowed_methods"]
+      # are_invalid_characters_allowed - (optional) is a type of bool
       are_invalid_characters_allowed = items.value["are_invalid_characters_allowed"]
-      description                    = items.value["description"]
-      header                         = items.value["header"]
-      http_large_header_size_in_kb   = items.value["http_large_header_size_in_kb"]
-      prefix                         = items.value["prefix"]
-      response_code                  = items.value["response_code"]
-      status_code                    = items.value["status_code"]
-      suffix                         = items.value["suffix"]
-      value                          = items.value["value"]
+      # description - (optional) is a type of string
+      description = items.value["description"]
+      # header - (optional) is a type of string
+      header = items.value["header"]
+      # http_large_header_size_in_kb - (optional) is a type of number
+      http_large_header_size_in_kb = items.value["http_large_header_size_in_kb"]
+      # prefix - (optional) is a type of string
+      prefix = items.value["prefix"]
+      # response_code - (optional) is a type of number
+      response_code = items.value["response_code"]
+      # status_code - (optional) is a type of number
+      status_code = items.value["status_code"]
+      # suffix - (optional) is a type of string
+      suffix = items.value["suffix"]
+      # value - (optional) is a type of string
+      value = items.value["value"]
 
       dynamic "conditions" {
         for_each = items.value.conditions
         content {
-          attribute_name  = conditions.value["attribute_name"]
+          # attribute_name - (required) is a type of string
+          attribute_name = conditions.value["attribute_name"]
+          # attribute_value - (required) is a type of string
           attribute_value = conditions.value["attribute_value"]
-          operator        = conditions.value["operator"]
+          # operator - (optional) is a type of string
+          operator = conditions.value["operator"]
         }
       }
 
       dynamic "redirect_uri" {
         for_each = items.value.redirect_uri
         content {
-          host     = redirect_uri.value["host"]
-          path     = redirect_uri.value["path"]
-          port     = redirect_uri.value["port"]
+          # host - (optional) is a type of string
+          host = redirect_uri.value["host"]
+          # path - (optional) is a type of string
+          path = redirect_uri.value["path"]
+          # port - (optional) is a type of number
+          port = redirect_uri.value["port"]
+          # protocol - (optional) is a type of string
           protocol = redirect_uri.value["protocol"]
-          query    = redirect_uri.value["query"]
+          # query - (optional) is a type of string
+          query = redirect_uri.value["query"]
         }
       }
 
@@ -179,8 +200,11 @@ resource "oci_load_balancer_rule_set" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

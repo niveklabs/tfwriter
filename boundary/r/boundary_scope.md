@@ -89,12 +89,18 @@ variable "scope_id" {
 
 ```terraform
 resource "boundary_scope" "this" {
-  auto_create_admin_role   = var.auto_create_admin_role
+  # auto_create_admin_role - (optional) is a type of bool
+  auto_create_admin_role = var.auto_create_admin_role
+  # auto_create_default_role - (optional) is a type of bool
   auto_create_default_role = var.auto_create_default_role
-  description              = var.description
-  global_scope             = var.global_scope
-  name                     = var.name
-  scope_id                 = var.scope_id
+  # description - (optional) is a type of string
+  description = var.description
+  # global_scope - (optional) is a type of bool
+  global_scope = var.global_scope
+  # name - (optional) is a type of string
+  name = var.name
+  # scope_id - (required) is a type of string
+  scope_id = var.scope_id
 }
 ```
 

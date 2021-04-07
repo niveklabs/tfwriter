@@ -175,34 +175,53 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_subnetwork" "this" {
-  description                = var.description
-  ip_cidr_range              = var.ip_cidr_range
-  name                       = var.name
-  network                    = var.network
-  private_ip_google_access   = var.private_ip_google_access
+  # description - (optional) is a type of string
+  description = var.description
+  # ip_cidr_range - (required) is a type of string
+  ip_cidr_range = var.ip_cidr_range
+  # name - (required) is a type of string
+  name = var.name
+  # network - (required) is a type of string
+  network = var.network
+  # private_ip_google_access - (optional) is a type of bool
+  private_ip_google_access = var.private_ip_google_access
+  # private_ipv6_google_access - (optional) is a type of string
   private_ipv6_google_access = var.private_ipv6_google_access
-  project                    = var.project
-  purpose                    = var.purpose
-  region                     = var.region
-  role                       = var.role
-  secondary_ip_range         = var.secondary_ip_range
+  # project - (optional) is a type of string
+  project = var.project
+  # purpose - (optional) is a type of string
+  purpose = var.purpose
+  # region - (optional) is a type of string
+  region = var.region
+  # role - (optional) is a type of string
+  role = var.role
+  # secondary_ip_range - (optional) is a type of list of object
+  secondary_ip_range = var.secondary_ip_range
 
   dynamic "log_config" {
     for_each = var.log_config
     content {
+      # aggregation_interval - (optional) is a type of string
       aggregation_interval = log_config.value["aggregation_interval"]
-      filter_expr          = log_config.value["filter_expr"]
-      flow_sampling        = log_config.value["flow_sampling"]
-      metadata             = log_config.value["metadata"]
-      metadata_fields      = log_config.value["metadata_fields"]
+      # filter_expr - (optional) is a type of string
+      filter_expr = log_config.value["filter_expr"]
+      # flow_sampling - (optional) is a type of number
+      flow_sampling = log_config.value["flow_sampling"]
+      # metadata - (optional) is a type of string
+      metadata = log_config.value["metadata"]
+      # metadata_fields - (optional) is a type of set of string
+      metadata_fields = log_config.value["metadata_fields"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

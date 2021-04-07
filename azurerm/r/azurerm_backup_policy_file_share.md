@@ -119,22 +119,29 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_backup_policy_file_share" "this" {
-  name                = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # recovery_vault_name - (required) is a type of string
   recovery_vault_name = var.recovery_vault_name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  timezone            = var.timezone
+  # timezone - (optional) is a type of string
+  timezone = var.timezone
 
   dynamic "backup" {
     for_each = var.backup
     content {
+      # frequency - (required) is a type of string
       frequency = backup.value["frequency"]
-      time      = backup.value["time"]
+      # time - (required) is a type of string
+      time = backup.value["time"]
     }
   }
 
   dynamic "retention_daily" {
     for_each = var.retention_daily
     content {
+      # count - (required) is a type of number
       count = retention_daily.value["count"]
     }
   }
@@ -142,9 +149,13 @@ resource "azurerm_backup_policy_file_share" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

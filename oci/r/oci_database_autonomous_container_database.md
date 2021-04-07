@@ -314,40 +314,66 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_database_autonomous_container_database" "this" {
-  autonomous_exadata_infrastructure_id              = var.autonomous_exadata_infrastructure_id
-  autonomous_vm_cluster_id                          = var.autonomous_vm_cluster_id
-  compartment_id                                    = var.compartment_id
-  db_unique_name                                    = var.db_unique_name
-  defined_tags                                      = var.defined_tags
-  display_name                                      = var.display_name
-  freeform_tags                                     = var.freeform_tags
-  key_store_id                                      = var.key_store_id
-  kms_key_id                                        = var.kms_key_id
-  patch_model                                       = var.patch_model
+  # autonomous_exadata_infrastructure_id - (optional) is a type of string
+  autonomous_exadata_infrastructure_id = var.autonomous_exadata_infrastructure_id
+  # autonomous_vm_cluster_id - (optional) is a type of string
+  autonomous_vm_cluster_id = var.autonomous_vm_cluster_id
+  # compartment_id - (optional) is a type of string
+  compartment_id = var.compartment_id
+  # db_unique_name - (optional) is a type of string
+  db_unique_name = var.db_unique_name
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # key_store_id - (optional) is a type of string
+  key_store_id = var.key_store_id
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # patch_model - (required) is a type of string
+  patch_model = var.patch_model
+  # peer_autonomous_container_database_compartment_id - (optional) is a type of string
   peer_autonomous_container_database_compartment_id = var.peer_autonomous_container_database_compartment_id
-  peer_autonomous_container_database_display_name   = var.peer_autonomous_container_database_display_name
-  peer_autonomous_exadata_infrastructure_id         = var.peer_autonomous_exadata_infrastructure_id
-  peer_autonomous_vm_cluster_id                     = var.peer_autonomous_vm_cluster_id
-  peer_db_unique_name                               = var.peer_db_unique_name
-  protection_mode                                   = var.protection_mode
-  rotate_key_trigger                                = var.rotate_key_trigger
-  service_level_agreement_type                      = var.service_level_agreement_type
-  standby_maintenance_buffer_in_days                = var.standby_maintenance_buffer_in_days
-  vault_id                                          = var.vault_id
+  # peer_autonomous_container_database_display_name - (optional) is a type of string
+  peer_autonomous_container_database_display_name = var.peer_autonomous_container_database_display_name
+  # peer_autonomous_exadata_infrastructure_id - (optional) is a type of string
+  peer_autonomous_exadata_infrastructure_id = var.peer_autonomous_exadata_infrastructure_id
+  # peer_autonomous_vm_cluster_id - (optional) is a type of string
+  peer_autonomous_vm_cluster_id = var.peer_autonomous_vm_cluster_id
+  # peer_db_unique_name - (optional) is a type of string
+  peer_db_unique_name = var.peer_db_unique_name
+  # protection_mode - (optional) is a type of string
+  protection_mode = var.protection_mode
+  # rotate_key_trigger - (optional) is a type of bool
+  rotate_key_trigger = var.rotate_key_trigger
+  # service_level_agreement_type - (optional) is a type of string
+  service_level_agreement_type = var.service_level_agreement_type
+  # standby_maintenance_buffer_in_days - (optional) is a type of number
+  standby_maintenance_buffer_in_days = var.standby_maintenance_buffer_in_days
+  # vault_id - (optional) is a type of string
+  vault_id = var.vault_id
 
   dynamic "backup_config" {
     for_each = var.backup_config
     content {
+      # recovery_window_in_days - (optional) is a type of number
       recovery_window_in_days = backup_config.value["recovery_window_in_days"]
 
       dynamic "backup_destination_details" {
         for_each = backup_config.value.backup_destination_details
         content {
-          id             = backup_destination_details.value["id"]
+          # id - (optional) is a type of string
+          id = backup_destination_details.value["id"]
+          # internet_proxy - (optional) is a type of string
           internet_proxy = backup_destination_details.value["internet_proxy"]
-          type           = backup_destination_details.value["type"]
-          vpc_password   = backup_destination_details.value["vpc_password"]
-          vpc_user       = backup_destination_details.value["vpc_user"]
+          # type - (required) is a type of string
+          type = backup_destination_details.value["type"]
+          # vpc_password - (optional) is a type of string
+          vpc_password = backup_destination_details.value["vpc_password"]
+          # vpc_user - (optional) is a type of string
+          vpc_user = backup_destination_details.value["vpc_user"]
         }
       }
 
@@ -357,14 +383,19 @@ resource "oci_database_autonomous_container_database" "this" {
   dynamic "maintenance_window_details" {
     for_each = var.maintenance_window_details
     content {
-      hours_of_day       = maintenance_window_details.value["hours_of_day"]
+      # hours_of_day - (optional) is a type of list of number
+      hours_of_day = maintenance_window_details.value["hours_of_day"]
+      # lead_time_in_weeks - (optional) is a type of number
       lead_time_in_weeks = maintenance_window_details.value["lead_time_in_weeks"]
-      preference         = maintenance_window_details.value["preference"]
-      weeks_of_month     = maintenance_window_details.value["weeks_of_month"]
+      # preference - (required) is a type of string
+      preference = maintenance_window_details.value["preference"]
+      # weeks_of_month - (optional) is a type of list of number
+      weeks_of_month = maintenance_window_details.value["weeks_of_month"]
 
       dynamic "days_of_week" {
         for_each = maintenance_window_details.value.days_of_week
         content {
+          # name - (required) is a type of string
           name = days_of_week.value["name"]
         }
       }
@@ -372,6 +403,7 @@ resource "oci_database_autonomous_container_database" "this" {
       dynamic "months" {
         for_each = maintenance_window_details.value.months
         content {
+          # name - (required) is a type of string
           name = months.value["name"]
         }
       }
@@ -382,16 +414,22 @@ resource "oci_database_autonomous_container_database" "this" {
   dynamic "peer_autonomous_container_database_backup_config" {
     for_each = var.peer_autonomous_container_database_backup_config
     content {
+      # recovery_window_in_days - (optional) is a type of number
       recovery_window_in_days = peer_autonomous_container_database_backup_config.value["recovery_window_in_days"]
 
       dynamic "backup_destination_details" {
         for_each = peer_autonomous_container_database_backup_config.value.backup_destination_details
         content {
-          id             = backup_destination_details.value["id"]
+          # id - (optional) is a type of string
+          id = backup_destination_details.value["id"]
+          # internet_proxy - (optional) is a type of string
           internet_proxy = backup_destination_details.value["internet_proxy"]
-          type           = backup_destination_details.value["type"]
-          vpc_password   = backup_destination_details.value["vpc_password"]
-          vpc_user       = backup_destination_details.value["vpc_user"]
+          # type - (required) is a type of string
+          type = backup_destination_details.value["type"]
+          # vpc_password - (optional) is a type of string
+          vpc_password = backup_destination_details.value["vpc_password"]
+          # vpc_user - (optional) is a type of string
+          vpc_user = backup_destination_details.value["vpc_user"]
         }
       }
 
@@ -401,8 +439,11 @@ resource "oci_database_autonomous_container_database" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

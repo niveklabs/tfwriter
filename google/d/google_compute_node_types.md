@@ -58,8 +58,10 @@ variable "zone" {
 
 ```terraform
 data "google_compute_node_types" "this" {
+  # project - (optional) is a type of string
   project = var.project
-  zone    = var.zone
+  # zone - (optional) is a type of string
+  zone = var.zone
 }
 ```
 

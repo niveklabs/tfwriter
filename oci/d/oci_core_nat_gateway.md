@@ -49,6 +49,7 @@ variable "nat_gateway_id" {
 
 ```terraform
 data "oci_core_nat_gateway" "this" {
+  # nat_gateway_id - (required) is a type of string
   nat_gateway_id = var.nat_gateway_id
 }
 ```

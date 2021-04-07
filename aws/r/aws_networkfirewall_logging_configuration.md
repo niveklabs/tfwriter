@@ -72,6 +72,7 @@ variable "logging_configuration" {
 
 ```terraform
 resource "aws_networkfirewall_logging_configuration" "this" {
+  # firewall_arn - (required) is a type of string
   firewall_arn = var.firewall_arn
 
   dynamic "logging_configuration" {
@@ -81,9 +82,12 @@ resource "aws_networkfirewall_logging_configuration" "this" {
       dynamic "log_destination_config" {
         for_each = logging_configuration.value.log_destination_config
         content {
-          log_destination      = log_destination_config.value["log_destination"]
+          # log_destination - (required) is a type of map of string
+          log_destination = log_destination_config.value["log_destination"]
+          # log_destination_type - (required) is a type of string
           log_destination_type = log_destination_config.value["log_destination_type"]
-          log_type             = log_destination_config.value["log_type"]
+          # log_type - (required) is a type of string
+          log_type = log_destination_config.value["log_type"]
         }
       }
 

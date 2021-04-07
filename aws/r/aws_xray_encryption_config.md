@@ -57,8 +57,10 @@ variable "type" {
 
 ```terraform
 resource "aws_xray_encryption_config" "this" {
+  # key_id - (optional) is a type of string
   key_id = var.key_id
-  type   = var.type
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

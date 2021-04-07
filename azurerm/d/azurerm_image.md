@@ -87,14 +87,19 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_image" "this" {
-  name                = var.name
-  name_regex          = var.name_regex
+  # name - (optional) is a type of string
+  name = var.name
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  sort_descending     = var.sort_descending
+  # sort_descending - (optional) is a type of bool
+  sort_descending = var.sort_descending
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

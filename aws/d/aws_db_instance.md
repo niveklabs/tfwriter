@@ -57,8 +57,10 @@ variable "tags" {
 
 ```terraform
 data "aws_db_instance" "this" {
+  # db_instance_identifier - (required) is a type of string
   db_instance_identifier = var.db_instance_identifier
-  tags                   = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

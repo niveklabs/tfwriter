@@ -64,8 +64,11 @@ variable "package_version" {
 
 ```terraform
 data "oci_marketplace_listing_package" "this" {
-  compartment_id  = var.compartment_id
-  listing_id      = var.listing_id
+  # compartment_id - (optional) is a type of string
+  compartment_id = var.compartment_id
+  # listing_id - (required) is a type of string
+  listing_id = var.listing_id
+  # package_version - (required) is a type of string
   package_version = var.package_version
 }
 ```

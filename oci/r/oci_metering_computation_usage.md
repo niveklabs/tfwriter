@@ -164,21 +164,33 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_metering_computation_usage" "this" {
-  compartment_depth    = var.compartment_depth
-  filter               = var.filter
-  granularity          = var.granularity
-  group_by             = var.group_by
+  # compartment_depth - (optional) is a type of number
+  compartment_depth = var.compartment_depth
+  # filter - (optional) is a type of string
+  filter = var.filter
+  # granularity - (required) is a type of string
+  granularity = var.granularity
+  # group_by - (optional) is a type of list of string
+  group_by = var.group_by
+  # is_aggregate_by_time - (optional) is a type of bool
   is_aggregate_by_time = var.is_aggregate_by_time
-  query_type           = var.query_type
-  tenant_id            = var.tenant_id
-  time_usage_ended     = var.time_usage_ended
-  time_usage_started   = var.time_usage_started
+  # query_type - (optional) is a type of string
+  query_type = var.query_type
+  # tenant_id - (required) is a type of string
+  tenant_id = var.tenant_id
+  # time_usage_ended - (required) is a type of string
+  time_usage_ended = var.time_usage_ended
+  # time_usage_started - (required) is a type of string
+  time_usage_started = var.time_usage_started
 
   dynamic "forecast" {
     for_each = var.forecast
     content {
-      forecast_type         = forecast.value["forecast_type"]
-      time_forecast_ended   = forecast.value["time_forecast_ended"]
+      # forecast_type - (optional) is a type of string
+      forecast_type = forecast.value["forecast_type"]
+      # time_forecast_ended - (required) is a type of string
+      time_forecast_ended = forecast.value["time_forecast_ended"]
+      # time_forecast_started - (optional) is a type of string
       time_forecast_started = forecast.value["time_forecast_started"]
     }
   }
@@ -186,17 +198,23 @@ resource "oci_metering_computation_usage" "this" {
   dynamic "group_by_tag" {
     for_each = var.group_by_tag
     content {
-      key       = group_by_tag.value["key"]
+      # key - (optional) is a type of string
+      key = group_by_tag.value["key"]
+      # namespace - (optional) is a type of string
       namespace = group_by_tag.value["namespace"]
-      value     = group_by_tag.value["value"]
+      # value - (optional) is a type of string
+      value = group_by_tag.value["value"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -252,17 +252,23 @@ resource "kubernetes_network_policy" "this" {
   dynamic "metadata" {
     for_each = var.metadata
     content {
-      annotations   = metadata.value["annotations"]
+      # annotations - (optional) is a type of map of string
+      annotations = metadata.value["annotations"]
+      # generate_name - (optional) is a type of string
       generate_name = metadata.value["generate_name"]
-      labels        = metadata.value["labels"]
-      name          = metadata.value["name"]
-      namespace     = metadata.value["namespace"]
+      # labels - (optional) is a type of map of string
+      labels = metadata.value["labels"]
+      # name - (optional) is a type of string
+      name = metadata.value["name"]
+      # namespace - (optional) is a type of string
+      namespace = metadata.value["namespace"]
     }
   }
 
   dynamic "spec" {
     for_each = var.spec
     content {
+      # policy_types - (required) is a type of list of string
       policy_types = spec.value["policy_types"]
 
       dynamic "egress" {
@@ -272,7 +278,9 @@ resource "kubernetes_network_policy" "this" {
           dynamic "ports" {
             for_each = egress.value.ports
             content {
-              port     = ports.value["port"]
+              # port - (optional) is a type of string
+              port = ports.value["port"]
+              # protocol - (optional) is a type of string
               protocol = ports.value["protocol"]
             }
           }
@@ -284,7 +292,9 @@ resource "kubernetes_network_policy" "this" {
               dynamic "ip_block" {
                 for_each = to.value.ip_block
                 content {
-                  cidr   = ip_block.value["cidr"]
+                  # cidr - (optional) is a type of string
+                  cidr = ip_block.value["cidr"]
+                  # except - (optional) is a type of list of string
                   except = ip_block.value["except"]
                 }
               }
@@ -292,14 +302,18 @@ resource "kubernetes_network_policy" "this" {
               dynamic "namespace_selector" {
                 for_each = to.value.namespace_selector
                 content {
+                  # match_labels - (optional) is a type of map of string
                   match_labels = namespace_selector.value["match_labels"]
 
                   dynamic "match_expressions" {
                     for_each = namespace_selector.value.match_expressions
                     content {
-                      key      = match_expressions.value["key"]
+                      # key - (optional) is a type of string
+                      key = match_expressions.value["key"]
+                      # operator - (optional) is a type of string
                       operator = match_expressions.value["operator"]
-                      values   = match_expressions.value["values"]
+                      # values - (optional) is a type of set of string
+                      values = match_expressions.value["values"]
                     }
                   }
 
@@ -309,14 +323,18 @@ resource "kubernetes_network_policy" "this" {
               dynamic "pod_selector" {
                 for_each = to.value.pod_selector
                 content {
+                  # match_labels - (optional) is a type of map of string
                   match_labels = pod_selector.value["match_labels"]
 
                   dynamic "match_expressions" {
                     for_each = pod_selector.value.match_expressions
                     content {
-                      key      = match_expressions.value["key"]
+                      # key - (optional) is a type of string
+                      key = match_expressions.value["key"]
+                      # operator - (optional) is a type of string
                       operator = match_expressions.value["operator"]
-                      values   = match_expressions.value["values"]
+                      # values - (optional) is a type of set of string
+                      values = match_expressions.value["values"]
                     }
                   }
 
@@ -340,7 +358,9 @@ resource "kubernetes_network_policy" "this" {
               dynamic "ip_block" {
                 for_each = from.value.ip_block
                 content {
-                  cidr   = ip_block.value["cidr"]
+                  # cidr - (optional) is a type of string
+                  cidr = ip_block.value["cidr"]
+                  # except - (optional) is a type of list of string
                   except = ip_block.value["except"]
                 }
               }
@@ -348,14 +368,18 @@ resource "kubernetes_network_policy" "this" {
               dynamic "namespace_selector" {
                 for_each = from.value.namespace_selector
                 content {
+                  # match_labels - (optional) is a type of map of string
                   match_labels = namespace_selector.value["match_labels"]
 
                   dynamic "match_expressions" {
                     for_each = namespace_selector.value.match_expressions
                     content {
-                      key      = match_expressions.value["key"]
+                      # key - (optional) is a type of string
+                      key = match_expressions.value["key"]
+                      # operator - (optional) is a type of string
                       operator = match_expressions.value["operator"]
-                      values   = match_expressions.value["values"]
+                      # values - (optional) is a type of set of string
+                      values = match_expressions.value["values"]
                     }
                   }
 
@@ -365,14 +389,18 @@ resource "kubernetes_network_policy" "this" {
               dynamic "pod_selector" {
                 for_each = from.value.pod_selector
                 content {
+                  # match_labels - (optional) is a type of map of string
                   match_labels = pod_selector.value["match_labels"]
 
                   dynamic "match_expressions" {
                     for_each = pod_selector.value.match_expressions
                     content {
-                      key      = match_expressions.value["key"]
+                      # key - (optional) is a type of string
+                      key = match_expressions.value["key"]
+                      # operator - (optional) is a type of string
                       operator = match_expressions.value["operator"]
-                      values   = match_expressions.value["values"]
+                      # values - (optional) is a type of set of string
+                      values = match_expressions.value["values"]
                     }
                   }
 
@@ -385,7 +413,9 @@ resource "kubernetes_network_policy" "this" {
           dynamic "ports" {
             for_each = ingress.value.ports
             content {
-              port     = ports.value["port"]
+              # port - (optional) is a type of string
+              port = ports.value["port"]
+              # protocol - (optional) is a type of string
               protocol = ports.value["protocol"]
             }
           }
@@ -396,14 +426,18 @@ resource "kubernetes_network_policy" "this" {
       dynamic "pod_selector" {
         for_each = spec.value.pod_selector
         content {
+          # match_labels - (optional) is a type of map of string
           match_labels = pod_selector.value["match_labels"]
 
           dynamic "match_expressions" {
             for_each = pod_selector.value.match_expressions
             content {
-              key      = match_expressions.value["key"]
+              # key - (optional) is a type of string
+              key = match_expressions.value["key"]
+              # operator - (optional) is a type of string
               operator = match_expressions.value["operator"]
-              values   = match_expressions.value["values"]
+              # values - (optional) is a type of set of string
+              values = match_expressions.value["values"]
             }
           }
 

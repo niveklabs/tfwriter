@@ -127,17 +127,28 @@ variable "success_feedback_sample_rate" {
 
 ```terraform
 resource "aws_sns_platform_application" "this" {
+  # event_delivery_failure_topic_arn - (optional) is a type of string
   event_delivery_failure_topic_arn = var.event_delivery_failure_topic_arn
+  # event_endpoint_created_topic_arn - (optional) is a type of string
   event_endpoint_created_topic_arn = var.event_endpoint_created_topic_arn
+  # event_endpoint_deleted_topic_arn - (optional) is a type of string
   event_endpoint_deleted_topic_arn = var.event_endpoint_deleted_topic_arn
+  # event_endpoint_updated_topic_arn - (optional) is a type of string
   event_endpoint_updated_topic_arn = var.event_endpoint_updated_topic_arn
-  failure_feedback_role_arn        = var.failure_feedback_role_arn
-  name                             = var.name
-  platform                         = var.platform
-  platform_credential              = var.platform_credential
-  platform_principal               = var.platform_principal
-  success_feedback_role_arn        = var.success_feedback_role_arn
-  success_feedback_sample_rate     = var.success_feedback_sample_rate
+  # failure_feedback_role_arn - (optional) is a type of string
+  failure_feedback_role_arn = var.failure_feedback_role_arn
+  # name - (required) is a type of string
+  name = var.name
+  # platform - (required) is a type of string
+  platform = var.platform
+  # platform_credential - (required) is a type of string
+  platform_credential = var.platform_credential
+  # platform_principal - (optional) is a type of string
+  platform_principal = var.platform_principal
+  # success_feedback_role_arn - (optional) is a type of string
+  success_feedback_role_arn = var.success_feedback_role_arn
+  # success_feedback_sample_rate - (optional) is a type of string
+  success_feedback_sample_rate = var.success_feedback_sample_rate
 }
 ```
 

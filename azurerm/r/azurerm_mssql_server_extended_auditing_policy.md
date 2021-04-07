@@ -109,19 +109,29 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_mssql_server_extended_auditing_policy" "this" {
-  log_monitoring_enabled                  = var.log_monitoring_enabled
-  retention_in_days                       = var.retention_in_days
-  server_id                               = var.server_id
-  storage_account_access_key              = var.storage_account_access_key
+  # log_monitoring_enabled - (optional) is a type of bool
+  log_monitoring_enabled = var.log_monitoring_enabled
+  # retention_in_days - (optional) is a type of number
+  retention_in_days = var.retention_in_days
+  # server_id - (required) is a type of string
+  server_id = var.server_id
+  # storage_account_access_key - (optional) is a type of string
+  storage_account_access_key = var.storage_account_access_key
+  # storage_account_access_key_is_secondary - (optional) is a type of bool
   storage_account_access_key_is_secondary = var.storage_account_access_key_is_secondary
-  storage_endpoint                        = var.storage_endpoint
+  # storage_endpoint - (optional) is a type of string
+  storage_endpoint = var.storage_endpoint
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

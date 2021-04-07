@@ -98,14 +98,22 @@ variable "resource_group_name" {
 
 ```terraform
 resource "azurestack_lb_nat_pool" "this" {
-  backend_port                   = var.backend_port
+  # backend_port - (required) is a type of number
+  backend_port = var.backend_port
+  # frontend_ip_configuration_name - (required) is a type of string
   frontend_ip_configuration_name = var.frontend_ip_configuration_name
-  frontend_port_end              = var.frontend_port_end
-  frontend_port_start            = var.frontend_port_start
-  loadbalancer_id                = var.loadbalancer_id
-  name                           = var.name
-  protocol                       = var.protocol
-  resource_group_name            = var.resource_group_name
+  # frontend_port_end - (required) is a type of number
+  frontend_port_end = var.frontend_port_end
+  # frontend_port_start - (required) is a type of number
+  frontend_port_start = var.frontend_port_start
+  # loadbalancer_id - (required) is a type of string
+  loadbalancer_id = var.loadbalancer_id
+  # name - (required) is a type of string
+  name = var.name
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
 }
 ```
 

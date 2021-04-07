@@ -136,35 +136,49 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_media_job" "this" {
-  description                 = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # media_services_account_name - (required) is a type of string
   media_services_account_name = var.media_services_account_name
-  name                        = var.name
-  priority                    = var.priority
-  resource_group_name         = var.resource_group_name
-  transform_name              = var.transform_name
+  # name - (required) is a type of string
+  name = var.name
+  # priority - (optional) is a type of string
+  priority = var.priority
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # transform_name - (required) is a type of string
+  transform_name = var.transform_name
 
   dynamic "input_asset" {
     for_each = var.input_asset
     content {
+      # label - (optional) is a type of string
       label = input_asset.value["label"]
-      name  = input_asset.value["name"]
+      # name - (required) is a type of string
+      name = input_asset.value["name"]
     }
   }
 
   dynamic "output_asset" {
     for_each = var.output_asset
     content {
+      # label - (optional) is a type of string
       label = output_asset.value["label"]
-      name  = output_asset.value["name"]
+      # name - (required) is a type of string
+      name = output_asset.value["name"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

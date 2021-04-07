@@ -90,16 +90,23 @@ variable "timeouts" {
 
 ```terraform
 resource "google_os_login_ssh_public_key" "this" {
+  # expiration_time_usec - (optional) is a type of string
   expiration_time_usec = var.expiration_time_usec
-  key                  = var.key
-  project              = var.project
-  user                 = var.user
+  # key - (required) is a type of string
+  key = var.key
+  # project - (optional) is a type of string
+  project = var.project
+  # user - (required) is a type of string
+  user = var.user
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

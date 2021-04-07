@@ -314,24 +314,35 @@ variable "windows_based_sli" {
 
 ```terraform
 resource "google_monitoring_slo" "this" {
-  calendar_period     = var.calendar_period
-  display_name        = var.display_name
-  goal                = var.goal
-  project             = var.project
+  # calendar_period - (optional) is a type of string
+  calendar_period = var.calendar_period
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # goal - (required) is a type of number
+  goal = var.goal
+  # project - (optional) is a type of string
+  project = var.project
+  # rolling_period_days - (optional) is a type of number
   rolling_period_days = var.rolling_period_days
-  service             = var.service
-  slo_id              = var.slo_id
+  # service - (required) is a type of string
+  service = var.service
+  # slo_id - (optional) is a type of string
+  slo_id = var.slo_id
 
   dynamic "basic_sli" {
     for_each = var.basic_sli
     content {
+      # location - (optional) is a type of set of string
       location = basic_sli.value["location"]
-      method   = basic_sli.value["method"]
-      version  = basic_sli.value["version"]
+      # method - (optional) is a type of set of string
+      method = basic_sli.value["method"]
+      # version - (optional) is a type of set of string
+      version = basic_sli.value["version"]
 
       dynamic "availability" {
         for_each = basic_sli.value.availability
         content {
+          # enabled - (optional) is a type of bool
           enabled = availability.value["enabled"]
         }
       }
@@ -339,6 +350,7 @@ resource "google_monitoring_slo" "this" {
       dynamic "latency" {
         for_each = basic_sli.value.latency
         content {
+          # threshold - (required) is a type of string
           threshold = latency.value["threshold"]
         }
       }
@@ -353,12 +365,15 @@ resource "google_monitoring_slo" "this" {
       dynamic "distribution_cut" {
         for_each = request_based_sli.value.distribution_cut
         content {
+          # distribution_filter - (required) is a type of string
           distribution_filter = distribution_cut.value["distribution_filter"]
 
           dynamic "range" {
             for_each = distribution_cut.value.range
             content {
+              # max - (optional) is a type of number
               max = range.value["max"]
+              # min - (optional) is a type of number
               min = range.value["min"]
             }
           }
@@ -369,8 +384,11 @@ resource "google_monitoring_slo" "this" {
       dynamic "good_total_ratio" {
         for_each = request_based_sli.value.good_total_ratio
         content {
-          bad_service_filter   = good_total_ratio.value["bad_service_filter"]
-          good_service_filter  = good_total_ratio.value["good_service_filter"]
+          # bad_service_filter - (optional) is a type of string
+          bad_service_filter = good_total_ratio.value["bad_service_filter"]
+          # good_service_filter - (optional) is a type of string
+          good_service_filter = good_total_ratio.value["good_service_filter"]
+          # total_service_filter - (optional) is a type of string
           total_service_filter = good_total_ratio.value["total_service_filter"]
         }
       }
@@ -381,8 +399,11 @@ resource "google_monitoring_slo" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -390,24 +411,31 @@ resource "google_monitoring_slo" "this" {
   dynamic "windows_based_sli" {
     for_each = var.windows_based_sli
     content {
+      # good_bad_metric_filter - (optional) is a type of string
       good_bad_metric_filter = windows_based_sli.value["good_bad_metric_filter"]
-      window_period          = windows_based_sli.value["window_period"]
+      # window_period - (optional) is a type of string
+      window_period = windows_based_sli.value["window_period"]
 
       dynamic "good_total_ratio_threshold" {
         for_each = windows_based_sli.value.good_total_ratio_threshold
         content {
+          # threshold - (optional) is a type of number
           threshold = good_total_ratio_threshold.value["threshold"]
 
           dynamic "basic_sli_performance" {
             for_each = good_total_ratio_threshold.value.basic_sli_performance
             content {
+              # location - (optional) is a type of set of string
               location = basic_sli_performance.value["location"]
-              method   = basic_sli_performance.value["method"]
-              version  = basic_sli_performance.value["version"]
+              # method - (optional) is a type of set of string
+              method = basic_sli_performance.value["method"]
+              # version - (optional) is a type of set of string
+              version = basic_sli_performance.value["version"]
 
               dynamic "availability" {
                 for_each = basic_sli_performance.value.availability
                 content {
+                  # enabled - (optional) is a type of bool
                   enabled = availability.value["enabled"]
                 }
               }
@@ -415,6 +443,7 @@ resource "google_monitoring_slo" "this" {
               dynamic "latency" {
                 for_each = basic_sli_performance.value.latency
                 content {
+                  # threshold - (required) is a type of string
                   threshold = latency.value["threshold"]
                 }
               }
@@ -429,12 +458,15 @@ resource "google_monitoring_slo" "this" {
               dynamic "distribution_cut" {
                 for_each = performance.value.distribution_cut
                 content {
+                  # distribution_filter - (required) is a type of string
                   distribution_filter = distribution_cut.value["distribution_filter"]
 
                   dynamic "range" {
                     for_each = distribution_cut.value.range
                     content {
+                      # max - (optional) is a type of number
                       max = range.value["max"]
+                      # min - (optional) is a type of number
                       min = range.value["min"]
                     }
                   }
@@ -445,8 +477,11 @@ resource "google_monitoring_slo" "this" {
               dynamic "good_total_ratio" {
                 for_each = performance.value.good_total_ratio
                 content {
-                  bad_service_filter   = good_total_ratio.value["bad_service_filter"]
-                  good_service_filter  = good_total_ratio.value["good_service_filter"]
+                  # bad_service_filter - (optional) is a type of string
+                  bad_service_filter = good_total_ratio.value["bad_service_filter"]
+                  # good_service_filter - (optional) is a type of string
+                  good_service_filter = good_total_ratio.value["good_service_filter"]
+                  # total_service_filter - (optional) is a type of string
                   total_service_filter = good_total_ratio.value["total_service_filter"]
                 }
               }
@@ -460,12 +495,15 @@ resource "google_monitoring_slo" "this" {
       dynamic "metric_mean_in_range" {
         for_each = windows_based_sli.value.metric_mean_in_range
         content {
+          # time_series - (required) is a type of string
           time_series = metric_mean_in_range.value["time_series"]
 
           dynamic "range" {
             for_each = metric_mean_in_range.value.range
             content {
+              # max - (optional) is a type of number
               max = range.value["max"]
+              # min - (optional) is a type of number
               min = range.value["min"]
             }
           }
@@ -476,12 +514,15 @@ resource "google_monitoring_slo" "this" {
       dynamic "metric_sum_in_range" {
         for_each = windows_based_sli.value.metric_sum_in_range
         content {
+          # time_series - (required) is a type of string
           time_series = metric_sum_in_range.value["time_series"]
 
           dynamic "range" {
             for_each = metric_sum_in_range.value.range
             content {
+              # max - (optional) is a type of number
               max = range.value["max"]
+              # min - (optional) is a type of number
               min = range.value["min"]
             }
           }

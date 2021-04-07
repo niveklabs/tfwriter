@@ -297,12 +297,18 @@ variable "rule_group" {
 
 ```terraform
 resource "aws_networkfirewall_rule_group" "this" {
-  capacity    = var.capacity
+  # capacity - (required) is a type of number
+  capacity = var.capacity
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  rules       = var.rules
-  tags        = var.tags
-  type        = var.type
+  # name - (required) is a type of string
+  name = var.name
+  # rules - (optional) is a type of string
+  rules = var.rules
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (required) is a type of string
+  type = var.type
 
   dynamic "rule_group" {
     for_each = var.rule_group
@@ -315,11 +321,13 @@ resource "aws_networkfirewall_rule_group" "this" {
           dynamic "ip_sets" {
             for_each = rule_variables.value.ip_sets
             content {
+              # key - (required) is a type of string
               key = ip_sets.value["key"]
 
               dynamic "ip_set" {
                 for_each = ip_sets.value.ip_set
                 content {
+                  # definition - (required) is a type of set of string
                   definition = ip_set.value["definition"]
                 }
               }
@@ -330,11 +338,13 @@ resource "aws_networkfirewall_rule_group" "this" {
           dynamic "port_sets" {
             for_each = rule_variables.value.port_sets
             content {
+              # key - (required) is a type of string
               key = port_sets.value["key"]
 
               dynamic "port_set" {
                 for_each = port_sets.value.port_set
                 content {
+                  # definition - (required) is a type of set of string
                   definition = port_set.value["definition"]
                 }
               }
@@ -348,38 +358,51 @@ resource "aws_networkfirewall_rule_group" "this" {
       dynamic "rules_source" {
         for_each = rule_group.value.rules_source
         content {
+          # rules_string - (optional) is a type of string
           rules_string = rules_source.value["rules_string"]
 
           dynamic "rules_source_list" {
             for_each = rules_source.value.rules_source_list
             content {
+              # generated_rules_type - (required) is a type of string
               generated_rules_type = rules_source_list.value["generated_rules_type"]
-              target_types         = rules_source_list.value["target_types"]
-              targets              = rules_source_list.value["targets"]
+              # target_types - (required) is a type of set of string
+              target_types = rules_source_list.value["target_types"]
+              # targets - (required) is a type of set of string
+              targets = rules_source_list.value["targets"]
             }
           }
 
           dynamic "stateful_rule" {
             for_each = rules_source.value.stateful_rule
             content {
+              # action - (required) is a type of string
               action = stateful_rule.value["action"]
 
               dynamic "header" {
                 for_each = stateful_rule.value.header
                 content {
-                  destination      = header.value["destination"]
+                  # destination - (required) is a type of string
+                  destination = header.value["destination"]
+                  # destination_port - (required) is a type of string
                   destination_port = header.value["destination_port"]
-                  direction        = header.value["direction"]
-                  protocol         = header.value["protocol"]
-                  source           = header.value["source"]
-                  source_port      = header.value["source_port"]
+                  # direction - (required) is a type of string
+                  direction = header.value["direction"]
+                  # protocol - (required) is a type of string
+                  protocol = header.value["protocol"]
+                  # source - (required) is a type of string
+                  source = header.value["source"]
+                  # source_port - (required) is a type of string
+                  source_port = header.value["source_port"]
                 }
               }
 
               dynamic "rule_option" {
                 for_each = stateful_rule.value.rule_option
                 content {
-                  keyword  = rule_option.value["keyword"]
+                  # keyword - (required) is a type of string
+                  keyword = rule_option.value["keyword"]
+                  # settings - (optional) is a type of set of string
                   settings = rule_option.value["settings"]
                 }
               }
@@ -394,6 +417,7 @@ resource "aws_networkfirewall_rule_group" "this" {
               dynamic "custom_action" {
                 for_each = stateless_rules_and_custom_actions.value.custom_action
                 content {
+                  # action_name - (required) is a type of string
                   action_name = custom_action.value["action_name"]
 
                   dynamic "action_definition" {
@@ -407,6 +431,7 @@ resource "aws_networkfirewall_rule_group" "this" {
                           dynamic "dimension" {
                             for_each = publish_metric_action.value.dimension
                             content {
+                              # value - (required) is a type of string
                               value = dimension.value["value"]
                             }
                           }
@@ -423,21 +448,25 @@ resource "aws_networkfirewall_rule_group" "this" {
               dynamic "stateless_rule" {
                 for_each = stateless_rules_and_custom_actions.value.stateless_rule
                 content {
+                  # priority - (required) is a type of number
                   priority = stateless_rule.value["priority"]
 
                   dynamic "rule_definition" {
                     for_each = stateless_rule.value.rule_definition
                     content {
+                      # actions - (required) is a type of set of string
                       actions = rule_definition.value["actions"]
 
                       dynamic "match_attributes" {
                         for_each = rule_definition.value.match_attributes
                         content {
+                          # protocols - (optional) is a type of set of number
                           protocols = match_attributes.value["protocols"]
 
                           dynamic "destination" {
                             for_each = match_attributes.value.destination
                             content {
+                              # address_definition - (required) is a type of string
                               address_definition = destination.value["address_definition"]
                             }
                           }
@@ -445,14 +474,17 @@ resource "aws_networkfirewall_rule_group" "this" {
                           dynamic "destination_port" {
                             for_each = match_attributes.value.destination_port
                             content {
+                              # from_port - (required) is a type of number
                               from_port = destination_port.value["from_port"]
-                              to_port   = destination_port.value["to_port"]
+                              # to_port - (optional) is a type of number
+                              to_port = destination_port.value["to_port"]
                             }
                           }
 
                           dynamic "source" {
                             for_each = match_attributes.value.source
                             content {
+                              # address_definition - (required) is a type of string
                               address_definition = source.value["address_definition"]
                             }
                           }
@@ -460,15 +492,19 @@ resource "aws_networkfirewall_rule_group" "this" {
                           dynamic "source_port" {
                             for_each = match_attributes.value.source_port
                             content {
+                              # from_port - (required) is a type of number
                               from_port = source_port.value["from_port"]
-                              to_port   = source_port.value["to_port"]
+                              # to_port - (optional) is a type of number
+                              to_port = source_port.value["to_port"]
                             }
                           }
 
                           dynamic "tcp_flag" {
                             for_each = match_attributes.value.tcp_flag
                             content {
+                              # flags - (required) is a type of set of string
                               flags = tcp_flag.value["flags"]
+                              # masks - (optional) is a type of set of string
                               masks = tcp_flag.value["masks"]
                             }
                           }

@@ -194,29 +194,49 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_vpn_tunnel" "this" {
-  description                     = var.description
-  ike_version                     = var.ike_version
-  labels                          = var.labels
-  local_traffic_selector          = var.local_traffic_selector
-  name                            = var.name
-  peer_external_gateway           = var.peer_external_gateway
+  # description - (optional) is a type of string
+  description = var.description
+  # ike_version - (optional) is a type of number
+  ike_version = var.ike_version
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # local_traffic_selector - (optional) is a type of set of string
+  local_traffic_selector = var.local_traffic_selector
+  # name - (required) is a type of string
+  name = var.name
+  # peer_external_gateway - (optional) is a type of string
+  peer_external_gateway = var.peer_external_gateway
+  # peer_external_gateway_interface - (optional) is a type of number
   peer_external_gateway_interface = var.peer_external_gateway_interface
-  peer_gcp_gateway                = var.peer_gcp_gateway
-  peer_ip                         = var.peer_ip
-  project                         = var.project
-  region                          = var.region
-  remote_traffic_selector         = var.remote_traffic_selector
-  router                          = var.router
-  shared_secret                   = var.shared_secret
-  target_vpn_gateway              = var.target_vpn_gateway
-  vpn_gateway                     = var.vpn_gateway
-  vpn_gateway_interface           = var.vpn_gateway_interface
+  # peer_gcp_gateway - (optional) is a type of string
+  peer_gcp_gateway = var.peer_gcp_gateway
+  # peer_ip - (optional) is a type of string
+  peer_ip = var.peer_ip
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
+  # remote_traffic_selector - (optional) is a type of set of string
+  remote_traffic_selector = var.remote_traffic_selector
+  # router - (optional) is a type of string
+  router = var.router
+  # shared_secret - (required) is a type of string
+  shared_secret = var.shared_secret
+  # target_vpn_gateway - (optional) is a type of string
+  target_vpn_gateway = var.target_vpn_gateway
+  # vpn_gateway - (optional) is a type of string
+  vpn_gateway = var.vpn_gateway
+  # vpn_gateway_interface - (optional) is a type of number
+  vpn_gateway_interface = var.vpn_gateway_interface
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

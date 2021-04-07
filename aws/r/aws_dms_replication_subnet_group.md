@@ -71,10 +71,14 @@ variable "tags" {
 
 ```terraform
 resource "aws_dms_replication_subnet_group" "this" {
+  # replication_subnet_group_description - (required) is a type of string
   replication_subnet_group_description = var.replication_subnet_group_description
-  replication_subnet_group_id          = var.replication_subnet_group_id
-  subnet_ids                           = var.subnet_ids
-  tags                                 = var.tags
+  # replication_subnet_group_id - (required) is a type of string
+  replication_subnet_group_id = var.replication_subnet_group_id
+  # subnet_ids - (required) is a type of set of string
+  subnet_ids = var.subnet_ids
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

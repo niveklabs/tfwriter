@@ -111,20 +111,31 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_log_analytics_datasource_windows_performance_counter" "this" {
-  counter_name        = var.counter_name
-  instance_name       = var.instance_name
-  interval_seconds    = var.interval_seconds
-  name                = var.name
-  object_name         = var.object_name
+  # counter_name - (required) is a type of string
+  counter_name = var.counter_name
+  # instance_name - (required) is a type of string
+  instance_name = var.instance_name
+  # interval_seconds - (required) is a type of number
+  interval_seconds = var.interval_seconds
+  # name - (required) is a type of string
+  name = var.name
+  # object_name - (required) is a type of string
+  object_name = var.object_name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  workspace_name      = var.workspace_name
+  # workspace_name - (required) is a type of string
+  workspace_name = var.workspace_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

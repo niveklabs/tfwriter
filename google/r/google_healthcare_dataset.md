@@ -90,16 +90,23 @@ variable "timeouts" {
 
 ```terraform
 resource "google_healthcare_dataset" "this" {
-  location  = var.location
-  name      = var.name
-  project   = var.project
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # time_zone - (optional) is a type of string
   time_zone = var.time_zone
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

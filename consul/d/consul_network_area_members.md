@@ -65,9 +65,12 @@ variable "uuid" {
 
 ```terraform
 data "consul_network_area_members" "this" {
+  # datacenter - (optional) is a type of string
   datacenter = var.datacenter
-  token      = var.token
-  uuid       = var.uuid
+  # token - (optional) is a type of string
+  token = var.token
+  # uuid - (required) is a type of string
+  uuid = var.uuid
 }
 ```
 

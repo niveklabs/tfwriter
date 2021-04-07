@@ -49,6 +49,7 @@ variable "database_registration_id" {
 
 ```terraform
 data "oci_golden_gate_database_registration" "this" {
+  # database_registration_id - (required) is a type of string
   database_registration_id = var.database_registration_id
 }
 ```

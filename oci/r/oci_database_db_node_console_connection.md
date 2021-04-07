@@ -74,14 +74,19 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_database_db_node_console_connection" "this" {
+  # db_node_id - (required) is a type of string
   db_node_id = var.db_node_id
+  # public_key - (required) is a type of string
   public_key = var.public_key
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

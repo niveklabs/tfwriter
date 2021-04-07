@@ -251,30 +251,45 @@ variable "schema_change_policy" {
 
 ```terraform
 resource "aws_glue_crawler" "this" {
-  classifiers            = var.classifiers
-  configuration          = var.configuration
-  database_name          = var.database_name
-  description            = var.description
-  name                   = var.name
-  role                   = var.role
-  schedule               = var.schedule
+  # classifiers - (optional) is a type of list of string
+  classifiers = var.classifiers
+  # configuration - (optional) is a type of string
+  configuration = var.configuration
+  # database_name - (required) is a type of string
+  database_name = var.database_name
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # role - (required) is a type of string
+  role = var.role
+  # schedule - (optional) is a type of string
+  schedule = var.schedule
+  # security_configuration - (optional) is a type of string
   security_configuration = var.security_configuration
-  table_prefix           = var.table_prefix
-  tags                   = var.tags
+  # table_prefix - (optional) is a type of string
+  table_prefix = var.table_prefix
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "catalog_target" {
     for_each = var.catalog_target
     content {
+      # database_name - (required) is a type of string
       database_name = catalog_target.value["database_name"]
-      tables        = catalog_target.value["tables"]
+      # tables - (required) is a type of list of string
+      tables = catalog_target.value["tables"]
     }
   }
 
   dynamic "dynamodb_target" {
     for_each = var.dynamodb_target
     content {
-      path      = dynamodb_target.value["path"]
-      scan_all  = dynamodb_target.value["scan_all"]
+      # path - (required) is a type of string
+      path = dynamodb_target.value["path"]
+      # scan_all - (optional) is a type of bool
+      scan_all = dynamodb_target.value["scan_all"]
+      # scan_rate - (optional) is a type of number
       scan_rate = dynamodb_target.value["scan_rate"]
     }
   }
@@ -282,15 +297,19 @@ resource "aws_glue_crawler" "this" {
   dynamic "jdbc_target" {
     for_each = var.jdbc_target
     content {
+      # connection_name - (required) is a type of string
       connection_name = jdbc_target.value["connection_name"]
-      exclusions      = jdbc_target.value["exclusions"]
-      path            = jdbc_target.value["path"]
+      # exclusions - (optional) is a type of list of string
+      exclusions = jdbc_target.value["exclusions"]
+      # path - (required) is a type of string
+      path = jdbc_target.value["path"]
     }
   }
 
   dynamic "lineage_configuration" {
     for_each = var.lineage_configuration
     content {
+      # crawler_lineage_settings - (optional) is a type of string
       crawler_lineage_settings = lineage_configuration.value["crawler_lineage_settings"]
     }
   }
@@ -298,15 +317,19 @@ resource "aws_glue_crawler" "this" {
   dynamic "mongodb_target" {
     for_each = var.mongodb_target
     content {
+      # connection_name - (required) is a type of string
       connection_name = mongodb_target.value["connection_name"]
-      path            = mongodb_target.value["path"]
-      scan_all        = mongodb_target.value["scan_all"]
+      # path - (required) is a type of string
+      path = mongodb_target.value["path"]
+      # scan_all - (optional) is a type of bool
+      scan_all = mongodb_target.value["scan_all"]
     }
   }
 
   dynamic "recrawl_policy" {
     for_each = var.recrawl_policy
     content {
+      # recrawl_behavior - (optional) is a type of string
       recrawl_behavior = recrawl_policy.value["recrawl_behavior"]
     }
   }
@@ -314,16 +337,21 @@ resource "aws_glue_crawler" "this" {
   dynamic "s3_target" {
     for_each = var.s3_target
     content {
+      # connection_name - (optional) is a type of string
       connection_name = s3_target.value["connection_name"]
-      exclusions      = s3_target.value["exclusions"]
-      path            = s3_target.value["path"]
+      # exclusions - (optional) is a type of list of string
+      exclusions = s3_target.value["exclusions"]
+      # path - (required) is a type of string
+      path = s3_target.value["path"]
     }
   }
 
   dynamic "schema_change_policy" {
     for_each = var.schema_change_policy
     content {
+      # delete_behavior - (optional) is a type of string
       delete_behavior = schema_change_policy.value["delete_behavior"]
+      # update_behavior - (optional) is a type of string
       update_behavior = schema_change_policy.value["update_behavior"]
     }
   }

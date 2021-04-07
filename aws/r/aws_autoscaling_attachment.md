@@ -65,9 +65,12 @@ variable "elb" {
 
 ```terraform
 resource "aws_autoscaling_attachment" "this" {
-  alb_target_group_arn   = var.alb_target_group_arn
+  # alb_target_group_arn - (optional) is a type of string
+  alb_target_group_arn = var.alb_target_group_arn
+  # autoscaling_group_name - (required) is a type of string
   autoscaling_group_name = var.autoscaling_group_name
-  elb                    = var.elb
+  # elb - (optional) is a type of string
+  elb = var.elb
 }
 ```
 

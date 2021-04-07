@@ -90,16 +90,23 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_management_agent_management_agent_install_key" "this" {
+  # allowed_key_install_count - (optional) is a type of number
   allowed_key_install_count = var.allowed_key_install_count
-  compartment_id            = var.compartment_id
-  display_name              = var.display_name
-  time_expires              = var.time_expires
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # time_expires - (optional) is a type of string
+  time_expires = var.time_expires
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

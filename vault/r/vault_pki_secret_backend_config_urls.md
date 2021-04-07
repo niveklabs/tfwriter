@@ -73,10 +73,14 @@ variable "ocsp_servers" {
 
 ```terraform
 resource "vault_pki_secret_backend_config_urls" "this" {
-  backend                 = var.backend
+  # backend - (required) is a type of string
+  backend = var.backend
+  # crl_distribution_points - (optional) is a type of list of string
   crl_distribution_points = var.crl_distribution_points
-  issuing_certificates    = var.issuing_certificates
-  ocsp_servers            = var.ocsp_servers
+  # issuing_certificates - (optional) is a type of list of string
+  issuing_certificates = var.issuing_certificates
+  # ocsp_servers - (optional) is a type of list of string
+  ocsp_servers = var.ocsp_servers
 }
 ```
 

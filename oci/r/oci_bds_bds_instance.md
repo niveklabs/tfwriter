@@ -236,39 +236,57 @@ variable "worker_node" {
 
 ```terraform
 resource "oci_bds_bds_instance" "this" {
-  cluster_admin_password  = var.cluster_admin_password
-  cluster_public_key      = var.cluster_public_key
-  cluster_version         = var.cluster_version
-  compartment_id          = var.compartment_id
-  defined_tags            = var.defined_tags
-  display_name            = var.display_name
-  freeform_tags           = var.freeform_tags
+  # cluster_admin_password - (required) is a type of string
+  cluster_admin_password = var.cluster_admin_password
+  # cluster_public_key - (required) is a type of string
+  cluster_public_key = var.cluster_public_key
+  # cluster_version - (required) is a type of string
+  cluster_version = var.cluster_version
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # is_cloud_sql_configured - (optional) is a type of bool
   is_cloud_sql_configured = var.is_cloud_sql_configured
-  is_high_availability    = var.is_high_availability
-  is_secure               = var.is_secure
+  # is_high_availability - (required) is a type of bool
+  is_high_availability = var.is_high_availability
+  # is_secure - (required) is a type of bool
+  is_secure = var.is_secure
 
   dynamic "cloud_sql_details" {
     for_each = var.cloud_sql_details
     content {
+      # block_volume_size_in_gbs - (required) is a type of string
       block_volume_size_in_gbs = cloud_sql_details.value["block_volume_size_in_gbs"]
-      shape                    = cloud_sql_details.value["shape"]
+      # shape - (required) is a type of string
+      shape = cloud_sql_details.value["shape"]
     }
   }
 
   dynamic "master_node" {
     for_each = var.master_node
     content {
+      # block_volume_size_in_gbs - (required) is a type of string
       block_volume_size_in_gbs = master_node.value["block_volume_size_in_gbs"]
-      number_of_nodes          = master_node.value["number_of_nodes"]
-      shape                    = master_node.value["shape"]
-      subnet_id                = master_node.value["subnet_id"]
+      # number_of_nodes - (required) is a type of number
+      number_of_nodes = master_node.value["number_of_nodes"]
+      # shape - (required) is a type of string
+      shape = master_node.value["shape"]
+      # subnet_id - (required) is a type of string
+      subnet_id = master_node.value["subnet_id"]
     }
   }
 
   dynamic "network_config" {
     for_each = var.network_config
     content {
-      cidr_block              = network_config.value["cidr_block"]
+      # cidr_block - (optional) is a type of string
+      cidr_block = network_config.value["cidr_block"]
+      # is_nat_gateway_required - (optional) is a type of bool
       is_nat_gateway_required = network_config.value["is_nat_gateway_required"]
     }
   }
@@ -276,8 +294,11 @@ resource "oci_bds_bds_instance" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -285,20 +306,28 @@ resource "oci_bds_bds_instance" "this" {
   dynamic "util_node" {
     for_each = var.util_node
     content {
+      # block_volume_size_in_gbs - (required) is a type of string
       block_volume_size_in_gbs = util_node.value["block_volume_size_in_gbs"]
-      number_of_nodes          = util_node.value["number_of_nodes"]
-      shape                    = util_node.value["shape"]
-      subnet_id                = util_node.value["subnet_id"]
+      # number_of_nodes - (required) is a type of number
+      number_of_nodes = util_node.value["number_of_nodes"]
+      # shape - (required) is a type of string
+      shape = util_node.value["shape"]
+      # subnet_id - (required) is a type of string
+      subnet_id = util_node.value["subnet_id"]
     }
   }
 
   dynamic "worker_node" {
     for_each = var.worker_node
     content {
+      # block_volume_size_in_gbs - (required) is a type of string
       block_volume_size_in_gbs = worker_node.value["block_volume_size_in_gbs"]
-      number_of_nodes          = worker_node.value["number_of_nodes"]
-      shape                    = worker_node.value["shape"]
-      subnet_id                = worker_node.value["subnet_id"]
+      # number_of_nodes - (required) is a type of number
+      number_of_nodes = worker_node.value["number_of_nodes"]
+      # shape - (required) is a type of string
+      shape = worker_node.value["shape"]
+      # subnet_id - (required) is a type of string
+      subnet_id = worker_node.value["subnet_id"]
     }
   }
 

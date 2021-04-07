@@ -92,15 +92,21 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_platform_image" "this" {
-  location  = var.location
-  offer     = var.offer
+  # location - (required) is a type of string
+  location = var.location
+  # offer - (required) is a type of string
+  offer = var.offer
+  # publisher - (required) is a type of string
   publisher = var.publisher
-  sku       = var.sku
-  version   = var.version
+  # sku - (required) is a type of string
+  sku = var.sku
+  # version - (optional) is a type of string
+  version = var.version
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

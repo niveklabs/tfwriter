@@ -182,21 +182,33 @@ variable "vpn_client_configuration" {
 
 ```terraform
 resource "azurestack_virtual_network_gateway" "this" {
+  # default_local_network_gateway_id - (optional) is a type of string
   default_local_network_gateway_id = var.default_local_network_gateway_id
-  enable_bgp                       = var.enable_bgp
-  location                         = var.location
-  name                             = var.name
-  resource_group_name              = var.resource_group_name
-  sku                              = var.sku
-  tags                             = var.tags
-  type                             = var.type
-  vpn_type                         = var.vpn_type
+  # enable_bgp - (optional) is a type of bool
+  enable_bgp = var.enable_bgp
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # sku - (required) is a type of string
+  sku = var.sku
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (required) is a type of string
+  type = var.type
+  # vpn_type - (optional) is a type of string
+  vpn_type = var.vpn_type
 
   dynamic "bgp_settings" {
     for_each = var.bgp_settings
     content {
-      asn             = bgp_settings.value["asn"]
-      peer_weight     = bgp_settings.value["peer_weight"]
+      # asn - (optional) is a type of number
+      asn = bgp_settings.value["asn"]
+      # peer_weight - (optional) is a type of number
+      peer_weight = bgp_settings.value["peer_weight"]
+      # peering_address - (optional) is a type of string
       peering_address = bgp_settings.value["peering_address"]
     }
   }
@@ -204,23 +216,31 @@ resource "azurestack_virtual_network_gateway" "this" {
   dynamic "ip_configuration" {
     for_each = var.ip_configuration
     content {
-      name                          = ip_configuration.value["name"]
+      # name - (optional) is a type of string
+      name = ip_configuration.value["name"]
+      # private_ip_address_allocation - (optional) is a type of string
       private_ip_address_allocation = ip_configuration.value["private_ip_address_allocation"]
-      public_ip_address_id          = ip_configuration.value["public_ip_address_id"]
-      subnet_id                     = ip_configuration.value["subnet_id"]
+      # public_ip_address_id - (optional) is a type of string
+      public_ip_address_id = ip_configuration.value["public_ip_address_id"]
+      # subnet_id - (required) is a type of string
+      subnet_id = ip_configuration.value["subnet_id"]
     }
   }
 
   dynamic "vpn_client_configuration" {
     for_each = var.vpn_client_configuration
     content {
-      address_space        = vpn_client_configuration.value["address_space"]
+      # address_space - (required) is a type of list of string
+      address_space = vpn_client_configuration.value["address_space"]
+      # vpn_client_protocols - (optional) is a type of set of string
       vpn_client_protocols = vpn_client_configuration.value["vpn_client_protocols"]
 
       dynamic "revoked_certificate" {
         for_each = vpn_client_configuration.value.revoked_certificate
         content {
-          name       = revoked_certificate.value["name"]
+          # name - (required) is a type of string
+          name = revoked_certificate.value["name"]
+          # thumbprint - (required) is a type of string
           thumbprint = revoked_certificate.value["thumbprint"]
         }
       }
@@ -228,7 +248,9 @@ resource "azurestack_virtual_network_gateway" "this" {
       dynamic "root_certificate" {
         for_each = vpn_client_configuration.value.root_certificate
         content {
-          name             = root_certificate.value["name"]
+          # name - (required) is a type of string
+          name = root_certificate.value["name"]
+          # public_cert_data - (required) is a type of string
           public_cert_data = root_certificate.value["public_cert_data"]
         }
       }

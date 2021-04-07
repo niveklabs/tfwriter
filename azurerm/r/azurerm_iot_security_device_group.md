@@ -114,34 +114,47 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_iot_security_device_group" "this" {
+  # iothub_id - (required) is a type of string
   iothub_id = var.iothub_id
-  name      = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "allow_rule" {
     for_each = var.allow_rule
     content {
+      # connection_to_ip_not_allowed - (optional) is a type of set of string
       connection_to_ip_not_allowed = allow_rule.value["connection_to_ip_not_allowed"]
-      local_user_not_allowed       = allow_rule.value["local_user_not_allowed"]
-      process_not_allowed          = allow_rule.value["process_not_allowed"]
+      # local_user_not_allowed - (optional) is a type of set of string
+      local_user_not_allowed = allow_rule.value["local_user_not_allowed"]
+      # process_not_allowed - (optional) is a type of set of string
+      process_not_allowed = allow_rule.value["process_not_allowed"]
     }
   }
 
   dynamic "range_rule" {
     for_each = var.range_rule
     content {
+      # duration - (required) is a type of string
       duration = range_rule.value["duration"]
-      max      = range_rule.value["max"]
-      min      = range_rule.value["min"]
-      type     = range_rule.value["type"]
+      # max - (required) is a type of number
+      max = range_rule.value["max"]
+      # min - (required) is a type of number
+      min = range_rule.value["min"]
+      # type - (required) is a type of string
+      type = range_rule.value["type"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

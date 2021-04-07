@@ -98,16 +98,23 @@ variable "filter" {
 
 ```terraform
 data "aws_vpc" "this" {
-  cidr_block      = var.cidr_block
-  default         = var.default
+  # cidr_block - (optional) is a type of string
+  cidr_block = var.cidr_block
+  # default - (optional) is a type of bool
+  default = var.default
+  # dhcp_options_id - (optional) is a type of string
   dhcp_options_id = var.dhcp_options_id
-  state           = var.state
-  tags            = var.tags
+  # state - (optional) is a type of string
+  state = var.state
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of set of string
       values = filter.value["values"]
     }
   }

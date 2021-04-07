@@ -85,12 +85,18 @@ variable "username" {
 
 ```terraform
 resource "vault_database_secret_backend_static_role" "this" {
-  backend             = var.backend
-  db_name             = var.db_name
-  name                = var.name
-  rotation_period     = var.rotation_period
+  # backend - (required) is a type of string
+  backend = var.backend
+  # db_name - (required) is a type of string
+  db_name = var.db_name
+  # name - (required) is a type of string
+  name = var.name
+  # rotation_period - (required) is a type of number
+  rotation_period = var.rotation_period
+  # rotation_statements - (optional) is a type of list of string
   rotation_statements = var.rotation_statements
-  username            = var.username
+  # username - (required) is a type of string
+  username = var.username
 }
 ```
 

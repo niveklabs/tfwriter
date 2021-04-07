@@ -91,17 +91,25 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_management_lock" "this" {
+  # lock_level - (required) is a type of string
   lock_level = var.lock_level
-  name       = var.name
-  notes      = var.notes
-  scope      = var.scope
+  # name - (required) is a type of string
+  name = var.name
+  # notes - (optional) is a type of string
+  notes = var.notes
+  # scope - (required) is a type of string
+  scope = var.scope
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

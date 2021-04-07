@@ -50,6 +50,7 @@ variable "tags" {
 
 ```terraform
 data "aws_cloudfront_distribution" "this" {
+  # tags - (optional) is a type of map of string
   tags = var.tags
 }
 ```

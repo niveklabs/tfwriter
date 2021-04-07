@@ -56,7 +56,9 @@ variable "policy" {
 
 ```terraform
 resource "aws_sns_topic_policy" "this" {
-  arn    = var.arn
+  # arn - (required) is a type of string
+  arn = var.arn
+  # policy - (required) is a type of string
   policy = var.policy
 }
 ```

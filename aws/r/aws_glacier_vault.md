@@ -81,14 +81,19 @@ variable "notification" {
 
 ```terraform
 resource "aws_glacier_vault" "this" {
+  # access_policy - (optional) is a type of string
   access_policy = var.access_policy
-  name          = var.name
-  tags          = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "notification" {
     for_each = var.notification
     content {
-      events    = notification.value["events"]
+      # events - (required) is a type of set of string
+      events = notification.value["events"]
+      # sns_topic - (required) is a type of string
       sns_topic = notification.value["sns_topic"]
     }
   }

@@ -444,23 +444,33 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_cloud_guard_target" "this" {
-  compartment_id       = var.compartment_id
-  defined_tags         = var.defined_tags
-  description          = var.description
-  display_name         = var.display_name
-  freeform_tags        = var.freeform_tags
-  state                = var.state
-  target_resource_id   = var.target_resource_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # state - (optional) is a type of string
+  state = var.state
+  # target_resource_id - (required) is a type of string
+  target_resource_id = var.target_resource_id
+  # target_resource_type - (required) is a type of string
   target_resource_type = var.target_resource_type
 
   dynamic "target_detector_recipes" {
     for_each = var.target_detector_recipes
     content {
+      # detector_recipe_id - (required) is a type of string
       detector_recipe_id = target_detector_recipes.value["detector_recipe_id"]
 
       dynamic "detector_rules" {
         for_each = target_detector_recipes.value.detector_rules
         content {
+          # detector_rule_id - (required) is a type of string
           detector_rule_id = detector_rules.value["detector_rule_id"]
 
           dynamic "details" {
@@ -470,8 +480,10 @@ resource "oci_cloud_guard_target" "this" {
               dynamic "condition_groups" {
                 for_each = details.value.condition_groups
                 content {
+                  # compartment_id - (required) is a type of string
                   compartment_id = condition_groups.value["compartment_id"]
-                  condition      = condition_groups.value["condition"]
+                  # condition - (required) is a type of string
+                  condition = condition_groups.value["condition"]
                 }
               }
 
@@ -487,25 +499,32 @@ resource "oci_cloud_guard_target" "this" {
   dynamic "target_responder_recipes" {
     for_each = var.target_responder_recipes
     content {
+      # responder_recipe_id - (required) is a type of string
       responder_recipe_id = target_responder_recipes.value["responder_recipe_id"]
 
       dynamic "responder_rules" {
         for_each = target_responder_recipes.value.responder_rules
         content {
+          # responder_rule_id - (required) is a type of string
           responder_rule_id = responder_rules.value["responder_rule_id"]
 
           dynamic "details" {
             for_each = responder_rules.value.details
             content {
+              # condition - (optional) is a type of string
               condition = details.value["condition"]
-              mode      = details.value["mode"]
+              # mode - (optional) is a type of string
+              mode = details.value["mode"]
 
               dynamic "configurations" {
                 for_each = details.value.configurations
                 content {
+                  # config_key - (required) is a type of string
                   config_key = configurations.value["config_key"]
-                  name       = configurations.value["name"]
-                  value      = configurations.value["value"]
+                  # name - (required) is a type of string
+                  name = configurations.value["name"]
+                  # value - (required) is a type of string
+                  value = configurations.value["value"]
                 }
               }
 
@@ -521,8 +540,11 @@ resource "oci_cloud_guard_target" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

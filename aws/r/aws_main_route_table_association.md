@@ -56,8 +56,10 @@ variable "vpc_id" {
 
 ```terraform
 resource "aws_main_route_table_association" "this" {
+  # route_table_id - (required) is a type of string
   route_table_id = var.route_table_id
-  vpc_id         = var.vpc_id
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

@@ -82,11 +82,16 @@ variable "group_name" {
 
 ```terraform
 data "vault_identity_group" "this" {
-  alias_id             = var.alias_id
+  # alias_id - (optional) is a type of string
+  alias_id = var.alias_id
+  # alias_mount_accessor - (optional) is a type of string
   alias_mount_accessor = var.alias_mount_accessor
-  alias_name           = var.alias_name
-  group_id             = var.group_id
-  group_name           = var.group_name
+  # alias_name - (optional) is a type of string
+  alias_name = var.alias_name
+  # group_id - (optional) is a type of string
+  group_id = var.group_id
+  # group_name - (optional) is a type of string
+  group_name = var.group_name
 }
 ```
 

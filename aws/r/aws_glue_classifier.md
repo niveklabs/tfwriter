@@ -121,32 +121,43 @@ variable "xml_classifier" {
 
 ```terraform
 resource "aws_glue_classifier" "this" {
+  # name - (required) is a type of string
   name = var.name
 
   dynamic "csv_classifier" {
     for_each = var.csv_classifier
     content {
-      allow_single_column    = csv_classifier.value["allow_single_column"]
-      contains_header        = csv_classifier.value["contains_header"]
-      delimiter              = csv_classifier.value["delimiter"]
+      # allow_single_column - (optional) is a type of bool
+      allow_single_column = csv_classifier.value["allow_single_column"]
+      # contains_header - (optional) is a type of string
+      contains_header = csv_classifier.value["contains_header"]
+      # delimiter - (optional) is a type of string
+      delimiter = csv_classifier.value["delimiter"]
+      # disable_value_trimming - (optional) is a type of bool
       disable_value_trimming = csv_classifier.value["disable_value_trimming"]
-      header                 = csv_classifier.value["header"]
-      quote_symbol           = csv_classifier.value["quote_symbol"]
+      # header - (optional) is a type of list of string
+      header = csv_classifier.value["header"]
+      # quote_symbol - (optional) is a type of string
+      quote_symbol = csv_classifier.value["quote_symbol"]
     }
   }
 
   dynamic "grok_classifier" {
     for_each = var.grok_classifier
     content {
-      classification  = grok_classifier.value["classification"]
+      # classification - (required) is a type of string
+      classification = grok_classifier.value["classification"]
+      # custom_patterns - (optional) is a type of string
       custom_patterns = grok_classifier.value["custom_patterns"]
-      grok_pattern    = grok_classifier.value["grok_pattern"]
+      # grok_pattern - (required) is a type of string
+      grok_pattern = grok_classifier.value["grok_pattern"]
     }
   }
 
   dynamic "json_classifier" {
     for_each = var.json_classifier
     content {
+      # json_path - (required) is a type of string
       json_path = json_classifier.value["json_path"]
     }
   }
@@ -154,8 +165,10 @@ resource "aws_glue_classifier" "this" {
   dynamic "xml_classifier" {
     for_each = var.xml_classifier
     content {
+      # classification - (required) is a type of string
       classification = xml_classifier.value["classification"]
-      row_tag        = xml_classifier.value["row_tag"]
+      # row_tag - (required) is a type of string
+      row_tag = xml_classifier.value["row_tag"]
     }
   }
 

@@ -128,21 +128,32 @@ variable "namespace_rule" {
 
 ```terraform
 resource "consul_acl_auth_method" "this" {
-  config         = var.config
-  config_json    = var.config_json
-  description    = var.description
-  display_name   = var.display_name
-  max_token_ttl  = var.max_token_ttl
-  name           = var.name
-  namespace      = var.namespace
+  # config - (optional) is a type of map of string
+  config = var.config
+  # config_json - (optional) is a type of string
+  config_json = var.config_json
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # max_token_ttl - (optional) is a type of string
+  max_token_ttl = var.max_token_ttl
+  # name - (required) is a type of string
+  name = var.name
+  # namespace - (optional) is a type of string
+  namespace = var.namespace
+  # token_locality - (optional) is a type of string
   token_locality = var.token_locality
-  type           = var.type
+  # type - (required) is a type of string
+  type = var.type
 
   dynamic "namespace_rule" {
     for_each = var.namespace_rule
     content {
+      # bind_namespace - (required) is a type of string
       bind_namespace = namespace_rule.value["bind_namespace"]
-      selector       = namespace_rule.value["selector"]
+      # selector - (optional) is a type of string
+      selector = namespace_rule.value["selector"]
     }
   }
 

@@ -63,11 +63,13 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_ses_domain_identity_verification" "this" {
+  # domain - (required) is a type of string
   domain = var.domain
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

@@ -2056,36 +2056,48 @@ variable "timeouts" {
 
 ```terraform
 resource "kubernetes_daemonset" "this" {
+  # wait_for_rollout - (optional) is a type of bool
   wait_for_rollout = var.wait_for_rollout
 
   dynamic "metadata" {
     for_each = var.metadata
     content {
-      annotations   = metadata.value["annotations"]
+      # annotations - (optional) is a type of map of string
+      annotations = metadata.value["annotations"]
+      # generate_name - (optional) is a type of string
       generate_name = metadata.value["generate_name"]
-      labels        = metadata.value["labels"]
-      name          = metadata.value["name"]
-      namespace     = metadata.value["namespace"]
+      # labels - (optional) is a type of map of string
+      labels = metadata.value["labels"]
+      # name - (optional) is a type of string
+      name = metadata.value["name"]
+      # namespace - (optional) is a type of string
+      namespace = metadata.value["namespace"]
     }
   }
 
   dynamic "spec" {
     for_each = var.spec
     content {
-      min_ready_seconds      = spec.value["min_ready_seconds"]
+      # min_ready_seconds - (optional) is a type of number
+      min_ready_seconds = spec.value["min_ready_seconds"]
+      # revision_history_limit - (optional) is a type of number
       revision_history_limit = spec.value["revision_history_limit"]
 
       dynamic "selector" {
         for_each = spec.value.selector
         content {
+          # match_labels - (optional) is a type of map of string
           match_labels = selector.value["match_labels"]
 
           dynamic "match_expressions" {
             for_each = selector.value.match_expressions
             content {
-              key      = match_expressions.value["key"]
+              # key - (optional) is a type of string
+              key = match_expressions.value["key"]
+              # operator - (optional) is a type of string
               operator = match_expressions.value["operator"]
-              values   = match_expressions.value["values"]
+              # values - (optional) is a type of set of string
+              values = match_expressions.value["values"]
             }
           }
 
@@ -2095,11 +2107,13 @@ resource "kubernetes_daemonset" "this" {
       dynamic "strategy" {
         for_each = spec.value.strategy
         content {
+          # type - (optional) is a type of string
           type = strategy.value["type"]
 
           dynamic "rolling_update" {
             for_each = strategy.value.rolling_update
             content {
+              # max_unavailable - (optional) is a type of string
               max_unavailable = rolling_update.value["max_unavailable"]
             }
           }
@@ -2114,31 +2128,51 @@ resource "kubernetes_daemonset" "this" {
           dynamic "metadata" {
             for_each = template.value.metadata
             content {
-              annotations   = metadata.value["annotations"]
+              # annotations - (optional) is a type of map of string
+              annotations = metadata.value["annotations"]
+              # generate_name - (optional) is a type of string
               generate_name = metadata.value["generate_name"]
-              labels        = metadata.value["labels"]
-              name          = metadata.value["name"]
+              # labels - (optional) is a type of map of string
+              labels = metadata.value["labels"]
+              # name - (optional) is a type of string
+              name = metadata.value["name"]
             }
           }
 
           dynamic "spec" {
             for_each = template.value.spec
             content {
-              active_deadline_seconds          = spec.value["active_deadline_seconds"]
-              automount_service_account_token  = spec.value["automount_service_account_token"]
-              dns_policy                       = spec.value["dns_policy"]
-              enable_service_links             = spec.value["enable_service_links"]
-              host_ipc                         = spec.value["host_ipc"]
-              host_network                     = spec.value["host_network"]
-              host_pid                         = spec.value["host_pid"]
-              hostname                         = spec.value["hostname"]
-              node_name                        = spec.value["node_name"]
-              node_selector                    = spec.value["node_selector"]
-              priority_class_name              = spec.value["priority_class_name"]
-              restart_policy                   = spec.value["restart_policy"]
-              service_account_name             = spec.value["service_account_name"]
-              share_process_namespace          = spec.value["share_process_namespace"]
-              subdomain                        = spec.value["subdomain"]
+              # active_deadline_seconds - (optional) is a type of number
+              active_deadline_seconds = spec.value["active_deadline_seconds"]
+              # automount_service_account_token - (optional) is a type of bool
+              automount_service_account_token = spec.value["automount_service_account_token"]
+              # dns_policy - (optional) is a type of string
+              dns_policy = spec.value["dns_policy"]
+              # enable_service_links - (optional) is a type of bool
+              enable_service_links = spec.value["enable_service_links"]
+              # host_ipc - (optional) is a type of bool
+              host_ipc = spec.value["host_ipc"]
+              # host_network - (optional) is a type of bool
+              host_network = spec.value["host_network"]
+              # host_pid - (optional) is a type of bool
+              host_pid = spec.value["host_pid"]
+              # hostname - (optional) is a type of string
+              hostname = spec.value["hostname"]
+              # node_name - (optional) is a type of string
+              node_name = spec.value["node_name"]
+              # node_selector - (optional) is a type of map of string
+              node_selector = spec.value["node_selector"]
+              # priority_class_name - (optional) is a type of string
+              priority_class_name = spec.value["priority_class_name"]
+              # restart_policy - (optional) is a type of string
+              restart_policy = spec.value["restart_policy"]
+              # service_account_name - (optional) is a type of string
+              service_account_name = spec.value["service_account_name"]
+              # share_process_namespace - (optional) is a type of bool
+              share_process_namespace = spec.value["share_process_namespace"]
+              # subdomain - (optional) is a type of string
+              subdomain = spec.value["subdomain"]
+              # termination_grace_period_seconds - (optional) is a type of number
               termination_grace_period_seconds = spec.value["termination_grace_period_seconds"]
 
               dynamic "affinity" {
@@ -2152,6 +2186,7 @@ resource "kubernetes_daemonset" "this" {
                       dynamic "preferred_during_scheduling_ignored_during_execution" {
                         for_each = node_affinity.value.preferred_during_scheduling_ignored_during_execution
                         content {
+                          # weight - (required) is a type of number
                           weight = preferred_during_scheduling_ignored_during_execution.value["weight"]
 
                           dynamic "preference" {
@@ -2161,9 +2196,12 @@ resource "kubernetes_daemonset" "this" {
                               dynamic "match_expressions" {
                                 for_each = preference.value.match_expressions
                                 content {
-                                  key      = match_expressions.value["key"]
+                                  # key - (optional) is a type of string
+                                  key = match_expressions.value["key"]
+                                  # operator - (optional) is a type of string
                                   operator = match_expressions.value["operator"]
-                                  values   = match_expressions.value["values"]
+                                  # values - (optional) is a type of set of string
+                                  values = match_expressions.value["values"]
                                 }
                               }
 
@@ -2184,9 +2222,12 @@ resource "kubernetes_daemonset" "this" {
                               dynamic "match_expressions" {
                                 for_each = node_selector_term.value.match_expressions
                                 content {
-                                  key      = match_expressions.value["key"]
+                                  # key - (optional) is a type of string
+                                  key = match_expressions.value["key"]
+                                  # operator - (optional) is a type of string
                                   operator = match_expressions.value["operator"]
-                                  values   = match_expressions.value["values"]
+                                  # values - (optional) is a type of set of string
+                                  values = match_expressions.value["values"]
                                 }
                               }
 
@@ -2206,25 +2247,32 @@ resource "kubernetes_daemonset" "this" {
                       dynamic "preferred_during_scheduling_ignored_during_execution" {
                         for_each = pod_affinity.value.preferred_during_scheduling_ignored_during_execution
                         content {
+                          # weight - (required) is a type of number
                           weight = preferred_during_scheduling_ignored_during_execution.value["weight"]
 
                           dynamic "pod_affinity_term" {
                             for_each = preferred_during_scheduling_ignored_during_execution.value.pod_affinity_term
                             content {
-                              namespaces   = pod_affinity_term.value["namespaces"]
+                              # namespaces - (optional) is a type of set of string
+                              namespaces = pod_affinity_term.value["namespaces"]
+                              # topology_key - (optional) is a type of string
                               topology_key = pod_affinity_term.value["topology_key"]
 
                               dynamic "label_selector" {
                                 for_each = pod_affinity_term.value.label_selector
                                 content {
+                                  # match_labels - (optional) is a type of map of string
                                   match_labels = label_selector.value["match_labels"]
 
                                   dynamic "match_expressions" {
                                     for_each = label_selector.value.match_expressions
                                     content {
-                                      key      = match_expressions.value["key"]
+                                      # key - (optional) is a type of string
+                                      key = match_expressions.value["key"]
+                                      # operator - (optional) is a type of string
                                       operator = match_expressions.value["operator"]
-                                      values   = match_expressions.value["values"]
+                                      # values - (optional) is a type of set of string
+                                      values = match_expressions.value["values"]
                                     }
                                   }
 
@@ -2240,20 +2288,26 @@ resource "kubernetes_daemonset" "this" {
                       dynamic "required_during_scheduling_ignored_during_execution" {
                         for_each = pod_affinity.value.required_during_scheduling_ignored_during_execution
                         content {
-                          namespaces   = required_during_scheduling_ignored_during_execution.value["namespaces"]
+                          # namespaces - (optional) is a type of set of string
+                          namespaces = required_during_scheduling_ignored_during_execution.value["namespaces"]
+                          # topology_key - (optional) is a type of string
                           topology_key = required_during_scheduling_ignored_during_execution.value["topology_key"]
 
                           dynamic "label_selector" {
                             for_each = required_during_scheduling_ignored_during_execution.value.label_selector
                             content {
+                              # match_labels - (optional) is a type of map of string
                               match_labels = label_selector.value["match_labels"]
 
                               dynamic "match_expressions" {
                                 for_each = label_selector.value.match_expressions
                                 content {
-                                  key      = match_expressions.value["key"]
+                                  # key - (optional) is a type of string
+                                  key = match_expressions.value["key"]
+                                  # operator - (optional) is a type of string
                                   operator = match_expressions.value["operator"]
-                                  values   = match_expressions.value["values"]
+                                  # values - (optional) is a type of set of string
+                                  values = match_expressions.value["values"]
                                 }
                               }
 
@@ -2273,25 +2327,32 @@ resource "kubernetes_daemonset" "this" {
                       dynamic "preferred_during_scheduling_ignored_during_execution" {
                         for_each = pod_anti_affinity.value.preferred_during_scheduling_ignored_during_execution
                         content {
+                          # weight - (required) is a type of number
                           weight = preferred_during_scheduling_ignored_during_execution.value["weight"]
 
                           dynamic "pod_affinity_term" {
                             for_each = preferred_during_scheduling_ignored_during_execution.value.pod_affinity_term
                             content {
-                              namespaces   = pod_affinity_term.value["namespaces"]
+                              # namespaces - (optional) is a type of set of string
+                              namespaces = pod_affinity_term.value["namespaces"]
+                              # topology_key - (optional) is a type of string
                               topology_key = pod_affinity_term.value["topology_key"]
 
                               dynamic "label_selector" {
                                 for_each = pod_affinity_term.value.label_selector
                                 content {
+                                  # match_labels - (optional) is a type of map of string
                                   match_labels = label_selector.value["match_labels"]
 
                                   dynamic "match_expressions" {
                                     for_each = label_selector.value.match_expressions
                                     content {
-                                      key      = match_expressions.value["key"]
+                                      # key - (optional) is a type of string
+                                      key = match_expressions.value["key"]
+                                      # operator - (optional) is a type of string
                                       operator = match_expressions.value["operator"]
-                                      values   = match_expressions.value["values"]
+                                      # values - (optional) is a type of set of string
+                                      values = match_expressions.value["values"]
                                     }
                                   }
 
@@ -2307,20 +2368,26 @@ resource "kubernetes_daemonset" "this" {
                       dynamic "required_during_scheduling_ignored_during_execution" {
                         for_each = pod_anti_affinity.value.required_during_scheduling_ignored_during_execution
                         content {
-                          namespaces   = required_during_scheduling_ignored_during_execution.value["namespaces"]
+                          # namespaces - (optional) is a type of set of string
+                          namespaces = required_during_scheduling_ignored_during_execution.value["namespaces"]
+                          # topology_key - (optional) is a type of string
                           topology_key = required_during_scheduling_ignored_during_execution.value["topology_key"]
 
                           dynamic "label_selector" {
                             for_each = required_during_scheduling_ignored_during_execution.value.label_selector
                             content {
+                              # match_labels - (optional) is a type of map of string
                               match_labels = label_selector.value["match_labels"]
 
                               dynamic "match_expressions" {
                                 for_each = label_selector.value.match_expressions
                                 content {
-                                  key      = match_expressions.value["key"]
+                                  # key - (optional) is a type of string
+                                  key = match_expressions.value["key"]
+                                  # operator - (optional) is a type of string
                                   operator = match_expressions.value["operator"]
-                                  values   = match_expressions.value["values"]
+                                  # values - (optional) is a type of set of string
+                                  values = match_expressions.value["values"]
                                 }
                               }
 
@@ -2339,22 +2406,35 @@ resource "kubernetes_daemonset" "this" {
               dynamic "container" {
                 for_each = spec.value.container
                 content {
-                  args                       = container.value["args"]
-                  command                    = container.value["command"]
-                  image                      = container.value["image"]
-                  image_pull_policy          = container.value["image_pull_policy"]
-                  name                       = container.value["name"]
-                  stdin                      = container.value["stdin"]
-                  stdin_once                 = container.value["stdin_once"]
-                  termination_message_path   = container.value["termination_message_path"]
+                  # args - (optional) is a type of list of string
+                  args = container.value["args"]
+                  # command - (optional) is a type of list of string
+                  command = container.value["command"]
+                  # image - (optional) is a type of string
+                  image = container.value["image"]
+                  # image_pull_policy - (optional) is a type of string
+                  image_pull_policy = container.value["image_pull_policy"]
+                  # name - (required) is a type of string
+                  name = container.value["name"]
+                  # stdin - (optional) is a type of bool
+                  stdin = container.value["stdin"]
+                  # stdin_once - (optional) is a type of bool
+                  stdin_once = container.value["stdin_once"]
+                  # termination_message_path - (optional) is a type of string
+                  termination_message_path = container.value["termination_message_path"]
+                  # termination_message_policy - (optional) is a type of string
                   termination_message_policy = container.value["termination_message_policy"]
-                  tty                        = container.value["tty"]
-                  working_dir                = container.value["working_dir"]
+                  # tty - (optional) is a type of bool
+                  tty = container.value["tty"]
+                  # working_dir - (optional) is a type of string
+                  working_dir = container.value["working_dir"]
 
                   dynamic "env" {
                     for_each = container.value.env
                     content {
-                      name  = env.value["name"]
+                      # name - (required) is a type of string
+                      name = env.value["name"]
+                      # value - (optional) is a type of string
                       value = env.value["value"]
 
                       dynamic "value_from" {
@@ -2364,8 +2444,11 @@ resource "kubernetes_daemonset" "this" {
                           dynamic "config_map_key_ref" {
                             for_each = value_from.value.config_map_key_ref
                             content {
-                              key      = config_map_key_ref.value["key"]
-                              name     = config_map_key_ref.value["name"]
+                              # key - (optional) is a type of string
+                              key = config_map_key_ref.value["key"]
+                              # name - (optional) is a type of string
+                              name = config_map_key_ref.value["name"]
+                              # optional - (optional) is a type of bool
                               optional = config_map_key_ref.value["optional"]
                             }
                           }
@@ -2373,25 +2456,33 @@ resource "kubernetes_daemonset" "this" {
                           dynamic "field_ref" {
                             for_each = value_from.value.field_ref
                             content {
+                              # api_version - (optional) is a type of string
                               api_version = field_ref.value["api_version"]
-                              field_path  = field_ref.value["field_path"]
+                              # field_path - (optional) is a type of string
+                              field_path = field_ref.value["field_path"]
                             }
                           }
 
                           dynamic "resource_field_ref" {
                             for_each = value_from.value.resource_field_ref
                             content {
+                              # container_name - (optional) is a type of string
                               container_name = resource_field_ref.value["container_name"]
-                              divisor        = resource_field_ref.value["divisor"]
-                              resource       = resource_field_ref.value["resource"]
+                              # divisor - (optional) is a type of string
+                              divisor = resource_field_ref.value["divisor"]
+                              # resource - (required) is a type of string
+                              resource = resource_field_ref.value["resource"]
                             }
                           }
 
                           dynamic "secret_key_ref" {
                             for_each = value_from.value.secret_key_ref
                             content {
-                              key      = secret_key_ref.value["key"]
-                              name     = secret_key_ref.value["name"]
+                              # key - (optional) is a type of string
+                              key = secret_key_ref.value["key"]
+                              # name - (optional) is a type of string
+                              name = secret_key_ref.value["name"]
+                              # optional - (optional) is a type of bool
                               optional = secret_key_ref.value["optional"]
                             }
                           }
@@ -2405,12 +2496,15 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "env_from" {
                     for_each = container.value.env_from
                     content {
+                      # prefix - (optional) is a type of string
                       prefix = env_from.value["prefix"]
 
                       dynamic "config_map_ref" {
                         for_each = env_from.value.config_map_ref
                         content {
-                          name     = config_map_ref.value["name"]
+                          # name - (required) is a type of string
+                          name = config_map_ref.value["name"]
+                          # optional - (optional) is a type of bool
                           optional = config_map_ref.value["optional"]
                         }
                       }
@@ -2418,7 +2512,9 @@ resource "kubernetes_daemonset" "this" {
                       dynamic "secret_ref" {
                         for_each = env_from.value.secret_ref
                         content {
-                          name     = secret_ref.value["name"]
+                          # name - (required) is a type of string
+                          name = secret_ref.value["name"]
+                          # optional - (optional) is a type of bool
                           optional = secret_ref.value["optional"]
                         }
                       }
@@ -2437,6 +2533,7 @@ resource "kubernetes_daemonset" "this" {
                           dynamic "exec" {
                             for_each = post_start.value.exec
                             content {
+                              # command - (optional) is a type of list of string
                               command = exec.value["command"]
                             }
                           }
@@ -2444,15 +2541,21 @@ resource "kubernetes_daemonset" "this" {
                           dynamic "http_get" {
                             for_each = post_start.value.http_get
                             content {
-                              host   = http_get.value["host"]
-                              path   = http_get.value["path"]
-                              port   = http_get.value["port"]
+                              # host - (optional) is a type of string
+                              host = http_get.value["host"]
+                              # path - (optional) is a type of string
+                              path = http_get.value["path"]
+                              # port - (optional) is a type of string
+                              port = http_get.value["port"]
+                              # scheme - (optional) is a type of string
                               scheme = http_get.value["scheme"]
 
                               dynamic "http_header" {
                                 for_each = http_get.value.http_header
                                 content {
-                                  name  = http_header.value["name"]
+                                  # name - (optional) is a type of string
+                                  name = http_header.value["name"]
+                                  # value - (optional) is a type of string
                                   value = http_header.value["value"]
                                 }
                               }
@@ -2463,6 +2566,7 @@ resource "kubernetes_daemonset" "this" {
                           dynamic "tcp_socket" {
                             for_each = post_start.value.tcp_socket
                             content {
+                              # port - (required) is a type of string
                               port = tcp_socket.value["port"]
                             }
                           }
@@ -2477,6 +2581,7 @@ resource "kubernetes_daemonset" "this" {
                           dynamic "exec" {
                             for_each = pre_stop.value.exec
                             content {
+                              # command - (optional) is a type of list of string
                               command = exec.value["command"]
                             }
                           }
@@ -2484,15 +2589,21 @@ resource "kubernetes_daemonset" "this" {
                           dynamic "http_get" {
                             for_each = pre_stop.value.http_get
                             content {
-                              host   = http_get.value["host"]
-                              path   = http_get.value["path"]
-                              port   = http_get.value["port"]
+                              # host - (optional) is a type of string
+                              host = http_get.value["host"]
+                              # path - (optional) is a type of string
+                              path = http_get.value["path"]
+                              # port - (optional) is a type of string
+                              port = http_get.value["port"]
+                              # scheme - (optional) is a type of string
                               scheme = http_get.value["scheme"]
 
                               dynamic "http_header" {
                                 for_each = http_get.value.http_header
                                 content {
-                                  name  = http_header.value["name"]
+                                  # name - (optional) is a type of string
+                                  name = http_header.value["name"]
+                                  # value - (optional) is a type of string
                                   value = http_header.value["value"]
                                 }
                               }
@@ -2503,6 +2614,7 @@ resource "kubernetes_daemonset" "this" {
                           dynamic "tcp_socket" {
                             for_each = pre_stop.value.tcp_socket
                             content {
+                              # port - (required) is a type of string
                               port = tcp_socket.value["port"]
                             }
                           }
@@ -2516,15 +2628,21 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "liveness_probe" {
                     for_each = container.value.liveness_probe
                     content {
-                      failure_threshold     = liveness_probe.value["failure_threshold"]
+                      # failure_threshold - (optional) is a type of number
+                      failure_threshold = liveness_probe.value["failure_threshold"]
+                      # initial_delay_seconds - (optional) is a type of number
                       initial_delay_seconds = liveness_probe.value["initial_delay_seconds"]
-                      period_seconds        = liveness_probe.value["period_seconds"]
-                      success_threshold     = liveness_probe.value["success_threshold"]
-                      timeout_seconds       = liveness_probe.value["timeout_seconds"]
+                      # period_seconds - (optional) is a type of number
+                      period_seconds = liveness_probe.value["period_seconds"]
+                      # success_threshold - (optional) is a type of number
+                      success_threshold = liveness_probe.value["success_threshold"]
+                      # timeout_seconds - (optional) is a type of number
+                      timeout_seconds = liveness_probe.value["timeout_seconds"]
 
                       dynamic "exec" {
                         for_each = liveness_probe.value.exec
                         content {
+                          # command - (optional) is a type of list of string
                           command = exec.value["command"]
                         }
                       }
@@ -2532,15 +2650,21 @@ resource "kubernetes_daemonset" "this" {
                       dynamic "http_get" {
                         for_each = liveness_probe.value.http_get
                         content {
-                          host   = http_get.value["host"]
-                          path   = http_get.value["path"]
-                          port   = http_get.value["port"]
+                          # host - (optional) is a type of string
+                          host = http_get.value["host"]
+                          # path - (optional) is a type of string
+                          path = http_get.value["path"]
+                          # port - (optional) is a type of string
+                          port = http_get.value["port"]
+                          # scheme - (optional) is a type of string
                           scheme = http_get.value["scheme"]
 
                           dynamic "http_header" {
                             for_each = http_get.value.http_header
                             content {
-                              name  = http_header.value["name"]
+                              # name - (optional) is a type of string
+                              name = http_header.value["name"]
+                              # value - (optional) is a type of string
                               value = http_header.value["value"]
                             }
                           }
@@ -2551,6 +2675,7 @@ resource "kubernetes_daemonset" "this" {
                       dynamic "tcp_socket" {
                         for_each = liveness_probe.value.tcp_socket
                         content {
+                          # port - (required) is a type of string
                           port = tcp_socket.value["port"]
                         }
                       }
@@ -2561,26 +2686,37 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "port" {
                     for_each = container.value.port
                     content {
+                      # container_port - (required) is a type of number
                       container_port = port.value["container_port"]
-                      host_ip        = port.value["host_ip"]
-                      host_port      = port.value["host_port"]
-                      name           = port.value["name"]
-                      protocol       = port.value["protocol"]
+                      # host_ip - (optional) is a type of string
+                      host_ip = port.value["host_ip"]
+                      # host_port - (optional) is a type of number
+                      host_port = port.value["host_port"]
+                      # name - (optional) is a type of string
+                      name = port.value["name"]
+                      # protocol - (optional) is a type of string
+                      protocol = port.value["protocol"]
                     }
                   }
 
                   dynamic "readiness_probe" {
                     for_each = container.value.readiness_probe
                     content {
-                      failure_threshold     = readiness_probe.value["failure_threshold"]
+                      # failure_threshold - (optional) is a type of number
+                      failure_threshold = readiness_probe.value["failure_threshold"]
+                      # initial_delay_seconds - (optional) is a type of number
                       initial_delay_seconds = readiness_probe.value["initial_delay_seconds"]
-                      period_seconds        = readiness_probe.value["period_seconds"]
-                      success_threshold     = readiness_probe.value["success_threshold"]
-                      timeout_seconds       = readiness_probe.value["timeout_seconds"]
+                      # period_seconds - (optional) is a type of number
+                      period_seconds = readiness_probe.value["period_seconds"]
+                      # success_threshold - (optional) is a type of number
+                      success_threshold = readiness_probe.value["success_threshold"]
+                      # timeout_seconds - (optional) is a type of number
+                      timeout_seconds = readiness_probe.value["timeout_seconds"]
 
                       dynamic "exec" {
                         for_each = readiness_probe.value.exec
                         content {
+                          # command - (optional) is a type of list of string
                           command = exec.value["command"]
                         }
                       }
@@ -2588,15 +2724,21 @@ resource "kubernetes_daemonset" "this" {
                       dynamic "http_get" {
                         for_each = readiness_probe.value.http_get
                         content {
-                          host   = http_get.value["host"]
-                          path   = http_get.value["path"]
-                          port   = http_get.value["port"]
+                          # host - (optional) is a type of string
+                          host = http_get.value["host"]
+                          # path - (optional) is a type of string
+                          path = http_get.value["path"]
+                          # port - (optional) is a type of string
+                          port = http_get.value["port"]
+                          # scheme - (optional) is a type of string
                           scheme = http_get.value["scheme"]
 
                           dynamic "http_header" {
                             for_each = http_get.value.http_header
                             content {
-                              name  = http_header.value["name"]
+                              # name - (optional) is a type of string
+                              name = http_header.value["name"]
+                              # value - (optional) is a type of string
                               value = http_header.value["value"]
                             }
                           }
@@ -2607,6 +2749,7 @@ resource "kubernetes_daemonset" "this" {
                       dynamic "tcp_socket" {
                         for_each = readiness_probe.value.tcp_socket
                         content {
+                          # port - (required) is a type of string
                           port = tcp_socket.value["port"]
                         }
                       }
@@ -2617,7 +2760,9 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "resources" {
                     for_each = container.value.resources
                     content {
-                      limits   = resources.value["limits"]
+                      # limits - (optional) is a type of map of string
+                      limits = resources.value["limits"]
+                      # requests - (optional) is a type of map of string
                       requests = resources.value["requests"]
                     }
                   }
@@ -2625,17 +2770,25 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "security_context" {
                     for_each = container.value.security_context
                     content {
+                      # allow_privilege_escalation - (optional) is a type of bool
                       allow_privilege_escalation = security_context.value["allow_privilege_escalation"]
-                      privileged                 = security_context.value["privileged"]
-                      read_only_root_filesystem  = security_context.value["read_only_root_filesystem"]
-                      run_as_group               = security_context.value["run_as_group"]
-                      run_as_non_root            = security_context.value["run_as_non_root"]
-                      run_as_user                = security_context.value["run_as_user"]
+                      # privileged - (optional) is a type of bool
+                      privileged = security_context.value["privileged"]
+                      # read_only_root_filesystem - (optional) is a type of bool
+                      read_only_root_filesystem = security_context.value["read_only_root_filesystem"]
+                      # run_as_group - (optional) is a type of string
+                      run_as_group = security_context.value["run_as_group"]
+                      # run_as_non_root - (optional) is a type of bool
+                      run_as_non_root = security_context.value["run_as_non_root"]
+                      # run_as_user - (optional) is a type of string
+                      run_as_user = security_context.value["run_as_user"]
 
                       dynamic "capabilities" {
                         for_each = security_context.value.capabilities
                         content {
-                          add  = capabilities.value["add"]
+                          # add - (optional) is a type of list of string
+                          add = capabilities.value["add"]
+                          # drop - (optional) is a type of list of string
                           drop = capabilities.value["drop"]
                         }
                       }
@@ -2643,10 +2796,14 @@ resource "kubernetes_daemonset" "this" {
                       dynamic "se_linux_options" {
                         for_each = security_context.value.se_linux_options
                         content {
+                          # level - (optional) is a type of string
                           level = se_linux_options.value["level"]
-                          role  = se_linux_options.value["role"]
-                          type  = se_linux_options.value["type"]
-                          user  = se_linux_options.value["user"]
+                          # role - (optional) is a type of string
+                          role = se_linux_options.value["role"]
+                          # type - (optional) is a type of string
+                          type = se_linux_options.value["type"]
+                          # user - (optional) is a type of string
+                          user = se_linux_options.value["user"]
                         }
                       }
 
@@ -2656,15 +2813,21 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "startup_probe" {
                     for_each = container.value.startup_probe
                     content {
-                      failure_threshold     = startup_probe.value["failure_threshold"]
+                      # failure_threshold - (optional) is a type of number
+                      failure_threshold = startup_probe.value["failure_threshold"]
+                      # initial_delay_seconds - (optional) is a type of number
                       initial_delay_seconds = startup_probe.value["initial_delay_seconds"]
-                      period_seconds        = startup_probe.value["period_seconds"]
-                      success_threshold     = startup_probe.value["success_threshold"]
-                      timeout_seconds       = startup_probe.value["timeout_seconds"]
+                      # period_seconds - (optional) is a type of number
+                      period_seconds = startup_probe.value["period_seconds"]
+                      # success_threshold - (optional) is a type of number
+                      success_threshold = startup_probe.value["success_threshold"]
+                      # timeout_seconds - (optional) is a type of number
+                      timeout_seconds = startup_probe.value["timeout_seconds"]
 
                       dynamic "exec" {
                         for_each = startup_probe.value.exec
                         content {
+                          # command - (optional) is a type of list of string
                           command = exec.value["command"]
                         }
                       }
@@ -2672,15 +2835,21 @@ resource "kubernetes_daemonset" "this" {
                       dynamic "http_get" {
                         for_each = startup_probe.value.http_get
                         content {
-                          host   = http_get.value["host"]
-                          path   = http_get.value["path"]
-                          port   = http_get.value["port"]
+                          # host - (optional) is a type of string
+                          host = http_get.value["host"]
+                          # path - (optional) is a type of string
+                          path = http_get.value["path"]
+                          # port - (optional) is a type of string
+                          port = http_get.value["port"]
+                          # scheme - (optional) is a type of string
                           scheme = http_get.value["scheme"]
 
                           dynamic "http_header" {
                             for_each = http_get.value.http_header
                             content {
-                              name  = http_header.value["name"]
+                              # name - (optional) is a type of string
+                              name = http_header.value["name"]
+                              # value - (optional) is a type of string
                               value = http_header.value["value"]
                             }
                           }
@@ -2691,6 +2860,7 @@ resource "kubernetes_daemonset" "this" {
                       dynamic "tcp_socket" {
                         for_each = startup_probe.value.tcp_socket
                         content {
+                          # port - (required) is a type of string
                           port = tcp_socket.value["port"]
                         }
                       }
@@ -2701,11 +2871,16 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "volume_mount" {
                     for_each = container.value.volume_mount
                     content {
-                      mount_path        = volume_mount.value["mount_path"]
+                      # mount_path - (required) is a type of string
+                      mount_path = volume_mount.value["mount_path"]
+                      # mount_propagation - (optional) is a type of string
                       mount_propagation = volume_mount.value["mount_propagation"]
-                      name              = volume_mount.value["name"]
-                      read_only         = volume_mount.value["read_only"]
-                      sub_path          = volume_mount.value["sub_path"]
+                      # name - (required) is a type of string
+                      name = volume_mount.value["name"]
+                      # read_only - (optional) is a type of bool
+                      read_only = volume_mount.value["read_only"]
+                      # sub_path - (optional) is a type of string
+                      sub_path = volume_mount.value["sub_path"]
                     }
                   }
 
@@ -2715,13 +2890,17 @@ resource "kubernetes_daemonset" "this" {
               dynamic "dns_config" {
                 for_each = spec.value.dns_config
                 content {
+                  # nameservers - (optional) is a type of list of string
                   nameservers = dns_config.value["nameservers"]
-                  searches    = dns_config.value["searches"]
+                  # searches - (optional) is a type of list of string
+                  searches = dns_config.value["searches"]
 
                   dynamic "option" {
                     for_each = dns_config.value.option
                     content {
-                      name  = option.value["name"]
+                      # name - (required) is a type of string
+                      name = option.value["name"]
+                      # value - (optional) is a type of string
                       value = option.value["value"]
                     }
                   }
@@ -2732,14 +2911,17 @@ resource "kubernetes_daemonset" "this" {
               dynamic "host_aliases" {
                 for_each = spec.value.host_aliases
                 content {
+                  # hostnames - (required) is a type of list of string
                   hostnames = host_aliases.value["hostnames"]
-                  ip        = host_aliases.value["ip"]
+                  # ip - (required) is a type of string
+                  ip = host_aliases.value["ip"]
                 }
               }
 
               dynamic "image_pull_secrets" {
                 for_each = spec.value.image_pull_secrets
                 content {
+                  # name - (required) is a type of string
                   name = image_pull_secrets.value["name"]
                 }
               }
@@ -2747,22 +2929,35 @@ resource "kubernetes_daemonset" "this" {
               dynamic "init_container" {
                 for_each = spec.value.init_container
                 content {
-                  args                       = init_container.value["args"]
-                  command                    = init_container.value["command"]
-                  image                      = init_container.value["image"]
-                  image_pull_policy          = init_container.value["image_pull_policy"]
-                  name                       = init_container.value["name"]
-                  stdin                      = init_container.value["stdin"]
-                  stdin_once                 = init_container.value["stdin_once"]
-                  termination_message_path   = init_container.value["termination_message_path"]
+                  # args - (optional) is a type of list of string
+                  args = init_container.value["args"]
+                  # command - (optional) is a type of list of string
+                  command = init_container.value["command"]
+                  # image - (optional) is a type of string
+                  image = init_container.value["image"]
+                  # image_pull_policy - (optional) is a type of string
+                  image_pull_policy = init_container.value["image_pull_policy"]
+                  # name - (required) is a type of string
+                  name = init_container.value["name"]
+                  # stdin - (optional) is a type of bool
+                  stdin = init_container.value["stdin"]
+                  # stdin_once - (optional) is a type of bool
+                  stdin_once = init_container.value["stdin_once"]
+                  # termination_message_path - (optional) is a type of string
+                  termination_message_path = init_container.value["termination_message_path"]
+                  # termination_message_policy - (optional) is a type of string
                   termination_message_policy = init_container.value["termination_message_policy"]
-                  tty                        = init_container.value["tty"]
-                  working_dir                = init_container.value["working_dir"]
+                  # tty - (optional) is a type of bool
+                  tty = init_container.value["tty"]
+                  # working_dir - (optional) is a type of string
+                  working_dir = init_container.value["working_dir"]
 
                   dynamic "env" {
                     for_each = init_container.value.env
                     content {
-                      name  = env.value["name"]
+                      # name - (required) is a type of string
+                      name = env.value["name"]
+                      # value - (optional) is a type of string
                       value = env.value["value"]
 
                       dynamic "value_from" {
@@ -2772,8 +2967,11 @@ resource "kubernetes_daemonset" "this" {
                           dynamic "config_map_key_ref" {
                             for_each = value_from.value.config_map_key_ref
                             content {
-                              key      = config_map_key_ref.value["key"]
-                              name     = config_map_key_ref.value["name"]
+                              # key - (optional) is a type of string
+                              key = config_map_key_ref.value["key"]
+                              # name - (optional) is a type of string
+                              name = config_map_key_ref.value["name"]
+                              # optional - (optional) is a type of bool
                               optional = config_map_key_ref.value["optional"]
                             }
                           }
@@ -2781,25 +2979,33 @@ resource "kubernetes_daemonset" "this" {
                           dynamic "field_ref" {
                             for_each = value_from.value.field_ref
                             content {
+                              # api_version - (optional) is a type of string
                               api_version = field_ref.value["api_version"]
-                              field_path  = field_ref.value["field_path"]
+                              # field_path - (optional) is a type of string
+                              field_path = field_ref.value["field_path"]
                             }
                           }
 
                           dynamic "resource_field_ref" {
                             for_each = value_from.value.resource_field_ref
                             content {
+                              # container_name - (optional) is a type of string
                               container_name = resource_field_ref.value["container_name"]
-                              divisor        = resource_field_ref.value["divisor"]
-                              resource       = resource_field_ref.value["resource"]
+                              # divisor - (optional) is a type of string
+                              divisor = resource_field_ref.value["divisor"]
+                              # resource - (required) is a type of string
+                              resource = resource_field_ref.value["resource"]
                             }
                           }
 
                           dynamic "secret_key_ref" {
                             for_each = value_from.value.secret_key_ref
                             content {
-                              key      = secret_key_ref.value["key"]
-                              name     = secret_key_ref.value["name"]
+                              # key - (optional) is a type of string
+                              key = secret_key_ref.value["key"]
+                              # name - (optional) is a type of string
+                              name = secret_key_ref.value["name"]
+                              # optional - (optional) is a type of bool
                               optional = secret_key_ref.value["optional"]
                             }
                           }
@@ -2813,12 +3019,15 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "env_from" {
                     for_each = init_container.value.env_from
                     content {
+                      # prefix - (optional) is a type of string
                       prefix = env_from.value["prefix"]
 
                       dynamic "config_map_ref" {
                         for_each = env_from.value.config_map_ref
                         content {
-                          name     = config_map_ref.value["name"]
+                          # name - (required) is a type of string
+                          name = config_map_ref.value["name"]
+                          # optional - (optional) is a type of bool
                           optional = config_map_ref.value["optional"]
                         }
                       }
@@ -2826,7 +3035,9 @@ resource "kubernetes_daemonset" "this" {
                       dynamic "secret_ref" {
                         for_each = env_from.value.secret_ref
                         content {
-                          name     = secret_ref.value["name"]
+                          # name - (required) is a type of string
+                          name = secret_ref.value["name"]
+                          # optional - (optional) is a type of bool
                           optional = secret_ref.value["optional"]
                         }
                       }
@@ -2845,6 +3056,7 @@ resource "kubernetes_daemonset" "this" {
                           dynamic "exec" {
                             for_each = post_start.value.exec
                             content {
+                              # command - (optional) is a type of list of string
                               command = exec.value["command"]
                             }
                           }
@@ -2852,15 +3064,21 @@ resource "kubernetes_daemonset" "this" {
                           dynamic "http_get" {
                             for_each = post_start.value.http_get
                             content {
-                              host   = http_get.value["host"]
-                              path   = http_get.value["path"]
-                              port   = http_get.value["port"]
+                              # host - (optional) is a type of string
+                              host = http_get.value["host"]
+                              # path - (optional) is a type of string
+                              path = http_get.value["path"]
+                              # port - (optional) is a type of string
+                              port = http_get.value["port"]
+                              # scheme - (optional) is a type of string
                               scheme = http_get.value["scheme"]
 
                               dynamic "http_header" {
                                 for_each = http_get.value.http_header
                                 content {
-                                  name  = http_header.value["name"]
+                                  # name - (optional) is a type of string
+                                  name = http_header.value["name"]
+                                  # value - (optional) is a type of string
                                   value = http_header.value["value"]
                                 }
                               }
@@ -2871,6 +3089,7 @@ resource "kubernetes_daemonset" "this" {
                           dynamic "tcp_socket" {
                             for_each = post_start.value.tcp_socket
                             content {
+                              # port - (required) is a type of string
                               port = tcp_socket.value["port"]
                             }
                           }
@@ -2885,6 +3104,7 @@ resource "kubernetes_daemonset" "this" {
                           dynamic "exec" {
                             for_each = pre_stop.value.exec
                             content {
+                              # command - (optional) is a type of list of string
                               command = exec.value["command"]
                             }
                           }
@@ -2892,15 +3112,21 @@ resource "kubernetes_daemonset" "this" {
                           dynamic "http_get" {
                             for_each = pre_stop.value.http_get
                             content {
-                              host   = http_get.value["host"]
-                              path   = http_get.value["path"]
-                              port   = http_get.value["port"]
+                              # host - (optional) is a type of string
+                              host = http_get.value["host"]
+                              # path - (optional) is a type of string
+                              path = http_get.value["path"]
+                              # port - (optional) is a type of string
+                              port = http_get.value["port"]
+                              # scheme - (optional) is a type of string
                               scheme = http_get.value["scheme"]
 
                               dynamic "http_header" {
                                 for_each = http_get.value.http_header
                                 content {
-                                  name  = http_header.value["name"]
+                                  # name - (optional) is a type of string
+                                  name = http_header.value["name"]
+                                  # value - (optional) is a type of string
                                   value = http_header.value["value"]
                                 }
                               }
@@ -2911,6 +3137,7 @@ resource "kubernetes_daemonset" "this" {
                           dynamic "tcp_socket" {
                             for_each = pre_stop.value.tcp_socket
                             content {
+                              # port - (required) is a type of string
                               port = tcp_socket.value["port"]
                             }
                           }
@@ -2924,15 +3151,21 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "liveness_probe" {
                     for_each = init_container.value.liveness_probe
                     content {
-                      failure_threshold     = liveness_probe.value["failure_threshold"]
+                      # failure_threshold - (optional) is a type of number
+                      failure_threshold = liveness_probe.value["failure_threshold"]
+                      # initial_delay_seconds - (optional) is a type of number
                       initial_delay_seconds = liveness_probe.value["initial_delay_seconds"]
-                      period_seconds        = liveness_probe.value["period_seconds"]
-                      success_threshold     = liveness_probe.value["success_threshold"]
-                      timeout_seconds       = liveness_probe.value["timeout_seconds"]
+                      # period_seconds - (optional) is a type of number
+                      period_seconds = liveness_probe.value["period_seconds"]
+                      # success_threshold - (optional) is a type of number
+                      success_threshold = liveness_probe.value["success_threshold"]
+                      # timeout_seconds - (optional) is a type of number
+                      timeout_seconds = liveness_probe.value["timeout_seconds"]
 
                       dynamic "exec" {
                         for_each = liveness_probe.value.exec
                         content {
+                          # command - (optional) is a type of list of string
                           command = exec.value["command"]
                         }
                       }
@@ -2940,15 +3173,21 @@ resource "kubernetes_daemonset" "this" {
                       dynamic "http_get" {
                         for_each = liveness_probe.value.http_get
                         content {
-                          host   = http_get.value["host"]
-                          path   = http_get.value["path"]
-                          port   = http_get.value["port"]
+                          # host - (optional) is a type of string
+                          host = http_get.value["host"]
+                          # path - (optional) is a type of string
+                          path = http_get.value["path"]
+                          # port - (optional) is a type of string
+                          port = http_get.value["port"]
+                          # scheme - (optional) is a type of string
                           scheme = http_get.value["scheme"]
 
                           dynamic "http_header" {
                             for_each = http_get.value.http_header
                             content {
-                              name  = http_header.value["name"]
+                              # name - (optional) is a type of string
+                              name = http_header.value["name"]
+                              # value - (optional) is a type of string
                               value = http_header.value["value"]
                             }
                           }
@@ -2959,6 +3198,7 @@ resource "kubernetes_daemonset" "this" {
                       dynamic "tcp_socket" {
                         for_each = liveness_probe.value.tcp_socket
                         content {
+                          # port - (required) is a type of string
                           port = tcp_socket.value["port"]
                         }
                       }
@@ -2969,26 +3209,37 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "port" {
                     for_each = init_container.value.port
                     content {
+                      # container_port - (required) is a type of number
                       container_port = port.value["container_port"]
-                      host_ip        = port.value["host_ip"]
-                      host_port      = port.value["host_port"]
-                      name           = port.value["name"]
-                      protocol       = port.value["protocol"]
+                      # host_ip - (optional) is a type of string
+                      host_ip = port.value["host_ip"]
+                      # host_port - (optional) is a type of number
+                      host_port = port.value["host_port"]
+                      # name - (optional) is a type of string
+                      name = port.value["name"]
+                      # protocol - (optional) is a type of string
+                      protocol = port.value["protocol"]
                     }
                   }
 
                   dynamic "readiness_probe" {
                     for_each = init_container.value.readiness_probe
                     content {
-                      failure_threshold     = readiness_probe.value["failure_threshold"]
+                      # failure_threshold - (optional) is a type of number
+                      failure_threshold = readiness_probe.value["failure_threshold"]
+                      # initial_delay_seconds - (optional) is a type of number
                       initial_delay_seconds = readiness_probe.value["initial_delay_seconds"]
-                      period_seconds        = readiness_probe.value["period_seconds"]
-                      success_threshold     = readiness_probe.value["success_threshold"]
-                      timeout_seconds       = readiness_probe.value["timeout_seconds"]
+                      # period_seconds - (optional) is a type of number
+                      period_seconds = readiness_probe.value["period_seconds"]
+                      # success_threshold - (optional) is a type of number
+                      success_threshold = readiness_probe.value["success_threshold"]
+                      # timeout_seconds - (optional) is a type of number
+                      timeout_seconds = readiness_probe.value["timeout_seconds"]
 
                       dynamic "exec" {
                         for_each = readiness_probe.value.exec
                         content {
+                          # command - (optional) is a type of list of string
                           command = exec.value["command"]
                         }
                       }
@@ -2996,15 +3247,21 @@ resource "kubernetes_daemonset" "this" {
                       dynamic "http_get" {
                         for_each = readiness_probe.value.http_get
                         content {
-                          host   = http_get.value["host"]
-                          path   = http_get.value["path"]
-                          port   = http_get.value["port"]
+                          # host - (optional) is a type of string
+                          host = http_get.value["host"]
+                          # path - (optional) is a type of string
+                          path = http_get.value["path"]
+                          # port - (optional) is a type of string
+                          port = http_get.value["port"]
+                          # scheme - (optional) is a type of string
                           scheme = http_get.value["scheme"]
 
                           dynamic "http_header" {
                             for_each = http_get.value.http_header
                             content {
-                              name  = http_header.value["name"]
+                              # name - (optional) is a type of string
+                              name = http_header.value["name"]
+                              # value - (optional) is a type of string
                               value = http_header.value["value"]
                             }
                           }
@@ -3015,6 +3272,7 @@ resource "kubernetes_daemonset" "this" {
                       dynamic "tcp_socket" {
                         for_each = readiness_probe.value.tcp_socket
                         content {
+                          # port - (required) is a type of string
                           port = tcp_socket.value["port"]
                         }
                       }
@@ -3025,7 +3283,9 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "resources" {
                     for_each = init_container.value.resources
                     content {
-                      limits   = resources.value["limits"]
+                      # limits - (optional) is a type of map of string
+                      limits = resources.value["limits"]
+                      # requests - (optional) is a type of map of string
                       requests = resources.value["requests"]
                     }
                   }
@@ -3033,17 +3293,25 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "security_context" {
                     for_each = init_container.value.security_context
                     content {
+                      # allow_privilege_escalation - (optional) is a type of bool
                       allow_privilege_escalation = security_context.value["allow_privilege_escalation"]
-                      privileged                 = security_context.value["privileged"]
-                      read_only_root_filesystem  = security_context.value["read_only_root_filesystem"]
-                      run_as_group               = security_context.value["run_as_group"]
-                      run_as_non_root            = security_context.value["run_as_non_root"]
-                      run_as_user                = security_context.value["run_as_user"]
+                      # privileged - (optional) is a type of bool
+                      privileged = security_context.value["privileged"]
+                      # read_only_root_filesystem - (optional) is a type of bool
+                      read_only_root_filesystem = security_context.value["read_only_root_filesystem"]
+                      # run_as_group - (optional) is a type of string
+                      run_as_group = security_context.value["run_as_group"]
+                      # run_as_non_root - (optional) is a type of bool
+                      run_as_non_root = security_context.value["run_as_non_root"]
+                      # run_as_user - (optional) is a type of string
+                      run_as_user = security_context.value["run_as_user"]
 
                       dynamic "capabilities" {
                         for_each = security_context.value.capabilities
                         content {
-                          add  = capabilities.value["add"]
+                          # add - (optional) is a type of list of string
+                          add = capabilities.value["add"]
+                          # drop - (optional) is a type of list of string
                           drop = capabilities.value["drop"]
                         }
                       }
@@ -3051,10 +3319,14 @@ resource "kubernetes_daemonset" "this" {
                       dynamic "se_linux_options" {
                         for_each = security_context.value.se_linux_options
                         content {
+                          # level - (optional) is a type of string
                           level = se_linux_options.value["level"]
-                          role  = se_linux_options.value["role"]
-                          type  = se_linux_options.value["type"]
-                          user  = se_linux_options.value["user"]
+                          # role - (optional) is a type of string
+                          role = se_linux_options.value["role"]
+                          # type - (optional) is a type of string
+                          type = se_linux_options.value["type"]
+                          # user - (optional) is a type of string
+                          user = se_linux_options.value["user"]
                         }
                       }
 
@@ -3064,15 +3336,21 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "startup_probe" {
                     for_each = init_container.value.startup_probe
                     content {
-                      failure_threshold     = startup_probe.value["failure_threshold"]
+                      # failure_threshold - (optional) is a type of number
+                      failure_threshold = startup_probe.value["failure_threshold"]
+                      # initial_delay_seconds - (optional) is a type of number
                       initial_delay_seconds = startup_probe.value["initial_delay_seconds"]
-                      period_seconds        = startup_probe.value["period_seconds"]
-                      success_threshold     = startup_probe.value["success_threshold"]
-                      timeout_seconds       = startup_probe.value["timeout_seconds"]
+                      # period_seconds - (optional) is a type of number
+                      period_seconds = startup_probe.value["period_seconds"]
+                      # success_threshold - (optional) is a type of number
+                      success_threshold = startup_probe.value["success_threshold"]
+                      # timeout_seconds - (optional) is a type of number
+                      timeout_seconds = startup_probe.value["timeout_seconds"]
 
                       dynamic "exec" {
                         for_each = startup_probe.value.exec
                         content {
+                          # command - (optional) is a type of list of string
                           command = exec.value["command"]
                         }
                       }
@@ -3080,15 +3358,21 @@ resource "kubernetes_daemonset" "this" {
                       dynamic "http_get" {
                         for_each = startup_probe.value.http_get
                         content {
-                          host   = http_get.value["host"]
-                          path   = http_get.value["path"]
-                          port   = http_get.value["port"]
+                          # host - (optional) is a type of string
+                          host = http_get.value["host"]
+                          # path - (optional) is a type of string
+                          path = http_get.value["path"]
+                          # port - (optional) is a type of string
+                          port = http_get.value["port"]
+                          # scheme - (optional) is a type of string
                           scheme = http_get.value["scheme"]
 
                           dynamic "http_header" {
                             for_each = http_get.value.http_header
                             content {
-                              name  = http_header.value["name"]
+                              # name - (optional) is a type of string
+                              name = http_header.value["name"]
+                              # value - (optional) is a type of string
                               value = http_header.value["value"]
                             }
                           }
@@ -3099,6 +3383,7 @@ resource "kubernetes_daemonset" "this" {
                       dynamic "tcp_socket" {
                         for_each = startup_probe.value.tcp_socket
                         content {
+                          # port - (required) is a type of string
                           port = tcp_socket.value["port"]
                         }
                       }
@@ -3109,11 +3394,16 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "volume_mount" {
                     for_each = init_container.value.volume_mount
                     content {
-                      mount_path        = volume_mount.value["mount_path"]
+                      # mount_path - (required) is a type of string
+                      mount_path = volume_mount.value["mount_path"]
+                      # mount_propagation - (optional) is a type of string
                       mount_propagation = volume_mount.value["mount_propagation"]
-                      name              = volume_mount.value["name"]
-                      read_only         = volume_mount.value["read_only"]
-                      sub_path          = volume_mount.value["sub_path"]
+                      # name - (required) is a type of string
+                      name = volume_mount.value["name"]
+                      # read_only - (optional) is a type of bool
+                      read_only = volume_mount.value["read_only"]
+                      # sub_path - (optional) is a type of string
+                      sub_path = volume_mount.value["sub_path"]
                     }
                   }
 
@@ -3123,6 +3413,7 @@ resource "kubernetes_daemonset" "this" {
               dynamic "readiness_gate" {
                 for_each = spec.value.readiness_gate
                 content {
+                  # condition_type - (required) is a type of string
                   condition_type = readiness_gate.value["condition_type"]
                 }
               }
@@ -3130,26 +3421,37 @@ resource "kubernetes_daemonset" "this" {
               dynamic "security_context" {
                 for_each = spec.value.security_context
                 content {
-                  fs_group            = security_context.value["fs_group"]
-                  run_as_group        = security_context.value["run_as_group"]
-                  run_as_non_root     = security_context.value["run_as_non_root"]
-                  run_as_user         = security_context.value["run_as_user"]
+                  # fs_group - (optional) is a type of string
+                  fs_group = security_context.value["fs_group"]
+                  # run_as_group - (optional) is a type of string
+                  run_as_group = security_context.value["run_as_group"]
+                  # run_as_non_root - (optional) is a type of bool
+                  run_as_non_root = security_context.value["run_as_non_root"]
+                  # run_as_user - (optional) is a type of string
+                  run_as_user = security_context.value["run_as_user"]
+                  # supplemental_groups - (optional) is a type of set of number
                   supplemental_groups = security_context.value["supplemental_groups"]
 
                   dynamic "se_linux_options" {
                     for_each = security_context.value.se_linux_options
                     content {
+                      # level - (optional) is a type of string
                       level = se_linux_options.value["level"]
-                      role  = se_linux_options.value["role"]
-                      type  = se_linux_options.value["type"]
-                      user  = se_linux_options.value["user"]
+                      # role - (optional) is a type of string
+                      role = se_linux_options.value["role"]
+                      # type - (optional) is a type of string
+                      type = se_linux_options.value["type"]
+                      # user - (optional) is a type of string
+                      user = se_linux_options.value["user"]
                     }
                   }
 
                   dynamic "sysctl" {
                     for_each = security_context.value.sysctl
                     content {
-                      name  = sysctl.value["name"]
+                      # name - (required) is a type of string
+                      name = sysctl.value["name"]
+                      # value - (required) is a type of string
                       value = sysctl.value["value"]
                     }
                   }
@@ -3160,32 +3462,44 @@ resource "kubernetes_daemonset" "this" {
               dynamic "toleration" {
                 for_each = spec.value.toleration
                 content {
-                  effect             = toleration.value["effect"]
-                  key                = toleration.value["key"]
-                  operator           = toleration.value["operator"]
+                  # effect - (optional) is a type of string
+                  effect = toleration.value["effect"]
+                  # key - (optional) is a type of string
+                  key = toleration.value["key"]
+                  # operator - (optional) is a type of string
+                  operator = toleration.value["operator"]
+                  # toleration_seconds - (optional) is a type of string
                   toleration_seconds = toleration.value["toleration_seconds"]
-                  value              = toleration.value["value"]
+                  # value - (optional) is a type of string
+                  value = toleration.value["value"]
                 }
               }
 
               dynamic "topology_spread_constraint" {
                 for_each = spec.value.topology_spread_constraint
                 content {
-                  max_skew           = topology_spread_constraint.value["max_skew"]
-                  topology_key       = topology_spread_constraint.value["topology_key"]
+                  # max_skew - (optional) is a type of number
+                  max_skew = topology_spread_constraint.value["max_skew"]
+                  # topology_key - (optional) is a type of string
+                  topology_key = topology_spread_constraint.value["topology_key"]
+                  # when_unsatisfiable - (optional) is a type of string
                   when_unsatisfiable = topology_spread_constraint.value["when_unsatisfiable"]
 
                   dynamic "label_selector" {
                     for_each = topology_spread_constraint.value.label_selector
                     content {
+                      # match_labels - (optional) is a type of map of string
                       match_labels = label_selector.value["match_labels"]
 
                       dynamic "match_expressions" {
                         for_each = label_selector.value.match_expressions
                         content {
-                          key      = match_expressions.value["key"]
+                          # key - (optional) is a type of string
+                          key = match_expressions.value["key"]
+                          # operator - (optional) is a type of string
                           operator = match_expressions.value["operator"]
-                          values   = match_expressions.value["values"]
+                          # values - (optional) is a type of set of string
+                          values = match_expressions.value["values"]
                         }
                       }
 
@@ -3198,14 +3512,19 @@ resource "kubernetes_daemonset" "this" {
               dynamic "volume" {
                 for_each = spec.value.volume
                 content {
+                  # name - (optional) is a type of string
                   name = volume.value["name"]
 
                   dynamic "aws_elastic_block_store" {
                     for_each = volume.value.aws_elastic_block_store
                     content {
-                      fs_type   = aws_elastic_block_store.value["fs_type"]
+                      # fs_type - (optional) is a type of string
+                      fs_type = aws_elastic_block_store.value["fs_type"]
+                      # partition - (optional) is a type of number
                       partition = aws_elastic_block_store.value["partition"]
+                      # read_only - (optional) is a type of bool
                       read_only = aws_elastic_block_store.value["read_only"]
+                      # volume_id - (required) is a type of string
                       volume_id = aws_elastic_block_store.value["volume_id"]
                     }
                   }
@@ -3213,37 +3532,53 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "azure_disk" {
                     for_each = volume.value.azure_disk
                     content {
-                      caching_mode  = azure_disk.value["caching_mode"]
+                      # caching_mode - (required) is a type of string
+                      caching_mode = azure_disk.value["caching_mode"]
+                      # data_disk_uri - (required) is a type of string
                       data_disk_uri = azure_disk.value["data_disk_uri"]
-                      disk_name     = azure_disk.value["disk_name"]
-                      fs_type       = azure_disk.value["fs_type"]
-                      kind          = azure_disk.value["kind"]
-                      read_only     = azure_disk.value["read_only"]
+                      # disk_name - (required) is a type of string
+                      disk_name = azure_disk.value["disk_name"]
+                      # fs_type - (optional) is a type of string
+                      fs_type = azure_disk.value["fs_type"]
+                      # kind - (optional) is a type of string
+                      kind = azure_disk.value["kind"]
+                      # read_only - (optional) is a type of bool
+                      read_only = azure_disk.value["read_only"]
                     }
                   }
 
                   dynamic "azure_file" {
                     for_each = volume.value.azure_file
                     content {
-                      read_only   = azure_file.value["read_only"]
+                      # read_only - (optional) is a type of bool
+                      read_only = azure_file.value["read_only"]
+                      # secret_name - (required) is a type of string
                       secret_name = azure_file.value["secret_name"]
-                      share_name  = azure_file.value["share_name"]
+                      # share_name - (required) is a type of string
+                      share_name = azure_file.value["share_name"]
                     }
                   }
 
                   dynamic "ceph_fs" {
                     for_each = volume.value.ceph_fs
                     content {
-                      monitors    = ceph_fs.value["monitors"]
-                      path        = ceph_fs.value["path"]
-                      read_only   = ceph_fs.value["read_only"]
+                      # monitors - (required) is a type of set of string
+                      monitors = ceph_fs.value["monitors"]
+                      # path - (optional) is a type of string
+                      path = ceph_fs.value["path"]
+                      # read_only - (optional) is a type of bool
+                      read_only = ceph_fs.value["read_only"]
+                      # secret_file - (optional) is a type of string
                       secret_file = ceph_fs.value["secret_file"]
-                      user        = ceph_fs.value["user"]
+                      # user - (optional) is a type of string
+                      user = ceph_fs.value["user"]
 
                       dynamic "secret_ref" {
                         for_each = ceph_fs.value.secret_ref
                         content {
-                          name      = secret_ref.value["name"]
+                          # name - (optional) is a type of string
+                          name = secret_ref.value["name"]
+                          # namespace - (optional) is a type of string
                           namespace = secret_ref.value["namespace"]
                         }
                       }
@@ -3254,8 +3589,11 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "cinder" {
                     for_each = volume.value.cinder
                     content {
-                      fs_type   = cinder.value["fs_type"]
+                      # fs_type - (optional) is a type of string
+                      fs_type = cinder.value["fs_type"]
+                      # read_only - (optional) is a type of bool
                       read_only = cinder.value["read_only"]
+                      # volume_id - (required) is a type of string
                       volume_id = cinder.value["volume_id"]
                     }
                   }
@@ -3263,15 +3601,21 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "config_map" {
                     for_each = volume.value.config_map
                     content {
+                      # default_mode - (optional) is a type of string
                       default_mode = config_map.value["default_mode"]
-                      name         = config_map.value["name"]
-                      optional     = config_map.value["optional"]
+                      # name - (optional) is a type of string
+                      name = config_map.value["name"]
+                      # optional - (optional) is a type of bool
+                      optional = config_map.value["optional"]
 
                       dynamic "items" {
                         for_each = config_map.value.items
                         content {
-                          key  = items.value["key"]
+                          # key - (optional) is a type of string
+                          key = items.value["key"]
+                          # mode - (optional) is a type of string
                           mode = items.value["mode"]
+                          # path - (optional) is a type of string
                           path = items.value["path"]
                         }
                       }
@@ -3282,16 +3626,23 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "csi" {
                     for_each = volume.value.csi
                     content {
-                      driver            = csi.value["driver"]
-                      fs_type           = csi.value["fs_type"]
-                      read_only         = csi.value["read_only"]
+                      # driver - (required) is a type of string
+                      driver = csi.value["driver"]
+                      # fs_type - (optional) is a type of string
+                      fs_type = csi.value["fs_type"]
+                      # read_only - (optional) is a type of bool
+                      read_only = csi.value["read_only"]
+                      # volume_attributes - (optional) is a type of map of string
                       volume_attributes = csi.value["volume_attributes"]
-                      volume_handle     = csi.value["volume_handle"]
+                      # volume_handle - (required) is a type of string
+                      volume_handle = csi.value["volume_handle"]
 
                       dynamic "controller_expand_secret_ref" {
                         for_each = csi.value.controller_expand_secret_ref
                         content {
-                          name      = controller_expand_secret_ref.value["name"]
+                          # name - (optional) is a type of string
+                          name = controller_expand_secret_ref.value["name"]
+                          # namespace - (optional) is a type of string
                           namespace = controller_expand_secret_ref.value["namespace"]
                         }
                       }
@@ -3299,7 +3650,9 @@ resource "kubernetes_daemonset" "this" {
                       dynamic "controller_publish_secret_ref" {
                         for_each = csi.value.controller_publish_secret_ref
                         content {
-                          name      = controller_publish_secret_ref.value["name"]
+                          # name - (optional) is a type of string
+                          name = controller_publish_secret_ref.value["name"]
+                          # namespace - (optional) is a type of string
                           namespace = controller_publish_secret_ref.value["namespace"]
                         }
                       }
@@ -3307,7 +3660,9 @@ resource "kubernetes_daemonset" "this" {
                       dynamic "node_publish_secret_ref" {
                         for_each = csi.value.node_publish_secret_ref
                         content {
-                          name      = node_publish_secret_ref.value["name"]
+                          # name - (optional) is a type of string
+                          name = node_publish_secret_ref.value["name"]
+                          # namespace - (optional) is a type of string
                           namespace = node_publish_secret_ref.value["namespace"]
                         }
                       }
@@ -3315,7 +3670,9 @@ resource "kubernetes_daemonset" "this" {
                       dynamic "node_stage_secret_ref" {
                         for_each = csi.value.node_stage_secret_ref
                         content {
-                          name      = node_stage_secret_ref.value["name"]
+                          # name - (optional) is a type of string
+                          name = node_stage_secret_ref.value["name"]
+                          # namespace - (optional) is a type of string
                           namespace = node_stage_secret_ref.value["namespace"]
                         }
                       }
@@ -3326,28 +3683,36 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "downward_api" {
                     for_each = volume.value.downward_api
                     content {
+                      # default_mode - (optional) is a type of string
                       default_mode = downward_api.value["default_mode"]
 
                       dynamic "items" {
                         for_each = downward_api.value.items
                         content {
+                          # mode - (optional) is a type of string
                           mode = items.value["mode"]
+                          # path - (required) is a type of string
                           path = items.value["path"]
 
                           dynamic "field_ref" {
                             for_each = items.value.field_ref
                             content {
+                              # api_version - (optional) is a type of string
                               api_version = field_ref.value["api_version"]
-                              field_path  = field_ref.value["field_path"]
+                              # field_path - (optional) is a type of string
+                              field_path = field_ref.value["field_path"]
                             }
                           }
 
                           dynamic "resource_field_ref" {
                             for_each = items.value.resource_field_ref
                             content {
+                              # container_name - (required) is a type of string
                               container_name = resource_field_ref.value["container_name"]
-                              divisor        = resource_field_ref.value["divisor"]
-                              resource       = resource_field_ref.value["resource"]
+                              # divisor - (optional) is a type of string
+                              divisor = resource_field_ref.value["divisor"]
+                              # resource - (required) is a type of string
+                              resource = resource_field_ref.value["resource"]
                             }
                           }
 
@@ -3360,7 +3725,9 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "empty_dir" {
                     for_each = volume.value.empty_dir
                     content {
-                      medium     = empty_dir.value["medium"]
+                      # medium - (optional) is a type of string
+                      medium = empty_dir.value["medium"]
+                      # size_limit - (optional) is a type of string
                       size_limit = empty_dir.value["size_limit"]
                     }
                   }
@@ -3368,9 +3735,13 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "fc" {
                     for_each = volume.value.fc
                     content {
-                      fs_type      = fc.value["fs_type"]
-                      lun          = fc.value["lun"]
-                      read_only    = fc.value["read_only"]
+                      # fs_type - (optional) is a type of string
+                      fs_type = fc.value["fs_type"]
+                      # lun - (required) is a type of number
+                      lun = fc.value["lun"]
+                      # read_only - (optional) is a type of bool
+                      read_only = fc.value["read_only"]
+                      # target_ww_ns - (required) is a type of set of string
                       target_ww_ns = fc.value["target_ww_ns"]
                     }
                   }
@@ -3378,15 +3749,21 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "flex_volume" {
                     for_each = volume.value.flex_volume
                     content {
-                      driver    = flex_volume.value["driver"]
-                      fs_type   = flex_volume.value["fs_type"]
-                      options   = flex_volume.value["options"]
+                      # driver - (required) is a type of string
+                      driver = flex_volume.value["driver"]
+                      # fs_type - (optional) is a type of string
+                      fs_type = flex_volume.value["fs_type"]
+                      # options - (optional) is a type of map of string
+                      options = flex_volume.value["options"]
+                      # read_only - (optional) is a type of bool
                       read_only = flex_volume.value["read_only"]
 
                       dynamic "secret_ref" {
                         for_each = flex_volume.value.secret_ref
                         content {
-                          name      = secret_ref.value["name"]
+                          # name - (optional) is a type of string
+                          name = secret_ref.value["name"]
+                          # namespace - (optional) is a type of string
                           namespace = secret_ref.value["namespace"]
                         }
                       }
@@ -3397,7 +3774,9 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "flocker" {
                     for_each = volume.value.flocker
                     content {
+                      # dataset_name - (optional) is a type of string
                       dataset_name = flocker.value["dataset_name"]
+                      # dataset_uuid - (optional) is a type of string
                       dataset_uuid = flocker.value["dataset_uuid"]
                     }
                   }
@@ -3405,9 +3784,13 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "gce_persistent_disk" {
                     for_each = volume.value.gce_persistent_disk
                     content {
-                      fs_type   = gce_persistent_disk.value["fs_type"]
+                      # fs_type - (optional) is a type of string
+                      fs_type = gce_persistent_disk.value["fs_type"]
+                      # partition - (optional) is a type of number
                       partition = gce_persistent_disk.value["partition"]
-                      pd_name   = gce_persistent_disk.value["pd_name"]
+                      # pd_name - (required) is a type of string
+                      pd_name = gce_persistent_disk.value["pd_name"]
+                      # read_only - (optional) is a type of bool
                       read_only = gce_persistent_disk.value["read_only"]
                     }
                   }
@@ -3415,25 +3798,33 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "git_repo" {
                     for_each = volume.value.git_repo
                     content {
-                      directory  = git_repo.value["directory"]
+                      # directory - (optional) is a type of string
+                      directory = git_repo.value["directory"]
+                      # repository - (optional) is a type of string
                       repository = git_repo.value["repository"]
-                      revision   = git_repo.value["revision"]
+                      # revision - (optional) is a type of string
+                      revision = git_repo.value["revision"]
                     }
                   }
 
                   dynamic "glusterfs" {
                     for_each = volume.value.glusterfs
                     content {
+                      # endpoints_name - (required) is a type of string
                       endpoints_name = glusterfs.value["endpoints_name"]
-                      path           = glusterfs.value["path"]
-                      read_only      = glusterfs.value["read_only"]
+                      # path - (required) is a type of string
+                      path = glusterfs.value["path"]
+                      # read_only - (optional) is a type of bool
+                      read_only = glusterfs.value["read_only"]
                     }
                   }
 
                   dynamic "host_path" {
                     for_each = volume.value.host_path
                     content {
+                      # path - (optional) is a type of string
                       path = host_path.value["path"]
+                      # type - (optional) is a type of string
                       type = host_path.value["type"]
                     }
                   }
@@ -3441,18 +3832,25 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "iscsi" {
                     for_each = volume.value.iscsi
                     content {
-                      fs_type         = iscsi.value["fs_type"]
-                      iqn             = iscsi.value["iqn"]
+                      # fs_type - (optional) is a type of string
+                      fs_type = iscsi.value["fs_type"]
+                      # iqn - (required) is a type of string
+                      iqn = iscsi.value["iqn"]
+                      # iscsi_interface - (optional) is a type of string
                       iscsi_interface = iscsi.value["iscsi_interface"]
-                      lun             = iscsi.value["lun"]
-                      read_only       = iscsi.value["read_only"]
-                      target_portal   = iscsi.value["target_portal"]
+                      # lun - (optional) is a type of number
+                      lun = iscsi.value["lun"]
+                      # read_only - (optional) is a type of bool
+                      read_only = iscsi.value["read_only"]
+                      # target_portal - (required) is a type of string
+                      target_portal = iscsi.value["target_portal"]
                     }
                   }
 
                   dynamic "local" {
                     for_each = volume.value.local
                     content {
+                      # path - (optional) is a type of string
                       path = local.value["path"]
                     }
                   }
@@ -3460,31 +3858,39 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "nfs" {
                     for_each = volume.value.nfs
                     content {
-                      path      = nfs.value["path"]
+                      # path - (required) is a type of string
+                      path = nfs.value["path"]
+                      # read_only - (optional) is a type of bool
                       read_only = nfs.value["read_only"]
-                      server    = nfs.value["server"]
+                      # server - (required) is a type of string
+                      server = nfs.value["server"]
                     }
                   }
 
                   dynamic "persistent_volume_claim" {
                     for_each = volume.value.persistent_volume_claim
                     content {
+                      # claim_name - (optional) is a type of string
                       claim_name = persistent_volume_claim.value["claim_name"]
-                      read_only  = persistent_volume_claim.value["read_only"]
+                      # read_only - (optional) is a type of bool
+                      read_only = persistent_volume_claim.value["read_only"]
                     }
                   }
 
                   dynamic "photon_persistent_disk" {
                     for_each = volume.value.photon_persistent_disk
                     content {
+                      # fs_type - (optional) is a type of string
                       fs_type = photon_persistent_disk.value["fs_type"]
-                      pd_id   = photon_persistent_disk.value["pd_id"]
+                      # pd_id - (required) is a type of string
+                      pd_id = photon_persistent_disk.value["pd_id"]
                     }
                   }
 
                   dynamic "projected" {
                     for_each = volume.value.projected
                     content {
+                      # default_mode - (optional) is a type of string
                       default_mode = projected.value["default_mode"]
 
                       dynamic "sources" {
@@ -3494,14 +3900,19 @@ resource "kubernetes_daemonset" "this" {
                           dynamic "config_map" {
                             for_each = sources.value.config_map
                             content {
-                              name     = config_map.value["name"]
+                              # name - (optional) is a type of string
+                              name = config_map.value["name"]
+                              # optional - (optional) is a type of bool
                               optional = config_map.value["optional"]
 
                               dynamic "items" {
                                 for_each = config_map.value.items
                                 content {
-                                  key  = items.value["key"]
+                                  # key - (optional) is a type of string
+                                  key = items.value["key"]
+                                  # mode - (optional) is a type of string
                                   mode = items.value["mode"]
+                                  # path - (optional) is a type of string
                                   path = items.value["path"]
                                 }
                               }
@@ -3516,23 +3927,30 @@ resource "kubernetes_daemonset" "this" {
                               dynamic "items" {
                                 for_each = downward_api.value.items
                                 content {
+                                  # mode - (optional) is a type of string
                                   mode = items.value["mode"]
+                                  # path - (required) is a type of string
                                   path = items.value["path"]
 
                                   dynamic "field_ref" {
                                     for_each = items.value.field_ref
                                     content {
+                                      # api_version - (optional) is a type of string
                                       api_version = field_ref.value["api_version"]
-                                      field_path  = field_ref.value["field_path"]
+                                      # field_path - (optional) is a type of string
+                                      field_path = field_ref.value["field_path"]
                                     }
                                   }
 
                                   dynamic "resource_field_ref" {
                                     for_each = items.value.resource_field_ref
                                     content {
+                                      # container_name - (required) is a type of string
                                       container_name = resource_field_ref.value["container_name"]
-                                      divisor        = resource_field_ref.value["divisor"]
-                                      resource       = resource_field_ref.value["resource"]
+                                      # divisor - (optional) is a type of string
+                                      divisor = resource_field_ref.value["divisor"]
+                                      # resource - (required) is a type of string
+                                      resource = resource_field_ref.value["resource"]
                                     }
                                   }
 
@@ -3545,14 +3963,19 @@ resource "kubernetes_daemonset" "this" {
                           dynamic "secret" {
                             for_each = sources.value.secret
                             content {
-                              name     = secret.value["name"]
+                              # name - (optional) is a type of string
+                              name = secret.value["name"]
+                              # optional - (optional) is a type of bool
                               optional = secret.value["optional"]
 
                               dynamic "items" {
                                 for_each = secret.value.items
                                 content {
-                                  key  = items.value["key"]
+                                  # key - (optional) is a type of string
+                                  key = items.value["key"]
+                                  # mode - (optional) is a type of string
                                   mode = items.value["mode"]
+                                  # path - (optional) is a type of string
                                   path = items.value["path"]
                                 }
                               }
@@ -3563,9 +3986,12 @@ resource "kubernetes_daemonset" "this" {
                           dynamic "service_account_token" {
                             for_each = sources.value.service_account_token
                             content {
-                              audience           = service_account_token.value["audience"]
+                              # audience - (optional) is a type of string
+                              audience = service_account_token.value["audience"]
+                              # expiration_seconds - (optional) is a type of number
                               expiration_seconds = service_account_token.value["expiration_seconds"]
-                              path               = service_account_token.value["path"]
+                              # path - (required) is a type of string
+                              path = service_account_token.value["path"]
                             }
                           }
 
@@ -3578,29 +4004,43 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "quobyte" {
                     for_each = volume.value.quobyte
                     content {
-                      group     = quobyte.value["group"]
+                      # group - (optional) is a type of string
+                      group = quobyte.value["group"]
+                      # read_only - (optional) is a type of bool
                       read_only = quobyte.value["read_only"]
-                      registry  = quobyte.value["registry"]
-                      user      = quobyte.value["user"]
-                      volume    = quobyte.value["volume"]
+                      # registry - (required) is a type of string
+                      registry = quobyte.value["registry"]
+                      # user - (optional) is a type of string
+                      user = quobyte.value["user"]
+                      # volume - (required) is a type of string
+                      volume = quobyte.value["volume"]
                     }
                   }
 
                   dynamic "rbd" {
                     for_each = volume.value.rbd
                     content {
+                      # ceph_monitors - (required) is a type of set of string
                       ceph_monitors = rbd.value["ceph_monitors"]
-                      fs_type       = rbd.value["fs_type"]
-                      keyring       = rbd.value["keyring"]
-                      rados_user    = rbd.value["rados_user"]
-                      rbd_image     = rbd.value["rbd_image"]
-                      rbd_pool      = rbd.value["rbd_pool"]
-                      read_only     = rbd.value["read_only"]
+                      # fs_type - (optional) is a type of string
+                      fs_type = rbd.value["fs_type"]
+                      # keyring - (optional) is a type of string
+                      keyring = rbd.value["keyring"]
+                      # rados_user - (optional) is a type of string
+                      rados_user = rbd.value["rados_user"]
+                      # rbd_image - (required) is a type of string
+                      rbd_image = rbd.value["rbd_image"]
+                      # rbd_pool - (optional) is a type of string
+                      rbd_pool = rbd.value["rbd_pool"]
+                      # read_only - (optional) is a type of bool
+                      read_only = rbd.value["read_only"]
 
                       dynamic "secret_ref" {
                         for_each = rbd.value.secret_ref
                         content {
-                          name      = secret_ref.value["name"]
+                          # name - (optional) is a type of string
+                          name = secret_ref.value["name"]
+                          # namespace - (optional) is a type of string
                           namespace = secret_ref.value["namespace"]
                         }
                       }
@@ -3611,15 +4051,21 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "secret" {
                     for_each = volume.value.secret
                     content {
+                      # default_mode - (optional) is a type of string
                       default_mode = secret.value["default_mode"]
-                      optional     = secret.value["optional"]
-                      secret_name  = secret.value["secret_name"]
+                      # optional - (optional) is a type of bool
+                      optional = secret.value["optional"]
+                      # secret_name - (optional) is a type of string
+                      secret_name = secret.value["secret_name"]
 
                       dynamic "items" {
                         for_each = secret.value.items
                         content {
-                          key  = items.value["key"]
+                          # key - (optional) is a type of string
+                          key = items.value["key"]
+                          # mode - (optional) is a type of string
                           mode = items.value["mode"]
+                          # path - (optional) is a type of string
                           path = items.value["path"]
                         }
                       }
@@ -3630,7 +4076,9 @@ resource "kubernetes_daemonset" "this" {
                   dynamic "vsphere_volume" {
                     for_each = volume.value.vsphere_volume
                     content {
-                      fs_type     = vsphere_volume.value["fs_type"]
+                      # fs_type - (optional) is a type of string
+                      fs_type = vsphere_volume.value["fs_type"]
+                      # volume_path - (required) is a type of string
                       volume_path = vsphere_volume.value["volume_path"]
                     }
                   }
@@ -3650,8 +4098,11 @@ resource "kubernetes_daemonset" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

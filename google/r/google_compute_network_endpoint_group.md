@@ -120,19 +120,29 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_network_endpoint_group" "this" {
-  default_port          = var.default_port
-  description           = var.description
-  name                  = var.name
-  network               = var.network
+  # default_port - (optional) is a type of number
+  default_port = var.default_port
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # network - (required) is a type of string
+  network = var.network
+  # network_endpoint_type - (optional) is a type of string
   network_endpoint_type = var.network_endpoint_type
-  project               = var.project
-  subnetwork            = var.subnetwork
-  zone                  = var.zone
+  # project - (optional) is a type of string
+  project = var.project
+  # subnetwork - (optional) is a type of string
+  subnetwork = var.subnetwork
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

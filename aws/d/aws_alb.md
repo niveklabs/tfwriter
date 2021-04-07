@@ -66,8 +66,11 @@ variable "tags" {
 
 ```terraform
 data "aws_alb" "this" {
-  arn  = var.arn
+  # arn - (optional) is a type of string
+  arn = var.arn
+  # name - (optional) is a type of string
   name = var.name
+  # tags - (optional) is a type of map of string
   tags = var.tags
 }
 ```

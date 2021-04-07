@@ -181,28 +181,47 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_database_vm_cluster" "this" {
-  compartment_id              = var.compartment_id
-  cpu_core_count              = var.cpu_core_count
-  data_storage_size_in_tbs    = var.data_storage_size_in_tbs
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # cpu_core_count - (required) is a type of number
+  cpu_core_count = var.cpu_core_count
+  # data_storage_size_in_tbs - (optional) is a type of number
+  data_storage_size_in_tbs = var.data_storage_size_in_tbs
+  # db_node_storage_size_in_gbs - (optional) is a type of number
   db_node_storage_size_in_gbs = var.db_node_storage_size_in_gbs
-  defined_tags                = var.defined_tags
-  display_name                = var.display_name
-  exadata_infrastructure_id   = var.exadata_infrastructure_id
-  freeform_tags               = var.freeform_tags
-  gi_version                  = var.gi_version
-  is_local_backup_enabled     = var.is_local_backup_enabled
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # exadata_infrastructure_id - (required) is a type of string
+  exadata_infrastructure_id = var.exadata_infrastructure_id
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # gi_version - (required) is a type of string
+  gi_version = var.gi_version
+  # is_local_backup_enabled - (optional) is a type of bool
+  is_local_backup_enabled = var.is_local_backup_enabled
+  # is_sparse_diskgroup_enabled - (optional) is a type of bool
   is_sparse_diskgroup_enabled = var.is_sparse_diskgroup_enabled
-  license_model               = var.license_model
-  memory_size_in_gbs          = var.memory_size_in_gbs
-  ssh_public_keys             = var.ssh_public_keys
-  time_zone                   = var.time_zone
-  vm_cluster_network_id       = var.vm_cluster_network_id
+  # license_model - (optional) is a type of string
+  license_model = var.license_model
+  # memory_size_in_gbs - (optional) is a type of number
+  memory_size_in_gbs = var.memory_size_in_gbs
+  # ssh_public_keys - (required) is a type of set of string
+  ssh_public_keys = var.ssh_public_keys
+  # time_zone - (optional) is a type of string
+  time_zone = var.time_zone
+  # vm_cluster_network_id - (required) is a type of string
+  vm_cluster_network_id = var.vm_cluster_network_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

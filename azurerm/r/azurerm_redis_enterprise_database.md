@@ -132,18 +132,27 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_redis_enterprise_database" "this" {
-  client_protocol     = var.client_protocol
-  cluster_id          = var.cluster_id
-  clustering_policy   = var.clustering_policy
-  eviction_policy     = var.eviction_policy
-  name                = var.name
-  port                = var.port
+  # client_protocol - (optional) is a type of string
+  client_protocol = var.client_protocol
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # clustering_policy - (optional) is a type of string
+  clustering_policy = var.clustering_policy
+  # eviction_policy - (optional) is a type of string
+  eviction_policy = var.eviction_policy
+  # name - (optional) is a type of string
+  name = var.name
+  # port - (optional) is a type of number
+  port = var.port
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
 
   dynamic "module" {
     for_each = var.module
     content {
+      # args - (optional) is a type of string
       args = module.value["args"]
+      # name - (required) is a type of string
       name = module.value["name"]
     }
   }
@@ -151,9 +160,12 @@ resource "azurerm_redis_enterprise_database" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

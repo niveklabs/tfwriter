@@ -56,7 +56,9 @@ variable "policy_data" {
 
 ```terraform
 resource "google_folder_iam_policy" "this" {
-  folder      = var.folder
+  # folder - (required) is a type of string
+  folder = var.folder
+  # policy_data - (required) is a type of string
   policy_data = var.policy_data
 }
 ```

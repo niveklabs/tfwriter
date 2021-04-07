@@ -49,6 +49,7 @@ variable "service_connector_id" {
 
 ```terraform
 data "oci_sch_service_connector" "this" {
+  # service_connector_id - (required) is a type of string
   service_connector_id = var.service_connector_id
 }
 ```

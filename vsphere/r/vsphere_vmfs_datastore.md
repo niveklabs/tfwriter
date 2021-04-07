@@ -95,13 +95,20 @@ variable "tags" {
 
 ```terraform
 resource "vsphere_vmfs_datastore" "this" {
-  custom_attributes    = var.custom_attributes
+  # custom_attributes - (optional) is a type of map of string
+  custom_attributes = var.custom_attributes
+  # datastore_cluster_id - (optional) is a type of string
   datastore_cluster_id = var.datastore_cluster_id
-  disks                = var.disks
-  folder               = var.folder
-  host_system_id       = var.host_system_id
-  name                 = var.name
-  tags                 = var.tags
+  # disks - (required) is a type of list of string
+  disks = var.disks
+  # folder - (optional) is a type of string
+  folder = var.folder
+  # host_system_id - (required) is a type of string
+  host_system_id = var.host_system_id
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 }
 ```
 

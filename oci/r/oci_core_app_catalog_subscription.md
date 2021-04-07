@@ -110,19 +110,29 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_app_catalog_subscription" "this" {
-  compartment_id           = var.compartment_id
-  eula_link                = var.eula_link
-  listing_id               = var.listing_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # eula_link - (optional) is a type of string
+  eula_link = var.eula_link
+  # listing_id - (required) is a type of string
+  listing_id = var.listing_id
+  # listing_resource_version - (required) is a type of string
   listing_resource_version = var.listing_resource_version
+  # oracle_terms_of_use_link - (required) is a type of string
   oracle_terms_of_use_link = var.oracle_terms_of_use_link
-  signature                = var.signature
-  time_retrieved           = var.time_retrieved
+  # signature - (required) is a type of string
+  signature = var.signature
+  # time_retrieved - (required) is a type of string
+  time_retrieved = var.time_retrieved
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

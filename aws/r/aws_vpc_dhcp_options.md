@@ -90,12 +90,18 @@ variable "tags" {
 
 ```terraform
 resource "aws_vpc_dhcp_options" "this" {
-  domain_name          = var.domain_name
-  domain_name_servers  = var.domain_name_servers
+  # domain_name - (optional) is a type of string
+  domain_name = var.domain_name
+  # domain_name_servers - (optional) is a type of list of string
+  domain_name_servers = var.domain_name_servers
+  # netbios_name_servers - (optional) is a type of list of string
   netbios_name_servers = var.netbios_name_servers
-  netbios_node_type    = var.netbios_node_type
-  ntp_servers          = var.ntp_servers
-  tags                 = var.tags
+  # netbios_node_type - (optional) is a type of string
+  netbios_node_type = var.netbios_node_type
+  # ntp_servers - (optional) is a type of list of string
+  ntp_servers = var.ntp_servers
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

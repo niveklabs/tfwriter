@@ -107,19 +107,29 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_automation_variable_string" "this" {
+  # automation_account_name - (required) is a type of string
   automation_account_name = var.automation_account_name
-  description             = var.description
-  encrypted               = var.encrypted
-  name                    = var.name
-  resource_group_name     = var.resource_group_name
-  value                   = var.value
+  # description - (optional) is a type of string
+  description = var.description
+  # encrypted - (optional) is a type of bool
+  encrypted = var.encrypted
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # value - (optional) is a type of string
+  value = var.value
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

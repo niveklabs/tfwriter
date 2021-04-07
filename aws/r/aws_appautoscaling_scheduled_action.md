@@ -116,19 +116,29 @@ variable "scalable_target_action" {
 
 ```terraform
 resource "aws_appautoscaling_scheduled_action" "this" {
-  end_time           = var.end_time
-  name               = var.name
-  resource_id        = var.resource_id
+  # end_time - (optional) is a type of string
+  end_time = var.end_time
+  # name - (required) is a type of string
+  name = var.name
+  # resource_id - (required) is a type of string
+  resource_id = var.resource_id
+  # scalable_dimension - (required) is a type of string
   scalable_dimension = var.scalable_dimension
-  schedule           = var.schedule
-  service_namespace  = var.service_namespace
-  start_time         = var.start_time
-  timezone           = var.timezone
+  # schedule - (required) is a type of string
+  schedule = var.schedule
+  # service_namespace - (required) is a type of string
+  service_namespace = var.service_namespace
+  # start_time - (optional) is a type of string
+  start_time = var.start_time
+  # timezone - (optional) is a type of string
+  timezone = var.timezone
 
   dynamic "scalable_target_action" {
     for_each = var.scalable_target_action
     content {
+      # max_capacity - (optional) is a type of string
       max_capacity = scalable_target_action.value["max_capacity"]
+      # min_capacity - (optional) is a type of string
       min_capacity = scalable_target_action.value["min_capacity"]
     }
   }

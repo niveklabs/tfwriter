@@ -84,15 +84,21 @@ variable "filter" {
 
 ```terraform
 data "oci_core_app_catalog_listings" "this" {
-  display_name   = var.display_name
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # publisher_name - (optional) is a type of string
   publisher_name = var.publisher_name
+  # publisher_type - (optional) is a type of string
   publisher_type = var.publisher_type
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

@@ -121,11 +121,13 @@ variable "timeouts" {
 
 ```terraform
 resource "kubernetes_service_account" "this" {
+  # automount_service_account_token - (optional) is a type of bool
   automount_service_account_token = var.automount_service_account_token
 
   dynamic "image_pull_secret" {
     for_each = var.image_pull_secret
     content {
+      # name - (optional) is a type of string
       name = image_pull_secret.value["name"]
     }
   }
@@ -133,17 +135,23 @@ resource "kubernetes_service_account" "this" {
   dynamic "metadata" {
     for_each = var.metadata
     content {
-      annotations   = metadata.value["annotations"]
+      # annotations - (optional) is a type of map of string
+      annotations = metadata.value["annotations"]
+      # generate_name - (optional) is a type of string
       generate_name = metadata.value["generate_name"]
-      labels        = metadata.value["labels"]
-      name          = metadata.value["name"]
-      namespace     = metadata.value["namespace"]
+      # labels - (optional) is a type of map of string
+      labels = metadata.value["labels"]
+      # name - (optional) is a type of string
+      name = metadata.value["name"]
+      # namespace - (optional) is a type of string
+      namespace = metadata.value["namespace"]
     }
   }
 
   dynamic "secret" {
     for_each = var.secret
     content {
+      # name - (optional) is a type of string
       name = secret.value["name"]
     }
   }
@@ -151,6 +159,7 @@ resource "kubernetes_service_account" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

@@ -185,35 +185,55 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_blockchain_blockchain_platform" "this" {
+  # ca_cert_archive_text - (optional) is a type of string
   ca_cert_archive_text = var.ca_cert_archive_text
-  compartment_id       = var.compartment_id
-  compute_shape        = var.compute_shape
-  defined_tags         = var.defined_tags
-  description          = var.description
-  display_name         = var.display_name
-  federated_user_id    = var.federated_user_id
-  freeform_tags        = var.freeform_tags
-  idcs_access_token    = var.idcs_access_token
-  is_byol              = var.is_byol
-  load_balancer_shape  = var.load_balancer_shape
-  platform_role        = var.platform_role
-  storage_size_in_tbs  = var.storage_size_in_tbs
-  total_ocpu_capacity  = var.total_ocpu_capacity
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # compute_shape - (required) is a type of string
+  compute_shape = var.compute_shape
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # federated_user_id - (optional) is a type of string
+  federated_user_id = var.federated_user_id
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # idcs_access_token - (required) is a type of string
+  idcs_access_token = var.idcs_access_token
+  # is_byol - (optional) is a type of bool
+  is_byol = var.is_byol
+  # load_balancer_shape - (optional) is a type of string
+  load_balancer_shape = var.load_balancer_shape
+  # platform_role - (required) is a type of string
+  platform_role = var.platform_role
+  # storage_size_in_tbs - (optional) is a type of number
+  storage_size_in_tbs = var.storage_size_in_tbs
+  # total_ocpu_capacity - (optional) is a type of number
+  total_ocpu_capacity = var.total_ocpu_capacity
 
   dynamic "replicas" {
     for_each = var.replicas
     content {
-      ca_count      = replicas.value["ca_count"]
+      # ca_count - (optional) is a type of number
+      ca_count = replicas.value["ca_count"]
+      # console_count - (optional) is a type of number
       console_count = replicas.value["console_count"]
-      proxy_count   = replicas.value["proxy_count"]
+      # proxy_count - (optional) is a type of number
+      proxy_count = replicas.value["proxy_count"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

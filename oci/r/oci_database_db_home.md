@@ -224,46 +224,75 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_database_db_home" "this" {
+  # database_software_image_id - (optional) is a type of string
   database_software_image_id = var.database_software_image_id
-  db_system_id               = var.db_system_id
-  db_version                 = var.db_version
-  defined_tags               = var.defined_tags
-  display_name               = var.display_name
-  freeform_tags              = var.freeform_tags
-  kms_key_id                 = var.kms_key_id
-  kms_key_version_id         = var.kms_key_version_id
-  source                     = var.source
-  vm_cluster_id              = var.vm_cluster_id
+  # db_system_id - (optional) is a type of string
+  db_system_id = var.db_system_id
+  # db_version - (optional) is a type of string
+  db_version = var.db_version
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # kms_key_version_id - (optional) is a type of string
+  kms_key_version_id = var.kms_key_version_id
+  # source - (optional) is a type of string
+  source = var.source
+  # vm_cluster_id - (optional) is a type of string
+  vm_cluster_id = var.vm_cluster_id
 
   dynamic "database" {
     for_each = var.database
     content {
-      admin_password                        = database.value["admin_password"]
-      backup_id                             = database.value["backup_id"]
-      backup_tde_password                   = database.value["backup_tde_password"]
-      character_set                         = database.value["character_set"]
-      database_id                           = database.value["database_id"]
-      database_software_image_id            = database.value["database_software_image_id"]
-      db_name                               = database.value["db_name"]
-      db_workload                           = database.value["db_workload"]
-      defined_tags                          = database.value["defined_tags"]
-      freeform_tags                         = database.value["freeform_tags"]
-      ncharacter_set                        = database.value["ncharacter_set"]
-      pdb_name                              = database.value["pdb_name"]
-      tde_wallet_password                   = database.value["tde_wallet_password"]
+      # admin_password - (required) is a type of string
+      admin_password = database.value["admin_password"]
+      # backup_id - (optional) is a type of string
+      backup_id = database.value["backup_id"]
+      # backup_tde_password - (optional) is a type of string
+      backup_tde_password = database.value["backup_tde_password"]
+      # character_set - (optional) is a type of string
+      character_set = database.value["character_set"]
+      # database_id - (optional) is a type of string
+      database_id = database.value["database_id"]
+      # database_software_image_id - (optional) is a type of string
+      database_software_image_id = database.value["database_software_image_id"]
+      # db_name - (optional) is a type of string
+      db_name = database.value["db_name"]
+      # db_workload - (optional) is a type of string
+      db_workload = database.value["db_workload"]
+      # defined_tags - (optional) is a type of map of string
+      defined_tags = database.value["defined_tags"]
+      # freeform_tags - (optional) is a type of map of string
+      freeform_tags = database.value["freeform_tags"]
+      # ncharacter_set - (optional) is a type of string
+      ncharacter_set = database.value["ncharacter_set"]
+      # pdb_name - (optional) is a type of string
+      pdb_name = database.value["pdb_name"]
+      # tde_wallet_password - (optional) is a type of string
+      tde_wallet_password = database.value["tde_wallet_password"]
+      # time_stamp_for_point_in_time_recovery - (optional) is a type of string
       time_stamp_for_point_in_time_recovery = database.value["time_stamp_for_point_in_time_recovery"]
 
       dynamic "db_backup_config" {
         for_each = database.value.db_backup_config
         content {
-          auto_backup_enabled     = db_backup_config.value["auto_backup_enabled"]
-          auto_backup_window      = db_backup_config.value["auto_backup_window"]
+          # auto_backup_enabled - (optional) is a type of bool
+          auto_backup_enabled = db_backup_config.value["auto_backup_enabled"]
+          # auto_backup_window - (optional) is a type of string
+          auto_backup_window = db_backup_config.value["auto_backup_window"]
+          # recovery_window_in_days - (optional) is a type of number
           recovery_window_in_days = db_backup_config.value["recovery_window_in_days"]
 
           dynamic "backup_destination_details" {
             for_each = db_backup_config.value.backup_destination_details
             content {
-              id   = backup_destination_details.value["id"]
+              # id - (optional) is a type of string
+              id = backup_destination_details.value["id"]
+              # type - (optional) is a type of string
               type = backup_destination_details.value["type"]
             }
           }
@@ -277,8 +306,11 @@ resource "oci_database_db_home" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -153,24 +153,39 @@ variable "timeouts" {
 
 ```terraform
 resource "google_dialogflow_agent" "this" {
-  api_version              = var.api_version
-  avatar_uri               = var.avatar_uri
+  # api_version - (optional) is a type of string
+  api_version = var.api_version
+  # avatar_uri - (optional) is a type of string
+  avatar_uri = var.avatar_uri
+  # classification_threshold - (optional) is a type of number
   classification_threshold = var.classification_threshold
-  default_language_code    = var.default_language_code
-  description              = var.description
-  display_name             = var.display_name
-  enable_logging           = var.enable_logging
-  match_mode               = var.match_mode
-  project                  = var.project
+  # default_language_code - (required) is a type of string
+  default_language_code = var.default_language_code
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # enable_logging - (optional) is a type of bool
+  enable_logging = var.enable_logging
+  # match_mode - (optional) is a type of string
+  match_mode = var.match_mode
+  # project - (optional) is a type of string
+  project = var.project
+  # supported_language_codes - (optional) is a type of list of string
   supported_language_codes = var.supported_language_codes
-  tier                     = var.tier
-  time_zone                = var.time_zone
+  # tier - (optional) is a type of string
+  tier = var.tier
+  # time_zone - (required) is a type of string
+  time_zone = var.time_zone
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

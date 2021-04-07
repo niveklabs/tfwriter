@@ -186,28 +186,47 @@ variable "timeouts" {
 
 ```terraform
 resource "google_redis_instance" "this" {
+  # alternative_location_id - (optional) is a type of string
   alternative_location_id = var.alternative_location_id
-  auth_enabled            = var.auth_enabled
-  authorized_network      = var.authorized_network
-  connect_mode            = var.connect_mode
-  display_name            = var.display_name
-  labels                  = var.labels
-  location_id             = var.location_id
-  memory_size_gb          = var.memory_size_gb
-  name                    = var.name
-  project                 = var.project
-  redis_configs           = var.redis_configs
-  redis_version           = var.redis_version
-  region                  = var.region
-  reserved_ip_range       = var.reserved_ip_range
-  tier                    = var.tier
+  # auth_enabled - (optional) is a type of bool
+  auth_enabled = var.auth_enabled
+  # authorized_network - (optional) is a type of string
+  authorized_network = var.authorized_network
+  # connect_mode - (optional) is a type of string
+  connect_mode = var.connect_mode
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # location_id - (optional) is a type of string
+  location_id = var.location_id
+  # memory_size_gb - (required) is a type of number
+  memory_size_gb = var.memory_size_gb
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # redis_configs - (optional) is a type of map of string
+  redis_configs = var.redis_configs
+  # redis_version - (optional) is a type of string
+  redis_version = var.redis_version
+  # region - (optional) is a type of string
+  region = var.region
+  # reserved_ip_range - (optional) is a type of string
+  reserved_ip_range = var.reserved_ip_range
+  # tier - (optional) is a type of string
+  tier = var.tier
+  # transit_encryption_mode - (optional) is a type of string
   transit_encryption_mode = var.transit_encryption_mode
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -49,6 +49,7 @@ variable "configuration_id" {
 
 ```terraform
 data "oci_mysql_mysql_configuration" "this" {
+  # configuration_id - (required) is a type of string
   configuration_id = var.configuration_id
 }
 ```

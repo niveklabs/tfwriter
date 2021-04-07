@@ -82,11 +82,16 @@ variable "tags" {
 
 ```terraform
 resource "aws_iam_instance_profile" "this" {
-  name        = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
   name_prefix = var.name_prefix
-  path        = var.path
-  role        = var.role
-  tags        = var.tags
+  # path - (optional) is a type of string
+  path = var.path
+  # role - (optional) is a type of string
+  role = var.role
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

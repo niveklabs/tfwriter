@@ -232,33 +232,51 @@ resource "kubernetes_pod_security_policy" "this" {
   dynamic "metadata" {
     for_each = var.metadata
     content {
+      # annotations - (optional) is a type of map of string
       annotations = metadata.value["annotations"]
-      labels      = metadata.value["labels"]
-      name        = metadata.value["name"]
+      # labels - (optional) is a type of map of string
+      labels = metadata.value["labels"]
+      # name - (optional) is a type of string
+      name = metadata.value["name"]
     }
   }
 
   dynamic "spec" {
     for_each = var.spec
     content {
-      allow_privilege_escalation         = spec.value["allow_privilege_escalation"]
-      allowed_capabilities               = spec.value["allowed_capabilities"]
-      allowed_proc_mount_types           = spec.value["allowed_proc_mount_types"]
-      allowed_unsafe_sysctls             = spec.value["allowed_unsafe_sysctls"]
-      default_add_capabilities           = spec.value["default_add_capabilities"]
+      # allow_privilege_escalation - (optional) is a type of bool
+      allow_privilege_escalation = spec.value["allow_privilege_escalation"]
+      # allowed_capabilities - (optional) is a type of list of string
+      allowed_capabilities = spec.value["allowed_capabilities"]
+      # allowed_proc_mount_types - (optional) is a type of list of string
+      allowed_proc_mount_types = spec.value["allowed_proc_mount_types"]
+      # allowed_unsafe_sysctls - (optional) is a type of list of string
+      allowed_unsafe_sysctls = spec.value["allowed_unsafe_sysctls"]
+      # default_add_capabilities - (optional) is a type of list of string
+      default_add_capabilities = spec.value["default_add_capabilities"]
+      # default_allow_privilege_escalation - (optional) is a type of bool
       default_allow_privilege_escalation = spec.value["default_allow_privilege_escalation"]
-      forbidden_sysctls                  = spec.value["forbidden_sysctls"]
-      host_ipc                           = spec.value["host_ipc"]
-      host_network                       = spec.value["host_network"]
-      host_pid                           = spec.value["host_pid"]
-      privileged                         = spec.value["privileged"]
-      read_only_root_filesystem          = spec.value["read_only_root_filesystem"]
-      required_drop_capabilities         = spec.value["required_drop_capabilities"]
-      volumes                            = spec.value["volumes"]
+      # forbidden_sysctls - (optional) is a type of list of string
+      forbidden_sysctls = spec.value["forbidden_sysctls"]
+      # host_ipc - (optional) is a type of bool
+      host_ipc = spec.value["host_ipc"]
+      # host_network - (optional) is a type of bool
+      host_network = spec.value["host_network"]
+      # host_pid - (optional) is a type of bool
+      host_pid = spec.value["host_pid"]
+      # privileged - (optional) is a type of bool
+      privileged = spec.value["privileged"]
+      # read_only_root_filesystem - (optional) is a type of bool
+      read_only_root_filesystem = spec.value["read_only_root_filesystem"]
+      # required_drop_capabilities - (optional) is a type of list of string
+      required_drop_capabilities = spec.value["required_drop_capabilities"]
+      # volumes - (optional) is a type of list of string
+      volumes = spec.value["volumes"]
 
       dynamic "allowed_flex_volumes" {
         for_each = spec.value.allowed_flex_volumes
         content {
+          # driver - (required) is a type of string
           driver = allowed_flex_volumes.value["driver"]
         }
       }
@@ -266,20 +284,25 @@ resource "kubernetes_pod_security_policy" "this" {
       dynamic "allowed_host_paths" {
         for_each = spec.value.allowed_host_paths
         content {
+          # path_prefix - (required) is a type of string
           path_prefix = allowed_host_paths.value["path_prefix"]
-          read_only   = allowed_host_paths.value["read_only"]
+          # read_only - (optional) is a type of bool
+          read_only = allowed_host_paths.value["read_only"]
         }
       }
 
       dynamic "fs_group" {
         for_each = spec.value.fs_group
         content {
+          # rule - (required) is a type of string
           rule = fs_group.value["rule"]
 
           dynamic "range" {
             for_each = fs_group.value.range
             content {
+              # max - (required) is a type of number
               max = range.value["max"]
+              # min - (required) is a type of number
               min = range.value["min"]
             }
           }
@@ -290,7 +313,9 @@ resource "kubernetes_pod_security_policy" "this" {
       dynamic "host_ports" {
         for_each = spec.value.host_ports
         content {
+          # max - (required) is a type of number
           max = host_ports.value["max"]
+          # min - (required) is a type of number
           min = host_ports.value["min"]
         }
       }
@@ -298,12 +323,15 @@ resource "kubernetes_pod_security_policy" "this" {
       dynamic "run_as_group" {
         for_each = spec.value.run_as_group
         content {
+          # rule - (required) is a type of string
           rule = run_as_group.value["rule"]
 
           dynamic "range" {
             for_each = run_as_group.value.range
             content {
+              # max - (required) is a type of number
               max = range.value["max"]
+              # min - (required) is a type of number
               min = range.value["min"]
             }
           }
@@ -314,12 +342,15 @@ resource "kubernetes_pod_security_policy" "this" {
       dynamic "run_as_user" {
         for_each = spec.value.run_as_user
         content {
+          # rule - (required) is a type of string
           rule = run_as_user.value["rule"]
 
           dynamic "range" {
             for_each = run_as_user.value.range
             content {
+              # max - (required) is a type of number
               max = range.value["max"]
+              # min - (required) is a type of number
               min = range.value["min"]
             }
           }
@@ -330,15 +361,20 @@ resource "kubernetes_pod_security_policy" "this" {
       dynamic "se_linux" {
         for_each = spec.value.se_linux
         content {
+          # rule - (required) is a type of string
           rule = se_linux.value["rule"]
 
           dynamic "se_linux_options" {
             for_each = se_linux.value.se_linux_options
             content {
+              # level - (required) is a type of string
               level = se_linux_options.value["level"]
-              role  = se_linux_options.value["role"]
-              type  = se_linux_options.value["type"]
-              user  = se_linux_options.value["user"]
+              # role - (required) is a type of string
+              role = se_linux_options.value["role"]
+              # type - (required) is a type of string
+              type = se_linux_options.value["type"]
+              # user - (required) is a type of string
+              user = se_linux_options.value["user"]
             }
           }
 
@@ -348,12 +384,15 @@ resource "kubernetes_pod_security_policy" "this" {
       dynamic "supplemental_groups" {
         for_each = spec.value.supplemental_groups
         content {
+          # rule - (required) is a type of string
           rule = supplemental_groups.value["rule"]
 
           dynamic "range" {
             for_each = supplemental_groups.value.range
             content {
+              # max - (required) is a type of number
               max = range.value["max"]
+              # min - (required) is a type of number
               min = range.value["min"]
             }
           }

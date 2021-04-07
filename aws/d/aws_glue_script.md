@@ -96,13 +96,17 @@ variable "dag_node" {
 
 ```terraform
 data "aws_glue_script" "this" {
+  # language - (optional) is a type of string
   language = var.language
 
   dynamic "dag_edge" {
     for_each = var.dag_edge
     content {
-      source           = dag_edge.value["source"]
-      target           = dag_edge.value["target"]
+      # source - (required) is a type of string
+      source = dag_edge.value["source"]
+      # target - (required) is a type of string
+      target = dag_edge.value["target"]
+      # target_parameter - (optional) is a type of string
       target_parameter = dag_edge.value["target_parameter"]
     }
   }
@@ -110,15 +114,21 @@ data "aws_glue_script" "this" {
   dynamic "dag_node" {
     for_each = var.dag_node
     content {
-      id          = dag_node.value["id"]
+      # id - (required) is a type of string
+      id = dag_node.value["id"]
+      # line_number - (optional) is a type of number
       line_number = dag_node.value["line_number"]
-      node_type   = dag_node.value["node_type"]
+      # node_type - (required) is a type of string
+      node_type = dag_node.value["node_type"]
 
       dynamic "args" {
         for_each = dag_node.value.args
         content {
-          name  = args.value["name"]
+          # name - (required) is a type of string
+          name = args.value["name"]
+          # param - (optional) is a type of bool
           param = args.value["param"]
+          # value - (required) is a type of string
           value = args.value["value"]
         }
       }

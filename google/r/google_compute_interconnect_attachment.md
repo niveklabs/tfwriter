@@ -162,25 +162,41 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_interconnect_attachment" "this" {
-  admin_enabled            = var.admin_enabled
-  bandwidth                = var.bandwidth
-  candidate_subnets        = var.candidate_subnets
-  description              = var.description
+  # admin_enabled - (optional) is a type of bool
+  admin_enabled = var.admin_enabled
+  # bandwidth - (optional) is a type of string
+  bandwidth = var.bandwidth
+  # candidate_subnets - (optional) is a type of list of string
+  candidate_subnets = var.candidate_subnets
+  # description - (optional) is a type of string
+  description = var.description
+  # edge_availability_domain - (optional) is a type of string
   edge_availability_domain = var.edge_availability_domain
-  interconnect             = var.interconnect
-  mtu                      = var.mtu
-  name                     = var.name
-  project                  = var.project
-  region                   = var.region
-  router                   = var.router
-  type                     = var.type
-  vlan_tag8021q            = var.vlan_tag8021q
+  # interconnect - (optional) is a type of string
+  interconnect = var.interconnect
+  # mtu - (optional) is a type of string
+  mtu = var.mtu
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
+  # router - (required) is a type of string
+  router = var.router
+  # type - (optional) is a type of string
+  type = var.type
+  # vlan_tag8021q - (optional) is a type of number
+  vlan_tag8021q = var.vlan_tag8021q
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

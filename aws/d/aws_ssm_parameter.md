@@ -57,7 +57,9 @@ variable "with_decryption" {
 
 ```terraform
 data "aws_ssm_parameter" "this" {
-  name            = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # with_decryption - (optional) is a type of bool
   with_decryption = var.with_decryption
 }
 ```

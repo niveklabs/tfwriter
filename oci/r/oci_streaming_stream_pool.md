@@ -144,14 +144,19 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_streaming_stream_pool" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  defined_tags   = var.defined_tags
-  freeform_tags  = var.freeform_tags
-  name           = var.name
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "custom_encryption_key" {
     for_each = var.custom_encryption_key
     content {
+      # kms_key_id - (required) is a type of string
       kms_key_id = custom_encryption_key.value["kms_key_id"]
     }
   }
@@ -159,26 +164,35 @@ resource "oci_streaming_stream_pool" "this" {
   dynamic "kafka_settings" {
     for_each = var.kafka_settings
     content {
+      # auto_create_topics_enable - (optional) is a type of bool
       auto_create_topics_enable = kafka_settings.value["auto_create_topics_enable"]
-      log_retention_hours       = kafka_settings.value["log_retention_hours"]
-      num_partitions            = kafka_settings.value["num_partitions"]
+      # log_retention_hours - (optional) is a type of number
+      log_retention_hours = kafka_settings.value["log_retention_hours"]
+      # num_partitions - (optional) is a type of number
+      num_partitions = kafka_settings.value["num_partitions"]
     }
   }
 
   dynamic "private_endpoint_settings" {
     for_each = var.private_endpoint_settings
     content {
-      nsg_ids             = private_endpoint_settings.value["nsg_ids"]
+      # nsg_ids - (optional) is a type of set of string
+      nsg_ids = private_endpoint_settings.value["nsg_ids"]
+      # private_endpoint_ip - (optional) is a type of string
       private_endpoint_ip = private_endpoint_settings.value["private_endpoint_ip"]
-      subnet_id           = private_endpoint_settings.value["subnet_id"]
+      # subnet_id - (optional) is a type of string
+      subnet_id = private_endpoint_settings.value["subnet_id"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -107,13 +107,17 @@ variable "traffic_routing_config" {
 
 ```terraform
 resource "aws_codedeploy_deployment_config" "this" {
-  compute_platform       = var.compute_platform
+  # compute_platform - (optional) is a type of string
+  compute_platform = var.compute_platform
+  # deployment_config_name - (required) is a type of string
   deployment_config_name = var.deployment_config_name
 
   dynamic "minimum_healthy_hosts" {
     for_each = var.minimum_healthy_hosts
     content {
-      type  = minimum_healthy_hosts.value["type"]
+      # type - (optional) is a type of string
+      type = minimum_healthy_hosts.value["type"]
+      # value - (optional) is a type of number
       value = minimum_healthy_hosts.value["value"]
     }
   }
@@ -121,12 +125,15 @@ resource "aws_codedeploy_deployment_config" "this" {
   dynamic "traffic_routing_config" {
     for_each = var.traffic_routing_config
     content {
+      # type - (optional) is a type of string
       type = traffic_routing_config.value["type"]
 
       dynamic "time_based_canary" {
         for_each = traffic_routing_config.value.time_based_canary
         content {
-          interval   = time_based_canary.value["interval"]
+          # interval - (optional) is a type of number
+          interval = time_based_canary.value["interval"]
+          # percentage - (optional) is a type of number
           percentage = time_based_canary.value["percentage"]
         }
       }
@@ -134,7 +141,9 @@ resource "aws_codedeploy_deployment_config" "this" {
       dynamic "time_based_linear" {
         for_each = traffic_routing_config.value.time_based_linear
         content {
-          interval   = time_based_linear.value["interval"]
+          # interval - (optional) is a type of number
+          interval = time_based_linear.value["interval"]
+          # percentage - (optional) is a type of number
           percentage = time_based_linear.value["percentage"]
         }
       }

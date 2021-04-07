@@ -49,6 +49,7 @@ variable "virtual_circuit_id" {
 
 ```terraform
 data "oci_core_virtual_circuit" "this" {
+  # virtual_circuit_id - (required) is a type of string
   virtual_circuit_id = var.virtual_circuit_id
 }
 ```

@@ -71,9 +71,13 @@ variable "table_name" {
 
 ```terraform
 resource "aws_dynamodb_table_item" "this" {
-  hash_key   = var.hash_key
-  item       = var.item
-  range_key  = var.range_key
+  # hash_key - (required) is a type of string
+  hash_key = var.hash_key
+  # item - (required) is a type of string
+  item = var.item
+  # range_key - (optional) is a type of string
+  range_key = var.range_key
+  # table_name - (required) is a type of string
   table_name = var.table_name
 }
 ```

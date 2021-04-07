@@ -106,18 +106,27 @@ variable "timeouts" {
 
 ```terraform
 resource "google_game_services_realm" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  labels      = var.labels
-  location    = var.location
-  project     = var.project
-  realm_id    = var.realm_id
-  time_zone   = var.time_zone
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # location - (optional) is a type of string
+  location = var.location
+  # project - (optional) is a type of string
+  project = var.project
+  # realm_id - (required) is a type of string
+  realm_id = var.realm_id
+  # time_zone - (required) is a type of string
+  time_zone = var.time_zone
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

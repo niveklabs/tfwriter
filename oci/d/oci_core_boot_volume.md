@@ -49,6 +49,7 @@ variable "boot_volume_id" {
 
 ```terraform
 data "oci_core_boot_volume" "this" {
+  # boot_volume_id - (required) is a type of string
   boot_volume_id = var.boot_volume_id
 }
 ```

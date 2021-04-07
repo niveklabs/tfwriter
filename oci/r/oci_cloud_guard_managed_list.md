@@ -122,20 +122,31 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_cloud_guard_managed_list" "this" {
-  compartment_id         = var.compartment_id
-  defined_tags           = var.defined_tags
-  description            = var.description
-  display_name           = var.display_name
-  freeform_tags          = var.freeform_tags
-  list_items             = var.list_items
-  list_type              = var.list_type
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # list_items - (optional) is a type of list of string
+  list_items = var.list_items
+  # list_type - (optional) is a type of string
+  list_type = var.list_type
+  # source_managed_list_id - (optional) is a type of string
   source_managed_list_id = var.source_managed_list_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

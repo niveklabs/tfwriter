@@ -74,14 +74,19 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_email_suppression" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  email_address  = var.email_address
+  # email_address - (required) is a type of string
+  email_address = var.email_address
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

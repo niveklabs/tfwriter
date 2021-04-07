@@ -56,7 +56,9 @@ variable "resource_arn" {
 
 ```terraform
 resource "aws_shield_protection" "this" {
-  name         = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # resource_arn - (required) is a type of string
   resource_arn = var.resource_arn
 }
 ```

@@ -95,13 +95,20 @@ variable "source_file" {
 
 ```terraform
 resource "vsphere_file" "this" {
+  # create_directories - (optional) is a type of bool
   create_directories = var.create_directories
-  datacenter         = var.datacenter
-  datastore          = var.datastore
-  destination_file   = var.destination_file
-  source_datacenter  = var.source_datacenter
-  source_datastore   = var.source_datastore
-  source_file        = var.source_file
+  # datacenter - (optional) is a type of string
+  datacenter = var.datacenter
+  # datastore - (required) is a type of string
+  datastore = var.datastore
+  # destination_file - (required) is a type of string
+  destination_file = var.destination_file
+  # source_datacenter - (optional) is a type of string
+  source_datacenter = var.source_datacenter
+  # source_datastore - (optional) is a type of string
+  source_datastore = var.source_datastore
+  # source_file - (required) is a type of string
+  source_file = var.source_file
 }
 ```
 

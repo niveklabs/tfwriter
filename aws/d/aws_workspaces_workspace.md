@@ -74,9 +74,13 @@ variable "workspace_id" {
 
 ```terraform
 data "aws_workspaces_workspace" "this" {
+  # directory_id - (optional) is a type of string
   directory_id = var.directory_id
-  tags         = var.tags
-  user_name    = var.user_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # user_name - (optional) is a type of string
+  user_name = var.user_name
+  # workspace_id - (optional) is a type of string
   workspace_id = var.workspace_id
 }
 ```

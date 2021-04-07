@@ -70,10 +70,14 @@ variable "sku" {
 
 ```terraform
 data "azurestack_platform_image" "this" {
-  location  = var.location
-  offer     = var.offer
+  # location - (required) is a type of string
+  location = var.location
+  # offer - (required) is a type of string
+  offer = var.offer
+  # publisher - (required) is a type of string
   publisher = var.publisher
-  sku       = var.sku
+  # sku - (required) is a type of string
+  sku = var.sku
 }
 ```
 

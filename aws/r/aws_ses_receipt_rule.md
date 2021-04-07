@@ -232,60 +232,87 @@ variable "workmail_action" {
 
 ```terraform
 resource "aws_ses_receipt_rule" "this" {
-  after         = var.after
-  enabled       = var.enabled
-  name          = var.name
-  recipients    = var.recipients
+  # after - (optional) is a type of string
+  after = var.after
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
+  # recipients - (optional) is a type of set of string
+  recipients = var.recipients
+  # rule_set_name - (required) is a type of string
   rule_set_name = var.rule_set_name
-  scan_enabled  = var.scan_enabled
-  tls_policy    = var.tls_policy
+  # scan_enabled - (optional) is a type of bool
+  scan_enabled = var.scan_enabled
+  # tls_policy - (optional) is a type of string
+  tls_policy = var.tls_policy
 
   dynamic "add_header_action" {
     for_each = var.add_header_action
     content {
-      header_name  = add_header_action.value["header_name"]
+      # header_name - (required) is a type of string
+      header_name = add_header_action.value["header_name"]
+      # header_value - (required) is a type of string
       header_value = add_header_action.value["header_value"]
-      position     = add_header_action.value["position"]
+      # position - (required) is a type of number
+      position = add_header_action.value["position"]
     }
   }
 
   dynamic "bounce_action" {
     for_each = var.bounce_action
     content {
-      message         = bounce_action.value["message"]
-      position        = bounce_action.value["position"]
-      sender          = bounce_action.value["sender"]
+      # message - (required) is a type of string
+      message = bounce_action.value["message"]
+      # position - (required) is a type of number
+      position = bounce_action.value["position"]
+      # sender - (required) is a type of string
+      sender = bounce_action.value["sender"]
+      # smtp_reply_code - (required) is a type of string
       smtp_reply_code = bounce_action.value["smtp_reply_code"]
-      status_code     = bounce_action.value["status_code"]
-      topic_arn       = bounce_action.value["topic_arn"]
+      # status_code - (optional) is a type of string
+      status_code = bounce_action.value["status_code"]
+      # topic_arn - (optional) is a type of string
+      topic_arn = bounce_action.value["topic_arn"]
     }
   }
 
   dynamic "lambda_action" {
     for_each = var.lambda_action
     content {
-      function_arn    = lambda_action.value["function_arn"]
+      # function_arn - (required) is a type of string
+      function_arn = lambda_action.value["function_arn"]
+      # invocation_type - (optional) is a type of string
       invocation_type = lambda_action.value["invocation_type"]
-      position        = lambda_action.value["position"]
-      topic_arn       = lambda_action.value["topic_arn"]
+      # position - (required) is a type of number
+      position = lambda_action.value["position"]
+      # topic_arn - (optional) is a type of string
+      topic_arn = lambda_action.value["topic_arn"]
     }
   }
 
   dynamic "s3_action" {
     for_each = var.s3_action
     content {
-      bucket_name       = s3_action.value["bucket_name"]
-      kms_key_arn       = s3_action.value["kms_key_arn"]
+      # bucket_name - (required) is a type of string
+      bucket_name = s3_action.value["bucket_name"]
+      # kms_key_arn - (optional) is a type of string
+      kms_key_arn = s3_action.value["kms_key_arn"]
+      # object_key_prefix - (optional) is a type of string
       object_key_prefix = s3_action.value["object_key_prefix"]
-      position          = s3_action.value["position"]
-      topic_arn         = s3_action.value["topic_arn"]
+      # position - (required) is a type of number
+      position = s3_action.value["position"]
+      # topic_arn - (optional) is a type of string
+      topic_arn = s3_action.value["topic_arn"]
     }
   }
 
   dynamic "sns_action" {
     for_each = var.sns_action
     content {
-      position  = sns_action.value["position"]
+      # position - (required) is a type of number
+      position = sns_action.value["position"]
+      # topic_arn - (required) is a type of string
       topic_arn = sns_action.value["topic_arn"]
     }
   }
@@ -293,8 +320,11 @@ resource "aws_ses_receipt_rule" "this" {
   dynamic "stop_action" {
     for_each = var.stop_action
     content {
-      position  = stop_action.value["position"]
-      scope     = stop_action.value["scope"]
+      # position - (required) is a type of number
+      position = stop_action.value["position"]
+      # scope - (required) is a type of string
+      scope = stop_action.value["scope"]
+      # topic_arn - (optional) is a type of string
       topic_arn = stop_action.value["topic_arn"]
     }
   }
@@ -302,9 +332,12 @@ resource "aws_ses_receipt_rule" "this" {
   dynamic "workmail_action" {
     for_each = var.workmail_action
     content {
+      # organization_arn - (required) is a type of string
       organization_arn = workmail_action.value["organization_arn"]
-      position         = workmail_action.value["position"]
-      topic_arn        = workmail_action.value["topic_arn"]
+      # position - (required) is a type of number
+      position = workmail_action.value["position"]
+      # topic_arn - (optional) is a type of string
+      topic_arn = workmail_action.value["topic_arn"]
     }
   }
 

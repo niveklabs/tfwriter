@@ -56,7 +56,9 @@ variable "instance_pool_load_balancer_attachment_id" {
 
 ```terraform
 data "oci_core_instance_pool_load_balancer_attachment" "this" {
-  instance_pool_id                          = var.instance_pool_id
+  # instance_pool_id - (required) is a type of string
+  instance_pool_id = var.instance_pool_id
+  # instance_pool_load_balancer_attachment_id - (required) is a type of string
   instance_pool_load_balancer_attachment_id = var.instance_pool_load_balancer_attachment_id
 }
 ```

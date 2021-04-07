@@ -66,9 +66,12 @@ variable "triggers" {
 
 ```terraform
 resource "time_sleep" "this" {
-  create_duration  = var.create_duration
+  # create_duration - (optional) is a type of string
+  create_duration = var.create_duration
+  # destroy_duration - (optional) is a type of string
   destroy_duration = var.destroy_duration
-  triggers         = var.triggers
+  # triggers - (optional) is a type of map of string
+  triggers = var.triggers
 }
 ```
 

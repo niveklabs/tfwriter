@@ -739,18 +739,27 @@ variable "waf_configuration" {
 
 ```terraform
 resource "azurerm_application_gateway" "this" {
-  enable_http2        = var.enable_http2
-  firewall_policy_id  = var.firewall_policy_id
-  location            = var.location
-  name                = var.name
+  # enable_http2 - (optional) is a type of bool
+  enable_http2 = var.enable_http2
+  # firewall_policy_id - (optional) is a type of string
+  firewall_policy_id = var.firewall_policy_id
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  tags                = var.tags
-  zones               = var.zones
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # zones - (optional) is a type of list of string
+  zones = var.zones
 
   dynamic "authentication_certificate" {
     for_each = var.authentication_certificate
     content {
+      # data - (required) is a type of string
       data = authentication_certificate.value["data"]
+      # name - (required) is a type of string
       name = authentication_certificate.value["name"]
     }
   }
@@ -758,7 +767,9 @@ resource "azurerm_application_gateway" "this" {
   dynamic "autoscale_configuration" {
     for_each = var.autoscale_configuration
     content {
+      # max_capacity - (optional) is a type of number
       max_capacity = autoscale_configuration.value["max_capacity"]
+      # min_capacity - (required) is a type of number
       min_capacity = autoscale_configuration.value["min_capacity"]
     }
   }
@@ -766,30 +777,45 @@ resource "azurerm_application_gateway" "this" {
   dynamic "backend_address_pool" {
     for_each = var.backend_address_pool
     content {
-      fqdns        = backend_address_pool.value["fqdns"]
+      # fqdns - (optional) is a type of list of string
+      fqdns = backend_address_pool.value["fqdns"]
+      # ip_addresses - (optional) is a type of list of string
       ip_addresses = backend_address_pool.value["ip_addresses"]
-      name         = backend_address_pool.value["name"]
+      # name - (required) is a type of string
+      name = backend_address_pool.value["name"]
     }
   }
 
   dynamic "backend_http_settings" {
     for_each = var.backend_http_settings
     content {
-      affinity_cookie_name                = backend_http_settings.value["affinity_cookie_name"]
-      cookie_based_affinity               = backend_http_settings.value["cookie_based_affinity"]
-      host_name                           = backend_http_settings.value["host_name"]
-      name                                = backend_http_settings.value["name"]
-      path                                = backend_http_settings.value["path"]
+      # affinity_cookie_name - (optional) is a type of string
+      affinity_cookie_name = backend_http_settings.value["affinity_cookie_name"]
+      # cookie_based_affinity - (required) is a type of string
+      cookie_based_affinity = backend_http_settings.value["cookie_based_affinity"]
+      # host_name - (optional) is a type of string
+      host_name = backend_http_settings.value["host_name"]
+      # name - (required) is a type of string
+      name = backend_http_settings.value["name"]
+      # path - (optional) is a type of string
+      path = backend_http_settings.value["path"]
+      # pick_host_name_from_backend_address - (optional) is a type of bool
       pick_host_name_from_backend_address = backend_http_settings.value["pick_host_name_from_backend_address"]
-      port                                = backend_http_settings.value["port"]
-      probe_name                          = backend_http_settings.value["probe_name"]
-      protocol                            = backend_http_settings.value["protocol"]
-      request_timeout                     = backend_http_settings.value["request_timeout"]
-      trusted_root_certificate_names      = backend_http_settings.value["trusted_root_certificate_names"]
+      # port - (required) is a type of number
+      port = backend_http_settings.value["port"]
+      # probe_name - (optional) is a type of string
+      probe_name = backend_http_settings.value["probe_name"]
+      # protocol - (required) is a type of string
+      protocol = backend_http_settings.value["protocol"]
+      # request_timeout - (optional) is a type of number
+      request_timeout = backend_http_settings.value["request_timeout"]
+      # trusted_root_certificate_names - (optional) is a type of list of string
+      trusted_root_certificate_names = backend_http_settings.value["trusted_root_certificate_names"]
 
       dynamic "authentication_certificate" {
         for_each = backend_http_settings.value.authentication_certificate
         content {
+          # name - (required) is a type of string
           name = authentication_certificate.value["name"]
         }
       }
@@ -797,8 +823,10 @@ resource "azurerm_application_gateway" "this" {
       dynamic "connection_draining" {
         for_each = backend_http_settings.value.connection_draining
         content {
+          # drain_timeout_sec - (required) is a type of number
           drain_timeout_sec = connection_draining.value["drain_timeout_sec"]
-          enabled           = connection_draining.value["enabled"]
+          # enabled - (required) is a type of bool
+          enabled = connection_draining.value["enabled"]
         }
       }
 
@@ -808,26 +836,35 @@ resource "azurerm_application_gateway" "this" {
   dynamic "custom_error_configuration" {
     for_each = var.custom_error_configuration
     content {
+      # custom_error_page_url - (required) is a type of string
       custom_error_page_url = custom_error_configuration.value["custom_error_page_url"]
-      status_code           = custom_error_configuration.value["status_code"]
+      # status_code - (required) is a type of string
+      status_code = custom_error_configuration.value["status_code"]
     }
   }
 
   dynamic "frontend_ip_configuration" {
     for_each = var.frontend_ip_configuration
     content {
-      name                          = frontend_ip_configuration.value["name"]
-      private_ip_address            = frontend_ip_configuration.value["private_ip_address"]
+      # name - (required) is a type of string
+      name = frontend_ip_configuration.value["name"]
+      # private_ip_address - (optional) is a type of string
+      private_ip_address = frontend_ip_configuration.value["private_ip_address"]
+      # private_ip_address_allocation - (optional) is a type of string
       private_ip_address_allocation = frontend_ip_configuration.value["private_ip_address_allocation"]
-      public_ip_address_id          = frontend_ip_configuration.value["public_ip_address_id"]
-      subnet_id                     = frontend_ip_configuration.value["subnet_id"]
+      # public_ip_address_id - (optional) is a type of string
+      public_ip_address_id = frontend_ip_configuration.value["public_ip_address_id"]
+      # subnet_id - (optional) is a type of string
+      subnet_id = frontend_ip_configuration.value["subnet_id"]
     }
   }
 
   dynamic "frontend_port" {
     for_each = var.frontend_port
     content {
+      # name - (required) is a type of string
       name = frontend_port.value["name"]
+      # port - (required) is a type of number
       port = frontend_port.value["port"]
     }
   }
@@ -835,7 +872,9 @@ resource "azurerm_application_gateway" "this" {
   dynamic "gateway_ip_configuration" {
     for_each = var.gateway_ip_configuration
     content {
-      name      = gateway_ip_configuration.value["name"]
+      # name - (required) is a type of string
+      name = gateway_ip_configuration.value["name"]
+      # subnet_id - (required) is a type of string
       subnet_id = gateway_ip_configuration.value["subnet_id"]
     }
   }
@@ -843,21 +882,32 @@ resource "azurerm_application_gateway" "this" {
   dynamic "http_listener" {
     for_each = var.http_listener
     content {
-      firewall_policy_id             = http_listener.value["firewall_policy_id"]
+      # firewall_policy_id - (optional) is a type of string
+      firewall_policy_id = http_listener.value["firewall_policy_id"]
+      # frontend_ip_configuration_name - (required) is a type of string
       frontend_ip_configuration_name = http_listener.value["frontend_ip_configuration_name"]
-      frontend_port_name             = http_listener.value["frontend_port_name"]
-      host_name                      = http_listener.value["host_name"]
-      host_names                     = http_listener.value["host_names"]
-      name                           = http_listener.value["name"]
-      protocol                       = http_listener.value["protocol"]
-      require_sni                    = http_listener.value["require_sni"]
-      ssl_certificate_name           = http_listener.value["ssl_certificate_name"]
+      # frontend_port_name - (required) is a type of string
+      frontend_port_name = http_listener.value["frontend_port_name"]
+      # host_name - (optional) is a type of string
+      host_name = http_listener.value["host_name"]
+      # host_names - (optional) is a type of set of string
+      host_names = http_listener.value["host_names"]
+      # name - (required) is a type of string
+      name = http_listener.value["name"]
+      # protocol - (required) is a type of string
+      protocol = http_listener.value["protocol"]
+      # require_sni - (optional) is a type of bool
+      require_sni = http_listener.value["require_sni"]
+      # ssl_certificate_name - (optional) is a type of string
+      ssl_certificate_name = http_listener.value["ssl_certificate_name"]
 
       dynamic "custom_error_configuration" {
         for_each = http_listener.value.custom_error_configuration
         content {
+          # custom_error_page_url - (required) is a type of string
           custom_error_page_url = custom_error_configuration.value["custom_error_page_url"]
-          status_code           = custom_error_configuration.value["status_code"]
+          # status_code - (required) is a type of string
+          status_code = custom_error_configuration.value["status_code"]
         }
       }
 
@@ -867,29 +917,43 @@ resource "azurerm_application_gateway" "this" {
   dynamic "identity" {
     for_each = var.identity
     content {
+      # identity_ids - (required) is a type of list of string
       identity_ids = identity.value["identity_ids"]
-      type         = identity.value["type"]
+      # type - (optional) is a type of string
+      type = identity.value["type"]
     }
   }
 
   dynamic "probe" {
     for_each = var.probe
     content {
-      host                                      = probe.value["host"]
-      interval                                  = probe.value["interval"]
-      minimum_servers                           = probe.value["minimum_servers"]
-      name                                      = probe.value["name"]
-      path                                      = probe.value["path"]
+      # host - (optional) is a type of string
+      host = probe.value["host"]
+      # interval - (required) is a type of number
+      interval = probe.value["interval"]
+      # minimum_servers - (optional) is a type of number
+      minimum_servers = probe.value["minimum_servers"]
+      # name - (required) is a type of string
+      name = probe.value["name"]
+      # path - (required) is a type of string
+      path = probe.value["path"]
+      # pick_host_name_from_backend_http_settings - (optional) is a type of bool
       pick_host_name_from_backend_http_settings = probe.value["pick_host_name_from_backend_http_settings"]
-      port                                      = probe.value["port"]
-      protocol                                  = probe.value["protocol"]
-      timeout                                   = probe.value["timeout"]
-      unhealthy_threshold                       = probe.value["unhealthy_threshold"]
+      # port - (optional) is a type of number
+      port = probe.value["port"]
+      # protocol - (required) is a type of string
+      protocol = probe.value["protocol"]
+      # timeout - (required) is a type of number
+      timeout = probe.value["timeout"]
+      # unhealthy_threshold - (required) is a type of number
+      unhealthy_threshold = probe.value["unhealthy_threshold"]
 
       dynamic "match" {
         for_each = probe.value.match
         content {
-          body        = match.value["body"]
+          # body - (optional) is a type of string
+          body = match.value["body"]
+          # status_code - (optional) is a type of list of string
           status_code = match.value["status_code"]
         }
       }
@@ -900,54 +964,77 @@ resource "azurerm_application_gateway" "this" {
   dynamic "redirect_configuration" {
     for_each = var.redirect_configuration
     content {
-      include_path         = redirect_configuration.value["include_path"]
+      # include_path - (optional) is a type of bool
+      include_path = redirect_configuration.value["include_path"]
+      # include_query_string - (optional) is a type of bool
       include_query_string = redirect_configuration.value["include_query_string"]
-      name                 = redirect_configuration.value["name"]
-      redirect_type        = redirect_configuration.value["redirect_type"]
+      # name - (required) is a type of string
+      name = redirect_configuration.value["name"]
+      # redirect_type - (required) is a type of string
+      redirect_type = redirect_configuration.value["redirect_type"]
+      # target_listener_name - (optional) is a type of string
       target_listener_name = redirect_configuration.value["target_listener_name"]
-      target_url           = redirect_configuration.value["target_url"]
+      # target_url - (optional) is a type of string
+      target_url = redirect_configuration.value["target_url"]
     }
   }
 
   dynamic "request_routing_rule" {
     for_each = var.request_routing_rule
     content {
-      backend_address_pool_name   = request_routing_rule.value["backend_address_pool_name"]
-      backend_http_settings_name  = request_routing_rule.value["backend_http_settings_name"]
-      http_listener_name          = request_routing_rule.value["http_listener_name"]
-      name                        = request_routing_rule.value["name"]
+      # backend_address_pool_name - (optional) is a type of string
+      backend_address_pool_name = request_routing_rule.value["backend_address_pool_name"]
+      # backend_http_settings_name - (optional) is a type of string
+      backend_http_settings_name = request_routing_rule.value["backend_http_settings_name"]
+      # http_listener_name - (required) is a type of string
+      http_listener_name = request_routing_rule.value["http_listener_name"]
+      # name - (required) is a type of string
+      name = request_routing_rule.value["name"]
+      # redirect_configuration_name - (optional) is a type of string
       redirect_configuration_name = request_routing_rule.value["redirect_configuration_name"]
-      rewrite_rule_set_name       = request_routing_rule.value["rewrite_rule_set_name"]
-      rule_type                   = request_routing_rule.value["rule_type"]
-      url_path_map_name           = request_routing_rule.value["url_path_map_name"]
+      # rewrite_rule_set_name - (optional) is a type of string
+      rewrite_rule_set_name = request_routing_rule.value["rewrite_rule_set_name"]
+      # rule_type - (required) is a type of string
+      rule_type = request_routing_rule.value["rule_type"]
+      # url_path_map_name - (optional) is a type of string
+      url_path_map_name = request_routing_rule.value["url_path_map_name"]
     }
   }
 
   dynamic "rewrite_rule_set" {
     for_each = var.rewrite_rule_set
     content {
+      # name - (required) is a type of string
       name = rewrite_rule_set.value["name"]
 
       dynamic "rewrite_rule" {
         for_each = rewrite_rule_set.value.rewrite_rule
         content {
-          name          = rewrite_rule.value["name"]
+          # name - (required) is a type of string
+          name = rewrite_rule.value["name"]
+          # rule_sequence - (required) is a type of number
           rule_sequence = rewrite_rule.value["rule_sequence"]
 
           dynamic "condition" {
             for_each = rewrite_rule.value.condition
             content {
+              # ignore_case - (optional) is a type of bool
               ignore_case = condition.value["ignore_case"]
-              negate      = condition.value["negate"]
-              pattern     = condition.value["pattern"]
-              variable    = condition.value["variable"]
+              # negate - (optional) is a type of bool
+              negate = condition.value["negate"]
+              # pattern - (required) is a type of string
+              pattern = condition.value["pattern"]
+              # variable - (required) is a type of string
+              variable = condition.value["variable"]
             }
           }
 
           dynamic "request_header_configuration" {
             for_each = rewrite_rule.value.request_header_configuration
             content {
-              header_name  = request_header_configuration.value["header_name"]
+              # header_name - (required) is a type of string
+              header_name = request_header_configuration.value["header_name"]
+              # header_value - (required) is a type of string
               header_value = request_header_configuration.value["header_value"]
             }
           }
@@ -955,7 +1042,9 @@ resource "azurerm_application_gateway" "this" {
           dynamic "response_header_configuration" {
             for_each = rewrite_rule.value.response_header_configuration
             content {
-              header_name  = response_header_configuration.value["header_name"]
+              # header_name - (required) is a type of string
+              header_name = response_header_configuration.value["header_name"]
+              # header_value - (required) is a type of string
               header_value = response_header_configuration.value["header_value"]
             }
           }
@@ -963,9 +1052,12 @@ resource "azurerm_application_gateway" "this" {
           dynamic "url" {
             for_each = rewrite_rule.value.url
             content {
-              path         = url.value["path"]
+              # path - (optional) is a type of string
+              path = url.value["path"]
+              # query_string - (optional) is a type of string
               query_string = url.value["query_string"]
-              reroute      = url.value["reroute"]
+              # reroute - (optional) is a type of bool
+              reroute = url.value["reroute"]
             }
           }
 
@@ -978,39 +1070,55 @@ resource "azurerm_application_gateway" "this" {
   dynamic "sku" {
     for_each = var.sku
     content {
+      # capacity - (optional) is a type of number
       capacity = sku.value["capacity"]
-      name     = sku.value["name"]
-      tier     = sku.value["tier"]
+      # name - (required) is a type of string
+      name = sku.value["name"]
+      # tier - (required) is a type of string
+      tier = sku.value["tier"]
     }
   }
 
   dynamic "ssl_certificate" {
     for_each = var.ssl_certificate
     content {
-      data                = ssl_certificate.value["data"]
+      # data - (optional) is a type of string
+      data = ssl_certificate.value["data"]
+      # key_vault_secret_id - (optional) is a type of string
       key_vault_secret_id = ssl_certificate.value["key_vault_secret_id"]
-      name                = ssl_certificate.value["name"]
-      password            = ssl_certificate.value["password"]
+      # name - (required) is a type of string
+      name = ssl_certificate.value["name"]
+      # password - (optional) is a type of string
+      password = ssl_certificate.value["password"]
     }
   }
 
   dynamic "ssl_policy" {
     for_each = var.ssl_policy
     content {
-      cipher_suites        = ssl_policy.value["cipher_suites"]
-      disabled_protocols   = ssl_policy.value["disabled_protocols"]
+      # cipher_suites - (optional) is a type of list of string
+      cipher_suites = ssl_policy.value["cipher_suites"]
+      # disabled_protocols - (optional) is a type of list of string
+      disabled_protocols = ssl_policy.value["disabled_protocols"]
+      # min_protocol_version - (optional) is a type of string
       min_protocol_version = ssl_policy.value["min_protocol_version"]
-      policy_name          = ssl_policy.value["policy_name"]
-      policy_type          = ssl_policy.value["policy_type"]
+      # policy_name - (optional) is a type of string
+      policy_name = ssl_policy.value["policy_name"]
+      # policy_type - (optional) is a type of string
+      policy_type = ssl_policy.value["policy_type"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -1018,7 +1126,9 @@ resource "azurerm_application_gateway" "this" {
   dynamic "trusted_root_certificate" {
     for_each = var.trusted_root_certificate
     content {
+      # data - (required) is a type of string
       data = trusted_root_certificate.value["data"]
+      # name - (required) is a type of string
       name = trusted_root_certificate.value["name"]
     }
   }
@@ -1026,21 +1136,32 @@ resource "azurerm_application_gateway" "this" {
   dynamic "url_path_map" {
     for_each = var.url_path_map
     content {
-      default_backend_address_pool_name   = url_path_map.value["default_backend_address_pool_name"]
-      default_backend_http_settings_name  = url_path_map.value["default_backend_http_settings_name"]
+      # default_backend_address_pool_name - (optional) is a type of string
+      default_backend_address_pool_name = url_path_map.value["default_backend_address_pool_name"]
+      # default_backend_http_settings_name - (optional) is a type of string
+      default_backend_http_settings_name = url_path_map.value["default_backend_http_settings_name"]
+      # default_redirect_configuration_name - (optional) is a type of string
       default_redirect_configuration_name = url_path_map.value["default_redirect_configuration_name"]
-      default_rewrite_rule_set_name       = url_path_map.value["default_rewrite_rule_set_name"]
-      name                                = url_path_map.value["name"]
+      # default_rewrite_rule_set_name - (optional) is a type of string
+      default_rewrite_rule_set_name = url_path_map.value["default_rewrite_rule_set_name"]
+      # name - (required) is a type of string
+      name = url_path_map.value["name"]
 
       dynamic "path_rule" {
         for_each = url_path_map.value.path_rule
         content {
-          backend_address_pool_name   = path_rule.value["backend_address_pool_name"]
-          backend_http_settings_name  = path_rule.value["backend_http_settings_name"]
-          name                        = path_rule.value["name"]
-          paths                       = path_rule.value["paths"]
+          # backend_address_pool_name - (optional) is a type of string
+          backend_address_pool_name = path_rule.value["backend_address_pool_name"]
+          # backend_http_settings_name - (optional) is a type of string
+          backend_http_settings_name = path_rule.value["backend_http_settings_name"]
+          # name - (required) is a type of string
+          name = path_rule.value["name"]
+          # paths - (required) is a type of list of string
+          paths = path_rule.value["paths"]
+          # redirect_configuration_name - (optional) is a type of string
           redirect_configuration_name = path_rule.value["redirect_configuration_name"]
-          rewrite_rule_set_name       = path_rule.value["rewrite_rule_set_name"]
+          # rewrite_rule_set_name - (optional) is a type of string
+          rewrite_rule_set_name = path_rule.value["rewrite_rule_set_name"]
         }
       }
 
@@ -1050,27 +1171,39 @@ resource "azurerm_application_gateway" "this" {
   dynamic "waf_configuration" {
     for_each = var.waf_configuration
     content {
-      enabled                  = waf_configuration.value["enabled"]
-      file_upload_limit_mb     = waf_configuration.value["file_upload_limit_mb"]
-      firewall_mode            = waf_configuration.value["firewall_mode"]
+      # enabled - (required) is a type of bool
+      enabled = waf_configuration.value["enabled"]
+      # file_upload_limit_mb - (optional) is a type of number
+      file_upload_limit_mb = waf_configuration.value["file_upload_limit_mb"]
+      # firewall_mode - (required) is a type of string
+      firewall_mode = waf_configuration.value["firewall_mode"]
+      # max_request_body_size_kb - (optional) is a type of number
       max_request_body_size_kb = waf_configuration.value["max_request_body_size_kb"]
-      request_body_check       = waf_configuration.value["request_body_check"]
-      rule_set_type            = waf_configuration.value["rule_set_type"]
-      rule_set_version         = waf_configuration.value["rule_set_version"]
+      # request_body_check - (optional) is a type of bool
+      request_body_check = waf_configuration.value["request_body_check"]
+      # rule_set_type - (optional) is a type of string
+      rule_set_type = waf_configuration.value["rule_set_type"]
+      # rule_set_version - (required) is a type of string
+      rule_set_version = waf_configuration.value["rule_set_version"]
 
       dynamic "disabled_rule_group" {
         for_each = waf_configuration.value.disabled_rule_group
         content {
+          # rule_group_name - (required) is a type of string
           rule_group_name = disabled_rule_group.value["rule_group_name"]
-          rules           = disabled_rule_group.value["rules"]
+          # rules - (optional) is a type of list of number
+          rules = disabled_rule_group.value["rules"]
         }
       }
 
       dynamic "exclusion" {
         for_each = waf_configuration.value.exclusion
         content {
-          match_variable          = exclusion.value["match_variable"]
-          selector                = exclusion.value["selector"]
+          # match_variable - (required) is a type of string
+          match_variable = exclusion.value["match_variable"]
+          # selector - (optional) is a type of string
+          selector = exclusion.value["selector"]
+          # selector_match_operator - (optional) is a type of string
           selector_match_operator = exclusion.value["selector_match_operator"]
         }
       }

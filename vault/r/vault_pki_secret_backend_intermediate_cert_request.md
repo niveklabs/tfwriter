@@ -191,25 +191,44 @@ variable "uri_sans" {
 
 ```terraform
 resource "vault_pki_secret_backend_intermediate_cert_request" "this" {
-  alt_names            = var.alt_names
-  backend              = var.backend
-  common_name          = var.common_name
-  country              = var.country
+  # alt_names - (optional) is a type of list of string
+  alt_names = var.alt_names
+  # backend - (required) is a type of string
+  backend = var.backend
+  # common_name - (required) is a type of string
+  common_name = var.common_name
+  # country - (optional) is a type of string
+  country = var.country
+  # exclude_cn_from_sans - (optional) is a type of bool
   exclude_cn_from_sans = var.exclude_cn_from_sans
-  format               = var.format
-  ip_sans              = var.ip_sans
-  key_bits             = var.key_bits
-  key_type             = var.key_type
-  locality             = var.locality
-  organization         = var.organization
-  other_sans           = var.other_sans
-  ou                   = var.ou
-  postal_code          = var.postal_code
-  private_key_format   = var.private_key_format
-  province             = var.province
-  street_address       = var.street_address
-  type                 = var.type
-  uri_sans             = var.uri_sans
+  # format - (optional) is a type of string
+  format = var.format
+  # ip_sans - (optional) is a type of list of string
+  ip_sans = var.ip_sans
+  # key_bits - (optional) is a type of number
+  key_bits = var.key_bits
+  # key_type - (optional) is a type of string
+  key_type = var.key_type
+  # locality - (optional) is a type of string
+  locality = var.locality
+  # organization - (optional) is a type of string
+  organization = var.organization
+  # other_sans - (optional) is a type of list of string
+  other_sans = var.other_sans
+  # ou - (optional) is a type of string
+  ou = var.ou
+  # postal_code - (optional) is a type of string
+  postal_code = var.postal_code
+  # private_key_format - (optional) is a type of string
+  private_key_format = var.private_key_format
+  # province - (optional) is a type of string
+  province = var.province
+  # street_address - (optional) is a type of string
+  street_address = var.street_address
+  # type - (required) is a type of string
+  type = var.type
+  # uri_sans - (optional) is a type of list of string
+  uri_sans = var.uri_sans
 }
 ```
 

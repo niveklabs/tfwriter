@@ -49,6 +49,7 @@ variable "model_id" {
 
 ```terraform
 data "oci_datascience_model" "this" {
+  # model_id - (required) is a type of string
   model_id = var.model_id
 }
 ```

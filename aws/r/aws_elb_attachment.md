@@ -56,7 +56,9 @@ variable "instance" {
 
 ```terraform
 resource "aws_elb_attachment" "this" {
-  elb      = var.elb
+  # elb - (required) is a type of string
+  elb = var.elb
+  # instance - (required) is a type of string
   instance = var.instance
 }
 ```

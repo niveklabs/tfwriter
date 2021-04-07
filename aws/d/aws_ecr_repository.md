@@ -65,9 +65,12 @@ variable "tags" {
 
 ```terraform
 data "aws_ecr_repository" "this" {
-  name        = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # registry_id - (optional) is a type of string
   registry_id = var.registry_id
-  tags        = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

@@ -115,19 +115,29 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_network" "this" {
-  auto_create_subnetworks         = var.auto_create_subnetworks
+  # auto_create_subnetworks - (optional) is a type of bool
+  auto_create_subnetworks = var.auto_create_subnetworks
+  # delete_default_routes_on_create - (optional) is a type of bool
   delete_default_routes_on_create = var.delete_default_routes_on_create
-  description                     = var.description
-  mtu                             = var.mtu
-  name                            = var.name
-  project                         = var.project
-  routing_mode                    = var.routing_mode
+  # description - (optional) is a type of string
+  description = var.description
+  # mtu - (optional) is a type of number
+  mtu = var.mtu
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # routing_mode - (optional) is a type of string
+  routing_mode = var.routing_mode
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

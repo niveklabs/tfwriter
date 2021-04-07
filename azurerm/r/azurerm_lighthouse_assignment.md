@@ -82,16 +82,22 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_lighthouse_assignment" "this" {
+  # lighthouse_definition_id - (required) is a type of string
   lighthouse_definition_id = var.lighthouse_definition_id
-  name                     = var.name
-  scope                    = var.scope
+  # name - (optional) is a type of string
+  name = var.name
+  # scope - (required) is a type of string
+  scope = var.scope
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

@@ -98,23 +98,31 @@ variable "timeouts" {
 
 ```terraform
 resource "google_app_engine_service_split_traffic" "this" {
+  # migrate_traffic - (optional) is a type of bool
   migrate_traffic = var.migrate_traffic
-  project         = var.project
-  service         = var.service
+  # project - (optional) is a type of string
+  project = var.project
+  # service - (required) is a type of string
+  service = var.service
 
   dynamic "split" {
     for_each = var.split
     content {
+      # allocations - (required) is a type of map of string
       allocations = split.value["allocations"]
-      shard_by    = split.value["shard_by"]
+      # shard_by - (optional) is a type of string
+      shard_by = split.value["shard_by"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

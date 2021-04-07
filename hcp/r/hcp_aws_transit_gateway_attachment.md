@@ -95,18 +95,26 @@ variable "timeouts" {
 
 ```terraform
 resource "hcp_aws_transit_gateway_attachment" "this" {
-  destination_cidrs             = var.destination_cidrs
-  hvn_id                        = var.hvn_id
-  resource_share_arn            = var.resource_share_arn
+  # destination_cidrs - (required) is a type of list of string
+  destination_cidrs = var.destination_cidrs
+  # hvn_id - (required) is a type of string
+  hvn_id = var.hvn_id
+  # resource_share_arn - (required) is a type of string
+  resource_share_arn = var.resource_share_arn
+  # transit_gateway_attachment_id - (required) is a type of string
   transit_gateway_attachment_id = var.transit_gateway_attachment_id
-  transit_gateway_id            = var.transit_gateway_id
+  # transit_gateway_id - (required) is a type of string
+  transit_gateway_id = var.transit_gateway_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
-      create  = timeouts.value["create"]
+      # create - (optional) is a type of string
+      create = timeouts.value["create"]
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
-      delete  = timeouts.value["delete"]
+      # delete - (optional) is a type of string
+      delete = timeouts.value["delete"]
     }
   }
 

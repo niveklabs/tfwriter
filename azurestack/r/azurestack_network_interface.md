@@ -166,32 +166,54 @@ variable "ip_configuration" {
 
 ```terraform
 resource "azurestack_network_interface" "this" {
-  applied_dns_servers       = var.applied_dns_servers
-  dns_servers               = var.dns_servers
-  enable_ip_forwarding      = var.enable_ip_forwarding
-  internal_dns_name_label   = var.internal_dns_name_label
-  internal_fqdn             = var.internal_fqdn
-  location                  = var.location
-  mac_address               = var.mac_address
-  name                      = var.name
+  # applied_dns_servers - (optional) is a type of set of string
+  applied_dns_servers = var.applied_dns_servers
+  # dns_servers - (optional) is a type of set of string
+  dns_servers = var.dns_servers
+  # enable_ip_forwarding - (optional) is a type of bool
+  enable_ip_forwarding = var.enable_ip_forwarding
+  # internal_dns_name_label - (optional) is a type of string
+  internal_dns_name_label = var.internal_dns_name_label
+  # internal_fqdn - (optional) is a type of string
+  internal_fqdn = var.internal_fqdn
+  # location - (required) is a type of string
+  location = var.location
+  # mac_address - (optional) is a type of string
+  mac_address = var.mac_address
+  # name - (required) is a type of string
+  name = var.name
+  # network_security_group_id - (optional) is a type of string
   network_security_group_id = var.network_security_group_id
-  resource_group_name       = var.resource_group_name
-  tags                      = var.tags
-  virtual_machine_id        = var.virtual_machine_id
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # virtual_machine_id - (optional) is a type of string
+  virtual_machine_id = var.virtual_machine_id
 
   dynamic "ip_configuration" {
     for_each = var.ip_configuration
     content {
+      # application_gateway_backend_address_pools_ids - (optional) is a type of set of string
       application_gateway_backend_address_pools_ids = ip_configuration.value["application_gateway_backend_address_pools_ids"]
-      application_security_group_ids                = ip_configuration.value["application_security_group_ids"]
-      load_balancer_backend_address_pools_ids       = ip_configuration.value["load_balancer_backend_address_pools_ids"]
-      load_balancer_inbound_nat_rules_ids           = ip_configuration.value["load_balancer_inbound_nat_rules_ids"]
-      name                                          = ip_configuration.value["name"]
-      primary                                       = ip_configuration.value["primary"]
-      private_ip_address                            = ip_configuration.value["private_ip_address"]
-      private_ip_address_allocation                 = ip_configuration.value["private_ip_address_allocation"]
-      public_ip_address_id                          = ip_configuration.value["public_ip_address_id"]
-      subnet_id                                     = ip_configuration.value["subnet_id"]
+      # application_security_group_ids - (optional) is a type of set of string
+      application_security_group_ids = ip_configuration.value["application_security_group_ids"]
+      # load_balancer_backend_address_pools_ids - (optional) is a type of set of string
+      load_balancer_backend_address_pools_ids = ip_configuration.value["load_balancer_backend_address_pools_ids"]
+      # load_balancer_inbound_nat_rules_ids - (optional) is a type of set of string
+      load_balancer_inbound_nat_rules_ids = ip_configuration.value["load_balancer_inbound_nat_rules_ids"]
+      # name - (required) is a type of string
+      name = ip_configuration.value["name"]
+      # primary - (optional) is a type of bool
+      primary = ip_configuration.value["primary"]
+      # private_ip_address - (optional) is a type of string
+      private_ip_address = ip_configuration.value["private_ip_address"]
+      # private_ip_address_allocation - (required) is a type of string
+      private_ip_address_allocation = ip_configuration.value["private_ip_address_allocation"]
+      # public_ip_address_id - (optional) is a type of string
+      public_ip_address_id = ip_configuration.value["public_ip_address_id"]
+      # subnet_id - (required) is a type of string
+      subnet_id = ip_configuration.value["subnet_id"]
     }
   }
 

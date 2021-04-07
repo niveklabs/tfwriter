@@ -79,14 +79,19 @@ variable "timeouts" {
 
 ```terraform
 resource "opc_compute_storage_attachment" "this" {
-  index          = var.index
-  instance       = var.instance
+  # index - (required) is a type of number
+  index = var.index
+  # instance - (required) is a type of string
+  instance = var.instance
+  # storage_volume - (required) is a type of string
   storage_volume = var.storage_volume
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

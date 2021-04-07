@@ -85,13 +85,17 @@ variable "timeouts" {
 
 ```terraform
 resource "google_app_engine_application_url_dispatch_rules" "this" {
+  # project - (optional) is a type of string
   project = var.project
 
   dynamic "dispatch_rules" {
     for_each = var.dispatch_rules
     content {
-      domain  = dispatch_rules.value["domain"]
-      path    = dispatch_rules.value["path"]
+      # domain - (optional) is a type of string
+      domain = dispatch_rules.value["domain"]
+      # path - (required) is a type of string
+      path = dispatch_rules.value["path"]
+      # service - (required) is a type of string
       service = dispatch_rules.value["service"]
     }
   }
@@ -99,8 +103,11 @@ resource "google_app_engine_application_url_dispatch_rules" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

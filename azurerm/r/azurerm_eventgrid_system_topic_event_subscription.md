@@ -387,17 +387,28 @@ variable "webhook_endpoint" {
 
 ```terraform
 resource "azurerm_eventgrid_system_topic_event_subscription" "this" {
-  event_delivery_schema         = var.event_delivery_schema
-  eventhub_endpoint_id          = var.eventhub_endpoint_id
-  expiration_time_utc           = var.expiration_time_utc
+  # event_delivery_schema - (optional) is a type of string
+  event_delivery_schema = var.event_delivery_schema
+  # eventhub_endpoint_id - (optional) is a type of string
+  eventhub_endpoint_id = var.eventhub_endpoint_id
+  # expiration_time_utc - (optional) is a type of string
+  expiration_time_utc = var.expiration_time_utc
+  # hybrid_connection_endpoint_id - (optional) is a type of string
   hybrid_connection_endpoint_id = var.hybrid_connection_endpoint_id
-  included_event_types          = var.included_event_types
-  labels                        = var.labels
-  name                          = var.name
-  resource_group_name           = var.resource_group_name
+  # included_event_types - (optional) is a type of list of string
+  included_event_types = var.included_event_types
+  # labels - (optional) is a type of list of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # service_bus_queue_endpoint_id - (optional) is a type of string
   service_bus_queue_endpoint_id = var.service_bus_queue_endpoint_id
+  # service_bus_topic_endpoint_id - (optional) is a type of string
   service_bus_topic_endpoint_id = var.service_bus_topic_endpoint_id
-  system_topic                  = var.system_topic
+  # system_topic - (required) is a type of string
+  system_topic = var.system_topic
 
   dynamic "advanced_filter" {
     for_each = var.advanced_filter
@@ -406,7 +417,9 @@ resource "azurerm_eventgrid_system_topic_event_subscription" "this" {
       dynamic "bool_equals" {
         for_each = advanced_filter.value.bool_equals
         content {
-          key   = bool_equals.value["key"]
+          # key - (required) is a type of string
+          key = bool_equals.value["key"]
+          # value - (required) is a type of bool
           value = bool_equals.value["value"]
         }
       }
@@ -414,7 +427,9 @@ resource "azurerm_eventgrid_system_topic_event_subscription" "this" {
       dynamic "number_greater_than" {
         for_each = advanced_filter.value.number_greater_than
         content {
-          key   = number_greater_than.value["key"]
+          # key - (required) is a type of string
+          key = number_greater_than.value["key"]
+          # value - (required) is a type of number
           value = number_greater_than.value["value"]
         }
       }
@@ -422,7 +437,9 @@ resource "azurerm_eventgrid_system_topic_event_subscription" "this" {
       dynamic "number_greater_than_or_equals" {
         for_each = advanced_filter.value.number_greater_than_or_equals
         content {
-          key   = number_greater_than_or_equals.value["key"]
+          # key - (required) is a type of string
+          key = number_greater_than_or_equals.value["key"]
+          # value - (required) is a type of number
           value = number_greater_than_or_equals.value["value"]
         }
       }
@@ -430,7 +447,9 @@ resource "azurerm_eventgrid_system_topic_event_subscription" "this" {
       dynamic "number_in" {
         for_each = advanced_filter.value.number_in
         content {
-          key    = number_in.value["key"]
+          # key - (required) is a type of string
+          key = number_in.value["key"]
+          # values - (required) is a type of list of number
           values = number_in.value["values"]
         }
       }
@@ -438,7 +457,9 @@ resource "azurerm_eventgrid_system_topic_event_subscription" "this" {
       dynamic "number_less_than" {
         for_each = advanced_filter.value.number_less_than
         content {
-          key   = number_less_than.value["key"]
+          # key - (required) is a type of string
+          key = number_less_than.value["key"]
+          # value - (required) is a type of number
           value = number_less_than.value["value"]
         }
       }
@@ -446,7 +467,9 @@ resource "azurerm_eventgrid_system_topic_event_subscription" "this" {
       dynamic "number_less_than_or_equals" {
         for_each = advanced_filter.value.number_less_than_or_equals
         content {
-          key   = number_less_than_or_equals.value["key"]
+          # key - (required) is a type of string
+          key = number_less_than_or_equals.value["key"]
+          # value - (required) is a type of number
           value = number_less_than_or_equals.value["value"]
         }
       }
@@ -454,7 +477,9 @@ resource "azurerm_eventgrid_system_topic_event_subscription" "this" {
       dynamic "number_not_in" {
         for_each = advanced_filter.value.number_not_in
         content {
-          key    = number_not_in.value["key"]
+          # key - (required) is a type of string
+          key = number_not_in.value["key"]
+          # values - (required) is a type of list of number
           values = number_not_in.value["values"]
         }
       }
@@ -462,7 +487,9 @@ resource "azurerm_eventgrid_system_topic_event_subscription" "this" {
       dynamic "string_begins_with" {
         for_each = advanced_filter.value.string_begins_with
         content {
-          key    = string_begins_with.value["key"]
+          # key - (required) is a type of string
+          key = string_begins_with.value["key"]
+          # values - (required) is a type of list of string
           values = string_begins_with.value["values"]
         }
       }
@@ -470,7 +497,9 @@ resource "azurerm_eventgrid_system_topic_event_subscription" "this" {
       dynamic "string_contains" {
         for_each = advanced_filter.value.string_contains
         content {
-          key    = string_contains.value["key"]
+          # key - (required) is a type of string
+          key = string_contains.value["key"]
+          # values - (required) is a type of list of string
           values = string_contains.value["values"]
         }
       }
@@ -478,7 +507,9 @@ resource "azurerm_eventgrid_system_topic_event_subscription" "this" {
       dynamic "string_ends_with" {
         for_each = advanced_filter.value.string_ends_with
         content {
-          key    = string_ends_with.value["key"]
+          # key - (required) is a type of string
+          key = string_ends_with.value["key"]
+          # values - (required) is a type of list of string
           values = string_ends_with.value["values"]
         }
       }
@@ -486,7 +517,9 @@ resource "azurerm_eventgrid_system_topic_event_subscription" "this" {
       dynamic "string_in" {
         for_each = advanced_filter.value.string_in
         content {
-          key    = string_in.value["key"]
+          # key - (required) is a type of string
+          key = string_in.value["key"]
+          # values - (required) is a type of list of string
           values = string_in.value["values"]
         }
       }
@@ -494,7 +527,9 @@ resource "azurerm_eventgrid_system_topic_event_subscription" "this" {
       dynamic "string_not_in" {
         for_each = advanced_filter.value.string_not_in
         content {
-          key    = string_not_in.value["key"]
+          # key - (required) is a type of string
+          key = string_not_in.value["key"]
+          # values - (required) is a type of list of string
           values = string_not_in.value["values"]
         }
       }
@@ -505,8 +540,11 @@ resource "azurerm_eventgrid_system_topic_event_subscription" "this" {
   dynamic "azure_function_endpoint" {
     for_each = var.azure_function_endpoint
     content {
-      function_id                       = azure_function_endpoint.value["function_id"]
-      max_events_per_batch              = azure_function_endpoint.value["max_events_per_batch"]
+      # function_id - (required) is a type of string
+      function_id = azure_function_endpoint.value["function_id"]
+      # max_events_per_batch - (optional) is a type of number
+      max_events_per_batch = azure_function_endpoint.value["max_events_per_batch"]
+      # preferred_batch_size_in_kilobytes - (optional) is a type of number
       preferred_batch_size_in_kilobytes = azure_function_endpoint.value["preferred_batch_size_in_kilobytes"]
     }
   }
@@ -514,7 +552,9 @@ resource "azurerm_eventgrid_system_topic_event_subscription" "this" {
   dynamic "retry_policy" {
     for_each = var.retry_policy
     content {
-      event_time_to_live    = retry_policy.value["event_time_to_live"]
+      # event_time_to_live - (required) is a type of number
+      event_time_to_live = retry_policy.value["event_time_to_live"]
+      # max_delivery_attempts - (required) is a type of number
       max_delivery_attempts = retry_policy.value["max_delivery_attempts"]
     }
   }
@@ -522,7 +562,9 @@ resource "azurerm_eventgrid_system_topic_event_subscription" "this" {
   dynamic "storage_blob_dead_letter_destination" {
     for_each = var.storage_blob_dead_letter_destination
     content {
-      storage_account_id          = storage_blob_dead_letter_destination.value["storage_account_id"]
+      # storage_account_id - (required) is a type of string
+      storage_account_id = storage_blob_dead_letter_destination.value["storage_account_id"]
+      # storage_blob_container_name - (required) is a type of string
       storage_blob_container_name = storage_blob_dead_letter_destination.value["storage_blob_container_name"]
     }
   }
@@ -530,7 +572,9 @@ resource "azurerm_eventgrid_system_topic_event_subscription" "this" {
   dynamic "storage_queue_endpoint" {
     for_each = var.storage_queue_endpoint
     content {
-      queue_name         = storage_queue_endpoint.value["queue_name"]
+      # queue_name - (required) is a type of string
+      queue_name = storage_queue_endpoint.value["queue_name"]
+      # storage_account_id - (required) is a type of string
       storage_account_id = storage_queue_endpoint.value["storage_account_id"]
     }
   }
@@ -538,18 +582,25 @@ resource "azurerm_eventgrid_system_topic_event_subscription" "this" {
   dynamic "subject_filter" {
     for_each = var.subject_filter
     content {
-      case_sensitive      = subject_filter.value["case_sensitive"]
+      # case_sensitive - (optional) is a type of bool
+      case_sensitive = subject_filter.value["case_sensitive"]
+      # subject_begins_with - (optional) is a type of string
       subject_begins_with = subject_filter.value["subject_begins_with"]
-      subject_ends_with   = subject_filter.value["subject_ends_with"]
+      # subject_ends_with - (optional) is a type of string
+      subject_ends_with = subject_filter.value["subject_ends_with"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -557,11 +608,16 @@ resource "azurerm_eventgrid_system_topic_event_subscription" "this" {
   dynamic "webhook_endpoint" {
     for_each = var.webhook_endpoint
     content {
-      active_directory_app_id_or_uri    = webhook_endpoint.value["active_directory_app_id_or_uri"]
-      active_directory_tenant_id        = webhook_endpoint.value["active_directory_tenant_id"]
-      max_events_per_batch              = webhook_endpoint.value["max_events_per_batch"]
+      # active_directory_app_id_or_uri - (optional) is a type of string
+      active_directory_app_id_or_uri = webhook_endpoint.value["active_directory_app_id_or_uri"]
+      # active_directory_tenant_id - (optional) is a type of string
+      active_directory_tenant_id = webhook_endpoint.value["active_directory_tenant_id"]
+      # max_events_per_batch - (optional) is a type of number
+      max_events_per_batch = webhook_endpoint.value["max_events_per_batch"]
+      # preferred_batch_size_in_kilobytes - (optional) is a type of number
       preferred_batch_size_in_kilobytes = webhook_endpoint.value["preferred_batch_size_in_kilobytes"]
-      url                               = webhook_endpoint.value["url"]
+      # url - (required) is a type of string
+      url = webhook_endpoint.value["url"]
     }
   }
 

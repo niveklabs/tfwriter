@@ -56,8 +56,10 @@ variable "key_name" {
 
 ```terraform
 resource "vault_identity_oidc_key_allowed_client_id" "this" {
+  # allowed_client_id - (required) is a type of string
   allowed_client_id = var.allowed_client_id
-  key_name          = var.key_name
+  # key_name - (required) is a type of string
+  key_name = var.key_name
 }
 ```
 

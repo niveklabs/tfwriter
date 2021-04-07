@@ -63,9 +63,12 @@ variable "topic_arn" {
 
 ```terraform
 resource "aws_autoscaling_notification" "this" {
-  group_names   = var.group_names
+  # group_names - (required) is a type of set of string
+  group_names = var.group_names
+  # notifications - (required) is a type of set of string
   notifications = var.notifications
-  topic_arn     = var.topic_arn
+  # topic_arn - (required) is a type of string
+  topic_arn = var.topic_arn
 }
 ```
 

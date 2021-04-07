@@ -73,9 +73,13 @@ variable "name_prefix" {
 
 ```terraform
 resource "aws_cloudfront_public_key" "this" {
-  comment     = var.comment
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # encoded_key - (required) is a type of string
   encoded_key = var.encoded_key
-  name        = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
   name_prefix = var.name_prefix
 }
 ```

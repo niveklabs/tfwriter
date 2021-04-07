@@ -56,8 +56,10 @@ variable "name" {
 
 ```terraform
 data "oci_load_balancer_ssl_cipher_suite" "this" {
+  # load_balancer_id - (required) is a type of string
   load_balancer_id = var.load_balancer_id
-  name             = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

@@ -65,9 +65,12 @@ variable "description" {
 
 ```terraform
 resource "aws_iam_service_linked_role" "this" {
+  # aws_service_name - (required) is a type of string
   aws_service_name = var.aws_service_name
-  custom_suffix    = var.custom_suffix
-  description      = var.description
+  # custom_suffix - (optional) is a type of string
+  custom_suffix = var.custom_suffix
+  # description - (optional) is a type of string
+  description = var.description
 }
 ```
 

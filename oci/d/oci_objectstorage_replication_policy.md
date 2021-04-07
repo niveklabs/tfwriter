@@ -63,8 +63,11 @@ variable "replication_id" {
 
 ```terraform
 data "oci_objectstorage_replication_policy" "this" {
-  bucket         = var.bucket
-  namespace      = var.namespace
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # namespace - (required) is a type of string
+  namespace = var.namespace
+  # replication_id - (required) is a type of string
   replication_id = var.replication_id
 }
 ```

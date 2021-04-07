@@ -112,28 +112,41 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_bot_channel_directline" "this" {
-  bot_name            = var.bot_name
-  location            = var.location
+  # bot_name - (required) is a type of string
+  bot_name = var.bot_name
+  # location - (required) is a type of string
+  location = var.location
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
 
   dynamic "site" {
     for_each = var.site
     content {
-      enabled                         = site.value["enabled"]
+      # enabled - (optional) is a type of bool
+      enabled = site.value["enabled"]
+      # enhanced_authentication_enabled - (optional) is a type of bool
       enhanced_authentication_enabled = site.value["enhanced_authentication_enabled"]
-      name                            = site.value["name"]
-      trusted_origins                 = site.value["trusted_origins"]
-      v1_allowed                      = site.value["v1_allowed"]
-      v3_allowed                      = site.value["v3_allowed"]
+      # name - (required) is a type of string
+      name = site.value["name"]
+      # trusted_origins - (optional) is a type of set of string
+      trusted_origins = site.value["trusted_origins"]
+      # v1_allowed - (optional) is a type of bool
+      v1_allowed = site.value["v1_allowed"]
+      # v3_allowed - (optional) is a type of bool
+      v3_allowed = site.value["v3_allowed"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

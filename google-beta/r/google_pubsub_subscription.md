@@ -202,20 +202,31 @@ variable "timeouts" {
 
 ```terraform
 resource "google_pubsub_subscription" "this" {
-  ack_deadline_seconds       = var.ack_deadline_seconds
-  enable_message_ordering    = var.enable_message_ordering
-  filter                     = var.filter
-  labels                     = var.labels
+  # ack_deadline_seconds - (optional) is a type of number
+  ack_deadline_seconds = var.ack_deadline_seconds
+  # enable_message_ordering - (optional) is a type of bool
+  enable_message_ordering = var.enable_message_ordering
+  # filter - (optional) is a type of string
+  filter = var.filter
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # message_retention_duration - (optional) is a type of string
   message_retention_duration = var.message_retention_duration
-  name                       = var.name
-  project                    = var.project
-  retain_acked_messages      = var.retain_acked_messages
-  topic                      = var.topic
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # retain_acked_messages - (optional) is a type of bool
+  retain_acked_messages = var.retain_acked_messages
+  # topic - (required) is a type of string
+  topic = var.topic
 
   dynamic "dead_letter_policy" {
     for_each = var.dead_letter_policy
     content {
-      dead_letter_topic     = dead_letter_policy.value["dead_letter_topic"]
+      # dead_letter_topic - (optional) is a type of string
+      dead_letter_topic = dead_letter_policy.value["dead_letter_topic"]
+      # max_delivery_attempts - (optional) is a type of number
       max_delivery_attempts = dead_letter_policy.value["max_delivery_attempts"]
     }
   }
@@ -223,6 +234,7 @@ resource "google_pubsub_subscription" "this" {
   dynamic "expiration_policy" {
     for_each = var.expiration_policy
     content {
+      # ttl - (required) is a type of string
       ttl = expiration_policy.value["ttl"]
     }
   }
@@ -230,13 +242,17 @@ resource "google_pubsub_subscription" "this" {
   dynamic "push_config" {
     for_each = var.push_config
     content {
-      attributes    = push_config.value["attributes"]
+      # attributes - (optional) is a type of map of string
+      attributes = push_config.value["attributes"]
+      # push_endpoint - (required) is a type of string
       push_endpoint = push_config.value["push_endpoint"]
 
       dynamic "oidc_token" {
         for_each = push_config.value.oidc_token
         content {
-          audience              = oidc_token.value["audience"]
+          # audience - (optional) is a type of string
+          audience = oidc_token.value["audience"]
+          # service_account_email - (required) is a type of string
           service_account_email = oidc_token.value["service_account_email"]
         }
       }
@@ -247,7 +263,9 @@ resource "google_pubsub_subscription" "this" {
   dynamic "retry_policy" {
     for_each = var.retry_policy
     content {
+      # maximum_backoff - (optional) is a type of string
       maximum_backoff = retry_policy.value["maximum_backoff"]
+      # minimum_backoff - (optional) is a type of string
       minimum_backoff = retry_policy.value["minimum_backoff"]
     }
   }
@@ -255,8 +273,11 @@ resource "google_pubsub_subscription" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -208,20 +208,31 @@ variable "udp_options" {
 
 ```terraform
 resource "oci_core_network_security_group_security_rule" "this" {
-  description               = var.description
-  destination               = var.destination
-  destination_type          = var.destination_type
-  direction                 = var.direction
+  # description - (optional) is a type of string
+  description = var.description
+  # destination - (optional) is a type of string
+  destination = var.destination
+  # destination_type - (optional) is a type of string
+  destination_type = var.destination_type
+  # direction - (required) is a type of string
+  direction = var.direction
+  # network_security_group_id - (required) is a type of string
   network_security_group_id = var.network_security_group_id
-  protocol                  = var.protocol
-  source                    = var.source
-  source_type               = var.source_type
-  stateless                 = var.stateless
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # source - (optional) is a type of string
+  source = var.source
+  # source_type - (optional) is a type of string
+  source_type = var.source_type
+  # stateless - (optional) is a type of bool
+  stateless = var.stateless
 
   dynamic "icmp_options" {
     for_each = var.icmp_options
     content {
+      # code - (optional) is a type of number
       code = icmp_options.value["code"]
+      # type - (required) is a type of number
       type = icmp_options.value["type"]
     }
   }
@@ -233,7 +244,9 @@ resource "oci_core_network_security_group_security_rule" "this" {
       dynamic "destination_port_range" {
         for_each = tcp_options.value.destination_port_range
         content {
+          # max - (required) is a type of number
           max = destination_port_range.value["max"]
+          # min - (required) is a type of number
           min = destination_port_range.value["min"]
         }
       }
@@ -241,7 +254,9 @@ resource "oci_core_network_security_group_security_rule" "this" {
       dynamic "source_port_range" {
         for_each = tcp_options.value.source_port_range
         content {
+          # max - (required) is a type of number
           max = source_port_range.value["max"]
+          # min - (required) is a type of number
           min = source_port_range.value["min"]
         }
       }
@@ -252,8 +267,11 @@ resource "oci_core_network_security_group_security_rule" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -265,7 +283,9 @@ resource "oci_core_network_security_group_security_rule" "this" {
       dynamic "destination_port_range" {
         for_each = udp_options.value.destination_port_range
         content {
+          # max - (required) is a type of number
           max = destination_port_range.value["max"]
+          # min - (required) is a type of number
           min = destination_port_range.value["min"]
         }
       }
@@ -273,7 +293,9 @@ resource "oci_core_network_security_group_security_rule" "this" {
       dynamic "source_port_range" {
         for_each = udp_options.value.source_port_range
         content {
+          # max - (required) is a type of number
           max = source_port_range.value["max"]
+          # min - (required) is a type of number
           min = source_port_range.value["min"]
         }
       }

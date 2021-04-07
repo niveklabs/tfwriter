@@ -114,19 +114,29 @@ variable "timeouts" {
 
 ```terraform
 resource "google_artifact_registry_repository" "this" {
-  description   = var.description
-  format        = var.format
-  kms_key_name  = var.kms_key_name
-  labels        = var.labels
-  location      = var.location
-  project       = var.project
+  # description - (optional) is a type of string
+  description = var.description
+  # format - (required) is a type of string
+  format = var.format
+  # kms_key_name - (optional) is a type of string
+  kms_key_name = var.kms_key_name
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # location - (optional) is a type of string
+  location = var.location
+  # project - (optional) is a type of string
+  project = var.project
+  # repository_id - (required) is a type of string
   repository_id = var.repository_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

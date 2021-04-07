@@ -80,14 +80,19 @@ variable "timeouts" {
 
 ```terraform
 resource "google_iap_brand" "this" {
+  # application_title - (required) is a type of string
   application_title = var.application_title
-  project           = var.project
-  support_email     = var.support_email
+  # project - (optional) is a type of string
+  project = var.project
+  # support_email - (required) is a type of string
+  support_email = var.support_email
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

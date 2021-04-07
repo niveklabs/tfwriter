@@ -64,9 +64,12 @@ variable "name" {
 
 ```terraform
 resource "opc_compute_image_list" "this" {
-  default     = var.default
+  # default - (optional) is a type of number
+  default = var.default
+  # description - (required) is a type of string
   description = var.description
-  name        = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

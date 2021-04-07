@@ -103,24 +103,38 @@ variable "security_rule" {
 
 ```terraform
 resource "azurestack_network_security_group" "this" {
-  location            = var.location
-  name                = var.name
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  tags                = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "security_rule" {
     for_each = var.security_rule
     content {
-      access                     = security_rule.value["access"]
-      description                = security_rule.value["description"]
+      # access - (required) is a type of string
+      access = security_rule.value["access"]
+      # description - (optional) is a type of string
+      description = security_rule.value["description"]
+      # destination_address_prefix - (optional) is a type of string
       destination_address_prefix = security_rule.value["destination_address_prefix"]
-      destination_port_range     = security_rule.value["destination_port_range"]
-      direction                  = security_rule.value["direction"]
-      name                       = security_rule.value["name"]
-      priority                   = security_rule.value["priority"]
-      protocol                   = security_rule.value["protocol"]
-      source_address_prefix      = security_rule.value["source_address_prefix"]
-      source_port_range          = security_rule.value["source_port_range"]
+      # destination_port_range - (optional) is a type of string
+      destination_port_range = security_rule.value["destination_port_range"]
+      # direction - (required) is a type of string
+      direction = security_rule.value["direction"]
+      # name - (required) is a type of string
+      name = security_rule.value["name"]
+      # priority - (required) is a type of number
+      priority = security_rule.value["priority"]
+      # protocol - (required) is a type of string
+      protocol = security_rule.value["protocol"]
+      # source_address_prefix - (optional) is a type of string
+      source_address_prefix = security_rule.value["source_address_prefix"]
+      # source_port_range - (optional) is a type of string
+      source_port_range = security_rule.value["source_port_range"]
     }
   }
 

@@ -57,8 +57,10 @@ variable "tags" {
 
 ```terraform
 data "aws_directory_service_directory" "this" {
+  # directory_id - (required) is a type of string
   directory_id = var.directory_id
-  tags         = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

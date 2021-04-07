@@ -143,19 +143,32 @@ variable "storage_class" {
 
 ```terraform
 resource "google_storage_bucket_object" "this" {
-  bucket              = var.bucket
-  cache_control       = var.cache_control
-  content             = var.content
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # cache_control - (optional) is a type of string
+  cache_control = var.cache_control
+  # content - (optional) is a type of string
+  content = var.content
+  # content_disposition - (optional) is a type of string
   content_disposition = var.content_disposition
-  content_encoding    = var.content_encoding
-  content_language    = var.content_language
-  content_type        = var.content_type
-  detect_md5hash      = var.detect_md5hash
-  kms_key_name        = var.kms_key_name
-  metadata            = var.metadata
-  name                = var.name
-  source              = var.source
-  storage_class       = var.storage_class
+  # content_encoding - (optional) is a type of string
+  content_encoding = var.content_encoding
+  # content_language - (optional) is a type of string
+  content_language = var.content_language
+  # content_type - (optional) is a type of string
+  content_type = var.content_type
+  # detect_md5hash - (optional) is a type of string
+  detect_md5hash = var.detect_md5hash
+  # kms_key_name - (optional) is a type of string
+  kms_key_name = var.kms_key_name
+  # metadata - (optional) is a type of map of string
+  metadata = var.metadata
+  # name - (required) is a type of string
+  name = var.name
+  # source - (optional) is a type of string
+  source = var.source
+  # storage_class - (optional) is a type of string
+  storage_class = var.storage_class
 }
 ```
 

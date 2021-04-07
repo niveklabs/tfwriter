@@ -89,12 +89,18 @@ variable "tags" {
 
 ```terraform
 resource "aws_ssm_activation" "this" {
-  description        = var.description
-  expiration_date    = var.expiration_date
-  iam_role           = var.iam_role
-  name               = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # expiration_date - (optional) is a type of string
+  expiration_date = var.expiration_date
+  # iam_role - (required) is a type of string
+  iam_role = var.iam_role
+  # name - (optional) is a type of string
+  name = var.name
+  # registration_limit - (optional) is a type of number
   registration_limit = var.registration_limit
-  tags               = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

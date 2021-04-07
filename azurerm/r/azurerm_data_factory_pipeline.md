@@ -123,21 +123,33 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_data_factory_pipeline" "this" {
-  activities_json     = var.activities_json
-  annotations         = var.annotations
-  data_factory_name   = var.data_factory_name
-  description         = var.description
-  name                = var.name
-  parameters          = var.parameters
+  # activities_json - (optional) is a type of string
+  activities_json = var.activities_json
+  # annotations - (optional) is a type of list of string
+  annotations = var.annotations
+  # data_factory_name - (required) is a type of string
+  data_factory_name = var.data_factory_name
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # parameters - (optional) is a type of map of string
+  parameters = var.parameters
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  variables           = var.variables
+  # variables - (optional) is a type of map of string
+  variables = var.variables
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

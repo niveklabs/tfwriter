@@ -160,17 +160,25 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_monitor_activity_log_alert" "this" {
-  description         = var.description
-  enabled             = var.enabled
-  name                = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  scopes              = var.scopes
-  tags                = var.tags
+  # scopes - (required) is a type of set of string
+  scopes = var.scopes
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "action" {
     for_each = var.action
     content {
-      action_group_id    = action.value["action_group_id"]
+      # action_group_id - (required) is a type of string
+      action_group_id = action.value["action_group_id"]
+      # webhook_properties - (optional) is a type of map of string
       webhook_properties = action.value["webhook_properties"]
     }
   }
@@ -178,28 +186,45 @@ resource "azurerm_monitor_activity_log_alert" "this" {
   dynamic "criteria" {
     for_each = var.criteria
     content {
-      caller                  = criteria.value["caller"]
-      category                = criteria.value["category"]
-      level                   = criteria.value["level"]
-      operation_name          = criteria.value["operation_name"]
+      # caller - (optional) is a type of string
+      caller = criteria.value["caller"]
+      # category - (required) is a type of string
+      category = criteria.value["category"]
+      # level - (optional) is a type of string
+      level = criteria.value["level"]
+      # operation_name - (optional) is a type of string
+      operation_name = criteria.value["operation_name"]
+      # recommendation_category - (optional) is a type of string
       recommendation_category = criteria.value["recommendation_category"]
-      recommendation_impact   = criteria.value["recommendation_impact"]
-      recommendation_type     = criteria.value["recommendation_type"]
-      resource_group          = criteria.value["resource_group"]
-      resource_id             = criteria.value["resource_id"]
-      resource_provider       = criteria.value["resource_provider"]
-      resource_type           = criteria.value["resource_type"]
-      status                  = criteria.value["status"]
-      sub_status              = criteria.value["sub_status"]
+      # recommendation_impact - (optional) is a type of string
+      recommendation_impact = criteria.value["recommendation_impact"]
+      # recommendation_type - (optional) is a type of string
+      recommendation_type = criteria.value["recommendation_type"]
+      # resource_group - (optional) is a type of string
+      resource_group = criteria.value["resource_group"]
+      # resource_id - (optional) is a type of string
+      resource_id = criteria.value["resource_id"]
+      # resource_provider - (optional) is a type of string
+      resource_provider = criteria.value["resource_provider"]
+      # resource_type - (optional) is a type of string
+      resource_type = criteria.value["resource_type"]
+      # status - (optional) is a type of string
+      status = criteria.value["status"]
+      # sub_status - (optional) is a type of string
+      sub_status = criteria.value["sub_status"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

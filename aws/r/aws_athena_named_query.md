@@ -79,11 +79,16 @@ variable "workgroup" {
 
 ```terraform
 resource "aws_athena_named_query" "this" {
-  database    = var.database
+  # database - (required) is a type of string
+  database = var.database
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  query       = var.query
-  workgroup   = var.workgroup
+  # name - (required) is a type of string
+  name = var.name
+  # query - (required) is a type of string
+  query = var.query
+  # workgroup - (optional) is a type of string
+  workgroup = var.workgroup
 }
 ```
 

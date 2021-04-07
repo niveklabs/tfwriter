@@ -56,8 +56,10 @@ variable "name" {
 
 ```terraform
 data "opc_compute_machine_image" "this" {
+  # account - (required) is a type of string
   account = var.account
-  name    = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

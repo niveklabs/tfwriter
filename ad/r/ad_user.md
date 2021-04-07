@@ -343,44 +343,82 @@ variable "trusted_for_delegation" {
 
 ```terraform
 resource "ad_user" "this" {
-  cannot_change_password    = var.cannot_change_password
-  city                      = var.city
-  company                   = var.company
-  container                 = var.container
-  country                   = var.country
-  custom_attributes         = var.custom_attributes
-  department                = var.department
-  description               = var.description
-  display_name              = var.display_name
-  division                  = var.division
-  email_address             = var.email_address
-  employee_id               = var.employee_id
-  employee_number           = var.employee_number
-  enabled                   = var.enabled
-  fax                       = var.fax
-  given_name                = var.given_name
-  home_directory            = var.home_directory
-  home_drive                = var.home_drive
-  home_page                 = var.home_page
-  home_phone                = var.home_phone
-  initial_password          = var.initial_password
-  initials                  = var.initials
-  mobile_phone              = var.mobile_phone
-  office                    = var.office
-  office_phone              = var.office_phone
-  organization              = var.organization
-  other_name                = var.other_name
-  password_never_expires    = var.password_never_expires
-  po_box                    = var.po_box
-  postal_code               = var.postal_code
-  principal_name            = var.principal_name
-  sam_account_name          = var.sam_account_name
+  # cannot_change_password - (optional) is a type of bool
+  cannot_change_password = var.cannot_change_password
+  # city - (optional) is a type of string
+  city = var.city
+  # company - (optional) is a type of string
+  company = var.company
+  # container - (optional) is a type of string
+  container = var.container
+  # country - (optional) is a type of string
+  country = var.country
+  # custom_attributes - (optional) is a type of string
+  custom_attributes = var.custom_attributes
+  # department - (optional) is a type of string
+  department = var.department
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # division - (optional) is a type of string
+  division = var.division
+  # email_address - (optional) is a type of string
+  email_address = var.email_address
+  # employee_id - (optional) is a type of string
+  employee_id = var.employee_id
+  # employee_number - (optional) is a type of string
+  employee_number = var.employee_number
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # fax - (optional) is a type of string
+  fax = var.fax
+  # given_name - (optional) is a type of string
+  given_name = var.given_name
+  # home_directory - (optional) is a type of string
+  home_directory = var.home_directory
+  # home_drive - (optional) is a type of string
+  home_drive = var.home_drive
+  # home_page - (optional) is a type of string
+  home_page = var.home_page
+  # home_phone - (optional) is a type of string
+  home_phone = var.home_phone
+  # initial_password - (optional) is a type of string
+  initial_password = var.initial_password
+  # initials - (optional) is a type of string
+  initials = var.initials
+  # mobile_phone - (optional) is a type of string
+  mobile_phone = var.mobile_phone
+  # office - (optional) is a type of string
+  office = var.office
+  # office_phone - (optional) is a type of string
+  office_phone = var.office_phone
+  # organization - (optional) is a type of string
+  organization = var.organization
+  # other_name - (optional) is a type of string
+  other_name = var.other_name
+  # password_never_expires - (optional) is a type of bool
+  password_never_expires = var.password_never_expires
+  # po_box - (optional) is a type of string
+  po_box = var.po_box
+  # postal_code - (optional) is a type of string
+  postal_code = var.postal_code
+  # principal_name - (required) is a type of string
+  principal_name = var.principal_name
+  # sam_account_name - (required) is a type of string
+  sam_account_name = var.sam_account_name
+  # smart_card_logon_required - (optional) is a type of bool
   smart_card_logon_required = var.smart_card_logon_required
-  state                     = var.state
-  street_address            = var.street_address
-  surname                   = var.surname
-  title                     = var.title
-  trusted_for_delegation    = var.trusted_for_delegation
+  # state - (optional) is a type of string
+  state = var.state
+  # street_address - (optional) is a type of string
+  street_address = var.street_address
+  # surname - (optional) is a type of string
+  surname = var.surname
+  # title - (optional) is a type of string
+  title = var.title
+  # trusted_for_delegation - (optional) is a type of bool
+  trusted_for_delegation = var.trusted_for_delegation
 }
 ```
 

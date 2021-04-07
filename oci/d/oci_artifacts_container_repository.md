@@ -49,6 +49,7 @@ variable "repository_id" {
 
 ```terraform
 data "oci_artifacts_container_repository" "this" {
+  # repository_id - (required) is a type of string
   repository_id = var.repository_id
 }
 ```

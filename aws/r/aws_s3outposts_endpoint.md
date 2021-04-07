@@ -63,9 +63,12 @@ variable "subnet_id" {
 
 ```terraform
 resource "aws_s3outposts_endpoint" "this" {
-  outpost_id        = var.outpost_id
+  # outpost_id - (required) is a type of string
+  outpost_id = var.outpost_id
+  # security_group_id - (required) is a type of string
   security_group_id = var.security_group_id
-  subnet_id         = var.subnet_id
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
 }
 ```
 

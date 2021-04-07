@@ -107,18 +107,27 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_kinesis_video_stream" "this" {
+  # data_retention_in_hours - (optional) is a type of number
   data_retention_in_hours = var.data_retention_in_hours
-  device_name             = var.device_name
-  kms_key_id              = var.kms_key_id
-  media_type              = var.media_type
-  name                    = var.name
-  tags                    = var.tags
+  # device_name - (optional) is a type of string
+  device_name = var.device_name
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # media_type - (optional) is a type of string
+  media_type = var.media_type
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

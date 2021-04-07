@@ -139,23 +139,37 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_app_service_certificate_order" "this" {
-  auto_renew          = var.auto_renew
-  csr                 = var.csr
-  distinguished_name  = var.distinguished_name
-  key_size            = var.key_size
-  location            = var.location
-  name                = var.name
-  product_type        = var.product_type
+  # auto_renew - (optional) is a type of bool
+  auto_renew = var.auto_renew
+  # csr - (optional) is a type of string
+  csr = var.csr
+  # distinguished_name - (optional) is a type of string
+  distinguished_name = var.distinguished_name
+  # key_size - (optional) is a type of number
+  key_size = var.key_size
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # product_type - (optional) is a type of string
+  product_type = var.product_type
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  tags                = var.tags
-  validity_in_years   = var.validity_in_years
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # validity_in_years - (optional) is a type of number
+  validity_in_years = var.validity_in_years
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

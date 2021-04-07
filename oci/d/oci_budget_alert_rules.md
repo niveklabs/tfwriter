@@ -83,15 +83,21 @@ variable "filter" {
 
 ```terraform
 data "oci_budget_alert_rules" "this" {
-  budget_id    = var.budget_id
+  # budget_id - (required) is a type of string
+  budget_id = var.budget_id
+  # display_name - (optional) is a type of string
   display_name = var.display_name
-  state        = var.state
+  # state - (optional) is a type of string
+  state = var.state
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

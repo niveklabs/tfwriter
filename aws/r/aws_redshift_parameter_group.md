@@ -88,15 +88,21 @@ variable "parameter" {
 
 ```terraform
 resource "aws_redshift_parameter_group" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  family      = var.family
-  name        = var.name
-  tags        = var.tags
+  # family - (required) is a type of string
+  family = var.family
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "parameter" {
     for_each = var.parameter
     content {
-      name  = parameter.value["name"]
+      # name - (required) is a type of string
+      name = parameter.value["name"]
+      # value - (required) is a type of string
       value = parameter.value["value"]
     }
   }

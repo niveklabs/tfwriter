@@ -56,7 +56,9 @@ variable "vpn_gateway_id" {
 
 ```terraform
 resource "aws_vpn_gateway_route_propagation" "this" {
+  # route_table_id - (required) is a type of string
   route_table_id = var.route_table_id
+  # vpn_gateway_id - (required) is a type of string
   vpn_gateway_id = var.vpn_gateway_id
 }
 ```

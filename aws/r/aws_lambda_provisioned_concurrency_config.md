@@ -79,14 +79,19 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_lambda_provisioned_concurrency_config" "this" {
-  function_name                     = var.function_name
+  # function_name - (required) is a type of string
+  function_name = var.function_name
+  # provisioned_concurrent_executions - (required) is a type of number
   provisioned_concurrent_executions = var.provisioned_concurrent_executions
-  qualifier                         = var.qualifier
+  # qualifier - (required) is a type of string
+  qualifier = var.qualifier
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

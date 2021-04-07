@@ -57,8 +57,10 @@ variable "project" {
 
 ```terraform
 data "google_dns_keys" "this" {
+  # managed_zone - (required) is a type of string
   managed_zone = var.managed_zone
-  project      = var.project
+  # project - (optional) is a type of string
+  project = var.project
 }
 ```
 

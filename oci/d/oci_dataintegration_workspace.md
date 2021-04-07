@@ -49,6 +49,7 @@ variable "workspace_id" {
 
 ```terraform
 data "oci_dataintegration_workspace" "this" {
+  # workspace_id - (required) is a type of string
   workspace_id = var.workspace_id
 }
 ```

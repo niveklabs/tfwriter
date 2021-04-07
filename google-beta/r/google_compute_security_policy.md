@@ -127,26 +127,35 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_security_policy" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  project     = var.project
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "rule" {
     for_each = var.rule
     content {
-      action      = rule.value["action"]
+      # action - (required) is a type of string
+      action = rule.value["action"]
+      # description - (optional) is a type of string
       description = rule.value["description"]
-      preview     = rule.value["preview"]
-      priority    = rule.value["priority"]
+      # preview - (optional) is a type of bool
+      preview = rule.value["preview"]
+      # priority - (required) is a type of number
+      priority = rule.value["priority"]
 
       dynamic "match" {
         for_each = rule.value.match
         content {
+          # versioned_expr - (optional) is a type of string
           versioned_expr = match.value["versioned_expr"]
 
           dynamic "config" {
             for_each = match.value.config
             content {
+              # src_ip_ranges - (required) is a type of set of string
               src_ip_ranges = config.value["src_ip_ranges"]
             }
           }
@@ -154,6 +163,7 @@ resource "google_compute_security_policy" "this" {
           dynamic "expr" {
             for_each = match.value.expr
             content {
+              # expression - (required) is a type of string
               expression = expr.value["expression"]
             }
           }
@@ -167,8 +177,11 @@ resource "google_compute_security_policy" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

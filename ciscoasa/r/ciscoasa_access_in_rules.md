@@ -82,18 +82,26 @@ variable "rule" {
 
 ```terraform
 resource "ciscoasa_access_in_rules" "this" {
+  # interface - (required) is a type of string
   interface = var.interface
-  managed   = var.managed
+  # managed - (optional) is a type of bool
+  managed = var.managed
 
   dynamic "rule" {
     for_each = var.rule
     content {
-      active              = rule.value["active"]
-      destination         = rule.value["destination"]
+      # active - (optional) is a type of bool
+      active = rule.value["active"]
+      # destination - (required) is a type of string
+      destination = rule.value["destination"]
+      # destination_service - (required) is a type of string
       destination_service = rule.value["destination_service"]
-      permit              = rule.value["permit"]
-      source              = rule.value["source"]
-      source_service      = rule.value["source_service"]
+      # permit - (optional) is a type of bool
+      permit = rule.value["permit"]
+      # source - (required) is a type of string
+      source = rule.value["source"]
+      # source_service - (optional) is a type of string
+      source_service = rule.value["source_service"]
     }
   }
 

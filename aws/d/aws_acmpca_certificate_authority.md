@@ -83,7 +83,9 @@ variable "revocation_configuration" {
 
 ```terraform
 data "aws_acmpca_certificate_authority" "this" {
-  arn  = var.arn
+  # arn - (required) is a type of string
+  arn = var.arn
+  # tags - (optional) is a type of map of string
   tags = var.tags
 
   dynamic "revocation_configuration" {

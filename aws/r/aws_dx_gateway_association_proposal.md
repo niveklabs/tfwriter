@@ -71,9 +71,13 @@ variable "dx_gateway_owner_account_id" {
 
 ```terraform
 resource "aws_dx_gateway_association_proposal" "this" {
-  allowed_prefixes            = var.allowed_prefixes
-  associated_gateway_id       = var.associated_gateway_id
-  dx_gateway_id               = var.dx_gateway_id
+  # allowed_prefixes - (optional) is a type of set of string
+  allowed_prefixes = var.allowed_prefixes
+  # associated_gateway_id - (required) is a type of string
+  associated_gateway_id = var.associated_gateway_id
+  # dx_gateway_id - (required) is a type of string
+  dx_gateway_id = var.dx_gateway_id
+  # dx_gateway_owner_account_id - (required) is a type of string
   dx_gateway_owner_account_id = var.dx_gateway_owner_account_id
 }
 ```

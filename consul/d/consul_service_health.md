@@ -105,14 +105,22 @@ variable "wait_for" {
 
 ```terraform
 data "consul_service_health" "this" {
+  # datacenter - (optional) is a type of string
   datacenter = var.datacenter
-  filter     = var.filter
-  name       = var.name
-  near       = var.near
-  node_meta  = var.node_meta
-  passing    = var.passing
-  tag        = var.tag
-  wait_for   = var.wait_for
+  # filter - (optional) is a type of string
+  filter = var.filter
+  # name - (required) is a type of string
+  name = var.name
+  # near - (optional) is a type of string
+  near = var.near
+  # node_meta - (optional) is a type of map of string
+  node_meta = var.node_meta
+  # passing - (optional) is a type of bool
+  passing = var.passing
+  # tag - (optional) is a type of string
+  tag = var.tag
+  # wait_for - (optional) is a type of string
+  wait_for = var.wait_for
 }
 ```
 

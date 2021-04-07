@@ -139,22 +139,35 @@ variable "filter" {
 
 ```terraform
 data "oci_database_autonomous_databases" "this" {
+  # autonomous_container_database_id - (optional) is a type of string
   autonomous_container_database_id = var.autonomous_container_database_id
-  compartment_id                   = var.compartment_id
-  db_version                       = var.db_version
-  db_workload                      = var.db_workload
-  display_name                     = var.display_name
-  infrastructure_type              = var.infrastructure_type
-  is_data_guard_enabled            = var.is_data_guard_enabled
-  is_free_tier                     = var.is_free_tier
-  is_refreshable_clone             = var.is_refreshable_clone
-  state                            = var.state
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # db_version - (optional) is a type of string
+  db_version = var.db_version
+  # db_workload - (optional) is a type of string
+  db_workload = var.db_workload
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # infrastructure_type - (optional) is a type of string
+  infrastructure_type = var.infrastructure_type
+  # is_data_guard_enabled - (optional) is a type of bool
+  is_data_guard_enabled = var.is_data_guard_enabled
+  # is_free_tier - (optional) is a type of bool
+  is_free_tier = var.is_free_tier
+  # is_refreshable_clone - (optional) is a type of bool
+  is_refreshable_clone = var.is_refreshable_clone
+  # state - (optional) is a type of string
+  state = var.state
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

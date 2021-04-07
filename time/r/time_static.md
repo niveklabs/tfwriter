@@ -58,7 +58,9 @@ variable "triggers" {
 
 ```terraform
 resource "time_static" "this" {
-  rfc3339  = var.rfc3339
+  # rfc3339 - (optional) is a type of string
+  rfc3339 = var.rfc3339
+  # triggers - (optional) is a type of map of string
   triggers = var.triggers
 }
 ```

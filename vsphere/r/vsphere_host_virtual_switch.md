@@ -205,27 +205,48 @@ variable "teaming_policy" {
 
 ```terraform
 resource "vsphere_host_virtual_switch" "this" {
-  active_nics               = var.active_nics
-  allow_forged_transmits    = var.allow_forged_transmits
-  allow_mac_changes         = var.allow_mac_changes
-  allow_promiscuous         = var.allow_promiscuous
-  beacon_interval           = var.beacon_interval
-  check_beacon              = var.check_beacon
-  failback                  = var.failback
-  host_system_id            = var.host_system_id
-  link_discovery_operation  = var.link_discovery_operation
-  link_discovery_protocol   = var.link_discovery_protocol
-  mtu                       = var.mtu
-  name                      = var.name
-  network_adapters          = var.network_adapters
-  notify_switches           = var.notify_switches
-  number_of_ports           = var.number_of_ports
+  # active_nics - (required) is a type of list of string
+  active_nics = var.active_nics
+  # allow_forged_transmits - (optional) is a type of bool
+  allow_forged_transmits = var.allow_forged_transmits
+  # allow_mac_changes - (optional) is a type of bool
+  allow_mac_changes = var.allow_mac_changes
+  # allow_promiscuous - (optional) is a type of bool
+  allow_promiscuous = var.allow_promiscuous
+  # beacon_interval - (optional) is a type of number
+  beacon_interval = var.beacon_interval
+  # check_beacon - (optional) is a type of bool
+  check_beacon = var.check_beacon
+  # failback - (optional) is a type of bool
+  failback = var.failback
+  # host_system_id - (required) is a type of string
+  host_system_id = var.host_system_id
+  # link_discovery_operation - (optional) is a type of string
+  link_discovery_operation = var.link_discovery_operation
+  # link_discovery_protocol - (optional) is a type of string
+  link_discovery_protocol = var.link_discovery_protocol
+  # mtu - (optional) is a type of number
+  mtu = var.mtu
+  # name - (required) is a type of string
+  name = var.name
+  # network_adapters - (required) is a type of list of string
+  network_adapters = var.network_adapters
+  # notify_switches - (optional) is a type of bool
+  notify_switches = var.notify_switches
+  # number_of_ports - (optional) is a type of number
+  number_of_ports = var.number_of_ports
+  # shaping_average_bandwidth - (optional) is a type of number
   shaping_average_bandwidth = var.shaping_average_bandwidth
-  shaping_burst_size        = var.shaping_burst_size
-  shaping_enabled           = var.shaping_enabled
-  shaping_peak_bandwidth    = var.shaping_peak_bandwidth
-  standby_nics              = var.standby_nics
-  teaming_policy            = var.teaming_policy
+  # shaping_burst_size - (optional) is a type of number
+  shaping_burst_size = var.shaping_burst_size
+  # shaping_enabled - (optional) is a type of bool
+  shaping_enabled = var.shaping_enabled
+  # shaping_peak_bandwidth - (optional) is a type of number
+  shaping_peak_bandwidth = var.shaping_peak_bandwidth
+  # standby_nics - (required) is a type of list of string
+  standby_nics = var.standby_nics
+  # teaming_policy - (optional) is a type of string
+  teaming_policy = var.teaming_policy
 }
 ```
 

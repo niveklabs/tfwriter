@@ -128,17 +128,28 @@ variable "tags" {
 
 ```terraform
 resource "opc_compute_security_rule" "this" {
-  acl                     = var.acl
-  description             = var.description
+  # acl - (optional) is a type of string
+  acl = var.acl
+  # description - (optional) is a type of string
+  description = var.description
+  # dst_ip_address_prefixes - (optional) is a type of list of string
   dst_ip_address_prefixes = var.dst_ip_address_prefixes
-  dst_vnic_set            = var.dst_vnic_set
-  enabled                 = var.enabled
-  flow_direction          = var.flow_direction
-  name                    = var.name
-  security_protocols      = var.security_protocols
+  # dst_vnic_set - (optional) is a type of string
+  dst_vnic_set = var.dst_vnic_set
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # flow_direction - (required) is a type of string
+  flow_direction = var.flow_direction
+  # name - (required) is a type of string
+  name = var.name
+  # security_protocols - (optional) is a type of list of string
+  security_protocols = var.security_protocols
+  # src_ip_address_prefixes - (optional) is a type of list of string
   src_ip_address_prefixes = var.src_ip_address_prefixes
-  src_vnic_set            = var.src_vnic_set
-  tags                    = var.tags
+  # src_vnic_set - (optional) is a type of string
+  src_vnic_set = var.src_vnic_set
+  # tags - (optional) is a type of list of string
+  tags = var.tags
 }
 ```
 

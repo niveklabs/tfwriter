@@ -79,13 +79,17 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_kubernetes_service_versions" "this" {
+  # include_preview - (optional) is a type of bool
   include_preview = var.include_preview
-  location        = var.location
-  version_prefix  = var.version_prefix
+  # location - (required) is a type of string
+  location = var.location
+  # version_prefix - (optional) is a type of string
+  version_prefix = var.version_prefix
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

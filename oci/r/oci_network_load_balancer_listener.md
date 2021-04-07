@@ -95,17 +95,25 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_network_load_balancer_listener" "this" {
+  # default_backend_set_name - (required) is a type of string
   default_backend_set_name = var.default_backend_set_name
-  name                     = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # network_load_balancer_id - (required) is a type of string
   network_load_balancer_id = var.network_load_balancer_id
-  port                     = var.port
-  protocol                 = var.protocol
+  # port - (required) is a type of number
+  port = var.port
+  # protocol - (required) is a type of string
+  protocol = var.protocol
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

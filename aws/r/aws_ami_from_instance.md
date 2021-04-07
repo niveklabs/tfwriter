@@ -142,11 +142,16 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_ami_from_instance" "this" {
-  description             = var.description
-  name                    = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # snapshot_without_reboot - (optional) is a type of bool
   snapshot_without_reboot = var.snapshot_without_reboot
-  source_instance_id      = var.source_instance_id
-  tags                    = var.tags
+  # source_instance_id - (required) is a type of string
+  source_instance_id = var.source_instance_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "ebs_block_device" {
     for_each = var.ebs_block_device
@@ -163,8 +168,11 @@ resource "aws_ami_from_instance" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

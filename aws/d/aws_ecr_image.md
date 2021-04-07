@@ -73,9 +73,13 @@ variable "repository_name" {
 
 ```terraform
 data "aws_ecr_image" "this" {
-  image_digest    = var.image_digest
-  image_tag       = var.image_tag
-  registry_id     = var.registry_id
+  # image_digest - (optional) is a type of string
+  image_digest = var.image_digest
+  # image_tag - (optional) is a type of string
+  image_tag = var.image_tag
+  # registry_id - (optional) is a type of string
+  registry_id = var.registry_id
+  # repository_name - (required) is a type of string
   repository_name = var.repository_name
 }
 ```

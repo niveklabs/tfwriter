@@ -72,10 +72,14 @@ variable "type" {
 
 ```terraform
 resource "boundary_host_catalog" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  scope_id    = var.scope_id
-  type        = var.type
+  # name - (optional) is a type of string
+  name = var.name
+  # scope_id - (required) is a type of string
+  scope_id = var.scope_id
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

@@ -50,6 +50,7 @@ variable "keepers" {
 
 ```terraform
 resource "random_uuid" "this" {
+  # keepers - (optional) is a type of map of string
   keepers = var.keepers
 }
 ```

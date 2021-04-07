@@ -127,21 +127,32 @@ variable "jwt_configuration" {
 
 ```terraform
 resource "aws_apigatewayv2_authorizer" "this" {
-  api_id                            = var.api_id
-  authorizer_credentials_arn        = var.authorizer_credentials_arn
+  # api_id - (required) is a type of string
+  api_id = var.api_id
+  # authorizer_credentials_arn - (optional) is a type of string
+  authorizer_credentials_arn = var.authorizer_credentials_arn
+  # authorizer_payload_format_version - (optional) is a type of string
   authorizer_payload_format_version = var.authorizer_payload_format_version
-  authorizer_result_ttl_in_seconds  = var.authorizer_result_ttl_in_seconds
-  authorizer_type                   = var.authorizer_type
-  authorizer_uri                    = var.authorizer_uri
-  enable_simple_responses           = var.enable_simple_responses
-  identity_sources                  = var.identity_sources
-  name                              = var.name
+  # authorizer_result_ttl_in_seconds - (optional) is a type of number
+  authorizer_result_ttl_in_seconds = var.authorizer_result_ttl_in_seconds
+  # authorizer_type - (required) is a type of string
+  authorizer_type = var.authorizer_type
+  # authorizer_uri - (optional) is a type of string
+  authorizer_uri = var.authorizer_uri
+  # enable_simple_responses - (optional) is a type of bool
+  enable_simple_responses = var.enable_simple_responses
+  # identity_sources - (optional) is a type of set of string
+  identity_sources = var.identity_sources
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "jwt_configuration" {
     for_each = var.jwt_configuration
     content {
+      # audience - (optional) is a type of set of string
       audience = jwt_configuration.value["audience"]
-      issuer   = jwt_configuration.value["issuer"]
+      # issuer - (optional) is a type of string
+      issuer = jwt_configuration.value["issuer"]
     }
   }
 

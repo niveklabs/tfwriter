@@ -92,16 +92,23 @@ variable "filter" {
 
 ```terraform
 data "oci_file_storage_exports" "this" {
+  # compartment_id - (optional) is a type of string
   compartment_id = var.compartment_id
-  export_set_id  = var.export_set_id
+  # export_set_id - (optional) is a type of string
+  export_set_id = var.export_set_id
+  # file_system_id - (optional) is a type of string
   file_system_id = var.file_system_id
-  state          = var.state
+  # state - (optional) is a type of string
+  state = var.state
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

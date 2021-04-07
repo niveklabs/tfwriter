@@ -148,25 +148,35 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_region_network_endpoint_group" "this" {
-  description           = var.description
-  name                  = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # network_endpoint_type - (optional) is a type of string
   network_endpoint_type = var.network_endpoint_type
-  project               = var.project
-  region                = var.region
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (required) is a type of string
+  region = var.region
 
   dynamic "app_engine" {
     for_each = var.app_engine
     content {
-      service  = app_engine.value["service"]
+      # service - (optional) is a type of string
+      service = app_engine.value["service"]
+      # url_mask - (optional) is a type of string
       url_mask = app_engine.value["url_mask"]
-      version  = app_engine.value["version"]
+      # version - (optional) is a type of string
+      version = app_engine.value["version"]
     }
   }
 
   dynamic "cloud_function" {
     for_each = var.cloud_function
     content {
+      # function - (optional) is a type of string
       function = cloud_function.value["function"]
+      # url_mask - (optional) is a type of string
       url_mask = cloud_function.value["url_mask"]
     }
   }
@@ -174,8 +184,11 @@ resource "google_compute_region_network_endpoint_group" "this" {
   dynamic "cloud_run" {
     for_each = var.cloud_run
     content {
-      service  = cloud_run.value["service"]
-      tag      = cloud_run.value["tag"]
+      # service - (optional) is a type of string
+      service = cloud_run.value["service"]
+      # tag - (optional) is a type of string
+      tag = cloud_run.value["tag"]
+      # url_mask - (optional) is a type of string
       url_mask = cloud_run.value["url_mask"]
     }
   }
@@ -183,7 +196,9 @@ resource "google_compute_region_network_endpoint_group" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

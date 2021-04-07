@@ -79,11 +79,16 @@ variable "type" {
 
 ```terraform
 resource "opc_lbaas_certificate" "this" {
-  certificate_body  = var.certificate_body
+  # certificate_body - (required) is a type of string
+  certificate_body = var.certificate_body
+  # certificate_chain - (optional) is a type of string
   certificate_chain = var.certificate_chain
-  name              = var.name
-  private_key       = var.private_key
-  type              = var.type
+  # name - (required) is a type of string
+  name = var.name
+  # private_key - (optional) is a type of string
+  private_key = var.private_key
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

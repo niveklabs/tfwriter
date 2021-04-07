@@ -130,22 +130,35 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_key_vault_key" "this" {
-  curve           = var.curve
+  # curve - (optional) is a type of string
+  curve = var.curve
+  # expiration_date - (optional) is a type of string
   expiration_date = var.expiration_date
-  key_opts        = var.key_opts
-  key_size        = var.key_size
-  key_type        = var.key_type
-  key_vault_id    = var.key_vault_id
-  name            = var.name
+  # key_opts - (required) is a type of list of string
+  key_opts = var.key_opts
+  # key_size - (optional) is a type of number
+  key_size = var.key_size
+  # key_type - (required) is a type of string
+  key_type = var.key_type
+  # key_vault_id - (required) is a type of string
+  key_vault_id = var.key_vault_id
+  # name - (required) is a type of string
+  name = var.name
+  # not_before_date - (optional) is a type of string
   not_before_date = var.not_before_date
-  tags            = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

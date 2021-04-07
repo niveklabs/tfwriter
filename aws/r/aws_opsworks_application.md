@@ -211,29 +211,49 @@ variable "ssl_configuration" {
 
 ```terraform
 resource "aws_opsworks_application" "this" {
-  auto_bundle_on_deploy     = var.auto_bundle_on_deploy
-  aws_flow_ruby_settings    = var.aws_flow_ruby_settings
-  data_source_arn           = var.data_source_arn
+  # auto_bundle_on_deploy - (optional) is a type of string
+  auto_bundle_on_deploy = var.auto_bundle_on_deploy
+  # aws_flow_ruby_settings - (optional) is a type of string
+  aws_flow_ruby_settings = var.aws_flow_ruby_settings
+  # data_source_arn - (optional) is a type of string
+  data_source_arn = var.data_source_arn
+  # data_source_database_name - (optional) is a type of string
   data_source_database_name = var.data_source_database_name
-  data_source_type          = var.data_source_type
-  description               = var.description
-  document_root             = var.document_root
-  domains                   = var.domains
-  enable_ssl                = var.enable_ssl
-  name                      = var.name
-  rails_env                 = var.rails_env
-  short_name                = var.short_name
-  stack_id                  = var.stack_id
-  type                      = var.type
+  # data_source_type - (optional) is a type of string
+  data_source_type = var.data_source_type
+  # description - (optional) is a type of string
+  description = var.description
+  # document_root - (optional) is a type of string
+  document_root = var.document_root
+  # domains - (optional) is a type of list of string
+  domains = var.domains
+  # enable_ssl - (optional) is a type of bool
+  enable_ssl = var.enable_ssl
+  # name - (required) is a type of string
+  name = var.name
+  # rails_env - (optional) is a type of string
+  rails_env = var.rails_env
+  # short_name - (optional) is a type of string
+  short_name = var.short_name
+  # stack_id - (required) is a type of string
+  stack_id = var.stack_id
+  # type - (required) is a type of string
+  type = var.type
 
   dynamic "app_source" {
     for_each = var.app_source
     content {
+      # password - (optional) is a type of string
       password = app_source.value["password"]
+      # revision - (optional) is a type of string
       revision = app_source.value["revision"]
-      ssh_key  = app_source.value["ssh_key"]
-      type     = app_source.value["type"]
-      url      = app_source.value["url"]
+      # ssh_key - (optional) is a type of string
+      ssh_key = app_source.value["ssh_key"]
+      # type - (required) is a type of string
+      type = app_source.value["type"]
+      # url - (optional) is a type of string
+      url = app_source.value["url"]
+      # username - (optional) is a type of string
       username = app_source.value["username"]
     }
   }
@@ -241,17 +261,23 @@ resource "aws_opsworks_application" "this" {
   dynamic "environment" {
     for_each = var.environment
     content {
-      key    = environment.value["key"]
+      # key - (required) is a type of string
+      key = environment.value["key"]
+      # secure - (optional) is a type of bool
       secure = environment.value["secure"]
-      value  = environment.value["value"]
+      # value - (required) is a type of string
+      value = environment.value["value"]
     }
   }
 
   dynamic "ssl_configuration" {
     for_each = var.ssl_configuration
     content {
+      # certificate - (required) is a type of string
       certificate = ssl_configuration.value["certificate"]
-      chain       = ssl_configuration.value["chain"]
+      # chain - (optional) is a type of string
+      chain = ssl_configuration.value["chain"]
+      # private_key - (required) is a type of string
       private_key = ssl_configuration.value["private_key"]
     }
   }

@@ -106,24 +106,33 @@ variable "timeouts" {
 
 ```terraform
 resource "google_firestore_index" "this" {
-  collection  = var.collection
-  database    = var.database
-  project     = var.project
+  # collection - (required) is a type of string
+  collection = var.collection
+  # database - (optional) is a type of string
+  database = var.database
+  # project - (optional) is a type of string
+  project = var.project
+  # query_scope - (optional) is a type of string
   query_scope = var.query_scope
 
   dynamic "fields" {
     for_each = var.fields
     content {
+      # array_config - (optional) is a type of string
       array_config = fields.value["array_config"]
-      field_path   = fields.value["field_path"]
-      order        = fields.value["order"]
+      # field_path - (optional) is a type of string
+      field_path = fields.value["field_path"]
+      # order - (optional) is a type of string
+      order = fields.value["order"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

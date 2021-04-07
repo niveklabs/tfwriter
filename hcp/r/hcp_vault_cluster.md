@@ -90,17 +90,24 @@ variable "timeouts" {
 
 ```terraform
 resource "hcp_vault_cluster" "this" {
-  cluster_id        = var.cluster_id
-  hvn_id            = var.hvn_id
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # hvn_id - (required) is a type of string
+  hvn_id = var.hvn_id
+  # min_vault_version - (optional) is a type of string
   min_vault_version = var.min_vault_version
-  public_endpoint   = var.public_endpoint
+  # public_endpoint - (optional) is a type of bool
+  public_endpoint = var.public_endpoint
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
-      create  = timeouts.value["create"]
+      # create - (optional) is a type of string
+      create = timeouts.value["create"]
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
-      delete  = timeouts.value["delete"]
+      # delete - (optional) is a type of string
+      delete = timeouts.value["delete"]
     }
   }
 

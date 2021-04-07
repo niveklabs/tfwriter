@@ -56,8 +56,10 @@ variable "vm_cluster_network_id" {
 
 ```terraform
 data "oci_database_vm_cluster_network" "this" {
+  # exadata_infrastructure_id - (required) is a type of string
   exadata_infrastructure_id = var.exadata_infrastructure_id
-  vm_cluster_network_id     = var.vm_cluster_network_id
+  # vm_cluster_network_id - (required) is a type of string
+  vm_cluster_network_id = var.vm_cluster_network_id
 }
 ```
 

@@ -524,12 +524,18 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_apigateway_deployment" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  defined_tags   = var.defined_tags
-  display_name   = var.display_name
-  freeform_tags  = var.freeform_tags
-  gateway_id     = var.gateway_id
-  path_prefix    = var.path_prefix
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # gateway_id - (required) is a type of string
+  gateway_id = var.gateway_id
+  # path_prefix - (required) is a type of string
+  path_prefix = var.path_prefix
 
   dynamic "specification" {
     for_each = var.specification
@@ -542,6 +548,7 @@ resource "oci_apigateway_deployment" "this" {
           dynamic "access_log" {
             for_each = logging_policies.value.access_log
             content {
+              # is_enabled - (optional) is a type of bool
               is_enabled = access_log.value["is_enabled"]
             }
           }
@@ -549,8 +556,10 @@ resource "oci_apigateway_deployment" "this" {
           dynamic "execution_log" {
             for_each = logging_policies.value.execution_log
             content {
+              # is_enabled - (optional) is a type of bool
               is_enabled = execution_log.value["is_enabled"]
-              log_level  = execution_log.value["log_level"]
+              # log_level - (optional) is a type of string
+              log_level = execution_log.value["log_level"]
             }
           }
 
@@ -564,36 +573,58 @@ resource "oci_apigateway_deployment" "this" {
           dynamic "authentication" {
             for_each = request_policies.value.authentication
             content {
-              audiences                   = authentication.value["audiences"]
-              function_id                 = authentication.value["function_id"]
+              # audiences - (optional) is a type of list of string
+              audiences = authentication.value["audiences"]
+              # function_id - (optional) is a type of string
+              function_id = authentication.value["function_id"]
+              # is_anonymous_access_allowed - (optional) is a type of bool
               is_anonymous_access_allowed = authentication.value["is_anonymous_access_allowed"]
-              issuers                     = authentication.value["issuers"]
-              max_clock_skew_in_seconds   = authentication.value["max_clock_skew_in_seconds"]
-              token_auth_scheme           = authentication.value["token_auth_scheme"]
-              token_header                = authentication.value["token_header"]
-              token_query_param           = authentication.value["token_query_param"]
-              type                        = authentication.value["type"]
+              # issuers - (optional) is a type of list of string
+              issuers = authentication.value["issuers"]
+              # max_clock_skew_in_seconds - (optional) is a type of number
+              max_clock_skew_in_seconds = authentication.value["max_clock_skew_in_seconds"]
+              # token_auth_scheme - (optional) is a type of string
+              token_auth_scheme = authentication.value["token_auth_scheme"]
+              # token_header - (optional) is a type of string
+              token_header = authentication.value["token_header"]
+              # token_query_param - (optional) is a type of string
+              token_query_param = authentication.value["token_query_param"]
+              # type - (required) is a type of string
+              type = authentication.value["type"]
 
               dynamic "public_keys" {
                 for_each = authentication.value.public_keys
                 content {
-                  is_ssl_verify_disabled      = public_keys.value["is_ssl_verify_disabled"]
+                  # is_ssl_verify_disabled - (optional) is a type of bool
+                  is_ssl_verify_disabled = public_keys.value["is_ssl_verify_disabled"]
+                  # max_cache_duration_in_hours - (optional) is a type of number
                   max_cache_duration_in_hours = public_keys.value["max_cache_duration_in_hours"]
-                  type                        = public_keys.value["type"]
-                  uri                         = public_keys.value["uri"]
+                  # type - (required) is a type of string
+                  type = public_keys.value["type"]
+                  # uri - (optional) is a type of string
+                  uri = public_keys.value["uri"]
 
                   dynamic "keys" {
                     for_each = public_keys.value.keys
                     content {
-                      alg     = keys.value["alg"]
-                      e       = keys.value["e"]
-                      format  = keys.value["format"]
-                      key     = keys.value["key"]
+                      # alg - (optional) is a type of string
+                      alg = keys.value["alg"]
+                      # e - (optional) is a type of string
+                      e = keys.value["e"]
+                      # format - (required) is a type of string
+                      format = keys.value["format"]
+                      # key - (optional) is a type of string
+                      key = keys.value["key"]
+                      # key_ops - (optional) is a type of list of string
                       key_ops = keys.value["key_ops"]
-                      kid     = keys.value["kid"]
-                      kty     = keys.value["kty"]
-                      n       = keys.value["n"]
-                      use     = keys.value["use"]
+                      # kid - (optional) is a type of string
+                      kid = keys.value["kid"]
+                      # kty - (optional) is a type of string
+                      kty = keys.value["kty"]
+                      # n - (optional) is a type of string
+                      n = keys.value["n"]
+                      # use - (optional) is a type of string
+                      use = keys.value["use"]
                     }
                   }
 
@@ -603,9 +634,12 @@ resource "oci_apigateway_deployment" "this" {
               dynamic "verify_claims" {
                 for_each = authentication.value.verify_claims
                 content {
+                  # is_required - (optional) is a type of bool
                   is_required = verify_claims.value["is_required"]
-                  key         = verify_claims.value["key"]
-                  values      = verify_claims.value["values"]
+                  # key - (optional) is a type of string
+                  key = verify_claims.value["key"]
+                  # values - (optional) is a type of list of string
+                  values = verify_claims.value["values"]
                 }
               }
 
@@ -615,20 +649,28 @@ resource "oci_apigateway_deployment" "this" {
           dynamic "cors" {
             for_each = request_policies.value.cors
             content {
-              allowed_headers              = cors.value["allowed_headers"]
-              allowed_methods              = cors.value["allowed_methods"]
-              allowed_origins              = cors.value["allowed_origins"]
-              exposed_headers              = cors.value["exposed_headers"]
+              # allowed_headers - (optional) is a type of list of string
+              allowed_headers = cors.value["allowed_headers"]
+              # allowed_methods - (optional) is a type of list of string
+              allowed_methods = cors.value["allowed_methods"]
+              # allowed_origins - (required) is a type of list of string
+              allowed_origins = cors.value["allowed_origins"]
+              # exposed_headers - (optional) is a type of list of string
+              exposed_headers = cors.value["exposed_headers"]
+              # is_allow_credentials_enabled - (optional) is a type of bool
               is_allow_credentials_enabled = cors.value["is_allow_credentials_enabled"]
-              max_age_in_seconds           = cors.value["max_age_in_seconds"]
+              # max_age_in_seconds - (optional) is a type of number
+              max_age_in_seconds = cors.value["max_age_in_seconds"]
             }
           }
 
           dynamic "rate_limiting" {
             for_each = request_policies.value.rate_limiting
             content {
+              # rate_in_requests_per_second - (required) is a type of number
               rate_in_requests_per_second = rate_limiting.value["rate_in_requests_per_second"]
-              rate_key                    = rate_limiting.value["rate_key"]
+              # rate_key - (required) is a type of string
+              rate_key = rate_limiting.value["rate_key"]
             }
           }
 
@@ -638,26 +680,39 @@ resource "oci_apigateway_deployment" "this" {
       dynamic "routes" {
         for_each = specification.value.routes
         content {
+          # methods - (optional) is a type of list of string
           methods = routes.value["methods"]
-          path    = routes.value["path"]
+          # path - (required) is a type of string
+          path = routes.value["path"]
 
           dynamic "backend" {
             for_each = routes.value.backend
             content {
-              body                       = backend.value["body"]
+              # body - (optional) is a type of string
+              body = backend.value["body"]
+              # connect_timeout_in_seconds - (optional) is a type of number
               connect_timeout_in_seconds = backend.value["connect_timeout_in_seconds"]
-              function_id                = backend.value["function_id"]
-              is_ssl_verify_disabled     = backend.value["is_ssl_verify_disabled"]
-              read_timeout_in_seconds    = backend.value["read_timeout_in_seconds"]
-              send_timeout_in_seconds    = backend.value["send_timeout_in_seconds"]
-              status                     = backend.value["status"]
-              type                       = backend.value["type"]
-              url                        = backend.value["url"]
+              # function_id - (optional) is a type of string
+              function_id = backend.value["function_id"]
+              # is_ssl_verify_disabled - (optional) is a type of bool
+              is_ssl_verify_disabled = backend.value["is_ssl_verify_disabled"]
+              # read_timeout_in_seconds - (optional) is a type of number
+              read_timeout_in_seconds = backend.value["read_timeout_in_seconds"]
+              # send_timeout_in_seconds - (optional) is a type of number
+              send_timeout_in_seconds = backend.value["send_timeout_in_seconds"]
+              # status - (optional) is a type of number
+              status = backend.value["status"]
+              # type - (required) is a type of string
+              type = backend.value["type"]
+              # url - (optional) is a type of string
+              url = backend.value["url"]
 
               dynamic "headers" {
                 for_each = backend.value.headers
                 content {
-                  name  = headers.value["name"]
+                  # name - (optional) is a type of string
+                  name = headers.value["name"]
+                  # value - (optional) is a type of string
                   value = headers.value["value"]
                 }
               }
@@ -672,6 +727,7 @@ resource "oci_apigateway_deployment" "this" {
               dynamic "access_log" {
                 for_each = logging_policies.value.access_log
                 content {
+                  # is_enabled - (optional) is a type of bool
                   is_enabled = access_log.value["is_enabled"]
                 }
               }
@@ -679,8 +735,10 @@ resource "oci_apigateway_deployment" "this" {
               dynamic "execution_log" {
                 for_each = logging_policies.value.execution_log
                 content {
+                  # is_enabled - (optional) is a type of bool
                   is_enabled = execution_log.value["is_enabled"]
-                  log_level  = execution_log.value["log_level"]
+                  # log_level - (optional) is a type of string
+                  log_level = execution_log.value["log_level"]
                 }
               }
 
@@ -694,20 +752,28 @@ resource "oci_apigateway_deployment" "this" {
               dynamic "authorization" {
                 for_each = request_policies.value.authorization
                 content {
+                  # allowed_scope - (optional) is a type of list of string
                   allowed_scope = authorization.value["allowed_scope"]
-                  type          = authorization.value["type"]
+                  # type - (optional) is a type of string
+                  type = authorization.value["type"]
                 }
               }
 
               dynamic "cors" {
                 for_each = request_policies.value.cors
                 content {
-                  allowed_headers              = cors.value["allowed_headers"]
-                  allowed_methods              = cors.value["allowed_methods"]
-                  allowed_origins              = cors.value["allowed_origins"]
-                  exposed_headers              = cors.value["exposed_headers"]
+                  # allowed_headers - (optional) is a type of list of string
+                  allowed_headers = cors.value["allowed_headers"]
+                  # allowed_methods - (optional) is a type of list of string
+                  allowed_methods = cors.value["allowed_methods"]
+                  # allowed_origins - (required) is a type of list of string
+                  allowed_origins = cors.value["allowed_origins"]
+                  # exposed_headers - (optional) is a type of list of string
+                  exposed_headers = cors.value["exposed_headers"]
+                  # is_allow_credentials_enabled - (optional) is a type of bool
                   is_allow_credentials_enabled = cors.value["is_allow_credentials_enabled"]
-                  max_age_in_seconds           = cors.value["max_age_in_seconds"]
+                  # max_age_in_seconds - (optional) is a type of number
+                  max_age_in_seconds = cors.value["max_age_in_seconds"]
                 }
               }
 
@@ -718,11 +784,13 @@ resource "oci_apigateway_deployment" "this" {
                   dynamic "filter_headers" {
                     for_each = header_transformations.value.filter_headers
                     content {
+                      # type - (required) is a type of string
                       type = filter_headers.value["type"]
 
                       dynamic "items" {
                         for_each = filter_headers.value.items
                         content {
+                          # name - (required) is a type of string
                           name = items.value["name"]
                         }
                       }
@@ -737,8 +805,10 @@ resource "oci_apigateway_deployment" "this" {
                       dynamic "items" {
                         for_each = rename_headers.value.items
                         content {
+                          # from - (required) is a type of string
                           from = items.value["from"]
-                          to   = items.value["to"]
+                          # to - (required) is a type of string
+                          to = items.value["to"]
                         }
                       }
 
@@ -752,9 +822,12 @@ resource "oci_apigateway_deployment" "this" {
                       dynamic "items" {
                         for_each = set_headers.value.items
                         content {
+                          # if_exists - (optional) is a type of string
                           if_exists = items.value["if_exists"]
-                          name      = items.value["name"]
-                          values    = items.value["values"]
+                          # name - (required) is a type of string
+                          name = items.value["name"]
+                          # values - (required) is a type of list of string
+                          values = items.value["values"]
                         }
                       }
 
@@ -771,11 +844,13 @@ resource "oci_apigateway_deployment" "this" {
                   dynamic "filter_query_parameters" {
                     for_each = query_parameter_transformations.value.filter_query_parameters
                     content {
+                      # type - (required) is a type of string
                       type = filter_query_parameters.value["type"]
 
                       dynamic "items" {
                         for_each = filter_query_parameters.value.items
                         content {
+                          # name - (required) is a type of string
                           name = items.value["name"]
                         }
                       }
@@ -790,8 +865,10 @@ resource "oci_apigateway_deployment" "this" {
                       dynamic "items" {
                         for_each = rename_query_parameters.value.items
                         content {
+                          # from - (required) is a type of string
                           from = items.value["from"]
-                          to   = items.value["to"]
+                          # to - (required) is a type of string
+                          to = items.value["to"]
                         }
                       }
 
@@ -805,9 +882,12 @@ resource "oci_apigateway_deployment" "this" {
                       dynamic "items" {
                         for_each = set_query_parameters.value.items
                         content {
+                          # if_exists - (optional) is a type of string
                           if_exists = items.value["if_exists"]
-                          name      = items.value["name"]
-                          values    = items.value["values"]
+                          # name - (required) is a type of string
+                          name = items.value["name"]
+                          # values - (required) is a type of list of string
+                          values = items.value["values"]
                         }
                       }
 
@@ -831,11 +911,13 @@ resource "oci_apigateway_deployment" "this" {
                   dynamic "filter_headers" {
                     for_each = header_transformations.value.filter_headers
                     content {
+                      # type - (required) is a type of string
                       type = filter_headers.value["type"]
 
                       dynamic "items" {
                         for_each = filter_headers.value.items
                         content {
+                          # name - (required) is a type of string
                           name = items.value["name"]
                         }
                       }
@@ -850,8 +932,10 @@ resource "oci_apigateway_deployment" "this" {
                       dynamic "items" {
                         for_each = rename_headers.value.items
                         content {
+                          # from - (required) is a type of string
                           from = items.value["from"]
-                          to   = items.value["to"]
+                          # to - (required) is a type of string
+                          to = items.value["to"]
                         }
                       }
 
@@ -865,9 +949,12 @@ resource "oci_apigateway_deployment" "this" {
                       dynamic "items" {
                         for_each = set_headers.value.items
                         content {
+                          # if_exists - (optional) is a type of string
                           if_exists = items.value["if_exists"]
-                          name      = items.value["name"]
-                          values    = items.value["values"]
+                          # name - (required) is a type of string
+                          name = items.value["name"]
+                          # values - (required) is a type of list of string
+                          values = items.value["values"]
                         }
                       }
 
@@ -889,8 +976,11 @@ resource "oci_apigateway_deployment" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

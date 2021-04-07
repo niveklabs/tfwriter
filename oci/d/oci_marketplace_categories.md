@@ -68,13 +68,17 @@ variable "filter" {
 
 ```terraform
 data "oci_marketplace_categories" "this" {
+  # compartment_id - (optional) is a type of string
   compartment_id = var.compartment_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

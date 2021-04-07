@@ -49,6 +49,7 @@ variable "master_id" {
 
 ```terraform
 resource "aws_securityhub_invite_accepter" "this" {
+  # master_id - (required) is a type of string
   master_id = var.master_id
 }
 ```

@@ -135,18 +135,27 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_network_load_balancer_network_load_balancer" "this" {
-  compartment_id                 = var.compartment_id
-  defined_tags                   = var.defined_tags
-  display_name                   = var.display_name
-  freeform_tags                  = var.freeform_tags
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # is_preserve_source_destination - (optional) is a type of bool
   is_preserve_source_destination = var.is_preserve_source_destination
-  is_private                     = var.is_private
-  network_security_group_ids     = var.network_security_group_ids
-  subnet_id                      = var.subnet_id
+  # is_private - (optional) is a type of bool
+  is_private = var.is_private
+  # network_security_group_ids - (optional) is a type of set of string
+  network_security_group_ids = var.network_security_group_ids
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
 
   dynamic "reserved_ips" {
     for_each = var.reserved_ips
     content {
+      # id - (optional) is a type of string
       id = reserved_ips.value["id"]
     }
   }
@@ -154,8 +163,11 @@ resource "oci_network_load_balancer_network_load_balancer" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

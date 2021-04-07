@@ -96,18 +96,26 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_data_share_dataset_data_lake_gen1" "this" {
+  # data_lake_store_id - (required) is a type of string
   data_lake_store_id = var.data_lake_store_id
-  data_share_id      = var.data_share_id
-  file_name          = var.file_name
-  folder_path        = var.folder_path
-  name               = var.name
+  # data_share_id - (required) is a type of string
+  data_share_id = var.data_share_id
+  # file_name - (optional) is a type of string
+  file_name = var.file_name
+  # folder_path - (required) is a type of string
+  folder_path = var.folder_path
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

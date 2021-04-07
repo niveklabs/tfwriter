@@ -254,68 +254,100 @@ variable "storage_descriptor" {
 
 ```terraform
 resource "aws_glue_catalog_table" "this" {
-  catalog_id         = var.catalog_id
-  database_name      = var.database_name
-  description        = var.description
-  name               = var.name
-  owner              = var.owner
-  parameters         = var.parameters
-  retention          = var.retention
-  table_type         = var.table_type
+  # catalog_id - (optional) is a type of string
+  catalog_id = var.catalog_id
+  # database_name - (required) is a type of string
+  database_name = var.database_name
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # owner - (optional) is a type of string
+  owner = var.owner
+  # parameters - (optional) is a type of map of string
+  parameters = var.parameters
+  # retention - (optional) is a type of number
+  retention = var.retention
+  # table_type - (optional) is a type of string
+  table_type = var.table_type
+  # view_expanded_text - (optional) is a type of string
   view_expanded_text = var.view_expanded_text
+  # view_original_text - (optional) is a type of string
   view_original_text = var.view_original_text
 
   dynamic "partition_index" {
     for_each = var.partition_index
     content {
+      # index_name - (required) is a type of string
       index_name = partition_index.value["index_name"]
-      keys       = partition_index.value["keys"]
+      # keys - (required) is a type of set of string
+      keys = partition_index.value["keys"]
     }
   }
 
   dynamic "partition_keys" {
     for_each = var.partition_keys
     content {
+      # comment - (optional) is a type of string
       comment = partition_keys.value["comment"]
-      name    = partition_keys.value["name"]
-      type    = partition_keys.value["type"]
+      # name - (required) is a type of string
+      name = partition_keys.value["name"]
+      # type - (optional) is a type of string
+      type = partition_keys.value["type"]
     }
   }
 
   dynamic "storage_descriptor" {
     for_each = var.storage_descriptor
     content {
-      bucket_columns            = storage_descriptor.value["bucket_columns"]
-      compressed                = storage_descriptor.value["compressed"]
-      input_format              = storage_descriptor.value["input_format"]
-      location                  = storage_descriptor.value["location"]
-      number_of_buckets         = storage_descriptor.value["number_of_buckets"]
-      output_format             = storage_descriptor.value["output_format"]
-      parameters                = storage_descriptor.value["parameters"]
+      # bucket_columns - (optional) is a type of list of string
+      bucket_columns = storage_descriptor.value["bucket_columns"]
+      # compressed - (optional) is a type of bool
+      compressed = storage_descriptor.value["compressed"]
+      # input_format - (optional) is a type of string
+      input_format = storage_descriptor.value["input_format"]
+      # location - (optional) is a type of string
+      location = storage_descriptor.value["location"]
+      # number_of_buckets - (optional) is a type of number
+      number_of_buckets = storage_descriptor.value["number_of_buckets"]
+      # output_format - (optional) is a type of string
+      output_format = storage_descriptor.value["output_format"]
+      # parameters - (optional) is a type of map of string
+      parameters = storage_descriptor.value["parameters"]
+      # stored_as_sub_directories - (optional) is a type of bool
       stored_as_sub_directories = storage_descriptor.value["stored_as_sub_directories"]
 
       dynamic "columns" {
         for_each = storage_descriptor.value.columns
         content {
-          comment    = columns.value["comment"]
-          name       = columns.value["name"]
+          # comment - (optional) is a type of string
+          comment = columns.value["comment"]
+          # name - (required) is a type of string
+          name = columns.value["name"]
+          # parameters - (optional) is a type of map of string
           parameters = columns.value["parameters"]
-          type       = columns.value["type"]
+          # type - (optional) is a type of string
+          type = columns.value["type"]
         }
       }
 
       dynamic "schema_reference" {
         for_each = storage_descriptor.value.schema_reference
         content {
-          schema_version_id     = schema_reference.value["schema_version_id"]
+          # schema_version_id - (optional) is a type of string
+          schema_version_id = schema_reference.value["schema_version_id"]
+          # schema_version_number - (required) is a type of number
           schema_version_number = schema_reference.value["schema_version_number"]
 
           dynamic "schema_id" {
             for_each = schema_reference.value.schema_id
             content {
+              # registry_name - (optional) is a type of string
               registry_name = schema_id.value["registry_name"]
-              schema_arn    = schema_id.value["schema_arn"]
-              schema_name   = schema_id.value["schema_name"]
+              # schema_arn - (optional) is a type of string
+              schema_arn = schema_id.value["schema_arn"]
+              # schema_name - (optional) is a type of string
+              schema_name = schema_id.value["schema_name"]
             }
           }
 
@@ -325,8 +357,11 @@ resource "aws_glue_catalog_table" "this" {
       dynamic "ser_de_info" {
         for_each = storage_descriptor.value.ser_de_info
         content {
-          name                  = ser_de_info.value["name"]
-          parameters            = ser_de_info.value["parameters"]
+          # name - (optional) is a type of string
+          name = ser_de_info.value["name"]
+          # parameters - (optional) is a type of map of string
+          parameters = ser_de_info.value["parameters"]
+          # serialization_library - (optional) is a type of string
           serialization_library = ser_de_info.value["serialization_library"]
         }
       }
@@ -334,16 +369,21 @@ resource "aws_glue_catalog_table" "this" {
       dynamic "skewed_info" {
         for_each = storage_descriptor.value.skewed_info
         content {
-          skewed_column_names               = skewed_info.value["skewed_column_names"]
+          # skewed_column_names - (optional) is a type of list of string
+          skewed_column_names = skewed_info.value["skewed_column_names"]
+          # skewed_column_value_location_maps - (optional) is a type of map of string
           skewed_column_value_location_maps = skewed_info.value["skewed_column_value_location_maps"]
-          skewed_column_values              = skewed_info.value["skewed_column_values"]
+          # skewed_column_values - (optional) is a type of list of string
+          skewed_column_values = skewed_info.value["skewed_column_values"]
         }
       }
 
       dynamic "sort_columns" {
         for_each = storage_descriptor.value.sort_columns
         content {
-          column     = sort_columns.value["column"]
+          # column - (required) is a type of string
+          column = sort_columns.value["column"]
+          # sort_order - (required) is a type of number
           sort_order = sort_columns.value["sort_order"]
         }
       }

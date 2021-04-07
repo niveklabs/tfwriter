@@ -81,11 +81,16 @@ variable "tags" {
 
 ```terraform
 resource "aws_neptune_subnet_group" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
   name_prefix = var.name_prefix
-  subnet_ids  = var.subnet_ids
-  tags        = var.tags
+  # subnet_ids - (required) is a type of set of string
+  subnet_ids = var.subnet_ids
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

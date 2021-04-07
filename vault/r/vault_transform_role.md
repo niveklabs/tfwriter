@@ -64,8 +64,11 @@ variable "transformations" {
 
 ```terraform
 resource "vault_transform_role" "this" {
-  name            = var.name
-  path            = var.path
+  # name - (required) is a type of string
+  name = var.name
+  # path - (required) is a type of string
+  path = var.path
+  # transformations - (optional) is a type of list of string
   transformations = var.transformations
 }
 ```

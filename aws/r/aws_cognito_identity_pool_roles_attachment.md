@@ -88,23 +88,32 @@ variable "role_mapping" {
 
 ```terraform
 resource "aws_cognito_identity_pool_roles_attachment" "this" {
+  # identity_pool_id - (required) is a type of string
   identity_pool_id = var.identity_pool_id
-  roles            = var.roles
+  # roles - (required) is a type of map of string
+  roles = var.roles
 
   dynamic "role_mapping" {
     for_each = var.role_mapping
     content {
+      # ambiguous_role_resolution - (optional) is a type of string
       ambiguous_role_resolution = role_mapping.value["ambiguous_role_resolution"]
-      identity_provider         = role_mapping.value["identity_provider"]
-      type                      = role_mapping.value["type"]
+      # identity_provider - (required) is a type of string
+      identity_provider = role_mapping.value["identity_provider"]
+      # type - (required) is a type of string
+      type = role_mapping.value["type"]
 
       dynamic "mapping_rule" {
         for_each = role_mapping.value.mapping_rule
         content {
-          claim      = mapping_rule.value["claim"]
+          # claim - (required) is a type of string
+          claim = mapping_rule.value["claim"]
+          # match_type - (required) is a type of string
           match_type = mapping_rule.value["match_type"]
-          role_arn   = mapping_rule.value["role_arn"]
-          value      = mapping_rule.value["value"]
+          # role_arn - (required) is a type of string
+          role_arn = mapping_rule.value["role_arn"]
+          # value - (required) is a type of string
+          value = mapping_rule.value["value"]
         }
       }
 

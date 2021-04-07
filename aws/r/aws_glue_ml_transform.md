@@ -166,39 +166,58 @@ variable "parameters" {
 
 ```terraform
 resource "aws_glue_ml_transform" "this" {
-  description       = var.description
-  glue_version      = var.glue_version
-  max_capacity      = var.max_capacity
-  max_retries       = var.max_retries
-  name              = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # glue_version - (optional) is a type of string
+  glue_version = var.glue_version
+  # max_capacity - (optional) is a type of number
+  max_capacity = var.max_capacity
+  # max_retries - (optional) is a type of number
+  max_retries = var.max_retries
+  # name - (required) is a type of string
+  name = var.name
+  # number_of_workers - (optional) is a type of number
   number_of_workers = var.number_of_workers
-  role_arn          = var.role_arn
-  tags              = var.tags
-  timeout           = var.timeout
-  worker_type       = var.worker_type
+  # role_arn - (required) is a type of string
+  role_arn = var.role_arn
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
+  # worker_type - (optional) is a type of string
+  worker_type = var.worker_type
 
   dynamic "input_record_tables" {
     for_each = var.input_record_tables
     content {
-      catalog_id      = input_record_tables.value["catalog_id"]
+      # catalog_id - (optional) is a type of string
+      catalog_id = input_record_tables.value["catalog_id"]
+      # connection_name - (optional) is a type of string
       connection_name = input_record_tables.value["connection_name"]
-      database_name   = input_record_tables.value["database_name"]
-      table_name      = input_record_tables.value["table_name"]
+      # database_name - (required) is a type of string
+      database_name = input_record_tables.value["database_name"]
+      # table_name - (required) is a type of string
+      table_name = input_record_tables.value["table_name"]
     }
   }
 
   dynamic "parameters" {
     for_each = var.parameters
     content {
+      # transform_type - (required) is a type of string
       transform_type = parameters.value["transform_type"]
 
       dynamic "find_matches_parameters" {
         for_each = parameters.value.find_matches_parameters
         content {
-          accuracy_cost_trade_off    = find_matches_parameters.value["accuracy_cost_trade_off"]
-          enforce_provided_labels    = find_matches_parameters.value["enforce_provided_labels"]
+          # accuracy_cost_trade_off - (optional) is a type of number
+          accuracy_cost_trade_off = find_matches_parameters.value["accuracy_cost_trade_off"]
+          # enforce_provided_labels - (optional) is a type of bool
+          enforce_provided_labels = find_matches_parameters.value["enforce_provided_labels"]
+          # precision_recall_trade_off - (optional) is a type of number
           precision_recall_trade_off = find_matches_parameters.value["precision_recall_trade_off"]
-          primary_key_column_name    = find_matches_parameters.value["primary_key_column_name"]
+          # primary_key_column_name - (optional) is a type of string
+          primary_key_column_name = find_matches_parameters.value["primary_key_column_name"]
         }
       }
 

@@ -81,15 +81,21 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_public_ip_pool_capacity" "this" {
-  byoip_id          = var.byoip_id
-  cidr_block        = var.cidr_block
+  # byoip_id - (required) is a type of string
+  byoip_id = var.byoip_id
+  # cidr_block - (required) is a type of string
+  cidr_block = var.cidr_block
+  # public_ip_pool_id - (required) is a type of string
   public_ip_pool_id = var.public_ip_pool_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

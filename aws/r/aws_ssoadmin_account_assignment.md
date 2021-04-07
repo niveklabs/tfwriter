@@ -85,12 +85,18 @@ variable "target_type" {
 
 ```terraform
 resource "aws_ssoadmin_account_assignment" "this" {
-  instance_arn       = var.instance_arn
+  # instance_arn - (required) is a type of string
+  instance_arn = var.instance_arn
+  # permission_set_arn - (required) is a type of string
   permission_set_arn = var.permission_set_arn
-  principal_id       = var.principal_id
-  principal_type     = var.principal_type
-  target_id          = var.target_id
-  target_type        = var.target_type
+  # principal_id - (required) is a type of string
+  principal_id = var.principal_id
+  # principal_type - (required) is a type of string
+  principal_type = var.principal_type
+  # target_id - (required) is a type of string
+  target_id = var.target_id
+  # target_type - (optional) is a type of string
+  target_type = var.target_type
 }
 ```
 

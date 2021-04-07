@@ -114,19 +114,29 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_nat_gateway" "this" {
-  block_traffic  = var.block_traffic
+  # block_traffic - (optional) is a type of bool
+  block_traffic = var.block_traffic
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  defined_tags   = var.defined_tags
-  display_name   = var.display_name
-  freeform_tags  = var.freeform_tags
-  public_ip_id   = var.public_ip_id
-  vcn_id         = var.vcn_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # public_ip_id - (optional) is a type of string
+  public_ip_id = var.public_ip_id
+  # vcn_id - (required) is a type of string
+  vcn_id = var.vcn_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

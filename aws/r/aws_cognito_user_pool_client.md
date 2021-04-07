@@ -216,31 +216,53 @@ variable "token_validity_units" {
 
 ```terraform
 resource "aws_cognito_user_pool_client" "this" {
-  access_token_validity                = var.access_token_validity
-  allowed_oauth_flows                  = var.allowed_oauth_flows
+  # access_token_validity - (optional) is a type of number
+  access_token_validity = var.access_token_validity
+  # allowed_oauth_flows - (optional) is a type of set of string
+  allowed_oauth_flows = var.allowed_oauth_flows
+  # allowed_oauth_flows_user_pool_client - (optional) is a type of bool
   allowed_oauth_flows_user_pool_client = var.allowed_oauth_flows_user_pool_client
-  allowed_oauth_scopes                 = var.allowed_oauth_scopes
-  callback_urls                        = var.callback_urls
-  default_redirect_uri                 = var.default_redirect_uri
-  explicit_auth_flows                  = var.explicit_auth_flows
-  generate_secret                      = var.generate_secret
-  id_token_validity                    = var.id_token_validity
-  logout_urls                          = var.logout_urls
-  name                                 = var.name
-  prevent_user_existence_errors        = var.prevent_user_existence_errors
-  read_attributes                      = var.read_attributes
-  refresh_token_validity               = var.refresh_token_validity
-  supported_identity_providers         = var.supported_identity_providers
-  user_pool_id                         = var.user_pool_id
-  write_attributes                     = var.write_attributes
+  # allowed_oauth_scopes - (optional) is a type of set of string
+  allowed_oauth_scopes = var.allowed_oauth_scopes
+  # callback_urls - (optional) is a type of set of string
+  callback_urls = var.callback_urls
+  # default_redirect_uri - (optional) is a type of string
+  default_redirect_uri = var.default_redirect_uri
+  # explicit_auth_flows - (optional) is a type of set of string
+  explicit_auth_flows = var.explicit_auth_flows
+  # generate_secret - (optional) is a type of bool
+  generate_secret = var.generate_secret
+  # id_token_validity - (optional) is a type of number
+  id_token_validity = var.id_token_validity
+  # logout_urls - (optional) is a type of set of string
+  logout_urls = var.logout_urls
+  # name - (required) is a type of string
+  name = var.name
+  # prevent_user_existence_errors - (optional) is a type of string
+  prevent_user_existence_errors = var.prevent_user_existence_errors
+  # read_attributes - (optional) is a type of set of string
+  read_attributes = var.read_attributes
+  # refresh_token_validity - (optional) is a type of number
+  refresh_token_validity = var.refresh_token_validity
+  # supported_identity_providers - (optional) is a type of set of string
+  supported_identity_providers = var.supported_identity_providers
+  # user_pool_id - (required) is a type of string
+  user_pool_id = var.user_pool_id
+  # write_attributes - (optional) is a type of set of string
+  write_attributes = var.write_attributes
 
   dynamic "analytics_configuration" {
     for_each = var.analytics_configuration
     content {
-      application_arn  = analytics_configuration.value["application_arn"]
-      application_id   = analytics_configuration.value["application_id"]
-      external_id      = analytics_configuration.value["external_id"]
-      role_arn         = analytics_configuration.value["role_arn"]
+      # application_arn - (optional) is a type of string
+      application_arn = analytics_configuration.value["application_arn"]
+      # application_id - (optional) is a type of string
+      application_id = analytics_configuration.value["application_id"]
+      # external_id - (optional) is a type of string
+      external_id = analytics_configuration.value["external_id"]
+      # role_arn - (optional) is a type of string
+      role_arn = analytics_configuration.value["role_arn"]
+      # user_data_shared - (optional) is a type of bool
       user_data_shared = analytics_configuration.value["user_data_shared"]
     }
   }
@@ -248,8 +270,11 @@ resource "aws_cognito_user_pool_client" "this" {
   dynamic "token_validity_units" {
     for_each = var.token_validity_units
     content {
-      access_token  = token_validity_units.value["access_token"]
-      id_token      = token_validity_units.value["id_token"]
+      # access_token - (optional) is a type of string
+      access_token = token_validity_units.value["access_token"]
+      # id_token - (optional) is a type of string
+      id_token = token_validity_units.value["id_token"]
+      # refresh_token - (optional) is a type of string
       refresh_token = token_validity_units.value["refresh_token"]
     }
   }

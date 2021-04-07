@@ -74,9 +74,13 @@ variable "project" {
 
 ```terraform
 data "google_compute_image" "this" {
-  family  = var.family
-  filter  = var.filter
-  name    = var.name
+  # family - (optional) is a type of string
+  family = var.family
+  # filter - (optional) is a type of string
+  filter = var.filter
+  # name - (optional) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
   project = var.project
 }
 ```

@@ -105,19 +105,29 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_hpc_cache_blob_target" "this" {
-  access_policy_name   = var.access_policy_name
-  cache_name           = var.cache_name
-  name                 = var.name
-  namespace_path       = var.namespace_path
-  resource_group_name  = var.resource_group_name
+  # access_policy_name - (optional) is a type of string
+  access_policy_name = var.access_policy_name
+  # cache_name - (required) is a type of string
+  cache_name = var.cache_name
+  # name - (required) is a type of string
+  name = var.name
+  # namespace_path - (required) is a type of string
+  namespace_path = var.namespace_path
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # storage_container_id - (required) is a type of string
   storage_container_id = var.storage_container_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -124,20 +124,31 @@ variable "timeouts" {
 
 ```terraform
 resource "google_workflows_workflow" "this" {
-  description     = var.description
-  labels          = var.labels
-  name            = var.name
-  name_prefix     = var.name_prefix
-  project         = var.project
-  region          = var.region
+  # description - (optional) is a type of string
+  description = var.description
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
+  # service_account - (optional) is a type of string
   service_account = var.service_account
+  # source_contents - (optional) is a type of string
   source_contents = var.source_contents
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

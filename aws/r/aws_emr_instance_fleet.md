@@ -151,33 +151,47 @@ variable "launch_specifications" {
 
 ```terraform
 resource "aws_emr_instance_fleet" "this" {
-  cluster_id                = var.cluster_id
-  name                      = var.name
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # name - (optional) is a type of string
+  name = var.name
+  # target_on_demand_capacity - (optional) is a type of number
   target_on_demand_capacity = var.target_on_demand_capacity
-  target_spot_capacity      = var.target_spot_capacity
+  # target_spot_capacity - (optional) is a type of number
+  target_spot_capacity = var.target_spot_capacity
 
   dynamic "instance_type_configs" {
     for_each = var.instance_type_configs
     content {
-      bid_price                                  = instance_type_configs.value["bid_price"]
+      # bid_price - (optional) is a type of string
+      bid_price = instance_type_configs.value["bid_price"]
+      # bid_price_as_percentage_of_on_demand_price - (optional) is a type of number
       bid_price_as_percentage_of_on_demand_price = instance_type_configs.value["bid_price_as_percentage_of_on_demand_price"]
-      instance_type                              = instance_type_configs.value["instance_type"]
-      weighted_capacity                          = instance_type_configs.value["weighted_capacity"]
+      # instance_type - (required) is a type of string
+      instance_type = instance_type_configs.value["instance_type"]
+      # weighted_capacity - (optional) is a type of number
+      weighted_capacity = instance_type_configs.value["weighted_capacity"]
 
       dynamic "configurations" {
         for_each = instance_type_configs.value.configurations
         content {
+          # classification - (optional) is a type of string
           classification = configurations.value["classification"]
-          properties     = configurations.value["properties"]
+          # properties - (optional) is a type of map of string
+          properties = configurations.value["properties"]
         }
       }
 
       dynamic "ebs_config" {
         for_each = instance_type_configs.value.ebs_config
         content {
-          iops                 = ebs_config.value["iops"]
-          size                 = ebs_config.value["size"]
-          type                 = ebs_config.value["type"]
+          # iops - (optional) is a type of number
+          iops = ebs_config.value["iops"]
+          # size - (required) is a type of number
+          size = ebs_config.value["size"]
+          # type - (required) is a type of string
+          type = ebs_config.value["type"]
+          # volumes_per_instance - (optional) is a type of number
           volumes_per_instance = ebs_config.value["volumes_per_instance"]
         }
       }
@@ -192,6 +206,7 @@ resource "aws_emr_instance_fleet" "this" {
       dynamic "on_demand_specification" {
         for_each = launch_specifications.value.on_demand_specification
         content {
+          # allocation_strategy - (required) is a type of string
           allocation_strategy = on_demand_specification.value["allocation_strategy"]
         }
       }
@@ -199,9 +214,13 @@ resource "aws_emr_instance_fleet" "this" {
       dynamic "spot_specification" {
         for_each = launch_specifications.value.spot_specification
         content {
-          allocation_strategy      = spot_specification.value["allocation_strategy"]
-          block_duration_minutes   = spot_specification.value["block_duration_minutes"]
-          timeout_action           = spot_specification.value["timeout_action"]
+          # allocation_strategy - (required) is a type of string
+          allocation_strategy = spot_specification.value["allocation_strategy"]
+          # block_duration_minutes - (optional) is a type of number
+          block_duration_minutes = spot_specification.value["block_duration_minutes"]
+          # timeout_action - (required) is a type of string
+          timeout_action = spot_specification.value["timeout_action"]
+          # timeout_duration_minutes - (required) is a type of number
           timeout_duration_minutes = spot_specification.value["timeout_duration_minutes"]
         }
       }

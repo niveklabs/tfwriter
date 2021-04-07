@@ -97,18 +97,26 @@ variable "condition" {
 
 ```terraform
 resource "google_notebooks_instance_iam_binding" "this" {
+  # instance_name - (required) is a type of string
   instance_name = var.instance_name
-  location      = var.location
-  members       = var.members
-  project       = var.project
-  role          = var.role
+  # location - (optional) is a type of string
+  location = var.location
+  # members - (required) is a type of set of string
+  members = var.members
+  # project - (optional) is a type of string
+  project = var.project
+  # role - (required) is a type of string
+  role = var.role
 
   dynamic "condition" {
     for_each = var.condition
     content {
+      # description - (optional) is a type of string
       description = condition.value["description"]
-      expression  = condition.value["expression"]
-      title       = condition.value["title"]
+      # expression - (required) is a type of string
+      expression = condition.value["expression"]
+      # title - (required) is a type of string
+      title = condition.value["title"]
     }
   }
 

@@ -106,18 +106,27 @@ variable "filter" {
 
 ```terraform
 data "oci_kms_keys" "this" {
-  algorithm           = var.algorithm
-  compartment_id      = var.compartment_id
-  curve_id            = var.curve_id
-  length              = var.length
+  # algorithm - (optional) is a type of string
+  algorithm = var.algorithm
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # curve_id - (optional) is a type of string
+  curve_id = var.curve_id
+  # length - (optional) is a type of number
+  length = var.length
+  # management_endpoint - (required) is a type of string
   management_endpoint = var.management_endpoint
-  protection_mode     = var.protection_mode
+  # protection_mode - (optional) is a type of string
+  protection_mode = var.protection_mode
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

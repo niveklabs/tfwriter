@@ -260,14 +260,19 @@ variable "triggers" {
 
 ```terraform
 resource "google_data_loss_prevention_job_trigger" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
   display_name = var.display_name
-  parent       = var.parent
-  status       = var.status
+  # parent - (required) is a type of string
+  parent = var.parent
+  # status - (optional) is a type of string
+  status = var.status
 
   dynamic "inspect_job" {
     for_each = var.inspect_job
     content {
+      # inspect_template_name - (required) is a type of string
       inspect_template_name = inspect_job.value["inspect_template_name"]
 
       dynamic "actions" {
@@ -281,14 +286,18 @@ resource "google_data_loss_prevention_job_trigger" "this" {
               dynamic "output_config" {
                 for_each = save_findings.value.output_config
                 content {
+                  # output_schema - (optional) is a type of string
                   output_schema = output_config.value["output_schema"]
 
                   dynamic "table" {
                     for_each = output_config.value.table
                     content {
+                      # dataset_id - (required) is a type of string
                       dataset_id = table.value["dataset_id"]
+                      # project_id - (required) is a type of string
                       project_id = table.value["project_id"]
-                      table_id   = table.value["table_id"]
+                      # table_id - (optional) is a type of string
+                      table_id = table.value["table_id"]
                     }
                   }
 
@@ -312,9 +321,12 @@ resource "google_data_loss_prevention_job_trigger" "this" {
               dynamic "table_reference" {
                 for_each = big_query_options.value.table_reference
                 content {
+                  # dataset_id - (required) is a type of string
                   dataset_id = table_reference.value["dataset_id"]
+                  # project_id - (required) is a type of string
                   project_id = table_reference.value["project_id"]
-                  table_id   = table_reference.value["table_id"]
+                  # table_id - (required) is a type of string
+                  table_id = table_reference.value["table_id"]
                 }
               }
 
@@ -324,22 +336,31 @@ resource "google_data_loss_prevention_job_trigger" "this" {
           dynamic "cloud_storage_options" {
             for_each = storage_config.value.cloud_storage_options
             content {
-              bytes_limit_per_file         = cloud_storage_options.value["bytes_limit_per_file"]
+              # bytes_limit_per_file - (optional) is a type of number
+              bytes_limit_per_file = cloud_storage_options.value["bytes_limit_per_file"]
+              # bytes_limit_per_file_percent - (optional) is a type of number
               bytes_limit_per_file_percent = cloud_storage_options.value["bytes_limit_per_file_percent"]
-              file_types                   = cloud_storage_options.value["file_types"]
-              files_limit_percent          = cloud_storage_options.value["files_limit_percent"]
-              sample_method                = cloud_storage_options.value["sample_method"]
+              # file_types - (optional) is a type of list of string
+              file_types = cloud_storage_options.value["file_types"]
+              # files_limit_percent - (optional) is a type of number
+              files_limit_percent = cloud_storage_options.value["files_limit_percent"]
+              # sample_method - (optional) is a type of string
+              sample_method = cloud_storage_options.value["sample_method"]
 
               dynamic "file_set" {
                 for_each = cloud_storage_options.value.file_set
                 content {
+                  # url - (optional) is a type of string
                   url = file_set.value["url"]
 
                   dynamic "regex_file_set" {
                     for_each = file_set.value.regex_file_set
                     content {
-                      bucket_name   = regex_file_set.value["bucket_name"]
+                      # bucket_name - (required) is a type of string
+                      bucket_name = regex_file_set.value["bucket_name"]
+                      # exclude_regex - (optional) is a type of list of string
                       exclude_regex = regex_file_set.value["exclude_regex"]
+                      # include_regex - (optional) is a type of list of string
                       include_regex = regex_file_set.value["include_regex"]
                     }
                   }
@@ -357,6 +378,7 @@ resource "google_data_loss_prevention_job_trigger" "this" {
               dynamic "kind" {
                 for_each = datastore_options.value.kind
                 content {
+                  # name - (required) is a type of string
                   name = kind.value["name"]
                 }
               }
@@ -364,8 +386,10 @@ resource "google_data_loss_prevention_job_trigger" "this" {
               dynamic "partition_id" {
                 for_each = datastore_options.value.partition_id
                 content {
+                  # namespace_id - (optional) is a type of string
                   namespace_id = partition_id.value["namespace_id"]
-                  project_id   = partition_id.value["project_id"]
+                  # project_id - (required) is a type of string
+                  project_id = partition_id.value["project_id"]
                 }
               }
 
@@ -375,13 +399,17 @@ resource "google_data_loss_prevention_job_trigger" "this" {
           dynamic "timespan_config" {
             for_each = storage_config.value.timespan_config
             content {
+              # enable_auto_population_of_timespan_config - (optional) is a type of bool
               enable_auto_population_of_timespan_config = timespan_config.value["enable_auto_population_of_timespan_config"]
-              end_time                                  = timespan_config.value["end_time"]
-              start_time                                = timespan_config.value["start_time"]
+              # end_time - (optional) is a type of string
+              end_time = timespan_config.value["end_time"]
+              # start_time - (optional) is a type of string
+              start_time = timespan_config.value["start_time"]
 
               dynamic "timestamp_field" {
                 for_each = timespan_config.value.timestamp_field
                 content {
+                  # name - (required) is a type of string
                   name = timestamp_field.value["name"]
                 }
               }
@@ -398,8 +426,11 @@ resource "google_data_loss_prevention_job_trigger" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -411,6 +442,7 @@ resource "google_data_loss_prevention_job_trigger" "this" {
       dynamic "schedule" {
         for_each = triggers.value.schedule
         content {
+          # recurrence_period_duration - (optional) is a type of string
           recurrence_period_duration = schedule.value["recurrence_period_duration"]
         }
       }

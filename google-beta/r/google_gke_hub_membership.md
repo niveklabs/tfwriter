@@ -125,14 +125,19 @@ variable "timeouts" {
 
 ```terraform
 resource "google_gke_hub_membership" "this" {
-  description   = var.description
-  labels        = var.labels
+  # description - (optional) is a type of string
+  description = var.description
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # membership_id - (required) is a type of string
   membership_id = var.membership_id
-  project       = var.project
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "authority" {
     for_each = var.authority
     content {
+      # issuer - (required) is a type of string
       issuer = authority.value["issuer"]
     }
   }
@@ -144,6 +149,7 @@ resource "google_gke_hub_membership" "this" {
       dynamic "gke_cluster" {
         for_each = endpoint.value.gke_cluster
         content {
+          # resource_link - (required) is a type of string
           resource_link = gke_cluster.value["resource_link"]
         }
       }
@@ -154,8 +160,11 @@ resource "google_gke_hub_membership" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

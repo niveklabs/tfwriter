@@ -202,32 +202,55 @@ variable "stickiness" {
 
 ```terraform
 resource "aws_alb_target_group" "this" {
-  deregistration_delay               = var.deregistration_delay
+  # deregistration_delay - (optional) is a type of number
+  deregistration_delay = var.deregistration_delay
+  # lambda_multi_value_headers_enabled - (optional) is a type of bool
   lambda_multi_value_headers_enabled = var.lambda_multi_value_headers_enabled
-  load_balancing_algorithm_type      = var.load_balancing_algorithm_type
-  name                               = var.name
-  name_prefix                        = var.name_prefix
-  port                               = var.port
-  preserve_client_ip                 = var.preserve_client_ip
-  protocol                           = var.protocol
-  protocol_version                   = var.protocol_version
-  proxy_protocol_v2                  = var.proxy_protocol_v2
-  slow_start                         = var.slow_start
-  tags                               = var.tags
-  target_type                        = var.target_type
-  vpc_id                             = var.vpc_id
+  # load_balancing_algorithm_type - (optional) is a type of string
+  load_balancing_algorithm_type = var.load_balancing_algorithm_type
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # port - (optional) is a type of number
+  port = var.port
+  # preserve_client_ip - (optional) is a type of string
+  preserve_client_ip = var.preserve_client_ip
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # protocol_version - (optional) is a type of string
+  protocol_version = var.protocol_version
+  # proxy_protocol_v2 - (optional) is a type of bool
+  proxy_protocol_v2 = var.proxy_protocol_v2
+  # slow_start - (optional) is a type of number
+  slow_start = var.slow_start
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # target_type - (optional) is a type of string
+  target_type = var.target_type
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 
   dynamic "health_check" {
     for_each = var.health_check
     content {
-      enabled             = health_check.value["enabled"]
-      healthy_threshold   = health_check.value["healthy_threshold"]
-      interval            = health_check.value["interval"]
-      matcher             = health_check.value["matcher"]
-      path                = health_check.value["path"]
-      port                = health_check.value["port"]
-      protocol            = health_check.value["protocol"]
-      timeout             = health_check.value["timeout"]
+      # enabled - (optional) is a type of bool
+      enabled = health_check.value["enabled"]
+      # healthy_threshold - (optional) is a type of number
+      healthy_threshold = health_check.value["healthy_threshold"]
+      # interval - (optional) is a type of number
+      interval = health_check.value["interval"]
+      # matcher - (optional) is a type of string
+      matcher = health_check.value["matcher"]
+      # path - (optional) is a type of string
+      path = health_check.value["path"]
+      # port - (optional) is a type of string
+      port = health_check.value["port"]
+      # protocol - (optional) is a type of string
+      protocol = health_check.value["protocol"]
+      # timeout - (optional) is a type of number
+      timeout = health_check.value["timeout"]
+      # unhealthy_threshold - (optional) is a type of number
       unhealthy_threshold = health_check.value["unhealthy_threshold"]
     }
   }
@@ -235,9 +258,12 @@ resource "aws_alb_target_group" "this" {
   dynamic "stickiness" {
     for_each = var.stickiness
     content {
+      # cookie_duration - (optional) is a type of number
       cookie_duration = stickiness.value["cookie_duration"]
-      enabled         = stickiness.value["enabled"]
-      type            = stickiness.value["type"]
+      # enabled - (optional) is a type of bool
+      enabled = stickiness.value["enabled"]
+      # type - (required) is a type of string
+      type = stickiness.value["type"]
     }
   }
 

@@ -72,10 +72,14 @@ variable "target_group_name" {
 
 ```terraform
 resource "aws_db_proxy_target" "this" {
-  db_cluster_identifier  = var.db_cluster_identifier
+  # db_cluster_identifier - (optional) is a type of string
+  db_cluster_identifier = var.db_cluster_identifier
+  # db_instance_identifier - (optional) is a type of string
   db_instance_identifier = var.db_instance_identifier
-  db_proxy_name          = var.db_proxy_name
-  target_group_name      = var.target_group_name
+  # db_proxy_name - (required) is a type of string
+  db_proxy_name = var.db_proxy_name
+  # target_group_name - (required) is a type of string
+  target_group_name = var.target_group_name
 }
 ```
 

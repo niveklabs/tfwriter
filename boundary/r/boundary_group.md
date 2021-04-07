@@ -73,10 +73,14 @@ variable "scope_id" {
 
 ```terraform
 resource "boundary_group" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  member_ids  = var.member_ids
-  name        = var.name
-  scope_id    = var.scope_id
+  # member_ids - (optional) is a type of set of string
+  member_ids = var.member_ids
+  # name - (optional) is a type of string
+  name = var.name
+  # scope_id - (required) is a type of string
+  scope_id = var.scope_id
 }
 ```
 

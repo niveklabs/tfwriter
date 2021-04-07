@@ -195,40 +195,58 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_cloud_guard_detector_recipe" "this" {
-  compartment_id            = var.compartment_id
-  defined_tags              = var.defined_tags
-  description               = var.description
-  display_name              = var.display_name
-  freeform_tags             = var.freeform_tags
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # source_detector_recipe_id - (required) is a type of string
   source_detector_recipe_id = var.source_detector_recipe_id
 
   dynamic "detector_rules" {
     for_each = var.detector_rules
     content {
+      # detector_rule_id - (required) is a type of string
       detector_rule_id = detector_rules.value["detector_rule_id"]
 
       dynamic "details" {
         for_each = detector_rules.value.details
         content {
-          condition  = details.value["condition"]
+          # condition - (optional) is a type of string
+          condition = details.value["condition"]
+          # is_enabled - (required) is a type of bool
           is_enabled = details.value["is_enabled"]
-          labels     = details.value["labels"]
+          # labels - (optional) is a type of list of string
+          labels = details.value["labels"]
+          # risk_level - (required) is a type of string
           risk_level = details.value["risk_level"]
 
           dynamic "configurations" {
             for_each = details.value.configurations
             content {
+              # config_key - (required) is a type of string
               config_key = configurations.value["config_key"]
-              data_type  = configurations.value["data_type"]
-              name       = configurations.value["name"]
-              value      = configurations.value["value"]
+              # data_type - (optional) is a type of string
+              data_type = configurations.value["data_type"]
+              # name - (required) is a type of string
+              name = configurations.value["name"]
+              # value - (optional) is a type of string
+              value = configurations.value["value"]
 
               dynamic "values" {
                 for_each = configurations.value.values
                 content {
-                  list_type         = values.value["list_type"]
+                  # list_type - (required) is a type of string
+                  list_type = values.value["list_type"]
+                  # managed_list_type - (required) is a type of string
                   managed_list_type = values.value["managed_list_type"]
-                  value             = values.value["value"]
+                  # value - (required) is a type of string
+                  value = values.value["value"]
                 }
               }
 
@@ -244,8 +262,11 @@ resource "oci_cloud_guard_detector_recipe" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -112,18 +112,27 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_router_interface" "this" {
+  # interconnect_attachment - (optional) is a type of string
   interconnect_attachment = var.interconnect_attachment
-  ip_range                = var.ip_range
-  name                    = var.name
-  project                 = var.project
-  region                  = var.region
-  router                  = var.router
-  vpn_tunnel              = var.vpn_tunnel
+  # ip_range - (optional) is a type of string
+  ip_range = var.ip_range
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
+  # router - (required) is a type of string
+  router = var.router
+  # vpn_tunnel - (optional) is a type of string
+  vpn_tunnel = var.vpn_tunnel
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

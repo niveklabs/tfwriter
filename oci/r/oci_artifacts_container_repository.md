@@ -106,24 +106,33 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_artifacts_container_repository" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  display_name   = var.display_name
-  is_immutable   = var.is_immutable
-  is_public      = var.is_public
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # is_immutable - (optional) is a type of bool
+  is_immutable = var.is_immutable
+  # is_public - (optional) is a type of bool
+  is_public = var.is_public
 
   dynamic "readme" {
     for_each = var.readme
     content {
+      # content - (required) is a type of string
       content = readme.value["content"]
-      format  = readme.value["format"]
+      # format - (required) is a type of string
+      format = readme.value["format"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

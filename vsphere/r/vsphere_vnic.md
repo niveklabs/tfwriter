@@ -137,20 +137,31 @@ variable "ipv6" {
 
 ```terraform
 resource "vsphere_vnic" "this" {
-  distributed_port_group  = var.distributed_port_group
+  # distributed_port_group - (optional) is a type of string
+  distributed_port_group = var.distributed_port_group
+  # distributed_switch_port - (optional) is a type of string
   distributed_switch_port = var.distributed_switch_port
-  host                    = var.host
-  mac                     = var.mac
-  mtu                     = var.mtu
-  netstack                = var.netstack
-  portgroup               = var.portgroup
+  # host - (required) is a type of string
+  host = var.host
+  # mac - (optional) is a type of string
+  mac = var.mac
+  # mtu - (optional) is a type of number
+  mtu = var.mtu
+  # netstack - (optional) is a type of string
+  netstack = var.netstack
+  # portgroup - (optional) is a type of string
+  portgroup = var.portgroup
 
   dynamic "ipv4" {
     for_each = var.ipv4
     content {
-      dhcp    = ipv4.value["dhcp"]
-      gw      = ipv4.value["gw"]
-      ip      = ipv4.value["ip"]
+      # dhcp - (optional) is a type of bool
+      dhcp = ipv4.value["dhcp"]
+      # gw - (optional) is a type of string
+      gw = ipv4.value["gw"]
+      # ip - (optional) is a type of string
+      ip = ipv4.value["ip"]
+      # netmask - (optional) is a type of string
       netmask = ipv4.value["netmask"]
     }
   }
@@ -158,10 +169,14 @@ resource "vsphere_vnic" "this" {
   dynamic "ipv6" {
     for_each = var.ipv6
     content {
-      addresses  = ipv6.value["addresses"]
+      # addresses - (optional) is a type of list of string
+      addresses = ipv6.value["addresses"]
+      # autoconfig - (optional) is a type of bool
       autoconfig = ipv6.value["autoconfig"]
-      dhcp       = ipv6.value["dhcp"]
-      gw         = ipv6.value["gw"]
+      # dhcp - (optional) is a type of bool
+      dhcp = ipv6.value["dhcp"]
+      # gw - (optional) is a type of string
+      gw = ipv6.value["gw"]
     }
   }
 

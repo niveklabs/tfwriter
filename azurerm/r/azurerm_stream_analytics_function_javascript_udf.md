@@ -116,14 +116,19 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_stream_analytics_function_javascript_udf" "this" {
-  name                      = var.name
-  resource_group_name       = var.resource_group_name
-  script                    = var.script
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # script - (required) is a type of string
+  script = var.script
+  # stream_analytics_job_name - (required) is a type of string
   stream_analytics_job_name = var.stream_analytics_job_name
 
   dynamic "input" {
     for_each = var.input
     content {
+      # type - (required) is a type of string
       type = input.value["type"]
     }
   }
@@ -131,6 +136,7 @@ resource "azurerm_stream_analytics_function_javascript_udf" "this" {
   dynamic "output" {
     for_each = var.output
     content {
+      # type - (required) is a type of string
       type = output.value["type"]
     }
   }
@@ -138,9 +144,13 @@ resource "azurerm_stream_analytics_function_javascript_udf" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

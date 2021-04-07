@@ -96,13 +96,20 @@ variable "tags" {
 
 ```terraform
 resource "aws_iam_server_certificate" "this" {
-  certificate_body  = var.certificate_body
+  # certificate_body - (required) is a type of string
+  certificate_body = var.certificate_body
+  # certificate_chain - (optional) is a type of string
   certificate_chain = var.certificate_chain
-  name              = var.name
-  name_prefix       = var.name_prefix
-  path              = var.path
-  private_key       = var.private_key
-  tags              = var.tags
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # path - (optional) is a type of string
+  path = var.path
+  # private_key - (required) is a type of string
+  private_key = var.private_key
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

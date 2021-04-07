@@ -49,6 +49,7 @@ variable "subnet_id" {
 
 ```terraform
 data "oci_core_subnet" "this" {
+  # subnet_id - (required) is a type of string
   subnet_id = var.subnet_id
 }
 ```

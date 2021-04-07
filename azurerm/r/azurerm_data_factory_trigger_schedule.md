@@ -138,23 +138,37 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_data_factory_trigger_schedule" "this" {
-  annotations         = var.annotations
-  data_factory_name   = var.data_factory_name
-  end_time            = var.end_time
-  frequency           = var.frequency
-  interval            = var.interval
-  name                = var.name
-  pipeline_name       = var.pipeline_name
+  # annotations - (optional) is a type of list of string
+  annotations = var.annotations
+  # data_factory_name - (required) is a type of string
+  data_factory_name = var.data_factory_name
+  # end_time - (optional) is a type of string
+  end_time = var.end_time
+  # frequency - (optional) is a type of string
+  frequency = var.frequency
+  # interval - (optional) is a type of number
+  interval = var.interval
+  # name - (required) is a type of string
+  name = var.name
+  # pipeline_name - (required) is a type of string
+  pipeline_name = var.pipeline_name
+  # pipeline_parameters - (optional) is a type of map of string
   pipeline_parameters = var.pipeline_parameters
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  start_time          = var.start_time
+  # start_time - (optional) is a type of string
+  start_time = var.start_time
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

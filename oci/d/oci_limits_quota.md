@@ -49,6 +49,7 @@ variable "quota_id" {
 
 ```terraform
 data "oci_limits_quota" "this" {
+  # quota_id - (required) is a type of string
   quota_id = var.quota_id
 }
 ```

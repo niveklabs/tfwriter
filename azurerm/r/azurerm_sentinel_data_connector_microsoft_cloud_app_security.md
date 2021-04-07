@@ -100,18 +100,27 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_sentinel_data_connector_microsoft_cloud_app_security" "this" {
-  alerts_enabled             = var.alerts_enabled
-  discovery_logs_enabled     = var.discovery_logs_enabled
+  # alerts_enabled - (optional) is a type of bool
+  alerts_enabled = var.alerts_enabled
+  # discovery_logs_enabled - (optional) is a type of bool
+  discovery_logs_enabled = var.discovery_logs_enabled
+  # log_analytics_workspace_id - (required) is a type of string
   log_analytics_workspace_id = var.log_analytics_workspace_id
-  name                       = var.name
-  tenant_id                  = var.tenant_id
+  # name - (required) is a type of string
+  name = var.name
+  # tenant_id - (optional) is a type of string
+  tenant_id = var.tenant_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

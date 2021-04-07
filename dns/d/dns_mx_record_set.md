@@ -49,6 +49,7 @@ variable "domain" {
 
 ```terraform
 data "dns_mx_record_set" "this" {
+  # domain - (required) is a type of string
   domain = var.domain
 }
 ```

@@ -64,9 +64,12 @@ variable "name" {
 
 ```terraform
 resource "opc_compute_security_ip_list" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  ip_entries  = var.ip_entries
-  name        = var.name
+  # ip_entries - (required) is a type of list of string
+  ip_entries = var.ip_entries
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

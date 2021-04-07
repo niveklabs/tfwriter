@@ -98,17 +98,25 @@ variable "timeouts" {
 
 ```terraform
 resource "google_bigquery_reservation" "this" {
+  # ignore_idle_slots - (optional) is a type of bool
   ignore_idle_slots = var.ignore_idle_slots
-  location          = var.location
-  name              = var.name
-  project           = var.project
-  slot_capacity     = var.slot_capacity
+  # location - (optional) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # slot_capacity - (required) is a type of number
+  slot_capacity = var.slot_capacity
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

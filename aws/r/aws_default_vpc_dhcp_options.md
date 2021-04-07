@@ -66,9 +66,12 @@ variable "tags" {
 
 ```terraform
 resource "aws_default_vpc_dhcp_options" "this" {
+  # netbios_name_servers - (optional) is a type of list of string
   netbios_name_servers = var.netbios_name_servers
-  netbios_node_type    = var.netbios_node_type
-  tags                 = var.tags
+  # netbios_node_type - (optional) is a type of string
+  netbios_node_type = var.netbios_node_type
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

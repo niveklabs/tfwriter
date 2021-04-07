@@ -83,15 +83,21 @@ variable "filter" {
 
 ```terraform
 data "oci_marketplace_publication_packages" "this" {
-  package_type    = var.package_type
+  # package_type - (optional) is a type of string
+  package_type = var.package_type
+  # package_version - (optional) is a type of string
   package_version = var.package_version
-  publication_id  = var.publication_id
+  # publication_id - (required) is a type of string
+  publication_id = var.publication_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

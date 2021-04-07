@@ -76,15 +76,21 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_virtual_desktop_workspace_application_group_association" "this" {
+  # application_group_id - (required) is a type of string
   application_group_id = var.application_group_id
-  workspace_id         = var.workspace_id
+  # workspace_id - (required) is a type of string
+  workspace_id = var.workspace_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

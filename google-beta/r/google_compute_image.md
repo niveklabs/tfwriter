@@ -171,20 +171,31 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_image" "this" {
-  description     = var.description
-  disk_size_gb    = var.disk_size_gb
-  family          = var.family
-  labels          = var.labels
-  licenses        = var.licenses
-  name            = var.name
-  project         = var.project
-  source_disk     = var.source_disk
-  source_image    = var.source_image
+  # description - (optional) is a type of string
+  description = var.description
+  # disk_size_gb - (optional) is a type of number
+  disk_size_gb = var.disk_size_gb
+  # family - (optional) is a type of string
+  family = var.family
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # licenses - (optional) is a type of list of string
+  licenses = var.licenses
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # source_disk - (optional) is a type of string
+  source_disk = var.source_disk
+  # source_image - (optional) is a type of string
+  source_image = var.source_image
+  # source_snapshot - (optional) is a type of string
   source_snapshot = var.source_snapshot
 
   dynamic "guest_os_features" {
     for_each = var.guest_os_features
     content {
+      # type - (required) is a type of string
       type = guest_os_features.value["type"]
     }
   }
@@ -192,17 +203,23 @@ resource "google_compute_image" "this" {
   dynamic "raw_disk" {
     for_each = var.raw_disk
     content {
+      # container_type - (optional) is a type of string
       container_type = raw_disk.value["container_type"]
-      sha1           = raw_disk.value["sha1"]
-      source         = raw_disk.value["source"]
+      # sha1 - (optional) is a type of string
+      sha1 = raw_disk.value["sha1"]
+      # source - (required) is a type of string
+      source = raw_disk.value["source"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -119,16 +119,26 @@ variable "topic_arn" {
 
 ```terraform
 resource "aws_sns_topic_subscription" "this" {
+  # confirmation_timeout_in_minutes - (optional) is a type of number
   confirmation_timeout_in_minutes = var.confirmation_timeout_in_minutes
-  delivery_policy                 = var.delivery_policy
-  endpoint                        = var.endpoint
-  endpoint_auto_confirms          = var.endpoint_auto_confirms
-  filter_policy                   = var.filter_policy
-  protocol                        = var.protocol
-  raw_message_delivery            = var.raw_message_delivery
-  redrive_policy                  = var.redrive_policy
-  subscription_role_arn           = var.subscription_role_arn
-  topic_arn                       = var.topic_arn
+  # delivery_policy - (optional) is a type of string
+  delivery_policy = var.delivery_policy
+  # endpoint - (required) is a type of string
+  endpoint = var.endpoint
+  # endpoint_auto_confirms - (optional) is a type of bool
+  endpoint_auto_confirms = var.endpoint_auto_confirms
+  # filter_policy - (optional) is a type of string
+  filter_policy = var.filter_policy
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # raw_message_delivery - (optional) is a type of bool
+  raw_message_delivery = var.raw_message_delivery
+  # redrive_policy - (optional) is a type of string
+  redrive_policy = var.redrive_policy
+  # subscription_role_arn - (optional) is a type of string
+  subscription_role_arn = var.subscription_role_arn
+  # topic_arn - (required) is a type of string
+  topic_arn = var.topic_arn
 }
 ```
 

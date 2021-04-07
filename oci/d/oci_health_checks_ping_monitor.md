@@ -49,6 +49,7 @@ variable "monitor_id" {
 
 ```terraform
 data "oci_health_checks_ping_monitor" "this" {
+  # monitor_id - (required) is a type of string
   monitor_id = var.monitor_id
 }
 ```

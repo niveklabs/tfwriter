@@ -128,18 +128,27 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_iot_time_series_insights_gen2_environment" "this" {
-  id_properties                  = var.id_properties
-  location                       = var.location
-  name                           = var.name
-  resource_group_name            = var.resource_group_name
-  sku_name                       = var.sku_name
-  tags                           = var.tags
+  # id_properties - (required) is a type of set of string
+  id_properties = var.id_properties
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # sku_name - (required) is a type of string
+  sku_name = var.sku_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # warm_store_data_retention_time - (optional) is a type of string
   warm_store_data_retention_time = var.warm_store_data_retention_time
 
   dynamic "storage" {
     for_each = var.storage
     content {
-      key  = storage.value["key"]
+      # key - (required) is a type of string
+      key = storage.value["key"]
+      # name - (required) is a type of string
       name = storage.value["name"]
     }
   }
@@ -147,9 +156,13 @@ resource "azurerm_iot_time_series_insights_gen2_environment" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -200,16 +200,23 @@ variable "timeouts" {
 
 ```terraform
 resource "google_monitoring_uptime_check_config" "this" {
-  display_name     = var.display_name
-  period           = var.period
-  project          = var.project
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # period - (optional) is a type of string
+  period = var.period
+  # project - (optional) is a type of string
+  project = var.project
+  # selected_regions - (optional) is a type of list of string
   selected_regions = var.selected_regions
-  timeout          = var.timeout
+  # timeout - (required) is a type of string
+  timeout = var.timeout
 
   dynamic "content_matchers" {
     for_each = var.content_matchers
     content {
+      # content - (required) is a type of string
       content = content_matchers.value["content"]
+      # matcher - (optional) is a type of string
       matcher = content_matchers.value["matcher"]
     }
   }
@@ -217,20 +224,31 @@ resource "google_monitoring_uptime_check_config" "this" {
   dynamic "http_check" {
     for_each = var.http_check
     content {
-      body           = http_check.value["body"]
-      content_type   = http_check.value["content_type"]
-      headers        = http_check.value["headers"]
-      mask_headers   = http_check.value["mask_headers"]
-      path           = http_check.value["path"]
-      port           = http_check.value["port"]
+      # body - (optional) is a type of string
+      body = http_check.value["body"]
+      # content_type - (optional) is a type of string
+      content_type = http_check.value["content_type"]
+      # headers - (optional) is a type of map of string
+      headers = http_check.value["headers"]
+      # mask_headers - (optional) is a type of bool
+      mask_headers = http_check.value["mask_headers"]
+      # path - (optional) is a type of string
+      path = http_check.value["path"]
+      # port - (optional) is a type of number
+      port = http_check.value["port"]
+      # request_method - (optional) is a type of string
       request_method = http_check.value["request_method"]
-      use_ssl        = http_check.value["use_ssl"]
-      validate_ssl   = http_check.value["validate_ssl"]
+      # use_ssl - (optional) is a type of bool
+      use_ssl = http_check.value["use_ssl"]
+      # validate_ssl - (optional) is a type of bool
+      validate_ssl = http_check.value["validate_ssl"]
 
       dynamic "auth_info" {
         for_each = http_check.value.auth_info
         content {
+          # password - (required) is a type of string
           password = auth_info.value["password"]
+          # username - (required) is a type of string
           username = auth_info.value["username"]
         }
       }
@@ -241,15 +259,19 @@ resource "google_monitoring_uptime_check_config" "this" {
   dynamic "monitored_resource" {
     for_each = var.monitored_resource
     content {
+      # labels - (required) is a type of map of string
       labels = monitored_resource.value["labels"]
-      type   = monitored_resource.value["type"]
+      # type - (required) is a type of string
+      type = monitored_resource.value["type"]
     }
   }
 
   dynamic "resource_group" {
     for_each = var.resource_group
     content {
-      group_id      = resource_group.value["group_id"]
+      # group_id - (optional) is a type of string
+      group_id = resource_group.value["group_id"]
+      # resource_type - (optional) is a type of string
       resource_type = resource_group.value["resource_type"]
     }
   }
@@ -257,6 +279,7 @@ resource "google_monitoring_uptime_check_config" "this" {
   dynamic "tcp_check" {
     for_each = var.tcp_check
     content {
+      # port - (required) is a type of number
       port = tcp_check.value["port"]
     }
   }
@@ -264,8 +287,11 @@ resource "google_monitoring_uptime_check_config" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

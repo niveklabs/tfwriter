@@ -368,51 +368,93 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_database_autonomous_database" "this" {
-  admin_password                                 = var.admin_password
-  are_primary_whitelisted_ips_used               = var.are_primary_whitelisted_ips_used
-  autonomous_container_database_id               = var.autonomous_container_database_id
-  autonomous_database_backup_id                  = var.autonomous_database_backup_id
-  autonomous_database_id                         = var.autonomous_database_id
-  clone_type                                     = var.clone_type
-  compartment_id                                 = var.compartment_id
-  cpu_core_count                                 = var.cpu_core_count
-  data_safe_status                               = var.data_safe_status
-  data_storage_size_in_tbs                       = var.data_storage_size_in_tbs
-  db_name                                        = var.db_name
-  db_version                                     = var.db_version
-  db_workload                                    = var.db_workload
-  defined_tags                                   = var.defined_tags
-  display_name                                   = var.display_name
-  freeform_tags                                  = var.freeform_tags
-  is_access_control_enabled                      = var.is_access_control_enabled
-  is_auto_scaling_enabled                        = var.is_auto_scaling_enabled
-  is_data_guard_enabled                          = var.is_data_guard_enabled
-  is_dedicated                                   = var.is_dedicated
-  is_free_tier                                   = var.is_free_tier
+  # admin_password - (optional) is a type of string
+  admin_password = var.admin_password
+  # are_primary_whitelisted_ips_used - (optional) is a type of bool
+  are_primary_whitelisted_ips_used = var.are_primary_whitelisted_ips_used
+  # autonomous_container_database_id - (optional) is a type of string
+  autonomous_container_database_id = var.autonomous_container_database_id
+  # autonomous_database_backup_id - (optional) is a type of string
+  autonomous_database_backup_id = var.autonomous_database_backup_id
+  # autonomous_database_id - (optional) is a type of string
+  autonomous_database_id = var.autonomous_database_id
+  # clone_type - (optional) is a type of string
+  clone_type = var.clone_type
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # cpu_core_count - (required) is a type of number
+  cpu_core_count = var.cpu_core_count
+  # data_safe_status - (optional) is a type of string
+  data_safe_status = var.data_safe_status
+  # data_storage_size_in_tbs - (optional) is a type of number
+  data_storage_size_in_tbs = var.data_storage_size_in_tbs
+  # db_name - (required) is a type of string
+  db_name = var.db_name
+  # db_version - (optional) is a type of string
+  db_version = var.db_version
+  # db_workload - (optional) is a type of string
+  db_workload = var.db_workload
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # is_access_control_enabled - (optional) is a type of bool
+  is_access_control_enabled = var.is_access_control_enabled
+  # is_auto_scaling_enabled - (optional) is a type of bool
+  is_auto_scaling_enabled = var.is_auto_scaling_enabled
+  # is_data_guard_enabled - (optional) is a type of bool
+  is_data_guard_enabled = var.is_data_guard_enabled
+  # is_dedicated - (optional) is a type of bool
+  is_dedicated = var.is_dedicated
+  # is_free_tier - (optional) is a type of bool
+  is_free_tier = var.is_free_tier
+  # is_preview_version_with_service_terms_accepted - (optional) is a type of bool
   is_preview_version_with_service_terms_accepted = var.is_preview_version_with_service_terms_accepted
-  is_refreshable_clone                           = var.is_refreshable_clone
-  license_model                                  = var.license_model
-  nsg_ids                                        = var.nsg_ids
-  open_mode                                      = var.open_mode
-  operations_insights_status                     = var.operations_insights_status
-  permission_level                               = var.permission_level
-  private_endpoint_label                         = var.private_endpoint_label
-  refreshable_mode                               = var.refreshable_mode
-  rotate_key_trigger                             = var.rotate_key_trigger
-  source                                         = var.source
-  source_id                                      = var.source_id
-  standby_whitelisted_ips                        = var.standby_whitelisted_ips
-  state                                          = var.state
-  subnet_id                                      = var.subnet_id
-  switchover_to                                  = var.switchover_to
-  timestamp                                      = var.timestamp
-  whitelisted_ips                                = var.whitelisted_ips
+  # is_refreshable_clone - (optional) is a type of bool
+  is_refreshable_clone = var.is_refreshable_clone
+  # license_model - (optional) is a type of string
+  license_model = var.license_model
+  # nsg_ids - (optional) is a type of set of string
+  nsg_ids = var.nsg_ids
+  # open_mode - (optional) is a type of string
+  open_mode = var.open_mode
+  # operations_insights_status - (optional) is a type of string
+  operations_insights_status = var.operations_insights_status
+  # permission_level - (optional) is a type of string
+  permission_level = var.permission_level
+  # private_endpoint_label - (optional) is a type of string
+  private_endpoint_label = var.private_endpoint_label
+  # refreshable_mode - (optional) is a type of string
+  refreshable_mode = var.refreshable_mode
+  # rotate_key_trigger - (optional) is a type of bool
+  rotate_key_trigger = var.rotate_key_trigger
+  # source - (optional) is a type of string
+  source = var.source
+  # source_id - (optional) is a type of string
+  source_id = var.source_id
+  # standby_whitelisted_ips - (optional) is a type of list of string
+  standby_whitelisted_ips = var.standby_whitelisted_ips
+  # state - (optional) is a type of string
+  state = var.state
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # switchover_to - (optional) is a type of string
+  switchover_to = var.switchover_to
+  # timestamp - (optional) is a type of string
+  timestamp = var.timestamp
+  # whitelisted_ips - (optional) is a type of set of string
+  whitelisted_ips = var.whitelisted_ips
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

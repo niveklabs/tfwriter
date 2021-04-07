@@ -136,23 +136,37 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_api_management_user" "this" {
+  # api_management_name - (required) is a type of string
   api_management_name = var.api_management_name
-  confirmation        = var.confirmation
-  email               = var.email
-  first_name          = var.first_name
-  last_name           = var.last_name
-  note                = var.note
-  password            = var.password
+  # confirmation - (optional) is a type of string
+  confirmation = var.confirmation
+  # email - (required) is a type of string
+  email = var.email
+  # first_name - (required) is a type of string
+  first_name = var.first_name
+  # last_name - (required) is a type of string
+  last_name = var.last_name
+  # note - (optional) is a type of string
+  note = var.note
+  # password - (optional) is a type of string
+  password = var.password
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  state               = var.state
-  user_id             = var.user_id
+  # state - (optional) is a type of string
+  state = var.state
+  # user_id - (required) is a type of string
+  user_id = var.user_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

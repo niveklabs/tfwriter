@@ -430,26 +430,43 @@ variable "website" {
 
 ```terraform
 resource "aws_s3_bucket" "this" {
+  # acceleration_status - (optional) is a type of string
   acceleration_status = var.acceleration_status
-  acl                 = var.acl
-  arn                 = var.arn
-  bucket              = var.bucket
-  bucket_prefix       = var.bucket_prefix
-  force_destroy       = var.force_destroy
-  hosted_zone_id      = var.hosted_zone_id
-  policy              = var.policy
-  request_payer       = var.request_payer
-  tags                = var.tags
-  website_domain      = var.website_domain
-  website_endpoint    = var.website_endpoint
+  # acl - (optional) is a type of string
+  acl = var.acl
+  # arn - (optional) is a type of string
+  arn = var.arn
+  # bucket - (optional) is a type of string
+  bucket = var.bucket
+  # bucket_prefix - (optional) is a type of string
+  bucket_prefix = var.bucket_prefix
+  # force_destroy - (optional) is a type of bool
+  force_destroy = var.force_destroy
+  # hosted_zone_id - (optional) is a type of string
+  hosted_zone_id = var.hosted_zone_id
+  # policy - (optional) is a type of string
+  policy = var.policy
+  # request_payer - (optional) is a type of string
+  request_payer = var.request_payer
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # website_domain - (optional) is a type of string
+  website_domain = var.website_domain
+  # website_endpoint - (optional) is a type of string
+  website_endpoint = var.website_endpoint
 
   dynamic "cors_rule" {
     for_each = var.cors_rule
     content {
+      # allowed_headers - (optional) is a type of list of string
       allowed_headers = cors_rule.value["allowed_headers"]
+      # allowed_methods - (required) is a type of list of string
       allowed_methods = cors_rule.value["allowed_methods"]
+      # allowed_origins - (required) is a type of list of string
       allowed_origins = cors_rule.value["allowed_origins"]
-      expose_headers  = cors_rule.value["expose_headers"]
+      # expose_headers - (optional) is a type of list of string
+      expose_headers = cors_rule.value["expose_headers"]
+      # max_age_seconds - (optional) is a type of number
       max_age_seconds = cors_rule.value["max_age_seconds"]
     }
   }
@@ -457,27 +474,39 @@ resource "aws_s3_bucket" "this" {
   dynamic "grant" {
     for_each = var.grant
     content {
-      id          = grant.value["id"]
+      # id - (optional) is a type of string
+      id = grant.value["id"]
+      # permissions - (required) is a type of set of string
       permissions = grant.value["permissions"]
-      type        = grant.value["type"]
-      uri         = grant.value["uri"]
+      # type - (required) is a type of string
+      type = grant.value["type"]
+      # uri - (optional) is a type of string
+      uri = grant.value["uri"]
     }
   }
 
   dynamic "lifecycle_rule" {
     for_each = var.lifecycle_rule
     content {
+      # abort_incomplete_multipart_upload_days - (optional) is a type of number
       abort_incomplete_multipart_upload_days = lifecycle_rule.value["abort_incomplete_multipart_upload_days"]
-      enabled                                = lifecycle_rule.value["enabled"]
-      id                                     = lifecycle_rule.value["id"]
-      prefix                                 = lifecycle_rule.value["prefix"]
-      tags                                   = lifecycle_rule.value["tags"]
+      # enabled - (required) is a type of bool
+      enabled = lifecycle_rule.value["enabled"]
+      # id - (optional) is a type of string
+      id = lifecycle_rule.value["id"]
+      # prefix - (optional) is a type of string
+      prefix = lifecycle_rule.value["prefix"]
+      # tags - (optional) is a type of map of string
+      tags = lifecycle_rule.value["tags"]
 
       dynamic "expiration" {
         for_each = lifecycle_rule.value.expiration
         content {
-          date                         = expiration.value["date"]
-          days                         = expiration.value["days"]
+          # date - (optional) is a type of string
+          date = expiration.value["date"]
+          # days - (optional) is a type of number
+          days = expiration.value["days"]
+          # expired_object_delete_marker - (optional) is a type of bool
           expired_object_delete_marker = expiration.value["expired_object_delete_marker"]
         }
       }
@@ -485,6 +514,7 @@ resource "aws_s3_bucket" "this" {
       dynamic "noncurrent_version_expiration" {
         for_each = lifecycle_rule.value.noncurrent_version_expiration
         content {
+          # days - (optional) is a type of number
           days = noncurrent_version_expiration.value["days"]
         }
       }
@@ -492,7 +522,9 @@ resource "aws_s3_bucket" "this" {
       dynamic "noncurrent_version_transition" {
         for_each = lifecycle_rule.value.noncurrent_version_transition
         content {
-          days          = noncurrent_version_transition.value["days"]
+          # days - (optional) is a type of number
+          days = noncurrent_version_transition.value["days"]
+          # storage_class - (required) is a type of string
           storage_class = noncurrent_version_transition.value["storage_class"]
         }
       }
@@ -500,8 +532,11 @@ resource "aws_s3_bucket" "this" {
       dynamic "transition" {
         for_each = lifecycle_rule.value.transition
         content {
-          date          = transition.value["date"]
-          days          = transition.value["days"]
+          # date - (optional) is a type of string
+          date = transition.value["date"]
+          # days - (optional) is a type of number
+          days = transition.value["days"]
+          # storage_class - (required) is a type of string
           storage_class = transition.value["storage_class"]
         }
       }
@@ -512,7 +547,9 @@ resource "aws_s3_bucket" "this" {
   dynamic "logging" {
     for_each = var.logging
     content {
+      # target_bucket - (required) is a type of string
       target_bucket = logging.value["target_bucket"]
+      # target_prefix - (optional) is a type of string
       target_prefix = logging.value["target_prefix"]
     }
   }
@@ -520,6 +557,7 @@ resource "aws_s3_bucket" "this" {
   dynamic "object_lock_configuration" {
     for_each = var.object_lock_configuration
     content {
+      # object_lock_enabled - (required) is a type of string
       object_lock_enabled = object_lock_configuration.value["object_lock_enabled"]
 
       dynamic "rule" {
@@ -529,8 +567,11 @@ resource "aws_s3_bucket" "this" {
           dynamic "default_retention" {
             for_each = rule.value.default_retention
             content {
-              days  = default_retention.value["days"]
-              mode  = default_retention.value["mode"]
+              # days - (optional) is a type of number
+              days = default_retention.value["days"]
+              # mode - (required) is a type of string
+              mode = default_retention.value["mode"]
+              # years - (optional) is a type of number
               years = default_retention.value["years"]
             }
           }
@@ -544,27 +585,37 @@ resource "aws_s3_bucket" "this" {
   dynamic "replication_configuration" {
     for_each = var.replication_configuration
     content {
+      # role - (required) is a type of string
       role = replication_configuration.value["role"]
 
       dynamic "rules" {
         for_each = replication_configuration.value.rules
         content {
-          id       = rules.value["id"]
-          prefix   = rules.value["prefix"]
+          # id - (optional) is a type of string
+          id = rules.value["id"]
+          # prefix - (optional) is a type of string
+          prefix = rules.value["prefix"]
+          # priority - (optional) is a type of number
           priority = rules.value["priority"]
-          status   = rules.value["status"]
+          # status - (required) is a type of string
+          status = rules.value["status"]
 
           dynamic "destination" {
             for_each = rules.value.destination
             content {
-              account_id         = destination.value["account_id"]
-              bucket             = destination.value["bucket"]
+              # account_id - (optional) is a type of string
+              account_id = destination.value["account_id"]
+              # bucket - (required) is a type of string
+              bucket = destination.value["bucket"]
+              # replica_kms_key_id - (optional) is a type of string
               replica_kms_key_id = destination.value["replica_kms_key_id"]
-              storage_class      = destination.value["storage_class"]
+              # storage_class - (optional) is a type of string
+              storage_class = destination.value["storage_class"]
 
               dynamic "access_control_translation" {
                 for_each = destination.value.access_control_translation
                 content {
+                  # owner - (required) is a type of string
                   owner = access_control_translation.value["owner"]
                 }
               }
@@ -575,8 +626,10 @@ resource "aws_s3_bucket" "this" {
           dynamic "filter" {
             for_each = rules.value.filter
             content {
+              # prefix - (optional) is a type of string
               prefix = filter.value["prefix"]
-              tags   = filter.value["tags"]
+              # tags - (optional) is a type of map of string
+              tags = filter.value["tags"]
             }
           }
 
@@ -587,6 +640,7 @@ resource "aws_s3_bucket" "this" {
               dynamic "sse_kms_encrypted_objects" {
                 for_each = source_selection_criteria.value.sse_kms_encrypted_objects
                 content {
+                  # enabled - (required) is a type of bool
                   enabled = sse_kms_encrypted_objects.value["enabled"]
                 }
               }
@@ -611,8 +665,10 @@ resource "aws_s3_bucket" "this" {
           dynamic "apply_server_side_encryption_by_default" {
             for_each = rule.value.apply_server_side_encryption_by_default
             content {
+              # kms_master_key_id - (optional) is a type of string
               kms_master_key_id = apply_server_side_encryption_by_default.value["kms_master_key_id"]
-              sse_algorithm     = apply_server_side_encryption_by_default.value["sse_algorithm"]
+              # sse_algorithm - (required) is a type of string
+              sse_algorithm = apply_server_side_encryption_by_default.value["sse_algorithm"]
             }
           }
 
@@ -625,7 +681,9 @@ resource "aws_s3_bucket" "this" {
   dynamic "versioning" {
     for_each = var.versioning
     content {
-      enabled    = versioning.value["enabled"]
+      # enabled - (optional) is a type of bool
+      enabled = versioning.value["enabled"]
+      # mfa_delete - (optional) is a type of bool
       mfa_delete = versioning.value["mfa_delete"]
     }
   }
@@ -633,10 +691,14 @@ resource "aws_s3_bucket" "this" {
   dynamic "website" {
     for_each = var.website
     content {
-      error_document           = website.value["error_document"]
-      index_document           = website.value["index_document"]
+      # error_document - (optional) is a type of string
+      error_document = website.value["error_document"]
+      # index_document - (optional) is a type of string
+      index_document = website.value["index_document"]
+      # redirect_all_requests_to - (optional) is a type of string
       redirect_all_requests_to = website.value["redirect_all_requests_to"]
-      routing_rules            = website.value["routing_rules"]
+      # routing_rules - (optional) is a type of string
+      routing_rules = website.value["routing_rules"]
     }
   }
 

@@ -57,7 +57,9 @@ variable "role_name" {
 
 ```terraform
 data "vault_approle_auth_backend_role_id" "this" {
-  backend   = var.backend
+  # backend - (optional) is a type of string
+  backend = var.backend
+  # role_name - (required) is a type of string
   role_name = var.role_name
 }
 ```

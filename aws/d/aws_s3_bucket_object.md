@@ -80,10 +80,15 @@ variable "version_id" {
 
 ```terraform
 data "aws_s3_bucket_object" "this" {
-  bucket     = var.bucket
-  key        = var.key
-  range      = var.range
-  tags       = var.tags
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # key - (required) is a type of string
+  key = var.key
+  # range - (optional) is a type of string
+  range = var.range
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # version_id - (optional) is a type of string
   version_id = var.version_id
 }
 ```

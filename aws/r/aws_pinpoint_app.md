@@ -120,33 +120,45 @@ variable "quiet_time" {
 
 ```terraform
 resource "aws_pinpoint_app" "this" {
-  name        = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
   name_prefix = var.name_prefix
-  tags        = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "campaign_hook" {
     for_each = var.campaign_hook
     content {
+      # lambda_function_name - (optional) is a type of string
       lambda_function_name = campaign_hook.value["lambda_function_name"]
-      mode                 = campaign_hook.value["mode"]
-      web_url              = campaign_hook.value["web_url"]
+      # mode - (optional) is a type of string
+      mode = campaign_hook.value["mode"]
+      # web_url - (optional) is a type of string
+      web_url = campaign_hook.value["web_url"]
     }
   }
 
   dynamic "limits" {
     for_each = var.limits
     content {
-      daily               = limits.value["daily"]
-      maximum_duration    = limits.value["maximum_duration"]
+      # daily - (optional) is a type of number
+      daily = limits.value["daily"]
+      # maximum_duration - (optional) is a type of number
+      maximum_duration = limits.value["maximum_duration"]
+      # messages_per_second - (optional) is a type of number
       messages_per_second = limits.value["messages_per_second"]
-      total               = limits.value["total"]
+      # total - (optional) is a type of number
+      total = limits.value["total"]
     }
   }
 
   dynamic "quiet_time" {
     for_each = var.quiet_time
     content {
-      end   = quiet_time.value["end"]
+      # end - (optional) is a type of string
+      end = quiet_time.value["end"]
+      # start - (optional) is a type of string
       start = quiet_time.value["start"]
     }
   }

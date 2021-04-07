@@ -73,10 +73,14 @@ variable "tags" {
 
 ```terraform
 resource "consul_agent_service" "this" {
+  # address - (optional) is a type of string
   address = var.address
-  name    = var.name
-  port    = var.port
-  tags    = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # port - (optional) is a type of number
+  port = var.port
+  # tags - (optional) is a type of list of string
+  tags = var.tags
 }
 ```
 

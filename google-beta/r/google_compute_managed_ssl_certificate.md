@@ -112,15 +112,21 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_managed_ssl_certificate" "this" {
+  # certificate_id - (optional) is a type of number
   certificate_id = var.certificate_id
-  description    = var.description
-  name           = var.name
-  project        = var.project
-  type           = var.type
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (optional) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "managed" {
     for_each = var.managed
     content {
+      # domains - (required) is a type of list of string
       domains = managed.value["domains"]
     }
   }
@@ -128,7 +134,9 @@ resource "google_compute_managed_ssl_certificate" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

@@ -123,17 +123,25 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_instance_group" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  instances   = var.instances
-  name        = var.name
-  network     = var.network
-  project     = var.project
-  zone        = var.zone
+  # instances - (optional) is a type of set of string
+  instances = var.instances
+  # name - (required) is a type of string
+  name = var.name
+  # network - (optional) is a type of string
+  network = var.network
+  # project - (optional) is a type of string
+  project = var.project
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "named_port" {
     for_each = var.named_port
     content {
+      # name - (required) is a type of string
       name = named_port.value["name"]
+      # port - (required) is a type of number
       port = named_port.value["port"]
     }
   }
@@ -141,8 +149,11 @@ resource "google_compute_instance_group" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

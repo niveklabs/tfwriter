@@ -56,7 +56,9 @@ variable "tunnel_id" {
 
 ```terraform
 data "oci_core_ipsec_connection_tunnel" "this" {
-  ipsec_id  = var.ipsec_id
+  # ipsec_id - (required) is a type of string
+  ipsec_id = var.ipsec_id
+  # tunnel_id - (required) is a type of string
   tunnel_id = var.tunnel_id
 }
 ```

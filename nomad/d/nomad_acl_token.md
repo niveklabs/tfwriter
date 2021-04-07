@@ -49,6 +49,7 @@ variable "accessor_id" {
 
 ```terraform
 data "nomad_acl_token" "this" {
+  # accessor_id - (required) is a type of string
   accessor_id = var.accessor_id
 }
 ```

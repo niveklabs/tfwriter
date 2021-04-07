@@ -115,19 +115,29 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_functions_invoke_function" "this" {
-  base64_encode_content               = var.base64_encode_content
-  fn_intent                           = var.fn_intent
-  fn_invoke_type                      = var.fn_invoke_type
-  function_id                         = var.function_id
-  input_body_source_path              = var.input_body_source_path
-  invoke_function_body                = var.invoke_function_body
+  # base64_encode_content - (optional) is a type of bool
+  base64_encode_content = var.base64_encode_content
+  # fn_intent - (optional) is a type of string
+  fn_intent = var.fn_intent
+  # fn_invoke_type - (optional) is a type of string
+  fn_invoke_type = var.fn_invoke_type
+  # function_id - (required) is a type of string
+  function_id = var.function_id
+  # input_body_source_path - (optional) is a type of string
+  input_body_source_path = var.input_body_source_path
+  # invoke_function_body - (optional) is a type of string
+  invoke_function_body = var.invoke_function_body
+  # invoke_function_body_base64_encoded - (optional) is a type of string
   invoke_function_body_base64_encoded = var.invoke_function_body_base64_encoded
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

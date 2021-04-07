@@ -57,8 +57,10 @@ variable "pgp_key" {
 
 ```terraform
 data "consul_acl_token_secret_id" "this" {
+  # accessor_id - (required) is a type of string
   accessor_id = var.accessor_id
-  pgp_key     = var.pgp_key
+  # pgp_key - (optional) is a type of string
+  pgp_key = var.pgp_key
 }
 ```
 

@@ -73,10 +73,14 @@ variable "protected" {
 
 ```terraform
 resource "ad_ou" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  path        = var.path
-  protected   = var.protected
+  # name - (required) is a type of string
+  name = var.name
+  # path - (optional) is a type of string
+  path = var.path
+  # protected - (optional) is a type of bool
+  protected = var.protected
 }
 ```
 

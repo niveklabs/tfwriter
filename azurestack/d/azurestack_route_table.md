@@ -56,7 +56,9 @@ variable "resource_group_name" {
 
 ```terraform
 data "azurestack_route_table" "this" {
-  name                = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
 }
 ```

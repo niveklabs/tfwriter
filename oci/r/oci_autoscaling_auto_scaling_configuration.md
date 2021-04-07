@@ -215,17 +215,25 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_autoscaling_auto_scaling_configuration" "this" {
-  compartment_id       = var.compartment_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # cool_down_in_seconds - (optional) is a type of number
   cool_down_in_seconds = var.cool_down_in_seconds
-  defined_tags         = var.defined_tags
-  display_name         = var.display_name
-  freeform_tags        = var.freeform_tags
-  is_enabled           = var.is_enabled
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # is_enabled - (optional) is a type of bool
+  is_enabled = var.is_enabled
 
   dynamic "auto_scaling_resources" {
     for_each = var.auto_scaling_resources
     content {
-      id   = auto_scaling_resources.value["id"]
+      # id - (required) is a type of string
+      id = auto_scaling_resources.value["id"]
+      # type - (required) is a type of string
       type = auto_scaling_resources.value["type"]
     }
   }
@@ -233,32 +241,43 @@ resource "oci_autoscaling_auto_scaling_configuration" "this" {
   dynamic "policies" {
     for_each = var.policies
     content {
+      # display_name - (optional) is a type of string
       display_name = policies.value["display_name"]
-      is_enabled   = policies.value["is_enabled"]
-      policy_type  = policies.value["policy_type"]
+      # is_enabled - (optional) is a type of bool
+      is_enabled = policies.value["is_enabled"]
+      # policy_type - (required) is a type of string
+      policy_type = policies.value["policy_type"]
 
       dynamic "capacity" {
         for_each = policies.value.capacity
         content {
+          # initial - (optional) is a type of number
           initial = capacity.value["initial"]
-          max     = capacity.value["max"]
-          min     = capacity.value["min"]
+          # max - (optional) is a type of number
+          max = capacity.value["max"]
+          # min - (optional) is a type of number
+          min = capacity.value["min"]
         }
       }
 
       dynamic "execution_schedule" {
         for_each = policies.value.execution_schedule
         content {
+          # expression - (required) is a type of string
           expression = execution_schedule.value["expression"]
-          timezone   = execution_schedule.value["timezone"]
-          type       = execution_schedule.value["type"]
+          # timezone - (required) is a type of string
+          timezone = execution_schedule.value["timezone"]
+          # type - (required) is a type of string
+          type = execution_schedule.value["type"]
         }
       }
 
       dynamic "resource_action" {
         for_each = policies.value.resource_action
         content {
-          action      = resource_action.value["action"]
+          # action - (required) is a type of string
+          action = resource_action.value["action"]
+          # action_type - (required) is a type of string
           action_type = resource_action.value["action_type"]
         }
       }
@@ -266,12 +285,15 @@ resource "oci_autoscaling_auto_scaling_configuration" "this" {
       dynamic "rules" {
         for_each = policies.value.rules
         content {
+          # display_name - (required) is a type of string
           display_name = rules.value["display_name"]
 
           dynamic "action" {
             for_each = rules.value.action
             content {
-              type  = action.value["type"]
+              # type - (optional) is a type of string
+              type = action.value["type"]
+              # value - (optional) is a type of number
               value = action.value["value"]
             }
           }
@@ -279,13 +301,16 @@ resource "oci_autoscaling_auto_scaling_configuration" "this" {
           dynamic "metric" {
             for_each = rules.value.metric
             content {
+              # metric_type - (optional) is a type of string
               metric_type = metric.value["metric_type"]
 
               dynamic "threshold" {
                 for_each = metric.value.threshold
                 content {
+                  # operator - (optional) is a type of string
                   operator = threshold.value["operator"]
-                  value    = threshold.value["value"]
+                  # value - (optional) is a type of number
+                  value = threshold.value["value"]
                 }
               }
 
@@ -301,8 +326,11 @@ resource "oci_autoscaling_auto_scaling_configuration" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

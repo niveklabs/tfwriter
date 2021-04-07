@@ -49,6 +49,7 @@ variable "sddc_id" {
 
 ```terraform
 data "oci_ocvp_sddc" "this" {
+  # sddc_id - (required) is a type of string
   sddc_id = var.sddc_id
 }
 ```

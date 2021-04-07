@@ -64,9 +64,12 @@ variable "tags" {
 
 ```terraform
 resource "aws_placement_group" "this" {
-  name     = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # strategy - (required) is a type of string
   strategy = var.strategy
-  tags     = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

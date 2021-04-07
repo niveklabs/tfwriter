@@ -49,6 +49,7 @@ variable "arn" {
 
 ```terraform
 data "aws_lakeformation_resource" "this" {
+  # arn - (required) is a type of string
   arn = var.arn
 }
 ```

@@ -90,19 +90,28 @@ variable "key" {
 
 ```terraform
 resource "consul_keys" "this" {
+  # datacenter - (optional) is a type of string
   datacenter = var.datacenter
-  namespace  = var.namespace
-  token      = var.token
+  # namespace - (optional) is a type of string
+  namespace = var.namespace
+  # token - (optional) is a type of string
+  token = var.token
 
   dynamic "key" {
     for_each = var.key
     content {
+      # default - (optional) is a type of string
       default = key.value["default"]
-      delete  = key.value["delete"]
-      flags   = key.value["flags"]
-      name    = key.value["name"]
-      path    = key.value["path"]
-      value   = key.value["value"]
+      # delete - (optional) is a type of bool
+      delete = key.value["delete"]
+      # flags - (optional) is a type of number
+      flags = key.value["flags"]
+      # name - (optional) is a type of string
+      name = key.value["name"]
+      # path - (required) is a type of string
+      path = key.value["path"]
+      # value - (optional) is a type of string
+      value = key.value["value"]
     }
   }
 

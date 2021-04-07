@@ -63,8 +63,11 @@ variable "user_name" {
 
 ```terraform
 resource "aws_transfer_ssh_key" "this" {
-  body      = var.body
+  # body - (required) is a type of string
+  body = var.body
+  # server_id - (required) is a type of string
   server_id = var.server_id
+  # user_name - (required) is a type of string
   user_name = var.user_name
 }
 ```

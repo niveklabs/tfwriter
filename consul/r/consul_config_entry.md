@@ -64,9 +64,12 @@ variable "name" {
 
 ```terraform
 resource "consul_config_entry" "this" {
+  # config_json - (optional) is a type of string
   config_json = var.config_json
-  kind        = var.kind
-  name        = var.name
+  # kind - (required) is a type of string
+  kind = var.kind
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

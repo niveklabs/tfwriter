@@ -80,11 +80,16 @@ variable "type" {
 
 ```terraform
 resource "vault_audit" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  local       = var.local
-  options     = var.options
-  path        = var.path
-  type        = var.type
+  # local - (optional) is a type of bool
+  local = var.local
+  # options - (required) is a type of map of string
+  options = var.options
+  # path - (optional) is a type of string
+  path = var.path
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

@@ -57,8 +57,10 @@ variable "hcl" {
 
 ```terraform
 data "nomad_job_parser" "this" {
+  # canonicalize - (optional) is a type of bool
   canonicalize = var.canonicalize
-  hcl          = var.hcl
+  # hcl - (required) is a type of string
+  hcl = var.hcl
 }
 ```
 

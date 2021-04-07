@@ -56,7 +56,9 @@ variable "certificate" {
 
 ```terraform
 resource "vault_pki_secret_backend_intermediate_set_signed" "this" {
-  backend     = var.backend
+  # backend - (required) is a type of string
+  backend = var.backend
+  # certificate - (required) is a type of string
   certificate = var.certificate
 }
 ```

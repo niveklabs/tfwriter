@@ -172,37 +172,61 @@ variable "check" {
 
 ```terraform
 resource "consul_service" "this" {
-  address             = var.address
-  datacenter          = var.datacenter
+  # address - (optional) is a type of string
+  address = var.address
+  # datacenter - (optional) is a type of string
+  datacenter = var.datacenter
+  # enable_tag_override - (optional) is a type of bool
   enable_tag_override = var.enable_tag_override
-  external            = var.external
-  meta                = var.meta
-  name                = var.name
-  namespace           = var.namespace
-  node                = var.node
-  port                = var.port
-  service_id          = var.service_id
-  tags                = var.tags
+  # external - (optional) is a type of bool
+  external = var.external
+  # meta - (optional) is a type of map of string
+  meta = var.meta
+  # name - (required) is a type of string
+  name = var.name
+  # namespace - (optional) is a type of string
+  namespace = var.namespace
+  # node - (required) is a type of string
+  node = var.node
+  # port - (optional) is a type of number
+  port = var.port
+  # service_id - (optional) is a type of string
+  service_id = var.service_id
+  # tags - (optional) is a type of list of string
+  tags = var.tags
 
   dynamic "check" {
     for_each = var.check
     content {
-      check_id                          = check.value["check_id"]
+      # check_id - (required) is a type of string
+      check_id = check.value["check_id"]
+      # deregister_critical_service_after - (optional) is a type of string
       deregister_critical_service_after = check.value["deregister_critical_service_after"]
-      http                              = check.value["http"]
-      interval                          = check.value["interval"]
-      method                            = check.value["method"]
-      name                              = check.value["name"]
-      notes                             = check.value["notes"]
-      status                            = check.value["status"]
-      tcp                               = check.value["tcp"]
-      timeout                           = check.value["timeout"]
-      tls_skip_verify                   = check.value["tls_skip_verify"]
+      # http - (optional) is a type of string
+      http = check.value["http"]
+      # interval - (required) is a type of string
+      interval = check.value["interval"]
+      # method - (optional) is a type of string
+      method = check.value["method"]
+      # name - (required) is a type of string
+      name = check.value["name"]
+      # notes - (optional) is a type of string
+      notes = check.value["notes"]
+      # status - (optional) is a type of string
+      status = check.value["status"]
+      # tcp - (optional) is a type of string
+      tcp = check.value["tcp"]
+      # timeout - (required) is a type of string
+      timeout = check.value["timeout"]
+      # tls_skip_verify - (optional) is a type of bool
+      tls_skip_verify = check.value["tls_skip_verify"]
 
       dynamic "header" {
         for_each = check.value.header
         content {
-          name  = header.value["name"]
+          # name - (required) is a type of string
+          name = header.value["name"]
+          # value - (required) is a type of list of string
           value = header.value["value"]
         }
       }

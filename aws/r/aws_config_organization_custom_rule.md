@@ -145,23 +145,37 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_config_organization_custom_rule" "this" {
-  description                 = var.description
-  excluded_accounts           = var.excluded_accounts
-  input_parameters            = var.input_parameters
-  lambda_function_arn         = var.lambda_function_arn
+  # description - (optional) is a type of string
+  description = var.description
+  # excluded_accounts - (optional) is a type of set of string
+  excluded_accounts = var.excluded_accounts
+  # input_parameters - (optional) is a type of string
+  input_parameters = var.input_parameters
+  # lambda_function_arn - (required) is a type of string
+  lambda_function_arn = var.lambda_function_arn
+  # maximum_execution_frequency - (optional) is a type of string
   maximum_execution_frequency = var.maximum_execution_frequency
-  name                        = var.name
-  resource_id_scope           = var.resource_id_scope
-  resource_types_scope        = var.resource_types_scope
-  tag_key_scope               = var.tag_key_scope
-  tag_value_scope             = var.tag_value_scope
-  trigger_types               = var.trigger_types
+  # name - (required) is a type of string
+  name = var.name
+  # resource_id_scope - (optional) is a type of string
+  resource_id_scope = var.resource_id_scope
+  # resource_types_scope - (optional) is a type of set of string
+  resource_types_scope = var.resource_types_scope
+  # tag_key_scope - (optional) is a type of string
+  tag_key_scope = var.tag_key_scope
+  # tag_value_scope - (optional) is a type of string
+  tag_value_scope = var.tag_value_scope
+  # trigger_types - (required) is a type of set of string
+  trigger_types = var.trigger_types
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

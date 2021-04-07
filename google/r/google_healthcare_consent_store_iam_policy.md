@@ -63,9 +63,12 @@ variable "policy_data" {
 
 ```terraform
 resource "google_healthcare_consent_store_iam_policy" "this" {
+  # consent_store_id - (required) is a type of string
   consent_store_id = var.consent_store_id
-  dataset          = var.dataset
-  policy_data      = var.policy_data
+  # dataset - (required) is a type of string
+  dataset = var.dataset
+  # policy_data - (required) is a type of string
+  policy_data = var.policy_data
 }
 ```
 

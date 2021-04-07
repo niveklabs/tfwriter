@@ -127,22 +127,31 @@ variable "production_variants" {
 
 ```terraform
 resource "aws_sagemaker_endpoint_configuration" "this" {
+  # kms_key_arn - (optional) is a type of string
   kms_key_arn = var.kms_key_arn
-  name        = var.name
-  tags        = var.tags
+  # name - (optional) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "data_capture_config" {
     for_each = var.data_capture_config
     content {
-      destination_s3_uri          = data_capture_config.value["destination_s3_uri"]
-      enable_capture              = data_capture_config.value["enable_capture"]
+      # destination_s3_uri - (required) is a type of string
+      destination_s3_uri = data_capture_config.value["destination_s3_uri"]
+      # enable_capture - (optional) is a type of bool
+      enable_capture = data_capture_config.value["enable_capture"]
+      # initial_sampling_percentage - (required) is a type of number
       initial_sampling_percentage = data_capture_config.value["initial_sampling_percentage"]
-      kms_key_id                  = data_capture_config.value["kms_key_id"]
+      # kms_key_id - (optional) is a type of string
+      kms_key_id = data_capture_config.value["kms_key_id"]
 
       dynamic "capture_content_type_header" {
         for_each = data_capture_config.value.capture_content_type_header
         content {
-          csv_content_types  = capture_content_type_header.value["csv_content_types"]
+          # csv_content_types - (optional) is a type of set of string
+          csv_content_types = capture_content_type_header.value["csv_content_types"]
+          # json_content_types - (optional) is a type of set of string
           json_content_types = capture_content_type_header.value["json_content_types"]
         }
       }
@@ -150,6 +159,7 @@ resource "aws_sagemaker_endpoint_configuration" "this" {
       dynamic "capture_options" {
         for_each = data_capture_config.value.capture_options
         content {
+          # capture_mode - (required) is a type of string
           capture_mode = capture_options.value["capture_mode"]
         }
       }
@@ -160,12 +170,18 @@ resource "aws_sagemaker_endpoint_configuration" "this" {
   dynamic "production_variants" {
     for_each = var.production_variants
     content {
-      accelerator_type       = production_variants.value["accelerator_type"]
+      # accelerator_type - (optional) is a type of string
+      accelerator_type = production_variants.value["accelerator_type"]
+      # initial_instance_count - (required) is a type of number
       initial_instance_count = production_variants.value["initial_instance_count"]
+      # initial_variant_weight - (optional) is a type of number
       initial_variant_weight = production_variants.value["initial_variant_weight"]
-      instance_type          = production_variants.value["instance_type"]
-      model_name             = production_variants.value["model_name"]
-      variant_name           = production_variants.value["variant_name"]
+      # instance_type - (required) is a type of string
+      instance_type = production_variants.value["instance_type"]
+      # model_name - (required) is a type of string
+      model_name = production_variants.value["model_name"]
+      # variant_name - (optional) is a type of string
+      variant_name = production_variants.value["variant_name"]
     }
   }
 

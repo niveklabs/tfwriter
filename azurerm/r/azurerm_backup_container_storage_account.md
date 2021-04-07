@@ -83,16 +83,23 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_backup_container_storage_account" "this" {
+  # recovery_vault_name - (required) is a type of string
   recovery_vault_name = var.recovery_vault_name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  storage_account_id  = var.storage_account_id
+  # storage_account_id - (required) is a type of string
+  storage_account_id = var.storage_account_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

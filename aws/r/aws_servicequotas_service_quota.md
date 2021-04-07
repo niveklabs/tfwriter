@@ -63,9 +63,12 @@ variable "value" {
 
 ```terraform
 resource "aws_servicequotas_service_quota" "this" {
-  quota_code   = var.quota_code
+  # quota_code - (required) is a type of string
+  quota_code = var.quota_code
+  # service_code - (required) is a type of string
   service_code = var.service_code
-  value        = var.value
+  # value - (required) is a type of number
+  value = var.value
 }
 ```
 

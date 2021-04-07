@@ -180,42 +180,63 @@ variable "timeouts" {
 
 ```terraform
 resource "opc_compute_vpn_endpoint_v2" "this" {
-  customer_vpn_gateway            = var.customer_vpn_gateway
-  description                     = var.description
-  enabled                         = var.enabled
-  ike_identifier                  = var.ike_identifier
-  ip_network                      = var.ip_network
-  name                            = var.name
-  pre_shared_key                  = var.pre_shared_key
-  reachable_routes                = var.reachable_routes
+  # customer_vpn_gateway - (required) is a type of string
+  customer_vpn_gateway = var.customer_vpn_gateway
+  # description - (optional) is a type of string
+  description = var.description
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # ike_identifier - (optional) is a type of string
+  ike_identifier = var.ike_identifier
+  # ip_network - (required) is a type of string
+  ip_network = var.ip_network
+  # name - (required) is a type of string
+  name = var.name
+  # pre_shared_key - (required) is a type of string
+  pre_shared_key = var.pre_shared_key
+  # reachable_routes - (required) is a type of list of string
+  reachable_routes = var.reachable_routes
+  # require_perfect_forward_secrecy - (optional) is a type of bool
   require_perfect_forward_secrecy = var.require_perfect_forward_secrecy
-  tags                            = var.tags
-  vnic_sets                       = var.vnic_sets
+  # tags - (optional) is a type of list of string
+  tags = var.tags
+  # vnic_sets - (required) is a type of list of string
+  vnic_sets = var.vnic_sets
 
   dynamic "phase_one_settings" {
     for_each = var.phase_one_settings
     content {
-      dh_group   = phase_one_settings.value["dh_group"]
+      # dh_group - (required) is a type of string
+      dh_group = phase_one_settings.value["dh_group"]
+      # encryption - (required) is a type of string
       encryption = phase_one_settings.value["encryption"]
-      hash       = phase_one_settings.value["hash"]
-      lifetime   = phase_one_settings.value["lifetime"]
+      # hash - (required) is a type of string
+      hash = phase_one_settings.value["hash"]
+      # lifetime - (optional) is a type of number
+      lifetime = phase_one_settings.value["lifetime"]
     }
   }
 
   dynamic "phase_two_settings" {
     for_each = var.phase_two_settings
     content {
+      # encryption - (required) is a type of string
       encryption = phase_two_settings.value["encryption"]
-      hash       = phase_two_settings.value["hash"]
-      lifetime   = phase_two_settings.value["lifetime"]
+      # hash - (required) is a type of string
+      hash = phase_two_settings.value["hash"]
+      # lifetime - (optional) is a type of number
+      lifetime = phase_two_settings.value["lifetime"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

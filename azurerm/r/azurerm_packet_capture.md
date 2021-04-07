@@ -153,29 +153,43 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_packet_capture" "this" {
-  maximum_bytes_per_packet  = var.maximum_bytes_per_packet
+  # maximum_bytes_per_packet - (optional) is a type of number
+  maximum_bytes_per_packet = var.maximum_bytes_per_packet
+  # maximum_bytes_per_session - (optional) is a type of number
   maximum_bytes_per_session = var.maximum_bytes_per_session
-  maximum_capture_duration  = var.maximum_capture_duration
-  name                      = var.name
-  network_watcher_name      = var.network_watcher_name
-  resource_group_name       = var.resource_group_name
-  target_resource_id        = var.target_resource_id
+  # maximum_capture_duration - (optional) is a type of number
+  maximum_capture_duration = var.maximum_capture_duration
+  # name - (required) is a type of string
+  name = var.name
+  # network_watcher_name - (required) is a type of string
+  network_watcher_name = var.network_watcher_name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # target_resource_id - (required) is a type of string
+  target_resource_id = var.target_resource_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      local_ip_address  = filter.value["local_ip_address"]
-      local_port        = filter.value["local_port"]
-      protocol          = filter.value["protocol"]
+      # local_ip_address - (optional) is a type of string
+      local_ip_address = filter.value["local_ip_address"]
+      # local_port - (optional) is a type of string
+      local_port = filter.value["local_port"]
+      # protocol - (required) is a type of string
+      protocol = filter.value["protocol"]
+      # remote_ip_address - (optional) is a type of string
       remote_ip_address = filter.value["remote_ip_address"]
-      remote_port       = filter.value["remote_port"]
+      # remote_port - (optional) is a type of string
+      remote_port = filter.value["remote_port"]
     }
   }
 
   dynamic "storage_location" {
     for_each = var.storage_location
     content {
-      file_path          = storage_location.value["file_path"]
+      # file_path - (optional) is a type of string
+      file_path = storage_location.value["file_path"]
+      # storage_account_id - (optional) is a type of string
       storage_account_id = storage_location.value["storage_account_id"]
     }
   }
@@ -183,9 +197,13 @@ resource "azurerm_packet_capture" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

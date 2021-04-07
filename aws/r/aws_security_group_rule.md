@@ -125,17 +125,28 @@ variable "type" {
 
 ```terraform
 resource "aws_security_group_rule" "this" {
-  cidr_blocks              = var.cidr_blocks
-  description              = var.description
-  from_port                = var.from_port
-  ipv6_cidr_blocks         = var.ipv6_cidr_blocks
-  prefix_list_ids          = var.prefix_list_ids
-  protocol                 = var.protocol
-  security_group_id        = var.security_group_id
-  self                     = var.self
+  # cidr_blocks - (optional) is a type of list of string
+  cidr_blocks = var.cidr_blocks
+  # description - (optional) is a type of string
+  description = var.description
+  # from_port - (required) is a type of number
+  from_port = var.from_port
+  # ipv6_cidr_blocks - (optional) is a type of list of string
+  ipv6_cidr_blocks = var.ipv6_cidr_blocks
+  # prefix_list_ids - (optional) is a type of list of string
+  prefix_list_ids = var.prefix_list_ids
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # security_group_id - (required) is a type of string
+  security_group_id = var.security_group_id
+  # self - (optional) is a type of bool
+  self = var.self
+  # source_security_group_id - (optional) is a type of string
   source_security_group_id = var.source_security_group_id
-  to_port                  = var.to_port
-  type                     = var.type
+  # to_port - (required) is a type of number
+  to_port = var.to_port
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

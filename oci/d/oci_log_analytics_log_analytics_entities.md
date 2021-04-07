@@ -154,24 +154,39 @@ variable "filter" {
 
 ```terraform
 data "oci_log_analytics_log_analytics_entities" "this" {
-  cloud_resource_id           = var.cloud_resource_id
-  compartment_id              = var.compartment_id
-  entity_type_name            = var.entity_type_name
-  hostname                    = var.hostname
-  hostname_contains           = var.hostname_contains
+  # cloud_resource_id - (optional) is a type of string
+  cloud_resource_id = var.cloud_resource_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # entity_type_name - (optional) is a type of list of string
+  entity_type_name = var.entity_type_name
+  # hostname - (optional) is a type of string
+  hostname = var.hostname
+  # hostname_contains - (optional) is a type of string
+  hostname_contains = var.hostname_contains
+  # is_management_agent_id_null - (optional) is a type of string
   is_management_agent_id_null = var.is_management_agent_id_null
-  lifecycle_details_contains  = var.lifecycle_details_contains
-  name                        = var.name
-  name_contains               = var.name_contains
-  namespace                   = var.namespace
-  source_id                   = var.source_id
-  state                       = var.state
+  # lifecycle_details_contains - (optional) is a type of string
+  lifecycle_details_contains = var.lifecycle_details_contains
+  # name - (optional) is a type of string
+  name = var.name
+  # name_contains - (optional) is a type of string
+  name_contains = var.name_contains
+  # namespace - (required) is a type of string
+  namespace = var.namespace
+  # source_id - (optional) is a type of string
+  source_id = var.source_id
+  # state - (optional) is a type of string
+  state = var.state
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

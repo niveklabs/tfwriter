@@ -428,57 +428,95 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_autoscaling_group" "this" {
-  availability_zones        = var.availability_zones
-  capacity_rebalance        = var.capacity_rebalance
-  default_cooldown          = var.default_cooldown
-  desired_capacity          = var.desired_capacity
-  enabled_metrics           = var.enabled_metrics
-  force_delete              = var.force_delete
+  # availability_zones - (optional) is a type of set of string
+  availability_zones = var.availability_zones
+  # capacity_rebalance - (optional) is a type of bool
+  capacity_rebalance = var.capacity_rebalance
+  # default_cooldown - (optional) is a type of number
+  default_cooldown = var.default_cooldown
+  # desired_capacity - (optional) is a type of number
+  desired_capacity = var.desired_capacity
+  # enabled_metrics - (optional) is a type of set of string
+  enabled_metrics = var.enabled_metrics
+  # force_delete - (optional) is a type of bool
+  force_delete = var.force_delete
+  # health_check_grace_period - (optional) is a type of number
   health_check_grace_period = var.health_check_grace_period
-  health_check_type         = var.health_check_type
-  launch_configuration      = var.launch_configuration
-  load_balancers            = var.load_balancers
-  max_instance_lifetime     = var.max_instance_lifetime
-  max_size                  = var.max_size
-  metrics_granularity       = var.metrics_granularity
-  min_elb_capacity          = var.min_elb_capacity
-  min_size                  = var.min_size
-  name                      = var.name
-  name_prefix               = var.name_prefix
-  placement_group           = var.placement_group
-  protect_from_scale_in     = var.protect_from_scale_in
-  service_linked_role_arn   = var.service_linked_role_arn
-  suspended_processes       = var.suspended_processes
-  tags                      = var.tags
-  target_group_arns         = var.target_group_arns
-  termination_policies      = var.termination_policies
-  vpc_zone_identifier       = var.vpc_zone_identifier
+  # health_check_type - (optional) is a type of string
+  health_check_type = var.health_check_type
+  # launch_configuration - (optional) is a type of string
+  launch_configuration = var.launch_configuration
+  # load_balancers - (optional) is a type of set of string
+  load_balancers = var.load_balancers
+  # max_instance_lifetime - (optional) is a type of number
+  max_instance_lifetime = var.max_instance_lifetime
+  # max_size - (required) is a type of number
+  max_size = var.max_size
+  # metrics_granularity - (optional) is a type of string
+  metrics_granularity = var.metrics_granularity
+  # min_elb_capacity - (optional) is a type of number
+  min_elb_capacity = var.min_elb_capacity
+  # min_size - (required) is a type of number
+  min_size = var.min_size
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # placement_group - (optional) is a type of string
+  placement_group = var.placement_group
+  # protect_from_scale_in - (optional) is a type of bool
+  protect_from_scale_in = var.protect_from_scale_in
+  # service_linked_role_arn - (optional) is a type of string
+  service_linked_role_arn = var.service_linked_role_arn
+  # suspended_processes - (optional) is a type of set of string
+  suspended_processes = var.suspended_processes
+  # tags - (optional) is a type of set of map of string
+  tags = var.tags
+  # target_group_arns - (optional) is a type of set of string
+  target_group_arns = var.target_group_arns
+  # termination_policies - (optional) is a type of list of string
+  termination_policies = var.termination_policies
+  # vpc_zone_identifier - (optional) is a type of set of string
+  vpc_zone_identifier = var.vpc_zone_identifier
+  # wait_for_capacity_timeout - (optional) is a type of string
   wait_for_capacity_timeout = var.wait_for_capacity_timeout
-  wait_for_elb_capacity     = var.wait_for_elb_capacity
+  # wait_for_elb_capacity - (optional) is a type of number
+  wait_for_elb_capacity = var.wait_for_elb_capacity
 
   dynamic "initial_lifecycle_hook" {
     for_each = var.initial_lifecycle_hook
     content {
-      default_result          = initial_lifecycle_hook.value["default_result"]
-      heartbeat_timeout       = initial_lifecycle_hook.value["heartbeat_timeout"]
-      lifecycle_transition    = initial_lifecycle_hook.value["lifecycle_transition"]
-      name                    = initial_lifecycle_hook.value["name"]
-      notification_metadata   = initial_lifecycle_hook.value["notification_metadata"]
+      # default_result - (optional) is a type of string
+      default_result = initial_lifecycle_hook.value["default_result"]
+      # heartbeat_timeout - (optional) is a type of number
+      heartbeat_timeout = initial_lifecycle_hook.value["heartbeat_timeout"]
+      # lifecycle_transition - (required) is a type of string
+      lifecycle_transition = initial_lifecycle_hook.value["lifecycle_transition"]
+      # name - (required) is a type of string
+      name = initial_lifecycle_hook.value["name"]
+      # notification_metadata - (optional) is a type of string
+      notification_metadata = initial_lifecycle_hook.value["notification_metadata"]
+      # notification_target_arn - (optional) is a type of string
       notification_target_arn = initial_lifecycle_hook.value["notification_target_arn"]
-      role_arn                = initial_lifecycle_hook.value["role_arn"]
+      # role_arn - (optional) is a type of string
+      role_arn = initial_lifecycle_hook.value["role_arn"]
     }
   }
 
   dynamic "instance_refresh" {
     for_each = var.instance_refresh
     content {
+      # strategy - (required) is a type of string
       strategy = instance_refresh.value["strategy"]
+      # triggers - (optional) is a type of set of string
       triggers = instance_refresh.value["triggers"]
 
       dynamic "preferences" {
         for_each = instance_refresh.value.preferences
         content {
-          instance_warmup        = preferences.value["instance_warmup"]
+          # instance_warmup - (optional) is a type of string
+          instance_warmup = preferences.value["instance_warmup"]
+          # min_healthy_percentage - (optional) is a type of number
           min_healthy_percentage = preferences.value["min_healthy_percentage"]
         }
       }
@@ -489,8 +527,11 @@ resource "aws_autoscaling_group" "this" {
   dynamic "launch_template" {
     for_each = var.launch_template
     content {
-      id      = launch_template.value["id"]
-      name    = launch_template.value["name"]
+      # id - (optional) is a type of string
+      id = launch_template.value["id"]
+      # name - (optional) is a type of string
+      name = launch_template.value["name"]
+      # version - (optional) is a type of string
       version = launch_template.value["version"]
     }
   }
@@ -502,12 +543,18 @@ resource "aws_autoscaling_group" "this" {
       dynamic "instances_distribution" {
         for_each = mixed_instances_policy.value.instances_distribution
         content {
-          on_demand_allocation_strategy            = instances_distribution.value["on_demand_allocation_strategy"]
-          on_demand_base_capacity                  = instances_distribution.value["on_demand_base_capacity"]
+          # on_demand_allocation_strategy - (optional) is a type of string
+          on_demand_allocation_strategy = instances_distribution.value["on_demand_allocation_strategy"]
+          # on_demand_base_capacity - (optional) is a type of number
+          on_demand_base_capacity = instances_distribution.value["on_demand_base_capacity"]
+          # on_demand_percentage_above_base_capacity - (optional) is a type of number
           on_demand_percentage_above_base_capacity = instances_distribution.value["on_demand_percentage_above_base_capacity"]
-          spot_allocation_strategy                 = instances_distribution.value["spot_allocation_strategy"]
-          spot_instance_pools                      = instances_distribution.value["spot_instance_pools"]
-          spot_max_price                           = instances_distribution.value["spot_max_price"]
+          # spot_allocation_strategy - (optional) is a type of string
+          spot_allocation_strategy = instances_distribution.value["spot_allocation_strategy"]
+          # spot_instance_pools - (optional) is a type of number
+          spot_instance_pools = instances_distribution.value["spot_instance_pools"]
+          # spot_max_price - (optional) is a type of string
+          spot_max_price = instances_distribution.value["spot_max_price"]
         }
       }
 
@@ -518,24 +565,32 @@ resource "aws_autoscaling_group" "this" {
           dynamic "launch_template_specification" {
             for_each = launch_template.value.launch_template_specification
             content {
-              launch_template_id   = launch_template_specification.value["launch_template_id"]
+              # launch_template_id - (optional) is a type of string
+              launch_template_id = launch_template_specification.value["launch_template_id"]
+              # launch_template_name - (optional) is a type of string
               launch_template_name = launch_template_specification.value["launch_template_name"]
-              version              = launch_template_specification.value["version"]
+              # version - (optional) is a type of string
+              version = launch_template_specification.value["version"]
             }
           }
 
           dynamic "override" {
             for_each = launch_template.value.override
             content {
-              instance_type     = override.value["instance_type"]
+              # instance_type - (optional) is a type of string
+              instance_type = override.value["instance_type"]
+              # weighted_capacity - (optional) is a type of string
               weighted_capacity = override.value["weighted_capacity"]
 
               dynamic "launch_template_specification" {
                 for_each = override.value.launch_template_specification
                 content {
-                  launch_template_id   = launch_template_specification.value["launch_template_id"]
+                  # launch_template_id - (optional) is a type of string
+                  launch_template_id = launch_template_specification.value["launch_template_id"]
+                  # launch_template_name - (optional) is a type of string
                   launch_template_name = launch_template_specification.value["launch_template_name"]
-                  version              = launch_template_specification.value["version"]
+                  # version - (optional) is a type of string
+                  version = launch_template_specification.value["version"]
                 }
               }
 
@@ -551,15 +606,19 @@ resource "aws_autoscaling_group" "this" {
   dynamic "tag" {
     for_each = var.tag
     content {
-      key                 = tag.value["key"]
+      # key - (required) is a type of string
+      key = tag.value["key"]
+      # propagate_at_launch - (required) is a type of bool
       propagate_at_launch = tag.value["propagate_at_launch"]
-      value               = tag.value["value"]
+      # value - (required) is a type of string
+      value = tag.value["value"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

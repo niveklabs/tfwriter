@@ -105,14 +105,19 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_data_factory_integration_runtime_self_hosted" "this" {
-  data_factory_name   = var.data_factory_name
-  description         = var.description
-  name                = var.name
+  # data_factory_name - (required) is a type of string
+  data_factory_name = var.data_factory_name
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
 
   dynamic "rbac_authorization" {
     for_each = var.rbac_authorization
     content {
+      # resource_id - (required) is a type of string
       resource_id = rbac_authorization.value["resource_id"]
     }
   }
@@ -120,9 +125,13 @@ resource "azurerm_data_factory_integration_runtime_self_hosted" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

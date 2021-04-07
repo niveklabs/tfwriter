@@ -56,7 +56,9 @@ variable "stream_arn" {
 
 ```terraform
 resource "aws_kinesis_stream_consumer" "this" {
-  name       = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # stream_arn - (required) is a type of string
   stream_arn = var.stream_arn
 }
 ```

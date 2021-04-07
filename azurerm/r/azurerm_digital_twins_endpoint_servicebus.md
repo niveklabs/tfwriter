@@ -98,18 +98,27 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_digital_twins_endpoint_servicebus" "this" {
-  dead_letter_storage_secret             = var.dead_letter_storage_secret
-  digital_twins_id                       = var.digital_twins_id
-  name                                   = var.name
-  servicebus_primary_connection_string   = var.servicebus_primary_connection_string
+  # dead_letter_storage_secret - (optional) is a type of string
+  dead_letter_storage_secret = var.dead_letter_storage_secret
+  # digital_twins_id - (required) is a type of string
+  digital_twins_id = var.digital_twins_id
+  # name - (required) is a type of string
+  name = var.name
+  # servicebus_primary_connection_string - (required) is a type of string
+  servicebus_primary_connection_string = var.servicebus_primary_connection_string
+  # servicebus_secondary_connection_string - (required) is a type of string
   servicebus_secondary_connection_string = var.servicebus_secondary_connection_string
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

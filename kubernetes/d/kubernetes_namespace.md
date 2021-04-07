@@ -71,9 +71,12 @@ data "kubernetes_namespace" "this" {
   dynamic "metadata" {
     for_each = var.metadata
     content {
+      # annotations - (optional) is a type of map of string
       annotations = metadata.value["annotations"]
-      labels      = metadata.value["labels"]
-      name        = metadata.value["name"]
+      # labels - (optional) is a type of map of string
+      labels = metadata.value["labels"]
+      # name - (optional) is a type of string
+      name = metadata.value["name"]
     }
   }
 

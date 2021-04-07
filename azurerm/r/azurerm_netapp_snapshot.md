@@ -112,20 +112,31 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_netapp_snapshot" "this" {
-  account_name        = var.account_name
-  location            = var.location
-  name                = var.name
-  pool_name           = var.pool_name
+  # account_name - (required) is a type of string
+  account_name = var.account_name
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # pool_name - (required) is a type of string
+  pool_name = var.pool_name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  tags                = var.tags
-  volume_name         = var.volume_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # volume_name - (required) is a type of string
+  volume_name = var.volume_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

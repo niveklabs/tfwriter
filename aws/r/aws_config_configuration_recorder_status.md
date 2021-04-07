@@ -56,8 +56,10 @@ variable "name" {
 
 ```terraform
 resource "aws_config_configuration_recorder_status" "this" {
+  # is_enabled - (required) is a type of bool
   is_enabled = var.is_enabled
-  name       = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

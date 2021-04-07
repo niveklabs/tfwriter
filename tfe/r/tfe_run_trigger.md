@@ -56,8 +56,10 @@ variable "workspace_id" {
 
 ```terraform
 resource "tfe_run_trigger" "this" {
+  # sourceable_id - (required) is a type of string
   sourceable_id = var.sourceable_id
-  workspace_id  = var.workspace_id
+  # workspace_id - (required) is a type of string
+  workspace_id = var.workspace_id
 }
 ```
 

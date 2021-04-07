@@ -125,14 +125,22 @@ variable "type" {
 
 ```terraform
 resource "vault_auth_backend" "this" {
+  # default_lease_ttl_seconds - (optional) is a type of number
   default_lease_ttl_seconds = var.default_lease_ttl_seconds
-  description               = var.description
-  listing_visibility        = var.listing_visibility
-  local                     = var.local
-  max_lease_ttl_seconds     = var.max_lease_ttl_seconds
-  path                      = var.path
-  tune                      = var.tune
-  type                      = var.type
+  # description - (optional) is a type of string
+  description = var.description
+  # listing_visibility - (optional) is a type of string
+  listing_visibility = var.listing_visibility
+  # local - (optional) is a type of bool
+  local = var.local
+  # max_lease_ttl_seconds - (optional) is a type of number
+  max_lease_ttl_seconds = var.max_lease_ttl_seconds
+  # path - (optional) is a type of string
+  path = var.path
+  # tune - (optional) is a type of set of object
+  tune = var.tune
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

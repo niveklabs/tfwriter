@@ -57,7 +57,9 @@ variable "namespace" {
 
 ```terraform
 data "nomad_job" "this" {
-  job_id    = var.job_id
+  # job_id - (required) is a type of string
+  job_id = var.job_id
+  # namespace - (optional) is a type of string
   namespace = var.namespace
 }
 ```

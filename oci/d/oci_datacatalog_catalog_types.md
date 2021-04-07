@@ -131,21 +131,33 @@ variable "filter" {
 
 ```terraform
 data "oci_datacatalog_catalog_types" "this" {
-  catalog_id         = var.catalog_id
+  # catalog_id - (required) is a type of string
+  catalog_id = var.catalog_id
+  # external_type_name - (optional) is a type of string
   external_type_name = var.external_type_name
-  fields             = var.fields
-  is_approved        = var.is_approved
-  is_internal        = var.is_internal
-  is_tag             = var.is_tag
-  name               = var.name
-  state              = var.state
-  type_category      = var.type_category
+  # fields - (optional) is a type of set of string
+  fields = var.fields
+  # is_approved - (optional) is a type of string
+  is_approved = var.is_approved
+  # is_internal - (optional) is a type of string
+  is_internal = var.is_internal
+  # is_tag - (optional) is a type of string
+  is_tag = var.is_tag
+  # name - (optional) is a type of string
+  name = var.name
+  # state - (optional) is a type of string
+  state = var.state
+  # type_category - (optional) is a type of string
+  type_category = var.type_category
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

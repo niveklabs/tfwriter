@@ -112,19 +112,29 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_compute_image_capability_schema" "this" {
-  compartment_id                                      = var.compartment_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # compute_global_image_capability_schema_version_name - (required) is a type of string
   compute_global_image_capability_schema_version_name = var.compute_global_image_capability_schema_version_name
-  defined_tags                                        = var.defined_tags
-  display_name                                        = var.display_name
-  freeform_tags                                       = var.freeform_tags
-  image_id                                            = var.image_id
-  schema_data                                         = var.schema_data
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # image_id - (required) is a type of string
+  image_id = var.image_id
+  # schema_data - (required) is a type of map of string
+  schema_data = var.schema_data
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

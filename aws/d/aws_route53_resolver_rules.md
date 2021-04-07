@@ -74,10 +74,14 @@ variable "share_status" {
 
 ```terraform
 data "aws_route53_resolver_rules" "this" {
-  owner_id             = var.owner_id
+  # owner_id - (optional) is a type of string
+  owner_id = var.owner_id
+  # resolver_endpoint_id - (optional) is a type of string
   resolver_endpoint_id = var.resolver_endpoint_id
-  rule_type            = var.rule_type
-  share_status         = var.share_status
+  # rule_type - (optional) is a type of string
+  rule_type = var.rule_type
+  # share_status - (optional) is a type of string
+  share_status = var.share_status
 }
 ```
 

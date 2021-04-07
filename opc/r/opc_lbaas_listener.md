@@ -133,18 +133,30 @@ variable "virtual_hosts" {
 
 ```terraform
 resource "opc_lbaas_listener" "this" {
+  # balancer_protocol - (required) is a type of string
   balancer_protocol = var.balancer_protocol
-  certificates      = var.certificates
-  enabled           = var.enabled
-  load_balancer     = var.load_balancer
-  name              = var.name
-  path_prefixes     = var.path_prefixes
-  policies          = var.policies
-  port              = var.port
-  server_pool       = var.server_pool
-  server_protocol   = var.server_protocol
-  tags              = var.tags
-  virtual_hosts     = var.virtual_hosts
+  # certificates - (optional) is a type of set of string
+  certificates = var.certificates
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # load_balancer - (required) is a type of string
+  load_balancer = var.load_balancer
+  # name - (required) is a type of string
+  name = var.name
+  # path_prefixes - (optional) is a type of set of string
+  path_prefixes = var.path_prefixes
+  # policies - (optional) is a type of set of string
+  policies = var.policies
+  # port - (required) is a type of number
+  port = var.port
+  # server_pool - (optional) is a type of string
+  server_pool = var.server_pool
+  # server_protocol - (required) is a type of string
+  server_protocol = var.server_protocol
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # virtual_hosts - (optional) is a type of set of string
+  virtual_hosts = var.virtual_hosts
 }
 ```
 

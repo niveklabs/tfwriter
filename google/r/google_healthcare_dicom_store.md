@@ -96,13 +96,17 @@ variable "timeouts" {
 
 ```terraform
 resource "google_healthcare_dicom_store" "this" {
+  # dataset - (required) is a type of string
   dataset = var.dataset
-  labels  = var.labels
-  name    = var.name
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "notification_config" {
     for_each = var.notification_config
     content {
+      # pubsub_topic - (required) is a type of string
       pubsub_topic = notification_config.value["pubsub_topic"]
     }
   }
@@ -110,8 +114,11 @@ resource "google_healthcare_dicom_store" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

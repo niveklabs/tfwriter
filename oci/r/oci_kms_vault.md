@@ -153,19 +153,29 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_kms_vault" "this" {
-  compartment_id   = var.compartment_id
-  defined_tags     = var.defined_tags
-  display_name     = var.display_name
-  freeform_tags    = var.freeform_tags
-  restore_trigger  = var.restore_trigger
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # restore_trigger - (optional) is a type of bool
+  restore_trigger = var.restore_trigger
+  # time_of_deletion - (optional) is a type of string
   time_of_deletion = var.time_of_deletion
-  vault_type       = var.vault_type
+  # vault_type - (required) is a type of string
+  vault_type = var.vault_type
 
   dynamic "restore_from_file" {
     for_each = var.restore_from_file
     content {
-      content_length                  = restore_from_file.value["content_length"]
-      content_md5                     = restore_from_file.value["content_md5"]
+      # content_length - (required) is a type of string
+      content_length = restore_from_file.value["content_length"]
+      # content_md5 - (optional) is a type of string
+      content_md5 = restore_from_file.value["content_md5"]
+      # restore_vault_from_file_details - (required) is a type of string
       restore_vault_from_file_details = restore_from_file.value["restore_vault_from_file_details"]
     }
   }
@@ -173,19 +183,27 @@ resource "oci_kms_vault" "this" {
   dynamic "restore_from_object_store" {
     for_each = var.restore_from_object_store
     content {
-      bucket      = restore_from_object_store.value["bucket"]
+      # bucket - (optional) is a type of string
+      bucket = restore_from_object_store.value["bucket"]
+      # destination - (required) is a type of string
       destination = restore_from_object_store.value["destination"]
-      namespace   = restore_from_object_store.value["namespace"]
-      object      = restore_from_object_store.value["object"]
-      uri         = restore_from_object_store.value["uri"]
+      # namespace - (optional) is a type of string
+      namespace = restore_from_object_store.value["namespace"]
+      # object - (optional) is a type of string
+      object = restore_from_object_store.value["object"]
+      # uri - (optional) is a type of string
+      uri = restore_from_object_store.value["uri"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

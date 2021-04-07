@@ -89,15 +89,21 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_dx_hosted_private_virtual_interface_accepter" "this" {
-  dx_gateway_id        = var.dx_gateway_id
-  tags                 = var.tags
+  # dx_gateway_id - (optional) is a type of string
+  dx_gateway_id = var.dx_gateway_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # virtual_interface_id - (required) is a type of string
   virtual_interface_id = var.virtual_interface_id
-  vpn_gateway_id       = var.vpn_gateway_id
+  # vpn_gateway_id - (optional) is a type of string
+  vpn_gateway_id = var.vpn_gateway_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

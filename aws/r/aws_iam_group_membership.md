@@ -63,8 +63,11 @@ variable "users" {
 
 ```terraform
 resource "aws_iam_group_membership" "this" {
+  # group - (required) is a type of string
   group = var.group
-  name  = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # users - (required) is a type of set of string
   users = var.users
 }
 ```

@@ -81,11 +81,16 @@ variable "tags" {
 
 ```terraform
 resource "aws_iam_user" "this" {
-  force_destroy        = var.force_destroy
-  name                 = var.name
-  path                 = var.path
+  # force_destroy - (optional) is a type of bool
+  force_destroy = var.force_destroy
+  # name - (required) is a type of string
+  name = var.name
+  # path - (optional) is a type of string
+  path = var.path
+  # permissions_boundary - (optional) is a type of string
   permissions_boundary = var.permissions_boundary
-  tags                 = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

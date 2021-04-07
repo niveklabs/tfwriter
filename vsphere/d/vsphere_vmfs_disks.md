@@ -65,9 +65,12 @@ variable "rescan" {
 
 ```terraform
 data "vsphere_vmfs_disks" "this" {
-  filter         = var.filter
+  # filter - (optional) is a type of string
+  filter = var.filter
+  # host_system_id - (required) is a type of string
   host_system_id = var.host_system_id
-  rescan         = var.rescan
+  # rescan - (optional) is a type of bool
+  rescan = var.rescan
 }
 ```
 

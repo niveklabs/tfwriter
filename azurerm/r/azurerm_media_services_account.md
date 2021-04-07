@@ -132,15 +132,21 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_media_services_account" "this" {
-  location                    = var.location
-  name                        = var.name
-  resource_group_name         = var.resource_group_name
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # storage_authentication_type - (optional) is a type of string
   storage_authentication_type = var.storage_authentication_type
-  tags                        = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "identity" {
     for_each = var.identity
     content {
+      # type - (optional) is a type of string
       type = identity.value["type"]
     }
   }
@@ -148,7 +154,9 @@ resource "azurerm_media_services_account" "this" {
   dynamic "storage_account" {
     for_each = var.storage_account
     content {
-      id         = storage_account.value["id"]
+      # id - (required) is a type of string
+      id = storage_account.value["id"]
+      # is_primary - (optional) is a type of bool
       is_primary = storage_account.value["is_primary"]
     }
   }
@@ -156,9 +164,13 @@ resource "azurerm_media_services_account" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

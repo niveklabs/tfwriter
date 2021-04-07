@@ -49,6 +49,7 @@ variable "parent" {
 
 ```terraform
 data "google_cloud_identity_groups" "this" {
+  # parent - (required) is a type of string
   parent = var.parent
 }
 ```

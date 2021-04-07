@@ -103,10 +103,14 @@ variable "vpc_id" {
 
 ```terraform
 resource "aws_route_table" "this" {
+  # propagating_vgws - (optional) is a type of set of string
   propagating_vgws = var.propagating_vgws
-  route            = var.route
-  tags             = var.tags
-  vpc_id           = var.vpc_id
+  # route - (optional) is a type of set of object
+  route = var.route
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

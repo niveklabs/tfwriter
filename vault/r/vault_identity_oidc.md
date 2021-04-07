@@ -50,6 +50,7 @@ variable "issuer" {
 
 ```terraform
 resource "vault_identity_oidc" "this" {
+  # issuer - (optional) is a type of string
   issuer = var.issuer
 }
 ```

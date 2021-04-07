@@ -82,16 +82,22 @@ variable "predicate" {
 
 ```terraform
 resource "aws_wafregional_rule" "this" {
+  # metric_name - (required) is a type of string
   metric_name = var.metric_name
-  name        = var.name
-  tags        = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "predicate" {
     for_each = var.predicate
     content {
+      # data_id - (required) is a type of string
       data_id = predicate.value["data_id"]
+      # negated - (required) is a type of bool
       negated = predicate.value["negated"]
-      type    = predicate.value["type"]
+      # type - (required) is a type of string
+      type = predicate.value["type"]
     }
   }
 

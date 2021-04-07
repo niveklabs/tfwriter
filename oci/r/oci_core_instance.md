@@ -381,37 +381,60 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_instance" "this" {
-  availability_domain                 = var.availability_domain
-  capacity_reservation_id             = var.capacity_reservation_id
-  compartment_id                      = var.compartment_id
-  dedicated_vm_host_id                = var.dedicated_vm_host_id
-  defined_tags                        = var.defined_tags
-  display_name                        = var.display_name
-  extended_metadata                   = var.extended_metadata
-  fault_domain                        = var.fault_domain
-  freeform_tags                       = var.freeform_tags
-  hostname_label                      = var.hostname_label
-  image                               = var.image
-  ipxe_script                         = var.ipxe_script
+  # availability_domain - (required) is a type of string
+  availability_domain = var.availability_domain
+  # capacity_reservation_id - (optional) is a type of string
+  capacity_reservation_id = var.capacity_reservation_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # dedicated_vm_host_id - (optional) is a type of string
+  dedicated_vm_host_id = var.dedicated_vm_host_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # extended_metadata - (optional) is a type of map of string
+  extended_metadata = var.extended_metadata
+  # fault_domain - (optional) is a type of string
+  fault_domain = var.fault_domain
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # hostname_label - (optional) is a type of string
+  hostname_label = var.hostname_label
+  # image - (optional) is a type of string
+  image = var.image
+  # ipxe_script - (optional) is a type of string
+  ipxe_script = var.ipxe_script
+  # is_pv_encryption_in_transit_enabled - (optional) is a type of bool
   is_pv_encryption_in_transit_enabled = var.is_pv_encryption_in_transit_enabled
-  metadata                            = var.metadata
-  preserve_boot_volume                = var.preserve_boot_volume
-  shape                               = var.shape
-  state                               = var.state
-  subnet_id                           = var.subnet_id
+  # metadata - (optional) is a type of map of string
+  metadata = var.metadata
+  # preserve_boot_volume - (optional) is a type of bool
+  preserve_boot_volume = var.preserve_boot_volume
+  # shape - (required) is a type of string
+  shape = var.shape
+  # state - (optional) is a type of string
+  state = var.state
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
 
   dynamic "agent_config" {
     for_each = var.agent_config
     content {
+      # are_all_plugins_disabled - (optional) is a type of bool
       are_all_plugins_disabled = agent_config.value["are_all_plugins_disabled"]
-      is_management_disabled   = agent_config.value["is_management_disabled"]
-      is_monitoring_disabled   = agent_config.value["is_monitoring_disabled"]
+      # is_management_disabled - (optional) is a type of bool
+      is_management_disabled = agent_config.value["is_management_disabled"]
+      # is_monitoring_disabled - (optional) is a type of bool
+      is_monitoring_disabled = agent_config.value["is_monitoring_disabled"]
 
       dynamic "plugins_config" {
         for_each = agent_config.value.plugins_config
         content {
+          # desired_state - (required) is a type of string
           desired_state = plugins_config.value["desired_state"]
-          name          = plugins_config.value["name"]
+          # name - (required) is a type of string
+          name = plugins_config.value["name"]
         }
       }
 
@@ -421,6 +444,7 @@ resource "oci_core_instance" "this" {
   dynamic "availability_config" {
     for_each = var.availability_config
     content {
+      # recovery_action - (optional) is a type of string
       recovery_action = availability_config.value["recovery_action"]
     }
   }
@@ -428,22 +452,33 @@ resource "oci_core_instance" "this" {
   dynamic "create_vnic_details" {
     for_each = var.create_vnic_details
     content {
-      assign_public_ip       = create_vnic_details.value["assign_public_ip"]
-      defined_tags           = create_vnic_details.value["defined_tags"]
-      display_name           = create_vnic_details.value["display_name"]
-      freeform_tags          = create_vnic_details.value["freeform_tags"]
-      hostname_label         = create_vnic_details.value["hostname_label"]
-      nsg_ids                = create_vnic_details.value["nsg_ids"]
-      private_ip             = create_vnic_details.value["private_ip"]
+      # assign_public_ip - (optional) is a type of string
+      assign_public_ip = create_vnic_details.value["assign_public_ip"]
+      # defined_tags - (optional) is a type of map of string
+      defined_tags = create_vnic_details.value["defined_tags"]
+      # display_name - (optional) is a type of string
+      display_name = create_vnic_details.value["display_name"]
+      # freeform_tags - (optional) is a type of map of string
+      freeform_tags = create_vnic_details.value["freeform_tags"]
+      # hostname_label - (optional) is a type of string
+      hostname_label = create_vnic_details.value["hostname_label"]
+      # nsg_ids - (optional) is a type of set of string
+      nsg_ids = create_vnic_details.value["nsg_ids"]
+      # private_ip - (optional) is a type of string
+      private_ip = create_vnic_details.value["private_ip"]
+      # skip_source_dest_check - (optional) is a type of bool
       skip_source_dest_check = create_vnic_details.value["skip_source_dest_check"]
-      subnet_id              = create_vnic_details.value["subnet_id"]
-      vlan_id                = create_vnic_details.value["vlan_id"]
+      # subnet_id - (optional) is a type of string
+      subnet_id = create_vnic_details.value["subnet_id"]
+      # vlan_id - (optional) is a type of string
+      vlan_id = create_vnic_details.value["vlan_id"]
     }
   }
 
   dynamic "instance_options" {
     for_each = var.instance_options
     content {
+      # are_legacy_imds_endpoints_disabled - (optional) is a type of bool
       are_legacy_imds_endpoints_disabled = instance_options.value["are_legacy_imds_endpoints_disabled"]
     }
   }
@@ -451,46 +486,63 @@ resource "oci_core_instance" "this" {
   dynamic "launch_options" {
     for_each = var.launch_options
     content {
-      boot_volume_type                    = launch_options.value["boot_volume_type"]
-      firmware                            = launch_options.value["firmware"]
+      # boot_volume_type - (optional) is a type of string
+      boot_volume_type = launch_options.value["boot_volume_type"]
+      # firmware - (optional) is a type of string
+      firmware = launch_options.value["firmware"]
+      # is_consistent_volume_naming_enabled - (optional) is a type of bool
       is_consistent_volume_naming_enabled = launch_options.value["is_consistent_volume_naming_enabled"]
+      # is_pv_encryption_in_transit_enabled - (optional) is a type of bool
       is_pv_encryption_in_transit_enabled = launch_options.value["is_pv_encryption_in_transit_enabled"]
-      network_type                        = launch_options.value["network_type"]
-      remote_data_volume_type             = launch_options.value["remote_data_volume_type"]
+      # network_type - (optional) is a type of string
+      network_type = launch_options.value["network_type"]
+      # remote_data_volume_type - (optional) is a type of string
+      remote_data_volume_type = launch_options.value["remote_data_volume_type"]
     }
   }
 
   dynamic "platform_config" {
     for_each = var.platform_config
     content {
+      # numa_nodes_per_socket - (optional) is a type of string
       numa_nodes_per_socket = platform_config.value["numa_nodes_per_socket"]
-      type                  = platform_config.value["type"]
+      # type - (required) is a type of string
+      type = platform_config.value["type"]
     }
   }
 
   dynamic "shape_config" {
     for_each = var.shape_config
     content {
+      # memory_in_gbs - (optional) is a type of number
       memory_in_gbs = shape_config.value["memory_in_gbs"]
-      ocpus         = shape_config.value["ocpus"]
+      # ocpus - (optional) is a type of number
+      ocpus = shape_config.value["ocpus"]
     }
   }
 
   dynamic "source_details" {
     for_each = var.source_details
     content {
+      # boot_volume_size_in_gbs - (optional) is a type of string
       boot_volume_size_in_gbs = source_details.value["boot_volume_size_in_gbs"]
-      kms_key_id              = source_details.value["kms_key_id"]
-      source_id               = source_details.value["source_id"]
-      source_type             = source_details.value["source_type"]
+      # kms_key_id - (optional) is a type of string
+      kms_key_id = source_details.value["kms_key_id"]
+      # source_id - (required) is a type of string
+      source_id = source_details.value["source_id"]
+      # source_type - (required) is a type of string
+      source_type = source_details.value["source_type"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

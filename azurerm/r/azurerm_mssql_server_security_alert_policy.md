@@ -131,22 +131,35 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_mssql_server_security_alert_policy" "this" {
-  disabled_alerts            = var.disabled_alerts
-  email_account_admins       = var.email_account_admins
-  email_addresses            = var.email_addresses
-  resource_group_name        = var.resource_group_name
-  retention_days             = var.retention_days
-  server_name                = var.server_name
-  state                      = var.state
+  # disabled_alerts - (optional) is a type of set of string
+  disabled_alerts = var.disabled_alerts
+  # email_account_admins - (optional) is a type of bool
+  email_account_admins = var.email_account_admins
+  # email_addresses - (optional) is a type of set of string
+  email_addresses = var.email_addresses
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # retention_days - (optional) is a type of number
+  retention_days = var.retention_days
+  # server_name - (required) is a type of string
+  server_name = var.server_name
+  # state - (required) is a type of string
+  state = var.state
+  # storage_account_access_key - (optional) is a type of string
   storage_account_access_key = var.storage_account_access_key
-  storage_endpoint           = var.storage_endpoint
+  # storage_endpoint - (optional) is a type of string
+  storage_endpoint = var.storage_endpoint
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

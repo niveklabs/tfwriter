@@ -166,36 +166,52 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_instance_pool" "this" {
-  compartment_id            = var.compartment_id
-  defined_tags              = var.defined_tags
-  display_name              = var.display_name
-  freeform_tags             = var.freeform_tags
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # instance_configuration_id - (required) is a type of string
   instance_configuration_id = var.instance_configuration_id
-  size                      = var.size
-  state                     = var.state
+  # size - (required) is a type of number
+  size = var.size
+  # state - (optional) is a type of string
+  state = var.state
 
   dynamic "load_balancers" {
     for_each = var.load_balancers
     content {
+      # backend_set_name - (required) is a type of string
       backend_set_name = load_balancers.value["backend_set_name"]
+      # load_balancer_id - (required) is a type of string
       load_balancer_id = load_balancers.value["load_balancer_id"]
-      port             = load_balancers.value["port"]
-      vnic_selection   = load_balancers.value["vnic_selection"]
+      # port - (required) is a type of number
+      port = load_balancers.value["port"]
+      # vnic_selection - (required) is a type of string
+      vnic_selection = load_balancers.value["vnic_selection"]
     }
   }
 
   dynamic "placement_configurations" {
     for_each = var.placement_configurations
     content {
+      # availability_domain - (required) is a type of string
       availability_domain = placement_configurations.value["availability_domain"]
-      fault_domains       = placement_configurations.value["fault_domains"]
-      primary_subnet_id   = placement_configurations.value["primary_subnet_id"]
+      # fault_domains - (optional) is a type of list of string
+      fault_domains = placement_configurations.value["fault_domains"]
+      # primary_subnet_id - (required) is a type of string
+      primary_subnet_id = placement_configurations.value["primary_subnet_id"]
 
       dynamic "secondary_vnic_subnets" {
         for_each = placement_configurations.value.secondary_vnic_subnets
         content {
+          # display_name - (optional) is a type of string
           display_name = secondary_vnic_subnets.value["display_name"]
-          subnet_id    = secondary_vnic_subnets.value["subnet_id"]
+          # subnet_id - (required) is a type of string
+          subnet_id = secondary_vnic_subnets.value["subnet_id"]
         }
       }
 
@@ -205,8 +221,11 @@ resource "oci_core_instance_pool" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -74,9 +74,13 @@ variable "preferred_node_types" {
 
 ```terraform
 data "aws_redshift_orderable_cluster" "this" {
-  cluster_type         = var.cluster_type
-  cluster_version      = var.cluster_version
-  node_type            = var.node_type
+  # cluster_type - (optional) is a type of string
+  cluster_type = var.cluster_type
+  # cluster_version - (optional) is a type of string
+  cluster_version = var.cluster_version
+  # node_type - (optional) is a type of string
+  node_type = var.node_type
+  # preferred_node_types - (optional) is a type of list of string
   preferred_node_types = var.preferred_node_types
 }
 ```

@@ -49,6 +49,7 @@ variable "product_arn" {
 
 ```terraform
 resource "aws_securityhub_product_subscription" "this" {
+  # product_arn - (required) is a type of string
   product_arn = var.product_arn
 }
 ```

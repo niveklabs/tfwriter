@@ -125,37 +125,58 @@ variable "ingress" {
 
 ```terraform
 resource "aws_default_network_acl" "this" {
+  # default_network_acl_id - (required) is a type of string
   default_network_acl_id = var.default_network_acl_id
-  subnet_ids             = var.subnet_ids
-  tags                   = var.tags
+  # subnet_ids - (optional) is a type of set of string
+  subnet_ids = var.subnet_ids
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "egress" {
     for_each = var.egress
     content {
-      action          = egress.value["action"]
-      cidr_block      = egress.value["cidr_block"]
-      from_port       = egress.value["from_port"]
-      icmp_code       = egress.value["icmp_code"]
-      icmp_type       = egress.value["icmp_type"]
+      # action - (required) is a type of string
+      action = egress.value["action"]
+      # cidr_block - (optional) is a type of string
+      cidr_block = egress.value["cidr_block"]
+      # from_port - (required) is a type of number
+      from_port = egress.value["from_port"]
+      # icmp_code - (optional) is a type of number
+      icmp_code = egress.value["icmp_code"]
+      # icmp_type - (optional) is a type of number
+      icmp_type = egress.value["icmp_type"]
+      # ipv6_cidr_block - (optional) is a type of string
       ipv6_cidr_block = egress.value["ipv6_cidr_block"]
-      protocol        = egress.value["protocol"]
-      rule_no         = egress.value["rule_no"]
-      to_port         = egress.value["to_port"]
+      # protocol - (required) is a type of string
+      protocol = egress.value["protocol"]
+      # rule_no - (required) is a type of number
+      rule_no = egress.value["rule_no"]
+      # to_port - (required) is a type of number
+      to_port = egress.value["to_port"]
     }
   }
 
   dynamic "ingress" {
     for_each = var.ingress
     content {
-      action          = ingress.value["action"]
-      cidr_block      = ingress.value["cidr_block"]
-      from_port       = ingress.value["from_port"]
-      icmp_code       = ingress.value["icmp_code"]
-      icmp_type       = ingress.value["icmp_type"]
+      # action - (required) is a type of string
+      action = ingress.value["action"]
+      # cidr_block - (optional) is a type of string
+      cidr_block = ingress.value["cidr_block"]
+      # from_port - (required) is a type of number
+      from_port = ingress.value["from_port"]
+      # icmp_code - (optional) is a type of number
+      icmp_code = ingress.value["icmp_code"]
+      # icmp_type - (optional) is a type of number
+      icmp_type = ingress.value["icmp_type"]
+      # ipv6_cidr_block - (optional) is a type of string
       ipv6_cidr_block = ingress.value["ipv6_cidr_block"]
-      protocol        = ingress.value["protocol"]
-      rule_no         = ingress.value["rule_no"]
-      to_port         = ingress.value["to_port"]
+      # protocol - (required) is a type of string
+      protocol = ingress.value["protocol"]
+      # rule_no - (required) is a type of number
+      rule_no = ingress.value["rule_no"]
+      # to_port - (required) is a type of number
+      to_port = ingress.value["to_port"]
     }
   }
 

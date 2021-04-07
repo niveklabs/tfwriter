@@ -101,18 +101,27 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_subscription" "this" {
-  alias             = var.alias
-  billing_scope_id  = var.billing_scope_id
-  subscription_id   = var.subscription_id
+  # alias - (optional) is a type of string
+  alias = var.alias
+  # billing_scope_id - (optional) is a type of string
+  billing_scope_id = var.billing_scope_id
+  # subscription_id - (optional) is a type of string
+  subscription_id = var.subscription_id
+  # subscription_name - (required) is a type of string
   subscription_name = var.subscription_name
-  workload          = var.workload
+  # workload - (optional) is a type of string
+  workload = var.workload
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

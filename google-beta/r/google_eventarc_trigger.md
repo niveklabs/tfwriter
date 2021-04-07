@@ -128,9 +128,13 @@ variable "timeouts" {
 
 ```terraform
 resource "google_eventarc_trigger" "this" {
-  location        = var.location
-  name            = var.name
-  project         = var.project
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # service_account - (optional) is a type of string
   service_account = var.service_account
 
   dynamic "destination" {
@@ -140,8 +144,11 @@ resource "google_eventarc_trigger" "this" {
       dynamic "cloud_run_service" {
         for_each = destination.value.cloud_run_service
         content {
-          path    = cloud_run_service.value["path"]
-          region  = cloud_run_service.value["region"]
+          # path - (optional) is a type of string
+          path = cloud_run_service.value["path"]
+          # region - (optional) is a type of string
+          region = cloud_run_service.value["region"]
+          # service - (required) is a type of string
           service = cloud_run_service.value["service"]
         }
       }
@@ -152,16 +159,21 @@ resource "google_eventarc_trigger" "this" {
   dynamic "matching_criteria" {
     for_each = var.matching_criteria
     content {
+      # attribute - (required) is a type of string
       attribute = matching_criteria.value["attribute"]
-      value     = matching_criteria.value["value"]
+      # value - (required) is a type of string
+      value = matching_criteria.value["value"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

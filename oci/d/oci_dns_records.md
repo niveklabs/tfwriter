@@ -123,20 +123,31 @@ variable "filter" {
 
 ```terraform
 data "oci_dns_records" "this" {
-  compartment_id  = var.compartment_id
-  domain          = var.domain
+  # compartment_id - (optional) is a type of string
+  compartment_id = var.compartment_id
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # domain_contains - (optional) is a type of string
   domain_contains = var.domain_contains
-  rtype           = var.rtype
-  sort_by         = var.sort_by
-  sort_order      = var.sort_order
+  # rtype - (optional) is a type of string
+  rtype = var.rtype
+  # sort_by - (optional) is a type of string
+  sort_by = var.sort_by
+  # sort_order - (optional) is a type of string
+  sort_order = var.sort_order
+  # zone_name_or_id - (required) is a type of string
   zone_name_or_id = var.zone_name_or_id
-  zone_version    = var.zone_version
+  # zone_version - (optional) is a type of string
+  zone_version = var.zone_version
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

@@ -58,7 +58,9 @@ variable "name" {
 
 ```terraform
 data "ad_gpo" "this" {
+  # guid - (optional) is a type of string
   guid = var.guid
+  # name - (optional) is a type of string
   name = var.name
 }
 ```

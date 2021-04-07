@@ -80,11 +80,16 @@ variable "value" {
 
 ```terraform
 resource "google_runtimeconfig_variable" "this" {
-  name    = var.name
-  parent  = var.parent
+  # name - (required) is a type of string
+  name = var.name
+  # parent - (required) is a type of string
+  parent = var.parent
+  # project - (optional) is a type of string
   project = var.project
-  text    = var.text
-  value   = var.value
+  # text - (optional) is a type of string
+  text = var.text
+  # value - (optional) is a type of string
+  value = var.value
 }
 ```
 

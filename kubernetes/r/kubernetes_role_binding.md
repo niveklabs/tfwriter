@@ -109,28 +109,39 @@ resource "kubernetes_role_binding" "this" {
   dynamic "metadata" {
     for_each = var.metadata
     content {
+      # annotations - (optional) is a type of map of string
       annotations = metadata.value["annotations"]
-      labels      = metadata.value["labels"]
-      name        = metadata.value["name"]
-      namespace   = metadata.value["namespace"]
+      # labels - (optional) is a type of map of string
+      labels = metadata.value["labels"]
+      # name - (optional) is a type of string
+      name = metadata.value["name"]
+      # namespace - (optional) is a type of string
+      namespace = metadata.value["namespace"]
     }
   }
 
   dynamic "role_ref" {
     for_each = var.role_ref
     content {
+      # api_group - (required) is a type of string
       api_group = role_ref.value["api_group"]
-      kind      = role_ref.value["kind"]
-      name      = role_ref.value["name"]
+      # kind - (required) is a type of string
+      kind = role_ref.value["kind"]
+      # name - (required) is a type of string
+      name = role_ref.value["name"]
     }
   }
 
   dynamic "subject" {
     for_each = var.subject
     content {
+      # api_group - (optional) is a type of string
       api_group = subject.value["api_group"]
-      kind      = subject.value["kind"]
-      name      = subject.value["name"]
+      # kind - (required) is a type of string
+      kind = subject.value["kind"]
+      # name - (required) is a type of string
+      name = subject.value["name"]
+      # namespace - (optional) is a type of string
       namespace = subject.value["namespace"]
     }
   }

@@ -133,22 +133,35 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_identity_identity_provider" "this" {
-  compartment_id      = var.compartment_id
-  defined_tags        = var.defined_tags
-  description         = var.description
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # description - (required) is a type of string
+  description = var.description
+  # freeform_attributes - (optional) is a type of map of string
   freeform_attributes = var.freeform_attributes
-  freeform_tags       = var.freeform_tags
-  metadata            = var.metadata
-  metadata_url        = var.metadata_url
-  name                = var.name
-  product_type        = var.product_type
-  protocol            = var.protocol
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # metadata - (required) is a type of string
+  metadata = var.metadata
+  # metadata_url - (required) is a type of string
+  metadata_url = var.metadata_url
+  # name - (required) is a type of string
+  name = var.name
+  # product_type - (required) is a type of string
+  product_type = var.product_type
+  # protocol - (required) is a type of string
+  protocol = var.protocol
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

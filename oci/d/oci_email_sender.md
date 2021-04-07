@@ -49,6 +49,7 @@ variable "sender_id" {
 
 ```terraform
 data "oci_email_sender" "this" {
+  # sender_id - (required) is a type of string
   sender_id = var.sender_id
 }
 ```

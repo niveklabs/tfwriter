@@ -49,6 +49,7 @@ variable "policy" {
 
 ```terraform
 resource "aws_glue_resource_policy" "this" {
+  # policy - (required) is a type of string
   policy = var.policy
 }
 ```

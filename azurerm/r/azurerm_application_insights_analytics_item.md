@@ -105,19 +105,29 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_application_insights_analytics_item" "this" {
+  # application_insights_id - (required) is a type of string
   application_insights_id = var.application_insights_id
-  content                 = var.content
-  function_alias          = var.function_alias
-  name                    = var.name
-  scope                   = var.scope
-  type                    = var.type
+  # content - (required) is a type of string
+  content = var.content
+  # function_alias - (optional) is a type of string
+  function_alias = var.function_alias
+  # name - (required) is a type of string
+  name = var.name
+  # scope - (required) is a type of string
+  scope = var.scope
+  # type - (required) is a type of string
+  type = var.type
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

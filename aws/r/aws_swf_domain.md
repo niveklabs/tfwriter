@@ -81,10 +81,15 @@ variable "workflow_execution_retention_period_in_days" {
 
 ```terraform
 resource "aws_swf_domain" "this" {
-  description                                 = var.description
-  name                                        = var.name
-  name_prefix                                 = var.name_prefix
-  tags                                        = var.tags
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # workflow_execution_retention_period_in_days - (required) is a type of string
   workflow_execution_retention_period_in_days = var.workflow_execution_retention_period_in_days
 }
 ```

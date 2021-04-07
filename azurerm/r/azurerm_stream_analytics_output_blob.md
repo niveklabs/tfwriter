@@ -144,32 +144,49 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_stream_analytics_output_blob" "this" {
-  date_format               = var.date_format
-  name                      = var.name
-  path_pattern              = var.path_pattern
-  resource_group_name       = var.resource_group_name
-  storage_account_key       = var.storage_account_key
-  storage_account_name      = var.storage_account_name
-  storage_container_name    = var.storage_container_name
+  # date_format - (required) is a type of string
+  date_format = var.date_format
+  # name - (required) is a type of string
+  name = var.name
+  # path_pattern - (required) is a type of string
+  path_pattern = var.path_pattern
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # storage_account_key - (required) is a type of string
+  storage_account_key = var.storage_account_key
+  # storage_account_name - (required) is a type of string
+  storage_account_name = var.storage_account_name
+  # storage_container_name - (required) is a type of string
+  storage_container_name = var.storage_container_name
+  # stream_analytics_job_name - (required) is a type of string
   stream_analytics_job_name = var.stream_analytics_job_name
-  time_format               = var.time_format
+  # time_format - (required) is a type of string
+  time_format = var.time_format
 
   dynamic "serialization" {
     for_each = var.serialization
     content {
-      encoding        = serialization.value["encoding"]
+      # encoding - (optional) is a type of string
+      encoding = serialization.value["encoding"]
+      # field_delimiter - (optional) is a type of string
       field_delimiter = serialization.value["field_delimiter"]
-      format          = serialization.value["format"]
-      type            = serialization.value["type"]
+      # format - (optional) is a type of string
+      format = serialization.value["format"]
+      # type - (required) is a type of string
+      type = serialization.value["type"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

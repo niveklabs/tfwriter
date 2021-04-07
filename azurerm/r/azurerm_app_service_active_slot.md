@@ -83,16 +83,23 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_app_service_active_slot" "this" {
-  app_service_name      = var.app_service_name
+  # app_service_name - (required) is a type of string
+  app_service_name = var.app_service_name
+  # app_service_slot_name - (required) is a type of string
   app_service_slot_name = var.app_service_slot_name
-  resource_group_name   = var.resource_group_name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

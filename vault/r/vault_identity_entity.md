@@ -82,11 +82,16 @@ variable "policies" {
 
 ```terraform
 resource "vault_identity_entity" "this" {
-  disabled          = var.disabled
+  # disabled - (optional) is a type of bool
+  disabled = var.disabled
+  # external_policies - (optional) is a type of bool
   external_policies = var.external_policies
-  metadata          = var.metadata
-  name              = var.name
-  policies          = var.policies
+  # metadata - (optional) is a type of map of string
+  metadata = var.metadata
+  # name - (optional) is a type of string
+  name = var.name
+  # policies - (optional) is a type of set of string
+  policies = var.policies
 }
 ```
 

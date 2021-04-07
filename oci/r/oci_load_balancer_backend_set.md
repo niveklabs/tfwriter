@@ -174,41 +174,61 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_load_balancer_backend_set" "this" {
+  # load_balancer_id - (required) is a type of string
   load_balancer_id = var.load_balancer_id
-  name             = var.name
-  policy           = var.policy
+  # name - (required) is a type of string
+  name = var.name
+  # policy - (required) is a type of string
+  policy = var.policy
 
   dynamic "health_checker" {
     for_each = var.health_checker
     content {
-      interval_ms         = health_checker.value["interval_ms"]
-      port                = health_checker.value["port"]
-      protocol            = health_checker.value["protocol"]
+      # interval_ms - (optional) is a type of number
+      interval_ms = health_checker.value["interval_ms"]
+      # port - (optional) is a type of number
+      port = health_checker.value["port"]
+      # protocol - (required) is a type of string
+      protocol = health_checker.value["protocol"]
+      # response_body_regex - (optional) is a type of string
       response_body_regex = health_checker.value["response_body_regex"]
-      retries             = health_checker.value["retries"]
-      return_code         = health_checker.value["return_code"]
-      timeout_in_millis   = health_checker.value["timeout_in_millis"]
-      url_path            = health_checker.value["url_path"]
+      # retries - (optional) is a type of number
+      retries = health_checker.value["retries"]
+      # return_code - (optional) is a type of number
+      return_code = health_checker.value["return_code"]
+      # timeout_in_millis - (optional) is a type of number
+      timeout_in_millis = health_checker.value["timeout_in_millis"]
+      # url_path - (optional) is a type of string
+      url_path = health_checker.value["url_path"]
     }
   }
 
   dynamic "lb_cookie_session_persistence_configuration" {
     for_each = var.lb_cookie_session_persistence_configuration
     content {
-      cookie_name        = lb_cookie_session_persistence_configuration.value["cookie_name"]
-      disable_fallback   = lb_cookie_session_persistence_configuration.value["disable_fallback"]
-      domain             = lb_cookie_session_persistence_configuration.value["domain"]
-      is_http_only       = lb_cookie_session_persistence_configuration.value["is_http_only"]
-      is_secure          = lb_cookie_session_persistence_configuration.value["is_secure"]
+      # cookie_name - (optional) is a type of string
+      cookie_name = lb_cookie_session_persistence_configuration.value["cookie_name"]
+      # disable_fallback - (optional) is a type of bool
+      disable_fallback = lb_cookie_session_persistence_configuration.value["disable_fallback"]
+      # domain - (optional) is a type of string
+      domain = lb_cookie_session_persistence_configuration.value["domain"]
+      # is_http_only - (optional) is a type of bool
+      is_http_only = lb_cookie_session_persistence_configuration.value["is_http_only"]
+      # is_secure - (optional) is a type of bool
+      is_secure = lb_cookie_session_persistence_configuration.value["is_secure"]
+      # max_age_in_seconds - (optional) is a type of number
       max_age_in_seconds = lb_cookie_session_persistence_configuration.value["max_age_in_seconds"]
-      path               = lb_cookie_session_persistence_configuration.value["path"]
+      # path - (optional) is a type of string
+      path = lb_cookie_session_persistence_configuration.value["path"]
     }
   }
 
   dynamic "session_persistence_configuration" {
     for_each = var.session_persistence_configuration
     content {
-      cookie_name      = session_persistence_configuration.value["cookie_name"]
+      # cookie_name - (required) is a type of string
+      cookie_name = session_persistence_configuration.value["cookie_name"]
+      # disable_fallback - (optional) is a type of bool
       disable_fallback = session_persistence_configuration.value["disable_fallback"]
     }
   }
@@ -216,11 +236,17 @@ resource "oci_load_balancer_backend_set" "this" {
   dynamic "ssl_configuration" {
     for_each = var.ssl_configuration
     content {
-      certificate_name        = ssl_configuration.value["certificate_name"]
-      cipher_suite_name       = ssl_configuration.value["cipher_suite_name"]
-      protocols               = ssl_configuration.value["protocols"]
+      # certificate_name - (required) is a type of string
+      certificate_name = ssl_configuration.value["certificate_name"]
+      # cipher_suite_name - (optional) is a type of string
+      cipher_suite_name = ssl_configuration.value["cipher_suite_name"]
+      # protocols - (optional) is a type of list of string
+      protocols = ssl_configuration.value["protocols"]
+      # server_order_preference - (optional) is a type of string
       server_order_preference = ssl_configuration.value["server_order_preference"]
-      verify_depth            = ssl_configuration.value["verify_depth"]
+      # verify_depth - (optional) is a type of number
+      verify_depth = ssl_configuration.value["verify_depth"]
+      # verify_peer_certificate - (optional) is a type of bool
       verify_peer_certificate = ssl_configuration.value["verify_peer_certificate"]
     }
   }
@@ -228,8 +254,11 @@ resource "oci_load_balancer_backend_set" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

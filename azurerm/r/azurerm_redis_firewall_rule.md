@@ -97,18 +97,27 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_redis_firewall_rule" "this" {
-  end_ip              = var.end_ip
-  name                = var.name
-  redis_cache_name    = var.redis_cache_name
+  # end_ip - (required) is a type of string
+  end_ip = var.end_ip
+  # name - (required) is a type of string
+  name = var.name
+  # redis_cache_name - (required) is a type of string
+  redis_cache_name = var.redis_cache_name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  start_ip            = var.start_ip
+  # start_ip - (required) is a type of string
+  start_ip = var.start_ip
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

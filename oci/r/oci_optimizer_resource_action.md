@@ -82,15 +82,21 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_optimizer_resource_action" "this" {
+  # resource_action_id - (required) is a type of string
   resource_action_id = var.resource_action_id
-  status             = var.status
-  time_status_end    = var.time_status_end
+  # status - (required) is a type of string
+  status = var.status
+  # time_status_end - (optional) is a type of string
+  time_status_end = var.time_status_end
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

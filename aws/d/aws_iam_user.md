@@ -57,7 +57,9 @@ variable "user_name" {
 
 ```terraform
 data "aws_iam_user" "this" {
-  tags      = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # user_name - (required) is a type of string
   user_name = var.user_name
 }
 ```

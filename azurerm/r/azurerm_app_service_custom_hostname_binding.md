@@ -99,18 +99,27 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_app_service_custom_hostname_binding" "this" {
-  app_service_name    = var.app_service_name
-  hostname            = var.hostname
+  # app_service_name - (required) is a type of string
+  app_service_name = var.app_service_name
+  # hostname - (required) is a type of string
+  hostname = var.hostname
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  ssl_state           = var.ssl_state
-  thumbprint          = var.thumbprint
+  # ssl_state - (optional) is a type of string
+  ssl_state = var.ssl_state
+  # thumbprint - (optional) is a type of string
+  thumbprint = var.thumbprint
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

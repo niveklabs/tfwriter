@@ -73,9 +73,13 @@ variable "version_stages" {
 
 ```terraform
 resource "aws_secretsmanager_secret_version" "this" {
-  secret_binary  = var.secret_binary
-  secret_id      = var.secret_id
-  secret_string  = var.secret_string
+  # secret_binary - (optional) is a type of string
+  secret_binary = var.secret_binary
+  # secret_id - (required) is a type of string
+  secret_id = var.secret_id
+  # secret_string - (optional) is a type of string
+  secret_string = var.secret_string
+  # version_stages - (optional) is a type of set of string
   version_stages = var.version_stages
 }
 ```

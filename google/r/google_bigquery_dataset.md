@@ -179,31 +179,48 @@ variable "timeouts" {
 
 ```terraform
 resource "google_bigquery_dataset" "this" {
-  dataset_id                      = var.dataset_id
+  # dataset_id - (required) is a type of string
+  dataset_id = var.dataset_id
+  # default_partition_expiration_ms - (optional) is a type of number
   default_partition_expiration_ms = var.default_partition_expiration_ms
-  default_table_expiration_ms     = var.default_table_expiration_ms
-  delete_contents_on_destroy      = var.delete_contents_on_destroy
-  description                     = var.description
-  friendly_name                   = var.friendly_name
-  labels                          = var.labels
-  location                        = var.location
-  project                         = var.project
+  # default_table_expiration_ms - (optional) is a type of number
+  default_table_expiration_ms = var.default_table_expiration_ms
+  # delete_contents_on_destroy - (optional) is a type of bool
+  delete_contents_on_destroy = var.delete_contents_on_destroy
+  # description - (optional) is a type of string
+  description = var.description
+  # friendly_name - (optional) is a type of string
+  friendly_name = var.friendly_name
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # location - (optional) is a type of string
+  location = var.location
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "access" {
     for_each = var.access
     content {
-      domain         = access.value["domain"]
+      # domain - (optional) is a type of string
+      domain = access.value["domain"]
+      # group_by_email - (optional) is a type of string
       group_by_email = access.value["group_by_email"]
-      role           = access.value["role"]
-      special_group  = access.value["special_group"]
-      user_by_email  = access.value["user_by_email"]
+      # role - (optional) is a type of string
+      role = access.value["role"]
+      # special_group - (optional) is a type of string
+      special_group = access.value["special_group"]
+      # user_by_email - (optional) is a type of string
+      user_by_email = access.value["user_by_email"]
 
       dynamic "view" {
         for_each = access.value.view
         content {
+          # dataset_id - (required) is a type of string
           dataset_id = view.value["dataset_id"]
+          # project_id - (required) is a type of string
           project_id = view.value["project_id"]
-          table_id   = view.value["table_id"]
+          # table_id - (required) is a type of string
+          table_id = view.value["table_id"]
         }
       }
 
@@ -213,6 +230,7 @@ resource "google_bigquery_dataset" "this" {
   dynamic "default_encryption_configuration" {
     for_each = var.default_encryption_configuration
     content {
+      # kms_key_name - (required) is a type of string
       kms_key_name = default_encryption_configuration.value["kms_key_name"]
     }
   }
@@ -220,8 +238,11 @@ resource "google_bigquery_dataset" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

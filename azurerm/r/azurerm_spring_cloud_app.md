@@ -141,16 +141,23 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_spring_cloud_app" "this" {
-  https_only          = var.https_only
-  is_public           = var.is_public
-  name                = var.name
+  # https_only - (optional) is a type of bool
+  https_only = var.https_only
+  # is_public - (optional) is a type of bool
+  is_public = var.is_public
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  service_name        = var.service_name
-  tls_enabled         = var.tls_enabled
+  # service_name - (required) is a type of string
+  service_name = var.service_name
+  # tls_enabled - (optional) is a type of bool
+  tls_enabled = var.tls_enabled
 
   dynamic "identity" {
     for_each = var.identity
     content {
+      # type - (optional) is a type of string
       type = identity.value["type"]
     }
   }
@@ -158,7 +165,9 @@ resource "azurerm_spring_cloud_app" "this" {
   dynamic "persistent_disk" {
     for_each = var.persistent_disk
     content {
+      # mount_path - (optional) is a type of string
       mount_path = persistent_disk.value["mount_path"]
+      # size_in_gb - (required) is a type of number
       size_in_gb = persistent_disk.value["size_in_gb"]
     }
   }
@@ -166,9 +175,13 @@ resource "azurerm_spring_cloud_app" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

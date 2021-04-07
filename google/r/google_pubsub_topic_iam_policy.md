@@ -64,9 +64,12 @@ variable "topic" {
 
 ```terraform
 resource "google_pubsub_topic_iam_policy" "this" {
+  # policy_data - (required) is a type of string
   policy_data = var.policy_data
-  project     = var.project
-  topic       = var.topic
+  # project - (optional) is a type of string
+  project = var.project
+  # topic - (required) is a type of string
+  topic = var.topic
 }
 ```
 

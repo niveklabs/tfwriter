@@ -96,17 +96,25 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_network_peering_routes_config" "this" {
+  # export_custom_routes - (required) is a type of bool
   export_custom_routes = var.export_custom_routes
+  # import_custom_routes - (required) is a type of bool
   import_custom_routes = var.import_custom_routes
-  network              = var.network
-  peering              = var.peering
-  project              = var.project
+  # network - (required) is a type of string
+  network = var.network
+  # peering - (required) is a type of string
+  peering = var.peering
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

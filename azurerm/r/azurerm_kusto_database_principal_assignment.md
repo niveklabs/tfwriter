@@ -116,21 +116,32 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_kusto_database_principal_assignment" "this" {
-  cluster_name        = var.cluster_name
-  database_name       = var.database_name
-  name                = var.name
-  principal_id        = var.principal_id
-  principal_type      = var.principal_type
+  # cluster_name - (required) is a type of string
+  cluster_name = var.cluster_name
+  # database_name - (required) is a type of string
+  database_name = var.database_name
+  # name - (required) is a type of string
+  name = var.name
+  # principal_id - (required) is a type of string
+  principal_id = var.principal_id
+  # principal_type - (required) is a type of string
+  principal_type = var.principal_type
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  role                = var.role
-  tenant_id           = var.tenant_id
+  # role - (required) is a type of string
+  role = var.role
+  # tenant_id - (required) is a type of string
+  tenant_id = var.tenant_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

@@ -107,18 +107,27 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_management_agent_management_agent" "this" {
-  defined_tags             = var.defined_tags
-  deploy_plugins_id        = var.deploy_plugins_id
-  display_name             = var.display_name
-  freeform_tags            = var.freeform_tags
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # deploy_plugins_id - (optional) is a type of list of string
+  deploy_plugins_id = var.deploy_plugins_id
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # is_agent_auto_upgradable - (optional) is a type of bool
   is_agent_auto_upgradable = var.is_agent_auto_upgradable
-  managed_agent_id         = var.managed_agent_id
+  # managed_agent_id - (required) is a type of string
+  managed_agent_id = var.managed_agent_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

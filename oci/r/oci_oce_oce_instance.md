@@ -173,27 +173,45 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_oce_oce_instance" "this" {
-  admin_email              = var.admin_email
-  compartment_id           = var.compartment_id
-  defined_tags             = var.defined_tags
-  description              = var.description
-  freeform_tags            = var.freeform_tags
-  idcs_access_token        = var.idcs_access_token
-  instance_access_type     = var.instance_access_type
-  instance_license_type    = var.instance_license_type
-  instance_usage_type      = var.instance_usage_type
-  name                     = var.name
+  # admin_email - (required) is a type of string
+  admin_email = var.admin_email
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # description - (optional) is a type of string
+  description = var.description
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # idcs_access_token - (required) is a type of string
+  idcs_access_token = var.idcs_access_token
+  # instance_access_type - (optional) is a type of string
+  instance_access_type = var.instance_access_type
+  # instance_license_type - (optional) is a type of string
+  instance_license_type = var.instance_license_type
+  # instance_usage_type - (optional) is a type of string
+  instance_usage_type = var.instance_usage_type
+  # name - (required) is a type of string
+  name = var.name
+  # object_storage_namespace - (required) is a type of string
   object_storage_namespace = var.object_storage_namespace
-  tenancy_id               = var.tenancy_id
-  tenancy_name             = var.tenancy_name
-  upgrade_schedule         = var.upgrade_schedule
-  waf_primary_domain       = var.waf_primary_domain
+  # tenancy_id - (required) is a type of string
+  tenancy_id = var.tenancy_id
+  # tenancy_name - (required) is a type of string
+  tenancy_name = var.tenancy_name
+  # upgrade_schedule - (optional) is a type of string
+  upgrade_schedule = var.upgrade_schedule
+  # waf_primary_domain - (optional) is a type of string
+  waf_primary_domain = var.waf_primary_domain
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -49,6 +49,7 @@ variable "secret_id" {
 
 ```terraform
 data "oci_vault_secret" "this" {
+  # secret_id - (required) is a type of string
   secret_id = var.secret_id
 }
 ```

@@ -73,10 +73,14 @@ variable "tags" {
 
 ```terraform
 resource "aws_key_pair" "this" {
-  key_name        = var.key_name
+  # key_name - (optional) is a type of string
+  key_name = var.key_name
+  # key_name_prefix - (optional) is a type of string
   key_name_prefix = var.key_name_prefix
-  public_key      = var.public_key
-  tags            = var.tags
+  # public_key - (required) is a type of string
+  public_key = var.public_key
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

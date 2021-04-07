@@ -78,13 +78,17 @@ variable "timeouts" {
 
 ```terraform
 data "hcp_consul_agent_helm_config" "this" {
-  cluster_id          = var.cluster_id
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # expose_gossip_ports - (optional) is a type of bool
   expose_gossip_ports = var.expose_gossip_ports
+  # kubernetes_endpoint - (required) is a type of string
   kubernetes_endpoint = var.kubernetes_endpoint
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

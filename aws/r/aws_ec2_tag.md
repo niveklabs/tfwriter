@@ -63,9 +63,12 @@ variable "value" {
 
 ```terraform
 resource "aws_ec2_tag" "this" {
-  key         = var.key
+  # key - (required) is a type of string
+  key = var.key
+  # resource_id - (required) is a type of string
   resource_id = var.resource_id
-  value       = var.value
+  # value - (required) is a type of string
+  value = var.value
 }
 ```
 

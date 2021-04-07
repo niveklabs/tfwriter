@@ -96,13 +96,20 @@ variable "value" {
 
 ```terraform
 resource "azuread_service_principal_password" "this" {
-  description          = var.description
-  end_date             = var.end_date
-  end_date_relative    = var.end_date_relative
-  key_id               = var.key_id
+  # description - (optional) is a type of string
+  description = var.description
+  # end_date - (optional) is a type of string
+  end_date = var.end_date
+  # end_date_relative - (optional) is a type of string
+  end_date_relative = var.end_date_relative
+  # key_id - (optional) is a type of string
+  key_id = var.key_id
+  # service_principal_id - (required) is a type of string
   service_principal_id = var.service_principal_id
-  start_date           = var.start_date
-  value                = var.value
+  # start_date - (optional) is a type of string
+  start_date = var.start_date
+  # value - (required) is a type of string
+  value = var.value
 }
 ```
 

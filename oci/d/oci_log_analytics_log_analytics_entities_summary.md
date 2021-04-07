@@ -56,8 +56,10 @@ variable "namespace" {
 
 ```terraform
 data "oci_log_analytics_log_analytics_entities_summary" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  namespace      = var.namespace
+  # namespace - (required) is a type of string
+  namespace = var.namespace
 }
 ```
 

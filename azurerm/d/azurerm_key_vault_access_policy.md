@@ -63,11 +63,13 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_key_vault_access_policy" "this" {
+  # name - (required) is a type of string
   name = var.name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

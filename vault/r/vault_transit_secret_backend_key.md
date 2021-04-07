@@ -120,16 +120,26 @@ variable "type" {
 
 ```terraform
 resource "vault_transit_secret_backend_key" "this" {
+  # allow_plaintext_backup - (optional) is a type of bool
   allow_plaintext_backup = var.allow_plaintext_backup
-  backend                = var.backend
-  convergent_encryption  = var.convergent_encryption
-  deletion_allowed       = var.deletion_allowed
-  derived                = var.derived
-  exportable             = var.exportable
+  # backend - (required) is a type of string
+  backend = var.backend
+  # convergent_encryption - (optional) is a type of bool
+  convergent_encryption = var.convergent_encryption
+  # deletion_allowed - (optional) is a type of bool
+  deletion_allowed = var.deletion_allowed
+  # derived - (optional) is a type of bool
+  derived = var.derived
+  # exportable - (optional) is a type of bool
+  exportable = var.exportable
+  # min_decryption_version - (optional) is a type of number
   min_decryption_version = var.min_decryption_version
+  # min_encryption_version - (optional) is a type of number
   min_encryption_version = var.min_encryption_version
-  name                   = var.name
-  type                   = var.type
+  # name - (required) is a type of string
+  name = var.name
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

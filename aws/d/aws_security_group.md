@@ -82,14 +82,19 @@ variable "filter" {
 
 ```terraform
 data "aws_security_group" "this" {
-  name   = var.name
-  tags   = var.tags
+  # name - (optional) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (optional) is a type of string
   vpc_id = var.vpc_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of set of string
       values = filter.value["values"]
     }
   }

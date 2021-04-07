@@ -66,9 +66,12 @@ variable "vars" {
 
 ```terraform
 data "template_file" "this" {
+  # filename - (optional) is a type of string
   filename = var.filename
+  # template - (optional) is a type of string
   template = var.template
-  vars     = var.vars
+  # vars - (optional) is a type of map of string
+  vars = var.vars
 }
 ```
 

@@ -90,16 +90,23 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_drg_attachment" "this" {
-  display_name   = var.display_name
-  drg_id         = var.drg_id
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # drg_id - (required) is a type of string
+  drg_id = var.drg_id
+  # route_table_id - (optional) is a type of string
   route_table_id = var.route_table_id
-  vcn_id         = var.vcn_id
+  # vcn_id - (required) is a type of string
+  vcn_id = var.vcn_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

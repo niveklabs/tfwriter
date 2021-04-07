@@ -89,12 +89,18 @@ variable "variables" {
 
 ```terraform
 resource "aws_api_gateway_deployment" "this" {
-  description       = var.description
-  rest_api_id       = var.rest_api_id
+  # description - (optional) is a type of string
+  description = var.description
+  # rest_api_id - (required) is a type of string
+  rest_api_id = var.rest_api_id
+  # stage_description - (optional) is a type of string
   stage_description = var.stage_description
-  stage_name        = var.stage_name
-  triggers          = var.triggers
-  variables         = var.variables
+  # stage_name - (optional) is a type of string
+  stage_name = var.stage_name
+  # triggers - (optional) is a type of map of string
+  triggers = var.triggers
+  # variables - (optional) is a type of map of string
+  variables = var.variables
 }
 ```
 

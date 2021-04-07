@@ -64,9 +64,12 @@ variable "version" {
 
 ```terraform
 data "opc_compute_image_list_entry" "this" {
-  entry      = var.entry
+  # entry - (optional) is a type of number
+  entry = var.entry
+  # image_list - (required) is a type of string
   image_list = var.image_list
-  version    = var.version
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

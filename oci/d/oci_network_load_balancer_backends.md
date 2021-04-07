@@ -74,14 +74,19 @@ variable "filter" {
 
 ```terraform
 data "oci_network_load_balancer_backends" "this" {
-  backend_set_name         = var.backend_set_name
+  # backend_set_name - (required) is a type of string
+  backend_set_name = var.backend_set_name
+  # network_load_balancer_id - (required) is a type of string
   network_load_balancer_id = var.network_load_balancer_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

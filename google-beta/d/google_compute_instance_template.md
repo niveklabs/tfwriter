@@ -73,10 +73,14 @@ variable "project" {
 
 ```terraform
 data "google_compute_instance_template" "this" {
-  filter      = var.filter
+  # filter - (optional) is a type of string
+  filter = var.filter
+  # most_recent - (optional) is a type of bool
   most_recent = var.most_recent
-  name        = var.name
-  project     = var.project
+  # name - (optional) is a type of string
+  name = var.name
+  # project - (required) is a type of string
+  project = var.project
 }
 ```
 

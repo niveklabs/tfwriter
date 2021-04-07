@@ -81,11 +81,16 @@ variable "user_arn" {
 
 ```terraform
 resource "aws_opsworks_permission" "this" {
-  allow_ssh  = var.allow_ssh
+  # allow_ssh - (optional) is a type of bool
+  allow_ssh = var.allow_ssh
+  # allow_sudo - (optional) is a type of bool
   allow_sudo = var.allow_sudo
-  level      = var.level
-  stack_id   = var.stack_id
-  user_arn   = var.user_arn
+  # level - (optional) is a type of string
+  level = var.level
+  # stack_id - (optional) is a type of string
+  stack_id = var.stack_id
+  # user_arn - (required) is a type of string
+  user_arn = var.user_arn
 }
 ```
 

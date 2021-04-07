@@ -187,44 +187,64 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_dns_steering_policy" "this" {
-  compartment_id          = var.compartment_id
-  defined_tags            = var.defined_tags
-  display_name            = var.display_name
-  freeform_tags           = var.freeform_tags
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # health_check_monitor_id - (optional) is a type of string
   health_check_monitor_id = var.health_check_monitor_id
-  template                = var.template
-  ttl                     = var.ttl
+  # template - (required) is a type of string
+  template = var.template
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
 
   dynamic "answers" {
     for_each = var.answers
     content {
+      # is_disabled - (optional) is a type of bool
       is_disabled = answers.value["is_disabled"]
-      name        = answers.value["name"]
-      pool        = answers.value["pool"]
-      rdata       = answers.value["rdata"]
-      rtype       = answers.value["rtype"]
+      # name - (required) is a type of string
+      name = answers.value["name"]
+      # pool - (optional) is a type of string
+      pool = answers.value["pool"]
+      # rdata - (required) is a type of string
+      rdata = answers.value["rdata"]
+      # rtype - (required) is a type of string
+      rtype = answers.value["rtype"]
     }
   }
 
   dynamic "rules" {
     for_each = var.rules
     content {
+      # default_count - (optional) is a type of number
       default_count = rules.value["default_count"]
-      description   = rules.value["description"]
-      rule_type     = rules.value["rule_type"]
+      # description - (optional) is a type of string
+      description = rules.value["description"]
+      # rule_type - (required) is a type of string
+      rule_type = rules.value["rule_type"]
 
       dynamic "cases" {
         for_each = rules.value.cases
         content {
+          # case_condition - (optional) is a type of string
           case_condition = cases.value["case_condition"]
-          count          = cases.value["count"]
+          # count - (optional) is a type of number
+          count = cases.value["count"]
 
           dynamic "answer_data" {
             for_each = cases.value.answer_data
             content {
+              # answer_condition - (optional) is a type of string
               answer_condition = answer_data.value["answer_condition"]
-              should_keep      = answer_data.value["should_keep"]
-              value            = answer_data.value["value"]
+              # should_keep - (optional) is a type of bool
+              should_keep = answer_data.value["should_keep"]
+              # value - (optional) is a type of number
+              value = answer_data.value["value"]
             }
           }
 
@@ -234,9 +254,12 @@ resource "oci_dns_steering_policy" "this" {
       dynamic "default_answer_data" {
         for_each = rules.value.default_answer_data
         content {
+          # answer_condition - (optional) is a type of string
           answer_condition = default_answer_data.value["answer_condition"]
-          should_keep      = default_answer_data.value["should_keep"]
-          value            = default_answer_data.value["value"]
+          # should_keep - (optional) is a type of bool
+          should_keep = default_answer_data.value["should_keep"]
+          # value - (optional) is a type of number
+          value = default_answer_data.value["value"]
         }
       }
 
@@ -246,8 +269,11 @@ resource "oci_dns_steering_policy" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -66,9 +66,12 @@ variable "tags" {
 
 ```terraform
 data "aws_efs_file_system" "this" {
+  # creation_token - (optional) is a type of string
   creation_token = var.creation_token
+  # file_system_id - (optional) is a type of string
   file_system_id = var.file_system_id
-  tags           = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

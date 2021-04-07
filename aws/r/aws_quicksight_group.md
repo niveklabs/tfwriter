@@ -73,10 +73,14 @@ variable "namespace" {
 
 ```terraform
 resource "aws_quicksight_group" "this" {
+  # aws_account_id - (optional) is a type of string
   aws_account_id = var.aws_account_id
-  description    = var.description
-  group_name     = var.group_name
-  namespace      = var.namespace
+  # description - (optional) is a type of string
+  description = var.description
+  # group_name - (required) is a type of string
+  group_name = var.group_name
+  # namespace - (optional) is a type of string
+  namespace = var.namespace
 }
 ```
 

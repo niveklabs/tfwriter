@@ -129,21 +129,33 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_file_storage_mount_target" "this" {
+  # availability_domain - (required) is a type of string
   availability_domain = var.availability_domain
-  compartment_id      = var.compartment_id
-  defined_tags        = var.defined_tags
-  display_name        = var.display_name
-  freeform_tags       = var.freeform_tags
-  hostname_label      = var.hostname_label
-  ip_address          = var.ip_address
-  nsg_ids             = var.nsg_ids
-  subnet_id           = var.subnet_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # hostname_label - (optional) is a type of string
+  hostname_label = var.hostname_label
+  # ip_address - (optional) is a type of string
+  ip_address = var.ip_address
+  # nsg_ids - (optional) is a type of set of string
+  nsg_ids = var.nsg_ids
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

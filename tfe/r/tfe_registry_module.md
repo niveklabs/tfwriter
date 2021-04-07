@@ -63,9 +63,12 @@ resource "tfe_registry_module" "this" {
   dynamic "vcs_repo" {
     for_each = var.vcs_repo
     content {
+      # display_identifier - (required) is a type of string
       display_identifier = vcs_repo.value["display_identifier"]
-      identifier         = vcs_repo.value["identifier"]
-      oauth_token_id     = vcs_repo.value["oauth_token_id"]
+      # identifier - (required) is a type of string
+      identifier = vcs_repo.value["identifier"]
+      # oauth_token_id - (required) is a type of string
+      oauth_token_id = vcs_repo.value["oauth_token_id"]
     }
   }
 

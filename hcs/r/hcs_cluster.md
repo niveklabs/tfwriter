@@ -170,28 +170,46 @@ variable "timeouts" {
 
 ```terraform
 resource "hcs_cluster" "this" {
-  cluster_mode                = var.cluster_mode
-  cluster_name                = var.cluster_name
-  consul_datacenter           = var.consul_datacenter
-  consul_external_endpoint    = var.consul_external_endpoint
-  consul_federation_token     = var.consul_federation_token
-  email                       = var.email
-  location                    = var.location
-  managed_application_name    = var.managed_application_name
+  # cluster_mode - (required) is a type of string
+  cluster_mode = var.cluster_mode
+  # cluster_name - (optional) is a type of string
+  cluster_name = var.cluster_name
+  # consul_datacenter - (optional) is a type of string
+  consul_datacenter = var.consul_datacenter
+  # consul_external_endpoint - (optional) is a type of bool
+  consul_external_endpoint = var.consul_external_endpoint
+  # consul_federation_token - (optional) is a type of string
+  consul_federation_token = var.consul_federation_token
+  # email - (required) is a type of string
+  email = var.email
+  # location - (optional) is a type of string
+  location = var.location
+  # managed_application_name - (required) is a type of string
+  managed_application_name = var.managed_application_name
+  # managed_resource_group_name - (optional) is a type of string
   managed_resource_group_name = var.managed_resource_group_name
-  min_consul_version          = var.min_consul_version
-  plan_name                   = var.plan_name
-  resource_group_name         = var.resource_group_name
-  tags                        = var.tags
-  vnet_cidr                   = var.vnet_cidr
+  # min_consul_version - (optional) is a type of string
+  min_consul_version = var.min_consul_version
+  # plan_name - (optional) is a type of string
+  plan_name = var.plan_name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vnet_cidr - (optional) is a type of string
+  vnet_cidr = var.vnet_cidr
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
-      create  = timeouts.value["create"]
+      # create - (optional) is a type of string
+      create = timeouts.value["create"]
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
-      delete  = timeouts.value["delete"]
-      update  = timeouts.value["update"]
+      # delete - (optional) is a type of string
+      delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
+      update = timeouts.value["update"]
     }
   }
 

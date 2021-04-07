@@ -87,14 +87,19 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_ocvp_esxi_host" "this" {
-  defined_tags  = var.defined_tags
-  display_name  = var.display_name
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
   freeform_tags = var.freeform_tags
-  sddc_id       = var.sddc_id
+  # sddc_id - (required) is a type of string
+  sddc_id = var.sddc_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

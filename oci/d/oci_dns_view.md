@@ -56,7 +56,9 @@ variable "view_id" {
 
 ```terraform
 data "oci_dns_view" "this" {
-  scope   = var.scope
+  # scope - (required) is a type of string
+  scope = var.scope
+  # view_id - (required) is a type of string
   view_id = var.view_id
 }
 ```

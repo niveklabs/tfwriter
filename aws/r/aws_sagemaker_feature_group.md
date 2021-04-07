@@ -159,17 +159,25 @@ variable "online_store_config" {
 
 ```terraform
 resource "aws_sagemaker_feature_group" "this" {
-  description                    = var.description
-  event_time_feature_name        = var.event_time_feature_name
-  feature_group_name             = var.feature_group_name
+  # description - (optional) is a type of string
+  description = var.description
+  # event_time_feature_name - (required) is a type of string
+  event_time_feature_name = var.event_time_feature_name
+  # feature_group_name - (required) is a type of string
+  feature_group_name = var.feature_group_name
+  # record_identifier_feature_name - (required) is a type of string
   record_identifier_feature_name = var.record_identifier_feature_name
-  role_arn                       = var.role_arn
-  tags                           = var.tags
+  # role_arn - (required) is a type of string
+  role_arn = var.role_arn
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "feature_definition" {
     for_each = var.feature_definition
     content {
+      # feature_name - (optional) is a type of string
       feature_name = feature_definition.value["feature_name"]
+      # feature_type - (optional) is a type of string
       feature_type = feature_definition.value["feature_type"]
     }
   }
@@ -177,13 +185,17 @@ resource "aws_sagemaker_feature_group" "this" {
   dynamic "offline_store_config" {
     for_each = var.offline_store_config
     content {
+      # disable_glue_table_creation - (optional) is a type of bool
       disable_glue_table_creation = offline_store_config.value["disable_glue_table_creation"]
 
       dynamic "data_catalog_config" {
         for_each = offline_store_config.value.data_catalog_config
         content {
-          catalog    = data_catalog_config.value["catalog"]
-          database   = data_catalog_config.value["database"]
+          # catalog - (optional) is a type of string
+          catalog = data_catalog_config.value["catalog"]
+          # database - (optional) is a type of string
+          database = data_catalog_config.value["database"]
+          # table_name - (optional) is a type of string
           table_name = data_catalog_config.value["table_name"]
         }
       }
@@ -191,8 +203,10 @@ resource "aws_sagemaker_feature_group" "this" {
       dynamic "s3_storage_config" {
         for_each = offline_store_config.value.s3_storage_config
         content {
+          # kms_key_id - (optional) is a type of string
           kms_key_id = s3_storage_config.value["kms_key_id"]
-          s3_uri     = s3_storage_config.value["s3_uri"]
+          # s3_uri - (required) is a type of string
+          s3_uri = s3_storage_config.value["s3_uri"]
         }
       }
 
@@ -202,11 +216,13 @@ resource "aws_sagemaker_feature_group" "this" {
   dynamic "online_store_config" {
     for_each = var.online_store_config
     content {
+      # enable_online_store - (optional) is a type of bool
       enable_online_store = online_store_config.value["enable_online_store"]
 
       dynamic "security_config" {
         for_each = online_store_config.value.security_config
         content {
+          # kms_key_id - (optional) is a type of string
           kms_key_id = security_config.value["kms_key_id"]
         }
       }

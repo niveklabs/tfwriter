@@ -197,47 +197,79 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_iot_security_solution" "this" {
-  display_name               = var.display_name
-  enabled                    = var.enabled
-  events_to_export           = var.events_to_export
-  iothub_ids                 = var.iothub_ids
-  location                   = var.location
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # events_to_export - (optional) is a type of set of string
+  events_to_export = var.events_to_export
+  # iothub_ids - (required) is a type of set of string
+  iothub_ids = var.iothub_ids
+  # location - (required) is a type of string
+  location = var.location
+  # log_analytics_workspace_id - (optional) is a type of string
   log_analytics_workspace_id = var.log_analytics_workspace_id
-  log_unmasked_ips_enabled   = var.log_unmasked_ips_enabled
-  name                       = var.name
-  query_for_resources        = var.query_for_resources
-  query_subscription_ids     = var.query_subscription_ids
-  resource_group_name        = var.resource_group_name
-  tags                       = var.tags
+  # log_unmasked_ips_enabled - (optional) is a type of bool
+  log_unmasked_ips_enabled = var.log_unmasked_ips_enabled
+  # name - (required) is a type of string
+  name = var.name
+  # query_for_resources - (optional) is a type of string
+  query_for_resources = var.query_for_resources
+  # query_subscription_ids - (optional) is a type of set of string
+  query_subscription_ids = var.query_subscription_ids
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "recommendations_enabled" {
     for_each = var.recommendations_enabled
     content {
-      acr_authentication               = recommendations_enabled.value["acr_authentication"]
-      agent_send_unutilized_msg        = recommendations_enabled.value["agent_send_unutilized_msg"]
-      baseline                         = recommendations_enabled.value["baseline"]
-      edge_hub_mem_optimize            = recommendations_enabled.value["edge_hub_mem_optimize"]
-      edge_logging_option              = recommendations_enabled.value["edge_logging_option"]
-      inconsistent_module_settings     = recommendations_enabled.value["inconsistent_module_settings"]
-      install_agent                    = recommendations_enabled.value["install_agent"]
-      ip_filter_deny_all               = recommendations_enabled.value["ip_filter_deny_all"]
-      ip_filter_permissive_rule        = recommendations_enabled.value["ip_filter_permissive_rule"]
-      open_ports                       = recommendations_enabled.value["open_ports"]
-      permissive_firewall_policy       = recommendations_enabled.value["permissive_firewall_policy"]
-      permissive_input_firewall_rules  = recommendations_enabled.value["permissive_input_firewall_rules"]
+      # acr_authentication - (optional) is a type of bool
+      acr_authentication = recommendations_enabled.value["acr_authentication"]
+      # agent_send_unutilized_msg - (optional) is a type of bool
+      agent_send_unutilized_msg = recommendations_enabled.value["agent_send_unutilized_msg"]
+      # baseline - (optional) is a type of bool
+      baseline = recommendations_enabled.value["baseline"]
+      # edge_hub_mem_optimize - (optional) is a type of bool
+      edge_hub_mem_optimize = recommendations_enabled.value["edge_hub_mem_optimize"]
+      # edge_logging_option - (optional) is a type of bool
+      edge_logging_option = recommendations_enabled.value["edge_logging_option"]
+      # inconsistent_module_settings - (optional) is a type of bool
+      inconsistent_module_settings = recommendations_enabled.value["inconsistent_module_settings"]
+      # install_agent - (optional) is a type of bool
+      install_agent = recommendations_enabled.value["install_agent"]
+      # ip_filter_deny_all - (optional) is a type of bool
+      ip_filter_deny_all = recommendations_enabled.value["ip_filter_deny_all"]
+      # ip_filter_permissive_rule - (optional) is a type of bool
+      ip_filter_permissive_rule = recommendations_enabled.value["ip_filter_permissive_rule"]
+      # open_ports - (optional) is a type of bool
+      open_ports = recommendations_enabled.value["open_ports"]
+      # permissive_firewall_policy - (optional) is a type of bool
+      permissive_firewall_policy = recommendations_enabled.value["permissive_firewall_policy"]
+      # permissive_input_firewall_rules - (optional) is a type of bool
+      permissive_input_firewall_rules = recommendations_enabled.value["permissive_input_firewall_rules"]
+      # permissive_output_firewall_rules - (optional) is a type of bool
       permissive_output_firewall_rules = recommendations_enabled.value["permissive_output_firewall_rules"]
-      privileged_docker_options        = recommendations_enabled.value["privileged_docker_options"]
-      shared_credentials               = recommendations_enabled.value["shared_credentials"]
-      vulnerable_tls_cipher_suite      = recommendations_enabled.value["vulnerable_tls_cipher_suite"]
+      # privileged_docker_options - (optional) is a type of bool
+      privileged_docker_options = recommendations_enabled.value["privileged_docker_options"]
+      # shared_credentials - (optional) is a type of bool
+      shared_credentials = recommendations_enabled.value["shared_credentials"]
+      # vulnerable_tls_cipher_suite - (optional) is a type of bool
+      vulnerable_tls_cipher_suite = recommendations_enabled.value["vulnerable_tls_cipher_suite"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

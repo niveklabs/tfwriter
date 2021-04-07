@@ -102,14 +102,22 @@ variable "tags" {
 
 ```terraform
 resource "azurestack_public_ip" "this" {
-  domain_name_label            = var.domain_name_label
-  idle_timeout_in_minutes      = var.idle_timeout_in_minutes
-  location                     = var.location
-  name                         = var.name
+  # domain_name_label - (optional) is a type of string
+  domain_name_label = var.domain_name_label
+  # idle_timeout_in_minutes - (optional) is a type of number
+  idle_timeout_in_minutes = var.idle_timeout_in_minutes
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # public_ip_address_allocation - (required) is a type of string
   public_ip_address_allocation = var.public_ip_address_allocation
-  resource_group_name          = var.resource_group_name
-  reverse_fqdn                 = var.reverse_fqdn
-  tags                         = var.tags
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # reverse_fqdn - (optional) is a type of string
+  reverse_fqdn = var.reverse_fqdn
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

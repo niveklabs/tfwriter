@@ -182,21 +182,36 @@ variable "type" {
 
 ```terraform
 resource "vault_jwt_auth_backend" "this" {
-  bound_issuer           = var.bound_issuer
-  default_role           = var.default_role
-  description            = var.description
-  jwks_ca_pem            = var.jwks_ca_pem
-  jwks_url               = var.jwks_url
-  jwt_supported_algs     = var.jwt_supported_algs
+  # bound_issuer - (optional) is a type of string
+  bound_issuer = var.bound_issuer
+  # default_role - (optional) is a type of string
+  default_role = var.default_role
+  # description - (optional) is a type of string
+  description = var.description
+  # jwks_ca_pem - (optional) is a type of string
+  jwks_ca_pem = var.jwks_ca_pem
+  # jwks_url - (optional) is a type of string
+  jwks_url = var.jwks_url
+  # jwt_supported_algs - (optional) is a type of list of string
+  jwt_supported_algs = var.jwt_supported_algs
+  # jwt_validation_pubkeys - (optional) is a type of list of string
   jwt_validation_pubkeys = var.jwt_validation_pubkeys
-  oidc_client_id         = var.oidc_client_id
-  oidc_client_secret     = var.oidc_client_secret
-  oidc_discovery_ca_pem  = var.oidc_discovery_ca_pem
-  oidc_discovery_url     = var.oidc_discovery_url
-  path                   = var.path
-  provider_config        = var.provider_config
-  tune                   = var.tune
-  type                   = var.type
+  # oidc_client_id - (optional) is a type of string
+  oidc_client_id = var.oidc_client_id
+  # oidc_client_secret - (optional) is a type of string
+  oidc_client_secret = var.oidc_client_secret
+  # oidc_discovery_ca_pem - (optional) is a type of string
+  oidc_discovery_ca_pem = var.oidc_discovery_ca_pem
+  # oidc_discovery_url - (optional) is a type of string
+  oidc_discovery_url = var.oidc_discovery_url
+  # path - (optional) is a type of string
+  path = var.path
+  # provider_config - (optional) is a type of map of string
+  provider_config = var.provider_config
+  # tune - (optional) is a type of set of object
+  tune = var.tune
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

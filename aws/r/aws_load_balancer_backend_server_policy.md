@@ -64,9 +64,12 @@ variable "policy_names" {
 
 ```terraform
 resource "aws_load_balancer_backend_server_policy" "this" {
-  instance_port      = var.instance_port
+  # instance_port - (required) is a type of number
+  instance_port = var.instance_port
+  # load_balancer_name - (required) is a type of string
   load_balancer_name = var.load_balancer_name
-  policy_names       = var.policy_names
+  # policy_names - (optional) is a type of set of string
+  policy_names = var.policy_names
 }
 ```
 

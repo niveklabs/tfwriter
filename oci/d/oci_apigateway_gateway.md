@@ -49,6 +49,7 @@ variable "gateway_id" {
 
 ```terraform
 data "oci_apigateway_gateway" "this" {
+  # gateway_id - (required) is a type of string
   gateway_id = var.gateway_id
 }
 ```

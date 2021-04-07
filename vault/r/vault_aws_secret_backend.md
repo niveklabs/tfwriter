@@ -98,13 +98,20 @@ variable "secret_key" {
 
 ```terraform
 resource "vault_aws_secret_backend" "this" {
-  access_key                = var.access_key
+  # access_key - (optional) is a type of string
+  access_key = var.access_key
+  # default_lease_ttl_seconds - (optional) is a type of number
   default_lease_ttl_seconds = var.default_lease_ttl_seconds
-  description               = var.description
-  max_lease_ttl_seconds     = var.max_lease_ttl_seconds
-  path                      = var.path
-  region                    = var.region
-  secret_key                = var.secret_key
+  # description - (optional) is a type of string
+  description = var.description
+  # max_lease_ttl_seconds - (optional) is a type of number
+  max_lease_ttl_seconds = var.max_lease_ttl_seconds
+  # path - (optional) is a type of string
+  path = var.path
+  # region - (optional) is a type of string
+  region = var.region
+  # secret_key - (optional) is a type of string
+  secret_key = var.secret_key
 }
 ```
 

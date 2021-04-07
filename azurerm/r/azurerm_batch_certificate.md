@@ -112,20 +112,31 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_batch_certificate" "this" {
-  account_name         = var.account_name
-  certificate          = var.certificate
-  format               = var.format
-  password             = var.password
-  resource_group_name  = var.resource_group_name
-  thumbprint           = var.thumbprint
+  # account_name - (required) is a type of string
+  account_name = var.account_name
+  # certificate - (required) is a type of string
+  certificate = var.certificate
+  # format - (required) is a type of string
+  format = var.format
+  # password - (optional) is a type of string
+  password = var.password
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # thumbprint - (required) is a type of string
+  thumbprint = var.thumbprint
+  # thumbprint_algorithm - (required) is a type of string
   thumbprint_algorithm = var.thumbprint_algorithm
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

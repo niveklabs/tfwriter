@@ -81,11 +81,16 @@ variable "parameters" {
 
 ```terraform
 resource "aws_glue_catalog_database" "this" {
-  catalog_id   = var.catalog_id
-  description  = var.description
+  # catalog_id - (optional) is a type of string
+  catalog_id = var.catalog_id
+  # description - (optional) is a type of string
+  description = var.description
+  # location_uri - (optional) is a type of string
   location_uri = var.location_uri
-  name         = var.name
-  parameters   = var.parameters
+  # name - (required) is a type of string
+  name = var.name
+  # parameters - (optional) is a type of map of string
+  parameters = var.parameters
 }
 ```
 

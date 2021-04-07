@@ -66,8 +66,11 @@ variable "user_principal_name" {
 
 ```terraform
 data "azuread_user" "this" {
-  mail_nickname       = var.mail_nickname
-  object_id           = var.object_id
+  # mail_nickname - (optional) is a type of string
+  mail_nickname = var.mail_nickname
+  # object_id - (optional) is a type of string
+  object_id = var.object_id
+  # user_principal_name - (optional) is a type of string
   user_principal_name = var.user_principal_name
 }
 ```

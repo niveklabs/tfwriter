@@ -123,11 +123,16 @@ resource "kubernetes_endpoints" "this" {
   dynamic "metadata" {
     for_each = var.metadata
     content {
-      annotations   = metadata.value["annotations"]
+      # annotations - (optional) is a type of map of string
+      annotations = metadata.value["annotations"]
+      # generate_name - (optional) is a type of string
       generate_name = metadata.value["generate_name"]
-      labels        = metadata.value["labels"]
-      name          = metadata.value["name"]
-      namespace     = metadata.value["namespace"]
+      # labels - (optional) is a type of map of string
+      labels = metadata.value["labels"]
+      # name - (optional) is a type of string
+      name = metadata.value["name"]
+      # namespace - (optional) is a type of string
+      namespace = metadata.value["namespace"]
     }
   }
 
@@ -138,8 +143,11 @@ resource "kubernetes_endpoints" "this" {
       dynamic "address" {
         for_each = subset.value.address
         content {
-          hostname  = address.value["hostname"]
-          ip        = address.value["ip"]
+          # hostname - (optional) is a type of string
+          hostname = address.value["hostname"]
+          # ip - (required) is a type of string
+          ip = address.value["ip"]
+          # node_name - (optional) is a type of string
           node_name = address.value["node_name"]
         }
       }
@@ -147,8 +155,11 @@ resource "kubernetes_endpoints" "this" {
       dynamic "not_ready_address" {
         for_each = subset.value.not_ready_address
         content {
-          hostname  = not_ready_address.value["hostname"]
-          ip        = not_ready_address.value["ip"]
+          # hostname - (optional) is a type of string
+          hostname = not_ready_address.value["hostname"]
+          # ip - (required) is a type of string
+          ip = not_ready_address.value["ip"]
+          # node_name - (optional) is a type of string
           node_name = not_ready_address.value["node_name"]
         }
       }
@@ -156,8 +167,11 @@ resource "kubernetes_endpoints" "this" {
       dynamic "port" {
         for_each = subset.value.port
         content {
-          name     = port.value["name"]
-          port     = port.value["port"]
+          # name - (optional) is a type of string
+          name = port.value["name"]
+          # port - (required) is a type of number
+          port = port.value["port"]
+          # protocol - (optional) is a type of string
           protocol = port.value["protocol"]
         }
       }

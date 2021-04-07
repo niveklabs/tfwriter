@@ -113,18 +113,27 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_default_subnet" "this" {
-  availability_zone               = var.availability_zone
-  customer_owned_ipv4_pool        = var.customer_owned_ipv4_pool
+  # availability_zone - (required) is a type of string
+  availability_zone = var.availability_zone
+  # customer_owned_ipv4_pool - (optional) is a type of string
+  customer_owned_ipv4_pool = var.customer_owned_ipv4_pool
+  # map_customer_owned_ip_on_launch - (optional) is a type of bool
   map_customer_owned_ip_on_launch = var.map_customer_owned_ip_on_launch
-  map_public_ip_on_launch         = var.map_public_ip_on_launch
-  outpost_arn                     = var.outpost_arn
-  tags                            = var.tags
-  tags_all                        = var.tags_all
+  # map_public_ip_on_launch - (optional) is a type of bool
+  map_public_ip_on_launch = var.map_public_ip_on_launch
+  # outpost_arn - (optional) is a type of string
+  outpost_arn = var.outpost_arn
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # tags_all - (optional) is a type of map of string
+  tags_all = var.tags_all
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

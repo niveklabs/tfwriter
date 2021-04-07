@@ -49,6 +49,7 @@ variable "autonomous_patch_id" {
 
 ```terraform
 data "oci_database_autonomous_patch" "this" {
+  # autonomous_patch_id - (required) is a type of string
   autonomous_patch_id = var.autonomous_patch_id
 }
 ```

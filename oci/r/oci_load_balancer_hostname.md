@@ -81,15 +81,21 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_load_balancer_hostname" "this" {
-  hostname         = var.hostname
+  # hostname - (required) is a type of string
+  hostname = var.hostname
+  # load_balancer_id - (required) is a type of string
   load_balancer_id = var.load_balancer_id
-  name             = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

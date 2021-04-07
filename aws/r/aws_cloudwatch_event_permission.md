@@ -90,16 +90,23 @@ variable "condition" {
 
 ```terraform
 resource "aws_cloudwatch_event_permission" "this" {
-  action         = var.action
+  # action - (optional) is a type of string
+  action = var.action
+  # event_bus_name - (optional) is a type of string
   event_bus_name = var.event_bus_name
-  principal      = var.principal
-  statement_id   = var.statement_id
+  # principal - (required) is a type of string
+  principal = var.principal
+  # statement_id - (required) is a type of string
+  statement_id = var.statement_id
 
   dynamic "condition" {
     for_each = var.condition
     content {
-      key   = condition.value["key"]
-      type  = condition.value["type"]
+      # key - (required) is a type of string
+      key = condition.value["key"]
+      # type - (required) is a type of string
+      type = condition.value["type"]
+      # value - (required) is a type of string
       value = condition.value["value"]
     }
   }

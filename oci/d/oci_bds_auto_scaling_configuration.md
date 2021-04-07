@@ -56,8 +56,10 @@ variable "bds_instance_id" {
 
 ```terraform
 data "oci_bds_auto_scaling_configuration" "this" {
+  # auto_scaling_configuration_id - (required) is a type of string
   auto_scaling_configuration_id = var.auto_scaling_configuration_id
-  bds_instance_id               = var.bds_instance_id
+  # bds_instance_id - (required) is a type of string
+  bds_instance_id = var.bds_instance_id
 }
 ```
 

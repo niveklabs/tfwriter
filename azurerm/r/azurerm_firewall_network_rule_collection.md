@@ -126,33 +126,51 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_firewall_network_rule_collection" "this" {
-  action              = var.action
+  # action - (required) is a type of string
+  action = var.action
+  # azure_firewall_name - (required) is a type of string
   azure_firewall_name = var.azure_firewall_name
-  name                = var.name
-  priority            = var.priority
+  # name - (required) is a type of string
+  name = var.name
+  # priority - (required) is a type of number
+  priority = var.priority
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
 
   dynamic "rule" {
     for_each = var.rule
     content {
-      description           = rule.value["description"]
+      # description - (optional) is a type of string
+      description = rule.value["description"]
+      # destination_addresses - (optional) is a type of set of string
       destination_addresses = rule.value["destination_addresses"]
-      destination_fqdns     = rule.value["destination_fqdns"]
+      # destination_fqdns - (optional) is a type of set of string
+      destination_fqdns = rule.value["destination_fqdns"]
+      # destination_ip_groups - (optional) is a type of set of string
       destination_ip_groups = rule.value["destination_ip_groups"]
-      destination_ports     = rule.value["destination_ports"]
-      name                  = rule.value["name"]
-      protocols             = rule.value["protocols"]
-      source_addresses      = rule.value["source_addresses"]
-      source_ip_groups      = rule.value["source_ip_groups"]
+      # destination_ports - (required) is a type of set of string
+      destination_ports = rule.value["destination_ports"]
+      # name - (required) is a type of string
+      name = rule.value["name"]
+      # protocols - (required) is a type of set of string
+      protocols = rule.value["protocols"]
+      # source_addresses - (optional) is a type of set of string
+      source_addresses = rule.value["source_addresses"]
+      # source_ip_groups - (optional) is a type of set of string
+      source_ip_groups = rule.value["source_ip_groups"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

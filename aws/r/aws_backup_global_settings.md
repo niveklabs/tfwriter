@@ -49,6 +49,7 @@ variable "global_settings" {
 
 ```terraform
 resource "aws_backup_global_settings" "this" {
+  # global_settings - (required) is a type of map of string
   global_settings = var.global_settings
 }
 ```

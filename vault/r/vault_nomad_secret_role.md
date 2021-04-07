@@ -80,11 +80,16 @@ variable "type" {
 
 ```terraform
 resource "vault_nomad_secret_role" "this" {
-  backend  = var.backend
-  global   = var.global
+  # backend - (required) is a type of string
+  backend = var.backend
+  # global - (optional) is a type of bool
+  global = var.global
+  # policies - (optional) is a type of list of string
   policies = var.policies
-  role     = var.role
-  type     = var.type
+  # role - (required) is a type of string
+  role = var.role
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

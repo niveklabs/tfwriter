@@ -81,14 +81,19 @@ variable "timeouts" {
 
 ```terraform
 resource "opc_compute_snapshot" "this" {
-  account       = var.account
-  instance      = var.instance
+  # account - (optional) is a type of string
+  account = var.account
+  # instance - (required) is a type of string
+  instance = var.instance
+  # machine_image - (optional) is a type of string
   machine_image = var.machine_image
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

@@ -99,17 +99,25 @@ variable "timeouts" {
 
 ```terraform
 resource "google_data_catalog_taxonomy" "this" {
+  # activated_policy_types - (optional) is a type of list of string
   activated_policy_types = var.activated_policy_types
-  description            = var.description
-  display_name           = var.display_name
-  project                = var.project
-  region                 = var.region
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

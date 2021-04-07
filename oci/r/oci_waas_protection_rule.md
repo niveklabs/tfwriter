@@ -98,23 +98,31 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_waas_protection_rule" "this" {
-  action         = var.action
-  key            = var.key
+  # action - (optional) is a type of string
+  action = var.action
+  # key - (required) is a type of string
+  key = var.key
+  # waas_policy_id - (required) is a type of string
   waas_policy_id = var.waas_policy_id
 
   dynamic "exclusions" {
     for_each = var.exclusions
     content {
+      # exclusions - (optional) is a type of list of string
       exclusions = exclusions.value["exclusions"]
-      target     = exclusions.value["target"]
+      # target - (optional) is a type of string
+      target = exclusions.value["target"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

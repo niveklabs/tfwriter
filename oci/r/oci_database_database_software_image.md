@@ -136,22 +136,35 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_database_database_software_image" "this" {
-  compartment_id                          = var.compartment_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # database_software_image_one_off_patches - (optional) is a type of list of string
   database_software_image_one_off_patches = var.database_software_image_one_off_patches
-  database_version                        = var.database_version
-  defined_tags                            = var.defined_tags
-  display_name                            = var.display_name
-  freeform_tags                           = var.freeform_tags
-  image_shape_family                      = var.image_shape_family
-  image_type                              = var.image_type
-  ls_inventory                            = var.ls_inventory
-  patch_set                               = var.patch_set
+  # database_version - (required) is a type of string
+  database_version = var.database_version
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # image_shape_family - (optional) is a type of string
+  image_shape_family = var.image_shape_family
+  # image_type - (optional) is a type of string
+  image_type = var.image_type
+  # ls_inventory - (optional) is a type of string
+  ls_inventory = var.ls_inventory
+  # patch_set - (required) is a type of string
+  patch_set = var.patch_set
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

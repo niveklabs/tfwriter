@@ -65,8 +65,11 @@ variable "working_dir" {
 
 ```terraform
 data "external" "this" {
-  program     = var.program
-  query       = var.query
+  # program - (required) is a type of list of string
+  program = var.program
+  # query - (optional) is a type of map of string
+  query = var.query
+  # working_dir - (optional) is a type of string
   working_dir = var.working_dir
 }
 ```

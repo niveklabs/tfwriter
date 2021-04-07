@@ -56,8 +56,10 @@ variable "name" {
 
 ```terraform
 data "aws_lambda_alias" "this" {
+  # function_name - (required) is a type of string
   function_name = var.function_name
-  name          = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

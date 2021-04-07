@@ -176,29 +176,44 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_express_route_circuit_peering" "this" {
-  express_route_circuit_name    = var.express_route_circuit_name
-  peer_asn                      = var.peer_asn
-  peering_type                  = var.peering_type
-  primary_peer_address_prefix   = var.primary_peer_address_prefix
-  resource_group_name           = var.resource_group_name
-  route_filter_id               = var.route_filter_id
+  # express_route_circuit_name - (required) is a type of string
+  express_route_circuit_name = var.express_route_circuit_name
+  # peer_asn - (optional) is a type of number
+  peer_asn = var.peer_asn
+  # peering_type - (required) is a type of string
+  peering_type = var.peering_type
+  # primary_peer_address_prefix - (required) is a type of string
+  primary_peer_address_prefix = var.primary_peer_address_prefix
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # route_filter_id - (optional) is a type of string
+  route_filter_id = var.route_filter_id
+  # secondary_peer_address_prefix - (required) is a type of string
   secondary_peer_address_prefix = var.secondary_peer_address_prefix
-  shared_key                    = var.shared_key
-  vlan_id                       = var.vlan_id
+  # shared_key - (optional) is a type of string
+  shared_key = var.shared_key
+  # vlan_id - (required) is a type of number
+  vlan_id = var.vlan_id
 
   dynamic "ipv6" {
     for_each = var.ipv6
     content {
-      primary_peer_address_prefix   = ipv6.value["primary_peer_address_prefix"]
-      route_filter_id               = ipv6.value["route_filter_id"]
+      # primary_peer_address_prefix - (required) is a type of string
+      primary_peer_address_prefix = ipv6.value["primary_peer_address_prefix"]
+      # route_filter_id - (optional) is a type of string
+      route_filter_id = ipv6.value["route_filter_id"]
+      # secondary_peer_address_prefix - (required) is a type of string
       secondary_peer_address_prefix = ipv6.value["secondary_peer_address_prefix"]
 
       dynamic "microsoft_peering" {
         for_each = ipv6.value.microsoft_peering
         content {
+          # advertised_public_prefixes - (optional) is a type of list of string
           advertised_public_prefixes = microsoft_peering.value["advertised_public_prefixes"]
-          customer_asn               = microsoft_peering.value["customer_asn"]
-          routing_registry_name      = microsoft_peering.value["routing_registry_name"]
+          # customer_asn - (optional) is a type of number
+          customer_asn = microsoft_peering.value["customer_asn"]
+          # routing_registry_name - (optional) is a type of string
+          routing_registry_name = microsoft_peering.value["routing_registry_name"]
         }
       }
 
@@ -208,18 +223,25 @@ resource "azurerm_express_route_circuit_peering" "this" {
   dynamic "microsoft_peering_config" {
     for_each = var.microsoft_peering_config
     content {
+      # advertised_public_prefixes - (required) is a type of list of string
       advertised_public_prefixes = microsoft_peering_config.value["advertised_public_prefixes"]
-      customer_asn               = microsoft_peering_config.value["customer_asn"]
-      routing_registry_name      = microsoft_peering_config.value["routing_registry_name"]
+      # customer_asn - (optional) is a type of number
+      customer_asn = microsoft_peering_config.value["customer_asn"]
+      # routing_registry_name - (optional) is a type of string
+      routing_registry_name = microsoft_peering_config.value["routing_registry_name"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

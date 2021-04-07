@@ -156,32 +156,49 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_data_factory_dataset_mysql" "this" {
+  # additional_properties - (optional) is a type of map of string
   additional_properties = var.additional_properties
-  annotations           = var.annotations
-  data_factory_name     = var.data_factory_name
-  description           = var.description
-  folder                = var.folder
-  linked_service_name   = var.linked_service_name
-  name                  = var.name
-  parameters            = var.parameters
-  resource_group_name   = var.resource_group_name
-  table_name            = var.table_name
+  # annotations - (optional) is a type of list of string
+  annotations = var.annotations
+  # data_factory_name - (required) is a type of string
+  data_factory_name = var.data_factory_name
+  # description - (optional) is a type of string
+  description = var.description
+  # folder - (optional) is a type of string
+  folder = var.folder
+  # linked_service_name - (required) is a type of string
+  linked_service_name = var.linked_service_name
+  # name - (required) is a type of string
+  name = var.name
+  # parameters - (optional) is a type of map of string
+  parameters = var.parameters
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # table_name - (optional) is a type of string
+  table_name = var.table_name
 
   dynamic "schema_column" {
     for_each = var.schema_column
     content {
+      # description - (optional) is a type of string
       description = schema_column.value["description"]
-      name        = schema_column.value["name"]
-      type        = schema_column.value["type"]
+      # name - (required) is a type of string
+      name = schema_column.value["name"]
+      # type - (optional) is a type of string
+      type = schema_column.value["type"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

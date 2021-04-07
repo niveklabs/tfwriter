@@ -158,11 +158,16 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_optimizer_profile" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  defined_tags   = var.defined_tags
-  description    = var.description
-  freeform_tags  = var.freeform_tags
-  name           = var.name
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # description - (required) is a type of string
+  description = var.description
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "levels_configuration" {
     for_each = var.levels_configuration
@@ -171,7 +176,9 @@ resource "oci_optimizer_profile" "this" {
       dynamic "items" {
         for_each = levels_configuration.value.items
         content {
-          level             = items.value["level"]
+          # level - (optional) is a type of string
+          level = items.value["level"]
+          # recommendation_id - (optional) is a type of string
           recommendation_id = items.value["recommendation_id"]
         }
       }
@@ -182,6 +189,7 @@ resource "oci_optimizer_profile" "this" {
   dynamic "target_compartments" {
     for_each = var.target_compartments
     content {
+      # items - (required) is a type of list of string
       items = target_compartments.value["items"]
     }
   }
@@ -193,10 +201,14 @@ resource "oci_optimizer_profile" "this" {
       dynamic "items" {
         for_each = target_tags.value.items
         content {
+          # tag_definition_name - (required) is a type of string
           tag_definition_name = items.value["tag_definition_name"]
-          tag_namespace_name  = items.value["tag_namespace_name"]
-          tag_value_type      = items.value["tag_value_type"]
-          tag_values          = items.value["tag_values"]
+          # tag_namespace_name - (required) is a type of string
+          tag_namespace_name = items.value["tag_namespace_name"]
+          # tag_value_type - (required) is a type of string
+          tag_value_type = items.value["tag_value_type"]
+          # tag_values - (optional) is a type of list of string
+          tag_values = items.value["tag_values"]
         }
       }
 
@@ -206,8 +218,11 @@ resource "oci_optimizer_profile" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

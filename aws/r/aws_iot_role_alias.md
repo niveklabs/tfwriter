@@ -64,9 +64,12 @@ variable "role_arn" {
 
 ```terraform
 resource "aws_iot_role_alias" "this" {
-  alias               = var.alias
+  # alias - (required) is a type of string
+  alias = var.alias
+  # credential_duration - (optional) is a type of number
   credential_duration = var.credential_duration
-  role_arn            = var.role_arn
+  # role_arn - (required) is a type of string
+  role_arn = var.role_arn
 }
 ```
 

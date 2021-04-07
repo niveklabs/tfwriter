@@ -146,28 +146,43 @@ variable "statement" {
 
 ```terraform
 data "aws_iam_policy_document" "this" {
-  override_json             = var.override_json
+  # override_json - (optional) is a type of string
+  override_json = var.override_json
+  # override_policy_documents - (optional) is a type of list of string
   override_policy_documents = var.override_policy_documents
-  policy_id                 = var.policy_id
-  source_json               = var.source_json
-  source_policy_documents   = var.source_policy_documents
-  version                   = var.version
+  # policy_id - (optional) is a type of string
+  policy_id = var.policy_id
+  # source_json - (optional) is a type of string
+  source_json = var.source_json
+  # source_policy_documents - (optional) is a type of list of string
+  source_policy_documents = var.source_policy_documents
+  # version - (optional) is a type of string
+  version = var.version
 
   dynamic "statement" {
     for_each = var.statement
     content {
-      actions       = statement.value["actions"]
-      effect        = statement.value["effect"]
-      not_actions   = statement.value["not_actions"]
+      # actions - (optional) is a type of set of string
+      actions = statement.value["actions"]
+      # effect - (optional) is a type of string
+      effect = statement.value["effect"]
+      # not_actions - (optional) is a type of set of string
+      not_actions = statement.value["not_actions"]
+      # not_resources - (optional) is a type of set of string
       not_resources = statement.value["not_resources"]
-      resources     = statement.value["resources"]
-      sid           = statement.value["sid"]
+      # resources - (optional) is a type of set of string
+      resources = statement.value["resources"]
+      # sid - (optional) is a type of string
+      sid = statement.value["sid"]
 
       dynamic "condition" {
         for_each = statement.value.condition
         content {
-          test     = condition.value["test"]
-          values   = condition.value["values"]
+          # test - (required) is a type of string
+          test = condition.value["test"]
+          # values - (required) is a type of list of string
+          values = condition.value["values"]
+          # variable - (required) is a type of string
           variable = condition.value["variable"]
         }
       }
@@ -175,16 +190,20 @@ data "aws_iam_policy_document" "this" {
       dynamic "not_principals" {
         for_each = statement.value.not_principals
         content {
+          # identifiers - (required) is a type of set of string
           identifiers = not_principals.value["identifiers"]
-          type        = not_principals.value["type"]
+          # type - (required) is a type of string
+          type = not_principals.value["type"]
         }
       }
 
       dynamic "principals" {
         for_each = statement.value.principals
         content {
+          # identifiers - (required) is a type of set of string
           identifiers = principals.value["identifiers"]
-          type        = principals.value["type"]
+          # type - (required) is a type of string
+          type = principals.value["type"]
         }
       }
 

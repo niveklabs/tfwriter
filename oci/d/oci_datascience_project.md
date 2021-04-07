@@ -49,6 +49,7 @@ variable "project_id" {
 
 ```terraform
 data "oci_datascience_project" "this" {
+  # project_id - (required) is a type of string
   project_id = var.project_id
 }
 ```

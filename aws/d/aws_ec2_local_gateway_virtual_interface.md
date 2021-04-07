@@ -66,12 +66,15 @@ variable "filter" {
 
 ```terraform
 data "aws_ec2_local_gateway_virtual_interface" "this" {
+  # tags - (optional) is a type of map of string
   tags = var.tags
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of set of string
       values = filter.value["values"]
     }
   }

@@ -49,6 +49,7 @@ variable "account_alias" {
 
 ```terraform
 resource "aws_iam_account_alias" "this" {
+  # account_alias - (required) is a type of string
   account_alias = var.account_alias
 }
 ```

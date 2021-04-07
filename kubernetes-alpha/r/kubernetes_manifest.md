@@ -71,8 +71,11 @@ variable "wait_for" {
 
 ```terraform
 resource "kubernetes_manifest" "this" {
+  # manifest - (required) is a type of dynamic
   manifest = var.manifest
-  object   = var.object
+  # object - (optional) is a type of dynamic
+  object = var.object
+  # wait_for - (optional) is a type of object
   wait_for = var.wait_for
 }
 ```

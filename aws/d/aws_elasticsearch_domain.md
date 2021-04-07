@@ -57,8 +57,10 @@ variable "tags" {
 
 ```terraform
 data "aws_elasticsearch_domain" "this" {
+  # domain_name - (required) is a type of string
   domain_name = var.domain_name
-  tags        = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

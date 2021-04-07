@@ -123,25 +123,35 @@ variable "pipeline_config" {
 
 ```terraform
 resource "aws_appsync_resolver" "this" {
-  api_id            = var.api_id
-  data_source       = var.data_source
-  field             = var.field
-  kind              = var.kind
-  request_template  = var.request_template
+  # api_id - (required) is a type of string
+  api_id = var.api_id
+  # data_source - (optional) is a type of string
+  data_source = var.data_source
+  # field - (required) is a type of string
+  field = var.field
+  # kind - (optional) is a type of string
+  kind = var.kind
+  # request_template - (required) is a type of string
+  request_template = var.request_template
+  # response_template - (required) is a type of string
   response_template = var.response_template
-  type              = var.type
+  # type - (required) is a type of string
+  type = var.type
 
   dynamic "caching_config" {
     for_each = var.caching_config
     content {
+      # caching_keys - (optional) is a type of set of string
       caching_keys = caching_config.value["caching_keys"]
-      ttl          = caching_config.value["ttl"]
+      # ttl - (optional) is a type of number
+      ttl = caching_config.value["ttl"]
     }
   }
 
   dynamic "pipeline_config" {
     for_each = var.pipeline_config
     content {
+      # functions - (optional) is a type of list of string
       functions = pipeline_config.value["functions"]
     }
   }

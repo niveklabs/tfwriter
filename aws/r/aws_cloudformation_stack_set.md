@@ -151,21 +151,33 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_cloudformation_stack_set" "this" {
+  # administration_role_arn - (optional) is a type of string
   administration_role_arn = var.administration_role_arn
-  capabilities            = var.capabilities
-  description             = var.description
-  execution_role_name     = var.execution_role_name
-  name                    = var.name
-  parameters              = var.parameters
-  permission_model        = var.permission_model
-  tags                    = var.tags
-  template_body           = var.template_body
-  template_url            = var.template_url
+  # capabilities - (optional) is a type of set of string
+  capabilities = var.capabilities
+  # description - (optional) is a type of string
+  description = var.description
+  # execution_role_name - (optional) is a type of string
+  execution_role_name = var.execution_role_name
+  # name - (required) is a type of string
+  name = var.name
+  # parameters - (optional) is a type of map of string
+  parameters = var.parameters
+  # permission_model - (optional) is a type of string
+  permission_model = var.permission_model
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # template_body - (optional) is a type of string
+  template_body = var.template_body
+  # template_url - (optional) is a type of string
+  template_url = var.template_url
 
   dynamic "auto_deployment" {
     for_each = var.auto_deployment
     content {
-      enabled                          = auto_deployment.value["enabled"]
+      # enabled - (optional) is a type of bool
+      enabled = auto_deployment.value["enabled"]
+      # retain_stacks_on_account_removal - (optional) is a type of bool
       retain_stacks_on_account_removal = auto_deployment.value["retain_stacks_on_account_removal"]
     }
   }
@@ -173,6 +185,7 @@ resource "aws_cloudformation_stack_set" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

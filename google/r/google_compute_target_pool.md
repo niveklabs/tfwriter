@@ -131,21 +131,33 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_target_pool" "this" {
-  backup_pool      = var.backup_pool
-  description      = var.description
-  failover_ratio   = var.failover_ratio
-  health_checks    = var.health_checks
-  instances        = var.instances
-  name             = var.name
-  project          = var.project
-  region           = var.region
+  # backup_pool - (optional) is a type of string
+  backup_pool = var.backup_pool
+  # description - (optional) is a type of string
+  description = var.description
+  # failover_ratio - (optional) is a type of number
+  failover_ratio = var.failover_ratio
+  # health_checks - (optional) is a type of list of string
+  health_checks = var.health_checks
+  # instances - (optional) is a type of set of string
+  instances = var.instances
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
+  # session_affinity - (optional) is a type of string
   session_affinity = var.session_affinity
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

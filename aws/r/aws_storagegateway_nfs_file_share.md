@@ -210,25 +210,41 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_storagegateway_nfs_file_share" "this" {
-  client_list             = var.client_list
-  default_storage_class   = var.default_storage_class
-  file_share_name         = var.file_share_name
-  gateway_arn             = var.gateway_arn
+  # client_list - (required) is a type of set of string
+  client_list = var.client_list
+  # default_storage_class - (optional) is a type of string
+  default_storage_class = var.default_storage_class
+  # file_share_name - (optional) is a type of string
+  file_share_name = var.file_share_name
+  # gateway_arn - (required) is a type of string
+  gateway_arn = var.gateway_arn
+  # guess_mime_type_enabled - (optional) is a type of bool
   guess_mime_type_enabled = var.guess_mime_type_enabled
-  kms_encrypted           = var.kms_encrypted
-  kms_key_arn             = var.kms_key_arn
-  location_arn            = var.location_arn
-  notification_policy     = var.notification_policy
-  object_acl              = var.object_acl
-  read_only               = var.read_only
-  requester_pays          = var.requester_pays
-  role_arn                = var.role_arn
-  squash                  = var.squash
-  tags                    = var.tags
+  # kms_encrypted - (optional) is a type of bool
+  kms_encrypted = var.kms_encrypted
+  # kms_key_arn - (optional) is a type of string
+  kms_key_arn = var.kms_key_arn
+  # location_arn - (required) is a type of string
+  location_arn = var.location_arn
+  # notification_policy - (optional) is a type of string
+  notification_policy = var.notification_policy
+  # object_acl - (optional) is a type of string
+  object_acl = var.object_acl
+  # read_only - (optional) is a type of bool
+  read_only = var.read_only
+  # requester_pays - (optional) is a type of bool
+  requester_pays = var.requester_pays
+  # role_arn - (required) is a type of string
+  role_arn = var.role_arn
+  # squash - (optional) is a type of string
+  squash = var.squash
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "cache_attributes" {
     for_each = var.cache_attributes
     content {
+      # cache_stale_timeout_in_seconds - (optional) is a type of number
       cache_stale_timeout_in_seconds = cache_attributes.value["cache_stale_timeout_in_seconds"]
     }
   }
@@ -236,18 +252,25 @@ resource "aws_storagegateway_nfs_file_share" "this" {
   dynamic "nfs_file_share_defaults" {
     for_each = var.nfs_file_share_defaults
     content {
+      # directory_mode - (optional) is a type of string
       directory_mode = nfs_file_share_defaults.value["directory_mode"]
-      file_mode      = nfs_file_share_defaults.value["file_mode"]
-      group_id       = nfs_file_share_defaults.value["group_id"]
-      owner_id       = nfs_file_share_defaults.value["owner_id"]
+      # file_mode - (optional) is a type of string
+      file_mode = nfs_file_share_defaults.value["file_mode"]
+      # group_id - (optional) is a type of string
+      group_id = nfs_file_share_defaults.value["group_id"]
+      # owner_id - (optional) is a type of string
+      owner_id = nfs_file_share_defaults.value["owner_id"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

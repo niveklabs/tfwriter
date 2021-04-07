@@ -49,6 +49,7 @@ variable "waas_policy_id" {
 
 ```terraform
 data "oci_waas_waas_policy" "this" {
+  # waas_policy_id - (required) is a type of string
   waas_policy_id = var.waas_policy_id
 }
 ```

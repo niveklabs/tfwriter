@@ -233,31 +233,48 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_api_management_api" "this" {
-  api_management_name   = var.api_management_name
-  description           = var.description
-  display_name          = var.display_name
-  name                  = var.name
-  path                  = var.path
-  protocols             = var.protocols
-  resource_group_name   = var.resource_group_name
-  revision              = var.revision
-  service_url           = var.service_url
-  soap_pass_through     = var.soap_pass_through
+  # api_management_name - (required) is a type of string
+  api_management_name = var.api_management_name
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # name - (required) is a type of string
+  name = var.name
+  # path - (required) is a type of string
+  path = var.path
+  # protocols - (required) is a type of set of string
+  protocols = var.protocols
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # revision - (required) is a type of string
+  revision = var.revision
+  # service_url - (optional) is a type of string
+  service_url = var.service_url
+  # soap_pass_through - (optional) is a type of bool
+  soap_pass_through = var.soap_pass_through
+  # subscription_required - (optional) is a type of bool
   subscription_required = var.subscription_required
-  version               = var.version
-  version_set_id        = var.version_set_id
+  # version - (optional) is a type of string
+  version = var.version
+  # version_set_id - (optional) is a type of string
+  version_set_id = var.version_set_id
 
   dynamic "import" {
     for_each = var.import
     content {
+      # content_format - (required) is a type of string
       content_format = import.value["content_format"]
-      content_value  = import.value["content_value"]
+      # content_value - (required) is a type of string
+      content_value = import.value["content_value"]
 
       dynamic "wsdl_selector" {
         for_each = import.value.wsdl_selector
         content {
+          # endpoint_name - (required) is a type of string
           endpoint_name = wsdl_selector.value["endpoint_name"]
-          service_name  = wsdl_selector.value["service_name"]
+          # service_name - (required) is a type of string
+          service_name = wsdl_selector.value["service_name"]
         }
       }
 
@@ -267,33 +284,43 @@ resource "azurerm_api_management_api" "this" {
   dynamic "oauth2_authorization" {
     for_each = var.oauth2_authorization
     content {
+      # authorization_server_name - (required) is a type of string
       authorization_server_name = oauth2_authorization.value["authorization_server_name"]
-      scope                     = oauth2_authorization.value["scope"]
+      # scope - (optional) is a type of string
+      scope = oauth2_authorization.value["scope"]
     }
   }
 
   dynamic "openid_authentication" {
     for_each = var.openid_authentication
     content {
+      # bearer_token_sending_methods - (optional) is a type of set of string
       bearer_token_sending_methods = openid_authentication.value["bearer_token_sending_methods"]
-      openid_provider_name         = openid_authentication.value["openid_provider_name"]
+      # openid_provider_name - (required) is a type of string
+      openid_provider_name = openid_authentication.value["openid_provider_name"]
     }
   }
 
   dynamic "subscription_key_parameter_names" {
     for_each = var.subscription_key_parameter_names
     content {
+      # header - (required) is a type of string
       header = subscription_key_parameter_names.value["header"]
-      query  = subscription_key_parameter_names.value["query"]
+      # query - (required) is a type of string
+      query = subscription_key_parameter_names.value["query"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

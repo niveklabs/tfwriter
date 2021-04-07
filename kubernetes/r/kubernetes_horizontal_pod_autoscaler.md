@@ -290,24 +290,33 @@ resource "kubernetes_horizontal_pod_autoscaler" "this" {
   dynamic "metadata" {
     for_each = var.metadata
     content {
-      annotations   = metadata.value["annotations"]
+      # annotations - (optional) is a type of map of string
+      annotations = metadata.value["annotations"]
+      # generate_name - (optional) is a type of string
       generate_name = metadata.value["generate_name"]
-      labels        = metadata.value["labels"]
-      name          = metadata.value["name"]
-      namespace     = metadata.value["namespace"]
+      # labels - (optional) is a type of map of string
+      labels = metadata.value["labels"]
+      # name - (optional) is a type of string
+      name = metadata.value["name"]
+      # namespace - (optional) is a type of string
+      namespace = metadata.value["namespace"]
     }
   }
 
   dynamic "spec" {
     for_each = var.spec
     content {
-      max_replicas                      = spec.value["max_replicas"]
-      min_replicas                      = spec.value["min_replicas"]
+      # max_replicas - (required) is a type of number
+      max_replicas = spec.value["max_replicas"]
+      # min_replicas - (optional) is a type of number
+      min_replicas = spec.value["min_replicas"]
+      # target_cpu_utilization_percentage - (optional) is a type of number
       target_cpu_utilization_percentage = spec.value["target_cpu_utilization_percentage"]
 
       dynamic "metric" {
         for_each = spec.value.metric
         content {
+          # type - (required) is a type of string
           type = metric.value["type"]
 
           dynamic "external" {
@@ -317,19 +326,24 @@ resource "kubernetes_horizontal_pod_autoscaler" "this" {
               dynamic "metric" {
                 for_each = external.value.metric
                 content {
+                  # name - (required) is a type of string
                   name = metric.value["name"]
 
                   dynamic "selector" {
                     for_each = metric.value.selector
                     content {
+                      # match_labels - (optional) is a type of map of string
                       match_labels = selector.value["match_labels"]
 
                       dynamic "match_expressions" {
                         for_each = selector.value.match_expressions
                         content {
-                          key      = match_expressions.value["key"]
+                          # key - (optional) is a type of string
+                          key = match_expressions.value["key"]
+                          # operator - (optional) is a type of string
                           operator = match_expressions.value["operator"]
-                          values   = match_expressions.value["values"]
+                          # values - (optional) is a type of set of string
+                          values = match_expressions.value["values"]
                         }
                       }
 
@@ -342,10 +356,14 @@ resource "kubernetes_horizontal_pod_autoscaler" "this" {
               dynamic "target" {
                 for_each = external.value.target
                 content {
+                  # average_utilization - (optional) is a type of number
                   average_utilization = target.value["average_utilization"]
-                  average_value       = target.value["average_value"]
-                  type                = target.value["type"]
-                  value               = target.value["value"]
+                  # average_value - (optional) is a type of string
+                  average_value = target.value["average_value"]
+                  # type - (required) is a type of string
+                  type = target.value["type"]
+                  # value - (optional) is a type of string
+                  value = target.value["value"]
                 }
               }
 
@@ -359,28 +377,36 @@ resource "kubernetes_horizontal_pod_autoscaler" "this" {
               dynamic "described_object" {
                 for_each = object.value.described_object
                 content {
+                  # api_version - (required) is a type of string
                   api_version = described_object.value["api_version"]
-                  kind        = described_object.value["kind"]
-                  name        = described_object.value["name"]
+                  # kind - (required) is a type of string
+                  kind = described_object.value["kind"]
+                  # name - (required) is a type of string
+                  name = described_object.value["name"]
                 }
               }
 
               dynamic "metric" {
                 for_each = object.value.metric
                 content {
+                  # name - (required) is a type of string
                   name = metric.value["name"]
 
                   dynamic "selector" {
                     for_each = metric.value.selector
                     content {
+                      # match_labels - (optional) is a type of map of string
                       match_labels = selector.value["match_labels"]
 
                       dynamic "match_expressions" {
                         for_each = selector.value.match_expressions
                         content {
-                          key      = match_expressions.value["key"]
+                          # key - (optional) is a type of string
+                          key = match_expressions.value["key"]
+                          # operator - (optional) is a type of string
                           operator = match_expressions.value["operator"]
-                          values   = match_expressions.value["values"]
+                          # values - (optional) is a type of set of string
+                          values = match_expressions.value["values"]
                         }
                       }
 
@@ -393,10 +419,14 @@ resource "kubernetes_horizontal_pod_autoscaler" "this" {
               dynamic "target" {
                 for_each = object.value.target
                 content {
+                  # average_utilization - (optional) is a type of number
                   average_utilization = target.value["average_utilization"]
-                  average_value       = target.value["average_value"]
-                  type                = target.value["type"]
-                  value               = target.value["value"]
+                  # average_value - (optional) is a type of string
+                  average_value = target.value["average_value"]
+                  # type - (required) is a type of string
+                  type = target.value["type"]
+                  # value - (optional) is a type of string
+                  value = target.value["value"]
                 }
               }
 
@@ -410,19 +440,24 @@ resource "kubernetes_horizontal_pod_autoscaler" "this" {
               dynamic "metric" {
                 for_each = pods.value.metric
                 content {
+                  # name - (required) is a type of string
                   name = metric.value["name"]
 
                   dynamic "selector" {
                     for_each = metric.value.selector
                     content {
+                      # match_labels - (optional) is a type of map of string
                       match_labels = selector.value["match_labels"]
 
                       dynamic "match_expressions" {
                         for_each = selector.value.match_expressions
                         content {
-                          key      = match_expressions.value["key"]
+                          # key - (optional) is a type of string
+                          key = match_expressions.value["key"]
+                          # operator - (optional) is a type of string
                           operator = match_expressions.value["operator"]
-                          values   = match_expressions.value["values"]
+                          # values - (optional) is a type of set of string
+                          values = match_expressions.value["values"]
                         }
                       }
 
@@ -435,10 +470,14 @@ resource "kubernetes_horizontal_pod_autoscaler" "this" {
               dynamic "target" {
                 for_each = pods.value.target
                 content {
+                  # average_utilization - (optional) is a type of number
                   average_utilization = target.value["average_utilization"]
-                  average_value       = target.value["average_value"]
-                  type                = target.value["type"]
-                  value               = target.value["value"]
+                  # average_value - (optional) is a type of string
+                  average_value = target.value["average_value"]
+                  # type - (required) is a type of string
+                  type = target.value["type"]
+                  # value - (optional) is a type of string
+                  value = target.value["value"]
                 }
               }
 
@@ -448,15 +487,20 @@ resource "kubernetes_horizontal_pod_autoscaler" "this" {
           dynamic "resource" {
             for_each = metric.value.resource
             content {
+              # name - (required) is a type of string
               name = resource.value["name"]
 
               dynamic "target" {
                 for_each = resource.value.target
                 content {
+                  # average_utilization - (optional) is a type of number
                   average_utilization = target.value["average_utilization"]
-                  average_value       = target.value["average_value"]
-                  type                = target.value["type"]
-                  value               = target.value["value"]
+                  # average_value - (optional) is a type of string
+                  average_value = target.value["average_value"]
+                  # type - (required) is a type of string
+                  type = target.value["type"]
+                  # value - (optional) is a type of string
+                  value = target.value["value"]
                 }
               }
 
@@ -469,9 +513,12 @@ resource "kubernetes_horizontal_pod_autoscaler" "this" {
       dynamic "scale_target_ref" {
         for_each = spec.value.scale_target_ref
         content {
+          # api_version - (optional) is a type of string
           api_version = scale_target_ref.value["api_version"]
-          kind        = scale_target_ref.value["kind"]
-          name        = scale_target_ref.value["name"]
+          # kind - (required) is a type of string
+          kind = scale_target_ref.value["kind"]
+          # name - (required) is a type of string
+          name = scale_target_ref.value["name"]
         }
       }
 

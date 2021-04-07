@@ -57,7 +57,9 @@ variable "semantic_version" {
 
 ```terraform
 data "aws_serverlessapplicationrepository_application" "this" {
-  application_id   = var.application_id
+  # application_id - (required) is a type of string
+  application_id = var.application_id
+  # semantic_version - (optional) is a type of string
   semantic_version = var.semantic_version
 }
 ```

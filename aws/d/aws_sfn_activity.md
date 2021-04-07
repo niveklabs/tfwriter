@@ -58,7 +58,9 @@ variable "name" {
 
 ```terraform
 data "aws_sfn_activity" "this" {
-  arn  = var.arn
+  # arn - (optional) is a type of string
+  arn = var.arn
+  # name - (optional) is a type of string
   name = var.name
 }
 ```

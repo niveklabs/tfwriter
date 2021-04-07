@@ -83,15 +83,21 @@ variable "timeouts" {
 
 ```terraform
 resource "google_storage_hmac_key" "this" {
-  project               = var.project
+  # project - (optional) is a type of string
+  project = var.project
+  # service_account_email - (required) is a type of string
   service_account_email = var.service_account_email
-  state                 = var.state
+  # state - (optional) is a type of string
+  state = var.state
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

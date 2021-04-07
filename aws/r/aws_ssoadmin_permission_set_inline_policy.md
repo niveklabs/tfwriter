@@ -63,8 +63,11 @@ variable "permission_set_arn" {
 
 ```terraform
 resource "aws_ssoadmin_permission_set_inline_policy" "this" {
-  inline_policy      = var.inline_policy
-  instance_arn       = var.instance_arn
+  # inline_policy - (required) is a type of string
+  inline_policy = var.inline_policy
+  # instance_arn - (required) is a type of string
+  instance_arn = var.instance_arn
+  # permission_set_arn - (required) is a type of string
   permission_set_arn = var.permission_set_arn
 }
 ```

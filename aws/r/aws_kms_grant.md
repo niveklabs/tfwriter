@@ -111,18 +111,27 @@ variable "constraints" {
 
 ```terraform
 resource "aws_kms_grant" "this" {
+  # grant_creation_tokens - (optional) is a type of set of string
   grant_creation_tokens = var.grant_creation_tokens
-  grantee_principal     = var.grantee_principal
-  key_id                = var.key_id
-  name                  = var.name
-  operations            = var.operations
-  retire_on_delete      = var.retire_on_delete
-  retiring_principal    = var.retiring_principal
+  # grantee_principal - (required) is a type of string
+  grantee_principal = var.grantee_principal
+  # key_id - (required) is a type of string
+  key_id = var.key_id
+  # name - (optional) is a type of string
+  name = var.name
+  # operations - (required) is a type of set of string
+  operations = var.operations
+  # retire_on_delete - (optional) is a type of bool
+  retire_on_delete = var.retire_on_delete
+  # retiring_principal - (optional) is a type of string
+  retiring_principal = var.retiring_principal
 
   dynamic "constraints" {
     for_each = var.constraints
     content {
+      # encryption_context_equals - (optional) is a type of map of string
       encryption_context_equals = constraints.value["encryption_context_equals"]
+      # encryption_context_subset - (optional) is a type of map of string
       encryption_context_subset = constraints.value["encryption_context_subset"]
     }
   }

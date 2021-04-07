@@ -99,10 +99,14 @@ variable "tags" {
 
 ```terraform
 resource "aws_default_route_table" "this" {
+  # default_route_table_id - (required) is a type of string
   default_route_table_id = var.default_route_table_id
-  propagating_vgws       = var.propagating_vgws
-  route                  = var.route
-  tags                   = var.tags
+  # propagating_vgws - (optional) is a type of set of string
+  propagating_vgws = var.propagating_vgws
+  # route - (optional) is a type of set of object
+  route = var.route
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

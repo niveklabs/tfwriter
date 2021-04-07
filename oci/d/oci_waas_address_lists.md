@@ -107,18 +107,27 @@ variable "filter" {
 
 ```terraform
 data "oci_waas_address_lists" "this" {
-  compartment_id                        = var.compartment_id
-  ids                                   = var.ids
-  names                                 = var.names
-  states                                = var.states
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # names - (optional) is a type of list of string
+  names = var.names
+  # states - (optional) is a type of list of string
+  states = var.states
+  # time_created_greater_than_or_equal_to - (optional) is a type of string
   time_created_greater_than_or_equal_to = var.time_created_greater_than_or_equal_to
-  time_created_less_than                = var.time_created_less_than
+  # time_created_less_than - (optional) is a type of string
+  time_created_less_than = var.time_created_less_than
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

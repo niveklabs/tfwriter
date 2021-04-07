@@ -78,11 +78,16 @@ variable "target_arn" {
 
 ```terraform
 resource "aws_inspector_assessment_template" "this" {
-  duration           = var.duration
-  name               = var.name
+  # duration - (required) is a type of number
+  duration = var.duration
+  # name - (required) is a type of string
+  name = var.name
+  # rules_package_arns - (required) is a type of set of string
   rules_package_arns = var.rules_package_arns
-  tags               = var.tags
-  target_arn         = var.target_arn
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # target_arn - (required) is a type of string
+  target_arn = var.target_arn
 }
 ```
 

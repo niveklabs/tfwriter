@@ -143,22 +143,31 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_virtual_hub_connection" "this" {
-  hub_to_vitual_network_traffic_allowed          = var.hub_to_vitual_network_traffic_allowed
-  internet_security_enabled                      = var.internet_security_enabled
-  name                                           = var.name
-  remote_virtual_network_id                      = var.remote_virtual_network_id
-  virtual_hub_id                                 = var.virtual_hub_id
+  # hub_to_vitual_network_traffic_allowed - (optional) is a type of bool
+  hub_to_vitual_network_traffic_allowed = var.hub_to_vitual_network_traffic_allowed
+  # internet_security_enabled - (optional) is a type of bool
+  internet_security_enabled = var.internet_security_enabled
+  # name - (required) is a type of string
+  name = var.name
+  # remote_virtual_network_id - (required) is a type of string
+  remote_virtual_network_id = var.remote_virtual_network_id
+  # virtual_hub_id - (required) is a type of string
+  virtual_hub_id = var.virtual_hub_id
+  # vitual_network_to_hub_gateways_traffic_allowed - (optional) is a type of bool
   vitual_network_to_hub_gateways_traffic_allowed = var.vitual_network_to_hub_gateways_traffic_allowed
 
   dynamic "routing" {
     for_each = var.routing
     content {
+      # associated_route_table_id - (optional) is a type of string
       associated_route_table_id = routing.value["associated_route_table_id"]
 
       dynamic "propagated_route_table" {
         for_each = routing.value.propagated_route_table
         content {
-          labels          = propagated_route_table.value["labels"]
+          # labels - (optional) is a type of set of string
+          labels = propagated_route_table.value["labels"]
+          # route_table_ids - (optional) is a type of list of string
           route_table_ids = propagated_route_table.value["route_table_ids"]
         }
       }
@@ -166,8 +175,11 @@ resource "azurerm_virtual_hub_connection" "this" {
       dynamic "static_vnet_route" {
         for_each = routing.value.static_vnet_route
         content {
-          address_prefixes    = static_vnet_route.value["address_prefixes"]
-          name                = static_vnet_route.value["name"]
+          # address_prefixes - (optional) is a type of set of string
+          address_prefixes = static_vnet_route.value["address_prefixes"]
+          # name - (optional) is a type of string
+          name = static_vnet_route.value["name"]
+          # next_hop_ip_address - (optional) is a type of string
           next_hop_ip_address = static_vnet_route.value["next_hop_ip_address"]
         }
       }
@@ -178,9 +190,13 @@ resource "azurerm_virtual_hub_connection" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

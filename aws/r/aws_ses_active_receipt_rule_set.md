@@ -49,6 +49,7 @@ variable "rule_set_name" {
 
 ```terraform
 resource "aws_ses_active_receipt_rule_set" "this" {
+  # rule_set_name - (required) is a type of string
   rule_set_name = var.rule_set_name
 }
 ```

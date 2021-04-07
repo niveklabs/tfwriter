@@ -257,71 +257,108 @@ variable "s3_settings" {
 
 ```terraform
 resource "aws_dms_endpoint" "this" {
-  certificate_arn             = var.certificate_arn
-  database_name               = var.database_name
-  endpoint_id                 = var.endpoint_id
-  endpoint_type               = var.endpoint_type
-  engine_name                 = var.engine_name
+  # certificate_arn - (optional) is a type of string
+  certificate_arn = var.certificate_arn
+  # database_name - (optional) is a type of string
+  database_name = var.database_name
+  # endpoint_id - (required) is a type of string
+  endpoint_id = var.endpoint_id
+  # endpoint_type - (required) is a type of string
+  endpoint_type = var.endpoint_type
+  # engine_name - (required) is a type of string
+  engine_name = var.engine_name
+  # extra_connection_attributes - (optional) is a type of string
   extra_connection_attributes = var.extra_connection_attributes
-  kms_key_arn                 = var.kms_key_arn
-  password                    = var.password
-  port                        = var.port
-  server_name                 = var.server_name
-  service_access_role         = var.service_access_role
-  ssl_mode                    = var.ssl_mode
-  tags                        = var.tags
-  username                    = var.username
+  # kms_key_arn - (optional) is a type of string
+  kms_key_arn = var.kms_key_arn
+  # password - (optional) is a type of string
+  password = var.password
+  # port - (optional) is a type of number
+  port = var.port
+  # server_name - (optional) is a type of string
+  server_name = var.server_name
+  # service_access_role - (optional) is a type of string
+  service_access_role = var.service_access_role
+  # ssl_mode - (optional) is a type of string
+  ssl_mode = var.ssl_mode
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # username - (optional) is a type of string
+  username = var.username
 
   dynamic "elasticsearch_settings" {
     for_each = var.elasticsearch_settings
     content {
-      endpoint_uri               = elasticsearch_settings.value["endpoint_uri"]
-      error_retry_duration       = elasticsearch_settings.value["error_retry_duration"]
+      # endpoint_uri - (required) is a type of string
+      endpoint_uri = elasticsearch_settings.value["endpoint_uri"]
+      # error_retry_duration - (optional) is a type of number
+      error_retry_duration = elasticsearch_settings.value["error_retry_duration"]
+      # full_load_error_percentage - (optional) is a type of number
       full_load_error_percentage = elasticsearch_settings.value["full_load_error_percentage"]
-      service_access_role_arn    = elasticsearch_settings.value["service_access_role_arn"]
+      # service_access_role_arn - (required) is a type of string
+      service_access_role_arn = elasticsearch_settings.value["service_access_role_arn"]
     }
   }
 
   dynamic "kafka_settings" {
     for_each = var.kafka_settings
     content {
+      # broker - (required) is a type of string
       broker = kafka_settings.value["broker"]
-      topic  = kafka_settings.value["topic"]
+      # topic - (optional) is a type of string
+      topic = kafka_settings.value["topic"]
     }
   }
 
   dynamic "kinesis_settings" {
     for_each = var.kinesis_settings
     content {
-      message_format          = kinesis_settings.value["message_format"]
+      # message_format - (optional) is a type of string
+      message_format = kinesis_settings.value["message_format"]
+      # service_access_role_arn - (optional) is a type of string
       service_access_role_arn = kinesis_settings.value["service_access_role_arn"]
-      stream_arn              = kinesis_settings.value["stream_arn"]
+      # stream_arn - (optional) is a type of string
+      stream_arn = kinesis_settings.value["stream_arn"]
     }
   }
 
   dynamic "mongodb_settings" {
     for_each = var.mongodb_settings
     content {
-      auth_mechanism      = mongodb_settings.value["auth_mechanism"]
-      auth_source         = mongodb_settings.value["auth_source"]
-      auth_type           = mongodb_settings.value["auth_type"]
+      # auth_mechanism - (optional) is a type of string
+      auth_mechanism = mongodb_settings.value["auth_mechanism"]
+      # auth_source - (optional) is a type of string
+      auth_source = mongodb_settings.value["auth_source"]
+      # auth_type - (optional) is a type of string
+      auth_type = mongodb_settings.value["auth_type"]
+      # docs_to_investigate - (optional) is a type of string
       docs_to_investigate = mongodb_settings.value["docs_to_investigate"]
-      extract_doc_id      = mongodb_settings.value["extract_doc_id"]
-      nesting_level       = mongodb_settings.value["nesting_level"]
+      # extract_doc_id - (optional) is a type of string
+      extract_doc_id = mongodb_settings.value["extract_doc_id"]
+      # nesting_level - (optional) is a type of string
+      nesting_level = mongodb_settings.value["nesting_level"]
     }
   }
 
   dynamic "s3_settings" {
     for_each = var.s3_settings
     content {
-      bucket_folder             = s3_settings.value["bucket_folder"]
-      bucket_name               = s3_settings.value["bucket_name"]
-      compression_type          = s3_settings.value["compression_type"]
-      csv_delimiter             = s3_settings.value["csv_delimiter"]
-      csv_row_delimiter         = s3_settings.value["csv_row_delimiter"]
-      date_partition_enabled    = s3_settings.value["date_partition_enabled"]
+      # bucket_folder - (optional) is a type of string
+      bucket_folder = s3_settings.value["bucket_folder"]
+      # bucket_name - (optional) is a type of string
+      bucket_name = s3_settings.value["bucket_name"]
+      # compression_type - (optional) is a type of string
+      compression_type = s3_settings.value["compression_type"]
+      # csv_delimiter - (optional) is a type of string
+      csv_delimiter = s3_settings.value["csv_delimiter"]
+      # csv_row_delimiter - (optional) is a type of string
+      csv_row_delimiter = s3_settings.value["csv_row_delimiter"]
+      # date_partition_enabled - (optional) is a type of bool
+      date_partition_enabled = s3_settings.value["date_partition_enabled"]
+      # external_table_definition - (optional) is a type of string
       external_table_definition = s3_settings.value["external_table_definition"]
-      service_access_role_arn   = s3_settings.value["service_access_role_arn"]
+      # service_access_role_arn - (optional) is a type of string
+      service_access_role_arn = s3_settings.value["service_access_role_arn"]
     }
   }
 

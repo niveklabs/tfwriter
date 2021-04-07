@@ -82,11 +82,16 @@ variable "tags" {
 
 ```terraform
 resource "aws_glue_workflow" "this" {
+  # default_run_properties - (optional) is a type of map of string
   default_run_properties = var.default_run_properties
-  description            = var.description
-  max_concurrent_runs    = var.max_concurrent_runs
-  name                   = var.name
-  tags                   = var.tags
+  # description - (optional) is a type of string
+  description = var.description
+  # max_concurrent_runs - (optional) is a type of number
+  max_concurrent_runs = var.max_concurrent_runs
+  # name - (optional) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

@@ -56,8 +56,10 @@ variable "policy_data" {
 
 ```terraform
 resource "google_healthcare_dicom_store_iam_policy" "this" {
+  # dicom_store_id - (required) is a type of string
   dicom_store_id = var.dicom_store_id
-  policy_data    = var.policy_data
+  # policy_data - (required) is a type of string
+  policy_data = var.policy_data
 }
 ```
 

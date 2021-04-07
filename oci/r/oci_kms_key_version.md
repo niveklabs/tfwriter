@@ -82,15 +82,21 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_kms_key_version" "this" {
-  key_id              = var.key_id
+  # key_id - (required) is a type of string
+  key_id = var.key_id
+  # management_endpoint - (required) is a type of string
   management_endpoint = var.management_endpoint
-  time_of_deletion    = var.time_of_deletion
+  # time_of_deletion - (optional) is a type of string
+  time_of_deletion = var.time_of_deletion
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

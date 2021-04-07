@@ -56,7 +56,9 @@ variable "patch_group" {
 
 ```terraform
 resource "aws_ssm_patch_group" "this" {
+  # baseline_id - (required) is a type of string
   baseline_id = var.baseline_id
+  # patch_group - (required) is a type of string
   patch_group = var.patch_group
 }
 ```

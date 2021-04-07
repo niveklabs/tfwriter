@@ -205,29 +205,49 @@ variable "timeouts" {
 
 ```terraform
 resource "google_dataflow_job" "this" {
-  additional_experiments  = var.additional_experiments
+  # additional_experiments - (optional) is a type of set of string
+  additional_experiments = var.additional_experiments
+  # enable_streaming_engine - (optional) is a type of bool
   enable_streaming_engine = var.enable_streaming_engine
-  ip_configuration        = var.ip_configuration
-  kms_key_name            = var.kms_key_name
-  labels                  = var.labels
-  machine_type            = var.machine_type
-  max_workers             = var.max_workers
-  name                    = var.name
-  network                 = var.network
-  on_delete               = var.on_delete
-  parameters              = var.parameters
-  project                 = var.project
-  region                  = var.region
-  service_account_email   = var.service_account_email
-  subnetwork              = var.subnetwork
-  temp_gcs_location       = var.temp_gcs_location
-  template_gcs_path       = var.template_gcs_path
-  transform_name_mapping  = var.transform_name_mapping
-  zone                    = var.zone
+  # ip_configuration - (optional) is a type of string
+  ip_configuration = var.ip_configuration
+  # kms_key_name - (optional) is a type of string
+  kms_key_name = var.kms_key_name
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # machine_type - (optional) is a type of string
+  machine_type = var.machine_type
+  # max_workers - (optional) is a type of number
+  max_workers = var.max_workers
+  # name - (required) is a type of string
+  name = var.name
+  # network - (optional) is a type of string
+  network = var.network
+  # on_delete - (optional) is a type of string
+  on_delete = var.on_delete
+  # parameters - (optional) is a type of map of string
+  parameters = var.parameters
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
+  # service_account_email - (optional) is a type of string
+  service_account_email = var.service_account_email
+  # subnetwork - (optional) is a type of string
+  subnetwork = var.subnetwork
+  # temp_gcs_location - (required) is a type of string
+  temp_gcs_location = var.temp_gcs_location
+  # template_gcs_path - (required) is a type of string
+  template_gcs_path = var.template_gcs_path
+  # transform_name_mapping - (optional) is a type of map of string
+  transform_name_mapping = var.transform_name_mapping
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

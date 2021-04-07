@@ -77,13 +77,17 @@ variable "on_prem_config" {
 
 ```terraform
 resource "aws_datasync_location_nfs" "this" {
+  # server_hostname - (required) is a type of string
   server_hostname = var.server_hostname
-  subdirectory    = var.subdirectory
-  tags            = var.tags
+  # subdirectory - (required) is a type of string
+  subdirectory = var.subdirectory
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "on_prem_config" {
     for_each = var.on_prem_config
     content {
+      # agent_arns - (required) is a type of set of string
       agent_arns = on_prem_config.value["agent_arns"]
     }
   }

@@ -81,16 +81,22 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_data_share_dataset_kusto_database" "this" {
+  # kusto_database_id - (required) is a type of string
   kusto_database_id = var.kusto_database_id
-  name              = var.name
-  share_id          = var.share_id
+  # name - (required) is a type of string
+  name = var.name
+  # share_id - (required) is a type of string
+  share_id = var.share_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

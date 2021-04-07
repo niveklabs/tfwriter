@@ -49,6 +49,7 @@ variable "namespace" {
 
 ```terraform
 data "oci_objectstorage_namespace_metadata" "this" {
+  # namespace - (required) is a type of string
   namespace = var.namespace
 }
 ```

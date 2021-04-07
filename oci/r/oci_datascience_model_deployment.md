@@ -179,12 +179,18 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_datascience_model_deployment" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  defined_tags   = var.defined_tags
-  description    = var.description
-  display_name   = var.display_name
-  freeform_tags  = var.freeform_tags
-  project_id     = var.project_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # project_id - (required) is a type of string
+  project_id = var.project_id
 
   dynamic "category_log_details" {
     for_each = var.category_log_details
@@ -193,16 +199,20 @@ resource "oci_datascience_model_deployment" "this" {
       dynamic "access" {
         for_each = category_log_details.value.access
         content {
+          # log_group_id - (required) is a type of string
           log_group_id = access.value["log_group_id"]
-          log_id       = access.value["log_id"]
+          # log_id - (required) is a type of string
+          log_id = access.value["log_id"]
         }
       }
 
       dynamic "predict" {
         for_each = category_log_details.value.predict
         content {
+          # log_group_id - (required) is a type of string
           log_group_id = predict.value["log_group_id"]
-          log_id       = predict.value["log_id"]
+          # log_id - (required) is a type of string
+          log_id = predict.value["log_id"]
         }
       }
 
@@ -212,17 +222,21 @@ resource "oci_datascience_model_deployment" "this" {
   dynamic "model_deployment_configuration_details" {
     for_each = var.model_deployment_configuration_details
     content {
+      # deployment_type - (required) is a type of string
       deployment_type = model_deployment_configuration_details.value["deployment_type"]
 
       dynamic "model_configuration_details" {
         for_each = model_deployment_configuration_details.value.model_configuration_details
         content {
+          # bandwidth_mbps - (optional) is a type of number
           bandwidth_mbps = model_configuration_details.value["bandwidth_mbps"]
-          model_id       = model_configuration_details.value["model_id"]
+          # model_id - (required) is a type of string
+          model_id = model_configuration_details.value["model_id"]
 
           dynamic "instance_configuration" {
             for_each = model_configuration_details.value.instance_configuration
             content {
+              # instance_shape_name - (required) is a type of string
               instance_shape_name = instance_configuration.value["instance_shape_name"]
             }
           }
@@ -230,8 +244,10 @@ resource "oci_datascience_model_deployment" "this" {
           dynamic "scaling_policy" {
             for_each = model_configuration_details.value.scaling_policy
             content {
+              # instance_count - (required) is a type of number
               instance_count = scaling_policy.value["instance_count"]
-              policy_type    = scaling_policy.value["policy_type"]
+              # policy_type - (required) is a type of string
+              policy_type = scaling_policy.value["policy_type"]
             }
           }
 
@@ -244,8 +260,11 @@ resource "oci_datascience_model_deployment" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

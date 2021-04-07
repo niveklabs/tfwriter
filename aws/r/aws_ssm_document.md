@@ -121,20 +121,31 @@ variable "attachments_source" {
 
 ```terraform
 resource "aws_ssm_document" "this" {
-  content         = var.content
+  # content - (required) is a type of string
+  content = var.content
+  # document_format - (optional) is a type of string
   document_format = var.document_format
-  document_type   = var.document_type
-  name            = var.name
-  permissions     = var.permissions
-  tags            = var.tags
-  target_type     = var.target_type
-  version_name    = var.version_name
+  # document_type - (required) is a type of string
+  document_type = var.document_type
+  # name - (required) is a type of string
+  name = var.name
+  # permissions - (optional) is a type of map of string
+  permissions = var.permissions
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # target_type - (optional) is a type of string
+  target_type = var.target_type
+  # version_name - (optional) is a type of string
+  version_name = var.version_name
 
   dynamic "attachments_source" {
     for_each = var.attachments_source
     content {
-      key    = attachments_source.value["key"]
-      name   = attachments_source.value["name"]
+      # key - (required) is a type of string
+      key = attachments_source.value["key"]
+      # name - (optional) is a type of string
+      name = attachments_source.value["name"]
+      # values - (required) is a type of list of string
       values = attachments_source.value["values"]
     }
   }

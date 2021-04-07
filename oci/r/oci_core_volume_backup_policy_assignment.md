@@ -74,14 +74,19 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_volume_backup_policy_assignment" "this" {
-  asset_id  = var.asset_id
+  # asset_id - (required) is a type of string
+  asset_id = var.asset_id
+  # policy_id - (required) is a type of string
   policy_id = var.policy_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

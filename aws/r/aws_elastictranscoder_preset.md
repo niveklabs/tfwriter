@@ -221,79 +221,124 @@ variable "video_watermarks" {
 
 ```terraform
 resource "aws_elastictranscoder_preset" "this" {
-  container           = var.container
-  description         = var.description
-  name                = var.name
-  type                = var.type
+  # container - (required) is a type of string
+  container = var.container
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (optional) is a type of string
+  name = var.name
+  # type - (optional) is a type of string
+  type = var.type
+  # video_codec_options - (optional) is a type of map of string
   video_codec_options = var.video_codec_options
 
   dynamic "audio" {
     for_each = var.audio
     content {
+      # audio_packing_mode - (optional) is a type of string
       audio_packing_mode = audio.value["audio_packing_mode"]
-      bit_rate           = audio.value["bit_rate"]
-      channels           = audio.value["channels"]
-      codec              = audio.value["codec"]
-      sample_rate        = audio.value["sample_rate"]
+      # bit_rate - (optional) is a type of string
+      bit_rate = audio.value["bit_rate"]
+      # channels - (optional) is a type of string
+      channels = audio.value["channels"]
+      # codec - (optional) is a type of string
+      codec = audio.value["codec"]
+      # sample_rate - (optional) is a type of string
+      sample_rate = audio.value["sample_rate"]
     }
   }
 
   dynamic "audio_codec_options" {
     for_each = var.audio_codec_options
     content {
+      # bit_depth - (optional) is a type of string
       bit_depth = audio_codec_options.value["bit_depth"]
+      # bit_order - (optional) is a type of string
       bit_order = audio_codec_options.value["bit_order"]
-      profile   = audio_codec_options.value["profile"]
-      signed    = audio_codec_options.value["signed"]
+      # profile - (optional) is a type of string
+      profile = audio_codec_options.value["profile"]
+      # signed - (optional) is a type of string
+      signed = audio_codec_options.value["signed"]
     }
   }
 
   dynamic "thumbnails" {
     for_each = var.thumbnails
     content {
-      aspect_ratio   = thumbnails.value["aspect_ratio"]
-      format         = thumbnails.value["format"]
-      interval       = thumbnails.value["interval"]
-      max_height     = thumbnails.value["max_height"]
-      max_width      = thumbnails.value["max_width"]
+      # aspect_ratio - (optional) is a type of string
+      aspect_ratio = thumbnails.value["aspect_ratio"]
+      # format - (optional) is a type of string
+      format = thumbnails.value["format"]
+      # interval - (optional) is a type of string
+      interval = thumbnails.value["interval"]
+      # max_height - (optional) is a type of string
+      max_height = thumbnails.value["max_height"]
+      # max_width - (optional) is a type of string
+      max_width = thumbnails.value["max_width"]
+      # padding_policy - (optional) is a type of string
       padding_policy = thumbnails.value["padding_policy"]
-      resolution     = thumbnails.value["resolution"]
-      sizing_policy  = thumbnails.value["sizing_policy"]
+      # resolution - (optional) is a type of string
+      resolution = thumbnails.value["resolution"]
+      # sizing_policy - (optional) is a type of string
+      sizing_policy = thumbnails.value["sizing_policy"]
     }
   }
 
   dynamic "video" {
     for_each = var.video
     content {
-      aspect_ratio         = video.value["aspect_ratio"]
-      bit_rate             = video.value["bit_rate"]
-      codec                = video.value["codec"]
+      # aspect_ratio - (optional) is a type of string
+      aspect_ratio = video.value["aspect_ratio"]
+      # bit_rate - (optional) is a type of string
+      bit_rate = video.value["bit_rate"]
+      # codec - (optional) is a type of string
+      codec = video.value["codec"]
+      # display_aspect_ratio - (optional) is a type of string
       display_aspect_ratio = video.value["display_aspect_ratio"]
-      fixed_gop            = video.value["fixed_gop"]
-      frame_rate           = video.value["frame_rate"]
-      keyframes_max_dist   = video.value["keyframes_max_dist"]
-      max_frame_rate       = video.value["max_frame_rate"]
-      max_height           = video.value["max_height"]
-      max_width            = video.value["max_width"]
-      padding_policy       = video.value["padding_policy"]
-      resolution           = video.value["resolution"]
-      sizing_policy        = video.value["sizing_policy"]
+      # fixed_gop - (optional) is a type of string
+      fixed_gop = video.value["fixed_gop"]
+      # frame_rate - (optional) is a type of string
+      frame_rate = video.value["frame_rate"]
+      # keyframes_max_dist - (optional) is a type of string
+      keyframes_max_dist = video.value["keyframes_max_dist"]
+      # max_frame_rate - (optional) is a type of string
+      max_frame_rate = video.value["max_frame_rate"]
+      # max_height - (optional) is a type of string
+      max_height = video.value["max_height"]
+      # max_width - (optional) is a type of string
+      max_width = video.value["max_width"]
+      # padding_policy - (optional) is a type of string
+      padding_policy = video.value["padding_policy"]
+      # resolution - (optional) is a type of string
+      resolution = video.value["resolution"]
+      # sizing_policy - (optional) is a type of string
+      sizing_policy = video.value["sizing_policy"]
     }
   }
 
   dynamic "video_watermarks" {
     for_each = var.video_watermarks
     content {
-      horizontal_align  = video_watermarks.value["horizontal_align"]
+      # horizontal_align - (optional) is a type of string
+      horizontal_align = video_watermarks.value["horizontal_align"]
+      # horizontal_offset - (optional) is a type of string
       horizontal_offset = video_watermarks.value["horizontal_offset"]
-      id                = video_watermarks.value["id"]
-      max_height        = video_watermarks.value["max_height"]
-      max_width         = video_watermarks.value["max_width"]
-      opacity           = video_watermarks.value["opacity"]
-      sizing_policy     = video_watermarks.value["sizing_policy"]
-      target            = video_watermarks.value["target"]
-      vertical_align    = video_watermarks.value["vertical_align"]
-      vertical_offset   = video_watermarks.value["vertical_offset"]
+      # id - (optional) is a type of string
+      id = video_watermarks.value["id"]
+      # max_height - (optional) is a type of string
+      max_height = video_watermarks.value["max_height"]
+      # max_width - (optional) is a type of string
+      max_width = video_watermarks.value["max_width"]
+      # opacity - (optional) is a type of string
+      opacity = video_watermarks.value["opacity"]
+      # sizing_policy - (optional) is a type of string
+      sizing_policy = video_watermarks.value["sizing_policy"]
+      # target - (optional) is a type of string
+      target = video_watermarks.value["target"]
+      # vertical_align - (optional) is a type of string
+      vertical_align = video_watermarks.value["vertical_align"]
+      # vertical_offset - (optional) is a type of string
+      vertical_offset = video_watermarks.value["vertical_offset"]
     }
   }
 

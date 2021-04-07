@@ -105,18 +105,27 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_serverlessapplicationrepository_cloudformation_stack" "this" {
-  application_id   = var.application_id
-  capabilities     = var.capabilities
-  name             = var.name
-  parameters       = var.parameters
+  # application_id - (required) is a type of string
+  application_id = var.application_id
+  # capabilities - (required) is a type of set of string
+  capabilities = var.capabilities
+  # name - (required) is a type of string
+  name = var.name
+  # parameters - (optional) is a type of map of string
+  parameters = var.parameters
+  # semantic_version - (optional) is a type of string
   semantic_version = var.semantic_version
-  tags             = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

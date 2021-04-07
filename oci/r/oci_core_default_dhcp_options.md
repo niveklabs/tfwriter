@@ -110,26 +110,37 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_default_dhcp_options" "this" {
-  defined_tags               = var.defined_tags
-  display_name               = var.display_name
-  freeform_tags              = var.freeform_tags
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # manage_default_resource_id - (required) is a type of string
   manage_default_resource_id = var.manage_default_resource_id
 
   dynamic "options" {
     for_each = var.options
     content {
-      custom_dns_servers  = options.value["custom_dns_servers"]
+      # custom_dns_servers - (optional) is a type of list of string
+      custom_dns_servers = options.value["custom_dns_servers"]
+      # search_domain_names - (optional) is a type of list of string
       search_domain_names = options.value["search_domain_names"]
-      server_type         = options.value["server_type"]
-      type                = options.value["type"]
+      # server_type - (optional) is a type of string
+      server_type = options.value["server_type"]
+      # type - (required) is a type of string
+      type = options.value["type"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

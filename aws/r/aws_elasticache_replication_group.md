@@ -306,40 +306,71 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_elasticache_replication_group" "this" {
-  apply_immediately             = var.apply_immediately
-  at_rest_encryption_enabled    = var.at_rest_encryption_enabled
-  auth_token                    = var.auth_token
-  auto_minor_version_upgrade    = var.auto_minor_version_upgrade
-  automatic_failover_enabled    = var.automatic_failover_enabled
-  availability_zones            = var.availability_zones
-  engine                        = var.engine
-  engine_version                = var.engine_version
-  final_snapshot_identifier     = var.final_snapshot_identifier
-  global_replication_group_id   = var.global_replication_group_id
-  kms_key_id                    = var.kms_key_id
-  maintenance_window            = var.maintenance_window
-  multi_az_enabled              = var.multi_az_enabled
-  node_type                     = var.node_type
-  notification_topic_arn        = var.notification_topic_arn
-  number_cache_clusters         = var.number_cache_clusters
-  parameter_group_name          = var.parameter_group_name
-  port                          = var.port
+  # apply_immediately - (optional) is a type of bool
+  apply_immediately = var.apply_immediately
+  # at_rest_encryption_enabled - (optional) is a type of bool
+  at_rest_encryption_enabled = var.at_rest_encryption_enabled
+  # auth_token - (optional) is a type of string
+  auth_token = var.auth_token
+  # auto_minor_version_upgrade - (optional) is a type of bool
+  auto_minor_version_upgrade = var.auto_minor_version_upgrade
+  # automatic_failover_enabled - (optional) is a type of bool
+  automatic_failover_enabled = var.automatic_failover_enabled
+  # availability_zones - (optional) is a type of set of string
+  availability_zones = var.availability_zones
+  # engine - (optional) is a type of string
+  engine = var.engine
+  # engine_version - (optional) is a type of string
+  engine_version = var.engine_version
+  # final_snapshot_identifier - (optional) is a type of string
+  final_snapshot_identifier = var.final_snapshot_identifier
+  # global_replication_group_id - (optional) is a type of string
+  global_replication_group_id = var.global_replication_group_id
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # maintenance_window - (optional) is a type of string
+  maintenance_window = var.maintenance_window
+  # multi_az_enabled - (optional) is a type of bool
+  multi_az_enabled = var.multi_az_enabled
+  # node_type - (optional) is a type of string
+  node_type = var.node_type
+  # notification_topic_arn - (optional) is a type of string
+  notification_topic_arn = var.notification_topic_arn
+  # number_cache_clusters - (optional) is a type of number
+  number_cache_clusters = var.number_cache_clusters
+  # parameter_group_name - (optional) is a type of string
+  parameter_group_name = var.parameter_group_name
+  # port - (optional) is a type of number
+  port = var.port
+  # replication_group_description - (required) is a type of string
   replication_group_description = var.replication_group_description
-  replication_group_id          = var.replication_group_id
-  security_group_ids            = var.security_group_ids
-  security_group_names          = var.security_group_names
-  snapshot_arns                 = var.snapshot_arns
-  snapshot_name                 = var.snapshot_name
-  snapshot_retention_limit      = var.snapshot_retention_limit
-  snapshot_window               = var.snapshot_window
-  subnet_group_name             = var.subnet_group_name
-  tags                          = var.tags
-  transit_encryption_enabled    = var.transit_encryption_enabled
+  # replication_group_id - (required) is a type of string
+  replication_group_id = var.replication_group_id
+  # security_group_ids - (optional) is a type of set of string
+  security_group_ids = var.security_group_ids
+  # security_group_names - (optional) is a type of set of string
+  security_group_names = var.security_group_names
+  # snapshot_arns - (optional) is a type of set of string
+  snapshot_arns = var.snapshot_arns
+  # snapshot_name - (optional) is a type of string
+  snapshot_name = var.snapshot_name
+  # snapshot_retention_limit - (optional) is a type of number
+  snapshot_retention_limit = var.snapshot_retention_limit
+  # snapshot_window - (optional) is a type of string
+  snapshot_window = var.snapshot_window
+  # subnet_group_name - (optional) is a type of string
+  subnet_group_name = var.subnet_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # transit_encryption_enabled - (optional) is a type of bool
+  transit_encryption_enabled = var.transit_encryption_enabled
 
   dynamic "cluster_mode" {
     for_each = var.cluster_mode
     content {
-      num_node_groups         = cluster_mode.value["num_node_groups"]
+      # num_node_groups - (required) is a type of number
+      num_node_groups = cluster_mode.value["num_node_groups"]
+      # replicas_per_node_group - (required) is a type of number
       replicas_per_node_group = cluster_mode.value["replicas_per_node_group"]
     }
   }
@@ -347,8 +378,11 @@ resource "aws_elasticache_replication_group" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

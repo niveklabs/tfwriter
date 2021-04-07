@@ -166,22 +166,35 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_dax_cluster" "this" {
-  availability_zones     = var.availability_zones
-  cluster_name           = var.cluster_name
-  description            = var.description
-  iam_role_arn           = var.iam_role_arn
-  maintenance_window     = var.maintenance_window
-  node_type              = var.node_type
+  # availability_zones - (optional) is a type of set of string
+  availability_zones = var.availability_zones
+  # cluster_name - (required) is a type of string
+  cluster_name = var.cluster_name
+  # description - (optional) is a type of string
+  description = var.description
+  # iam_role_arn - (required) is a type of string
+  iam_role_arn = var.iam_role_arn
+  # maintenance_window - (optional) is a type of string
+  maintenance_window = var.maintenance_window
+  # node_type - (required) is a type of string
+  node_type = var.node_type
+  # notification_topic_arn - (optional) is a type of string
   notification_topic_arn = var.notification_topic_arn
-  parameter_group_name   = var.parameter_group_name
-  replication_factor     = var.replication_factor
-  security_group_ids     = var.security_group_ids
-  subnet_group_name      = var.subnet_group_name
-  tags                   = var.tags
+  # parameter_group_name - (optional) is a type of string
+  parameter_group_name = var.parameter_group_name
+  # replication_factor - (required) is a type of number
+  replication_factor = var.replication_factor
+  # security_group_ids - (optional) is a type of set of string
+  security_group_ids = var.security_group_ids
+  # subnet_group_name - (optional) is a type of string
+  subnet_group_name = var.subnet_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "server_side_encryption" {
     for_each = var.server_side_encryption
     content {
+      # enabled - (optional) is a type of bool
       enabled = server_side_encryption.value["enabled"]
     }
   }
@@ -189,8 +202,11 @@ resource "aws_dax_cluster" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -49,6 +49,7 @@ variable "secret_id" {
 
 ```terraform
 data "aws_secretsmanager_secret_rotation" "this" {
+  # secret_id - (required) is a type of string
   secret_id = var.secret_id
 }
 ```

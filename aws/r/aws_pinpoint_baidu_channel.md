@@ -71,10 +71,14 @@ variable "secret_key" {
 
 ```terraform
 resource "aws_pinpoint_baidu_channel" "this" {
-  api_key        = var.api_key
+  # api_key - (required) is a type of string
+  api_key = var.api_key
+  # application_id - (required) is a type of string
   application_id = var.application_id
-  enabled        = var.enabled
-  secret_key     = var.secret_key
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # secret_key - (required) is a type of string
+  secret_key = var.secret_key
 }
 ```
 

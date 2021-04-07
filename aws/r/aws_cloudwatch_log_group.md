@@ -82,11 +82,16 @@ variable "tags" {
 
 ```terraform
 resource "aws_cloudwatch_log_group" "this" {
-  kms_key_id        = var.kms_key_id
-  name              = var.name
-  name_prefix       = var.name_prefix
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # retention_in_days - (optional) is a type of number
   retention_in_days = var.retention_in_days
-  tags              = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

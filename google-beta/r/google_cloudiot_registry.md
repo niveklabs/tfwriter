@@ -145,17 +145,25 @@ variable "timeouts" {
 
 ```terraform
 resource "google_cloudiot_registry" "this" {
-  http_config               = var.http_config
-  log_level                 = var.log_level
-  mqtt_config               = var.mqtt_config
-  name                      = var.name
-  project                   = var.project
-  region                    = var.region
+  # http_config - (optional) is a type of map of string
+  http_config = var.http_config
+  # log_level - (optional) is a type of string
+  log_level = var.log_level
+  # mqtt_config - (optional) is a type of map of string
+  mqtt_config = var.mqtt_config
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
+  # state_notification_config - (optional) is a type of map of string
   state_notification_config = var.state_notification_config
 
   dynamic "credentials" {
     for_each = var.credentials
     content {
+      # public_key_certificate - (required) is a type of map of string
       public_key_certificate = credentials.value["public_key_certificate"]
     }
   }
@@ -163,7 +171,9 @@ resource "google_cloudiot_registry" "this" {
   dynamic "event_notification_configs" {
     for_each = var.event_notification_configs
     content {
+      # pubsub_topic_name - (required) is a type of string
       pubsub_topic_name = event_notification_configs.value["pubsub_topic_name"]
+      # subfolder_matches - (optional) is a type of string
       subfolder_matches = event_notification_configs.value["subfolder_matches"]
     }
   }
@@ -171,8 +181,11 @@ resource "google_cloudiot_registry" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

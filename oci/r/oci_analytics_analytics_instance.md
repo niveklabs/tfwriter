@@ -180,21 +180,33 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_analytics_analytics_instance" "this" {
-  compartment_id     = var.compartment_id
-  defined_tags       = var.defined_tags
-  description        = var.description
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # description - (optional) is a type of string
+  description = var.description
+  # email_notification - (optional) is a type of string
   email_notification = var.email_notification
-  feature_set        = var.feature_set
-  freeform_tags      = var.freeform_tags
-  idcs_access_token  = var.idcs_access_token
-  license_type       = var.license_type
-  name               = var.name
-  state              = var.state
+  # feature_set - (required) is a type of string
+  feature_set = var.feature_set
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # idcs_access_token - (required) is a type of string
+  idcs_access_token = var.idcs_access_token
+  # license_type - (required) is a type of string
+  license_type = var.license_type
+  # name - (required) is a type of string
+  name = var.name
+  # state - (optional) is a type of string
+  state = var.state
 
   dynamic "capacity" {
     for_each = var.capacity
     content {
-      capacity_type  = capacity.value["capacity_type"]
+      # capacity_type - (required) is a type of string
+      capacity_type = capacity.value["capacity_type"]
+      # capacity_value - (required) is a type of number
       capacity_value = capacity.value["capacity_value"]
     }
   }
@@ -202,15 +214,21 @@ resource "oci_analytics_analytics_instance" "this" {
   dynamic "network_endpoint_details" {
     for_each = var.network_endpoint_details
     content {
+      # network_endpoint_type - (required) is a type of string
       network_endpoint_type = network_endpoint_details.value["network_endpoint_type"]
-      subnet_id             = network_endpoint_details.value["subnet_id"]
-      vcn_id                = network_endpoint_details.value["vcn_id"]
-      whitelisted_ips       = network_endpoint_details.value["whitelisted_ips"]
+      # subnet_id - (optional) is a type of string
+      subnet_id = network_endpoint_details.value["subnet_id"]
+      # vcn_id - (optional) is a type of string
+      vcn_id = network_endpoint_details.value["vcn_id"]
+      # whitelisted_ips - (optional) is a type of list of string
+      whitelisted_ips = network_endpoint_details.value["whitelisted_ips"]
 
       dynamic "whitelisted_vcns" {
         for_each = network_endpoint_details.value.whitelisted_vcns
         content {
-          id              = whitelisted_vcns.value["id"]
+          # id - (optional) is a type of string
+          id = whitelisted_vcns.value["id"]
+          # whitelisted_ips - (optional) is a type of list of string
           whitelisted_ips = whitelisted_vcns.value["whitelisted_ips"]
         }
       }
@@ -221,8 +239,11 @@ resource "oci_analytics_analytics_instance" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

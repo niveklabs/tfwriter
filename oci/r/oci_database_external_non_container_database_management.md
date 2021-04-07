@@ -89,16 +89,23 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_database_external_non_container_database_management" "this" {
-  enable_management                  = var.enable_management
-  external_database_connector_id     = var.external_database_connector_id
+  # enable_management - (required) is a type of bool
+  enable_management = var.enable_management
+  # external_database_connector_id - (required) is a type of string
+  external_database_connector_id = var.external_database_connector_id
+  # external_non_container_database_id - (required) is a type of string
   external_non_container_database_id = var.external_non_container_database_id
-  license_model                      = var.license_model
+  # license_model - (optional) is a type of string
+  license_model = var.license_model
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

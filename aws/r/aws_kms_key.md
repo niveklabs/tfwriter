@@ -106,14 +106,22 @@ variable "tags" {
 
 ```terraform
 resource "aws_kms_key" "this" {
+  # customer_master_key_spec - (optional) is a type of string
   customer_master_key_spec = var.customer_master_key_spec
-  deletion_window_in_days  = var.deletion_window_in_days
-  description              = var.description
-  enable_key_rotation      = var.enable_key_rotation
-  is_enabled               = var.is_enabled
-  key_usage                = var.key_usage
-  policy                   = var.policy
-  tags                     = var.tags
+  # deletion_window_in_days - (optional) is a type of number
+  deletion_window_in_days = var.deletion_window_in_days
+  # description - (optional) is a type of string
+  description = var.description
+  # enable_key_rotation - (optional) is a type of bool
+  enable_key_rotation = var.enable_key_rotation
+  # is_enabled - (optional) is a type of bool
+  is_enabled = var.is_enabled
+  # key_usage - (optional) is a type of string
+  key_usage = var.key_usage
+  # policy - (optional) is a type of string
+  policy = var.policy
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

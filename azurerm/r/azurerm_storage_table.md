@@ -102,20 +102,26 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_storage_table" "this" {
-  name                 = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # storage_account_name - (required) is a type of string
   storage_account_name = var.storage_account_name
 
   dynamic "acl" {
     for_each = var.acl
     content {
+      # id - (required) is a type of string
       id = acl.value["id"]
 
       dynamic "access_policy" {
         for_each = acl.value.access_policy
         content {
-          expiry      = access_policy.value["expiry"]
+          # expiry - (required) is a type of string
+          expiry = access_policy.value["expiry"]
+          # permissions - (required) is a type of string
           permissions = access_policy.value["permissions"]
-          start       = access_policy.value["start"]
+          # start - (required) is a type of string
+          start = access_policy.value["start"]
         }
       }
 
@@ -125,9 +131,13 @@ resource "azurerm_storage_table" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

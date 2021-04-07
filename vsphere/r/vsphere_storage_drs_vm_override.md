@@ -80,11 +80,16 @@ variable "virtual_machine_id" {
 
 ```terraform
 resource "vsphere_storage_drs_vm_override" "this" {
-  datastore_cluster_id   = var.datastore_cluster_id
-  sdrs_automation_level  = var.sdrs_automation_level
-  sdrs_enabled           = var.sdrs_enabled
+  # datastore_cluster_id - (required) is a type of string
+  datastore_cluster_id = var.datastore_cluster_id
+  # sdrs_automation_level - (optional) is a type of string
+  sdrs_automation_level = var.sdrs_automation_level
+  # sdrs_enabled - (optional) is a type of string
+  sdrs_enabled = var.sdrs_enabled
+  # sdrs_intra_vm_affinity - (optional) is a type of string
   sdrs_intra_vm_affinity = var.sdrs_intra_vm_affinity
-  virtual_machine_id     = var.virtual_machine_id
+  # virtual_machine_id - (required) is a type of string
+  virtual_machine_id = var.virtual_machine_id
 }
 ```
 

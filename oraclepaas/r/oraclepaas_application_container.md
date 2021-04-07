@@ -275,41 +275,68 @@ variable "timeouts" {
 
 ```terraform
 resource "oraclepaas_application_container" "this" {
-  archive_url           = var.archive_url
-  auth_type             = var.auth_type
-  availability_domain   = var.availability_domain
-  deployment_file       = var.deployment_file
-  git_password          = var.git_password
-  git_repository        = var.git_repository
-  git_username          = var.git_username
+  # archive_url - (optional) is a type of string
+  archive_url = var.archive_url
+  # auth_type - (optional) is a type of string
+  auth_type = var.auth_type
+  # availability_domain - (optional) is a type of list of string
+  availability_domain = var.availability_domain
+  # deployment_file - (optional) is a type of string
+  deployment_file = var.deployment_file
+  # git_password - (optional) is a type of string
+  git_password = var.git_password
+  # git_repository - (optional) is a type of string
+  git_repository = var.git_repository
+  # git_username - (optional) is a type of string
+  git_username = var.git_username
+  # load_balancer_subnets - (optional) is a type of list of string
   load_balancer_subnets = var.load_balancer_subnets
-  manifest_file         = var.manifest_file
-  name                  = var.name
-  notes                 = var.notes
-  notification_email    = var.notification_email
-  region                = var.region
-  runtime               = var.runtime
-  subscription_type     = var.subscription_type
-  tags                  = var.tags
+  # manifest_file - (optional) is a type of string
+  manifest_file = var.manifest_file
+  # name - (required) is a type of string
+  name = var.name
+  # notes - (optional) is a type of string
+  notes = var.notes
+  # notification_email - (optional) is a type of string
+  notification_email = var.notification_email
+  # region - (optional) is a type of string
+  region = var.region
+  # runtime - (optional) is a type of string
+  runtime = var.runtime
+  # subscription_type - (optional) is a type of string
+  subscription_type = var.subscription_type
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "deployment" {
     for_each = var.deployment
     content {
-      environment            = deployment.value["environment"]
-      instances              = deployment.value["instances"]
+      # environment - (optional) is a type of map of string
+      environment = deployment.value["environment"]
+      # instances - (optional) is a type of number
+      instances = deployment.value["instances"]
+      # java_system_properties - (optional) is a type of map of string
       java_system_properties = deployment.value["java_system_properties"]
-      memory                 = deployment.value["memory"]
-      notes                  = deployment.value["notes"]
-      secure_environment     = deployment.value["secure_environment"]
+      # memory - (optional) is a type of string
+      memory = deployment.value["memory"]
+      # notes - (optional) is a type of string
+      notes = deployment.value["notes"]
+      # secure_environment - (optional) is a type of set of string
+      secure_environment = deployment.value["secure_environment"]
 
       dynamic "services" {
         for_each = deployment.value.services
         content {
+          # identifier - (required) is a type of string
           identifier = services.value["identifier"]
-          name       = services.value["name"]
-          password   = services.value["password"]
-          type       = services.value["type"]
-          username   = services.value["username"]
+          # name - (required) is a type of string
+          name = services.value["name"]
+          # password - (required) is a type of string
+          password = services.value["password"]
+          # type - (required) is a type of string
+          type = services.value["type"]
+          # username - (required) is a type of string
+          username = services.value["username"]
         }
       }
 
@@ -319,21 +346,33 @@ resource "oraclepaas_application_container" "this" {
   dynamic "manifest" {
     for_each = var.manifest
     content {
-      clustered             = manifest.value["clustered"]
-      command               = manifest.value["command"]
+      # clustered - (optional) is a type of bool
+      clustered = manifest.value["clustered"]
+      # command - (optional) is a type of string
+      command = manifest.value["command"]
+      # health_check_endpoint - (optional) is a type of string
       health_check_endpoint = manifest.value["health_check_endpoint"]
-      home                  = manifest.value["home"]
-      mode                  = manifest.value["mode"]
-      notes                 = manifest.value["notes"]
-      shutdown_time         = manifest.value["shutdown_time"]
-      startup_time          = manifest.value["startup_time"]
-      type                  = manifest.value["type"]
+      # home - (optional) is a type of string
+      home = manifest.value["home"]
+      # mode - (optional) is a type of string
+      mode = manifest.value["mode"]
+      # notes - (optional) is a type of string
+      notes = manifest.value["notes"]
+      # shutdown_time - (optional) is a type of number
+      shutdown_time = manifest.value["shutdown_time"]
+      # startup_time - (optional) is a type of number
+      startup_time = manifest.value["startup_time"]
+      # type - (optional) is a type of string
+      type = manifest.value["type"]
 
       dynamic "release" {
         for_each = manifest.value.release
         content {
-          build   = release.value["build"]
-          commit  = release.value["commit"]
+          # build - (optional) is a type of string
+          build = release.value["build"]
+          # commit - (optional) is a type of string
+          commit = release.value["commit"]
+          # version - (optional) is a type of string
           version = release.value["version"]
         }
       }
@@ -341,6 +380,7 @@ resource "oraclepaas_application_container" "this" {
       dynamic "runtime" {
         for_each = manifest.value.runtime
         content {
+          # major_version - (required) is a type of string
           major_version = runtime.value["major_version"]
         }
       }
@@ -351,7 +391,9 @@ resource "oraclepaas_application_container" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

@@ -56,8 +56,10 @@ variable "policy_data" {
 
 ```terraform
 resource "google_billing_account_iam_policy" "this" {
+  # billing_account_id - (required) is a type of string
   billing_account_id = var.billing_account_id
-  policy_data        = var.policy_data
+  # policy_data - (required) is a type of string
+  policy_data = var.policy_data
 }
 ```
 

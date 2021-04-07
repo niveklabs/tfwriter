@@ -121,21 +121,33 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_dedicated_host" "this" {
+  # auto_replace_on_failure - (optional) is a type of bool
   auto_replace_on_failure = var.auto_replace_on_failure
+  # dedicated_host_group_id - (required) is a type of string
   dedicated_host_group_id = var.dedicated_host_group_id
-  license_type            = var.license_type
-  location                = var.location
-  name                    = var.name
-  platform_fault_domain   = var.platform_fault_domain
-  sku_name                = var.sku_name
-  tags                    = var.tags
+  # license_type - (optional) is a type of string
+  license_type = var.license_type
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # platform_fault_domain - (required) is a type of number
+  platform_fault_domain = var.platform_fault_domain
+  # sku_name - (required) is a type of string
+  sku_name = var.sku_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

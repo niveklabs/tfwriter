@@ -72,10 +72,14 @@ variable "recommendation_name" {
 
 ```terraform
 data "oci_optimizer_recommendation_strategy" "this" {
-  compartment_id            = var.compartment_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # compartment_id_in_subtree - (required) is a type of bool
   compartment_id_in_subtree = var.compartment_id_in_subtree
-  name                      = var.name
-  recommendation_name       = var.recommendation_name
+  # name - (optional) is a type of string
+  name = var.name
+  # recommendation_name - (optional) is a type of string
+  recommendation_name = var.recommendation_name
 }
 ```
 

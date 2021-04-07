@@ -66,9 +66,12 @@ variable "on_start" {
 
 ```terraform
 resource "aws_sagemaker_notebook_instance_lifecycle_configuration" "this" {
-  name      = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # on_create - (optional) is a type of string
   on_create = var.on_create
-  on_start  = var.on_start
+  # on_start - (optional) is a type of string
+  on_start = var.on_start
 }
 ```
 

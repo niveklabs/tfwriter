@@ -49,6 +49,7 @@ variable "deployment_backup_id" {
 
 ```terraform
 data "oci_golden_gate_deployment_backup" "this" {
+  # deployment_backup_id - (required) is a type of string
   deployment_backup_id = var.deployment_backup_id
 }
 ```

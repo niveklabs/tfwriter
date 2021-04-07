@@ -163,33 +163,51 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_storage_account_blob_container_sas" "this" {
-  cache_control       = var.cache_control
-  connection_string   = var.connection_string
-  container_name      = var.container_name
+  # cache_control - (optional) is a type of string
+  cache_control = var.cache_control
+  # connection_string - (required) is a type of string
+  connection_string = var.connection_string
+  # container_name - (required) is a type of string
+  container_name = var.container_name
+  # content_disposition - (optional) is a type of string
   content_disposition = var.content_disposition
-  content_encoding    = var.content_encoding
-  content_language    = var.content_language
-  content_type        = var.content_type
-  expiry              = var.expiry
-  https_only          = var.https_only
-  ip_address          = var.ip_address
-  start               = var.start
+  # content_encoding - (optional) is a type of string
+  content_encoding = var.content_encoding
+  # content_language - (optional) is a type of string
+  content_language = var.content_language
+  # content_type - (optional) is a type of string
+  content_type = var.content_type
+  # expiry - (required) is a type of string
+  expiry = var.expiry
+  # https_only - (optional) is a type of bool
+  https_only = var.https_only
+  # ip_address - (optional) is a type of string
+  ip_address = var.ip_address
+  # start - (required) is a type of string
+  start = var.start
 
   dynamic "permissions" {
     for_each = var.permissions
     content {
-      add    = permissions.value["add"]
+      # add - (required) is a type of bool
+      add = permissions.value["add"]
+      # create - (required) is a type of bool
       create = permissions.value["create"]
+      # delete - (required) is a type of bool
       delete = permissions.value["delete"]
-      list   = permissions.value["list"]
-      read   = permissions.value["read"]
-      write  = permissions.value["write"]
+      # list - (required) is a type of bool
+      list = permissions.value["list"]
+      # read - (required) is a type of bool
+      read = permissions.value["read"]
+      # write - (required) is a type of bool
+      write = permissions.value["write"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

@@ -98,18 +98,27 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_iot_time_series_insights_access_policy" "this" {
-  description                         = var.description
-  name                                = var.name
-  principal_object_id                 = var.principal_object_id
-  roles                               = var.roles
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # principal_object_id - (required) is a type of string
+  principal_object_id = var.principal_object_id
+  # roles - (required) is a type of set of string
+  roles = var.roles
+  # time_series_insights_environment_id - (required) is a type of string
   time_series_insights_environment_id = var.time_series_insights_environment_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

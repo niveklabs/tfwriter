@@ -127,23 +127,33 @@ variable "timeouts" {
 
 ```terraform
 resource "google_bigquery_connection" "this" {
+  # connection_id - (optional) is a type of string
   connection_id = var.connection_id
-  description   = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # friendly_name - (optional) is a type of string
   friendly_name = var.friendly_name
-  location      = var.location
-  project       = var.project
+  # location - (optional) is a type of string
+  location = var.location
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "cloud_sql" {
     for_each = var.cloud_sql
     content {
-      database    = cloud_sql.value["database"]
+      # database - (required) is a type of string
+      database = cloud_sql.value["database"]
+      # instance_id - (required) is a type of string
       instance_id = cloud_sql.value["instance_id"]
-      type        = cloud_sql.value["type"]
+      # type - (required) is a type of string
+      type = cloud_sql.value["type"]
 
       dynamic "credential" {
         for_each = cloud_sql.value.credential
         content {
+          # password - (required) is a type of string
           password = credential.value["password"]
+          # username - (required) is a type of string
           username = credential.value["username"]
         }
       }
@@ -154,8 +164,11 @@ resource "google_bigquery_connection" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

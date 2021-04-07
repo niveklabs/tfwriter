@@ -49,6 +49,7 @@ variable "instance_configuration_id" {
 
 ```terraform
 data "oci_core_instance_configuration" "this" {
+  # instance_configuration_id - (required) is a type of string
   instance_configuration_id = var.instance_configuration_id
 }
 ```

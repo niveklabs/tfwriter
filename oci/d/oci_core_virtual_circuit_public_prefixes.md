@@ -75,14 +75,19 @@ variable "filter" {
 
 ```terraform
 data "oci_core_virtual_circuit_public_prefixes" "this" {
+  # verification_state - (optional) is a type of string
   verification_state = var.verification_state
+  # virtual_circuit_id - (required) is a type of string
   virtual_circuit_id = var.virtual_circuit_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

@@ -163,22 +163,31 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_cloud_guard_responder_recipe" "this" {
-  compartment_id             = var.compartment_id
-  defined_tags               = var.defined_tags
-  description                = var.description
-  display_name               = var.display_name
-  freeform_tags              = var.freeform_tags
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # source_responder_recipe_id - (required) is a type of string
   source_responder_recipe_id = var.source_responder_recipe_id
 
   dynamic "responder_rules" {
     for_each = var.responder_rules
     content {
-      compartment_id    = responder_rules.value["compartment_id"]
+      # compartment_id - (optional) is a type of string
+      compartment_id = responder_rules.value["compartment_id"]
+      # responder_rule_id - (required) is a type of string
       responder_rule_id = responder_rules.value["responder_rule_id"]
 
       dynamic "details" {
         for_each = responder_rules.value.details
         content {
+          # is_enabled - (required) is a type of bool
           is_enabled = details.value["is_enabled"]
         }
       }
@@ -189,8 +198,11 @@ resource "oci_cloud_guard_responder_recipe" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

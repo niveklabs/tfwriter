@@ -49,6 +49,7 @@ variable "blockchain_platform_id" {
 
 ```terraform
 data "oci_blockchain_blockchain_platform" "this" {
+  # blockchain_platform_id - (required) is a type of string
   blockchain_platform_id = var.blockchain_platform_id
 }
 ```

@@ -72,10 +72,14 @@ variable "value" {
 
 ```terraform
 resource "tfe_policy_set_parameter" "this" {
-  key           = var.key
+  # key - (required) is a type of string
+  key = var.key
+  # policy_set_id - (required) is a type of string
   policy_set_id = var.policy_set_id
-  sensitive     = var.sensitive
-  value         = var.value
+  # sensitive - (optional) is a type of bool
+  sensitive = var.sensitive
+  # value - (optional) is a type of string
+  value = var.value
 }
 ```
 

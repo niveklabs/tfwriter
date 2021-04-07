@@ -85,12 +85,18 @@ variable "type" {
 
 ```terraform
 resource "google_dns_record_set" "this" {
+  # managed_zone - (required) is a type of string
   managed_zone = var.managed_zone
-  name         = var.name
-  project      = var.project
-  rrdatas      = var.rrdatas
-  ttl          = var.ttl
-  type         = var.type
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # rrdatas - (required) is a type of list of string
+  rrdatas = var.rrdatas
+  # ttl - (required) is a type of number
+  ttl = var.ttl
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

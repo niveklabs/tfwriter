@@ -74,14 +74,19 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_audit_configuration" "this" {
-  compartment_id        = var.compartment_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # retention_period_days - (required) is a type of number
   retention_period_days = var.retention_period_days
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

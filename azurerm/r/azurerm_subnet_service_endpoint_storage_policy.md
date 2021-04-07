@@ -109,16 +109,23 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_subnet_service_endpoint_storage_policy" "this" {
-  location            = var.location
-  name                = var.name
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  tags                = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "definition" {
     for_each = var.definition
     content {
-      description       = definition.value["description"]
-      name              = definition.value["name"]
+      # description - (optional) is a type of string
+      description = definition.value["description"]
+      # name - (required) is a type of string
+      name = definition.value["name"]
+      # service_resources - (required) is a type of set of string
       service_resources = definition.value["service_resources"]
     }
   }
@@ -126,9 +133,13 @@ resource "azurerm_subnet_service_endpoint_storage_policy" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

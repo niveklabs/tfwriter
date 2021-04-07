@@ -64,9 +64,12 @@ variable "primary_replication_group_id" {
 
 ```terraform
 resource "aws_elasticache_global_replication_group" "this" {
+  # global_replication_group_description - (optional) is a type of string
   global_replication_group_description = var.global_replication_group_description
-  global_replication_group_id_suffix   = var.global_replication_group_id_suffix
-  primary_replication_group_id         = var.primary_replication_group_id
+  # global_replication_group_id_suffix - (required) is a type of string
+  global_replication_group_id_suffix = var.global_replication_group_id_suffix
+  # primary_replication_group_id - (required) is a type of string
+  primary_replication_group_id = var.primary_replication_group_id
 }
 ```
 

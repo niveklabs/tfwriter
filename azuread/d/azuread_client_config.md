@@ -60,6 +60,7 @@ data "azuread_client_config" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

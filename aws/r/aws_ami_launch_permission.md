@@ -56,8 +56,10 @@ variable "image_id" {
 
 ```terraform
 resource "aws_ami_launch_permission" "this" {
+  # account_id - (required) is a type of string
   account_id = var.account_id
-  image_id   = var.image_id
+  # image_id - (required) is a type of string
+  image_id = var.image_id
 }
 ```
 

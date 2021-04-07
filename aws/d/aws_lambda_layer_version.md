@@ -65,9 +65,12 @@ variable "version" {
 
 ```terraform
 data "aws_lambda_layer_version" "this" {
+  # compatible_runtime - (optional) is a type of string
   compatible_runtime = var.compatible_runtime
-  layer_name         = var.layer_name
-  version            = var.version
+  # layer_name - (required) is a type of string
+  layer_name = var.layer_name
+  # version - (optional) is a type of number
+  version = var.version
 }
 ```
 

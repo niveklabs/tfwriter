@@ -135,19 +135,29 @@ variable "workspace_properties" {
 
 ```terraform
 resource "aws_workspaces_workspace" "this" {
-  bundle_id                      = var.bundle_id
-  directory_id                   = var.directory_id
+  # bundle_id - (required) is a type of string
+  bundle_id = var.bundle_id
+  # directory_id - (required) is a type of string
+  directory_id = var.directory_id
+  # root_volume_encryption_enabled - (optional) is a type of bool
   root_volume_encryption_enabled = var.root_volume_encryption_enabled
-  tags                           = var.tags
-  user_name                      = var.user_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # user_name - (required) is a type of string
+  user_name = var.user_name
+  # user_volume_encryption_enabled - (optional) is a type of bool
   user_volume_encryption_enabled = var.user_volume_encryption_enabled
-  volume_encryption_key          = var.volume_encryption_key
+  # volume_encryption_key - (optional) is a type of string
+  volume_encryption_key = var.volume_encryption_key
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -155,11 +165,16 @@ resource "aws_workspaces_workspace" "this" {
   dynamic "workspace_properties" {
     for_each = var.workspace_properties
     content {
-      compute_type_name                         = workspace_properties.value["compute_type_name"]
-      root_volume_size_gib                      = workspace_properties.value["root_volume_size_gib"]
-      running_mode                              = workspace_properties.value["running_mode"]
+      # compute_type_name - (optional) is a type of string
+      compute_type_name = workspace_properties.value["compute_type_name"]
+      # root_volume_size_gib - (optional) is a type of number
+      root_volume_size_gib = workspace_properties.value["root_volume_size_gib"]
+      # running_mode - (optional) is a type of string
+      running_mode = workspace_properties.value["running_mode"]
+      # running_mode_auto_stop_timeout_in_minutes - (optional) is a type of number
       running_mode_auto_stop_timeout_in_minutes = workspace_properties.value["running_mode_auto_stop_timeout_in_minutes"]
-      user_volume_size_gib                      = workspace_properties.value["user_volume_size_gib"]
+      # user_volume_size_gib - (optional) is a type of number
+      user_volume_size_gib = workspace_properties.value["user_volume_size_gib"]
     }
   }
 

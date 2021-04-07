@@ -71,10 +71,14 @@ variable "enabled" {
 
 ```terraform
 resource "aws_pinpoint_adm_channel" "this" {
+  # application_id - (required) is a type of string
   application_id = var.application_id
-  client_id      = var.client_id
-  client_secret  = var.client_secret
-  enabled        = var.enabled
+  # client_id - (required) is a type of string
+  client_id = var.client_id
+  # client_secret - (required) is a type of string
+  client_secret = var.client_secret
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
 }
 ```
 

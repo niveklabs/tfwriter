@@ -135,23 +135,37 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_bot_connection" "this" {
-  bot_name              = var.bot_name
-  client_id             = var.client_id
-  client_secret         = var.client_secret
-  location              = var.location
-  name                  = var.name
-  parameters            = var.parameters
-  resource_group_name   = var.resource_group_name
-  scopes                = var.scopes
+  # bot_name - (required) is a type of string
+  bot_name = var.bot_name
+  # client_id - (required) is a type of string
+  client_id = var.client_id
+  # client_secret - (required) is a type of string
+  client_secret = var.client_secret
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # parameters - (optional) is a type of map of string
+  parameters = var.parameters
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # scopes - (optional) is a type of string
+  scopes = var.scopes
+  # service_provider_name - (required) is a type of string
   service_provider_name = var.service_provider_name
-  tags                  = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

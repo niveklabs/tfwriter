@@ -149,23 +149,33 @@ variable "vpc_config" {
 
 ```terraform
 resource "aws_sagemaker_model" "this" {
+  # enable_network_isolation - (optional) is a type of bool
   enable_network_isolation = var.enable_network_isolation
-  execution_role_arn       = var.execution_role_arn
-  name                     = var.name
-  tags                     = var.tags
+  # execution_role_arn - (required) is a type of string
+  execution_role_arn = var.execution_role_arn
+  # name - (optional) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "container" {
     for_each = var.container
     content {
+      # container_hostname - (optional) is a type of string
       container_hostname = container.value["container_hostname"]
-      environment        = container.value["environment"]
-      image              = container.value["image"]
-      mode               = container.value["mode"]
-      model_data_url     = container.value["model_data_url"]
+      # environment - (optional) is a type of map of string
+      environment = container.value["environment"]
+      # image - (required) is a type of string
+      image = container.value["image"]
+      # mode - (optional) is a type of string
+      mode = container.value["mode"]
+      # model_data_url - (optional) is a type of string
+      model_data_url = container.value["model_data_url"]
 
       dynamic "image_config" {
         for_each = container.value.image_config
         content {
+          # repository_access_mode - (required) is a type of string
           repository_access_mode = image_config.value["repository_access_mode"]
         }
       }
@@ -176,15 +186,21 @@ resource "aws_sagemaker_model" "this" {
   dynamic "primary_container" {
     for_each = var.primary_container
     content {
+      # container_hostname - (optional) is a type of string
       container_hostname = primary_container.value["container_hostname"]
-      environment        = primary_container.value["environment"]
-      image              = primary_container.value["image"]
-      mode               = primary_container.value["mode"]
-      model_data_url     = primary_container.value["model_data_url"]
+      # environment - (optional) is a type of map of string
+      environment = primary_container.value["environment"]
+      # image - (required) is a type of string
+      image = primary_container.value["image"]
+      # mode - (optional) is a type of string
+      mode = primary_container.value["mode"]
+      # model_data_url - (optional) is a type of string
+      model_data_url = primary_container.value["model_data_url"]
 
       dynamic "image_config" {
         for_each = primary_container.value.image_config
         content {
+          # repository_access_mode - (required) is a type of string
           repository_access_mode = image_config.value["repository_access_mode"]
         }
       }
@@ -195,8 +211,10 @@ resource "aws_sagemaker_model" "this" {
   dynamic "vpc_config" {
     for_each = var.vpc_config
     content {
+      # security_group_ids - (required) is a type of set of string
       security_group_ids = vpc_config.value["security_group_ids"]
-      subnets            = vpc_config.value["subnets"]
+      # subnets - (required) is a type of set of string
+      subnets = vpc_config.value["subnets"]
     }
   }
 

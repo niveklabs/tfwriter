@@ -122,21 +122,33 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_orchestrated_virtual_machine_scale_set" "this" {
-  location                     = var.location
-  name                         = var.name
-  platform_fault_domain_count  = var.platform_fault_domain_count
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # platform_fault_domain_count - (required) is a type of number
+  platform_fault_domain_count = var.platform_fault_domain_count
+  # proximity_placement_group_id - (optional) is a type of string
   proximity_placement_group_id = var.proximity_placement_group_id
-  resource_group_name          = var.resource_group_name
-  single_placement_group       = var.single_placement_group
-  tags                         = var.tags
-  zones                        = var.zones
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # single_placement_group - (optional) is a type of bool
+  single_placement_group = var.single_placement_group
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # zones - (optional) is a type of list of string
+  zones = var.zones
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

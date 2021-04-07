@@ -77,16 +77,22 @@ variable "part" {
 
 ```terraform
 resource "template_cloudinit_config" "this" {
+  # base64_encode - (optional) is a type of bool
   base64_encode = var.base64_encode
-  gzip          = var.gzip
+  # gzip - (optional) is a type of bool
+  gzip = var.gzip
 
   dynamic "part" {
     for_each = var.part
     content {
-      content      = part.value["content"]
+      # content - (required) is a type of string
+      content = part.value["content"]
+      # content_type - (optional) is a type of string
       content_type = part.value["content_type"]
-      filename     = part.value["filename"]
-      merge_type   = part.value["merge_type"]
+      # filename - (optional) is a type of string
+      filename = part.value["filename"]
+      # merge_type - (optional) is a type of string
+      merge_type = part.value["merge_type"]
     }
   }
 

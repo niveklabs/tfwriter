@@ -72,10 +72,14 @@ variable "seed" {
 
 ```terraform
 resource "random_integer" "this" {
+  # keepers - (optional) is a type of map of string
   keepers = var.keepers
-  max     = var.max
-  min     = var.min
-  seed    = var.seed
+  # max - (required) is a type of number
+  max = var.max
+  # min - (required) is a type of number
+  min = var.min
+  # seed - (optional) is a type of string
+  seed = var.seed
 }
 ```
 

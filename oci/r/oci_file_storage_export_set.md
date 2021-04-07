@@ -91,16 +91,23 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_file_storage_export_set" "this" {
-  display_name      = var.display_name
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # max_fs_stat_bytes - (optional) is a type of string
   max_fs_stat_bytes = var.max_fs_stat_bytes
+  # max_fs_stat_files - (optional) is a type of string
   max_fs_stat_files = var.max_fs_stat_files
-  mount_target_id   = var.mount_target_id
+  # mount_target_id - (required) is a type of string
+  mount_target_id = var.mount_target_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

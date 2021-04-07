@@ -49,6 +49,7 @@ variable "private_endpoint_id" {
 
 ```terraform
 data "oci_dataflow_private_endpoint" "this" {
+  # private_endpoint_id - (required) is a type of string
   private_endpoint_id = var.private_endpoint_id
 }
 ```

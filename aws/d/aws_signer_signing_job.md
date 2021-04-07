@@ -49,6 +49,7 @@ variable "job_id" {
 
 ```terraform
 data "aws_signer_signing_job" "this" {
+  # job_id - (required) is a type of string
   job_id = var.job_id
 }
 ```

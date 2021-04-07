@@ -118,20 +118,31 @@ variable "timeouts" {
 
 ```terraform
 resource "google_active_directory_domain_trust" "this" {
-  domain                   = var.domain
-  project                  = var.project
+  # domain - (required) is a type of string
+  domain = var.domain
+  # project - (optional) is a type of string
+  project = var.project
+  # selective_authentication - (optional) is a type of bool
   selective_authentication = var.selective_authentication
-  target_dns_ip_addresses  = var.target_dns_ip_addresses
-  target_domain_name       = var.target_domain_name
-  trust_direction          = var.trust_direction
-  trust_handshake_secret   = var.trust_handshake_secret
-  trust_type               = var.trust_type
+  # target_dns_ip_addresses - (required) is a type of set of string
+  target_dns_ip_addresses = var.target_dns_ip_addresses
+  # target_domain_name - (required) is a type of string
+  target_domain_name = var.target_domain_name
+  # trust_direction - (required) is a type of string
+  trust_direction = var.trust_direction
+  # trust_handshake_secret - (required) is a type of string
+  trust_handshake_secret = var.trust_handshake_secret
+  # trust_type - (required) is a type of string
+  trust_type = var.trust_type
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

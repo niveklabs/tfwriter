@@ -65,8 +65,11 @@ variable "preferred_instance_types" {
 
 ```terraform
 data "aws_outposts_outpost_instance_type" "this" {
-  arn                      = var.arn
-  instance_type            = var.instance_type
+  # arn - (required) is a type of string
+  arn = var.arn
+  # instance_type - (optional) is a type of string
+  instance_type = var.instance_type
+  # preferred_instance_types - (optional) is a type of list of string
   preferred_instance_types = var.preferred_instance_types
 }
 ```

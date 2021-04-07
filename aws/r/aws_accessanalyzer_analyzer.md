@@ -65,9 +65,12 @@ variable "type" {
 
 ```terraform
 resource "aws_accessanalyzer_analyzer" "this" {
+  # analyzer_name - (required) is a type of string
   analyzer_name = var.analyzer_name
-  tags          = var.tags
-  type          = var.type
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

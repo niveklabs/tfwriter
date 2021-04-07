@@ -227,28 +227,42 @@ variable "timeouts" {
 
 ```terraform
 resource "google_cloud_scheduler_job" "this" {
+  # attempt_deadline - (optional) is a type of string
   attempt_deadline = var.attempt_deadline
-  description      = var.description
-  name             = var.name
-  project          = var.project
-  region           = var.region
-  schedule         = var.schedule
-  time_zone        = var.time_zone
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
+  # schedule - (optional) is a type of string
+  schedule = var.schedule
+  # time_zone - (optional) is a type of string
+  time_zone = var.time_zone
 
   dynamic "app_engine_http_target" {
     for_each = var.app_engine_http_target
     content {
-      body         = app_engine_http_target.value["body"]
-      headers      = app_engine_http_target.value["headers"]
-      http_method  = app_engine_http_target.value["http_method"]
+      # body - (optional) is a type of string
+      body = app_engine_http_target.value["body"]
+      # headers - (optional) is a type of map of string
+      headers = app_engine_http_target.value["headers"]
+      # http_method - (optional) is a type of string
+      http_method = app_engine_http_target.value["http_method"]
+      # relative_uri - (required) is a type of string
       relative_uri = app_engine_http_target.value["relative_uri"]
 
       dynamic "app_engine_routing" {
         for_each = app_engine_http_target.value.app_engine_routing
         content {
+          # instance - (optional) is a type of string
           instance = app_engine_routing.value["instance"]
-          service  = app_engine_routing.value["service"]
-          version  = app_engine_routing.value["version"]
+          # service - (optional) is a type of string
+          service = app_engine_routing.value["service"]
+          # version - (optional) is a type of string
+          version = app_engine_routing.value["version"]
         }
       }
 
@@ -258,15 +272,21 @@ resource "google_cloud_scheduler_job" "this" {
   dynamic "http_target" {
     for_each = var.http_target
     content {
-      body        = http_target.value["body"]
-      headers     = http_target.value["headers"]
+      # body - (optional) is a type of string
+      body = http_target.value["body"]
+      # headers - (optional) is a type of map of string
+      headers = http_target.value["headers"]
+      # http_method - (optional) is a type of string
       http_method = http_target.value["http_method"]
-      uri         = http_target.value["uri"]
+      # uri - (required) is a type of string
+      uri = http_target.value["uri"]
 
       dynamic "oauth_token" {
         for_each = http_target.value.oauth_token
         content {
-          scope                 = oauth_token.value["scope"]
+          # scope - (optional) is a type of string
+          scope = oauth_token.value["scope"]
+          # service_account_email - (required) is a type of string
           service_account_email = oauth_token.value["service_account_email"]
         }
       }
@@ -274,7 +294,9 @@ resource "google_cloud_scheduler_job" "this" {
       dynamic "oidc_token" {
         for_each = http_target.value.oidc_token
         content {
-          audience              = oidc_token.value["audience"]
+          # audience - (optional) is a type of string
+          audience = oidc_token.value["audience"]
+          # service_account_email - (required) is a type of string
           service_account_email = oidc_token.value["service_account_email"]
         }
       }
@@ -285,8 +307,11 @@ resource "google_cloud_scheduler_job" "this" {
   dynamic "pubsub_target" {
     for_each = var.pubsub_target
     content {
+      # attributes - (optional) is a type of map of string
       attributes = pubsub_target.value["attributes"]
-      data       = pubsub_target.value["data"]
+      # data - (optional) is a type of string
+      data = pubsub_target.value["data"]
+      # topic_name - (required) is a type of string
       topic_name = pubsub_target.value["topic_name"]
     }
   }
@@ -294,19 +319,27 @@ resource "google_cloud_scheduler_job" "this" {
   dynamic "retry_config" {
     for_each = var.retry_config
     content {
+      # max_backoff_duration - (optional) is a type of string
       max_backoff_duration = retry_config.value["max_backoff_duration"]
-      max_doublings        = retry_config.value["max_doublings"]
-      max_retry_duration   = retry_config.value["max_retry_duration"]
+      # max_doublings - (optional) is a type of number
+      max_doublings = retry_config.value["max_doublings"]
+      # max_retry_duration - (optional) is a type of string
+      max_retry_duration = retry_config.value["max_retry_duration"]
+      # min_backoff_duration - (optional) is a type of string
       min_backoff_duration = retry_config.value["min_backoff_duration"]
-      retry_count          = retry_config.value["retry_count"]
+      # retry_count - (optional) is a type of number
+      retry_count = retry_config.value["retry_count"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

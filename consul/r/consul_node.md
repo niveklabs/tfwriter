@@ -80,11 +80,16 @@ variable "token" {
 
 ```terraform
 resource "consul_node" "this" {
-  address    = var.address
+  # address - (required) is a type of string
+  address = var.address
+  # datacenter - (optional) is a type of string
   datacenter = var.datacenter
-  meta       = var.meta
-  name       = var.name
-  token      = var.token
+  # meta - (optional) is a type of map of string
+  meta = var.meta
+  # name - (required) is a type of string
+  name = var.name
+  # token - (optional) is a type of string
+  token = var.token
 }
 ```
 

@@ -115,12 +115,15 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_osmanagement_managed_instance_management" "this" {
+  # managed_instance_id - (required) is a type of string
   managed_instance_id = var.managed_instance_id
 
   dynamic "child_software_sources" {
     for_each = var.child_software_sources
     content {
-      id   = child_software_sources.value["id"]
+      # id - (optional) is a type of string
+      id = child_software_sources.value["id"]
+      # name - (optional) is a type of string
       name = child_software_sources.value["name"]
     }
   }
@@ -128,15 +131,19 @@ resource "oci_osmanagement_managed_instance_management" "this" {
   dynamic "managed_instance_groups" {
     for_each = var.managed_instance_groups
     content {
+      # display_name - (optional) is a type of string
       display_name = managed_instance_groups.value["display_name"]
-      id           = managed_instance_groups.value["id"]
+      # id - (optional) is a type of string
+      id = managed_instance_groups.value["id"]
     }
   }
 
   dynamic "parent_software_source" {
     for_each = var.parent_software_source
     content {
-      id   = parent_software_source.value["id"]
+      # id - (optional) is a type of string
+      id = parent_software_source.value["id"]
+      # name - (optional) is a type of string
       name = parent_software_source.value["name"]
     }
   }
@@ -144,8 +151,11 @@ resource "oci_osmanagement_managed_instance_management" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

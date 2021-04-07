@@ -81,16 +81,22 @@ variable "condition" {
 
 ```terraform
 resource "google_organization_iam_binding" "this" {
+  # members - (required) is a type of set of string
   members = var.members
-  org_id  = var.org_id
-  role    = var.role
+  # org_id - (required) is a type of string
+  org_id = var.org_id
+  # role - (required) is a type of string
+  role = var.role
 
   dynamic "condition" {
     for_each = var.condition
     content {
+      # description - (optional) is a type of string
       description = condition.value["description"]
-      expression  = condition.value["expression"]
-      title       = condition.value["title"]
+      # expression - (required) is a type of string
+      expression = condition.value["expression"]
+      # title - (required) is a type of string
+      title = condition.value["title"]
     }
   }
 

@@ -97,22 +97,29 @@ variable "timeouts" {
 
 ```terraform
 resource "google_datastore_index" "this" {
+  # ancestor - (optional) is a type of string
   ancestor = var.ancestor
-  kind     = var.kind
-  project  = var.project
+  # kind - (required) is a type of string
+  kind = var.kind
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "properties" {
     for_each = var.properties
     content {
+      # direction - (required) is a type of string
       direction = properties.value["direction"]
-      name      = properties.value["name"]
+      # name - (required) is a type of string
+      name = properties.value["name"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

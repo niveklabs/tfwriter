@@ -86,15 +86,21 @@ variable "timeouts" {
 
 ```terraform
 resource "google_resource_manager_lien" "this" {
-  origin       = var.origin
-  parent       = var.parent
-  reason       = var.reason
+  # origin - (required) is a type of string
+  origin = var.origin
+  # parent - (required) is a type of string
+  parent = var.parent
+  # reason - (required) is a type of string
+  reason = var.reason
+  # restrictions - (required) is a type of list of string
   restrictions = var.restrictions
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

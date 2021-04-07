@@ -63,9 +63,12 @@ variable "role_arn" {
 
 ```terraform
 resource "aws_pinpoint_event_stream" "this" {
-  application_id         = var.application_id
+  # application_id - (required) is a type of string
+  application_id = var.application_id
+  # destination_stream_arn - (required) is a type of string
   destination_stream_arn = var.destination_stream_arn
-  role_arn               = var.role_arn
+  # role_arn - (required) is a type of string
+  role_arn = var.role_arn
 }
 ```
 

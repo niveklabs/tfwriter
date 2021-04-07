@@ -64,9 +64,12 @@ variable "qualifier" {
 
 ```terraform
 data "aws_lambda_invocation" "this" {
+  # function_name - (required) is a type of string
   function_name = var.function_name
-  input         = var.input
-  qualifier     = var.qualifier
+  # input - (required) is a type of string
+  input = var.input
+  # qualifier - (optional) is a type of string
+  qualifier = var.qualifier
 }
 ```
 

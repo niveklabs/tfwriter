@@ -69,14 +69,19 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_security_center_auto_provisioning" "this" {
+  # auto_provision - (required) is a type of string
   auto_provision = var.auto_provision
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -93,9 +93,12 @@ variable "oauth2_permissions" {
 
 ```terraform
 resource "azuread_service_principal" "this" {
+  # app_role_assignment_required - (optional) is a type of bool
   app_role_assignment_required = var.app_role_assignment_required
-  application_id               = var.application_id
-  tags                         = var.tags
+  # application_id - (required) is a type of string
+  application_id = var.application_id
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 
   dynamic "oauth2_permissions" {
     for_each = var.oauth2_permissions

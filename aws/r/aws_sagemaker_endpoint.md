@@ -65,9 +65,12 @@ variable "tags" {
 
 ```terraform
 resource "aws_sagemaker_endpoint" "this" {
+  # endpoint_config_name - (required) is a type of string
   endpoint_config_name = var.endpoint_config_name
-  name                 = var.name
-  tags                 = var.tags
+  # name - (optional) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

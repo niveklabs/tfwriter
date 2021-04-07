@@ -135,25 +135,36 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_compute_capacity_reservation" "this" {
-  availability_domain    = var.availability_domain
-  compartment_id         = var.compartment_id
-  defined_tags           = var.defined_tags
-  display_name           = var.display_name
-  freeform_tags          = var.freeform_tags
+  # availability_domain - (required) is a type of string
+  availability_domain = var.availability_domain
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # is_default_reservation - (optional) is a type of bool
   is_default_reservation = var.is_default_reservation
 
   dynamic "instance_reservation_configs" {
     for_each = var.instance_reservation_configs
     content {
-      fault_domain   = instance_reservation_configs.value["fault_domain"]
+      # fault_domain - (optional) is a type of string
+      fault_domain = instance_reservation_configs.value["fault_domain"]
+      # instance_shape - (required) is a type of string
       instance_shape = instance_reservation_configs.value["instance_shape"]
+      # reserved_count - (required) is a type of string
       reserved_count = instance_reservation_configs.value["reserved_count"]
 
       dynamic "instance_shape_config" {
         for_each = instance_reservation_configs.value.instance_shape_config
         content {
+          # memory_in_gbs - (optional) is a type of number
           memory_in_gbs = instance_shape_config.value["memory_in_gbs"]
-          ocpus         = instance_shape_config.value["ocpus"]
+          # ocpus - (optional) is a type of number
+          ocpus = instance_shape_config.value["ocpus"]
         }
       }
 
@@ -163,8 +174,11 @@ resource "oci_core_compute_capacity_reservation" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

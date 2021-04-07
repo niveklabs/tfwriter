@@ -49,6 +49,7 @@ variable "domain" {
 
 ```terraform
 resource "aws_ses_domain_identity" "this" {
+  # domain - (required) is a type of string
   domain = var.domain
 }
 ```

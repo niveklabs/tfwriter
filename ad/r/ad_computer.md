@@ -65,8 +65,11 @@ variable "pre2kname" {
 
 ```terraform
 resource "ad_computer" "this" {
+  # container - (optional) is a type of string
   container = var.container
-  name      = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # pre2kname - (optional) is a type of string
   pre2kname = var.pre2kname
 }
 ```

@@ -107,19 +107,29 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_virtual_hub_ip" "this" {
-  name                         = var.name
-  private_ip_address           = var.private_ip_address
+  # name - (required) is a type of string
+  name = var.name
+  # private_ip_address - (optional) is a type of string
+  private_ip_address = var.private_ip_address
+  # private_ip_allocation_method - (optional) is a type of string
   private_ip_allocation_method = var.private_ip_allocation_method
-  public_ip_address_id         = var.public_ip_address_id
-  subnet_id                    = var.subnet_id
-  virtual_hub_id               = var.virtual_hub_id
+  # public_ip_address_id - (optional) is a type of string
+  public_ip_address_id = var.public_ip_address_id
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
+  # virtual_hub_id - (required) is a type of string
+  virtual_hub_id = var.virtual_hub_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

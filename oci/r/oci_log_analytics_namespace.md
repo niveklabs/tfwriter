@@ -79,14 +79,19 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_log_analytics_namespace" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  is_onboarded   = var.is_onboarded
-  namespace      = var.namespace
+  # is_onboarded - (required) is a type of bool
+  is_onboarded = var.is_onboarded
+  # namespace - (required) is a type of string
+  namespace = var.namespace
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

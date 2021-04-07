@@ -129,17 +129,28 @@ variable "type" {
 
 ```terraform
 resource "aws_ebs_volume" "this" {
-  availability_zone    = var.availability_zone
-  encrypted            = var.encrypted
-  iops                 = var.iops
-  kms_key_id           = var.kms_key_id
+  # availability_zone - (required) is a type of string
+  availability_zone = var.availability_zone
+  # encrypted - (optional) is a type of bool
+  encrypted = var.encrypted
+  # iops - (optional) is a type of number
+  iops = var.iops
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # multi_attach_enabled - (optional) is a type of bool
   multi_attach_enabled = var.multi_attach_enabled
-  outpost_arn          = var.outpost_arn
-  size                 = var.size
-  snapshot_id          = var.snapshot_id
-  tags                 = var.tags
-  throughput           = var.throughput
-  type                 = var.type
+  # outpost_arn - (optional) is a type of string
+  outpost_arn = var.outpost_arn
+  # size - (optional) is a type of number
+  size = var.size
+  # snapshot_id - (optional) is a type of string
+  snapshot_id = var.snapshot_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # throughput - (optional) is a type of number
+  throughput = var.throughput
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

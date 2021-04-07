@@ -50,6 +50,7 @@ variable "source_type" {
 
 ```terraform
 data "aws_db_event_categories" "this" {
+  # source_type - (optional) is a type of string
   source_type = var.source_type
 }
 ```

@@ -56,8 +56,10 @@ variable "size" {
 
 ```terraform
 resource "vault_transit_secret_cache_config" "this" {
+  # backend - (required) is a type of string
   backend = var.backend
-  size    = var.size
+  # size - (required) is a type of number
+  size = var.size
 }
 ```
 

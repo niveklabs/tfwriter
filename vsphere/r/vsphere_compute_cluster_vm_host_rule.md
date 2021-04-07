@@ -95,13 +95,20 @@ variable "vm_group_name" {
 
 ```terraform
 resource "vsphere_compute_cluster_vm_host_rule" "this" {
-  affinity_host_group_name      = var.affinity_host_group_name
+  # affinity_host_group_name - (optional) is a type of string
+  affinity_host_group_name = var.affinity_host_group_name
+  # anti_affinity_host_group_name - (optional) is a type of string
   anti_affinity_host_group_name = var.anti_affinity_host_group_name
-  compute_cluster_id            = var.compute_cluster_id
-  enabled                       = var.enabled
-  mandatory                     = var.mandatory
-  name                          = var.name
-  vm_group_name                 = var.vm_group_name
+  # compute_cluster_id - (required) is a type of string
+  compute_cluster_id = var.compute_cluster_id
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # mandatory - (optional) is a type of bool
+  mandatory = var.mandatory
+  # name - (required) is a type of string
+  name = var.name
+  # vm_group_name - (required) is a type of string
+  vm_group_name = var.vm_group_name
 }
 ```
 

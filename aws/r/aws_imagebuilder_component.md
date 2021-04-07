@@ -119,16 +119,26 @@ variable "version" {
 
 ```terraform
 resource "aws_imagebuilder_component" "this" {
-  change_description    = var.change_description
-  data                  = var.data
-  description           = var.description
-  kms_key_id            = var.kms_key_id
-  name                  = var.name
-  platform              = var.platform
+  # change_description - (optional) is a type of string
+  change_description = var.change_description
+  # data - (optional) is a type of string
+  data = var.data
+  # description - (optional) is a type of string
+  description = var.description
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # name - (required) is a type of string
+  name = var.name
+  # platform - (required) is a type of string
+  platform = var.platform
+  # supported_os_versions - (optional) is a type of set of string
   supported_os_versions = var.supported_os_versions
-  tags                  = var.tags
-  uri                   = var.uri
-  version               = var.version
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # uri - (optional) is a type of string
+  uri = var.uri
+  # version - (required) is a type of string
+  version = var.version
 }
 ```
 

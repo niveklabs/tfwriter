@@ -56,8 +56,10 @@ variable "thing" {
 
 ```terraform
 resource "aws_iot_thing_principal_attachment" "this" {
+  # principal - (required) is a type of string
   principal = var.principal
-  thing     = var.thing
+  # thing - (required) is a type of string
+  thing = var.thing
 }
 ```
 

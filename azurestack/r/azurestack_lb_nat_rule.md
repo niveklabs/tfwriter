@@ -99,14 +99,22 @@ variable "resource_group_name" {
 
 ```terraform
 resource "azurestack_lb_nat_rule" "this" {
-  backend_port                   = var.backend_port
-  enable_floating_ip             = var.enable_floating_ip
+  # backend_port - (required) is a type of number
+  backend_port = var.backend_port
+  # enable_floating_ip - (optional) is a type of bool
+  enable_floating_ip = var.enable_floating_ip
+  # frontend_ip_configuration_name - (required) is a type of string
   frontend_ip_configuration_name = var.frontend_ip_configuration_name
-  frontend_port                  = var.frontend_port
-  loadbalancer_id                = var.loadbalancer_id
-  name                           = var.name
-  protocol                       = var.protocol
-  resource_group_name            = var.resource_group_name
+  # frontend_port - (required) is a type of number
+  frontend_port = var.frontend_port
+  # loadbalancer_id - (required) is a type of string
+  loadbalancer_id = var.loadbalancer_id
+  # name - (required) is a type of string
+  name = var.name
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
 }
 ```
 

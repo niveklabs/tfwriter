@@ -57,7 +57,9 @@ variable "tags" {
 
 ```terraform
 data "aws_cloudwatch_log_group" "this" {
+  # name - (required) is a type of string
   name = var.name
+  # tags - (optional) is a type of map of string
   tags = var.tags
 }
 ```

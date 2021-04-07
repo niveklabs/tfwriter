@@ -99,18 +99,27 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_relay_hybrid_connection" "this" {
-  name                          = var.name
-  relay_namespace_name          = var.relay_namespace_name
+  # name - (required) is a type of string
+  name = var.name
+  # relay_namespace_name - (required) is a type of string
+  relay_namespace_name = var.relay_namespace_name
+  # requires_client_authorization - (optional) is a type of bool
   requires_client_authorization = var.requires_client_authorization
-  resource_group_name           = var.resource_group_name
-  user_metadata                 = var.user_metadata
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # user_metadata - (optional) is a type of string
+  user_metadata = var.user_metadata
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

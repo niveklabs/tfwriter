@@ -95,13 +95,20 @@ variable "vmdk_path" {
 
 ```terraform
 resource "vsphere_virtual_disk" "this" {
-  adapter_type       = var.adapter_type
+  # adapter_type - (optional) is a type of string
+  adapter_type = var.adapter_type
+  # create_directories - (optional) is a type of bool
   create_directories = var.create_directories
-  datacenter         = var.datacenter
-  datastore          = var.datastore
-  size               = var.size
-  type               = var.type
-  vmdk_path          = var.vmdk_path
+  # datacenter - (optional) is a type of string
+  datacenter = var.datacenter
+  # datastore - (required) is a type of string
+  datastore = var.datastore
+  # size - (required) is a type of number
+  size = var.size
+  # type - (optional) is a type of string
+  type = var.type
+  # vmdk_path - (required) is a type of string
+  vmdk_path = var.vmdk_path
 }
 ```
 

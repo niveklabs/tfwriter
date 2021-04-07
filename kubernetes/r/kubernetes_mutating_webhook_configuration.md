@@ -178,37 +178,54 @@ resource "kubernetes_mutating_webhook_configuration" "this" {
   dynamic "metadata" {
     for_each = var.metadata
     content {
-      annotations   = metadata.value["annotations"]
+      # annotations - (optional) is a type of map of string
+      annotations = metadata.value["annotations"]
+      # generate_name - (optional) is a type of string
       generate_name = metadata.value["generate_name"]
-      labels        = metadata.value["labels"]
-      name          = metadata.value["name"]
+      # labels - (optional) is a type of map of string
+      labels = metadata.value["labels"]
+      # name - (optional) is a type of string
+      name = metadata.value["name"]
     }
   }
 
   dynamic "webhook" {
     for_each = var.webhook
     content {
+      # admission_review_versions - (optional) is a type of list of string
       admission_review_versions = webhook.value["admission_review_versions"]
-      failure_policy            = webhook.value["failure_policy"]
-      match_policy              = webhook.value["match_policy"]
-      name                      = webhook.value["name"]
-      reinvocation_policy       = webhook.value["reinvocation_policy"]
-      side_effects              = webhook.value["side_effects"]
-      timeout_seconds           = webhook.value["timeout_seconds"]
+      # failure_policy - (optional) is a type of string
+      failure_policy = webhook.value["failure_policy"]
+      # match_policy - (optional) is a type of string
+      match_policy = webhook.value["match_policy"]
+      # name - (required) is a type of string
+      name = webhook.value["name"]
+      # reinvocation_policy - (optional) is a type of string
+      reinvocation_policy = webhook.value["reinvocation_policy"]
+      # side_effects - (optional) is a type of string
+      side_effects = webhook.value["side_effects"]
+      # timeout_seconds - (optional) is a type of number
+      timeout_seconds = webhook.value["timeout_seconds"]
 
       dynamic "client_config" {
         for_each = webhook.value.client_config
         content {
+          # ca_bundle - (optional) is a type of string
           ca_bundle = client_config.value["ca_bundle"]
-          url       = client_config.value["url"]
+          # url - (optional) is a type of string
+          url = client_config.value["url"]
 
           dynamic "service" {
             for_each = client_config.value.service
             content {
-              name      = service.value["name"]
+              # name - (required) is a type of string
+              name = service.value["name"]
+              # namespace - (required) is a type of string
               namespace = service.value["namespace"]
-              path      = service.value["path"]
-              port      = service.value["port"]
+              # path - (optional) is a type of string
+              path = service.value["path"]
+              # port - (optional) is a type of number
+              port = service.value["port"]
             }
           }
 
@@ -218,14 +235,18 @@ resource "kubernetes_mutating_webhook_configuration" "this" {
       dynamic "namespace_selector" {
         for_each = webhook.value.namespace_selector
         content {
+          # match_labels - (optional) is a type of map of string
           match_labels = namespace_selector.value["match_labels"]
 
           dynamic "match_expressions" {
             for_each = namespace_selector.value.match_expressions
             content {
-              key      = match_expressions.value["key"]
+              # key - (optional) is a type of string
+              key = match_expressions.value["key"]
+              # operator - (optional) is a type of string
               operator = match_expressions.value["operator"]
-              values   = match_expressions.value["values"]
+              # values - (optional) is a type of set of string
+              values = match_expressions.value["values"]
             }
           }
 
@@ -235,14 +256,18 @@ resource "kubernetes_mutating_webhook_configuration" "this" {
       dynamic "object_selector" {
         for_each = webhook.value.object_selector
         content {
+          # match_labels - (optional) is a type of map of string
           match_labels = object_selector.value["match_labels"]
 
           dynamic "match_expressions" {
             for_each = object_selector.value.match_expressions
             content {
-              key      = match_expressions.value["key"]
+              # key - (optional) is a type of string
+              key = match_expressions.value["key"]
+              # operator - (optional) is a type of string
               operator = match_expressions.value["operator"]
-              values   = match_expressions.value["values"]
+              # values - (optional) is a type of set of string
+              values = match_expressions.value["values"]
             }
           }
 
@@ -252,11 +277,16 @@ resource "kubernetes_mutating_webhook_configuration" "this" {
       dynamic "rule" {
         for_each = webhook.value.rule
         content {
-          api_groups   = rule.value["api_groups"]
+          # api_groups - (required) is a type of list of string
+          api_groups = rule.value["api_groups"]
+          # api_versions - (required) is a type of list of string
           api_versions = rule.value["api_versions"]
-          operations   = rule.value["operations"]
-          resources    = rule.value["resources"]
-          scope        = rule.value["scope"]
+          # operations - (required) is a type of list of string
+          operations = rule.value["operations"]
+          # resources - (required) is a type of list of string
+          resources = rule.value["resources"]
+          # scope - (optional) is a type of string
+          scope = rule.value["scope"]
         }
       }
 

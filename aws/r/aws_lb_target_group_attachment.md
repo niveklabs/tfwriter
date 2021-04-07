@@ -72,10 +72,14 @@ variable "target_id" {
 
 ```terraform
 resource "aws_lb_target_group_attachment" "this" {
+  # availability_zone - (optional) is a type of string
   availability_zone = var.availability_zone
-  port              = var.port
-  target_group_arn  = var.target_group_arn
-  target_id         = var.target_id
+  # port - (optional) is a type of number
+  port = var.port
+  # target_group_arn - (required) is a type of string
+  target_group_arn = var.target_group_arn
+  # target_id - (required) is a type of string
+  target_id = var.target_id
 }
 ```
 

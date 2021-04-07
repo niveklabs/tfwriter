@@ -74,13 +74,17 @@ variable "filter" {
 
 ```terraform
 data "aws_internet_gateway" "this" {
+  # internet_gateway_id - (optional) is a type of string
   internet_gateway_id = var.internet_gateway_id
-  tags                = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of set of string
       values = filter.value["values"]
     }
   }

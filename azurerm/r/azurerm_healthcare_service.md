@@ -155,19 +155,29 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_healthcare_service" "this" {
+  # access_policy_object_ids - (optional) is a type of set of string
   access_policy_object_ids = var.access_policy_object_ids
-  cosmosdb_throughput      = var.cosmosdb_throughput
-  kind                     = var.kind
-  location                 = var.location
-  name                     = var.name
-  resource_group_name      = var.resource_group_name
-  tags                     = var.tags
+  # cosmosdb_throughput - (optional) is a type of number
+  cosmosdb_throughput = var.cosmosdb_throughput
+  # kind - (optional) is a type of string
+  kind = var.kind
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "authentication_configuration" {
     for_each = var.authentication_configuration
     content {
-      audience            = authentication_configuration.value["audience"]
-      authority           = authentication_configuration.value["authority"]
+      # audience - (optional) is a type of string
+      audience = authentication_configuration.value["audience"]
+      # authority - (optional) is a type of string
+      authority = authentication_configuration.value["authority"]
+      # smart_proxy_enabled - (optional) is a type of bool
       smart_proxy_enabled = authentication_configuration.value["smart_proxy_enabled"]
     }
   }
@@ -175,10 +185,15 @@ resource "azurerm_healthcare_service" "this" {
   dynamic "cors_configuration" {
     for_each = var.cors_configuration
     content {
-      allow_credentials  = cors_configuration.value["allow_credentials"]
-      allowed_headers    = cors_configuration.value["allowed_headers"]
-      allowed_methods    = cors_configuration.value["allowed_methods"]
-      allowed_origins    = cors_configuration.value["allowed_origins"]
+      # allow_credentials - (optional) is a type of bool
+      allow_credentials = cors_configuration.value["allow_credentials"]
+      # allowed_headers - (optional) is a type of set of string
+      allowed_headers = cors_configuration.value["allowed_headers"]
+      # allowed_methods - (optional) is a type of list of string
+      allowed_methods = cors_configuration.value["allowed_methods"]
+      # allowed_origins - (optional) is a type of set of string
+      allowed_origins = cors_configuration.value["allowed_origins"]
+      # max_age_in_seconds - (optional) is a type of number
       max_age_in_seconds = cors_configuration.value["max_age_in_seconds"]
     }
   }
@@ -186,9 +201,13 @@ resource "azurerm_healthcare_service" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

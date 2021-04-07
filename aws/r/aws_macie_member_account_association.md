@@ -49,6 +49,7 @@ variable "member_account_id" {
 
 ```terraform
 resource "aws_macie_member_account_association" "this" {
+  # member_account_id - (required) is a type of string
   member_account_id = var.member_account_id
 }
 ```

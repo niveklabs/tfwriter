@@ -167,32 +167,49 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_load_balancer_listener" "this" {
+  # default_backend_set_name - (required) is a type of string
   default_backend_set_name = var.default_backend_set_name
-  hostname_names           = var.hostname_names
-  load_balancer_id         = var.load_balancer_id
-  name                     = var.name
-  path_route_set_name      = var.path_route_set_name
-  port                     = var.port
-  protocol                 = var.protocol
-  routing_policy_name      = var.routing_policy_name
-  rule_set_names           = var.rule_set_names
+  # hostname_names - (optional) is a type of list of string
+  hostname_names = var.hostname_names
+  # load_balancer_id - (required) is a type of string
+  load_balancer_id = var.load_balancer_id
+  # name - (required) is a type of string
+  name = var.name
+  # path_route_set_name - (optional) is a type of string
+  path_route_set_name = var.path_route_set_name
+  # port - (required) is a type of number
+  port = var.port
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # routing_policy_name - (optional) is a type of string
+  routing_policy_name = var.routing_policy_name
+  # rule_set_names - (optional) is a type of list of string
+  rule_set_names = var.rule_set_names
 
   dynamic "connection_configuration" {
     for_each = var.connection_configuration
     content {
+      # backend_tcp_proxy_protocol_version - (optional) is a type of number
       backend_tcp_proxy_protocol_version = connection_configuration.value["backend_tcp_proxy_protocol_version"]
-      idle_timeout_in_seconds            = connection_configuration.value["idle_timeout_in_seconds"]
+      # idle_timeout_in_seconds - (required) is a type of string
+      idle_timeout_in_seconds = connection_configuration.value["idle_timeout_in_seconds"]
     }
   }
 
   dynamic "ssl_configuration" {
     for_each = var.ssl_configuration
     content {
-      certificate_name        = ssl_configuration.value["certificate_name"]
-      cipher_suite_name       = ssl_configuration.value["cipher_suite_name"]
-      protocols               = ssl_configuration.value["protocols"]
+      # certificate_name - (required) is a type of string
+      certificate_name = ssl_configuration.value["certificate_name"]
+      # cipher_suite_name - (optional) is a type of string
+      cipher_suite_name = ssl_configuration.value["cipher_suite_name"]
+      # protocols - (optional) is a type of list of string
+      protocols = ssl_configuration.value["protocols"]
+      # server_order_preference - (optional) is a type of string
       server_order_preference = ssl_configuration.value["server_order_preference"]
-      verify_depth            = ssl_configuration.value["verify_depth"]
+      # verify_depth - (optional) is a type of number
+      verify_depth = ssl_configuration.value["verify_depth"]
+      # verify_peer_certificate - (optional) is a type of bool
       verify_peer_certificate = ssl_configuration.value["verify_peer_certificate"]
     }
   }
@@ -200,8 +217,11 @@ resource "oci_load_balancer_listener" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

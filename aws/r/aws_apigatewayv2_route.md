@@ -144,23 +144,36 @@ variable "request_parameter" {
 
 ```terraform
 resource "aws_apigatewayv2_route" "this" {
-  api_id                              = var.api_id
-  api_key_required                    = var.api_key_required
-  authorization_scopes                = var.authorization_scopes
-  authorization_type                  = var.authorization_type
-  authorizer_id                       = var.authorizer_id
-  model_selection_expression          = var.model_selection_expression
-  operation_name                      = var.operation_name
-  request_models                      = var.request_models
-  route_key                           = var.route_key
+  # api_id - (required) is a type of string
+  api_id = var.api_id
+  # api_key_required - (optional) is a type of bool
+  api_key_required = var.api_key_required
+  # authorization_scopes - (optional) is a type of set of string
+  authorization_scopes = var.authorization_scopes
+  # authorization_type - (optional) is a type of string
+  authorization_type = var.authorization_type
+  # authorizer_id - (optional) is a type of string
+  authorizer_id = var.authorizer_id
+  # model_selection_expression - (optional) is a type of string
+  model_selection_expression = var.model_selection_expression
+  # operation_name - (optional) is a type of string
+  operation_name = var.operation_name
+  # request_models - (optional) is a type of map of string
+  request_models = var.request_models
+  # route_key - (required) is a type of string
+  route_key = var.route_key
+  # route_response_selection_expression - (optional) is a type of string
   route_response_selection_expression = var.route_response_selection_expression
-  target                              = var.target
+  # target - (optional) is a type of string
+  target = var.target
 
   dynamic "request_parameter" {
     for_each = var.request_parameter
     content {
+      # request_parameter_key - (required) is a type of string
       request_parameter_key = request_parameter.value["request_parameter_key"]
-      required              = request_parameter.value["required"]
+      # required - (required) is a type of bool
+      required = request_parameter.value["required"]
     }
   }
 

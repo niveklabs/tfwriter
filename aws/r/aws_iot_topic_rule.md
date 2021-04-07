@@ -596,59 +596,87 @@ variable "step_functions" {
 
 ```terraform
 resource "aws_iot_topic_rule" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  enabled     = var.enabled
-  name        = var.name
-  sql         = var.sql
+  # enabled - (required) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
+  # sql - (required) is a type of string
+  sql = var.sql
+  # sql_version - (required) is a type of string
   sql_version = var.sql_version
-  tags        = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "cloudwatch_alarm" {
     for_each = var.cloudwatch_alarm
     content {
-      alarm_name   = cloudwatch_alarm.value["alarm_name"]
-      role_arn     = cloudwatch_alarm.value["role_arn"]
+      # alarm_name - (required) is a type of string
+      alarm_name = cloudwatch_alarm.value["alarm_name"]
+      # role_arn - (required) is a type of string
+      role_arn = cloudwatch_alarm.value["role_arn"]
+      # state_reason - (required) is a type of string
       state_reason = cloudwatch_alarm.value["state_reason"]
-      state_value  = cloudwatch_alarm.value["state_value"]
+      # state_value - (required) is a type of string
+      state_value = cloudwatch_alarm.value["state_value"]
     }
   }
 
   dynamic "cloudwatch_metric" {
     for_each = var.cloudwatch_metric
     content {
-      metric_name      = cloudwatch_metric.value["metric_name"]
+      # metric_name - (required) is a type of string
+      metric_name = cloudwatch_metric.value["metric_name"]
+      # metric_namespace - (required) is a type of string
       metric_namespace = cloudwatch_metric.value["metric_namespace"]
+      # metric_timestamp - (optional) is a type of string
       metric_timestamp = cloudwatch_metric.value["metric_timestamp"]
-      metric_unit      = cloudwatch_metric.value["metric_unit"]
-      metric_value     = cloudwatch_metric.value["metric_value"]
-      role_arn         = cloudwatch_metric.value["role_arn"]
+      # metric_unit - (required) is a type of string
+      metric_unit = cloudwatch_metric.value["metric_unit"]
+      # metric_value - (required) is a type of string
+      metric_value = cloudwatch_metric.value["metric_value"]
+      # role_arn - (required) is a type of string
+      role_arn = cloudwatch_metric.value["role_arn"]
     }
   }
 
   dynamic "dynamodb" {
     for_each = var.dynamodb
     content {
-      hash_key_field  = dynamodb.value["hash_key_field"]
-      hash_key_type   = dynamodb.value["hash_key_type"]
-      hash_key_value  = dynamodb.value["hash_key_value"]
-      operation       = dynamodb.value["operation"]
-      payload_field   = dynamodb.value["payload_field"]
+      # hash_key_field - (required) is a type of string
+      hash_key_field = dynamodb.value["hash_key_field"]
+      # hash_key_type - (optional) is a type of string
+      hash_key_type = dynamodb.value["hash_key_type"]
+      # hash_key_value - (required) is a type of string
+      hash_key_value = dynamodb.value["hash_key_value"]
+      # operation - (optional) is a type of string
+      operation = dynamodb.value["operation"]
+      # payload_field - (optional) is a type of string
+      payload_field = dynamodb.value["payload_field"]
+      # range_key_field - (optional) is a type of string
       range_key_field = dynamodb.value["range_key_field"]
-      range_key_type  = dynamodb.value["range_key_type"]
+      # range_key_type - (optional) is a type of string
+      range_key_type = dynamodb.value["range_key_type"]
+      # range_key_value - (optional) is a type of string
       range_key_value = dynamodb.value["range_key_value"]
-      role_arn        = dynamodb.value["role_arn"]
-      table_name      = dynamodb.value["table_name"]
+      # role_arn - (required) is a type of string
+      role_arn = dynamodb.value["role_arn"]
+      # table_name - (required) is a type of string
+      table_name = dynamodb.value["table_name"]
     }
   }
 
   dynamic "dynamodbv2" {
     for_each = var.dynamodbv2
     content {
+      # role_arn - (required) is a type of string
       role_arn = dynamodbv2.value["role_arn"]
 
       dynamic "put_item" {
         for_each = dynamodbv2.value.put_item
         content {
+          # table_name - (required) is a type of string
           table_name = put_item.value["table_name"]
         }
       }
@@ -659,11 +687,16 @@ resource "aws_iot_topic_rule" "this" {
   dynamic "elasticsearch" {
     for_each = var.elasticsearch
     content {
+      # endpoint - (required) is a type of string
       endpoint = elasticsearch.value["endpoint"]
-      id       = elasticsearch.value["id"]
-      index    = elasticsearch.value["index"]
+      # id - (required) is a type of string
+      id = elasticsearch.value["id"]
+      # index - (required) is a type of string
+      index = elasticsearch.value["index"]
+      # role_arn - (required) is a type of string
       role_arn = elasticsearch.value["role_arn"]
-      type     = elasticsearch.value["type"]
+      # type - (required) is a type of string
+      type = elasticsearch.value["type"]
     }
   }
 
@@ -674,49 +707,71 @@ resource "aws_iot_topic_rule" "this" {
       dynamic "cloudwatch_alarm" {
         for_each = error_action.value.cloudwatch_alarm
         content {
-          alarm_name   = cloudwatch_alarm.value["alarm_name"]
-          role_arn     = cloudwatch_alarm.value["role_arn"]
+          # alarm_name - (required) is a type of string
+          alarm_name = cloudwatch_alarm.value["alarm_name"]
+          # role_arn - (required) is a type of string
+          role_arn = cloudwatch_alarm.value["role_arn"]
+          # state_reason - (required) is a type of string
           state_reason = cloudwatch_alarm.value["state_reason"]
-          state_value  = cloudwatch_alarm.value["state_value"]
+          # state_value - (required) is a type of string
+          state_value = cloudwatch_alarm.value["state_value"]
         }
       }
 
       dynamic "cloudwatch_metric" {
         for_each = error_action.value.cloudwatch_metric
         content {
-          metric_name      = cloudwatch_metric.value["metric_name"]
+          # metric_name - (required) is a type of string
+          metric_name = cloudwatch_metric.value["metric_name"]
+          # metric_namespace - (required) is a type of string
           metric_namespace = cloudwatch_metric.value["metric_namespace"]
+          # metric_timestamp - (optional) is a type of string
           metric_timestamp = cloudwatch_metric.value["metric_timestamp"]
-          metric_unit      = cloudwatch_metric.value["metric_unit"]
-          metric_value     = cloudwatch_metric.value["metric_value"]
-          role_arn         = cloudwatch_metric.value["role_arn"]
+          # metric_unit - (required) is a type of string
+          metric_unit = cloudwatch_metric.value["metric_unit"]
+          # metric_value - (required) is a type of string
+          metric_value = cloudwatch_metric.value["metric_value"]
+          # role_arn - (required) is a type of string
+          role_arn = cloudwatch_metric.value["role_arn"]
         }
       }
 
       dynamic "dynamodb" {
         for_each = error_action.value.dynamodb
         content {
-          hash_key_field  = dynamodb.value["hash_key_field"]
-          hash_key_type   = dynamodb.value["hash_key_type"]
-          hash_key_value  = dynamodb.value["hash_key_value"]
-          operation       = dynamodb.value["operation"]
-          payload_field   = dynamodb.value["payload_field"]
+          # hash_key_field - (required) is a type of string
+          hash_key_field = dynamodb.value["hash_key_field"]
+          # hash_key_type - (optional) is a type of string
+          hash_key_type = dynamodb.value["hash_key_type"]
+          # hash_key_value - (required) is a type of string
+          hash_key_value = dynamodb.value["hash_key_value"]
+          # operation - (optional) is a type of string
+          operation = dynamodb.value["operation"]
+          # payload_field - (optional) is a type of string
+          payload_field = dynamodb.value["payload_field"]
+          # range_key_field - (optional) is a type of string
           range_key_field = dynamodb.value["range_key_field"]
-          range_key_type  = dynamodb.value["range_key_type"]
+          # range_key_type - (optional) is a type of string
+          range_key_type = dynamodb.value["range_key_type"]
+          # range_key_value - (optional) is a type of string
           range_key_value = dynamodb.value["range_key_value"]
-          role_arn        = dynamodb.value["role_arn"]
-          table_name      = dynamodb.value["table_name"]
+          # role_arn - (required) is a type of string
+          role_arn = dynamodb.value["role_arn"]
+          # table_name - (required) is a type of string
+          table_name = dynamodb.value["table_name"]
         }
       }
 
       dynamic "dynamodbv2" {
         for_each = error_action.value.dynamodbv2
         content {
+          # role_arn - (required) is a type of string
           role_arn = dynamodbv2.value["role_arn"]
 
           dynamic "put_item" {
             for_each = dynamodbv2.value.put_item
             content {
+              # table_name - (required) is a type of string
               table_name = put_item.value["table_name"]
             }
           }
@@ -727,52 +782,69 @@ resource "aws_iot_topic_rule" "this" {
       dynamic "elasticsearch" {
         for_each = error_action.value.elasticsearch
         content {
+          # endpoint - (required) is a type of string
           endpoint = elasticsearch.value["endpoint"]
-          id       = elasticsearch.value["id"]
-          index    = elasticsearch.value["index"]
+          # id - (required) is a type of string
+          id = elasticsearch.value["id"]
+          # index - (required) is a type of string
+          index = elasticsearch.value["index"]
+          # role_arn - (required) is a type of string
           role_arn = elasticsearch.value["role_arn"]
-          type     = elasticsearch.value["type"]
+          # type - (required) is a type of string
+          type = elasticsearch.value["type"]
         }
       }
 
       dynamic "firehose" {
         for_each = error_action.value.firehose
         content {
+          # delivery_stream_name - (required) is a type of string
           delivery_stream_name = firehose.value["delivery_stream_name"]
-          role_arn             = firehose.value["role_arn"]
-          separator            = firehose.value["separator"]
+          # role_arn - (required) is a type of string
+          role_arn = firehose.value["role_arn"]
+          # separator - (optional) is a type of string
+          separator = firehose.value["separator"]
         }
       }
 
       dynamic "iot_analytics" {
         for_each = error_action.value.iot_analytics
         content {
+          # channel_name - (required) is a type of string
           channel_name = iot_analytics.value["channel_name"]
-          role_arn     = iot_analytics.value["role_arn"]
+          # role_arn - (required) is a type of string
+          role_arn = iot_analytics.value["role_arn"]
         }
       }
 
       dynamic "iot_events" {
         for_each = error_action.value.iot_events
         content {
+          # input_name - (required) is a type of string
           input_name = iot_events.value["input_name"]
+          # message_id - (optional) is a type of string
           message_id = iot_events.value["message_id"]
-          role_arn   = iot_events.value["role_arn"]
+          # role_arn - (required) is a type of string
+          role_arn = iot_events.value["role_arn"]
         }
       }
 
       dynamic "kinesis" {
         for_each = error_action.value.kinesis
         content {
+          # partition_key - (optional) is a type of string
           partition_key = kinesis.value["partition_key"]
-          role_arn      = kinesis.value["role_arn"]
-          stream_name   = kinesis.value["stream_name"]
+          # role_arn - (required) is a type of string
+          role_arn = kinesis.value["role_arn"]
+          # stream_name - (required) is a type of string
+          stream_name = kinesis.value["stream_name"]
         }
       }
 
       dynamic "lambda" {
         for_each = error_action.value.lambda
         content {
+          # function_arn - (required) is a type of string
           function_arn = lambda.value["function_arn"]
         }
       }
@@ -780,35 +852,47 @@ resource "aws_iot_topic_rule" "this" {
       dynamic "republish" {
         for_each = error_action.value.republish
         content {
-          qos      = republish.value["qos"]
+          # qos - (optional) is a type of number
+          qos = republish.value["qos"]
+          # role_arn - (required) is a type of string
           role_arn = republish.value["role_arn"]
-          topic    = republish.value["topic"]
+          # topic - (required) is a type of string
+          topic = republish.value["topic"]
         }
       }
 
       dynamic "s3" {
         for_each = error_action.value.s3
         content {
+          # bucket_name - (required) is a type of string
           bucket_name = s3.value["bucket_name"]
-          key         = s3.value["key"]
-          role_arn    = s3.value["role_arn"]
+          # key - (required) is a type of string
+          key = s3.value["key"]
+          # role_arn - (required) is a type of string
+          role_arn = s3.value["role_arn"]
         }
       }
 
       dynamic "sns" {
         for_each = error_action.value.sns
         content {
+          # message_format - (optional) is a type of string
           message_format = sns.value["message_format"]
-          role_arn       = sns.value["role_arn"]
-          target_arn     = sns.value["target_arn"]
+          # role_arn - (required) is a type of string
+          role_arn = sns.value["role_arn"]
+          # target_arn - (required) is a type of string
+          target_arn = sns.value["target_arn"]
         }
       }
 
       dynamic "sqs" {
         for_each = error_action.value.sqs
         content {
-          queue_url  = sqs.value["queue_url"]
-          role_arn   = sqs.value["role_arn"]
+          # queue_url - (required) is a type of string
+          queue_url = sqs.value["queue_url"]
+          # role_arn - (required) is a type of string
+          role_arn = sqs.value["role_arn"]
+          # use_base64 - (required) is a type of bool
           use_base64 = sqs.value["use_base64"]
         }
       }
@@ -816,9 +900,12 @@ resource "aws_iot_topic_rule" "this" {
       dynamic "step_functions" {
         for_each = error_action.value.step_functions
         content {
+          # execution_name_prefix - (optional) is a type of string
           execution_name_prefix = step_functions.value["execution_name_prefix"]
-          role_arn              = step_functions.value["role_arn"]
-          state_machine_name    = step_functions.value["state_machine_name"]
+          # role_arn - (required) is a type of string
+          role_arn = step_functions.value["role_arn"]
+          # state_machine_name - (required) is a type of string
+          state_machine_name = step_functions.value["state_machine_name"]
         }
       }
 
@@ -828,41 +915,53 @@ resource "aws_iot_topic_rule" "this" {
   dynamic "firehose" {
     for_each = var.firehose
     content {
+      # delivery_stream_name - (required) is a type of string
       delivery_stream_name = firehose.value["delivery_stream_name"]
-      role_arn             = firehose.value["role_arn"]
-      separator            = firehose.value["separator"]
+      # role_arn - (required) is a type of string
+      role_arn = firehose.value["role_arn"]
+      # separator - (optional) is a type of string
+      separator = firehose.value["separator"]
     }
   }
 
   dynamic "iot_analytics" {
     for_each = var.iot_analytics
     content {
+      # channel_name - (required) is a type of string
       channel_name = iot_analytics.value["channel_name"]
-      role_arn     = iot_analytics.value["role_arn"]
+      # role_arn - (required) is a type of string
+      role_arn = iot_analytics.value["role_arn"]
     }
   }
 
   dynamic "iot_events" {
     for_each = var.iot_events
     content {
+      # input_name - (required) is a type of string
       input_name = iot_events.value["input_name"]
+      # message_id - (optional) is a type of string
       message_id = iot_events.value["message_id"]
-      role_arn   = iot_events.value["role_arn"]
+      # role_arn - (required) is a type of string
+      role_arn = iot_events.value["role_arn"]
     }
   }
 
   dynamic "kinesis" {
     for_each = var.kinesis
     content {
+      # partition_key - (optional) is a type of string
       partition_key = kinesis.value["partition_key"]
-      role_arn      = kinesis.value["role_arn"]
-      stream_name   = kinesis.value["stream_name"]
+      # role_arn - (required) is a type of string
+      role_arn = kinesis.value["role_arn"]
+      # stream_name - (required) is a type of string
+      stream_name = kinesis.value["stream_name"]
     }
   }
 
   dynamic "lambda" {
     for_each = var.lambda
     content {
+      # function_arn - (required) is a type of string
       function_arn = lambda.value["function_arn"]
     }
   }
@@ -870,35 +969,47 @@ resource "aws_iot_topic_rule" "this" {
   dynamic "republish" {
     for_each = var.republish
     content {
-      qos      = republish.value["qos"]
+      # qos - (optional) is a type of number
+      qos = republish.value["qos"]
+      # role_arn - (required) is a type of string
       role_arn = republish.value["role_arn"]
-      topic    = republish.value["topic"]
+      # topic - (required) is a type of string
+      topic = republish.value["topic"]
     }
   }
 
   dynamic "s3" {
     for_each = var.s3
     content {
+      # bucket_name - (required) is a type of string
       bucket_name = s3.value["bucket_name"]
-      key         = s3.value["key"]
-      role_arn    = s3.value["role_arn"]
+      # key - (required) is a type of string
+      key = s3.value["key"]
+      # role_arn - (required) is a type of string
+      role_arn = s3.value["role_arn"]
     }
   }
 
   dynamic "sns" {
     for_each = var.sns
     content {
+      # message_format - (optional) is a type of string
       message_format = sns.value["message_format"]
-      role_arn       = sns.value["role_arn"]
-      target_arn     = sns.value["target_arn"]
+      # role_arn - (required) is a type of string
+      role_arn = sns.value["role_arn"]
+      # target_arn - (required) is a type of string
+      target_arn = sns.value["target_arn"]
     }
   }
 
   dynamic "sqs" {
     for_each = var.sqs
     content {
-      queue_url  = sqs.value["queue_url"]
-      role_arn   = sqs.value["role_arn"]
+      # queue_url - (required) is a type of string
+      queue_url = sqs.value["queue_url"]
+      # role_arn - (required) is a type of string
+      role_arn = sqs.value["role_arn"]
+      # use_base64 - (required) is a type of bool
       use_base64 = sqs.value["use_base64"]
     }
   }
@@ -906,9 +1017,12 @@ resource "aws_iot_topic_rule" "this" {
   dynamic "step_functions" {
     for_each = var.step_functions
     content {
+      # execution_name_prefix - (optional) is a type of string
       execution_name_prefix = step_functions.value["execution_name_prefix"]
-      role_arn              = step_functions.value["role_arn"]
-      state_machine_name    = step_functions.value["state_machine_name"]
+      # role_arn - (required) is a type of string
+      role_arn = step_functions.value["role_arn"]
+      # state_machine_name - (required) is a type of string
+      state_machine_name = step_functions.value["state_machine_name"]
     }
   }
 

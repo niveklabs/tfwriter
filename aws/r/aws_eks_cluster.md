@@ -159,20 +159,27 @@ variable "vpc_config" {
 
 ```terraform
 resource "aws_eks_cluster" "this" {
+  # enabled_cluster_log_types - (optional) is a type of set of string
   enabled_cluster_log_types = var.enabled_cluster_log_types
-  name                      = var.name
-  role_arn                  = var.role_arn
-  tags                      = var.tags
-  version                   = var.version
+  # name - (required) is a type of string
+  name = var.name
+  # role_arn - (required) is a type of string
+  role_arn = var.role_arn
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # version - (optional) is a type of string
+  version = var.version
 
   dynamic "encryption_config" {
     for_each = var.encryption_config
     content {
+      # resources - (required) is a type of set of string
       resources = encryption_config.value["resources"]
 
       dynamic "provider" {
         for_each = encryption_config.value.provider
         content {
+          # key_arn - (required) is a type of string
           key_arn = provider.value["key_arn"]
         }
       }
@@ -183,6 +190,7 @@ resource "aws_eks_cluster" "this" {
   dynamic "kubernetes_network_config" {
     for_each = var.kubernetes_network_config
     content {
+      # service_ipv4_cidr - (optional) is a type of string
       service_ipv4_cidr = kubernetes_network_config.value["service_ipv4_cidr"]
     }
   }
@@ -190,8 +198,11 @@ resource "aws_eks_cluster" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -199,11 +210,16 @@ resource "aws_eks_cluster" "this" {
   dynamic "vpc_config" {
     for_each = var.vpc_config
     content {
+      # endpoint_private_access - (optional) is a type of bool
       endpoint_private_access = vpc_config.value["endpoint_private_access"]
-      endpoint_public_access  = vpc_config.value["endpoint_public_access"]
-      public_access_cidrs     = vpc_config.value["public_access_cidrs"]
-      security_group_ids      = vpc_config.value["security_group_ids"]
-      subnet_ids              = vpc_config.value["subnet_ids"]
+      # endpoint_public_access - (optional) is a type of bool
+      endpoint_public_access = vpc_config.value["endpoint_public_access"]
+      # public_access_cidrs - (optional) is a type of set of string
+      public_access_cidrs = vpc_config.value["public_access_cidrs"]
+      # security_group_ids - (optional) is a type of set of string
+      security_group_ids = vpc_config.value["security_group_ids"]
+      # subnet_ids - (required) is a type of set of string
+      subnet_ids = vpc_config.value["subnet_ids"]
     }
   }
 

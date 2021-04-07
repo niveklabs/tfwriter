@@ -372,55 +372,85 @@ variable "vpc_config" {
 
 ```terraform
 resource "aws_codebuild_project" "this" {
-  badge_enabled  = var.badge_enabled
-  build_timeout  = var.build_timeout
-  description    = var.description
+  # badge_enabled - (optional) is a type of bool
+  badge_enabled = var.badge_enabled
+  # build_timeout - (optional) is a type of number
+  build_timeout = var.build_timeout
+  # description - (optional) is a type of string
+  description = var.description
+  # encryption_key - (optional) is a type of string
   encryption_key = var.encryption_key
-  name           = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # queued_timeout - (optional) is a type of number
   queued_timeout = var.queued_timeout
-  service_role   = var.service_role
+  # service_role - (required) is a type of string
+  service_role = var.service_role
+  # source_version - (optional) is a type of string
   source_version = var.source_version
-  tags           = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "artifacts" {
     for_each = var.artifacts
     content {
-      artifact_identifier    = artifacts.value["artifact_identifier"]
-      encryption_disabled    = artifacts.value["encryption_disabled"]
-      location               = artifacts.value["location"]
-      name                   = artifacts.value["name"]
-      namespace_type         = artifacts.value["namespace_type"]
+      # artifact_identifier - (optional) is a type of string
+      artifact_identifier = artifacts.value["artifact_identifier"]
+      # encryption_disabled - (optional) is a type of bool
+      encryption_disabled = artifacts.value["encryption_disabled"]
+      # location - (optional) is a type of string
+      location = artifacts.value["location"]
+      # name - (optional) is a type of string
+      name = artifacts.value["name"]
+      # namespace_type - (optional) is a type of string
+      namespace_type = artifacts.value["namespace_type"]
+      # override_artifact_name - (optional) is a type of bool
       override_artifact_name = artifacts.value["override_artifact_name"]
-      packaging              = artifacts.value["packaging"]
-      path                   = artifacts.value["path"]
-      type                   = artifacts.value["type"]
+      # packaging - (optional) is a type of string
+      packaging = artifacts.value["packaging"]
+      # path - (optional) is a type of string
+      path = artifacts.value["path"]
+      # type - (required) is a type of string
+      type = artifacts.value["type"]
     }
   }
 
   dynamic "cache" {
     for_each = var.cache
     content {
+      # location - (optional) is a type of string
       location = cache.value["location"]
-      modes    = cache.value["modes"]
-      type     = cache.value["type"]
+      # modes - (optional) is a type of list of string
+      modes = cache.value["modes"]
+      # type - (optional) is a type of string
+      type = cache.value["type"]
     }
   }
 
   dynamic "environment" {
     for_each = var.environment
     content {
-      certificate                 = environment.value["certificate"]
-      compute_type                = environment.value["compute_type"]
-      image                       = environment.value["image"]
+      # certificate - (optional) is a type of string
+      certificate = environment.value["certificate"]
+      # compute_type - (required) is a type of string
+      compute_type = environment.value["compute_type"]
+      # image - (required) is a type of string
+      image = environment.value["image"]
+      # image_pull_credentials_type - (optional) is a type of string
       image_pull_credentials_type = environment.value["image_pull_credentials_type"]
-      privileged_mode             = environment.value["privileged_mode"]
-      type                        = environment.value["type"]
+      # privileged_mode - (optional) is a type of bool
+      privileged_mode = environment.value["privileged_mode"]
+      # type - (required) is a type of string
+      type = environment.value["type"]
 
       dynamic "environment_variable" {
         for_each = environment.value.environment_variable
         content {
-          name  = environment_variable.value["name"]
-          type  = environment_variable.value["type"]
+          # name - (required) is a type of string
+          name = environment_variable.value["name"]
+          # type - (optional) is a type of string
+          type = environment_variable.value["type"]
+          # value - (required) is a type of string
           value = environment_variable.value["value"]
         }
       }
@@ -428,7 +458,9 @@ resource "aws_codebuild_project" "this" {
       dynamic "registry_credential" {
         for_each = environment.value.registry_credential
         content {
-          credential          = registry_credential.value["credential"]
+          # credential - (required) is a type of string
+          credential = registry_credential.value["credential"]
+          # credential_provider - (required) is a type of string
           credential_provider = registry_credential.value["credential_provider"]
         }
       }
@@ -443,8 +475,11 @@ resource "aws_codebuild_project" "this" {
       dynamic "cloudwatch_logs" {
         for_each = logs_config.value.cloudwatch_logs
         content {
-          group_name  = cloudwatch_logs.value["group_name"]
-          status      = cloudwatch_logs.value["status"]
+          # group_name - (optional) is a type of string
+          group_name = cloudwatch_logs.value["group_name"]
+          # status - (optional) is a type of string
+          status = cloudwatch_logs.value["status"]
+          # stream_name - (optional) is a type of string
           stream_name = cloudwatch_logs.value["stream_name"]
         }
       }
@@ -452,9 +487,12 @@ resource "aws_codebuild_project" "this" {
       dynamic "s3_logs" {
         for_each = logs_config.value.s3_logs
         content {
+          # encryption_disabled - (optional) is a type of bool
           encryption_disabled = s3_logs.value["encryption_disabled"]
-          location            = s3_logs.value["location"]
-          status              = s3_logs.value["status"]
+          # location - (optional) is a type of string
+          location = s3_logs.value["location"]
+          # status - (optional) is a type of string
+          status = s3_logs.value["status"]
         }
       }
 
@@ -464,40 +502,59 @@ resource "aws_codebuild_project" "this" {
   dynamic "secondary_artifacts" {
     for_each = var.secondary_artifacts
     content {
-      artifact_identifier    = secondary_artifacts.value["artifact_identifier"]
-      encryption_disabled    = secondary_artifacts.value["encryption_disabled"]
-      location               = secondary_artifacts.value["location"]
-      name                   = secondary_artifacts.value["name"]
-      namespace_type         = secondary_artifacts.value["namespace_type"]
+      # artifact_identifier - (required) is a type of string
+      artifact_identifier = secondary_artifacts.value["artifact_identifier"]
+      # encryption_disabled - (optional) is a type of bool
+      encryption_disabled = secondary_artifacts.value["encryption_disabled"]
+      # location - (optional) is a type of string
+      location = secondary_artifacts.value["location"]
+      # name - (optional) is a type of string
+      name = secondary_artifacts.value["name"]
+      # namespace_type - (optional) is a type of string
+      namespace_type = secondary_artifacts.value["namespace_type"]
+      # override_artifact_name - (optional) is a type of bool
       override_artifact_name = secondary_artifacts.value["override_artifact_name"]
-      packaging              = secondary_artifacts.value["packaging"]
-      path                   = secondary_artifacts.value["path"]
-      type                   = secondary_artifacts.value["type"]
+      # packaging - (optional) is a type of string
+      packaging = secondary_artifacts.value["packaging"]
+      # path - (optional) is a type of string
+      path = secondary_artifacts.value["path"]
+      # type - (required) is a type of string
+      type = secondary_artifacts.value["type"]
     }
   }
 
   dynamic "secondary_sources" {
     for_each = var.secondary_sources
     content {
-      buildspec           = secondary_sources.value["buildspec"]
-      git_clone_depth     = secondary_sources.value["git_clone_depth"]
-      insecure_ssl        = secondary_sources.value["insecure_ssl"]
-      location            = secondary_sources.value["location"]
+      # buildspec - (optional) is a type of string
+      buildspec = secondary_sources.value["buildspec"]
+      # git_clone_depth - (optional) is a type of number
+      git_clone_depth = secondary_sources.value["git_clone_depth"]
+      # insecure_ssl - (optional) is a type of bool
+      insecure_ssl = secondary_sources.value["insecure_ssl"]
+      # location - (optional) is a type of string
+      location = secondary_sources.value["location"]
+      # report_build_status - (optional) is a type of bool
       report_build_status = secondary_sources.value["report_build_status"]
-      source_identifier   = secondary_sources.value["source_identifier"]
-      type                = secondary_sources.value["type"]
+      # source_identifier - (required) is a type of string
+      source_identifier = secondary_sources.value["source_identifier"]
+      # type - (required) is a type of string
+      type = secondary_sources.value["type"]
 
       dynamic "auth" {
         for_each = secondary_sources.value.auth
         content {
+          # resource - (optional) is a type of string
           resource = auth.value["resource"]
-          type     = auth.value["type"]
+          # type - (required) is a type of string
+          type = auth.value["type"]
         }
       }
 
       dynamic "git_submodules_config" {
         for_each = secondary_sources.value.git_submodules_config
         content {
+          # fetch_submodules - (required) is a type of bool
           fetch_submodules = git_submodules_config.value["fetch_submodules"]
         }
       }
@@ -508,24 +565,33 @@ resource "aws_codebuild_project" "this" {
   dynamic "source" {
     for_each = var.source
     content {
-      buildspec           = source.value["buildspec"]
-      git_clone_depth     = source.value["git_clone_depth"]
-      insecure_ssl        = source.value["insecure_ssl"]
-      location            = source.value["location"]
+      # buildspec - (optional) is a type of string
+      buildspec = source.value["buildspec"]
+      # git_clone_depth - (optional) is a type of number
+      git_clone_depth = source.value["git_clone_depth"]
+      # insecure_ssl - (optional) is a type of bool
+      insecure_ssl = source.value["insecure_ssl"]
+      # location - (optional) is a type of string
+      location = source.value["location"]
+      # report_build_status - (optional) is a type of bool
       report_build_status = source.value["report_build_status"]
-      type                = source.value["type"]
+      # type - (required) is a type of string
+      type = source.value["type"]
 
       dynamic "auth" {
         for_each = source.value.auth
         content {
+          # resource - (optional) is a type of string
           resource = auth.value["resource"]
-          type     = auth.value["type"]
+          # type - (required) is a type of string
+          type = auth.value["type"]
         }
       }
 
       dynamic "git_submodules_config" {
         for_each = source.value.git_submodules_config
         content {
+          # fetch_submodules - (required) is a type of bool
           fetch_submodules = git_submodules_config.value["fetch_submodules"]
         }
       }
@@ -536,9 +602,12 @@ resource "aws_codebuild_project" "this" {
   dynamic "vpc_config" {
     for_each = var.vpc_config
     content {
+      # security_group_ids - (required) is a type of set of string
       security_group_ids = vpc_config.value["security_group_ids"]
-      subnets            = vpc_config.value["subnets"]
-      vpc_id             = vpc_config.value["vpc_id"]
+      # subnets - (required) is a type of set of string
+      subnets = vpc_config.value["subnets"]
+      # vpc_id - (required) is a type of string
+      vpc_id = vpc_config.value["vpc_id"]
     }
   }
 

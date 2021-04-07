@@ -263,23 +263,37 @@ variable "website" {
 
 ```terraform
 resource "google_storage_bucket" "this" {
-  bucket_policy_only          = var.bucket_policy_only
-  default_event_based_hold    = var.default_event_based_hold
-  force_destroy               = var.force_destroy
-  labels                      = var.labels
-  location                    = var.location
-  name                        = var.name
-  project                     = var.project
-  requester_pays              = var.requester_pays
-  storage_class               = var.storage_class
+  # bucket_policy_only - (optional) is a type of bool
+  bucket_policy_only = var.bucket_policy_only
+  # default_event_based_hold - (optional) is a type of bool
+  default_event_based_hold = var.default_event_based_hold
+  # force_destroy - (optional) is a type of bool
+  force_destroy = var.force_destroy
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # location - (optional) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # requester_pays - (optional) is a type of bool
+  requester_pays = var.requester_pays
+  # storage_class - (optional) is a type of string
+  storage_class = var.storage_class
+  # uniform_bucket_level_access - (optional) is a type of bool
   uniform_bucket_level_access = var.uniform_bucket_level_access
 
   dynamic "cors" {
     for_each = var.cors
     content {
+      # max_age_seconds - (optional) is a type of number
       max_age_seconds = cors.value["max_age_seconds"]
-      method          = cors.value["method"]
-      origin          = cors.value["origin"]
+      # method - (optional) is a type of list of string
+      method = cors.value["method"]
+      # origin - (optional) is a type of list of string
+      origin = cors.value["origin"]
+      # response_header - (optional) is a type of list of string
       response_header = cors.value["response_header"]
     }
   }
@@ -287,6 +301,7 @@ resource "google_storage_bucket" "this" {
   dynamic "encryption" {
     for_each = var.encryption
     content {
+      # default_kms_key_name - (required) is a type of string
       default_kms_key_name = encryption.value["default_kms_key_name"]
     }
   }
@@ -298,23 +313,34 @@ resource "google_storage_bucket" "this" {
       dynamic "action" {
         for_each = lifecycle_rule.value.action
         content {
+          # storage_class - (optional) is a type of string
           storage_class = action.value["storage_class"]
-          type          = action.value["type"]
+          # type - (required) is a type of string
+          type = action.value["type"]
         }
       }
 
       dynamic "condition" {
         for_each = lifecycle_rule.value.condition
         content {
-          age                        = condition.value["age"]
-          created_before             = condition.value["created_before"]
-          custom_time_before         = condition.value["custom_time_before"]
-          days_since_custom_time     = condition.value["days_since_custom_time"]
+          # age - (optional) is a type of number
+          age = condition.value["age"]
+          # created_before - (optional) is a type of string
+          created_before = condition.value["created_before"]
+          # custom_time_before - (optional) is a type of string
+          custom_time_before = condition.value["custom_time_before"]
+          # days_since_custom_time - (optional) is a type of number
+          days_since_custom_time = condition.value["days_since_custom_time"]
+          # days_since_noncurrent_time - (optional) is a type of number
           days_since_noncurrent_time = condition.value["days_since_noncurrent_time"]
-          matches_storage_class      = condition.value["matches_storage_class"]
-          noncurrent_time_before     = condition.value["noncurrent_time_before"]
-          num_newer_versions         = condition.value["num_newer_versions"]
-          with_state                 = condition.value["with_state"]
+          # matches_storage_class - (optional) is a type of list of string
+          matches_storage_class = condition.value["matches_storage_class"]
+          # noncurrent_time_before - (optional) is a type of string
+          noncurrent_time_before = condition.value["noncurrent_time_before"]
+          # num_newer_versions - (optional) is a type of number
+          num_newer_versions = condition.value["num_newer_versions"]
+          # with_state - (optional) is a type of string
+          with_state = condition.value["with_state"]
         }
       }
 
@@ -324,7 +350,9 @@ resource "google_storage_bucket" "this" {
   dynamic "logging" {
     for_each = var.logging
     content {
-      log_bucket        = logging.value["log_bucket"]
+      # log_bucket - (required) is a type of string
+      log_bucket = logging.value["log_bucket"]
+      # log_object_prefix - (optional) is a type of string
       log_object_prefix = logging.value["log_object_prefix"]
     }
   }
@@ -332,7 +360,9 @@ resource "google_storage_bucket" "this" {
   dynamic "retention_policy" {
     for_each = var.retention_policy
     content {
-      is_locked        = retention_policy.value["is_locked"]
+      # is_locked - (optional) is a type of bool
+      is_locked = retention_policy.value["is_locked"]
+      # retention_period - (required) is a type of number
       retention_period = retention_policy.value["retention_period"]
     }
   }
@@ -340,6 +370,7 @@ resource "google_storage_bucket" "this" {
   dynamic "versioning" {
     for_each = var.versioning
     content {
+      # enabled - (required) is a type of bool
       enabled = versioning.value["enabled"]
     }
   }
@@ -347,8 +378,10 @@ resource "google_storage_bucket" "this" {
   dynamic "website" {
     for_each = var.website
     content {
+      # main_page_suffix - (optional) is a type of string
       main_page_suffix = website.value["main_page_suffix"]
-      not_found_page   = website.value["not_found_page"]
+      # not_found_page - (optional) is a type of string
+      not_found_page = website.value["not_found_page"]
     }
   }
 

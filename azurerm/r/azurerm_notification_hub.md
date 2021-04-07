@@ -134,26 +134,37 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_notification_hub" "this" {
-  location            = var.location
-  name                = var.name
-  namespace_name      = var.namespace_name
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # namespace_name - (required) is a type of string
+  namespace_name = var.namespace_name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  tags                = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "apns_credential" {
     for_each = var.apns_credential
     content {
+      # application_mode - (required) is a type of string
       application_mode = apns_credential.value["application_mode"]
-      bundle_id        = apns_credential.value["bundle_id"]
-      key_id           = apns_credential.value["key_id"]
-      team_id          = apns_credential.value["team_id"]
-      token            = apns_credential.value["token"]
+      # bundle_id - (required) is a type of string
+      bundle_id = apns_credential.value["bundle_id"]
+      # key_id - (required) is a type of string
+      key_id = apns_credential.value["key_id"]
+      # team_id - (required) is a type of string
+      team_id = apns_credential.value["team_id"]
+      # token - (required) is a type of string
+      token = apns_credential.value["token"]
     }
   }
 
   dynamic "gcm_credential" {
     for_each = var.gcm_credential
     content {
+      # api_key - (required) is a type of string
       api_key = gcm_credential.value["api_key"]
     }
   }
@@ -161,9 +172,13 @@ resource "azurerm_notification_hub" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

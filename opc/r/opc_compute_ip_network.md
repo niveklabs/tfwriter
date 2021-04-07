@@ -88,12 +88,18 @@ variable "tags" {
 
 ```terraform
 resource "opc_compute_ip_network" "this" {
-  description         = var.description
-  ip_address_prefix   = var.ip_address_prefix
+  # description - (optional) is a type of string
+  description = var.description
+  # ip_address_prefix - (required) is a type of string
+  ip_address_prefix = var.ip_address_prefix
+  # ip_network_exchange - (optional) is a type of string
   ip_network_exchange = var.ip_network_exchange
-  name                = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # public_napt_enabled - (optional) is a type of bool
   public_napt_enabled = var.public_napt_enabled
-  tags                = var.tags
+  # tags - (optional) is a type of list of string
+  tags = var.tags
 }
 ```
 

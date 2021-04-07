@@ -143,19 +143,32 @@ variable "resource_pool_id" {
 
 ```terraform
 data "vsphere_ovf_vm_template" "this" {
+  # allow_unverified_ssl_cert - (optional) is a type of bool
   allow_unverified_ssl_cert = var.allow_unverified_ssl_cert
-  datastore_id              = var.datastore_id
-  deployment_option         = var.deployment_option
-  disk_provisioning         = var.disk_provisioning
-  folder                    = var.folder
-  host_system_id            = var.host_system_id
-  ip_allocation_policy      = var.ip_allocation_policy
-  ip_protocol               = var.ip_protocol
-  local_ovf_path            = var.local_ovf_path
-  name                      = var.name
-  ovf_network_map           = var.ovf_network_map
-  remote_ovf_url            = var.remote_ovf_url
-  resource_pool_id          = var.resource_pool_id
+  # datastore_id - (optional) is a type of string
+  datastore_id = var.datastore_id
+  # deployment_option - (optional) is a type of string
+  deployment_option = var.deployment_option
+  # disk_provisioning - (optional) is a type of string
+  disk_provisioning = var.disk_provisioning
+  # folder - (optional) is a type of string
+  folder = var.folder
+  # host_system_id - (required) is a type of string
+  host_system_id = var.host_system_id
+  # ip_allocation_policy - (optional) is a type of string
+  ip_allocation_policy = var.ip_allocation_policy
+  # ip_protocol - (optional) is a type of string
+  ip_protocol = var.ip_protocol
+  # local_ovf_path - (optional) is a type of string
+  local_ovf_path = var.local_ovf_path
+  # name - (required) is a type of string
+  name = var.name
+  # ovf_network_map - (optional) is a type of map of string
+  ovf_network_map = var.ovf_network_map
+  # remote_ovf_url - (optional) is a type of string
+  remote_ovf_url = var.remote_ovf_url
+  # resource_pool_id - (required) is a type of string
+  resource_pool_id = var.resource_pool_id
 }
 ```
 

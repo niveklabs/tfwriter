@@ -156,28 +156,43 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_vpn_site" "this" {
-  address_cidrs       = var.address_cidrs
-  device_model        = var.device_model
-  device_vendor       = var.device_vendor
-  location            = var.location
-  name                = var.name
+  # address_cidrs - (optional) is a type of set of string
+  address_cidrs = var.address_cidrs
+  # device_model - (optional) is a type of string
+  device_model = var.device_model
+  # device_vendor - (optional) is a type of string
+  device_vendor = var.device_vendor
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  tags                = var.tags
-  virtual_wan_id      = var.virtual_wan_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # virtual_wan_id - (required) is a type of string
+  virtual_wan_id = var.virtual_wan_id
 
   dynamic "link" {
     for_each = var.link
     content {
-      fqdn          = link.value["fqdn"]
-      ip_address    = link.value["ip_address"]
-      name          = link.value["name"]
+      # fqdn - (optional) is a type of string
+      fqdn = link.value["fqdn"]
+      # ip_address - (optional) is a type of string
+      ip_address = link.value["ip_address"]
+      # name - (required) is a type of string
+      name = link.value["name"]
+      # provider_name - (optional) is a type of string
       provider_name = link.value["provider_name"]
+      # speed_in_mbps - (optional) is a type of number
       speed_in_mbps = link.value["speed_in_mbps"]
 
       dynamic "bgp" {
         for_each = link.value.bgp
         content {
-          asn             = bgp.value["asn"]
+          # asn - (required) is a type of number
+          asn = bgp.value["asn"]
+          # peering_address - (required) is a type of string
           peering_address = bgp.value["peering_address"]
         }
       }
@@ -188,9 +203,13 @@ resource "azurerm_vpn_site" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

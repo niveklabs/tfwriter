@@ -114,20 +114,31 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_servicebus_namespace" "this" {
-  capacity            = var.capacity
-  location            = var.location
-  name                = var.name
+  # capacity - (optional) is a type of number
+  capacity = var.capacity
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  sku                 = var.sku
-  tags                = var.tags
-  zone_redundant      = var.zone_redundant
+  # sku - (required) is a type of string
+  sku = var.sku
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # zone_redundant - (optional) is a type of bool
+  zone_redundant = var.zone_redundant
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

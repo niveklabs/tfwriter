@@ -77,19 +77,25 @@ variable "size_constraints" {
 
 ```terraform
 resource "aws_waf_size_constraint_set" "this" {
+  # name - (required) is a type of string
   name = var.name
 
   dynamic "size_constraints" {
     for_each = var.size_constraints
     content {
+      # comparison_operator - (required) is a type of string
       comparison_operator = size_constraints.value["comparison_operator"]
-      size                = size_constraints.value["size"]
+      # size - (required) is a type of number
+      size = size_constraints.value["size"]
+      # text_transformation - (required) is a type of string
       text_transformation = size_constraints.value["text_transformation"]
 
       dynamic "field_to_match" {
         for_each = size_constraints.value.field_to_match
         content {
+          # data - (optional) is a type of string
           data = field_to_match.value["data"]
+          # type - (required) is a type of string
           type = field_to_match.value["type"]
         }
       }

@@ -101,14 +101,19 @@ variable "timeouts" {
 
 ```terraform
 resource "google_app_engine_domain_mapping" "this" {
-  domain_name       = var.domain_name
+  # domain_name - (required) is a type of string
+  domain_name = var.domain_name
+  # override_strategy - (optional) is a type of string
   override_strategy = var.override_strategy
-  project           = var.project
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "ssl_settings" {
     for_each = var.ssl_settings
     content {
-      certificate_id      = ssl_settings.value["certificate_id"]
+      # certificate_id - (optional) is a type of string
+      certificate_id = ssl_settings.value["certificate_id"]
+      # ssl_management_type - (required) is a type of string
       ssl_management_type = ssl_settings.value["ssl_management_type"]
     }
   }
@@ -116,8 +121,11 @@ resource "google_app_engine_domain_mapping" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

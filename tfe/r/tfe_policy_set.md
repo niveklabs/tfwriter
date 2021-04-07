@@ -116,21 +116,32 @@ variable "vcs_repo" {
 
 ```terraform
 resource "tfe_policy_set" "this" {
-  description   = var.description
-  global        = var.global
-  name          = var.name
-  organization  = var.organization
+  # description - (optional) is a type of string
+  description = var.description
+  # global - (optional) is a type of bool
+  global = var.global
+  # name - (required) is a type of string
+  name = var.name
+  # organization - (required) is a type of string
+  organization = var.organization
+  # policies_path - (optional) is a type of string
   policies_path = var.policies_path
-  policy_ids    = var.policy_ids
+  # policy_ids - (optional) is a type of set of string
+  policy_ids = var.policy_ids
+  # workspace_ids - (optional) is a type of set of string
   workspace_ids = var.workspace_ids
 
   dynamic "vcs_repo" {
     for_each = var.vcs_repo
     content {
-      branch             = vcs_repo.value["branch"]
-      identifier         = vcs_repo.value["identifier"]
+      # branch - (optional) is a type of string
+      branch = vcs_repo.value["branch"]
+      # identifier - (required) is a type of string
+      identifier = vcs_repo.value["identifier"]
+      # ingress_submodules - (optional) is a type of bool
       ingress_submodules = vcs_repo.value["ingress_submodules"]
-      oauth_token_id     = vcs_repo.value["oauth_token_id"]
+      # oauth_token_id - (required) is a type of string
+      oauth_token_id = vcs_repo.value["oauth_token_id"]
     }
   }
 

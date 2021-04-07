@@ -81,6 +81,7 @@ variable "data_catalog_encryption_settings" {
 
 ```terraform
 resource "aws_glue_data_catalog_encryption_settings" "this" {
+  # catalog_id - (optional) is a type of string
   catalog_id = var.catalog_id
 
   dynamic "data_catalog_encryption_settings" {
@@ -90,7 +91,9 @@ resource "aws_glue_data_catalog_encryption_settings" "this" {
       dynamic "connection_password_encryption" {
         for_each = data_catalog_encryption_settings.value.connection_password_encryption
         content {
-          aws_kms_key_id                       = connection_password_encryption.value["aws_kms_key_id"]
+          # aws_kms_key_id - (optional) is a type of string
+          aws_kms_key_id = connection_password_encryption.value["aws_kms_key_id"]
+          # return_connection_password_encrypted - (required) is a type of bool
           return_connection_password_encrypted = connection_password_encryption.value["return_connection_password_encrypted"]
         }
       }
@@ -98,8 +101,10 @@ resource "aws_glue_data_catalog_encryption_settings" "this" {
       dynamic "encryption_at_rest" {
         for_each = data_catalog_encryption_settings.value.encryption_at_rest
         content {
+          # catalog_encryption_mode - (required) is a type of string
           catalog_encryption_mode = encryption_at_rest.value["catalog_encryption_mode"]
-          sse_aws_kms_key_id      = encryption_at_rest.value["sse_aws_kms_key_id"]
+          # sse_aws_kms_key_id - (optional) is a type of string
+          sse_aws_kms_key_id = encryption_at_rest.value["sse_aws_kms_key_id"]
         }
       }
 

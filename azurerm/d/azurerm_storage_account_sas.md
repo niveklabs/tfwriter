@@ -156,41 +156,61 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_storage_account_sas" "this" {
+  # connection_string - (required) is a type of string
   connection_string = var.connection_string
-  expiry            = var.expiry
-  https_only        = var.https_only
-  signed_version    = var.signed_version
-  start             = var.start
+  # expiry - (required) is a type of string
+  expiry = var.expiry
+  # https_only - (optional) is a type of bool
+  https_only = var.https_only
+  # signed_version - (optional) is a type of string
+  signed_version = var.signed_version
+  # start - (required) is a type of string
+  start = var.start
 
   dynamic "permissions" {
     for_each = var.permissions
     content {
-      add     = permissions.value["add"]
-      create  = permissions.value["create"]
-      delete  = permissions.value["delete"]
-      list    = permissions.value["list"]
+      # add - (required) is a type of bool
+      add = permissions.value["add"]
+      # create - (required) is a type of bool
+      create = permissions.value["create"]
+      # delete - (required) is a type of bool
+      delete = permissions.value["delete"]
+      # list - (required) is a type of bool
+      list = permissions.value["list"]
+      # process - (required) is a type of bool
       process = permissions.value["process"]
-      read    = permissions.value["read"]
-      update  = permissions.value["update"]
-      write   = permissions.value["write"]
+      # read - (required) is a type of bool
+      read = permissions.value["read"]
+      # update - (required) is a type of bool
+      update = permissions.value["update"]
+      # write - (required) is a type of bool
+      write = permissions.value["write"]
     }
   }
 
   dynamic "resource_types" {
     for_each = var.resource_types
     content {
+      # container - (required) is a type of bool
       container = resource_types.value["container"]
-      object    = resource_types.value["object"]
-      service   = resource_types.value["service"]
+      # object - (required) is a type of bool
+      object = resource_types.value["object"]
+      # service - (required) is a type of bool
+      service = resource_types.value["service"]
     }
   }
 
   dynamic "services" {
     for_each = var.services
     content {
-      blob  = services.value["blob"]
-      file  = services.value["file"]
+      # blob - (required) is a type of bool
+      blob = services.value["blob"]
+      # file - (required) is a type of bool
+      file = services.value["file"]
+      # queue - (required) is a type of bool
       queue = services.value["queue"]
+      # table - (required) is a type of bool
       table = services.value["table"]
     }
   }
@@ -198,6 +218,7 @@ data "azurerm_storage_account_sas" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

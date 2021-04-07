@@ -90,13 +90,17 @@ variable "timeouts" {
 
 ```terraform
 resource "google_organization_access_approval_settings" "this" {
+  # notification_emails - (optional) is a type of set of string
   notification_emails = var.notification_emails
-  organization_id     = var.organization_id
+  # organization_id - (required) is a type of string
+  organization_id = var.organization_id
 
   dynamic "enrolled_services" {
     for_each = var.enrolled_services
     content {
-      cloud_product    = enrolled_services.value["cloud_product"]
+      # cloud_product - (required) is a type of string
+      cloud_product = enrolled_services.value["cloud_product"]
+      # enrollment_level - (optional) is a type of string
       enrollment_level = enrolled_services.value["enrollment_level"]
     }
   }
@@ -104,8 +108,11 @@ resource "google_organization_access_approval_settings" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -108,15 +108,21 @@ variable "timeout" {
 
 ```terraform
 resource "aws_batch_job_definition" "this" {
+  # container_properties - (optional) is a type of string
   container_properties = var.container_properties
-  name                 = var.name
-  parameters           = var.parameters
-  tags                 = var.tags
-  type                 = var.type
+  # name - (required) is a type of string
+  name = var.name
+  # parameters - (optional) is a type of map of string
+  parameters = var.parameters
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (required) is a type of string
+  type = var.type
 
   dynamic "retry_strategy" {
     for_each = var.retry_strategy
     content {
+      # attempts - (optional) is a type of number
       attempts = retry_strategy.value["attempts"]
     }
   }
@@ -124,6 +130,7 @@ resource "aws_batch_job_definition" "this" {
   dynamic "timeout" {
     for_each = var.timeout
     content {
+      # attempt_duration_seconds - (optional) is a type of number
       attempt_duration_seconds = timeout.value["attempt_duration_seconds"]
     }
   }

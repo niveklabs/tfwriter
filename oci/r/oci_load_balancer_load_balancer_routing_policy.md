@@ -106,21 +106,28 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_load_balancer_load_balancer_routing_policy" "this" {
+  # condition_language_version - (required) is a type of string
   condition_language_version = var.condition_language_version
-  load_balancer_id           = var.load_balancer_id
-  name                       = var.name
+  # load_balancer_id - (required) is a type of string
+  load_balancer_id = var.load_balancer_id
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "rules" {
     for_each = var.rules
     content {
+      # condition - (required) is a type of string
       condition = rules.value["condition"]
-      name      = rules.value["name"]
+      # name - (required) is a type of string
+      name = rules.value["name"]
 
       dynamic "actions" {
         for_each = rules.value.actions
         content {
+          # backend_set_name - (optional) is a type of string
           backend_set_name = actions.value["backend_set_name"]
-          name             = actions.value["name"]
+          # name - (required) is a type of string
+          name = actions.value["name"]
         }
       }
 
@@ -130,8 +137,11 @@ resource "oci_load_balancer_load_balancer_routing_policy" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

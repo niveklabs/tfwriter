@@ -57,8 +57,10 @@ variable "version" {
 
 ```terraform
 data "google_kms_crypto_key_version" "this" {
+  # crypto_key - (required) is a type of string
   crypto_key = var.crypto_key
-  version    = var.version
+  # version - (optional) is a type of number
+  version = var.version
 }
 ```
 

@@ -223,52 +223,77 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_disk" "this" {
-  description               = var.description
-  image                     = var.image
-  interface                 = var.interface
-  labels                    = var.labels
-  multi_writer              = var.multi_writer
-  name                      = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # image - (optional) is a type of string
+  image = var.image
+  # interface - (optional) is a type of string
+  interface = var.interface
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # multi_writer - (optional) is a type of bool
+  multi_writer = var.multi_writer
+  # name - (required) is a type of string
+  name = var.name
+  # physical_block_size_bytes - (optional) is a type of number
   physical_block_size_bytes = var.physical_block_size_bytes
-  project                   = var.project
-  resource_policies         = var.resource_policies
-  size                      = var.size
-  snapshot                  = var.snapshot
-  type                      = var.type
-  zone                      = var.zone
+  # project - (optional) is a type of string
+  project = var.project
+  # resource_policies - (optional) is a type of list of string
+  resource_policies = var.resource_policies
+  # size - (optional) is a type of number
+  size = var.size
+  # snapshot - (optional) is a type of string
+  snapshot = var.snapshot
+  # type - (optional) is a type of string
+  type = var.type
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "disk_encryption_key" {
     for_each = var.disk_encryption_key
     content {
-      kms_key_self_link       = disk_encryption_key.value["kms_key_self_link"]
+      # kms_key_self_link - (optional) is a type of string
+      kms_key_self_link = disk_encryption_key.value["kms_key_self_link"]
+      # kms_key_service_account - (optional) is a type of string
       kms_key_service_account = disk_encryption_key.value["kms_key_service_account"]
-      raw_key                 = disk_encryption_key.value["raw_key"]
+      # raw_key - (optional) is a type of string
+      raw_key = disk_encryption_key.value["raw_key"]
     }
   }
 
   dynamic "source_image_encryption_key" {
     for_each = var.source_image_encryption_key
     content {
-      kms_key_self_link       = source_image_encryption_key.value["kms_key_self_link"]
+      # kms_key_self_link - (optional) is a type of string
+      kms_key_self_link = source_image_encryption_key.value["kms_key_self_link"]
+      # kms_key_service_account - (optional) is a type of string
       kms_key_service_account = source_image_encryption_key.value["kms_key_service_account"]
-      raw_key                 = source_image_encryption_key.value["raw_key"]
+      # raw_key - (optional) is a type of string
+      raw_key = source_image_encryption_key.value["raw_key"]
     }
   }
 
   dynamic "source_snapshot_encryption_key" {
     for_each = var.source_snapshot_encryption_key
     content {
-      kms_key_self_link       = source_snapshot_encryption_key.value["kms_key_self_link"]
+      # kms_key_self_link - (optional) is a type of string
+      kms_key_self_link = source_snapshot_encryption_key.value["kms_key_self_link"]
+      # kms_key_service_account - (optional) is a type of string
       kms_key_service_account = source_snapshot_encryption_key.value["kms_key_service_account"]
-      raw_key                 = source_snapshot_encryption_key.value["raw_key"]
+      # raw_key - (optional) is a type of string
+      raw_key = source_snapshot_encryption_key.value["raw_key"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

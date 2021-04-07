@@ -164,33 +164,48 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_organization_security_policy_rule" "this" {
-  action                  = var.action
-  description             = var.description
-  direction               = var.direction
-  enable_logging          = var.enable_logging
-  policy_id               = var.policy_id
-  preview                 = var.preview
-  priority                = var.priority
-  target_resources        = var.target_resources
+  # action - (required) is a type of string
+  action = var.action
+  # description - (optional) is a type of string
+  description = var.description
+  # direction - (optional) is a type of string
+  direction = var.direction
+  # enable_logging - (optional) is a type of bool
+  enable_logging = var.enable_logging
+  # policy_id - (required) is a type of string
+  policy_id = var.policy_id
+  # preview - (optional) is a type of bool
+  preview = var.preview
+  # priority - (required) is a type of number
+  priority = var.priority
+  # target_resources - (optional) is a type of list of string
+  target_resources = var.target_resources
+  # target_service_accounts - (optional) is a type of list of string
   target_service_accounts = var.target_service_accounts
 
   dynamic "match" {
     for_each = var.match
     content {
-      description    = match.value["description"]
+      # description - (optional) is a type of string
+      description = match.value["description"]
+      # versioned_expr - (optional) is a type of string
       versioned_expr = match.value["versioned_expr"]
 
       dynamic "config" {
         for_each = match.value.config
         content {
+          # dest_ip_ranges - (optional) is a type of list of string
           dest_ip_ranges = config.value["dest_ip_ranges"]
-          src_ip_ranges  = config.value["src_ip_ranges"]
+          # src_ip_ranges - (optional) is a type of list of string
+          src_ip_ranges = config.value["src_ip_ranges"]
 
           dynamic "layer4_config" {
             for_each = config.value.layer4_config
             content {
+              # ip_protocol - (required) is a type of string
               ip_protocol = layer4_config.value["ip_protocol"]
-              ports       = layer4_config.value["ports"]
+              # ports - (optional) is a type of list of string
+              ports = layer4_config.value["ports"]
             }
           }
 
@@ -203,8 +218,11 @@ resource "google_compute_organization_security_policy_rule" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 resource "aws_lightsail_static_ip" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

@@ -82,17 +82,24 @@ variable "metric_transformation" {
 
 ```terraform
 resource "aws_cloudwatch_log_metric_filter" "this" {
+  # log_group_name - (required) is a type of string
   log_group_name = var.log_group_name
-  name           = var.name
-  pattern        = var.pattern
+  # name - (required) is a type of string
+  name = var.name
+  # pattern - (required) is a type of string
+  pattern = var.pattern
 
   dynamic "metric_transformation" {
     for_each = var.metric_transformation
     content {
+      # default_value - (optional) is a type of string
       default_value = metric_transformation.value["default_value"]
-      name          = metric_transformation.value["name"]
-      namespace     = metric_transformation.value["namespace"]
-      value         = metric_transformation.value["value"]
+      # name - (required) is a type of string
+      name = metric_transformation.value["name"]
+      # namespace - (required) is a type of string
+      namespace = metric_transformation.value["namespace"]
+      # value - (required) is a type of string
+      value = metric_transformation.value["value"]
     }
   }
 

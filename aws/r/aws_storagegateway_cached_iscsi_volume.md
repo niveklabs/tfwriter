@@ -110,14 +110,23 @@ variable "volume_size_in_bytes" {
 
 ```terraform
 resource "aws_storagegateway_cached_iscsi_volume" "this" {
-  gateway_arn          = var.gateway_arn
-  kms_encrypted        = var.kms_encrypted
-  kms_key              = var.kms_key
+  # gateway_arn - (required) is a type of string
+  gateway_arn = var.gateway_arn
+  # kms_encrypted - (optional) is a type of bool
+  kms_encrypted = var.kms_encrypted
+  # kms_key - (optional) is a type of string
+  kms_key = var.kms_key
+  # network_interface_id - (required) is a type of string
   network_interface_id = var.network_interface_id
-  snapshot_id          = var.snapshot_id
-  source_volume_arn    = var.source_volume_arn
-  tags                 = var.tags
-  target_name          = var.target_name
+  # snapshot_id - (optional) is a type of string
+  snapshot_id = var.snapshot_id
+  # source_volume_arn - (optional) is a type of string
+  source_volume_arn = var.source_volume_arn
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # target_name - (required) is a type of string
+  target_name = var.target_name
+  # volume_size_in_bytes - (required) is a type of number
   volume_size_in_bytes = var.volume_size_in_bytes
 }
 ```

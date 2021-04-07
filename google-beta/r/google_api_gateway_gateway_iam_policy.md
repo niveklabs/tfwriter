@@ -72,10 +72,14 @@ variable "region" {
 
 ```terraform
 resource "google_api_gateway_gateway_iam_policy" "this" {
-  gateway     = var.gateway
+  # gateway - (required) is a type of string
+  gateway = var.gateway
+  # policy_data - (required) is a type of string
   policy_data = var.policy_data
-  project     = var.project
-  region      = var.region
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
 }
 ```
 

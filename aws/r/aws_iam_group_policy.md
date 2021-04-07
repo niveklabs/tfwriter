@@ -72,10 +72,14 @@ variable "policy" {
 
 ```terraform
 resource "aws_iam_group_policy" "this" {
-  group       = var.group
-  name        = var.name
+  # group - (required) is a type of string
+  group = var.group
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
   name_prefix = var.name_prefix
-  policy      = var.policy
+  # policy - (required) is a type of string
+  policy = var.policy
 }
 ```
 

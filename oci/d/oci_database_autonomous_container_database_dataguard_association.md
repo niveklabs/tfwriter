@@ -56,8 +56,10 @@ variable "autonomous_container_database_id" {
 
 ```terraform
 data "oci_database_autonomous_container_database_dataguard_association" "this" {
+  # autonomous_container_database_dataguard_association_id - (required) is a type of string
   autonomous_container_database_dataguard_association_id = var.autonomous_container_database_dataguard_association_id
-  autonomous_container_database_id                       = var.autonomous_container_database_id
+  # autonomous_container_database_id - (required) is a type of string
+  autonomous_container_database_id = var.autonomous_container_database_id
 }
 ```
 

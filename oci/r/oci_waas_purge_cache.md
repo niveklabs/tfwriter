@@ -75,14 +75,19 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_waas_purge_cache" "this" {
-  resources      = var.resources
+  # resources - (optional) is a type of list of string
+  resources = var.resources
+  # waas_policy_id - (required) is a type of string
   waas_policy_id = var.waas_policy_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

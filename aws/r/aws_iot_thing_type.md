@@ -73,13 +73,17 @@ variable "properties" {
 
 ```terraform
 resource "aws_iot_thing_type" "this" {
+  # deprecated - (optional) is a type of bool
   deprecated = var.deprecated
-  name       = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "properties" {
     for_each = var.properties
     content {
-      description           = properties.value["description"]
+      # description - (optional) is a type of string
+      description = properties.value["description"]
+      # searchable_attributes - (optional) is a type of set of string
       searchable_attributes = properties.value["searchable_attributes"]
     }
   }

@@ -57,8 +57,10 @@ variable "license" {
 
 ```terraform
 resource "consul_license" "this" {
+  # datacenter - (optional) is a type of string
   datacenter = var.datacenter
-  license    = var.license
+  # license - (required) is a type of string
+  license = var.license
 }
 ```
 

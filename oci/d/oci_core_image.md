@@ -49,6 +49,7 @@ variable "image_id" {
 
 ```terraform
 data "oci_core_image" "this" {
+  # image_id - (required) is a type of string
   image_id = var.image_id
 }
 ```

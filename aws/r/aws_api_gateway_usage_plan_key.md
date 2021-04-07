@@ -63,8 +63,11 @@ variable "usage_plan_id" {
 
 ```terraform
 resource "aws_api_gateway_usage_plan_key" "this" {
-  key_id        = var.key_id
-  key_type      = var.key_type
+  # key_id - (required) is a type of string
+  key_id = var.key_id
+  # key_type - (required) is a type of string
+  key_type = var.key_type
+  # usage_plan_id - (required) is a type of string
   usage_plan_id = var.usage_plan_id
 }
 ```

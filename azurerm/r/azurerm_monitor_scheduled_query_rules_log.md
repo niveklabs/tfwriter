@@ -147,26 +147,38 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_monitor_scheduled_query_rules_log" "this" {
+  # authorized_resource_ids - (optional) is a type of set of string
   authorized_resource_ids = var.authorized_resource_ids
-  data_source_id          = var.data_source_id
-  description             = var.description
-  enabled                 = var.enabled
-  location                = var.location
-  name                    = var.name
-  resource_group_name     = var.resource_group_name
-  tags                    = var.tags
+  # data_source_id - (required) is a type of string
+  data_source_id = var.data_source_id
+  # description - (optional) is a type of string
+  description = var.description
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "criteria" {
     for_each = var.criteria
     content {
+      # metric_name - (required) is a type of string
       metric_name = criteria.value["metric_name"]
 
       dynamic "dimension" {
         for_each = criteria.value.dimension
         content {
-          name     = dimension.value["name"]
+          # name - (required) is a type of string
+          name = dimension.value["name"]
+          # operator - (optional) is a type of string
           operator = dimension.value["operator"]
-          values   = dimension.value["values"]
+          # values - (required) is a type of list of string
+          values = dimension.value["values"]
         }
       }
 
@@ -176,9 +188,13 @@ resource "azurerm_monitor_scheduled_query_rules_log" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -57,8 +57,10 @@ variable "team_id" {
 
 ```terraform
 resource "tfe_team_token" "this" {
+  # force_regenerate - (optional) is a type of bool
   force_regenerate = var.force_regenerate
-  team_id          = var.team_id
+  # team_id - (required) is a type of string
+  team_id = var.team_id
 }
 ```
 

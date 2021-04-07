@@ -153,28 +153,41 @@ variable "timeouts" {
 
 ```terraform
 resource "google_monitoring_metric_descriptor" "this" {
-  description  = var.description
+  # description - (required) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
   display_name = var.display_name
+  # launch_stage - (optional) is a type of string
   launch_stage = var.launch_stage
-  metric_kind  = var.metric_kind
-  project      = var.project
-  type         = var.type
-  unit         = var.unit
-  value_type   = var.value_type
+  # metric_kind - (required) is a type of string
+  metric_kind = var.metric_kind
+  # project - (optional) is a type of string
+  project = var.project
+  # type - (required) is a type of string
+  type = var.type
+  # unit - (optional) is a type of string
+  unit = var.unit
+  # value_type - (required) is a type of string
+  value_type = var.value_type
 
   dynamic "labels" {
     for_each = var.labels
     content {
+      # description - (optional) is a type of string
       description = labels.value["description"]
-      key         = labels.value["key"]
-      value_type  = labels.value["value_type"]
+      # key - (required) is a type of string
+      key = labels.value["key"]
+      # value_type - (optional) is a type of string
+      value_type = labels.value["value_type"]
     }
   }
 
   dynamic "metadata" {
     for_each = var.metadata
     content {
-      ingest_delay  = metadata.value["ingest_delay"]
+      # ingest_delay - (optional) is a type of string
+      ingest_delay = metadata.value["ingest_delay"]
+      # sample_period - (optional) is a type of string
       sample_period = metadata.value["sample_period"]
     }
   }
@@ -182,8 +195,11 @@ resource "google_monitoring_metric_descriptor" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

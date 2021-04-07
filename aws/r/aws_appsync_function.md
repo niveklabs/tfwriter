@@ -93,12 +93,19 @@ variable "response_mapping_template" {
 
 ```terraform
 resource "aws_appsync_function" "this" {
-  api_id                    = var.api_id
-  data_source               = var.data_source
-  description               = var.description
-  function_version          = var.function_version
-  name                      = var.name
-  request_mapping_template  = var.request_mapping_template
+  # api_id - (required) is a type of string
+  api_id = var.api_id
+  # data_source - (required) is a type of string
+  data_source = var.data_source
+  # description - (optional) is a type of string
+  description = var.description
+  # function_version - (optional) is a type of string
+  function_version = var.function_version
+  # name - (required) is a type of string
+  name = var.name
+  # request_mapping_template - (required) is a type of string
+  request_mapping_template = var.request_mapping_template
+  # response_mapping_template - (required) is a type of string
   response_mapping_template = var.response_mapping_template
 }
 ```

@@ -50,6 +50,7 @@ variable "catalog_id" {
 
 ```terraform
 data "aws_lakeformation_data_lake_settings" "this" {
+  # catalog_id - (optional) is a type of string
   catalog_id = var.catalog_id
 }
 ```

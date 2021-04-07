@@ -224,25 +224,41 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_redis_cache" "this" {
-  capacity                      = var.capacity
-  enable_non_ssl_port           = var.enable_non_ssl_port
-  family                        = var.family
-  location                      = var.location
-  minimum_tls_version           = var.minimum_tls_version
-  name                          = var.name
-  private_static_ip_address     = var.private_static_ip_address
+  # capacity - (required) is a type of number
+  capacity = var.capacity
+  # enable_non_ssl_port - (optional) is a type of bool
+  enable_non_ssl_port = var.enable_non_ssl_port
+  # family - (required) is a type of string
+  family = var.family
+  # location - (required) is a type of string
+  location = var.location
+  # minimum_tls_version - (optional) is a type of string
+  minimum_tls_version = var.minimum_tls_version
+  # name - (required) is a type of string
+  name = var.name
+  # private_static_ip_address - (optional) is a type of string
+  private_static_ip_address = var.private_static_ip_address
+  # public_network_access_enabled - (optional) is a type of bool
   public_network_access_enabled = var.public_network_access_enabled
-  resource_group_name           = var.resource_group_name
-  shard_count                   = var.shard_count
-  sku_name                      = var.sku_name
-  subnet_id                     = var.subnet_id
-  tags                          = var.tags
-  zones                         = var.zones
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # shard_count - (optional) is a type of number
+  shard_count = var.shard_count
+  # sku_name - (required) is a type of string
+  sku_name = var.sku_name
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # zones - (optional) is a type of list of string
+  zones = var.zones
 
   dynamic "patch_schedule" {
     for_each = var.patch_schedule
     content {
-      day_of_week    = patch_schedule.value["day_of_week"]
+      # day_of_week - (required) is a type of string
+      day_of_week = patch_schedule.value["day_of_week"]
+      # start_hour_utc - (optional) is a type of number
       start_hour_utc = patch_schedule.value["start_hour_utc"]
     }
   }
@@ -250,28 +266,45 @@ resource "azurerm_redis_cache" "this" {
   dynamic "redis_configuration" {
     for_each = var.redis_configuration
     content {
-      aof_backup_enabled              = redis_configuration.value["aof_backup_enabled"]
+      # aof_backup_enabled - (optional) is a type of bool
+      aof_backup_enabled = redis_configuration.value["aof_backup_enabled"]
+      # aof_storage_connection_string_0 - (optional) is a type of string
       aof_storage_connection_string_0 = redis_configuration.value["aof_storage_connection_string_0"]
+      # aof_storage_connection_string_1 - (optional) is a type of string
       aof_storage_connection_string_1 = redis_configuration.value["aof_storage_connection_string_1"]
-      enable_authentication           = redis_configuration.value["enable_authentication"]
+      # enable_authentication - (optional) is a type of bool
+      enable_authentication = redis_configuration.value["enable_authentication"]
+      # maxfragmentationmemory_reserved - (optional) is a type of number
       maxfragmentationmemory_reserved = redis_configuration.value["maxfragmentationmemory_reserved"]
-      maxmemory_delta                 = redis_configuration.value["maxmemory_delta"]
-      maxmemory_policy                = redis_configuration.value["maxmemory_policy"]
-      maxmemory_reserved              = redis_configuration.value["maxmemory_reserved"]
-      notify_keyspace_events          = redis_configuration.value["notify_keyspace_events"]
-      rdb_backup_enabled              = redis_configuration.value["rdb_backup_enabled"]
-      rdb_backup_frequency            = redis_configuration.value["rdb_backup_frequency"]
-      rdb_backup_max_snapshot_count   = redis_configuration.value["rdb_backup_max_snapshot_count"]
-      rdb_storage_connection_string   = redis_configuration.value["rdb_storage_connection_string"]
+      # maxmemory_delta - (optional) is a type of number
+      maxmemory_delta = redis_configuration.value["maxmemory_delta"]
+      # maxmemory_policy - (optional) is a type of string
+      maxmemory_policy = redis_configuration.value["maxmemory_policy"]
+      # maxmemory_reserved - (optional) is a type of number
+      maxmemory_reserved = redis_configuration.value["maxmemory_reserved"]
+      # notify_keyspace_events - (optional) is a type of string
+      notify_keyspace_events = redis_configuration.value["notify_keyspace_events"]
+      # rdb_backup_enabled - (optional) is a type of bool
+      rdb_backup_enabled = redis_configuration.value["rdb_backup_enabled"]
+      # rdb_backup_frequency - (optional) is a type of number
+      rdb_backup_frequency = redis_configuration.value["rdb_backup_frequency"]
+      # rdb_backup_max_snapshot_count - (optional) is a type of number
+      rdb_backup_max_snapshot_count = redis_configuration.value["rdb_backup_max_snapshot_count"]
+      # rdb_storage_connection_string - (optional) is a type of string
+      rdb_storage_connection_string = redis_configuration.value["rdb_storage_connection_string"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

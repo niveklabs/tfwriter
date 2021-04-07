@@ -56,7 +56,9 @@ variable "token_id" {
 
 ```terraform
 resource "consul_acl_token_policy_attachment" "this" {
-  policy   = var.policy
+  # policy - (required) is a type of string
+  policy = var.policy
+  # token_id - (required) is a type of string
   token_id = var.token_id
 }
 ```

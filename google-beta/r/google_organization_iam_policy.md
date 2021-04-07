@@ -56,7 +56,9 @@ variable "policy_data" {
 
 ```terraform
 resource "google_organization_iam_policy" "this" {
-  org_id      = var.org_id
+  # org_id - (required) is a type of string
+  org_id = var.org_id
+  # policy_data - (required) is a type of string
   policy_data = var.policy_data
 }
 ```

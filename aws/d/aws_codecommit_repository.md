@@ -49,6 +49,7 @@ variable "repository_name" {
 
 ```terraform
 data "aws_codecommit_repository" "this" {
+  # repository_name - (required) is a type of string
   repository_name = var.repository_name
 }
 ```

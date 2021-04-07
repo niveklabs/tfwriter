@@ -63,9 +63,12 @@ variable "name" {
 
 ```terraform
 resource "vault_identity_group_alias" "this" {
-  canonical_id   = var.canonical_id
+  # canonical_id - (required) is a type of string
+  canonical_id = var.canonical_id
+  # mount_accessor - (required) is a type of string
   mount_accessor = var.mount_accessor
-  name           = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

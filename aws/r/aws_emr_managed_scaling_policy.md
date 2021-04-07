@@ -70,16 +70,22 @@ variable "compute_limits" {
 
 ```terraform
 resource "aws_emr_managed_scaling_policy" "this" {
+  # cluster_id - (required) is a type of string
   cluster_id = var.cluster_id
 
   dynamic "compute_limits" {
     for_each = var.compute_limits
     content {
-      maximum_capacity_units          = compute_limits.value["maximum_capacity_units"]
-      maximum_core_capacity_units     = compute_limits.value["maximum_core_capacity_units"]
+      # maximum_capacity_units - (required) is a type of number
+      maximum_capacity_units = compute_limits.value["maximum_capacity_units"]
+      # maximum_core_capacity_units - (optional) is a type of number
+      maximum_core_capacity_units = compute_limits.value["maximum_core_capacity_units"]
+      # maximum_ondemand_capacity_units - (optional) is a type of number
       maximum_ondemand_capacity_units = compute_limits.value["maximum_ondemand_capacity_units"]
-      minimum_capacity_units          = compute_limits.value["minimum_capacity_units"]
-      unit_type                       = compute_limits.value["unit_type"]
+      # minimum_capacity_units - (required) is a type of number
+      minimum_capacity_units = compute_limits.value["minimum_capacity_units"]
+      # unit_type - (required) is a type of string
+      unit_type = compute_limits.value["unit_type"]
     }
   }
 

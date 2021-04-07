@@ -58,7 +58,9 @@ variable "vpc_id" {
 
 ```terraform
 resource "aws_internet_gateway" "this" {
-  tags   = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (optional) is a type of string
   vpc_id = var.vpc_id
 }
 ```

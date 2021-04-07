@@ -49,6 +49,7 @@ variable "vcn_id" {
 
 ```terraform
 data "oci_core_vcn_dns_resolver_association" "this" {
+  # vcn_id - (required) is a type of string
   vcn_id = var.vcn_id
 }
 ```

@@ -73,10 +73,14 @@ variable "tags" {
 
 ```terraform
 resource "aws_codecommit_repository" "this" {
-  default_branch  = var.default_branch
-  description     = var.description
+  # default_branch - (optional) is a type of string
+  default_branch = var.default_branch
+  # description - (optional) is a type of string
+  description = var.description
+  # repository_name - (required) is a type of string
   repository_name = var.repository_name
-  tags            = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

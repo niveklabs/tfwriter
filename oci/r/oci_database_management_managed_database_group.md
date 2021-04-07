@@ -106,23 +106,31 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_database_management_managed_database_group" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  description    = var.description
-  name           = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "managed_databases" {
     for_each = var.managed_databases
     content {
+      # compartment_id - (optional) is a type of string
       compartment_id = managed_databases.value["compartment_id"]
-      id             = managed_databases.value["id"]
+      # id - (optional) is a type of string
+      id = managed_databases.value["id"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

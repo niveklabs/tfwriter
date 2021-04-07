@@ -107,19 +107,29 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_policy_remediation" "this" {
-  location_filters               = var.location_filters
-  name                           = var.name
-  policy_assignment_id           = var.policy_assignment_id
+  # location_filters - (optional) is a type of list of string
+  location_filters = var.location_filters
+  # name - (required) is a type of string
+  name = var.name
+  # policy_assignment_id - (required) is a type of string
+  policy_assignment_id = var.policy_assignment_id
+  # policy_definition_reference_id - (optional) is a type of string
   policy_definition_reference_id = var.policy_definition_reference_id
-  resource_discovery_mode        = var.resource_discovery_mode
-  scope                          = var.scope
+  # resource_discovery_mode - (optional) is a type of string
+  resource_discovery_mode = var.resource_discovery_mode
+  # scope - (required) is a type of string
+  scope = var.scope
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

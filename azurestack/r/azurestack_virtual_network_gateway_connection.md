@@ -141,19 +141,32 @@ variable "virtual_network_gateway_id" {
 
 ```terraform
 resource "azurestack_virtual_network_gateway_connection" "this" {
-  authorization_key               = var.authorization_key
-  enable_bgp                      = var.enable_bgp
-  express_route_circuit_id        = var.express_route_circuit_id
-  local_network_gateway_id        = var.local_network_gateway_id
-  location                        = var.location
-  name                            = var.name
+  # authorization_key - (optional) is a type of string
+  authorization_key = var.authorization_key
+  # enable_bgp - (optional) is a type of bool
+  enable_bgp = var.enable_bgp
+  # express_route_circuit_id - (optional) is a type of string
+  express_route_circuit_id = var.express_route_circuit_id
+  # local_network_gateway_id - (optional) is a type of string
+  local_network_gateway_id = var.local_network_gateway_id
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # peer_virtual_network_gateway_id - (optional) is a type of string
   peer_virtual_network_gateway_id = var.peer_virtual_network_gateway_id
-  resource_group_name             = var.resource_group_name
-  routing_weight                  = var.routing_weight
-  shared_key                      = var.shared_key
-  tags                            = var.tags
-  type                            = var.type
-  virtual_network_gateway_id      = var.virtual_network_gateway_id
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # routing_weight - (optional) is a type of number
+  routing_weight = var.routing_weight
+  # shared_key - (optional) is a type of string
+  shared_key = var.shared_key
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (required) is a type of string
+  type = var.type
+  # virtual_network_gateway_id - (required) is a type of string
+  virtual_network_gateway_id = var.virtual_network_gateway_id
 }
 ```
 

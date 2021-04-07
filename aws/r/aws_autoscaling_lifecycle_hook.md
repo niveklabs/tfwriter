@@ -103,14 +103,22 @@ variable "role_arn" {
 
 ```terraform
 resource "aws_autoscaling_lifecycle_hook" "this" {
-  autoscaling_group_name  = var.autoscaling_group_name
-  default_result          = var.default_result
-  heartbeat_timeout       = var.heartbeat_timeout
-  lifecycle_transition    = var.lifecycle_transition
-  name                    = var.name
-  notification_metadata   = var.notification_metadata
+  # autoscaling_group_name - (required) is a type of string
+  autoscaling_group_name = var.autoscaling_group_name
+  # default_result - (optional) is a type of string
+  default_result = var.default_result
+  # heartbeat_timeout - (optional) is a type of number
+  heartbeat_timeout = var.heartbeat_timeout
+  # lifecycle_transition - (required) is a type of string
+  lifecycle_transition = var.lifecycle_transition
+  # name - (required) is a type of string
+  name = var.name
+  # notification_metadata - (optional) is a type of string
+  notification_metadata = var.notification_metadata
+  # notification_target_arn - (optional) is a type of string
   notification_target_arn = var.notification_target_arn
-  role_arn                = var.role_arn
+  # role_arn - (optional) is a type of string
+  role_arn = var.role_arn
 }
 ```
 

@@ -129,11 +129,16 @@ variable "metadata" {
 
 ```terraform
 data "kubernetes_storage_class" "this" {
+  # allow_volume_expansion - (optional) is a type of bool
   allow_volume_expansion = var.allow_volume_expansion
-  mount_options          = var.mount_options
-  parameters             = var.parameters
-  reclaim_policy         = var.reclaim_policy
-  volume_binding_mode    = var.volume_binding_mode
+  # mount_options - (optional) is a type of set of string
+  mount_options = var.mount_options
+  # parameters - (optional) is a type of map of string
+  parameters = var.parameters
+  # reclaim_policy - (optional) is a type of string
+  reclaim_policy = var.reclaim_policy
+  # volume_binding_mode - (optional) is a type of string
+  volume_binding_mode = var.volume_binding_mode
 
   dynamic "allowed_topologies" {
     for_each = var.allowed_topologies
@@ -142,7 +147,9 @@ data "kubernetes_storage_class" "this" {
       dynamic "match_label_expressions" {
         for_each = allowed_topologies.value.match_label_expressions
         content {
-          key    = match_label_expressions.value["key"]
+          # key - (optional) is a type of string
+          key = match_label_expressions.value["key"]
+          # values - (optional) is a type of set of string
           values = match_label_expressions.value["values"]
         }
       }
@@ -153,9 +160,12 @@ data "kubernetes_storage_class" "this" {
   dynamic "metadata" {
     for_each = var.metadata
     content {
+      # annotations - (optional) is a type of map of string
       annotations = metadata.value["annotations"]
-      labels      = metadata.value["labels"]
-      name        = metadata.value["name"]
+      # labels - (optional) is a type of map of string
+      labels = metadata.value["labels"]
+      # name - (optional) is a type of string
+      name = metadata.value["name"]
     }
   }
 

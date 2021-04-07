@@ -80,11 +80,16 @@ variable "rules" {
 
 ```terraform
 resource "consul_acl_policy" "this" {
+  # datacenters - (optional) is a type of set of string
   datacenters = var.datacenters
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  namespace   = var.namespace
-  rules       = var.rules
+  # name - (required) is a type of string
+  name = var.name
+  # namespace - (optional) is a type of string
+  namespace = var.namespace
+  # rules - (required) is a type of string
+  rules = var.rules
 }
 ```
 

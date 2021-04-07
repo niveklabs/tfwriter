@@ -78,10 +78,15 @@ variable "service_namespace" {
 
 ```terraform
 data "google_monitoring_cluster_istio_service" "this" {
-  cluster_name      = var.cluster_name
-  location          = var.location
-  project           = var.project
-  service_name      = var.service_name
+  # cluster_name - (required) is a type of string
+  cluster_name = var.cluster_name
+  # location - (required) is a type of string
+  location = var.location
+  # project - (optional) is a type of string
+  project = var.project
+  # service_name - (required) is a type of string
+  service_name = var.service_name
+  # service_namespace - (required) is a type of string
   service_namespace = var.service_namespace
 }
 ```

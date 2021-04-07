@@ -97,17 +97,25 @@ variable "timeouts" {
 
 ```terraform
 resource "google_firestore_document" "this" {
-  collection  = var.collection
-  database    = var.database
+  # collection - (required) is a type of string
+  collection = var.collection
+  # database - (optional) is a type of string
+  database = var.database
+  # document_id - (required) is a type of string
   document_id = var.document_id
-  fields      = var.fields
-  project     = var.project
+  # fields - (required) is a type of string
+  fields = var.fields
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

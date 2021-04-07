@@ -123,27 +123,39 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_datascience_notebook_session" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  defined_tags   = var.defined_tags
-  display_name   = var.display_name
-  freeform_tags  = var.freeform_tags
-  project_id     = var.project_id
-  state          = var.state
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # state - (optional) is a type of string
+  state = var.state
 
   dynamic "notebook_session_configuration_details" {
     for_each = var.notebook_session_configuration_details
     content {
+      # block_storage_size_in_gbs - (optional) is a type of number
       block_storage_size_in_gbs = notebook_session_configuration_details.value["block_storage_size_in_gbs"]
-      shape                     = notebook_session_configuration_details.value["shape"]
-      subnet_id                 = notebook_session_configuration_details.value["subnet_id"]
+      # shape - (required) is a type of string
+      shape = notebook_session_configuration_details.value["shape"]
+      # subnet_id - (required) is a type of string
+      subnet_id = notebook_session_configuration_details.value["subnet_id"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

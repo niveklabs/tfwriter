@@ -98,17 +98,25 @@ variable "timeouts" {
 
 ```terraform
 resource "google_healthcare_consent_store" "this" {
-  dataset                         = var.dataset
-  default_consent_ttl             = var.default_consent_ttl
+  # dataset - (required) is a type of string
+  dataset = var.dataset
+  # default_consent_ttl - (optional) is a type of string
+  default_consent_ttl = var.default_consent_ttl
+  # enable_consent_create_on_update - (optional) is a type of bool
   enable_consent_create_on_update = var.enable_consent_create_on_update
-  labels                          = var.labels
-  name                            = var.name
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

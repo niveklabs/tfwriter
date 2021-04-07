@@ -131,15 +131,21 @@ variable "timeouts" {
 
 ```terraform
 resource "google_app_engine_application" "this" {
-  auth_domain    = var.auth_domain
-  database_type  = var.database_type
-  location_id    = var.location_id
-  project        = var.project
+  # auth_domain - (optional) is a type of string
+  auth_domain = var.auth_domain
+  # database_type - (optional) is a type of string
+  database_type = var.database_type
+  # location_id - (required) is a type of string
+  location_id = var.location_id
+  # project - (optional) is a type of string
+  project = var.project
+  # serving_status - (optional) is a type of string
   serving_status = var.serving_status
 
   dynamic "feature_settings" {
     for_each = var.feature_settings
     content {
+      # split_health_checks - (required) is a type of bool
       split_health_checks = feature_settings.value["split_health_checks"]
     }
   }
@@ -147,8 +153,11 @@ resource "google_app_engine_application" "this" {
   dynamic "iap" {
     for_each = var.iap
     content {
-      enabled              = iap.value["enabled"]
-      oauth2_client_id     = iap.value["oauth2_client_id"]
+      # enabled - (optional) is a type of bool
+      enabled = iap.value["enabled"]
+      # oauth2_client_id - (required) is a type of string
+      oauth2_client_id = iap.value["oauth2_client_id"]
+      # oauth2_client_secret - (required) is a type of string
       oauth2_client_secret = iap.value["oauth2_client_secret"]
     }
   }
@@ -156,7 +165,9 @@ resource "google_app_engine_application" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

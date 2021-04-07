@@ -75,15 +75,20 @@ variable "recording_group" {
 
 ```terraform
 resource "aws_config_configuration_recorder" "this" {
-  name     = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # role_arn - (required) is a type of string
   role_arn = var.role_arn
 
   dynamic "recording_group" {
     for_each = var.recording_group
     content {
-      all_supported                 = recording_group.value["all_supported"]
+      # all_supported - (optional) is a type of bool
+      all_supported = recording_group.value["all_supported"]
+      # include_global_resource_types - (optional) is a type of bool
       include_global_resource_types = recording_group.value["include_global_resource_types"]
-      resource_types                = recording_group.value["resource_types"]
+      # resource_types - (optional) is a type of set of string
+      resource_types = recording_group.value["resource_types"]
     }
   }
 

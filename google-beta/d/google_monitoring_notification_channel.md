@@ -82,11 +82,16 @@ variable "user_labels" {
 
 ```terraform
 data "google_monitoring_notification_channel" "this" {
+  # display_name - (optional) is a type of string
   display_name = var.display_name
-  labels       = var.labels
-  project      = var.project
-  type         = var.type
-  user_labels  = var.user_labels
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # project - (optional) is a type of string
+  project = var.project
+  # type - (optional) is a type of string
+  type = var.type
+  # user_labels - (optional) is a type of map of string
+  user_labels = var.user_labels
 }
 ```
 

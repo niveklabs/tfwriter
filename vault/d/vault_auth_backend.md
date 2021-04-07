@@ -49,6 +49,7 @@ variable "path" {
 
 ```terraform
 data "vault_auth_backend" "this" {
+  # path - (required) is a type of string
   path = var.path
 }
 ```

@@ -159,28 +159,42 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_mysql_channel" "this" {
+  # compartment_id - (optional) is a type of string
   compartment_id = var.compartment_id
-  defined_tags   = var.defined_tags
-  description    = var.description
-  display_name   = var.display_name
-  freeform_tags  = var.freeform_tags
-  is_enabled     = var.is_enabled
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # is_enabled - (optional) is a type of bool
+  is_enabled = var.is_enabled
 
   dynamic "source" {
     for_each = var.source
     content {
-      hostname    = source.value["hostname"]
-      password    = source.value["password"]
-      port        = source.value["port"]
+      # hostname - (required) is a type of string
+      hostname = source.value["hostname"]
+      # password - (required) is a type of string
+      password = source.value["password"]
+      # port - (optional) is a type of number
+      port = source.value["port"]
+      # source_type - (required) is a type of string
       source_type = source.value["source_type"]
-      ssl_mode    = source.value["ssl_mode"]
-      username    = source.value["username"]
+      # ssl_mode - (required) is a type of string
+      ssl_mode = source.value["ssl_mode"]
+      # username - (required) is a type of string
+      username = source.value["username"]
 
       dynamic "ssl_ca_certificate" {
         for_each = source.value.ssl_ca_certificate
         content {
+          # certificate_type - (required) is a type of string
           certificate_type = ssl_ca_certificate.value["certificate_type"]
-          contents         = ssl_ca_certificate.value["contents"]
+          # contents - (required) is a type of string
+          contents = ssl_ca_certificate.value["contents"]
         }
       }
 
@@ -190,18 +204,25 @@ resource "oci_mysql_channel" "this" {
   dynamic "target" {
     for_each = var.target
     content {
+      # applier_username - (optional) is a type of string
       applier_username = target.value["applier_username"]
-      channel_name     = target.value["channel_name"]
-      db_system_id     = target.value["db_system_id"]
-      target_type      = target.value["target_type"]
+      # channel_name - (optional) is a type of string
+      channel_name = target.value["channel_name"]
+      # db_system_id - (required) is a type of string
+      db_system_id = target.value["db_system_id"]
+      # target_type - (required) is a type of string
+      target_type = target.value["target_type"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

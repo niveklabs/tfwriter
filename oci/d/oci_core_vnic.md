@@ -49,6 +49,7 @@ variable "vnic_id" {
 
 ```terraform
 data "oci_core_vnic" "this" {
+  # vnic_id - (required) is a type of string
   vnic_id = var.vnic_id
 }
 ```

@@ -63,8 +63,11 @@ variable "package_version" {
 
 ```terraform
 resource "oci_marketplace_listing_package_agreement" "this" {
-  agreement_id    = var.agreement_id
-  listing_id      = var.listing_id
+  # agreement_id - (required) is a type of string
+  agreement_id = var.agreement_id
+  # listing_id - (required) is a type of string
+  listing_id = var.listing_id
+  # package_version - (required) is a type of string
   package_version = var.package_version
 }
 ```

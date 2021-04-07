@@ -138,30 +138,46 @@ variable "component" {
 
 ```terraform
 resource "aws_imagebuilder_image_recipe" "this" {
-  description       = var.description
-  name              = var.name
-  parent_image      = var.parent_image
-  tags              = var.tags
-  version           = var.version
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # parent_image - (required) is a type of string
+  parent_image = var.parent_image
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # version - (required) is a type of string
+  version = var.version
+  # working_directory - (optional) is a type of string
   working_directory = var.working_directory
 
   dynamic "block_device_mapping" {
     for_each = var.block_device_mapping
     content {
-      device_name  = block_device_mapping.value["device_name"]
-      no_device    = block_device_mapping.value["no_device"]
+      # device_name - (optional) is a type of string
+      device_name = block_device_mapping.value["device_name"]
+      # no_device - (optional) is a type of bool
+      no_device = block_device_mapping.value["no_device"]
+      # virtual_name - (optional) is a type of string
       virtual_name = block_device_mapping.value["virtual_name"]
 
       dynamic "ebs" {
         for_each = block_device_mapping.value.ebs
         content {
+          # delete_on_termination - (optional) is a type of string
           delete_on_termination = ebs.value["delete_on_termination"]
-          encrypted             = ebs.value["encrypted"]
-          iops                  = ebs.value["iops"]
-          kms_key_id            = ebs.value["kms_key_id"]
-          snapshot_id           = ebs.value["snapshot_id"]
-          volume_size           = ebs.value["volume_size"]
-          volume_type           = ebs.value["volume_type"]
+          # encrypted - (optional) is a type of string
+          encrypted = ebs.value["encrypted"]
+          # iops - (optional) is a type of number
+          iops = ebs.value["iops"]
+          # kms_key_id - (optional) is a type of string
+          kms_key_id = ebs.value["kms_key_id"]
+          # snapshot_id - (optional) is a type of string
+          snapshot_id = ebs.value["snapshot_id"]
+          # volume_size - (optional) is a type of number
+          volume_size = ebs.value["volume_size"]
+          # volume_type - (optional) is a type of string
+          volume_type = ebs.value["volume_type"]
         }
       }
 
@@ -171,6 +187,7 @@ resource "aws_imagebuilder_image_recipe" "this" {
   dynamic "component" {
     for_each = var.component
     content {
+      # component_arn - (required) is a type of string
       component_arn = component.value["component_arn"]
     }
   }

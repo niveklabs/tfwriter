@@ -106,18 +106,27 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_cpe" "this" {
-  compartment_id      = var.compartment_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # cpe_device_shape_id - (optional) is a type of string
   cpe_device_shape_id = var.cpe_device_shape_id
-  defined_tags        = var.defined_tags
-  display_name        = var.display_name
-  freeform_tags       = var.freeform_tags
-  ip_address          = var.ip_address
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # ip_address - (required) is a type of string
+  ip_address = var.ip_address
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

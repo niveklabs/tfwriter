@@ -95,24 +95,33 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_ecrpublic_repository" "this" {
-  force_destroy   = var.force_destroy
+  # force_destroy - (optional) is a type of bool
+  force_destroy = var.force_destroy
+  # repository_name - (required) is a type of string
   repository_name = var.repository_name
 
   dynamic "catalog_data" {
     for_each = var.catalog_data
     content {
-      about_text        = catalog_data.value["about_text"]
-      architectures     = catalog_data.value["architectures"]
-      description       = catalog_data.value["description"]
-      logo_image_blob   = catalog_data.value["logo_image_blob"]
+      # about_text - (optional) is a type of string
+      about_text = catalog_data.value["about_text"]
+      # architectures - (optional) is a type of set of string
+      architectures = catalog_data.value["architectures"]
+      # description - (optional) is a type of string
+      description = catalog_data.value["description"]
+      # logo_image_blob - (optional) is a type of string
+      logo_image_blob = catalog_data.value["logo_image_blob"]
+      # operating_systems - (optional) is a type of set of string
       operating_systems = catalog_data.value["operating_systems"]
-      usage_text        = catalog_data.value["usage_text"]
+      # usage_text - (optional) is a type of string
+      usage_text = catalog_data.value["usage_text"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

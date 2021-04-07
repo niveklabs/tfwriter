@@ -103,14 +103,22 @@ variable "verify_connection" {
 
 ```terraform
 resource "vault_rabbitmq_secret_backend" "this" {
-  connection_uri            = var.connection_uri
+  # connection_uri - (required) is a type of string
+  connection_uri = var.connection_uri
+  # default_lease_ttl_seconds - (optional) is a type of number
   default_lease_ttl_seconds = var.default_lease_ttl_seconds
-  description               = var.description
-  max_lease_ttl_seconds     = var.max_lease_ttl_seconds
-  password                  = var.password
-  path                      = var.path
-  username                  = var.username
-  verify_connection         = var.verify_connection
+  # description - (optional) is a type of string
+  description = var.description
+  # max_lease_ttl_seconds - (optional) is a type of number
+  max_lease_ttl_seconds = var.max_lease_ttl_seconds
+  # password - (required) is a type of string
+  password = var.password
+  # path - (optional) is a type of string
+  path = var.path
+  # username - (required) is a type of string
+  username = var.username
+  # verify_connection - (optional) is a type of bool
+  verify_connection = var.verify_connection
 }
 ```
 

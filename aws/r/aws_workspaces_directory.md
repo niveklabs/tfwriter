@@ -143,31 +143,47 @@ variable "workspace_creation_properties" {
 
 ```terraform
 resource "aws_workspaces_directory" "this" {
+  # directory_id - (required) is a type of string
   directory_id = var.directory_id
+  # ip_group_ids - (optional) is a type of set of string
   ip_group_ids = var.ip_group_ids
-  subnet_ids   = var.subnet_ids
-  tags         = var.tags
+  # subnet_ids - (optional) is a type of set of string
+  subnet_ids = var.subnet_ids
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "self_service_permissions" {
     for_each = var.self_service_permissions
     content {
-      change_compute_type  = self_service_permissions.value["change_compute_type"]
+      # change_compute_type - (optional) is a type of bool
+      change_compute_type = self_service_permissions.value["change_compute_type"]
+      # increase_volume_size - (optional) is a type of bool
       increase_volume_size = self_service_permissions.value["increase_volume_size"]
-      rebuild_workspace    = self_service_permissions.value["rebuild_workspace"]
-      restart_workspace    = self_service_permissions.value["restart_workspace"]
-      switch_running_mode  = self_service_permissions.value["switch_running_mode"]
+      # rebuild_workspace - (optional) is a type of bool
+      rebuild_workspace = self_service_permissions.value["rebuild_workspace"]
+      # restart_workspace - (optional) is a type of bool
+      restart_workspace = self_service_permissions.value["restart_workspace"]
+      # switch_running_mode - (optional) is a type of bool
+      switch_running_mode = self_service_permissions.value["switch_running_mode"]
     }
   }
 
   dynamic "workspace_access_properties" {
     for_each = var.workspace_access_properties
     content {
-      device_type_android    = workspace_access_properties.value["device_type_android"]
-      device_type_chromeos   = workspace_access_properties.value["device_type_chromeos"]
-      device_type_ios        = workspace_access_properties.value["device_type_ios"]
-      device_type_osx        = workspace_access_properties.value["device_type_osx"]
-      device_type_web        = workspace_access_properties.value["device_type_web"]
-      device_type_windows    = workspace_access_properties.value["device_type_windows"]
+      # device_type_android - (optional) is a type of string
+      device_type_android = workspace_access_properties.value["device_type_android"]
+      # device_type_chromeos - (optional) is a type of string
+      device_type_chromeos = workspace_access_properties.value["device_type_chromeos"]
+      # device_type_ios - (optional) is a type of string
+      device_type_ios = workspace_access_properties.value["device_type_ios"]
+      # device_type_osx - (optional) is a type of string
+      device_type_osx = workspace_access_properties.value["device_type_osx"]
+      # device_type_web - (optional) is a type of string
+      device_type_web = workspace_access_properties.value["device_type_web"]
+      # device_type_windows - (optional) is a type of string
+      device_type_windows = workspace_access_properties.value["device_type_windows"]
+      # device_type_zeroclient - (optional) is a type of string
       device_type_zeroclient = workspace_access_properties.value["device_type_zeroclient"]
     }
   }
@@ -175,10 +191,15 @@ resource "aws_workspaces_directory" "this" {
   dynamic "workspace_creation_properties" {
     for_each = var.workspace_creation_properties
     content {
-      custom_security_group_id            = workspace_creation_properties.value["custom_security_group_id"]
-      default_ou                          = workspace_creation_properties.value["default_ou"]
-      enable_internet_access              = workspace_creation_properties.value["enable_internet_access"]
-      enable_maintenance_mode             = workspace_creation_properties.value["enable_maintenance_mode"]
+      # custom_security_group_id - (optional) is a type of string
+      custom_security_group_id = workspace_creation_properties.value["custom_security_group_id"]
+      # default_ou - (optional) is a type of string
+      default_ou = workspace_creation_properties.value["default_ou"]
+      # enable_internet_access - (optional) is a type of bool
+      enable_internet_access = workspace_creation_properties.value["enable_internet_access"]
+      # enable_maintenance_mode - (optional) is a type of bool
+      enable_maintenance_mode = workspace_creation_properties.value["enable_maintenance_mode"]
+      # user_enabled_as_local_administrator - (optional) is a type of bool
       user_enabled_as_local_administrator = workspace_creation_properties.value["user_enabled_as_local_administrator"]
     }
   }

@@ -57,8 +57,10 @@ variable "tags" {
 
 ```terraform
 data "aws_batch_compute_environment" "this" {
+  # compute_environment_name - (required) is a type of string
   compute_environment_name = var.compute_environment_name
-  tags                     = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

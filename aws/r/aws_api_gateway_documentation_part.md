@@ -77,17 +77,24 @@ variable "location" {
 
 ```terraform
 resource "aws_api_gateway_documentation_part" "this" {
-  properties  = var.properties
+  # properties - (required) is a type of string
+  properties = var.properties
+  # rest_api_id - (required) is a type of string
   rest_api_id = var.rest_api_id
 
   dynamic "location" {
     for_each = var.location
     content {
-      method      = location.value["method"]
-      name        = location.value["name"]
-      path        = location.value["path"]
+      # method - (optional) is a type of string
+      method = location.value["method"]
+      # name - (optional) is a type of string
+      name = location.value["name"]
+      # path - (optional) is a type of string
+      path = location.value["path"]
+      # status_code - (optional) is a type of string
       status_code = location.value["status_code"]
-      type        = location.value["type"]
+      # type - (required) is a type of string
+      type = location.value["type"]
     }
   }
 

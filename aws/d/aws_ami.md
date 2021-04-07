@@ -97,16 +97,23 @@ variable "filter" {
 
 ```terraform
 data "aws_ami" "this" {
+  # executable_users - (optional) is a type of list of string
   executable_users = var.executable_users
-  most_recent      = var.most_recent
-  name_regex       = var.name_regex
-  owners           = var.owners
-  tags             = var.tags
+  # most_recent - (optional) is a type of bool
+  most_recent = var.most_recent
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # owners - (required) is a type of list of string
+  owners = var.owners
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

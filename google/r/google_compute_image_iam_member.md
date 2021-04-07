@@ -89,17 +89,24 @@ variable "condition" {
 
 ```terraform
 resource "google_compute_image_iam_member" "this" {
-  image   = var.image
-  member  = var.member
+  # image - (required) is a type of string
+  image = var.image
+  # member - (required) is a type of string
+  member = var.member
+  # project - (optional) is a type of string
   project = var.project
-  role    = var.role
+  # role - (required) is a type of string
+  role = var.role
 
   dynamic "condition" {
     for_each = var.condition
     content {
+      # description - (optional) is a type of string
       description = condition.value["description"]
-      expression  = condition.value["expression"]
-      title       = condition.value["title"]
+      # expression - (required) is a type of string
+      expression = condition.value["expression"]
+      # title - (required) is a type of string
+      title = condition.value["title"]
     }
   }
 

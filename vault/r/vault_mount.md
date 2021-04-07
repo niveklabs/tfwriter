@@ -112,15 +112,24 @@ variable "type" {
 
 ```terraform
 resource "vault_mount" "this" {
+  # default_lease_ttl_seconds - (optional) is a type of number
   default_lease_ttl_seconds = var.default_lease_ttl_seconds
-  description               = var.description
-  external_entropy_access   = var.external_entropy_access
-  local                     = var.local
-  max_lease_ttl_seconds     = var.max_lease_ttl_seconds
-  options                   = var.options
-  path                      = var.path
-  seal_wrap                 = var.seal_wrap
-  type                      = var.type
+  # description - (optional) is a type of string
+  description = var.description
+  # external_entropy_access - (optional) is a type of bool
+  external_entropy_access = var.external_entropy_access
+  # local - (optional) is a type of bool
+  local = var.local
+  # max_lease_ttl_seconds - (optional) is a type of number
+  max_lease_ttl_seconds = var.max_lease_ttl_seconds
+  # options - (optional) is a type of map of string
+  options = var.options
+  # path - (required) is a type of string
+  path = var.path
+  # seal_wrap - (optional) is a type of bool
+  seal_wrap = var.seal_wrap
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

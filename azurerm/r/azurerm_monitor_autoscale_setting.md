@@ -247,12 +247,18 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_monitor_autoscale_setting" "this" {
-  enabled             = var.enabled
-  location            = var.location
-  name                = var.name
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  tags                = var.tags
-  target_resource_id  = var.target_resource_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # target_resource_id - (required) is a type of string
+  target_resource_id = var.target_resource_id
 
   dynamic "notification" {
     for_each = var.notification
@@ -261,8 +267,11 @@ resource "azurerm_monitor_autoscale_setting" "this" {
       dynamic "email" {
         for_each = notification.value.email
         content {
-          custom_emails                         = email.value["custom_emails"]
-          send_to_subscription_administrator    = email.value["send_to_subscription_administrator"]
+          # custom_emails - (optional) is a type of list of string
+          custom_emails = email.value["custom_emails"]
+          # send_to_subscription_administrator - (optional) is a type of bool
+          send_to_subscription_administrator = email.value["send_to_subscription_administrator"]
+          # send_to_subscription_co_administrator - (optional) is a type of bool
           send_to_subscription_co_administrator = email.value["send_to_subscription_co_administrator"]
         }
       }
@@ -270,7 +279,9 @@ resource "azurerm_monitor_autoscale_setting" "this" {
       dynamic "webhook" {
         for_each = notification.value.webhook
         content {
-          properties  = webhook.value["properties"]
+          # properties - (optional) is a type of map of string
+          properties = webhook.value["properties"]
+          # service_uri - (required) is a type of string
           service_uri = webhook.value["service_uri"]
         }
       }
@@ -281,13 +292,17 @@ resource "azurerm_monitor_autoscale_setting" "this" {
   dynamic "profile" {
     for_each = var.profile
     content {
+      # name - (required) is a type of string
       name = profile.value["name"]
 
       dynamic "capacity" {
         for_each = profile.value.capacity
         content {
+          # default - (required) is a type of number
           default = capacity.value["default"]
+          # maximum - (required) is a type of number
           maximum = capacity.value["maximum"]
+          # minimum - (required) is a type of number
           minimum = capacity.value["minimum"]
         }
       }
@@ -295,8 +310,11 @@ resource "azurerm_monitor_autoscale_setting" "this" {
       dynamic "fixed_date" {
         for_each = profile.value.fixed_date
         content {
-          end      = fixed_date.value["end"]
-          start    = fixed_date.value["start"]
+          # end - (required) is a type of string
+          end = fixed_date.value["end"]
+          # start - (required) is a type of string
+          start = fixed_date.value["start"]
+          # timezone - (optional) is a type of string
           timezone = fixed_date.value["timezone"]
         }
       }
@@ -304,9 +322,13 @@ resource "azurerm_monitor_autoscale_setting" "this" {
       dynamic "recurrence" {
         for_each = profile.value.recurrence
         content {
-          days     = recurrence.value["days"]
-          hours    = recurrence.value["hours"]
-          minutes  = recurrence.value["minutes"]
+          # days - (required) is a type of list of string
+          days = recurrence.value["days"]
+          # hours - (required) is a type of list of number
+          hours = recurrence.value["hours"]
+          # minutes - (required) is a type of list of number
+          minutes = recurrence.value["minutes"]
+          # timezone - (optional) is a type of string
           timezone = recurrence.value["timezone"]
         }
       }
@@ -318,22 +340,34 @@ resource "azurerm_monitor_autoscale_setting" "this" {
           dynamic "metric_trigger" {
             for_each = rule.value.metric_trigger
             content {
-              metric_name        = metric_trigger.value["metric_name"]
-              metric_namespace   = metric_trigger.value["metric_namespace"]
+              # metric_name - (required) is a type of string
+              metric_name = metric_trigger.value["metric_name"]
+              # metric_namespace - (optional) is a type of string
+              metric_namespace = metric_trigger.value["metric_namespace"]
+              # metric_resource_id - (required) is a type of string
               metric_resource_id = metric_trigger.value["metric_resource_id"]
-              operator           = metric_trigger.value["operator"]
-              statistic          = metric_trigger.value["statistic"]
-              threshold          = metric_trigger.value["threshold"]
-              time_aggregation   = metric_trigger.value["time_aggregation"]
-              time_grain         = metric_trigger.value["time_grain"]
-              time_window        = metric_trigger.value["time_window"]
+              # operator - (required) is a type of string
+              operator = metric_trigger.value["operator"]
+              # statistic - (required) is a type of string
+              statistic = metric_trigger.value["statistic"]
+              # threshold - (required) is a type of number
+              threshold = metric_trigger.value["threshold"]
+              # time_aggregation - (required) is a type of string
+              time_aggregation = metric_trigger.value["time_aggregation"]
+              # time_grain - (required) is a type of string
+              time_grain = metric_trigger.value["time_grain"]
+              # time_window - (required) is a type of string
+              time_window = metric_trigger.value["time_window"]
 
               dynamic "dimensions" {
                 for_each = metric_trigger.value.dimensions
                 content {
-                  name     = dimensions.value["name"]
+                  # name - (required) is a type of string
+                  name = dimensions.value["name"]
+                  # operator - (required) is a type of string
                   operator = dimensions.value["operator"]
-                  values   = dimensions.value["values"]
+                  # values - (required) is a type of list of string
+                  values = dimensions.value["values"]
                 }
               }
 
@@ -343,10 +377,14 @@ resource "azurerm_monitor_autoscale_setting" "this" {
           dynamic "scale_action" {
             for_each = rule.value.scale_action
             content {
-              cooldown  = scale_action.value["cooldown"]
+              # cooldown - (required) is a type of string
+              cooldown = scale_action.value["cooldown"]
+              # direction - (required) is a type of string
               direction = scale_action.value["direction"]
-              type      = scale_action.value["type"]
-              value     = scale_action.value["value"]
+              # type - (required) is a type of string
+              type = scale_action.value["type"]
+              # value - (required) is a type of number
+              value = scale_action.value["value"]
             }
           }
 
@@ -359,9 +397,13 @@ resource "azurerm_monitor_autoscale_setting" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

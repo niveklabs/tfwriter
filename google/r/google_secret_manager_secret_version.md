@@ -80,14 +80,19 @@ variable "timeouts" {
 
 ```terraform
 resource "google_secret_manager_secret_version" "this" {
-  enabled     = var.enabled
-  secret      = var.secret
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # secret - (required) is a type of string
+  secret = var.secret
+  # secret_data - (required) is a type of string
   secret_data = var.secret_data
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

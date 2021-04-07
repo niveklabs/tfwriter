@@ -115,20 +115,31 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_iothub_shared_access_policy" "this" {
-  device_connect      = var.device_connect
-  iothub_name         = var.iothub_name
-  name                = var.name
-  registry_read       = var.registry_read
-  registry_write      = var.registry_write
+  # device_connect - (optional) is a type of bool
+  device_connect = var.device_connect
+  # iothub_name - (required) is a type of string
+  iothub_name = var.iothub_name
+  # name - (required) is a type of string
+  name = var.name
+  # registry_read - (optional) is a type of bool
+  registry_read = var.registry_read
+  # registry_write - (optional) is a type of bool
+  registry_write = var.registry_write
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  service_connect     = var.service_connect
+  # service_connect - (optional) is a type of bool
+  service_connect = var.service_connect
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

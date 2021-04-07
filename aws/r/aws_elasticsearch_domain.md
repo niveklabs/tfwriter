@@ -305,23 +305,33 @@ variable "vpc_options" {
 
 ```terraform
 resource "aws_elasticsearch_domain" "this" {
-  access_policies       = var.access_policies
-  advanced_options      = var.advanced_options
-  domain_name           = var.domain_name
+  # access_policies - (optional) is a type of string
+  access_policies = var.access_policies
+  # advanced_options - (optional) is a type of map of string
+  advanced_options = var.advanced_options
+  # domain_name - (required) is a type of string
+  domain_name = var.domain_name
+  # elasticsearch_version - (optional) is a type of string
   elasticsearch_version = var.elasticsearch_version
-  tags                  = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "advanced_security_options" {
     for_each = var.advanced_security_options
     content {
-      enabled                        = advanced_security_options.value["enabled"]
+      # enabled - (required) is a type of bool
+      enabled = advanced_security_options.value["enabled"]
+      # internal_user_database_enabled - (optional) is a type of bool
       internal_user_database_enabled = advanced_security_options.value["internal_user_database_enabled"]
 
       dynamic "master_user_options" {
         for_each = advanced_security_options.value.master_user_options
         content {
-          master_user_arn      = master_user_options.value["master_user_arn"]
-          master_user_name     = master_user_options.value["master_user_name"]
+          # master_user_arn - (optional) is a type of string
+          master_user_arn = master_user_options.value["master_user_arn"]
+          # master_user_name - (optional) is a type of string
+          master_user_name = master_user_options.value["master_user_name"]
+          # master_user_password - (optional) is a type of string
           master_user_password = master_user_options.value["master_user_password"]
         }
       }
@@ -332,19 +342,29 @@ resource "aws_elasticsearch_domain" "this" {
   dynamic "cluster_config" {
     for_each = var.cluster_config
     content {
-      dedicated_master_count   = cluster_config.value["dedicated_master_count"]
+      # dedicated_master_count - (optional) is a type of number
+      dedicated_master_count = cluster_config.value["dedicated_master_count"]
+      # dedicated_master_enabled - (optional) is a type of bool
       dedicated_master_enabled = cluster_config.value["dedicated_master_enabled"]
-      dedicated_master_type    = cluster_config.value["dedicated_master_type"]
-      instance_count           = cluster_config.value["instance_count"]
-      instance_type            = cluster_config.value["instance_type"]
-      warm_count               = cluster_config.value["warm_count"]
-      warm_enabled             = cluster_config.value["warm_enabled"]
-      warm_type                = cluster_config.value["warm_type"]
-      zone_awareness_enabled   = cluster_config.value["zone_awareness_enabled"]
+      # dedicated_master_type - (optional) is a type of string
+      dedicated_master_type = cluster_config.value["dedicated_master_type"]
+      # instance_count - (optional) is a type of number
+      instance_count = cluster_config.value["instance_count"]
+      # instance_type - (optional) is a type of string
+      instance_type = cluster_config.value["instance_type"]
+      # warm_count - (optional) is a type of number
+      warm_count = cluster_config.value["warm_count"]
+      # warm_enabled - (optional) is a type of bool
+      warm_enabled = cluster_config.value["warm_enabled"]
+      # warm_type - (optional) is a type of string
+      warm_type = cluster_config.value["warm_type"]
+      # zone_awareness_enabled - (optional) is a type of bool
+      zone_awareness_enabled = cluster_config.value["zone_awareness_enabled"]
 
       dynamic "zone_awareness_config" {
         for_each = cluster_config.value.zone_awareness_config
         content {
+          # availability_zone_count - (optional) is a type of number
           availability_zone_count = zone_awareness_config.value["availability_zone_count"]
         }
       }
@@ -355,30 +375,43 @@ resource "aws_elasticsearch_domain" "this" {
   dynamic "cognito_options" {
     for_each = var.cognito_options
     content {
-      enabled          = cognito_options.value["enabled"]
+      # enabled - (optional) is a type of bool
+      enabled = cognito_options.value["enabled"]
+      # identity_pool_id - (required) is a type of string
       identity_pool_id = cognito_options.value["identity_pool_id"]
-      role_arn         = cognito_options.value["role_arn"]
-      user_pool_id     = cognito_options.value["user_pool_id"]
+      # role_arn - (required) is a type of string
+      role_arn = cognito_options.value["role_arn"]
+      # user_pool_id - (required) is a type of string
+      user_pool_id = cognito_options.value["user_pool_id"]
     }
   }
 
   dynamic "domain_endpoint_options" {
     for_each = var.domain_endpoint_options
     content {
-      custom_endpoint                 = domain_endpoint_options.value["custom_endpoint"]
+      # custom_endpoint - (optional) is a type of string
+      custom_endpoint = domain_endpoint_options.value["custom_endpoint"]
+      # custom_endpoint_certificate_arn - (optional) is a type of string
       custom_endpoint_certificate_arn = domain_endpoint_options.value["custom_endpoint_certificate_arn"]
-      custom_endpoint_enabled         = domain_endpoint_options.value["custom_endpoint_enabled"]
-      enforce_https                   = domain_endpoint_options.value["enforce_https"]
-      tls_security_policy             = domain_endpoint_options.value["tls_security_policy"]
+      # custom_endpoint_enabled - (optional) is a type of bool
+      custom_endpoint_enabled = domain_endpoint_options.value["custom_endpoint_enabled"]
+      # enforce_https - (optional) is a type of bool
+      enforce_https = domain_endpoint_options.value["enforce_https"]
+      # tls_security_policy - (optional) is a type of string
+      tls_security_policy = domain_endpoint_options.value["tls_security_policy"]
     }
   }
 
   dynamic "ebs_options" {
     for_each = var.ebs_options
     content {
+      # ebs_enabled - (required) is a type of bool
       ebs_enabled = ebs_options.value["ebs_enabled"]
-      iops        = ebs_options.value["iops"]
+      # iops - (optional) is a type of number
+      iops = ebs_options.value["iops"]
+      # volume_size - (optional) is a type of number
       volume_size = ebs_options.value["volume_size"]
+      # volume_type - (optional) is a type of string
       volume_type = ebs_options.value["volume_type"]
     }
   }
@@ -386,7 +419,9 @@ resource "aws_elasticsearch_domain" "this" {
   dynamic "encrypt_at_rest" {
     for_each = var.encrypt_at_rest
     content {
-      enabled    = encrypt_at_rest.value["enabled"]
+      # enabled - (required) is a type of bool
+      enabled = encrypt_at_rest.value["enabled"]
+      # kms_key_id - (optional) is a type of string
       kms_key_id = encrypt_at_rest.value["kms_key_id"]
     }
   }
@@ -394,15 +429,19 @@ resource "aws_elasticsearch_domain" "this" {
   dynamic "log_publishing_options" {
     for_each = var.log_publishing_options
     content {
+      # cloudwatch_log_group_arn - (required) is a type of string
       cloudwatch_log_group_arn = log_publishing_options.value["cloudwatch_log_group_arn"]
-      enabled                  = log_publishing_options.value["enabled"]
-      log_type                 = log_publishing_options.value["log_type"]
+      # enabled - (optional) is a type of bool
+      enabled = log_publishing_options.value["enabled"]
+      # log_type - (required) is a type of string
+      log_type = log_publishing_options.value["log_type"]
     }
   }
 
   dynamic "node_to_node_encryption" {
     for_each = var.node_to_node_encryption
     content {
+      # enabled - (required) is a type of bool
       enabled = node_to_node_encryption.value["enabled"]
     }
   }
@@ -410,6 +449,7 @@ resource "aws_elasticsearch_domain" "this" {
   dynamic "snapshot_options" {
     for_each = var.snapshot_options
     content {
+      # automated_snapshot_start_hour - (required) is a type of number
       automated_snapshot_start_hour = snapshot_options.value["automated_snapshot_start_hour"]
     }
   }
@@ -417,6 +457,7 @@ resource "aws_elasticsearch_domain" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -424,8 +465,10 @@ resource "aws_elasticsearch_domain" "this" {
   dynamic "vpc_options" {
     for_each = var.vpc_options
     content {
+      # security_group_ids - (optional) is a type of set of string
       security_group_ids = vpc_options.value["security_group_ids"]
-      subnet_ids         = vpc_options.value["subnet_ids"]
+      # subnet_ids - (optional) is a type of set of string
+      subnet_ids = vpc_options.value["subnet_ids"]
     }
   }
 

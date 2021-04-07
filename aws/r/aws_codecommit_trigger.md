@@ -70,16 +70,22 @@ variable "trigger" {
 
 ```terraform
 resource "aws_codecommit_trigger" "this" {
+  # repository_name - (required) is a type of string
   repository_name = var.repository_name
 
   dynamic "trigger" {
     for_each = var.trigger
     content {
-      branches        = trigger.value["branches"]
-      custom_data     = trigger.value["custom_data"]
+      # branches - (optional) is a type of list of string
+      branches = trigger.value["branches"]
+      # custom_data - (optional) is a type of string
+      custom_data = trigger.value["custom_data"]
+      # destination_arn - (required) is a type of string
       destination_arn = trigger.value["destination_arn"]
-      events          = trigger.value["events"]
-      name            = trigger.value["name"]
+      # events - (required) is a type of list of string
+      events = trigger.value["events"]
+      # name - (required) is a type of string
+      name = trigger.value["name"]
     }
   }
 

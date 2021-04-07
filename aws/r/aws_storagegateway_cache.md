@@ -56,7 +56,9 @@ variable "gateway_arn" {
 
 ```terraform
 resource "aws_storagegateway_cache" "this" {
-  disk_id     = var.disk_id
+  # disk_id - (required) is a type of string
+  disk_id = var.disk_id
+  # gateway_arn - (required) is a type of string
   gateway_arn = var.gateway_arn
 }
 ```

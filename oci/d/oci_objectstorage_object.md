@@ -135,18 +135,30 @@ variable "version_id" {
 
 ```terraform
 data "oci_objectstorage_object" "this" {
-  base64_encode_content             = var.base64_encode_content
-  bucket                            = var.bucket
-  content_length_limit              = var.content_length_limit
-  http_response_cache_control       = var.http_response_cache_control
+  # base64_encode_content - (optional) is a type of bool
+  base64_encode_content = var.base64_encode_content
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # content_length_limit - (optional) is a type of number
+  content_length_limit = var.content_length_limit
+  # http_response_cache_control - (optional) is a type of string
+  http_response_cache_control = var.http_response_cache_control
+  # http_response_content_disposition - (optional) is a type of string
   http_response_content_disposition = var.http_response_content_disposition
-  http_response_content_encoding    = var.http_response_content_encoding
-  http_response_content_language    = var.http_response_content_language
-  http_response_content_type        = var.http_response_content_type
-  http_response_expires             = var.http_response_expires
-  namespace                         = var.namespace
-  object                            = var.object
-  version_id                        = var.version_id
+  # http_response_content_encoding - (optional) is a type of string
+  http_response_content_encoding = var.http_response_content_encoding
+  # http_response_content_language - (optional) is a type of string
+  http_response_content_language = var.http_response_content_language
+  # http_response_content_type - (optional) is a type of string
+  http_response_content_type = var.http_response_content_type
+  # http_response_expires - (optional) is a type of string
+  http_response_expires = var.http_response_expires
+  # namespace - (required) is a type of string
+  namespace = var.namespace
+  # object - (required) is a type of string
+  object = var.object
+  # version_id - (optional) is a type of string
+  version_id = var.version_id
 }
 ```
 

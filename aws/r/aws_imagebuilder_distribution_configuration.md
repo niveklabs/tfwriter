@@ -106,30 +106,42 @@ variable "distribution" {
 
 ```terraform
 resource "aws_imagebuilder_distribution_configuration" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  tags        = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "distribution" {
     for_each = var.distribution
     content {
+      # license_configuration_arns - (optional) is a type of set of string
       license_configuration_arns = distribution.value["license_configuration_arns"]
-      region                     = distribution.value["region"]
+      # region - (required) is a type of string
+      region = distribution.value["region"]
 
       dynamic "ami_distribution_configuration" {
         for_each = distribution.value.ami_distribution_configuration
         content {
-          ami_tags           = ami_distribution_configuration.value["ami_tags"]
-          description        = ami_distribution_configuration.value["description"]
-          kms_key_id         = ami_distribution_configuration.value["kms_key_id"]
-          name               = ami_distribution_configuration.value["name"]
+          # ami_tags - (optional) is a type of map of string
+          ami_tags = ami_distribution_configuration.value["ami_tags"]
+          # description - (optional) is a type of string
+          description = ami_distribution_configuration.value["description"]
+          # kms_key_id - (optional) is a type of string
+          kms_key_id = ami_distribution_configuration.value["kms_key_id"]
+          # name - (optional) is a type of string
+          name = ami_distribution_configuration.value["name"]
+          # target_account_ids - (optional) is a type of set of string
           target_account_ids = ami_distribution_configuration.value["target_account_ids"]
 
           dynamic "launch_permission" {
             for_each = ami_distribution_configuration.value.launch_permission
             content {
+              # user_groups - (optional) is a type of set of string
               user_groups = launch_permission.value["user_groups"]
-              user_ids    = launch_permission.value["user_ids"]
+              # user_ids - (optional) is a type of set of string
+              user_ids = launch_permission.value["user_ids"]
             }
           }
 

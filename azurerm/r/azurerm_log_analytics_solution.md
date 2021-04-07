@@ -124,28 +124,41 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_log_analytics_solution" "this" {
-  location              = var.location
-  resource_group_name   = var.resource_group_name
-  solution_name         = var.solution_name
-  tags                  = var.tags
-  workspace_name        = var.workspace_name
+  # location - (required) is a type of string
+  location = var.location
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # solution_name - (required) is a type of string
+  solution_name = var.solution_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # workspace_name - (required) is a type of string
+  workspace_name = var.workspace_name
+  # workspace_resource_id - (required) is a type of string
   workspace_resource_id = var.workspace_resource_id
 
   dynamic "plan" {
     for_each = var.plan
     content {
-      product        = plan.value["product"]
+      # product - (required) is a type of string
+      product = plan.value["product"]
+      # promotion_code - (optional) is a type of string
       promotion_code = plan.value["promotion_code"]
-      publisher      = plan.value["publisher"]
+      # publisher - (required) is a type of string
+      publisher = plan.value["publisher"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

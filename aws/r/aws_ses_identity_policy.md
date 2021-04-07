@@ -63,9 +63,12 @@ variable "policy" {
 
 ```terraform
 resource "aws_ses_identity_policy" "this" {
+  # identity - (required) is a type of string
   identity = var.identity
-  name     = var.name
-  policy   = var.policy
+  # name - (required) is a type of string
+  name = var.name
+  # policy - (required) is a type of string
+  policy = var.policy
 }
 ```
 

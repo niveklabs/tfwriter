@@ -122,16 +122,26 @@ variable "signature" {
 
 ```terraform
 resource "vault_aws_auth_backend_login" "this" {
-  backend                 = var.backend
+  # backend - (optional) is a type of string
+  backend = var.backend
+  # iam_http_request_method - (optional) is a type of string
   iam_http_request_method = var.iam_http_request_method
-  iam_request_body        = var.iam_request_body
-  iam_request_headers     = var.iam_request_headers
-  iam_request_url         = var.iam_request_url
-  identity                = var.identity
-  nonce                   = var.nonce
-  pkcs7                   = var.pkcs7
-  role                    = var.role
-  signature               = var.signature
+  # iam_request_body - (optional) is a type of string
+  iam_request_body = var.iam_request_body
+  # iam_request_headers - (optional) is a type of string
+  iam_request_headers = var.iam_request_headers
+  # iam_request_url - (optional) is a type of string
+  iam_request_url = var.iam_request_url
+  # identity - (optional) is a type of string
+  identity = var.identity
+  # nonce - (optional) is a type of string
+  nonce = var.nonce
+  # pkcs7 - (optional) is a type of string
+  pkcs7 = var.pkcs7
+  # role - (optional) is a type of string
+  role = var.role
+  # signature - (optional) is a type of string
+  signature = var.signature
 }
 ```
 

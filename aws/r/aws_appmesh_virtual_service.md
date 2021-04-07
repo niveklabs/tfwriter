@@ -105,10 +105,14 @@ variable "spec" {
 
 ```terraform
 resource "aws_appmesh_virtual_service" "this" {
-  mesh_name  = var.mesh_name
+  # mesh_name - (required) is a type of string
+  mesh_name = var.mesh_name
+  # mesh_owner - (optional) is a type of string
   mesh_owner = var.mesh_owner
-  name       = var.name
-  tags       = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "spec" {
     for_each = var.spec
@@ -121,6 +125,7 @@ resource "aws_appmesh_virtual_service" "this" {
           dynamic "virtual_node" {
             for_each = provider.value.virtual_node
             content {
+              # virtual_node_name - (required) is a type of string
               virtual_node_name = virtual_node.value["virtual_node_name"]
             }
           }
@@ -128,6 +133,7 @@ resource "aws_appmesh_virtual_service" "this" {
           dynamic "virtual_router" {
             for_each = provider.value.virtual_router
             content {
+              # virtual_router_name - (required) is a type of string
               virtual_router_name = virtual_router.value["virtual_router_name"]
             }
           }

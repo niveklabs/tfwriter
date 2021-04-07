@@ -100,18 +100,27 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_application_insights_smart_detection_rule" "this" {
-  additional_email_recipients        = var.additional_email_recipients
-  application_insights_id            = var.application_insights_id
-  enabled                            = var.enabled
-  name                               = var.name
+  # additional_email_recipients - (optional) is a type of set of string
+  additional_email_recipients = var.additional_email_recipients
+  # application_insights_id - (required) is a type of string
+  application_insights_id = var.application_insights_id
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
+  # send_emails_to_subscription_owners - (optional) is a type of bool
   send_emails_to_subscription_owners = var.send_emails_to_subscription_owners
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

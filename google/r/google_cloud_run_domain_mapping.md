@@ -122,32 +122,43 @@ variable "timeouts" {
 
 ```terraform
 resource "google_cloud_run_domain_mapping" "this" {
+  # location - (required) is a type of string
   location = var.location
-  name     = var.name
-  project  = var.project
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "metadata" {
     for_each = var.metadata
     content {
+      # annotations - (optional) is a type of map of string
       annotations = metadata.value["annotations"]
-      labels      = metadata.value["labels"]
-      namespace   = metadata.value["namespace"]
+      # labels - (optional) is a type of map of string
+      labels = metadata.value["labels"]
+      # namespace - (required) is a type of string
+      namespace = metadata.value["namespace"]
     }
   }
 
   dynamic "spec" {
     for_each = var.spec
     content {
+      # certificate_mode - (optional) is a type of string
       certificate_mode = spec.value["certificate_mode"]
-      force_override   = spec.value["force_override"]
-      route_name       = spec.value["route_name"]
+      # force_override - (optional) is a type of bool
+      force_override = spec.value["force_override"]
+      # route_name - (required) is a type of string
+      route_name = spec.value["route_name"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

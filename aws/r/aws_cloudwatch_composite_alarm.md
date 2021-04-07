@@ -104,14 +104,22 @@ variable "tags" {
 
 ```terraform
 resource "aws_cloudwatch_composite_alarm" "this" {
-  actions_enabled           = var.actions_enabled
-  alarm_actions             = var.alarm_actions
-  alarm_description         = var.alarm_description
-  alarm_name                = var.alarm_name
-  alarm_rule                = var.alarm_rule
+  # actions_enabled - (optional) is a type of bool
+  actions_enabled = var.actions_enabled
+  # alarm_actions - (optional) is a type of set of string
+  alarm_actions = var.alarm_actions
+  # alarm_description - (optional) is a type of string
+  alarm_description = var.alarm_description
+  # alarm_name - (required) is a type of string
+  alarm_name = var.alarm_name
+  # alarm_rule - (required) is a type of string
+  alarm_rule = var.alarm_rule
+  # insufficient_data_actions - (optional) is a type of set of string
   insufficient_data_actions = var.insufficient_data_actions
-  ok_actions                = var.ok_actions
-  tags                      = var.tags
+  # ok_actions - (optional) is a type of set of string
+  ok_actions = var.ok_actions
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

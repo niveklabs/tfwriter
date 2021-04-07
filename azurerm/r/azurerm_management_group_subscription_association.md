@@ -74,15 +74,20 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_management_group_subscription_association" "this" {
+  # management_group_id - (required) is a type of string
   management_group_id = var.management_group_id
-  subscription_id     = var.subscription_id
+  # subscription_id - (required) is a type of string
+  subscription_id = var.subscription_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

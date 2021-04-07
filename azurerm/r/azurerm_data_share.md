@@ -117,17 +117,25 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_data_share" "this" {
-  account_id  = var.account_id
+  # account_id - (required) is a type of string
+  account_id = var.account_id
+  # description - (optional) is a type of string
   description = var.description
-  kind        = var.kind
-  name        = var.name
-  terms       = var.terms
+  # kind - (required) is a type of string
+  kind = var.kind
+  # name - (required) is a type of string
+  name = var.name
+  # terms - (optional) is a type of string
+  terms = var.terms
 
   dynamic "snapshot_schedule" {
     for_each = var.snapshot_schedule
     content {
-      name       = snapshot_schedule.value["name"]
+      # name - (required) is a type of string
+      name = snapshot_schedule.value["name"]
+      # recurrence - (required) is a type of string
       recurrence = snapshot_schedule.value["recurrence"]
+      # start_time - (required) is a type of string
       start_time = snapshot_schedule.value["start_time"]
     }
   }
@@ -135,9 +143,13 @@ resource "azurerm_data_share" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

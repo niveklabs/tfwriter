@@ -142,18 +142,27 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_vpc_peering_connection" "this" {
-  auto_accept   = var.auto_accept
+  # auto_accept - (optional) is a type of bool
+  auto_accept = var.auto_accept
+  # peer_owner_id - (optional) is a type of string
   peer_owner_id = var.peer_owner_id
-  peer_region   = var.peer_region
-  peer_vpc_id   = var.peer_vpc_id
-  tags          = var.tags
-  vpc_id        = var.vpc_id
+  # peer_region - (optional) is a type of string
+  peer_region = var.peer_region
+  # peer_vpc_id - (required) is a type of string
+  peer_vpc_id = var.peer_vpc_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 
   dynamic "accepter" {
     for_each = var.accepter
     content {
+      # allow_classic_link_to_remote_vpc - (optional) is a type of bool
       allow_classic_link_to_remote_vpc = accepter.value["allow_classic_link_to_remote_vpc"]
-      allow_remote_vpc_dns_resolution  = accepter.value["allow_remote_vpc_dns_resolution"]
+      # allow_remote_vpc_dns_resolution - (optional) is a type of bool
+      allow_remote_vpc_dns_resolution = accepter.value["allow_remote_vpc_dns_resolution"]
+      # allow_vpc_to_remote_classic_link - (optional) is a type of bool
       allow_vpc_to_remote_classic_link = accepter.value["allow_vpc_to_remote_classic_link"]
     }
   }
@@ -161,8 +170,11 @@ resource "aws_vpc_peering_connection" "this" {
   dynamic "requester" {
     for_each = var.requester
     content {
+      # allow_classic_link_to_remote_vpc - (optional) is a type of bool
       allow_classic_link_to_remote_vpc = requester.value["allow_classic_link_to_remote_vpc"]
-      allow_remote_vpc_dns_resolution  = requester.value["allow_remote_vpc_dns_resolution"]
+      # allow_remote_vpc_dns_resolution - (optional) is a type of bool
+      allow_remote_vpc_dns_resolution = requester.value["allow_remote_vpc_dns_resolution"]
+      # allow_vpc_to_remote_classic_link - (optional) is a type of bool
       allow_vpc_to_remote_classic_link = requester.value["allow_vpc_to_remote_classic_link"]
     }
   }
@@ -170,8 +182,11 @@ resource "aws_vpc_peering_connection" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

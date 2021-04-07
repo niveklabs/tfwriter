@@ -56,8 +56,10 @@ variable "project" {
 
 ```terraform
 data "google_project_organization_policy" "this" {
+  # constraint - (required) is a type of string
   constraint = var.constraint
-  project    = var.project
+  # project - (required) is a type of string
+  project = var.project
 }
 ```
 

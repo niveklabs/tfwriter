@@ -100,8 +100,10 @@ variable "source" {
 
 ```terraform
 resource "aws_signer_signing_job" "this" {
+  # ignore_signing_job_failure - (optional) is a type of bool
   ignore_signing_job_failure = var.ignore_signing_job_failure
-  profile_name               = var.profile_name
+  # profile_name - (required) is a type of string
+  profile_name = var.profile_name
 
   dynamic "destination" {
     for_each = var.destination
@@ -110,7 +112,9 @@ resource "aws_signer_signing_job" "this" {
       dynamic "s3" {
         for_each = destination.value.s3
         content {
+          # bucket - (required) is a type of string
           bucket = s3.value["bucket"]
+          # prefix - (optional) is a type of string
           prefix = s3.value["prefix"]
         }
       }
@@ -125,8 +129,11 @@ resource "aws_signer_signing_job" "this" {
       dynamic "s3" {
         for_each = source.value.s3
         content {
-          bucket  = s3.value["bucket"]
-          key     = s3.value["key"]
+          # bucket - (required) is a type of string
+          bucket = s3.value["bucket"]
+          # key - (required) is a type of string
+          key = s3.value["key"]
+          # version - (required) is a type of string
           version = s3.value["version"]
         }
       }

@@ -131,21 +131,33 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_virtual_network" "this" {
-  cidr_block     = var.cidr_block
-  cidr_blocks    = var.cidr_blocks
+  # cidr_block - (optional) is a type of string
+  cidr_block = var.cidr_block
+  # cidr_blocks - (optional) is a type of list of string
+  cidr_blocks = var.cidr_blocks
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  defined_tags   = var.defined_tags
-  display_name   = var.display_name
-  dns_label      = var.dns_label
-  freeform_tags  = var.freeform_tags
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # dns_label - (optional) is a type of string
+  dns_label = var.dns_label
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # ipv6cidr_block - (optional) is a type of string
   ipv6cidr_block = var.ipv6cidr_block
+  # is_ipv6enabled - (optional) is a type of bool
   is_ipv6enabled = var.is_ipv6enabled
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

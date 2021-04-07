@@ -49,6 +49,7 @@ variable "subscription_id" {
 
 ```terraform
 data "oci_ons_subscription" "this" {
+  # subscription_id - (required) is a type of string
   subscription_id = var.subscription_id
 }
 ```

@@ -175,43 +175,70 @@ variable "notification" {
 
 ```terraform
 resource "aws_budgets_budget" "this" {
-  account_id        = var.account_id
-  budget_type       = var.budget_type
-  cost_filters      = var.cost_filters
-  limit_amount      = var.limit_amount
-  limit_unit        = var.limit_unit
-  name              = var.name
-  name_prefix       = var.name_prefix
-  time_period_end   = var.time_period_end
+  # account_id - (optional) is a type of string
+  account_id = var.account_id
+  # budget_type - (required) is a type of string
+  budget_type = var.budget_type
+  # cost_filters - (optional) is a type of map of string
+  cost_filters = var.cost_filters
+  # limit_amount - (required) is a type of string
+  limit_amount = var.limit_amount
+  # limit_unit - (required) is a type of string
+  limit_unit = var.limit_unit
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # time_period_end - (optional) is a type of string
+  time_period_end = var.time_period_end
+  # time_period_start - (required) is a type of string
   time_period_start = var.time_period_start
-  time_unit         = var.time_unit
+  # time_unit - (required) is a type of string
+  time_unit = var.time_unit
 
   dynamic "cost_types" {
     for_each = var.cost_types
     content {
-      include_credit             = cost_types.value["include_credit"]
-      include_discount           = cost_types.value["include_discount"]
+      # include_credit - (optional) is a type of bool
+      include_credit = cost_types.value["include_credit"]
+      # include_discount - (optional) is a type of bool
+      include_discount = cost_types.value["include_discount"]
+      # include_other_subscription - (optional) is a type of bool
       include_other_subscription = cost_types.value["include_other_subscription"]
-      include_recurring          = cost_types.value["include_recurring"]
-      include_refund             = cost_types.value["include_refund"]
-      include_subscription       = cost_types.value["include_subscription"]
-      include_support            = cost_types.value["include_support"]
-      include_tax                = cost_types.value["include_tax"]
-      include_upfront            = cost_types.value["include_upfront"]
-      use_amortized              = cost_types.value["use_amortized"]
-      use_blended                = cost_types.value["use_blended"]
+      # include_recurring - (optional) is a type of bool
+      include_recurring = cost_types.value["include_recurring"]
+      # include_refund - (optional) is a type of bool
+      include_refund = cost_types.value["include_refund"]
+      # include_subscription - (optional) is a type of bool
+      include_subscription = cost_types.value["include_subscription"]
+      # include_support - (optional) is a type of bool
+      include_support = cost_types.value["include_support"]
+      # include_tax - (optional) is a type of bool
+      include_tax = cost_types.value["include_tax"]
+      # include_upfront - (optional) is a type of bool
+      include_upfront = cost_types.value["include_upfront"]
+      # use_amortized - (optional) is a type of bool
+      use_amortized = cost_types.value["use_amortized"]
+      # use_blended - (optional) is a type of bool
+      use_blended = cost_types.value["use_blended"]
     }
   }
 
   dynamic "notification" {
     for_each = var.notification
     content {
-      comparison_operator        = notification.value["comparison_operator"]
-      notification_type          = notification.value["notification_type"]
+      # comparison_operator - (required) is a type of string
+      comparison_operator = notification.value["comparison_operator"]
+      # notification_type - (required) is a type of string
+      notification_type = notification.value["notification_type"]
+      # subscriber_email_addresses - (optional) is a type of set of string
       subscriber_email_addresses = notification.value["subscriber_email_addresses"]
-      subscriber_sns_topic_arns  = notification.value["subscriber_sns_topic_arns"]
-      threshold                  = notification.value["threshold"]
-      threshold_type             = notification.value["threshold_type"]
+      # subscriber_sns_topic_arns - (optional) is a type of set of string
+      subscriber_sns_topic_arns = notification.value["subscriber_sns_topic_arns"]
+      # threshold - (required) is a type of number
+      threshold = notification.value["threshold"]
+      # threshold_type - (required) is a type of string
+      threshold_type = notification.value["threshold_type"]
     }
   }
 

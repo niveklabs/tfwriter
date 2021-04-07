@@ -57,7 +57,9 @@ variable "role_privileges" {
 
 ```terraform
 resource "vsphere_role" "this" {
-  name            = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # role_privileges - (optional) is a type of list of string
   role_privileges = var.role_privileges
 }
 ```

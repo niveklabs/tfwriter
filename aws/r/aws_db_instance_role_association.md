@@ -63,9 +63,12 @@ variable "role_arn" {
 
 ```terraform
 resource "aws_db_instance_role_association" "this" {
+  # db_instance_identifier - (required) is a type of string
   db_instance_identifier = var.db_instance_identifier
-  feature_name           = var.feature_name
-  role_arn               = var.role_arn
+  # feature_name - (required) is a type of string
+  feature_name = var.feature_name
+  # role_arn - (required) is a type of string
+  role_arn = var.role_arn
 }
 ```
 

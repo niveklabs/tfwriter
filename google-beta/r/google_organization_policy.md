@@ -148,13 +148,17 @@ variable "timeouts" {
 
 ```terraform
 resource "google_organization_policy" "this" {
+  # constraint - (required) is a type of string
   constraint = var.constraint
-  org_id     = var.org_id
-  version    = var.version
+  # org_id - (required) is a type of string
+  org_id = var.org_id
+  # version - (optional) is a type of number
+  version = var.version
 
   dynamic "boolean_policy" {
     for_each = var.boolean_policy
     content {
+      # enforced - (required) is a type of bool
       enforced = boolean_policy.value["enforced"]
     }
   }
@@ -162,13 +166,17 @@ resource "google_organization_policy" "this" {
   dynamic "list_policy" {
     for_each = var.list_policy
     content {
+      # inherit_from_parent - (optional) is a type of bool
       inherit_from_parent = list_policy.value["inherit_from_parent"]
-      suggested_value     = list_policy.value["suggested_value"]
+      # suggested_value - (optional) is a type of string
+      suggested_value = list_policy.value["suggested_value"]
 
       dynamic "allow" {
         for_each = list_policy.value.allow
         content {
-          all    = allow.value["all"]
+          # all - (optional) is a type of bool
+          all = allow.value["all"]
+          # values - (optional) is a type of set of string
           values = allow.value["values"]
         }
       }
@@ -176,7 +184,9 @@ resource "google_organization_policy" "this" {
       dynamic "deny" {
         for_each = list_policy.value.deny
         content {
-          all    = deny.value["all"]
+          # all - (optional) is a type of bool
+          all = deny.value["all"]
+          # values - (optional) is a type of set of string
           values = deny.value["values"]
         }
       }
@@ -187,6 +197,7 @@ resource "google_organization_policy" "this" {
   dynamic "restore_policy" {
     for_each = var.restore_policy
     content {
+      # default - (required) is a type of bool
       default = restore_policy.value["default"]
     }
   }
@@ -194,9 +205,13 @@ resource "google_organization_policy" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

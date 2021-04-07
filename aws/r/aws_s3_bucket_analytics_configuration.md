@@ -112,14 +112,18 @@ variable "storage_class_analysis" {
 
 ```terraform
 resource "aws_s3_bucket_analytics_configuration" "this" {
+  # bucket - (required) is a type of string
   bucket = var.bucket
-  name   = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "filter" {
     for_each = var.filter
     content {
+      # prefix - (optional) is a type of string
       prefix = filter.value["prefix"]
-      tags   = filter.value["tags"]
+      # tags - (optional) is a type of map of string
+      tags = filter.value["tags"]
     }
   }
 
@@ -130,6 +134,7 @@ resource "aws_s3_bucket_analytics_configuration" "this" {
       dynamic "data_export" {
         for_each = storage_class_analysis.value.data_export
         content {
+          # output_schema_version - (optional) is a type of string
           output_schema_version = data_export.value["output_schema_version"]
 
           dynamic "destination" {
@@ -139,10 +144,14 @@ resource "aws_s3_bucket_analytics_configuration" "this" {
               dynamic "s3_bucket_destination" {
                 for_each = destination.value.s3_bucket_destination
                 content {
+                  # bucket_account_id - (optional) is a type of string
                   bucket_account_id = s3_bucket_destination.value["bucket_account_id"]
-                  bucket_arn        = s3_bucket_destination.value["bucket_arn"]
-                  format            = s3_bucket_destination.value["format"]
-                  prefix            = s3_bucket_destination.value["prefix"]
+                  # bucket_arn - (required) is a type of string
+                  bucket_arn = s3_bucket_destination.value["bucket_arn"]
+                  # format - (optional) is a type of string
+                  format = s3_bucket_destination.value["format"]
+                  # prefix - (optional) is a type of string
+                  prefix = s3_bucket_destination.value["prefix"]
                 }
               }
 

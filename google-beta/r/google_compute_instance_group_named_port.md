@@ -95,16 +95,23 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_instance_group_named_port" "this" {
-  group   = var.group
-  name    = var.name
-  port    = var.port
+  # group - (required) is a type of string
+  group = var.group
+  # name - (required) is a type of string
+  name = var.name
+  # port - (required) is a type of number
+  port = var.port
+  # project - (optional) is a type of string
   project = var.project
-  zone    = var.zone
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

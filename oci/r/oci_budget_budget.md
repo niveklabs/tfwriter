@@ -145,23 +145,37 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_budget_budget" "this" {
-  amount                                = var.amount
+  # amount - (required) is a type of number
+  amount = var.amount
+  # budget_processing_period_start_offset - (optional) is a type of number
   budget_processing_period_start_offset = var.budget_processing_period_start_offset
-  compartment_id                        = var.compartment_id
-  defined_tags                          = var.defined_tags
-  description                           = var.description
-  display_name                          = var.display_name
-  freeform_tags                         = var.freeform_tags
-  reset_period                          = var.reset_period
-  target_compartment_id                 = var.target_compartment_id
-  target_type                           = var.target_type
-  targets                               = var.targets
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # reset_period - (required) is a type of string
+  reset_period = var.reset_period
+  # target_compartment_id - (optional) is a type of string
+  target_compartment_id = var.target_compartment_id
+  # target_type - (optional) is a type of string
+  target_type = var.target_type
+  # targets - (optional) is a type of list of string
+  targets = var.targets
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

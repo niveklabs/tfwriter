@@ -56,8 +56,10 @@ variable "peer_id" {
 
 ```terraform
 data "oci_blockchain_peer" "this" {
+  # blockchain_platform_id - (required) is a type of string
   blockchain_platform_id = var.blockchain_platform_id
-  peer_id                = var.peer_id
+  # peer_id - (required) is a type of string
+  peer_id = var.peer_id
 }
 ```
 

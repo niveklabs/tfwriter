@@ -56,7 +56,9 @@ variable "private_access_channel_key" {
 
 ```terraform
 data "oci_analytics_analytics_instance_private_access_channel" "this" {
-  analytics_instance_id      = var.analytics_instance_id
+  # analytics_instance_id - (required) is a type of string
+  analytics_instance_id = var.analytics_instance_id
+  # private_access_channel_key - (required) is a type of string
   private_access_channel_key = var.private_access_channel_key
 }
 ```

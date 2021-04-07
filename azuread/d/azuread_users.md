@@ -74,9 +74,13 @@ variable "user_principal_names" {
 
 ```terraform
 data "azuread_users" "this" {
-  ignore_missing       = var.ignore_missing
-  mail_nicknames       = var.mail_nicknames
-  object_ids           = var.object_ids
+  # ignore_missing - (optional) is a type of bool
+  ignore_missing = var.ignore_missing
+  # mail_nicknames - (optional) is a type of list of string
+  mail_nicknames = var.mail_nicknames
+  # object_ids - (optional) is a type of list of string
+  object_ids = var.object_ids
+  # user_principal_names - (optional) is a type of list of string
   user_principal_names = var.user_principal_names
 }
 ```

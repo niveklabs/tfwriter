@@ -64,8 +64,11 @@ variable "master_billing_account" {
 
 ```terraform
 resource "google_billing_subaccount" "this" {
-  deletion_policy        = var.deletion_policy
-  display_name           = var.display_name
+  # deletion_policy - (optional) is a type of string
+  deletion_policy = var.deletion_policy
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # master_billing_account - (required) is a type of string
   master_billing_account = var.master_billing_account
 }
 ```

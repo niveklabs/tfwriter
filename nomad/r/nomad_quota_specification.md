@@ -80,18 +80,23 @@ variable "limits" {
 
 ```terraform
 resource "nomad_quota_specification" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "limits" {
     for_each = var.limits
     content {
+      # region - (required) is a type of string
       region = limits.value["region"]
 
       dynamic "region_limit" {
         for_each = limits.value.region_limit
         content {
-          cpu       = region_limit.value["cpu"]
+          # cpu - (optional) is a type of number
+          cpu = region_limit.value["cpu"]
+          # memory_mb - (optional) is a type of number
           memory_mb = region_limit.value["memory_mb"]
         }
       }

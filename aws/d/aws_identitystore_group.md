@@ -72,13 +72,17 @@ variable "filter" {
 
 ```terraform
 data "aws_identitystore_group" "this" {
-  group_id          = var.group_id
+  # group_id - (optional) is a type of string
+  group_id = var.group_id
+  # identity_store_id - (required) is a type of string
   identity_store_id = var.identity_store_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      attribute_path  = filter.value["attribute_path"]
+      # attribute_path - (required) is a type of string
+      attribute_path = filter.value["attribute_path"]
+      # attribute_value - (required) is a type of string
       attribute_value = filter.value["attribute_value"]
     }
   }

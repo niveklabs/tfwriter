@@ -83,17 +83,24 @@ variable "timeouts" {
 
 ```terraform
 resource "hcs_snapshot" "this" {
+  # managed_application_name - (required) is a type of string
   managed_application_name = var.managed_application_name
-  resource_group_name      = var.resource_group_name
-  snapshot_name            = var.snapshot_name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # snapshot_name - (required) is a type of string
+  snapshot_name = var.snapshot_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
-      create  = timeouts.value["create"]
+      # create - (optional) is a type of string
+      create = timeouts.value["create"]
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
-      delete  = timeouts.value["delete"]
-      update  = timeouts.value["update"]
+      # delete - (optional) is a type of string
+      delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
+      update = timeouts.value["update"]
     }
   }
 

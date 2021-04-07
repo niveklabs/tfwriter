@@ -93,13 +93,20 @@ variable "source_list" {
 
 ```terraform
 resource "opc_compute_sec_rule" "this" {
-  action           = var.action
-  application      = var.application
-  description      = var.description
+  # action - (required) is a type of string
+  action = var.action
+  # application - (required) is a type of string
+  application = var.application
+  # description - (optional) is a type of string
+  description = var.description
+  # destination_list - (required) is a type of string
   destination_list = var.destination_list
-  disabled         = var.disabled
-  name             = var.name
-  source_list      = var.source_list
+  # disabled - (optional) is a type of bool
+  disabled = var.disabled
+  # name - (required) is a type of string
+  name = var.name
+  # source_list - (required) is a type of string
+  source_list = var.source_list
 }
 ```
 

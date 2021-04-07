@@ -449,11 +449,16 @@ variable "cloudwatch_logging_options" {
 
 ```terraform
 resource "aws_kinesisanalyticsv2_application" "this" {
-  description            = var.description
-  name                   = var.name
-  runtime_environment    = var.runtime_environment
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # runtime_environment - (required) is a type of string
+  runtime_environment = var.runtime_environment
+  # service_execution_role - (required) is a type of string
   service_execution_role = var.service_execution_role
-  tags                   = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "application_configuration" {
     for_each = var.application_configuration
@@ -462,18 +467,23 @@ resource "aws_kinesisanalyticsv2_application" "this" {
       dynamic "application_code_configuration" {
         for_each = application_configuration.value.application_code_configuration
         content {
+          # code_content_type - (required) is a type of string
           code_content_type = application_code_configuration.value["code_content_type"]
 
           dynamic "code_content" {
             for_each = application_code_configuration.value.code_content
             content {
+              # text_content - (optional) is a type of string
               text_content = code_content.value["text_content"]
 
               dynamic "s3_content_location" {
                 for_each = code_content.value.s3_content_location
                 content {
-                  bucket_arn     = s3_content_location.value["bucket_arn"]
-                  file_key       = s3_content_location.value["file_key"]
+                  # bucket_arn - (required) is a type of string
+                  bucket_arn = s3_content_location.value["bucket_arn"]
+                  # file_key - (required) is a type of string
+                  file_key = s3_content_location.value["file_key"]
+                  # object_version - (optional) is a type of string
                   object_version = s3_content_location.value["object_version"]
                 }
               }
@@ -487,6 +497,7 @@ resource "aws_kinesisanalyticsv2_application" "this" {
       dynamic "application_snapshot_configuration" {
         for_each = application_configuration.value.application_snapshot_configuration
         content {
+          # snapshots_enabled - (required) is a type of bool
           snapshots_enabled = application_snapshot_configuration.value["snapshots_enabled"]
         }
       }
@@ -498,8 +509,10 @@ resource "aws_kinesisanalyticsv2_application" "this" {
           dynamic "property_group" {
             for_each = environment_properties.value.property_group
             content {
+              # property_group_id - (required) is a type of string
               property_group_id = property_group.value["property_group_id"]
-              property_map      = property_group.value["property_map"]
+              # property_map - (required) is a type of map of string
+              property_map = property_group.value["property_map"]
             }
           }
 
@@ -513,9 +526,13 @@ resource "aws_kinesisanalyticsv2_application" "this" {
           dynamic "checkpoint_configuration" {
             for_each = flink_application_configuration.value.checkpoint_configuration
             content {
-              checkpoint_interval           = checkpoint_configuration.value["checkpoint_interval"]
-              checkpointing_enabled         = checkpoint_configuration.value["checkpointing_enabled"]
-              configuration_type            = checkpoint_configuration.value["configuration_type"]
+              # checkpoint_interval - (optional) is a type of number
+              checkpoint_interval = checkpoint_configuration.value["checkpoint_interval"]
+              # checkpointing_enabled - (optional) is a type of bool
+              checkpointing_enabled = checkpoint_configuration.value["checkpointing_enabled"]
+              # configuration_type - (required) is a type of string
+              configuration_type = checkpoint_configuration.value["configuration_type"]
+              # min_pause_between_checkpoints - (optional) is a type of number
               min_pause_between_checkpoints = checkpoint_configuration.value["min_pause_between_checkpoints"]
             }
           }
@@ -523,19 +540,26 @@ resource "aws_kinesisanalyticsv2_application" "this" {
           dynamic "monitoring_configuration" {
             for_each = flink_application_configuration.value.monitoring_configuration
             content {
+              # configuration_type - (required) is a type of string
               configuration_type = monitoring_configuration.value["configuration_type"]
-              log_level          = monitoring_configuration.value["log_level"]
-              metrics_level      = monitoring_configuration.value["metrics_level"]
+              # log_level - (optional) is a type of string
+              log_level = monitoring_configuration.value["log_level"]
+              # metrics_level - (optional) is a type of string
+              metrics_level = monitoring_configuration.value["metrics_level"]
             }
           }
 
           dynamic "parallelism_configuration" {
             for_each = flink_application_configuration.value.parallelism_configuration
             content {
+              # auto_scaling_enabled - (optional) is a type of bool
               auto_scaling_enabled = parallelism_configuration.value["auto_scaling_enabled"]
-              configuration_type   = parallelism_configuration.value["configuration_type"]
-              parallelism          = parallelism_configuration.value["parallelism"]
-              parallelism_per_kpu  = parallelism_configuration.value["parallelism_per_kpu"]
+              # configuration_type - (required) is a type of string
+              configuration_type = parallelism_configuration.value["configuration_type"]
+              # parallelism - (optional) is a type of number
+              parallelism = parallelism_configuration.value["parallelism"]
+              # parallelism_per_kpu - (optional) is a type of number
+              parallelism_per_kpu = parallelism_configuration.value["parallelism_per_kpu"]
             }
           }
 
@@ -549,11 +573,13 @@ resource "aws_kinesisanalyticsv2_application" "this" {
           dynamic "input" {
             for_each = sql_application_configuration.value.input
             content {
+              # name_prefix - (required) is a type of string
               name_prefix = input.value["name_prefix"]
 
               dynamic "input_parallelism" {
                 for_each = input.value.input_parallelism
                 content {
+                  # count - (optional) is a type of number
                   count = input_parallelism.value["count"]
                 }
               }
@@ -565,6 +591,7 @@ resource "aws_kinesisanalyticsv2_application" "this" {
                   dynamic "input_lambda_processor" {
                     for_each = input_processing_configuration.value.input_lambda_processor
                     content {
+                      # resource_arn - (required) is a type of string
                       resource_arn = input_lambda_processor.value["resource_arn"]
                     }
                   }
@@ -575,13 +602,17 @@ resource "aws_kinesisanalyticsv2_application" "this" {
               dynamic "input_schema" {
                 for_each = input.value.input_schema
                 content {
+                  # record_encoding - (optional) is a type of string
                   record_encoding = input_schema.value["record_encoding"]
 
                   dynamic "record_column" {
                     for_each = input_schema.value.record_column
                     content {
-                      mapping  = record_column.value["mapping"]
-                      name     = record_column.value["name"]
+                      # mapping - (optional) is a type of string
+                      mapping = record_column.value["mapping"]
+                      # name - (required) is a type of string
+                      name = record_column.value["name"]
+                      # sql_type - (required) is a type of string
                       sql_type = record_column.value["sql_type"]
                     }
                   }
@@ -589,6 +620,7 @@ resource "aws_kinesisanalyticsv2_application" "this" {
                   dynamic "record_format" {
                     for_each = input_schema.value.record_format
                     content {
+                      # record_format_type - (required) is a type of string
                       record_format_type = record_format.value["record_format_type"]
 
                       dynamic "mapping_parameters" {
@@ -598,14 +630,17 @@ resource "aws_kinesisanalyticsv2_application" "this" {
                           dynamic "csv_mapping_parameters" {
                             for_each = mapping_parameters.value.csv_mapping_parameters
                             content {
+                              # record_column_delimiter - (required) is a type of string
                               record_column_delimiter = csv_mapping_parameters.value["record_column_delimiter"]
-                              record_row_delimiter    = csv_mapping_parameters.value["record_row_delimiter"]
+                              # record_row_delimiter - (required) is a type of string
+                              record_row_delimiter = csv_mapping_parameters.value["record_row_delimiter"]
                             }
                           }
 
                           dynamic "json_mapping_parameters" {
                             for_each = mapping_parameters.value.json_mapping_parameters
                             content {
+                              # record_row_path - (required) is a type of string
                               record_row_path = json_mapping_parameters.value["record_row_path"]
                             }
                           }
@@ -622,6 +657,7 @@ resource "aws_kinesisanalyticsv2_application" "this" {
               dynamic "kinesis_firehose_input" {
                 for_each = input.value.kinesis_firehose_input
                 content {
+                  # resource_arn - (required) is a type of string
                   resource_arn = kinesis_firehose_input.value["resource_arn"]
                 }
               }
@@ -629,6 +665,7 @@ resource "aws_kinesisanalyticsv2_application" "this" {
               dynamic "kinesis_streams_input" {
                 for_each = input.value.kinesis_streams_input
                 content {
+                  # resource_arn - (required) is a type of string
                   resource_arn = kinesis_streams_input.value["resource_arn"]
                 }
               }
@@ -639,11 +676,13 @@ resource "aws_kinesisanalyticsv2_application" "this" {
           dynamic "output" {
             for_each = sql_application_configuration.value.output
             content {
+              # name - (required) is a type of string
               name = output.value["name"]
 
               dynamic "destination_schema" {
                 for_each = output.value.destination_schema
                 content {
+                  # record_format_type - (required) is a type of string
                   record_format_type = destination_schema.value["record_format_type"]
                 }
               }
@@ -651,6 +690,7 @@ resource "aws_kinesisanalyticsv2_application" "this" {
               dynamic "kinesis_firehose_output" {
                 for_each = output.value.kinesis_firehose_output
                 content {
+                  # resource_arn - (required) is a type of string
                   resource_arn = kinesis_firehose_output.value["resource_arn"]
                 }
               }
@@ -658,6 +698,7 @@ resource "aws_kinesisanalyticsv2_application" "this" {
               dynamic "kinesis_streams_output" {
                 for_each = output.value.kinesis_streams_output
                 content {
+                  # resource_arn - (required) is a type of string
                   resource_arn = kinesis_streams_output.value["resource_arn"]
                 }
               }
@@ -665,6 +706,7 @@ resource "aws_kinesisanalyticsv2_application" "this" {
               dynamic "lambda_output" {
                 for_each = output.value.lambda_output
                 content {
+                  # resource_arn - (required) is a type of string
                   resource_arn = lambda_output.value["resource_arn"]
                 }
               }
@@ -675,18 +717,23 @@ resource "aws_kinesisanalyticsv2_application" "this" {
           dynamic "reference_data_source" {
             for_each = sql_application_configuration.value.reference_data_source
             content {
+              # table_name - (required) is a type of string
               table_name = reference_data_source.value["table_name"]
 
               dynamic "reference_schema" {
                 for_each = reference_data_source.value.reference_schema
                 content {
+                  # record_encoding - (optional) is a type of string
                   record_encoding = reference_schema.value["record_encoding"]
 
                   dynamic "record_column" {
                     for_each = reference_schema.value.record_column
                     content {
-                      mapping  = record_column.value["mapping"]
-                      name     = record_column.value["name"]
+                      # mapping - (optional) is a type of string
+                      mapping = record_column.value["mapping"]
+                      # name - (required) is a type of string
+                      name = record_column.value["name"]
+                      # sql_type - (required) is a type of string
                       sql_type = record_column.value["sql_type"]
                     }
                   }
@@ -694,6 +741,7 @@ resource "aws_kinesisanalyticsv2_application" "this" {
                   dynamic "record_format" {
                     for_each = reference_schema.value.record_format
                     content {
+                      # record_format_type - (required) is a type of string
                       record_format_type = record_format.value["record_format_type"]
 
                       dynamic "mapping_parameters" {
@@ -703,14 +751,17 @@ resource "aws_kinesisanalyticsv2_application" "this" {
                           dynamic "csv_mapping_parameters" {
                             for_each = mapping_parameters.value.csv_mapping_parameters
                             content {
+                              # record_column_delimiter - (required) is a type of string
                               record_column_delimiter = csv_mapping_parameters.value["record_column_delimiter"]
-                              record_row_delimiter    = csv_mapping_parameters.value["record_row_delimiter"]
+                              # record_row_delimiter - (required) is a type of string
+                              record_row_delimiter = csv_mapping_parameters.value["record_row_delimiter"]
                             }
                           }
 
                           dynamic "json_mapping_parameters" {
                             for_each = mapping_parameters.value.json_mapping_parameters
                             content {
+                              # record_row_path - (required) is a type of string
                               record_row_path = json_mapping_parameters.value["record_row_path"]
                             }
                           }
@@ -727,8 +778,10 @@ resource "aws_kinesisanalyticsv2_application" "this" {
               dynamic "s3_reference_data_source" {
                 for_each = reference_data_source.value.s3_reference_data_source
                 content {
+                  # bucket_arn - (required) is a type of string
                   bucket_arn = s3_reference_data_source.value["bucket_arn"]
-                  file_key   = s3_reference_data_source.value["file_key"]
+                  # file_key - (required) is a type of string
+                  file_key = s3_reference_data_source.value["file_key"]
                 }
               }
 
@@ -741,8 +794,10 @@ resource "aws_kinesisanalyticsv2_application" "this" {
       dynamic "vpc_configuration" {
         for_each = application_configuration.value.vpc_configuration
         content {
+          # security_group_ids - (required) is a type of set of string
           security_group_ids = vpc_configuration.value["security_group_ids"]
-          subnet_ids         = vpc_configuration.value["subnet_ids"]
+          # subnet_ids - (required) is a type of set of string
+          subnet_ids = vpc_configuration.value["subnet_ids"]
         }
       }
 
@@ -752,6 +807,7 @@ resource "aws_kinesisanalyticsv2_application" "this" {
   dynamic "cloudwatch_logging_options" {
     for_each = var.cloudwatch_logging_options
     content {
+      # log_stream_arn - (required) is a type of string
       log_stream_arn = cloudwatch_logging_options.value["log_stream_arn"]
     }
   }

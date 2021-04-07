@@ -124,30 +124,45 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_datasync_task" "this" {
+  # cloudwatch_log_group_arn - (optional) is a type of string
   cloudwatch_log_group_arn = var.cloudwatch_log_group_arn
+  # destination_location_arn - (required) is a type of string
   destination_location_arn = var.destination_location_arn
-  name                     = var.name
-  source_location_arn      = var.source_location_arn
-  tags                     = var.tags
+  # name - (optional) is a type of string
+  name = var.name
+  # source_location_arn - (required) is a type of string
+  source_location_arn = var.source_location_arn
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "options" {
     for_each = var.options
     content {
-      atime                  = options.value["atime"]
-      bytes_per_second       = options.value["bytes_per_second"]
-      gid                    = options.value["gid"]
-      mtime                  = options.value["mtime"]
-      posix_permissions      = options.value["posix_permissions"]
+      # atime - (optional) is a type of string
+      atime = options.value["atime"]
+      # bytes_per_second - (optional) is a type of number
+      bytes_per_second = options.value["bytes_per_second"]
+      # gid - (optional) is a type of string
+      gid = options.value["gid"]
+      # mtime - (optional) is a type of string
+      mtime = options.value["mtime"]
+      # posix_permissions - (optional) is a type of string
+      posix_permissions = options.value["posix_permissions"]
+      # preserve_deleted_files - (optional) is a type of string
       preserve_deleted_files = options.value["preserve_deleted_files"]
-      preserve_devices       = options.value["preserve_devices"]
-      uid                    = options.value["uid"]
-      verify_mode            = options.value["verify_mode"]
+      # preserve_devices - (optional) is a type of string
+      preserve_devices = options.value["preserve_devices"]
+      # uid - (optional) is a type of string
+      uid = options.value["uid"]
+      # verify_mode - (optional) is a type of string
+      verify_mode = options.value["verify_mode"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

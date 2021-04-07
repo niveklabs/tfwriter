@@ -127,17 +127,28 @@ variable "value" {
 
 ```terraform
 resource "aws_ssm_parameter" "this" {
+  # allowed_pattern - (optional) is a type of string
   allowed_pattern = var.allowed_pattern
-  arn             = var.arn
-  data_type       = var.data_type
-  description     = var.description
-  key_id          = var.key_id
-  name            = var.name
-  overwrite       = var.overwrite
-  tags            = var.tags
-  tier            = var.tier
-  type            = var.type
-  value           = var.value
+  # arn - (optional) is a type of string
+  arn = var.arn
+  # data_type - (optional) is a type of string
+  data_type = var.data_type
+  # description - (optional) is a type of string
+  description = var.description
+  # key_id - (optional) is a type of string
+  key_id = var.key_id
+  # name - (required) is a type of string
+  name = var.name
+  # overwrite - (optional) is a type of bool
+  overwrite = var.overwrite
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # tier - (optional) is a type of string
+  tier = var.tier
+  # type - (required) is a type of string
+  type = var.type
+  # value - (required) is a type of string
+  value = var.value
 }
 ```
 

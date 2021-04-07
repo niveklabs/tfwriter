@@ -75,14 +75,19 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_database_autonomous_database_instance_wallet_management" "this" {
+  # autonomous_database_id - (required) is a type of string
   autonomous_database_id = var.autonomous_database_id
-  should_rotate          = var.should_rotate
+  # should_rotate - (optional) is a type of bool
+  should_rotate = var.should_rotate
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

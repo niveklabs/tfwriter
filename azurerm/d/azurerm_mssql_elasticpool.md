@@ -77,13 +77,17 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_mssql_elasticpool" "this" {
-  name                = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  server_name         = var.server_name
+  # server_name - (required) is a type of string
+  server_name = var.server_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

@@ -245,45 +245,75 @@ variable "traffic_selector_policy" {
 
 ```terraform
 resource "azurerm_virtual_network_gateway_connection" "this" {
-  authorization_key                  = var.authorization_key
-  connection_protocol                = var.connection_protocol
-  dpd_timeout_seconds                = var.dpd_timeout_seconds
-  enable_bgp                         = var.enable_bgp
-  express_route_circuit_id           = var.express_route_circuit_id
-  express_route_gateway_bypass       = var.express_route_gateway_bypass
-  local_azure_ip_address_enabled     = var.local_azure_ip_address_enabled
-  local_network_gateway_id           = var.local_network_gateway_id
-  location                           = var.location
-  name                               = var.name
-  peer_virtual_network_gateway_id    = var.peer_virtual_network_gateway_id
-  resource_group_name                = var.resource_group_name
-  routing_weight                     = var.routing_weight
-  shared_key                         = var.shared_key
-  tags                               = var.tags
-  type                               = var.type
+  # authorization_key - (optional) is a type of string
+  authorization_key = var.authorization_key
+  # connection_protocol - (optional) is a type of string
+  connection_protocol = var.connection_protocol
+  # dpd_timeout_seconds - (optional) is a type of number
+  dpd_timeout_seconds = var.dpd_timeout_seconds
+  # enable_bgp - (optional) is a type of bool
+  enable_bgp = var.enable_bgp
+  # express_route_circuit_id - (optional) is a type of string
+  express_route_circuit_id = var.express_route_circuit_id
+  # express_route_gateway_bypass - (optional) is a type of bool
+  express_route_gateway_bypass = var.express_route_gateway_bypass
+  # local_azure_ip_address_enabled - (optional) is a type of bool
+  local_azure_ip_address_enabled = var.local_azure_ip_address_enabled
+  # local_network_gateway_id - (optional) is a type of string
+  local_network_gateway_id = var.local_network_gateway_id
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # peer_virtual_network_gateway_id - (optional) is a type of string
+  peer_virtual_network_gateway_id = var.peer_virtual_network_gateway_id
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # routing_weight - (optional) is a type of number
+  routing_weight = var.routing_weight
+  # shared_key - (optional) is a type of string
+  shared_key = var.shared_key
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (required) is a type of string
+  type = var.type
+  # use_policy_based_traffic_selectors - (optional) is a type of bool
   use_policy_based_traffic_selectors = var.use_policy_based_traffic_selectors
-  virtual_network_gateway_id         = var.virtual_network_gateway_id
+  # virtual_network_gateway_id - (required) is a type of string
+  virtual_network_gateway_id = var.virtual_network_gateway_id
 
   dynamic "ipsec_policy" {
     for_each = var.ipsec_policy
     content {
-      dh_group         = ipsec_policy.value["dh_group"]
-      ike_encryption   = ipsec_policy.value["ike_encryption"]
-      ike_integrity    = ipsec_policy.value["ike_integrity"]
+      # dh_group - (required) is a type of string
+      dh_group = ipsec_policy.value["dh_group"]
+      # ike_encryption - (required) is a type of string
+      ike_encryption = ipsec_policy.value["ike_encryption"]
+      # ike_integrity - (required) is a type of string
+      ike_integrity = ipsec_policy.value["ike_integrity"]
+      # ipsec_encryption - (required) is a type of string
       ipsec_encryption = ipsec_policy.value["ipsec_encryption"]
-      ipsec_integrity  = ipsec_policy.value["ipsec_integrity"]
-      pfs_group        = ipsec_policy.value["pfs_group"]
-      sa_datasize      = ipsec_policy.value["sa_datasize"]
-      sa_lifetime      = ipsec_policy.value["sa_lifetime"]
+      # ipsec_integrity - (required) is a type of string
+      ipsec_integrity = ipsec_policy.value["ipsec_integrity"]
+      # pfs_group - (required) is a type of string
+      pfs_group = ipsec_policy.value["pfs_group"]
+      # sa_datasize - (optional) is a type of number
+      sa_datasize = ipsec_policy.value["sa_datasize"]
+      # sa_lifetime - (optional) is a type of number
+      sa_lifetime = ipsec_policy.value["sa_lifetime"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -291,7 +321,9 @@ resource "azurerm_virtual_network_gateway_connection" "this" {
   dynamic "traffic_selector_policy" {
     for_each = var.traffic_selector_policy
     content {
-      local_address_cidrs  = traffic_selector_policy.value["local_address_cidrs"]
+      # local_address_cidrs - (required) is a type of list of string
+      local_address_cidrs = traffic_selector_policy.value["local_address_cidrs"]
+      # remote_address_cidrs - (required) is a type of list of string
       remote_address_cidrs = traffic_selector_policy.value["remote_address_cidrs"]
     }
   }

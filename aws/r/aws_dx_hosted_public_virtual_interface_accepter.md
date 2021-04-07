@@ -73,13 +73,17 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_dx_hosted_public_virtual_interface_accepter" "this" {
-  tags                 = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # virtual_interface_id - (required) is a type of string
   virtual_interface_id = var.virtual_interface_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

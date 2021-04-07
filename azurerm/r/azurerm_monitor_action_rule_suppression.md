@@ -225,11 +225,16 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_monitor_action_rule_suppression" "this" {
-  description         = var.description
-  enabled             = var.enabled
-  name                = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  tags                = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "condition" {
     for_each = var.condition
@@ -238,56 +243,70 @@ resource "azurerm_monitor_action_rule_suppression" "this" {
       dynamic "alert_context" {
         for_each = condition.value.alert_context
         content {
+          # operator - (required) is a type of string
           operator = alert_context.value["operator"]
-          values   = alert_context.value["values"]
+          # values - (required) is a type of set of string
+          values = alert_context.value["values"]
         }
       }
 
       dynamic "alert_rule_id" {
         for_each = condition.value.alert_rule_id
         content {
+          # operator - (required) is a type of string
           operator = alert_rule_id.value["operator"]
-          values   = alert_rule_id.value["values"]
+          # values - (required) is a type of set of string
+          values = alert_rule_id.value["values"]
         }
       }
 
       dynamic "description" {
         for_each = condition.value.description
         content {
+          # operator - (required) is a type of string
           operator = description.value["operator"]
-          values   = description.value["values"]
+          # values - (required) is a type of set of string
+          values = description.value["values"]
         }
       }
 
       dynamic "monitor" {
         for_each = condition.value.monitor
         content {
+          # operator - (required) is a type of string
           operator = monitor.value["operator"]
-          values   = monitor.value["values"]
+          # values - (required) is a type of set of string
+          values = monitor.value["values"]
         }
       }
 
       dynamic "monitor_service" {
         for_each = condition.value.monitor_service
         content {
+          # operator - (required) is a type of string
           operator = monitor_service.value["operator"]
-          values   = monitor_service.value["values"]
+          # values - (required) is a type of set of string
+          values = monitor_service.value["values"]
         }
       }
 
       dynamic "severity" {
         for_each = condition.value.severity
         content {
+          # operator - (required) is a type of string
           operator = severity.value["operator"]
-          values   = severity.value["values"]
+          # values - (required) is a type of set of string
+          values = severity.value["values"]
         }
       }
 
       dynamic "target_resource_type" {
         for_each = condition.value.target_resource_type
         content {
+          # operator - (required) is a type of string
           operator = target_resource_type.value["operator"]
-          values   = target_resource_type.value["values"]
+          # values - (required) is a type of set of string
+          values = target_resource_type.value["values"]
         }
       }
 
@@ -297,23 +316,30 @@ resource "azurerm_monitor_action_rule_suppression" "this" {
   dynamic "scope" {
     for_each = var.scope
     content {
+      # resource_ids - (required) is a type of set of string
       resource_ids = scope.value["resource_ids"]
-      type         = scope.value["type"]
+      # type - (required) is a type of string
+      type = scope.value["type"]
     }
   }
 
   dynamic "suppression" {
     for_each = var.suppression
     content {
+      # recurrence_type - (required) is a type of string
       recurrence_type = suppression.value["recurrence_type"]
 
       dynamic "schedule" {
         for_each = suppression.value.schedule
         content {
-          end_date_utc       = schedule.value["end_date_utc"]
+          # end_date_utc - (required) is a type of string
+          end_date_utc = schedule.value["end_date_utc"]
+          # recurrence_monthly - (optional) is a type of set of number
           recurrence_monthly = schedule.value["recurrence_monthly"]
-          recurrence_weekly  = schedule.value["recurrence_weekly"]
-          start_date_utc     = schedule.value["start_date_utc"]
+          # recurrence_weekly - (optional) is a type of set of string
+          recurrence_weekly = schedule.value["recurrence_weekly"]
+          # start_date_utc - (required) is a type of string
+          start_date_utc = schedule.value["start_date_utc"]
         }
       }
 
@@ -323,9 +349,13 @@ resource "azurerm_monitor_action_rule_suppression" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -94,13 +94,20 @@ variable "user_data" {
 
 ```terraform
 resource "aws_lightsail_instance" "this" {
+  # availability_zone - (required) is a type of string
   availability_zone = var.availability_zone
-  blueprint_id      = var.blueprint_id
-  bundle_id         = var.bundle_id
-  key_pair_name     = var.key_pair_name
-  name              = var.name
-  tags              = var.tags
-  user_data         = var.user_data
+  # blueprint_id - (required) is a type of string
+  blueprint_id = var.blueprint_id
+  # bundle_id - (required) is a type of string
+  bundle_id = var.bundle_id
+  # key_pair_name - (optional) is a type of string
+  key_pair_name = var.key_pair_name
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # user_data - (optional) is a type of string
+  user_data = var.user_data
 }
 ```
 

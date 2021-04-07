@@ -57,7 +57,9 @@ variable "regex_pattern_strings" {
 
 ```terraform
 resource "aws_wafregional_regex_pattern_set" "this" {
-  name                  = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # regex_pattern_strings - (optional) is a type of set of string
   regex_pattern_strings = var.regex_pattern_strings
 }
 ```

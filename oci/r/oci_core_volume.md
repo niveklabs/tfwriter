@@ -196,32 +196,49 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_volume" "this" {
-  availability_domain            = var.availability_domain
-  backup_policy_id               = var.backup_policy_id
+  # availability_domain - (required) is a type of string
+  availability_domain = var.availability_domain
+  # backup_policy_id - (optional) is a type of string
+  backup_policy_id = var.backup_policy_id
+  # block_volume_replicas_deletion - (optional) is a type of bool
   block_volume_replicas_deletion = var.block_volume_replicas_deletion
-  compartment_id                 = var.compartment_id
-  defined_tags                   = var.defined_tags
-  display_name                   = var.display_name
-  freeform_tags                  = var.freeform_tags
-  is_auto_tune_enabled           = var.is_auto_tune_enabled
-  kms_key_id                     = var.kms_key_id
-  size_in_gbs                    = var.size_in_gbs
-  size_in_mbs                    = var.size_in_mbs
-  volume_backup_id               = var.volume_backup_id
-  vpus_per_gb                    = var.vpus_per_gb
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # is_auto_tune_enabled - (optional) is a type of bool
+  is_auto_tune_enabled = var.is_auto_tune_enabled
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # size_in_gbs - (optional) is a type of string
+  size_in_gbs = var.size_in_gbs
+  # size_in_mbs - (optional) is a type of string
+  size_in_mbs = var.size_in_mbs
+  # volume_backup_id - (optional) is a type of string
+  volume_backup_id = var.volume_backup_id
+  # vpus_per_gb - (optional) is a type of string
+  vpus_per_gb = var.vpus_per_gb
 
   dynamic "block_volume_replicas" {
     for_each = var.block_volume_replicas
     content {
+      # availability_domain - (required) is a type of string
       availability_domain = block_volume_replicas.value["availability_domain"]
-      display_name        = block_volume_replicas.value["display_name"]
+      # display_name - (optional) is a type of string
+      display_name = block_volume_replicas.value["display_name"]
     }
   }
 
   dynamic "source_details" {
     for_each = var.source_details
     content {
-      id   = source_details.value["id"]
+      # id - (required) is a type of string
+      id = source_details.value["id"]
+      # type - (required) is a type of string
       type = source_details.value["type"]
     }
   }
@@ -229,8 +246,11 @@ resource "oci_core_volume" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -49,6 +49,7 @@ variable "accepted_agreement_id" {
 
 ```terraform
 data "oci_marketplace_accepted_agreement" "this" {
+  # accepted_agreement_id - (required) is a type of string
   accepted_agreement_id = var.accepted_agreement_id
 }
 ```

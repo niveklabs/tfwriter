@@ -60,6 +60,7 @@ data "hcs_consul_versions" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

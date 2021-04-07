@@ -56,7 +56,9 @@ variable "tag_namespace_id" {
 
 ```terraform
 data "oci_identity_tag" "this" {
-  tag_name         = var.tag_name
+  # tag_name - (required) is a type of string
+  tag_name = var.tag_name
+  # tag_namespace_id - (required) is a type of string
   tag_namespace_id = var.tag_namespace_id
 }
 ```

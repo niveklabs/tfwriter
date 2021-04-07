@@ -105,19 +105,29 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_eventgrid_system_topic" "this" {
-  location               = var.location
-  name                   = var.name
-  resource_group_name    = var.resource_group_name
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # source_arm_resource_id - (required) is a type of string
   source_arm_resource_id = var.source_arm_resource_id
-  tags                   = var.tags
-  topic_type             = var.topic_type
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # topic_type - (required) is a type of string
+  topic_type = var.topic_type
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

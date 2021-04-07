@@ -165,37 +165,55 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_traffic_manager_profile" "this" {
-  max_return             = var.max_return
-  name                   = var.name
-  profile_status         = var.profile_status
-  resource_group_name    = var.resource_group_name
-  tags                   = var.tags
+  # max_return - (optional) is a type of number
+  max_return = var.max_return
+  # name - (required) is a type of string
+  name = var.name
+  # profile_status - (optional) is a type of string
+  profile_status = var.profile_status
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # traffic_routing_method - (required) is a type of string
   traffic_routing_method = var.traffic_routing_method
-  traffic_view_enabled   = var.traffic_view_enabled
+  # traffic_view_enabled - (optional) is a type of bool
+  traffic_view_enabled = var.traffic_view_enabled
 
   dynamic "dns_config" {
     for_each = var.dns_config
     content {
+      # relative_name - (required) is a type of string
       relative_name = dns_config.value["relative_name"]
-      ttl           = dns_config.value["ttl"]
+      # ttl - (required) is a type of number
+      ttl = dns_config.value["ttl"]
     }
   }
 
   dynamic "monitor_config" {
     for_each = var.monitor_config
     content {
-      expected_status_code_ranges  = monitor_config.value["expected_status_code_ranges"]
-      interval_in_seconds          = monitor_config.value["interval_in_seconds"]
-      path                         = monitor_config.value["path"]
-      port                         = monitor_config.value["port"]
-      protocol                     = monitor_config.value["protocol"]
-      timeout_in_seconds           = monitor_config.value["timeout_in_seconds"]
+      # expected_status_code_ranges - (optional) is a type of list of string
+      expected_status_code_ranges = monitor_config.value["expected_status_code_ranges"]
+      # interval_in_seconds - (optional) is a type of number
+      interval_in_seconds = monitor_config.value["interval_in_seconds"]
+      # path - (optional) is a type of string
+      path = monitor_config.value["path"]
+      # port - (required) is a type of number
+      port = monitor_config.value["port"]
+      # protocol - (required) is a type of string
+      protocol = monitor_config.value["protocol"]
+      # timeout_in_seconds - (optional) is a type of number
+      timeout_in_seconds = monitor_config.value["timeout_in_seconds"]
+      # tolerated_number_of_failures - (optional) is a type of number
       tolerated_number_of_failures = monitor_config.value["tolerated_number_of_failures"]
 
       dynamic "custom_header" {
         for_each = monitor_config.value.custom_header
         content {
-          name  = custom_header.value["name"]
+          # name - (required) is a type of string
+          name = custom_header.value["name"]
+          # value - (required) is a type of string
           value = custom_header.value["value"]
         }
       }
@@ -206,9 +224,13 @@ resource "azurerm_traffic_manager_profile" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -57,8 +57,10 @@ variable "listing_id" {
 
 ```terraform
 data "oci_marketplace_listing" "this" {
+  # compartment_id - (optional) is a type of string
   compartment_id = var.compartment_id
-  listing_id     = var.listing_id
+  # listing_id - (required) is a type of string
+  listing_id = var.listing_id
 }
 ```
 

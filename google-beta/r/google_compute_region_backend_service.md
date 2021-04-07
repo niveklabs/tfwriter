@@ -419,58 +419,97 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_region_backend_service" "this" {
-  affinity_cookie_ttl_sec         = var.affinity_cookie_ttl_sec
+  # affinity_cookie_ttl_sec - (optional) is a type of number
+  affinity_cookie_ttl_sec = var.affinity_cookie_ttl_sec
+  # connection_draining_timeout_sec - (optional) is a type of number
   connection_draining_timeout_sec = var.connection_draining_timeout_sec
-  description                     = var.description
-  enable_cdn                      = var.enable_cdn
-  health_checks                   = var.health_checks
-  load_balancing_scheme           = var.load_balancing_scheme
-  locality_lb_policy              = var.locality_lb_policy
-  name                            = var.name
-  network                         = var.network
-  port_name                       = var.port_name
-  project                         = var.project
-  protocol                        = var.protocol
-  region                          = var.region
-  session_affinity                = var.session_affinity
-  timeout_sec                     = var.timeout_sec
+  # description - (optional) is a type of string
+  description = var.description
+  # enable_cdn - (optional) is a type of bool
+  enable_cdn = var.enable_cdn
+  # health_checks - (optional) is a type of set of string
+  health_checks = var.health_checks
+  # load_balancing_scheme - (optional) is a type of string
+  load_balancing_scheme = var.load_balancing_scheme
+  # locality_lb_policy - (optional) is a type of string
+  locality_lb_policy = var.locality_lb_policy
+  # name - (required) is a type of string
+  name = var.name
+  # network - (optional) is a type of string
+  network = var.network
+  # port_name - (optional) is a type of string
+  port_name = var.port_name
+  # project - (optional) is a type of string
+  project = var.project
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # region - (optional) is a type of string
+  region = var.region
+  # session_affinity - (optional) is a type of string
+  session_affinity = var.session_affinity
+  # timeout_sec - (optional) is a type of number
+  timeout_sec = var.timeout_sec
 
   dynamic "backend" {
     for_each = var.backend
     content {
-      balancing_mode               = backend.value["balancing_mode"]
-      capacity_scaler              = backend.value["capacity_scaler"]
-      description                  = backend.value["description"]
-      failover                     = backend.value["failover"]
-      group                        = backend.value["group"]
-      max_connections              = backend.value["max_connections"]
+      # balancing_mode - (optional) is a type of string
+      balancing_mode = backend.value["balancing_mode"]
+      # capacity_scaler - (optional) is a type of number
+      capacity_scaler = backend.value["capacity_scaler"]
+      # description - (optional) is a type of string
+      description = backend.value["description"]
+      # failover - (optional) is a type of bool
+      failover = backend.value["failover"]
+      # group - (required) is a type of string
+      group = backend.value["group"]
+      # max_connections - (optional) is a type of number
+      max_connections = backend.value["max_connections"]
+      # max_connections_per_endpoint - (optional) is a type of number
       max_connections_per_endpoint = backend.value["max_connections_per_endpoint"]
+      # max_connections_per_instance - (optional) is a type of number
       max_connections_per_instance = backend.value["max_connections_per_instance"]
-      max_rate                     = backend.value["max_rate"]
-      max_rate_per_endpoint        = backend.value["max_rate_per_endpoint"]
-      max_rate_per_instance        = backend.value["max_rate_per_instance"]
-      max_utilization              = backend.value["max_utilization"]
+      # max_rate - (optional) is a type of number
+      max_rate = backend.value["max_rate"]
+      # max_rate_per_endpoint - (optional) is a type of number
+      max_rate_per_endpoint = backend.value["max_rate_per_endpoint"]
+      # max_rate_per_instance - (optional) is a type of number
+      max_rate_per_instance = backend.value["max_rate_per_instance"]
+      # max_utilization - (optional) is a type of number
+      max_utilization = backend.value["max_utilization"]
     }
   }
 
   dynamic "cdn_policy" {
     for_each = var.cdn_policy
     content {
-      cache_mode                   = cdn_policy.value["cache_mode"]
-      client_ttl                   = cdn_policy.value["client_ttl"]
-      default_ttl                  = cdn_policy.value["default_ttl"]
-      max_ttl                      = cdn_policy.value["max_ttl"]
-      negative_caching             = cdn_policy.value["negative_caching"]
-      serve_while_stale            = cdn_policy.value["serve_while_stale"]
+      # cache_mode - (optional) is a type of string
+      cache_mode = cdn_policy.value["cache_mode"]
+      # client_ttl - (optional) is a type of number
+      client_ttl = cdn_policy.value["client_ttl"]
+      # default_ttl - (optional) is a type of number
+      default_ttl = cdn_policy.value["default_ttl"]
+      # max_ttl - (optional) is a type of number
+      max_ttl = cdn_policy.value["max_ttl"]
+      # negative_caching - (optional) is a type of bool
+      negative_caching = cdn_policy.value["negative_caching"]
+      # serve_while_stale - (optional) is a type of number
+      serve_while_stale = cdn_policy.value["serve_while_stale"]
+      # signed_url_cache_max_age_sec - (optional) is a type of number
       signed_url_cache_max_age_sec = cdn_policy.value["signed_url_cache_max_age_sec"]
 
       dynamic "cache_key_policy" {
         for_each = cdn_policy.value.cache_key_policy
         content {
-          include_host           = cache_key_policy.value["include_host"]
-          include_protocol       = cache_key_policy.value["include_protocol"]
-          include_query_string   = cache_key_policy.value["include_query_string"]
+          # include_host - (optional) is a type of bool
+          include_host = cache_key_policy.value["include_host"]
+          # include_protocol - (optional) is a type of bool
+          include_protocol = cache_key_policy.value["include_protocol"]
+          # include_query_string - (optional) is a type of bool
+          include_query_string = cache_key_policy.value["include_query_string"]
+          # query_string_blacklist - (optional) is a type of set of string
           query_string_blacklist = cache_key_policy.value["query_string_blacklist"]
+          # query_string_whitelist - (optional) is a type of set of string
           query_string_whitelist = cache_key_policy.value["query_string_whitelist"]
         }
       }
@@ -478,8 +517,10 @@ resource "google_compute_region_backend_service" "this" {
       dynamic "negative_caching_policy" {
         for_each = cdn_policy.value.negative_caching_policy
         content {
+          # code - (optional) is a type of number
           code = negative_caching_policy.value["code"]
-          ttl  = negative_caching_policy.value["ttl"]
+          # ttl - (optional) is a type of number
+          ttl = negative_caching_policy.value["ttl"]
         }
       }
 
@@ -489,16 +530,23 @@ resource "google_compute_region_backend_service" "this" {
   dynamic "circuit_breakers" {
     for_each = var.circuit_breakers
     content {
-      max_connections             = circuit_breakers.value["max_connections"]
-      max_pending_requests        = circuit_breakers.value["max_pending_requests"]
-      max_requests                = circuit_breakers.value["max_requests"]
+      # max_connections - (optional) is a type of number
+      max_connections = circuit_breakers.value["max_connections"]
+      # max_pending_requests - (optional) is a type of number
+      max_pending_requests = circuit_breakers.value["max_pending_requests"]
+      # max_requests - (optional) is a type of number
+      max_requests = circuit_breakers.value["max_requests"]
+      # max_requests_per_connection - (optional) is a type of number
       max_requests_per_connection = circuit_breakers.value["max_requests_per_connection"]
-      max_retries                 = circuit_breakers.value["max_retries"]
+      # max_retries - (optional) is a type of number
+      max_retries = circuit_breakers.value["max_retries"]
 
       dynamic "connect_timeout" {
         for_each = circuit_breakers.value.connect_timeout
         content {
-          nanos   = connect_timeout.value["nanos"]
+          # nanos - (optional) is a type of number
+          nanos = connect_timeout.value["nanos"]
+          # seconds - (required) is a type of number
           seconds = connect_timeout.value["seconds"]
         }
       }
@@ -509,19 +557,25 @@ resource "google_compute_region_backend_service" "this" {
   dynamic "consistent_hash" {
     for_each = var.consistent_hash
     content {
-      http_header_name  = consistent_hash.value["http_header_name"]
+      # http_header_name - (optional) is a type of string
+      http_header_name = consistent_hash.value["http_header_name"]
+      # minimum_ring_size - (optional) is a type of number
       minimum_ring_size = consistent_hash.value["minimum_ring_size"]
 
       dynamic "http_cookie" {
         for_each = consistent_hash.value.http_cookie
         content {
+          # name - (optional) is a type of string
           name = http_cookie.value["name"]
+          # path - (optional) is a type of string
           path = http_cookie.value["path"]
 
           dynamic "ttl" {
             for_each = http_cookie.value.ttl
             content {
-              nanos   = ttl.value["nanos"]
+              # nanos - (optional) is a type of number
+              nanos = ttl.value["nanos"]
+              # seconds - (required) is a type of number
               seconds = ttl.value["seconds"]
             }
           }
@@ -535,16 +589,21 @@ resource "google_compute_region_backend_service" "this" {
   dynamic "failover_policy" {
     for_each = var.failover_policy
     content {
+      # disable_connection_drain_on_failover - (optional) is a type of bool
       disable_connection_drain_on_failover = failover_policy.value["disable_connection_drain_on_failover"]
-      drop_traffic_if_unhealthy            = failover_policy.value["drop_traffic_if_unhealthy"]
-      failover_ratio                       = failover_policy.value["failover_ratio"]
+      # drop_traffic_if_unhealthy - (optional) is a type of bool
+      drop_traffic_if_unhealthy = failover_policy.value["drop_traffic_if_unhealthy"]
+      # failover_ratio - (optional) is a type of number
+      failover_ratio = failover_policy.value["failover_ratio"]
     }
   }
 
   dynamic "log_config" {
     for_each = var.log_config
     content {
-      enable      = log_config.value["enable"]
+      # enable - (optional) is a type of bool
+      enable = log_config.value["enable"]
+      # sample_rate - (optional) is a type of number
       sample_rate = log_config.value["sample_rate"]
     }
   }
@@ -552,20 +611,31 @@ resource "google_compute_region_backend_service" "this" {
   dynamic "outlier_detection" {
     for_each = var.outlier_detection
     content {
-      consecutive_errors                    = outlier_detection.value["consecutive_errors"]
-      consecutive_gateway_failure           = outlier_detection.value["consecutive_gateway_failure"]
-      enforcing_consecutive_errors          = outlier_detection.value["enforcing_consecutive_errors"]
+      # consecutive_errors - (optional) is a type of number
+      consecutive_errors = outlier_detection.value["consecutive_errors"]
+      # consecutive_gateway_failure - (optional) is a type of number
+      consecutive_gateway_failure = outlier_detection.value["consecutive_gateway_failure"]
+      # enforcing_consecutive_errors - (optional) is a type of number
+      enforcing_consecutive_errors = outlier_detection.value["enforcing_consecutive_errors"]
+      # enforcing_consecutive_gateway_failure - (optional) is a type of number
       enforcing_consecutive_gateway_failure = outlier_detection.value["enforcing_consecutive_gateway_failure"]
-      enforcing_success_rate                = outlier_detection.value["enforcing_success_rate"]
-      max_ejection_percent                  = outlier_detection.value["max_ejection_percent"]
-      success_rate_minimum_hosts            = outlier_detection.value["success_rate_minimum_hosts"]
-      success_rate_request_volume           = outlier_detection.value["success_rate_request_volume"]
-      success_rate_stdev_factor             = outlier_detection.value["success_rate_stdev_factor"]
+      # enforcing_success_rate - (optional) is a type of number
+      enforcing_success_rate = outlier_detection.value["enforcing_success_rate"]
+      # max_ejection_percent - (optional) is a type of number
+      max_ejection_percent = outlier_detection.value["max_ejection_percent"]
+      # success_rate_minimum_hosts - (optional) is a type of number
+      success_rate_minimum_hosts = outlier_detection.value["success_rate_minimum_hosts"]
+      # success_rate_request_volume - (optional) is a type of number
+      success_rate_request_volume = outlier_detection.value["success_rate_request_volume"]
+      # success_rate_stdev_factor - (optional) is a type of number
+      success_rate_stdev_factor = outlier_detection.value["success_rate_stdev_factor"]
 
       dynamic "base_ejection_time" {
         for_each = outlier_detection.value.base_ejection_time
         content {
-          nanos   = base_ejection_time.value["nanos"]
+          # nanos - (optional) is a type of number
+          nanos = base_ejection_time.value["nanos"]
+          # seconds - (required) is a type of number
           seconds = base_ejection_time.value["seconds"]
         }
       }
@@ -573,7 +643,9 @@ resource "google_compute_region_backend_service" "this" {
       dynamic "interval" {
         for_each = outlier_detection.value.interval
         content {
-          nanos   = interval.value["nanos"]
+          # nanos - (optional) is a type of number
+          nanos = interval.value["nanos"]
+          # seconds - (required) is a type of number
           seconds = interval.value["seconds"]
         }
       }
@@ -584,8 +656,11 @@ resource "google_compute_region_backend_service" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

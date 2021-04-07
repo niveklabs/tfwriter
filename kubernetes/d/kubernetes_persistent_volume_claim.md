@@ -123,31 +123,42 @@ data "kubernetes_persistent_volume_claim" "this" {
   dynamic "metadata" {
     for_each = var.metadata
     content {
-      annotations   = metadata.value["annotations"]
+      # annotations - (optional) is a type of map of string
+      annotations = metadata.value["annotations"]
+      # generate_name - (optional) is a type of string
       generate_name = metadata.value["generate_name"]
-      labels        = metadata.value["labels"]
-      name          = metadata.value["name"]
-      namespace     = metadata.value["namespace"]
+      # labels - (optional) is a type of map of string
+      labels = metadata.value["labels"]
+      # name - (optional) is a type of string
+      name = metadata.value["name"]
+      # namespace - (optional) is a type of string
+      namespace = metadata.value["namespace"]
     }
   }
 
   dynamic "spec" {
     for_each = var.spec
     content {
+      # storage_class_name - (optional) is a type of string
       storage_class_name = spec.value["storage_class_name"]
-      volume_name        = spec.value["volume_name"]
+      # volume_name - (optional) is a type of string
+      volume_name = spec.value["volume_name"]
 
       dynamic "selector" {
         for_each = spec.value.selector
         content {
+          # match_labels - (optional) is a type of map of string
           match_labels = selector.value["match_labels"]
 
           dynamic "match_expressions" {
             for_each = selector.value.match_expressions
             content {
-              key      = match_expressions.value["key"]
+              # key - (optional) is a type of string
+              key = match_expressions.value["key"]
+              # operator - (optional) is a type of string
               operator = match_expressions.value["operator"]
-              values   = match_expressions.value["values"]
+              # values - (optional) is a type of set of string
+              values = match_expressions.value["values"]
             }
           }
 

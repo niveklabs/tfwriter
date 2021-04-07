@@ -56,7 +56,9 @@ variable "policy_data" {
 
 ```terraform
 resource "google_storage_bucket_iam_policy" "this" {
-  bucket      = var.bucket
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # policy_data - (required) is a type of string
   policy_data = var.policy_data
 }
 ```

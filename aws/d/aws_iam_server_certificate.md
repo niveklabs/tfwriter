@@ -74,9 +74,13 @@ variable "path_prefix" {
 
 ```terraform
 data "aws_iam_server_certificate" "this" {
-  latest      = var.latest
-  name        = var.name
+  # latest - (optional) is a type of bool
+  latest = var.latest
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
   name_prefix = var.name_prefix
+  # path_prefix - (optional) is a type of string
   path_prefix = var.path_prefix
 }
 ```

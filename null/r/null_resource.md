@@ -50,6 +50,7 @@ variable "triggers" {
 
 ```terraform
 resource "null_resource" "this" {
+  # triggers - (optional) is a type of map of string
   triggers = var.triggers
 }
 ```

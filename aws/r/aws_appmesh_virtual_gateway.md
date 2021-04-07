@@ -349,10 +349,14 @@ variable "spec" {
 
 ```terraform
 resource "aws_appmesh_virtual_gateway" "this" {
-  mesh_name  = var.mesh_name
+  # mesh_name - (required) is a type of string
+  mesh_name = var.mesh_name
+  # mesh_owner - (optional) is a type of string
   mesh_owner = var.mesh_owner
-  name       = var.name
-  tags       = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "spec" {
     for_each = var.spec
@@ -369,8 +373,10 @@ resource "aws_appmesh_virtual_gateway" "this" {
               dynamic "tls" {
                 for_each = client_policy.value.tls
                 content {
+                  # enforce - (optional) is a type of bool
                   enforce = tls.value["enforce"]
-                  ports   = tls.value["ports"]
+                  # ports - (optional) is a type of set of number
+                  ports = tls.value["ports"]
 
                   dynamic "certificate" {
                     for_each = tls.value.certificate
@@ -379,14 +385,17 @@ resource "aws_appmesh_virtual_gateway" "this" {
                       dynamic "file" {
                         for_each = certificate.value.file
                         content {
+                          # certificate_chain - (required) is a type of string
                           certificate_chain = file.value["certificate_chain"]
-                          private_key       = file.value["private_key"]
+                          # private_key - (required) is a type of string
+                          private_key = file.value["private_key"]
                         }
                       }
 
                       dynamic "sds" {
                         for_each = certificate.value.sds
                         content {
+                          # secret_name - (required) is a type of string
                           secret_name = sds.value["secret_name"]
                         }
                       }
@@ -405,6 +414,7 @@ resource "aws_appmesh_virtual_gateway" "this" {
                           dynamic "match" {
                             for_each = subject_alternative_names.value.match
                             content {
+                              # exact - (required) is a type of set of string
                               exact = match.value["exact"]
                             }
                           }
@@ -419,6 +429,7 @@ resource "aws_appmesh_virtual_gateway" "this" {
                           dynamic "acm" {
                             for_each = trust.value.acm
                             content {
+                              # certificate_authority_arns - (required) is a type of set of string
                               certificate_authority_arns = acm.value["certificate_authority_arns"]
                             }
                           }
@@ -426,6 +437,7 @@ resource "aws_appmesh_virtual_gateway" "this" {
                           dynamic "file" {
                             for_each = trust.value.file
                             content {
+                              # certificate_chain - (required) is a type of string
                               certificate_chain = file.value["certificate_chain"]
                             }
                           }
@@ -433,6 +445,7 @@ resource "aws_appmesh_virtual_gateway" "this" {
                           dynamic "sds" {
                             for_each = trust.value.sds
                             content {
+                              # secret_name - (required) is a type of string
                               secret_name = sds.value["secret_name"]
                             }
                           }
@@ -463,6 +476,7 @@ resource "aws_appmesh_virtual_gateway" "this" {
               dynamic "grpc" {
                 for_each = connection_pool.value.grpc
                 content {
+                  # max_requests - (required) is a type of number
                   max_requests = grpc.value["max_requests"]
                 }
               }
@@ -470,7 +484,9 @@ resource "aws_appmesh_virtual_gateway" "this" {
               dynamic "http" {
                 for_each = connection_pool.value.http
                 content {
-                  max_connections      = http.value["max_connections"]
+                  # max_connections - (required) is a type of number
+                  max_connections = http.value["max_connections"]
+                  # max_pending_requests - (optional) is a type of number
                   max_pending_requests = http.value["max_pending_requests"]
                 }
               }
@@ -478,6 +494,7 @@ resource "aws_appmesh_virtual_gateway" "this" {
               dynamic "http2" {
                 for_each = connection_pool.value.http2
                 content {
+                  # max_requests - (required) is a type of number
                   max_requests = http2.value["max_requests"]
                 }
               }
@@ -488,12 +505,19 @@ resource "aws_appmesh_virtual_gateway" "this" {
           dynamic "health_check" {
             for_each = listener.value.health_check
             content {
-              healthy_threshold   = health_check.value["healthy_threshold"]
-              interval_millis     = health_check.value["interval_millis"]
-              path                = health_check.value["path"]
-              port                = health_check.value["port"]
-              protocol            = health_check.value["protocol"]
-              timeout_millis      = health_check.value["timeout_millis"]
+              # healthy_threshold - (required) is a type of number
+              healthy_threshold = health_check.value["healthy_threshold"]
+              # interval_millis - (required) is a type of number
+              interval_millis = health_check.value["interval_millis"]
+              # path - (optional) is a type of string
+              path = health_check.value["path"]
+              # port - (optional) is a type of number
+              port = health_check.value["port"]
+              # protocol - (required) is a type of string
+              protocol = health_check.value["protocol"]
+              # timeout_millis - (required) is a type of number
+              timeout_millis = health_check.value["timeout_millis"]
+              # unhealthy_threshold - (required) is a type of number
               unhealthy_threshold = health_check.value["unhealthy_threshold"]
             }
           }
@@ -501,7 +525,9 @@ resource "aws_appmesh_virtual_gateway" "this" {
           dynamic "port_mapping" {
             for_each = listener.value.port_mapping
             content {
-              port     = port_mapping.value["port"]
+              # port - (required) is a type of number
+              port = port_mapping.value["port"]
+              # protocol - (required) is a type of string
               protocol = port_mapping.value["protocol"]
             }
           }
@@ -509,6 +535,7 @@ resource "aws_appmesh_virtual_gateway" "this" {
           dynamic "tls" {
             for_each = listener.value.tls
             content {
+              # mode - (required) is a type of string
               mode = tls.value["mode"]
 
               dynamic "certificate" {
@@ -518,6 +545,7 @@ resource "aws_appmesh_virtual_gateway" "this" {
                   dynamic "acm" {
                     for_each = certificate.value.acm
                     content {
+                      # certificate_arn - (required) is a type of string
                       certificate_arn = acm.value["certificate_arn"]
                     }
                   }
@@ -525,14 +553,17 @@ resource "aws_appmesh_virtual_gateway" "this" {
                   dynamic "file" {
                     for_each = certificate.value.file
                     content {
+                      # certificate_chain - (required) is a type of string
                       certificate_chain = file.value["certificate_chain"]
-                      private_key       = file.value["private_key"]
+                      # private_key - (required) is a type of string
+                      private_key = file.value["private_key"]
                     }
                   }
 
                   dynamic "sds" {
                     for_each = certificate.value.sds
                     content {
+                      # secret_name - (required) is a type of string
                       secret_name = sds.value["secret_name"]
                     }
                   }
@@ -551,6 +582,7 @@ resource "aws_appmesh_virtual_gateway" "this" {
                       dynamic "match" {
                         for_each = subject_alternative_names.value.match
                         content {
+                          # exact - (required) is a type of set of string
                           exact = match.value["exact"]
                         }
                       }
@@ -565,6 +597,7 @@ resource "aws_appmesh_virtual_gateway" "this" {
                       dynamic "file" {
                         for_each = trust.value.file
                         content {
+                          # certificate_chain - (required) is a type of string
                           certificate_chain = file.value["certificate_chain"]
                         }
                       }
@@ -572,6 +605,7 @@ resource "aws_appmesh_virtual_gateway" "this" {
                       dynamic "sds" {
                         for_each = trust.value.sds
                         content {
+                          # secret_name - (required) is a type of string
                           secret_name = sds.value["secret_name"]
                         }
                       }
@@ -599,6 +633,7 @@ resource "aws_appmesh_virtual_gateway" "this" {
               dynamic "file" {
                 for_each = access_log.value.file
                 content {
+                  # path - (required) is a type of string
                   path = file.value["path"]
                 }
               }

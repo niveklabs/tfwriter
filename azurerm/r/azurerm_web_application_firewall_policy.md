@@ -216,33 +216,49 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_web_application_firewall_policy" "this" {
-  http_listener_ids   = var.http_listener_ids
-  location            = var.location
-  name                = var.name
+  # http_listener_ids - (optional) is a type of list of string
+  http_listener_ids = var.http_listener_ids
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # path_based_rule_ids - (optional) is a type of list of string
   path_based_rule_ids = var.path_based_rule_ids
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  tags                = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "custom_rules" {
     for_each = var.custom_rules
     content {
-      action    = custom_rules.value["action"]
-      name      = custom_rules.value["name"]
-      priority  = custom_rules.value["priority"]
+      # action - (required) is a type of string
+      action = custom_rules.value["action"]
+      # name - (optional) is a type of string
+      name = custom_rules.value["name"]
+      # priority - (required) is a type of number
+      priority = custom_rules.value["priority"]
+      # rule_type - (required) is a type of string
       rule_type = custom_rules.value["rule_type"]
 
       dynamic "match_conditions" {
         for_each = custom_rules.value.match_conditions
         content {
-          match_values       = match_conditions.value["match_values"]
+          # match_values - (required) is a type of list of string
+          match_values = match_conditions.value["match_values"]
+          # negation_condition - (optional) is a type of bool
           negation_condition = match_conditions.value["negation_condition"]
-          operator           = match_conditions.value["operator"]
-          transforms         = match_conditions.value["transforms"]
+          # operator - (required) is a type of string
+          operator = match_conditions.value["operator"]
+          # transforms - (optional) is a type of set of string
+          transforms = match_conditions.value["transforms"]
 
           dynamic "match_variables" {
             for_each = match_conditions.value.match_variables
             content {
-              selector      = match_variables.value["selector"]
+              # selector - (optional) is a type of string
+              selector = match_variables.value["selector"]
+              # variable_name - (required) is a type of string
               variable_name = match_variables.value["variable_name"]
             }
           }
@@ -260,8 +276,11 @@ resource "azurerm_web_application_firewall_policy" "this" {
       dynamic "exclusion" {
         for_each = managed_rules.value.exclusion
         content {
-          match_variable          = exclusion.value["match_variable"]
-          selector                = exclusion.value["selector"]
+          # match_variable - (required) is a type of string
+          match_variable = exclusion.value["match_variable"]
+          # selector - (required) is a type of string
+          selector = exclusion.value["selector"]
+          # selector_match_operator - (required) is a type of string
           selector_match_operator = exclusion.value["selector_match_operator"]
         }
       }
@@ -269,13 +288,17 @@ resource "azurerm_web_application_firewall_policy" "this" {
       dynamic "managed_rule_set" {
         for_each = managed_rules.value.managed_rule_set
         content {
-          type    = managed_rule_set.value["type"]
+          # type - (optional) is a type of string
+          type = managed_rule_set.value["type"]
+          # version - (required) is a type of string
           version = managed_rule_set.value["version"]
 
           dynamic "rule_group_override" {
             for_each = managed_rule_set.value.rule_group_override
             content {
-              disabled_rules  = rule_group_override.value["disabled_rules"]
+              # disabled_rules - (required) is a type of list of string
+              disabled_rules = rule_group_override.value["disabled_rules"]
+              # rule_group_name - (required) is a type of string
               rule_group_name = rule_group_override.value["rule_group_name"]
             }
           }
@@ -289,20 +312,29 @@ resource "azurerm_web_application_firewall_policy" "this" {
   dynamic "policy_settings" {
     for_each = var.policy_settings
     content {
-      enabled                     = policy_settings.value["enabled"]
-      file_upload_limit_in_mb     = policy_settings.value["file_upload_limit_in_mb"]
+      # enabled - (optional) is a type of bool
+      enabled = policy_settings.value["enabled"]
+      # file_upload_limit_in_mb - (optional) is a type of number
+      file_upload_limit_in_mb = policy_settings.value["file_upload_limit_in_mb"]
+      # max_request_body_size_in_kb - (optional) is a type of number
       max_request_body_size_in_kb = policy_settings.value["max_request_body_size_in_kb"]
-      mode                        = policy_settings.value["mode"]
-      request_body_check          = policy_settings.value["request_body_check"]
+      # mode - (optional) is a type of string
+      mode = policy_settings.value["mode"]
+      # request_body_check - (optional) is a type of bool
+      request_body_check = policy_settings.value["request_body_check"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

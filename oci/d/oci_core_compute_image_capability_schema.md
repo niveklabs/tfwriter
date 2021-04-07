@@ -57,8 +57,10 @@ variable "is_merge_enabled" {
 
 ```terraform
 data "oci_core_compute_image_capability_schema" "this" {
+  # compute_image_capability_schema_id - (required) is a type of string
   compute_image_capability_schema_id = var.compute_image_capability_schema_id
-  is_merge_enabled                   = var.is_merge_enabled
+  # is_merge_enabled - (optional) is a type of string
+  is_merge_enabled = var.is_merge_enabled
 }
 ```
 

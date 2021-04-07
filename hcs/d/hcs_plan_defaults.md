@@ -60,6 +60,7 @@ data "hcs_plan_defaults" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

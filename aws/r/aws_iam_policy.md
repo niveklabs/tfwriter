@@ -89,12 +89,18 @@ variable "tags" {
 
 ```terraform
 resource "aws_iam_policy" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
   name_prefix = var.name_prefix
-  path        = var.path
-  policy      = var.policy
-  tags        = var.tags
+  # path - (optional) is a type of string
+  path = var.path
+  # policy - (required) is a type of string
+  policy = var.policy
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

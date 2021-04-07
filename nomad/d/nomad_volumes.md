@@ -74,10 +74,14 @@ variable "type" {
 
 ```terraform
 data "nomad_volumes" "this" {
+  # namespace - (optional) is a type of string
   namespace = var.namespace
-  node_id   = var.node_id
+  # node_id - (optional) is a type of string
+  node_id = var.node_id
+  # plugin_id - (optional) is a type of string
   plugin_id = var.plugin_id
-  type      = var.type
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

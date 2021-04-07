@@ -106,14 +106,22 @@ variable "project_id" {
 
 ```terraform
 resource "vault_gcp_auth_backend" "this" {
-  client_email   = var.client_email
-  client_id      = var.client_id
-  credentials    = var.credentials
-  description    = var.description
-  local          = var.local
-  path           = var.path
+  # client_email - (optional) is a type of string
+  client_email = var.client_email
+  # client_id - (optional) is a type of string
+  client_id = var.client_id
+  # credentials - (optional) is a type of string
+  credentials = var.credentials
+  # description - (optional) is a type of string
+  description = var.description
+  # local - (optional) is a type of bool
+  local = var.local
+  # path - (optional) is a type of string
+  path = var.path
+  # private_key_id - (optional) is a type of string
   private_key_id = var.private_key_id
-  project_id     = var.project_id
+  # project_id - (optional) is a type of string
+  project_id = var.project_id
 }
 ```
 

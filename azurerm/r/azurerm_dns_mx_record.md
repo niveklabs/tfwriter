@@ -114,16 +114,23 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_dns_mx_record" "this" {
-  name                = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  tags                = var.tags
-  ttl                 = var.ttl
-  zone_name           = var.zone_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # ttl - (required) is a type of number
+  ttl = var.ttl
+  # zone_name - (required) is a type of string
+  zone_name = var.zone_name
 
   dynamic "record" {
     for_each = var.record
     content {
-      exchange   = record.value["exchange"]
+      # exchange - (required) is a type of string
+      exchange = record.value["exchange"]
+      # preference - (required) is a type of string
       preference = record.value["preference"]
     }
   }
@@ -131,9 +138,13 @@ resource "azurerm_dns_mx_record" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

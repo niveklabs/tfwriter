@@ -96,13 +96,20 @@ variable "source" {
 
 ```terraform
 resource "local_file" "this" {
-  content              = var.content
-  content_base64       = var.content_base64
+  # content - (optional) is a type of string
+  content = var.content
+  # content_base64 - (optional) is a type of string
+  content_base64 = var.content_base64
+  # directory_permission - (optional) is a type of string
   directory_permission = var.directory_permission
-  file_permission      = var.file_permission
-  filename             = var.filename
-  sensitive_content    = var.sensitive_content
-  source               = var.source
+  # file_permission - (optional) is a type of string
+  file_permission = var.file_permission
+  # filename - (required) is a type of string
+  filename = var.filename
+  # sensitive_content - (optional) is a type of string
+  sensitive_content = var.sensitive_content
+  # source - (optional) is a type of string
+  source = var.source
 }
 ```
 

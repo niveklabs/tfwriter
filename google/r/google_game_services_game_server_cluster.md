@@ -127,21 +127,29 @@ variable "timeouts" {
 
 ```terraform
 resource "google_game_services_game_server_cluster" "this" {
-  cluster_id  = var.cluster_id
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # description - (optional) is a type of string
   description = var.description
-  labels      = var.labels
-  location    = var.location
-  project     = var.project
-  realm_id    = var.realm_id
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # location - (optional) is a type of string
+  location = var.location
+  # project - (optional) is a type of string
+  project = var.project
+  # realm_id - (required) is a type of string
+  realm_id = var.realm_id
 
   dynamic "connection_info" {
     for_each = var.connection_info
     content {
+      # namespace - (required) is a type of string
       namespace = connection_info.value["namespace"]
 
       dynamic "gke_cluster_reference" {
         for_each = connection_info.value.gke_cluster_reference
         content {
+          # cluster - (required) is a type of string
           cluster = gke_cluster_reference.value["cluster"]
         }
       }
@@ -152,8 +160,11 @@ resource "google_game_services_game_server_cluster" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

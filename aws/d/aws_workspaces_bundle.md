@@ -66,9 +66,12 @@ variable "owner" {
 
 ```terraform
 data "aws_workspaces_bundle" "this" {
+  # bundle_id - (optional) is a type of string
   bundle_id = var.bundle_id
-  name      = var.name
-  owner     = var.owner
+  # name - (optional) is a type of string
+  name = var.name
+  # owner - (optional) is a type of string
+  owner = var.owner
 }
 ```
 

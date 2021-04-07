@@ -446,64 +446,113 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_opsworks_instance" "this" {
-  agent_version                = var.agent_version
-  ami_id                       = var.ami_id
-  architecture                 = var.architecture
-  auto_scaling_type            = var.auto_scaling_type
-  availability_zone            = var.availability_zone
-  created_at                   = var.created_at
-  delete_ebs                   = var.delete_ebs
-  delete_eip                   = var.delete_eip
-  ebs_optimized                = var.ebs_optimized
-  ecs_cluster_arn              = var.ecs_cluster_arn
-  elastic_ip                   = var.elastic_ip
-  hostname                     = var.hostname
-  infrastructure_class         = var.infrastructure_class
-  install_updates_on_boot      = var.install_updates_on_boot
-  instance_profile_arn         = var.instance_profile_arn
-  instance_type                = var.instance_type
-  last_service_error_id        = var.last_service_error_id
-  layer_ids                    = var.layer_ids
-  os                           = var.os
-  platform                     = var.platform
-  private_dns                  = var.private_dns
-  private_ip                   = var.private_ip
-  public_dns                   = var.public_dns
-  public_ip                    = var.public_ip
-  registered_by                = var.registered_by
-  reported_agent_version       = var.reported_agent_version
-  reported_os_family           = var.reported_os_family
-  reported_os_name             = var.reported_os_name
-  reported_os_version          = var.reported_os_version
-  root_device_type             = var.root_device_type
-  root_device_volume_id        = var.root_device_volume_id
-  security_group_ids           = var.security_group_ids
+  # agent_version - (optional) is a type of string
+  agent_version = var.agent_version
+  # ami_id - (optional) is a type of string
+  ami_id = var.ami_id
+  # architecture - (optional) is a type of string
+  architecture = var.architecture
+  # auto_scaling_type - (optional) is a type of string
+  auto_scaling_type = var.auto_scaling_type
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # created_at - (optional) is a type of string
+  created_at = var.created_at
+  # delete_ebs - (optional) is a type of bool
+  delete_ebs = var.delete_ebs
+  # delete_eip - (optional) is a type of bool
+  delete_eip = var.delete_eip
+  # ebs_optimized - (optional) is a type of bool
+  ebs_optimized = var.ebs_optimized
+  # ecs_cluster_arn - (optional) is a type of string
+  ecs_cluster_arn = var.ecs_cluster_arn
+  # elastic_ip - (optional) is a type of string
+  elastic_ip = var.elastic_ip
+  # hostname - (optional) is a type of string
+  hostname = var.hostname
+  # infrastructure_class - (optional) is a type of string
+  infrastructure_class = var.infrastructure_class
+  # install_updates_on_boot - (optional) is a type of bool
+  install_updates_on_boot = var.install_updates_on_boot
+  # instance_profile_arn - (optional) is a type of string
+  instance_profile_arn = var.instance_profile_arn
+  # instance_type - (optional) is a type of string
+  instance_type = var.instance_type
+  # last_service_error_id - (optional) is a type of string
+  last_service_error_id = var.last_service_error_id
+  # layer_ids - (required) is a type of list of string
+  layer_ids = var.layer_ids
+  # os - (optional) is a type of string
+  os = var.os
+  # platform - (optional) is a type of string
+  platform = var.platform
+  # private_dns - (optional) is a type of string
+  private_dns = var.private_dns
+  # private_ip - (optional) is a type of string
+  private_ip = var.private_ip
+  # public_dns - (optional) is a type of string
+  public_dns = var.public_dns
+  # public_ip - (optional) is a type of string
+  public_ip = var.public_ip
+  # registered_by - (optional) is a type of string
+  registered_by = var.registered_by
+  # reported_agent_version - (optional) is a type of string
+  reported_agent_version = var.reported_agent_version
+  # reported_os_family - (optional) is a type of string
+  reported_os_family = var.reported_os_family
+  # reported_os_name - (optional) is a type of string
+  reported_os_name = var.reported_os_name
+  # reported_os_version - (optional) is a type of string
+  reported_os_version = var.reported_os_version
+  # root_device_type - (optional) is a type of string
+  root_device_type = var.root_device_type
+  # root_device_volume_id - (optional) is a type of string
+  root_device_volume_id = var.root_device_volume_id
+  # security_group_ids - (optional) is a type of list of string
+  security_group_ids = var.security_group_ids
+  # ssh_host_dsa_key_fingerprint - (optional) is a type of string
   ssh_host_dsa_key_fingerprint = var.ssh_host_dsa_key_fingerprint
+  # ssh_host_rsa_key_fingerprint - (optional) is a type of string
   ssh_host_rsa_key_fingerprint = var.ssh_host_rsa_key_fingerprint
-  ssh_key_name                 = var.ssh_key_name
-  stack_id                     = var.stack_id
-  state                        = var.state
-  status                       = var.status
-  subnet_id                    = var.subnet_id
-  tenancy                      = var.tenancy
-  virtualization_type          = var.virtualization_type
+  # ssh_key_name - (optional) is a type of string
+  ssh_key_name = var.ssh_key_name
+  # stack_id - (required) is a type of string
+  stack_id = var.stack_id
+  # state - (optional) is a type of string
+  state = var.state
+  # status - (optional) is a type of string
+  status = var.status
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # tenancy - (optional) is a type of string
+  tenancy = var.tenancy
+  # virtualization_type - (optional) is a type of string
+  virtualization_type = var.virtualization_type
 
   dynamic "ebs_block_device" {
     for_each = var.ebs_block_device
     content {
+      # delete_on_termination - (optional) is a type of bool
       delete_on_termination = ebs_block_device.value["delete_on_termination"]
-      device_name           = ebs_block_device.value["device_name"]
-      iops                  = ebs_block_device.value["iops"]
-      snapshot_id           = ebs_block_device.value["snapshot_id"]
-      volume_size           = ebs_block_device.value["volume_size"]
-      volume_type           = ebs_block_device.value["volume_type"]
+      # device_name - (required) is a type of string
+      device_name = ebs_block_device.value["device_name"]
+      # iops - (optional) is a type of number
+      iops = ebs_block_device.value["iops"]
+      # snapshot_id - (optional) is a type of string
+      snapshot_id = ebs_block_device.value["snapshot_id"]
+      # volume_size - (optional) is a type of number
+      volume_size = ebs_block_device.value["volume_size"]
+      # volume_type - (optional) is a type of string
+      volume_type = ebs_block_device.value["volume_type"]
     }
   }
 
   dynamic "ephemeral_block_device" {
     for_each = var.ephemeral_block_device
     content {
-      device_name  = ephemeral_block_device.value["device_name"]
+      # device_name - (required) is a type of string
+      device_name = ephemeral_block_device.value["device_name"]
+      # virtual_name - (required) is a type of string
       virtual_name = ephemeral_block_device.value["virtual_name"]
     }
   }
@@ -511,18 +560,25 @@ resource "aws_opsworks_instance" "this" {
   dynamic "root_block_device" {
     for_each = var.root_block_device
     content {
+      # delete_on_termination - (optional) is a type of bool
       delete_on_termination = root_block_device.value["delete_on_termination"]
-      iops                  = root_block_device.value["iops"]
-      volume_size           = root_block_device.value["volume_size"]
-      volume_type           = root_block_device.value["volume_type"]
+      # iops - (optional) is a type of number
+      iops = root_block_device.value["iops"]
+      # volume_size - (optional) is a type of number
+      volume_size = root_block_device.value["volume_size"]
+      # volume_type - (optional) is a type of string
+      volume_type = root_block_device.value["volume_type"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

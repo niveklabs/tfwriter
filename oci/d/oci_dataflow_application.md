@@ -49,6 +49,7 @@ variable "application_id" {
 
 ```terraform
 data "oci_dataflow_application" "this" {
+  # application_id - (required) is a type of string
   application_id = var.application_id
 }
 ```

@@ -105,15 +105,21 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_external_vpn_gateway" "this" {
-  description     = var.description
-  name            = var.name
-  project         = var.project
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # redundancy_type - (optional) is a type of string
   redundancy_type = var.redundancy_type
 
   dynamic "interface" {
     for_each = var.interface
     content {
-      id         = interface.value["id"]
+      # id - (optional) is a type of number
+      id = interface.value["id"]
+      # ip_address - (optional) is a type of string
       ip_address = interface.value["ip_address"]
     }
   }
@@ -121,7 +127,9 @@ resource "google_compute_external_vpn_gateway" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

@@ -73,10 +73,14 @@ variable "text" {
 
 ```terraform
 resource "aws_ses_template" "this" {
-  html    = var.html
-  name    = var.name
+  # html - (optional) is a type of string
+  html = var.html
+  # name - (required) is a type of string
+  name = var.name
+  # subject - (optional) is a type of string
   subject = var.subject
-  text    = var.text
+  # text - (optional) is a type of string
+  text = var.text
 }
 ```
 

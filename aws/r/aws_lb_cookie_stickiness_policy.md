@@ -71,10 +71,14 @@ variable "name" {
 
 ```terraform
 resource "aws_lb_cookie_stickiness_policy" "this" {
+  # cookie_expiration_period - (optional) is a type of number
   cookie_expiration_period = var.cookie_expiration_period
-  lb_port                  = var.lb_port
-  load_balancer            = var.load_balancer
-  name                     = var.name
+  # lb_port - (required) is a type of number
+  lb_port = var.lb_port
+  # load_balancer - (required) is a type of string
+  load_balancer = var.load_balancer
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

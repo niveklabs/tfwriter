@@ -139,19 +139,29 @@ variable "view" {
 
 ```terraform
 resource "google_bigquery_dataset_access" "this" {
-  dataset_id     = var.dataset_id
-  domain         = var.domain
+  # dataset_id - (required) is a type of string
+  dataset_id = var.dataset_id
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # group_by_email - (optional) is a type of string
   group_by_email = var.group_by_email
-  iam_member     = var.iam_member
-  project        = var.project
-  role           = var.role
-  special_group  = var.special_group
-  user_by_email  = var.user_by_email
+  # iam_member - (optional) is a type of string
+  iam_member = var.iam_member
+  # project - (optional) is a type of string
+  project = var.project
+  # role - (optional) is a type of string
+  role = var.role
+  # special_group - (optional) is a type of string
+  special_group = var.special_group
+  # user_by_email - (optional) is a type of string
+  user_by_email = var.user_by_email
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }
@@ -159,9 +169,12 @@ resource "google_bigquery_dataset_access" "this" {
   dynamic "view" {
     for_each = var.view
     content {
+      # dataset_id - (required) is a type of string
       dataset_id = view.value["dataset_id"]
+      # project_id - (required) is a type of string
       project_id = view.value["project_id"]
-      table_id   = view.value["table_id"]
+      # table_id - (required) is a type of string
+      table_id = view.value["table_id"]
     }
   }
 

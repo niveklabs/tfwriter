@@ -75,15 +75,21 @@ variable "permissions" {
 
 ```terraform
 resource "vsphere_entity_permissions" "this" {
-  entity_id   = var.entity_id
+  # entity_id - (required) is a type of string
+  entity_id = var.entity_id
+  # entity_type - (required) is a type of string
   entity_type = var.entity_type
 
   dynamic "permissions" {
     for_each = var.permissions
     content {
-      is_group      = permissions.value["is_group"]
-      propagate     = permissions.value["propagate"]
-      role_id       = permissions.value["role_id"]
+      # is_group - (required) is a type of bool
+      is_group = permissions.value["is_group"]
+      # propagate - (required) is a type of bool
+      propagate = permissions.value["propagate"]
+      # role_id - (required) is a type of string
+      role_id = permissions.value["role_id"]
+      # user_or_group - (required) is a type of string
       user_or_group = permissions.value["user_or_group"]
     }
   }

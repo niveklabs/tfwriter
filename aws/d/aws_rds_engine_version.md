@@ -73,10 +73,14 @@ variable "version" {
 
 ```terraform
 data "aws_rds_engine_version" "this" {
-  engine                 = var.engine
+  # engine - (required) is a type of string
+  engine = var.engine
+  # parameter_group_family - (optional) is a type of string
   parameter_group_family = var.parameter_group_family
-  preferred_versions     = var.preferred_versions
-  version                = var.version
+  # preferred_versions - (optional) is a type of list of string
+  preferred_versions = var.preferred_versions
+  # version - (optional) is a type of string
+  version = var.version
 }
 ```
 

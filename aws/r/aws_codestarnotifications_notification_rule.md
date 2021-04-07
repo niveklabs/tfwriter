@@ -104,18 +104,26 @@ variable "target" {
 
 ```terraform
 resource "aws_codestarnotifications_notification_rule" "this" {
-  detail_type    = var.detail_type
+  # detail_type - (required) is a type of string
+  detail_type = var.detail_type
+  # event_type_ids - (required) is a type of set of string
   event_type_ids = var.event_type_ids
-  name           = var.name
-  resource       = var.resource
-  status         = var.status
-  tags           = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # resource - (required) is a type of string
+  resource = var.resource
+  # status - (optional) is a type of string
+  status = var.status
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "target" {
     for_each = var.target
     content {
+      # address - (required) is a type of string
       address = target.value["address"]
-      type    = target.value["type"]
+      # type - (optional) is a type of string
+      type = target.value["type"]
     }
   }
 

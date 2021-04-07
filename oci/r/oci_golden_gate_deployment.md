@@ -187,37 +187,59 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_golden_gate_deployment" "this" {
-  compartment_id          = var.compartment_id
-  cpu_core_count          = var.cpu_core_count
-  defined_tags            = var.defined_tags
-  deployment_backup_id    = var.deployment_backup_id
-  deployment_type         = var.deployment_type
-  description             = var.description
-  display_name            = var.display_name
-  fqdn                    = var.fqdn
-  freeform_tags           = var.freeform_tags
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # cpu_core_count - (required) is a type of number
+  cpu_core_count = var.cpu_core_count
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # deployment_backup_id - (optional) is a type of string
+  deployment_backup_id = var.deployment_backup_id
+  # deployment_type - (required) is a type of string
+  deployment_type = var.deployment_type
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # fqdn - (optional) is a type of string
+  fqdn = var.fqdn
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # is_auto_scaling_enabled - (required) is a type of bool
   is_auto_scaling_enabled = var.is_auto_scaling_enabled
-  is_public               = var.is_public
-  license_model           = var.license_model
-  nsg_ids                 = var.nsg_ids
-  subnet_id               = var.subnet_id
+  # is_public - (optional) is a type of bool
+  is_public = var.is_public
+  # license_model - (required) is a type of string
+  license_model = var.license_model
+  # nsg_ids - (optional) is a type of set of string
+  nsg_ids = var.nsg_ids
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
 
   dynamic "ogg_data" {
     for_each = var.ogg_data
     content {
-      admin_password  = ogg_data.value["admin_password"]
-      admin_username  = ogg_data.value["admin_username"]
-      certificate     = ogg_data.value["certificate"]
+      # admin_password - (required) is a type of string
+      admin_password = ogg_data.value["admin_password"]
+      # admin_username - (required) is a type of string
+      admin_username = ogg_data.value["admin_username"]
+      # certificate - (optional) is a type of string
+      certificate = ogg_data.value["certificate"]
+      # deployment_name - (required) is a type of string
       deployment_name = ogg_data.value["deployment_name"]
-      key             = ogg_data.value["key"]
+      # key - (optional) is a type of string
+      key = ogg_data.value["key"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -90,16 +90,23 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_instance_console_connection" "this" {
-  defined_tags  = var.defined_tags
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # freeform_tags - (optional) is a type of map of string
   freeform_tags = var.freeform_tags
-  instance_id   = var.instance_id
-  public_key    = var.public_key
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # public_key - (required) is a type of string
+  public_key = var.public_key
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

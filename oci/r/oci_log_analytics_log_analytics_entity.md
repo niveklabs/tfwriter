@@ -152,24 +152,39 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_log_analytics_log_analytics_entity" "this" {
-  cloud_resource_id   = var.cloud_resource_id
-  compartment_id      = var.compartment_id
-  defined_tags        = var.defined_tags
-  entity_type_name    = var.entity_type_name
-  freeform_tags       = var.freeform_tags
-  hostname            = var.hostname
+  # cloud_resource_id - (optional) is a type of string
+  cloud_resource_id = var.cloud_resource_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # entity_type_name - (required) is a type of string
+  entity_type_name = var.entity_type_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # hostname - (optional) is a type of string
+  hostname = var.hostname
+  # management_agent_id - (optional) is a type of string
   management_agent_id = var.management_agent_id
-  name                = var.name
-  namespace           = var.namespace
-  properties          = var.properties
-  source_id           = var.source_id
-  timezone_region     = var.timezone_region
+  # name - (required) is a type of string
+  name = var.name
+  # namespace - (required) is a type of string
+  namespace = var.namespace
+  # properties - (optional) is a type of map of string
+  properties = var.properties
+  # source_id - (optional) is a type of string
+  source_id = var.source_id
+  # timezone_region - (optional) is a type of string
+  timezone_region = var.timezone_region
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

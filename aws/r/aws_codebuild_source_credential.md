@@ -71,10 +71,14 @@ variable "user_name" {
 
 ```terraform
 resource "aws_codebuild_source_credential" "this" {
-  auth_type   = var.auth_type
+  # auth_type - (required) is a type of string
+  auth_type = var.auth_type
+  # server_type - (required) is a type of string
   server_type = var.server_type
-  token       = var.token
-  user_name   = var.user_name
+  # token - (required) is a type of string
+  token = var.token
+  # user_name - (optional) is a type of string
+  user_name = var.user_name
 }
 ```
 

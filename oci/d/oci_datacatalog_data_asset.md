@@ -64,9 +64,12 @@ variable "fields" {
 
 ```terraform
 data "oci_datacatalog_data_asset" "this" {
-  catalog_id     = var.catalog_id
+  # catalog_id - (required) is a type of string
+  catalog_id = var.catalog_id
+  # data_asset_key - (required) is a type of string
   data_asset_key = var.data_asset_key
-  fields         = var.fields
+  # fields - (optional) is a type of set of string
+  fields = var.fields
 }
 ```
 

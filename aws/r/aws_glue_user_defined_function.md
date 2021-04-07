@@ -101,18 +101,26 @@ variable "resource_uris" {
 
 ```terraform
 resource "aws_glue_user_defined_function" "this" {
-  catalog_id    = var.catalog_id
-  class_name    = var.class_name
+  # catalog_id - (optional) is a type of string
+  catalog_id = var.catalog_id
+  # class_name - (required) is a type of string
+  class_name = var.class_name
+  # database_name - (required) is a type of string
   database_name = var.database_name
-  name          = var.name
-  owner_name    = var.owner_name
-  owner_type    = var.owner_type
+  # name - (required) is a type of string
+  name = var.name
+  # owner_name - (required) is a type of string
+  owner_name = var.owner_name
+  # owner_type - (required) is a type of string
+  owner_type = var.owner_type
 
   dynamic "resource_uris" {
     for_each = var.resource_uris
     content {
+      # resource_type - (required) is a type of string
       resource_type = resource_uris.value["resource_type"]
-      uri           = resource_uris.value["uri"]
+      # uri - (required) is a type of string
+      uri = resource_uris.value["uri"]
     }
   }
 

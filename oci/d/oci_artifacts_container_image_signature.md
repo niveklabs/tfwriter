@@ -49,6 +49,7 @@ variable "image_signature_id" {
 
 ```terraform
 data "oci_artifacts_container_image_signature" "this" {
+  # image_signature_id - (required) is a type of string
   image_signature_id = var.image_signature_id
 }
 ```

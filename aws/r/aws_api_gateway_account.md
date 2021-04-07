@@ -50,6 +50,7 @@ variable "cloudwatch_role_arn" {
 
 ```terraform
 resource "aws_api_gateway_account" "this" {
+  # cloudwatch_role_arn - (optional) is a type of string
   cloudwatch_role_arn = var.cloudwatch_role_arn
 }
 ```

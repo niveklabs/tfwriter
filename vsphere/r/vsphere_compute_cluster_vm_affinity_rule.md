@@ -79,10 +79,15 @@ variable "virtual_machine_ids" {
 
 ```terraform
 resource "vsphere_compute_cluster_vm_affinity_rule" "this" {
-  compute_cluster_id  = var.compute_cluster_id
-  enabled             = var.enabled
-  mandatory           = var.mandatory
-  name                = var.name
+  # compute_cluster_id - (required) is a type of string
+  compute_cluster_id = var.compute_cluster_id
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # mandatory - (optional) is a type of bool
+  mandatory = var.mandatory
+  # name - (required) is a type of string
+  name = var.name
+  # virtual_machine_ids - (required) is a type of set of string
   virtual_machine_ids = var.virtual_machine_ids
 }
 ```

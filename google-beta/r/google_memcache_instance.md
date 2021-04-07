@@ -161,19 +161,29 @@ variable "timeouts" {
 
 ```terraform
 resource "google_memcache_instance" "this" {
+  # authorized_network - (optional) is a type of string
   authorized_network = var.authorized_network
-  display_name       = var.display_name
-  labels             = var.labels
-  memcache_version   = var.memcache_version
-  name               = var.name
-  node_count         = var.node_count
-  project            = var.project
-  region             = var.region
-  zones              = var.zones
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # memcache_version - (optional) is a type of string
+  memcache_version = var.memcache_version
+  # name - (required) is a type of string
+  name = var.name
+  # node_count - (required) is a type of number
+  node_count = var.node_count
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
+  # zones - (optional) is a type of set of string
+  zones = var.zones
 
   dynamic "memcache_parameters" {
     for_each = var.memcache_parameters
     content {
+      # params - (optional) is a type of map of string
       params = memcache_parameters.value["params"]
     }
   }
@@ -181,7 +191,9 @@ resource "google_memcache_instance" "this" {
   dynamic "node_config" {
     for_each = var.node_config
     content {
-      cpu_count      = node_config.value["cpu_count"]
+      # cpu_count - (required) is a type of number
+      cpu_count = node_config.value["cpu_count"]
+      # memory_size_mb - (required) is a type of number
       memory_size_mb = node_config.value["memory_size_mb"]
     }
   }
@@ -189,8 +201,11 @@ resource "google_memcache_instance" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

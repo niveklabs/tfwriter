@@ -113,18 +113,27 @@ variable "timeouts" {
 
 ```terraform
 resource "google_vpc_access_connector" "this" {
-  ip_cidr_range  = var.ip_cidr_range
+  # ip_cidr_range - (optional) is a type of string
+  ip_cidr_range = var.ip_cidr_range
+  # max_throughput - (optional) is a type of number
   max_throughput = var.max_throughput
+  # min_throughput - (optional) is a type of number
   min_throughput = var.min_throughput
-  name           = var.name
-  network        = var.network
-  project        = var.project
-  region         = var.region
+  # name - (required) is a type of string
+  name = var.name
+  # network - (optional) is a type of string
+  network = var.network
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

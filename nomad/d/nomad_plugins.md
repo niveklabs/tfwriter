@@ -50,6 +50,7 @@ variable "type" {
 
 ```terraform
 data "nomad_plugins" "this" {
+  # type - (optional) is a type of string
   type = var.type
 }
 ```

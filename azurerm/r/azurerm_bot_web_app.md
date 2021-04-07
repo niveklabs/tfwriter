@@ -161,26 +161,43 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_bot_web_app" "this" {
-  developer_app_insights_api_key        = var.developer_app_insights_api_key
+  # developer_app_insights_api_key - (optional) is a type of string
+  developer_app_insights_api_key = var.developer_app_insights_api_key
+  # developer_app_insights_application_id - (optional) is a type of string
   developer_app_insights_application_id = var.developer_app_insights_application_id
-  developer_app_insights_key            = var.developer_app_insights_key
-  display_name                          = var.display_name
-  endpoint                              = var.endpoint
-  location                              = var.location
-  luis_app_ids                          = var.luis_app_ids
-  luis_key                              = var.luis_key
-  microsoft_app_id                      = var.microsoft_app_id
-  name                                  = var.name
-  resource_group_name                   = var.resource_group_name
-  sku                                   = var.sku
-  tags                                  = var.tags
+  # developer_app_insights_key - (optional) is a type of string
+  developer_app_insights_key = var.developer_app_insights_key
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # endpoint - (optional) is a type of string
+  endpoint = var.endpoint
+  # location - (required) is a type of string
+  location = var.location
+  # luis_app_ids - (optional) is a type of list of string
+  luis_app_ids = var.luis_app_ids
+  # luis_key - (optional) is a type of string
+  luis_key = var.luis_key
+  # microsoft_app_id - (required) is a type of string
+  microsoft_app_id = var.microsoft_app_id
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # sku - (required) is a type of string
+  sku = var.sku
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

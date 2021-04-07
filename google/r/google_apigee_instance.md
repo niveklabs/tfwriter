@@ -111,18 +111,27 @@ variable "timeouts" {
 
 ```terraform
 resource "google_apigee_instance" "this" {
-  description              = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # disk_encryption_key_name - (optional) is a type of string
   disk_encryption_key_name = var.disk_encryption_key_name
-  display_name             = var.display_name
-  location                 = var.location
-  name                     = var.name
-  org_id                   = var.org_id
-  peering_cidr_range       = var.peering_cidr_range
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # org_id - (required) is a type of string
+  org_id = var.org_id
+  # peering_cidr_range - (optional) is a type of string
+  peering_cidr_range = var.peering_cidr_range
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

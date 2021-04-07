@@ -480,15 +480,21 @@ variable "spec" {
 
 ```terraform
 resource "aws_appmesh_route" "this" {
-  mesh_name           = var.mesh_name
-  mesh_owner          = var.mesh_owner
-  name                = var.name
-  tags                = var.tags
+  # mesh_name - (required) is a type of string
+  mesh_name = var.mesh_name
+  # mesh_owner - (optional) is a type of string
+  mesh_owner = var.mesh_owner
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # virtual_router_name - (required) is a type of string
   virtual_router_name = var.virtual_router_name
 
   dynamic "spec" {
     for_each = var.spec
     content {
+      # priority - (optional) is a type of number
       priority = spec.value["priority"]
 
       dynamic "grpc_route" {
@@ -502,8 +508,10 @@ resource "aws_appmesh_route" "this" {
               dynamic "weighted_target" {
                 for_each = action.value.weighted_target
                 content {
+                  # virtual_node - (required) is a type of string
                   virtual_node = weighted_target.value["virtual_node"]
-                  weight       = weighted_target.value["weight"]
+                  # weight - (required) is a type of number
+                  weight = weighted_target.value["weight"]
                 }
               }
 
@@ -513,28 +521,39 @@ resource "aws_appmesh_route" "this" {
           dynamic "match" {
             for_each = grpc_route.value.match
             content {
-              method_name  = match.value["method_name"]
-              prefix       = match.value["prefix"]
+              # method_name - (optional) is a type of string
+              method_name = match.value["method_name"]
+              # prefix - (optional) is a type of string
+              prefix = match.value["prefix"]
+              # service_name - (optional) is a type of string
               service_name = match.value["service_name"]
 
               dynamic "metadata" {
                 for_each = match.value.metadata
                 content {
+                  # invert - (optional) is a type of bool
                   invert = metadata.value["invert"]
-                  name   = metadata.value["name"]
+                  # name - (required) is a type of string
+                  name = metadata.value["name"]
 
                   dynamic "match" {
                     for_each = metadata.value.match
                     content {
-                      exact  = match.value["exact"]
+                      # exact - (optional) is a type of string
+                      exact = match.value["exact"]
+                      # prefix - (optional) is a type of string
                       prefix = match.value["prefix"]
-                      regex  = match.value["regex"]
+                      # regex - (optional) is a type of string
+                      regex = match.value["regex"]
+                      # suffix - (optional) is a type of string
                       suffix = match.value["suffix"]
 
                       dynamic "range" {
                         for_each = match.value.range
                         content {
-                          end   = range.value["end"]
+                          # end - (required) is a type of number
+                          end = range.value["end"]
+                          # start - (required) is a type of number
                           start = range.value["start"]
                         }
                       }
@@ -551,15 +570,21 @@ resource "aws_appmesh_route" "this" {
           dynamic "retry_policy" {
             for_each = grpc_route.value.retry_policy
             content {
+              # grpc_retry_events - (optional) is a type of set of string
               grpc_retry_events = retry_policy.value["grpc_retry_events"]
+              # http_retry_events - (optional) is a type of set of string
               http_retry_events = retry_policy.value["http_retry_events"]
-              max_retries       = retry_policy.value["max_retries"]
-              tcp_retry_events  = retry_policy.value["tcp_retry_events"]
+              # max_retries - (required) is a type of number
+              max_retries = retry_policy.value["max_retries"]
+              # tcp_retry_events - (optional) is a type of set of string
+              tcp_retry_events = retry_policy.value["tcp_retry_events"]
 
               dynamic "per_retry_timeout" {
                 for_each = retry_policy.value.per_retry_timeout
                 content {
-                  unit  = per_retry_timeout.value["unit"]
+                  # unit - (required) is a type of string
+                  unit = per_retry_timeout.value["unit"]
+                  # value - (required) is a type of number
                   value = per_retry_timeout.value["value"]
                 }
               }
@@ -574,7 +599,9 @@ resource "aws_appmesh_route" "this" {
               dynamic "idle" {
                 for_each = timeout.value.idle
                 content {
-                  unit  = idle.value["unit"]
+                  # unit - (required) is a type of string
+                  unit = idle.value["unit"]
+                  # value - (required) is a type of number
                   value = idle.value["value"]
                 }
               }
@@ -582,7 +609,9 @@ resource "aws_appmesh_route" "this" {
               dynamic "per_request" {
                 for_each = timeout.value.per_request
                 content {
-                  unit  = per_request.value["unit"]
+                  # unit - (required) is a type of string
+                  unit = per_request.value["unit"]
+                  # value - (required) is a type of number
                   value = per_request.value["value"]
                 }
               }
@@ -604,8 +633,10 @@ resource "aws_appmesh_route" "this" {
               dynamic "weighted_target" {
                 for_each = action.value.weighted_target
                 content {
+                  # virtual_node - (required) is a type of string
                   virtual_node = weighted_target.value["virtual_node"]
-                  weight       = weighted_target.value["weight"]
+                  # weight - (required) is a type of number
+                  weight = weighted_target.value["weight"]
                 }
               }
 
@@ -615,28 +646,39 @@ resource "aws_appmesh_route" "this" {
           dynamic "match" {
             for_each = http2_route.value.match
             content {
+              # method - (optional) is a type of string
               method = match.value["method"]
+              # prefix - (required) is a type of string
               prefix = match.value["prefix"]
+              # scheme - (optional) is a type of string
               scheme = match.value["scheme"]
 
               dynamic "header" {
                 for_each = match.value.header
                 content {
+                  # invert - (optional) is a type of bool
                   invert = header.value["invert"]
-                  name   = header.value["name"]
+                  # name - (required) is a type of string
+                  name = header.value["name"]
 
                   dynamic "match" {
                     for_each = header.value.match
                     content {
-                      exact  = match.value["exact"]
+                      # exact - (optional) is a type of string
+                      exact = match.value["exact"]
+                      # prefix - (optional) is a type of string
                       prefix = match.value["prefix"]
-                      regex  = match.value["regex"]
+                      # regex - (optional) is a type of string
+                      regex = match.value["regex"]
+                      # suffix - (optional) is a type of string
                       suffix = match.value["suffix"]
 
                       dynamic "range" {
                         for_each = match.value.range
                         content {
-                          end   = range.value["end"]
+                          # end - (required) is a type of number
+                          end = range.value["end"]
+                          # start - (required) is a type of number
                           start = range.value["start"]
                         }
                       }
@@ -653,14 +695,19 @@ resource "aws_appmesh_route" "this" {
           dynamic "retry_policy" {
             for_each = http2_route.value.retry_policy
             content {
+              # http_retry_events - (optional) is a type of set of string
               http_retry_events = retry_policy.value["http_retry_events"]
-              max_retries       = retry_policy.value["max_retries"]
-              tcp_retry_events  = retry_policy.value["tcp_retry_events"]
+              # max_retries - (required) is a type of number
+              max_retries = retry_policy.value["max_retries"]
+              # tcp_retry_events - (optional) is a type of set of string
+              tcp_retry_events = retry_policy.value["tcp_retry_events"]
 
               dynamic "per_retry_timeout" {
                 for_each = retry_policy.value.per_retry_timeout
                 content {
-                  unit  = per_retry_timeout.value["unit"]
+                  # unit - (required) is a type of string
+                  unit = per_retry_timeout.value["unit"]
+                  # value - (required) is a type of number
                   value = per_retry_timeout.value["value"]
                 }
               }
@@ -675,7 +722,9 @@ resource "aws_appmesh_route" "this" {
               dynamic "idle" {
                 for_each = timeout.value.idle
                 content {
-                  unit  = idle.value["unit"]
+                  # unit - (required) is a type of string
+                  unit = idle.value["unit"]
+                  # value - (required) is a type of number
                   value = idle.value["value"]
                 }
               }
@@ -683,7 +732,9 @@ resource "aws_appmesh_route" "this" {
               dynamic "per_request" {
                 for_each = timeout.value.per_request
                 content {
-                  unit  = per_request.value["unit"]
+                  # unit - (required) is a type of string
+                  unit = per_request.value["unit"]
+                  # value - (required) is a type of number
                   value = per_request.value["value"]
                 }
               }
@@ -705,8 +756,10 @@ resource "aws_appmesh_route" "this" {
               dynamic "weighted_target" {
                 for_each = action.value.weighted_target
                 content {
+                  # virtual_node - (required) is a type of string
                   virtual_node = weighted_target.value["virtual_node"]
-                  weight       = weighted_target.value["weight"]
+                  # weight - (required) is a type of number
+                  weight = weighted_target.value["weight"]
                 }
               }
 
@@ -716,28 +769,39 @@ resource "aws_appmesh_route" "this" {
           dynamic "match" {
             for_each = http_route.value.match
             content {
+              # method - (optional) is a type of string
               method = match.value["method"]
+              # prefix - (required) is a type of string
               prefix = match.value["prefix"]
+              # scheme - (optional) is a type of string
               scheme = match.value["scheme"]
 
               dynamic "header" {
                 for_each = match.value.header
                 content {
+                  # invert - (optional) is a type of bool
                   invert = header.value["invert"]
-                  name   = header.value["name"]
+                  # name - (required) is a type of string
+                  name = header.value["name"]
 
                   dynamic "match" {
                     for_each = header.value.match
                     content {
-                      exact  = match.value["exact"]
+                      # exact - (optional) is a type of string
+                      exact = match.value["exact"]
+                      # prefix - (optional) is a type of string
                       prefix = match.value["prefix"]
-                      regex  = match.value["regex"]
+                      # regex - (optional) is a type of string
+                      regex = match.value["regex"]
+                      # suffix - (optional) is a type of string
                       suffix = match.value["suffix"]
 
                       dynamic "range" {
                         for_each = match.value.range
                         content {
-                          end   = range.value["end"]
+                          # end - (required) is a type of number
+                          end = range.value["end"]
+                          # start - (required) is a type of number
                           start = range.value["start"]
                         }
                       }
@@ -754,14 +818,19 @@ resource "aws_appmesh_route" "this" {
           dynamic "retry_policy" {
             for_each = http_route.value.retry_policy
             content {
+              # http_retry_events - (optional) is a type of set of string
               http_retry_events = retry_policy.value["http_retry_events"]
-              max_retries       = retry_policy.value["max_retries"]
-              tcp_retry_events  = retry_policy.value["tcp_retry_events"]
+              # max_retries - (required) is a type of number
+              max_retries = retry_policy.value["max_retries"]
+              # tcp_retry_events - (optional) is a type of set of string
+              tcp_retry_events = retry_policy.value["tcp_retry_events"]
 
               dynamic "per_retry_timeout" {
                 for_each = retry_policy.value.per_retry_timeout
                 content {
-                  unit  = per_retry_timeout.value["unit"]
+                  # unit - (required) is a type of string
+                  unit = per_retry_timeout.value["unit"]
+                  # value - (required) is a type of number
                   value = per_retry_timeout.value["value"]
                 }
               }
@@ -776,7 +845,9 @@ resource "aws_appmesh_route" "this" {
               dynamic "idle" {
                 for_each = timeout.value.idle
                 content {
-                  unit  = idle.value["unit"]
+                  # unit - (required) is a type of string
+                  unit = idle.value["unit"]
+                  # value - (required) is a type of number
                   value = idle.value["value"]
                 }
               }
@@ -784,7 +855,9 @@ resource "aws_appmesh_route" "this" {
               dynamic "per_request" {
                 for_each = timeout.value.per_request
                 content {
-                  unit  = per_request.value["unit"]
+                  # unit - (required) is a type of string
+                  unit = per_request.value["unit"]
+                  # value - (required) is a type of number
                   value = per_request.value["value"]
                 }
               }
@@ -806,8 +879,10 @@ resource "aws_appmesh_route" "this" {
               dynamic "weighted_target" {
                 for_each = action.value.weighted_target
                 content {
+                  # virtual_node - (required) is a type of string
                   virtual_node = weighted_target.value["virtual_node"]
-                  weight       = weighted_target.value["weight"]
+                  # weight - (required) is a type of number
+                  weight = weighted_target.value["weight"]
                 }
               }
 
@@ -821,7 +896,9 @@ resource "aws_appmesh_route" "this" {
               dynamic "idle" {
                 for_each = timeout.value.idle
                 content {
-                  unit  = idle.value["unit"]
+                  # unit - (required) is a type of string
+                  unit = idle.value["unit"]
+                  # value - (required) is a type of number
                   value = idle.value["value"]
                 }
               }

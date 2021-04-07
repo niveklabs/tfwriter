@@ -97,13 +97,20 @@ variable "role" {
 
 ```terraform
 resource "vault_aws_auth_backend_role_tag" "this" {
-  allow_instance_migration  = var.allow_instance_migration
-  backend                   = var.backend
+  # allow_instance_migration - (optional) is a type of bool
+  allow_instance_migration = var.allow_instance_migration
+  # backend - (optional) is a type of string
+  backend = var.backend
+  # disallow_reauthentication - (optional) is a type of bool
   disallow_reauthentication = var.disallow_reauthentication
-  instance_id               = var.instance_id
-  max_ttl                   = var.max_ttl
-  policies                  = var.policies
-  role                      = var.role
+  # instance_id - (optional) is a type of string
+  instance_id = var.instance_id
+  # max_ttl - (optional) is a type of string
+  max_ttl = var.max_ttl
+  # policies - (optional) is a type of set of string
+  policies = var.policies
+  # role - (required) is a type of string
+  role = var.role
 }
 ```
 

@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "aws_cognito_user_pools" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

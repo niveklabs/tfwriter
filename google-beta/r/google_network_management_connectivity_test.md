@@ -150,20 +150,31 @@ variable "timeouts" {
 
 ```terraform
 resource "google_network_management_connectivity_test" "this" {
-  description      = var.description
-  labels           = var.labels
-  name             = var.name
-  project          = var.project
-  protocol         = var.protocol
+  # description - (optional) is a type of string
+  description = var.description
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # related_projects - (optional) is a type of list of string
   related_projects = var.related_projects
 
   dynamic "destination" {
     for_each = var.destination
     content {
-      instance   = destination.value["instance"]
+      # instance - (optional) is a type of string
+      instance = destination.value["instance"]
+      # ip_address - (optional) is a type of string
       ip_address = destination.value["ip_address"]
-      network    = destination.value["network"]
-      port       = destination.value["port"]
+      # network - (optional) is a type of string
+      network = destination.value["network"]
+      # port - (optional) is a type of number
+      port = destination.value["port"]
+      # project_id - (optional) is a type of string
       project_id = destination.value["project_id"]
     }
   }
@@ -171,20 +182,29 @@ resource "google_network_management_connectivity_test" "this" {
   dynamic "source" {
     for_each = var.source
     content {
-      instance     = source.value["instance"]
-      ip_address   = source.value["ip_address"]
-      network      = source.value["network"]
+      # instance - (optional) is a type of string
+      instance = source.value["instance"]
+      # ip_address - (optional) is a type of string
+      ip_address = source.value["ip_address"]
+      # network - (optional) is a type of string
+      network = source.value["network"]
+      # network_type - (optional) is a type of string
       network_type = source.value["network_type"]
-      port         = source.value["port"]
-      project_id   = source.value["project_id"]
+      # port - (optional) is a type of number
+      port = source.value["port"]
+      # project_id - (optional) is a type of string
+      project_id = source.value["project_id"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

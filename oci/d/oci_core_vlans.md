@@ -90,16 +90,23 @@ variable "filter" {
 
 ```terraform
 data "oci_core_vlans" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  display_name   = var.display_name
-  state          = var.state
-  vcn_id         = var.vcn_id
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # state - (optional) is a type of string
+  state = var.state
+  # vcn_id - (required) is a type of string
+  vcn_id = var.vcn_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

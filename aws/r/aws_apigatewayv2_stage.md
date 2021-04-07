@@ -166,43 +166,64 @@ variable "route_settings" {
 
 ```terraform
 resource "aws_apigatewayv2_stage" "this" {
-  api_id                = var.api_id
-  auto_deploy           = var.auto_deploy
+  # api_id - (required) is a type of string
+  api_id = var.api_id
+  # auto_deploy - (optional) is a type of bool
+  auto_deploy = var.auto_deploy
+  # client_certificate_id - (optional) is a type of string
   client_certificate_id = var.client_certificate_id
-  deployment_id         = var.deployment_id
-  description           = var.description
-  name                  = var.name
-  stage_variables       = var.stage_variables
-  tags                  = var.tags
+  # deployment_id - (optional) is a type of string
+  deployment_id = var.deployment_id
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # stage_variables - (optional) is a type of map of string
+  stage_variables = var.stage_variables
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "access_log_settings" {
     for_each = var.access_log_settings
     content {
+      # destination_arn - (required) is a type of string
       destination_arn = access_log_settings.value["destination_arn"]
-      format          = access_log_settings.value["format"]
+      # format - (required) is a type of string
+      format = access_log_settings.value["format"]
     }
   }
 
   dynamic "default_route_settings" {
     for_each = var.default_route_settings
     content {
-      data_trace_enabled       = default_route_settings.value["data_trace_enabled"]
+      # data_trace_enabled - (optional) is a type of bool
+      data_trace_enabled = default_route_settings.value["data_trace_enabled"]
+      # detailed_metrics_enabled - (optional) is a type of bool
       detailed_metrics_enabled = default_route_settings.value["detailed_metrics_enabled"]
-      logging_level            = default_route_settings.value["logging_level"]
-      throttling_burst_limit   = default_route_settings.value["throttling_burst_limit"]
-      throttling_rate_limit    = default_route_settings.value["throttling_rate_limit"]
+      # logging_level - (optional) is a type of string
+      logging_level = default_route_settings.value["logging_level"]
+      # throttling_burst_limit - (optional) is a type of number
+      throttling_burst_limit = default_route_settings.value["throttling_burst_limit"]
+      # throttling_rate_limit - (optional) is a type of number
+      throttling_rate_limit = default_route_settings.value["throttling_rate_limit"]
     }
   }
 
   dynamic "route_settings" {
     for_each = var.route_settings
     content {
-      data_trace_enabled       = route_settings.value["data_trace_enabled"]
+      # data_trace_enabled - (optional) is a type of bool
+      data_trace_enabled = route_settings.value["data_trace_enabled"]
+      # detailed_metrics_enabled - (optional) is a type of bool
       detailed_metrics_enabled = route_settings.value["detailed_metrics_enabled"]
-      logging_level            = route_settings.value["logging_level"]
-      route_key                = route_settings.value["route_key"]
-      throttling_burst_limit   = route_settings.value["throttling_burst_limit"]
-      throttling_rate_limit    = route_settings.value["throttling_rate_limit"]
+      # logging_level - (optional) is a type of string
+      logging_level = route_settings.value["logging_level"]
+      # route_key - (required) is a type of string
+      route_key = route_settings.value["route_key"]
+      # throttling_burst_limit - (optional) is a type of number
+      throttling_burst_limit = route_settings.value["throttling_burst_limit"]
+      # throttling_rate_limit - (optional) is a type of number
+      throttling_rate_limit = route_settings.value["throttling_rate_limit"]
     }
   }
 

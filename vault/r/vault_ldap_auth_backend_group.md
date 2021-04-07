@@ -65,9 +65,12 @@ variable "policies" {
 
 ```terraform
 resource "vault_ldap_auth_backend_group" "this" {
-  backend   = var.backend
+  # backend - (optional) is a type of string
+  backend = var.backend
+  # groupname - (required) is a type of string
   groupname = var.groupname
-  policies  = var.policies
+  # policies - (optional) is a type of set of string
+  policies = var.policies
 }
 ```
 

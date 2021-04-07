@@ -49,6 +49,7 @@ variable "vault_id" {
 
 ```terraform
 data "oci_kms_vault_usage" "this" {
+  # vault_id - (required) is a type of string
   vault_id = var.vault_id
 }
 ```

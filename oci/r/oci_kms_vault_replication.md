@@ -74,14 +74,19 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_kms_vault_replication" "this" {
+  # replica_region - (required) is a type of string
   replica_region = var.replica_region
-  vault_id       = var.vault_id
+  # vault_id - (required) is a type of string
+  vault_id = var.vault_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

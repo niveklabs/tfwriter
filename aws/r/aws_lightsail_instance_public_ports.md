@@ -68,15 +68,20 @@ variable "port_info" {
 
 ```terraform
 resource "aws_lightsail_instance_public_ports" "this" {
+  # instance_name - (required) is a type of string
   instance_name = var.instance_name
 
   dynamic "port_info" {
     for_each = var.port_info
     content {
-      cidrs     = port_info.value["cidrs"]
+      # cidrs - (optional) is a type of set of string
+      cidrs = port_info.value["cidrs"]
+      # from_port - (required) is a type of number
       from_port = port_info.value["from_port"]
-      protocol  = port_info.value["protocol"]
-      to_port   = port_info.value["to_port"]
+      # protocol - (required) is a type of string
+      protocol = port_info.value["protocol"]
+      # to_port - (required) is a type of number
+      to_port = port_info.value["to_port"]
     }
   }
 

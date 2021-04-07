@@ -104,17 +104,25 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_target_instance" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  instance    = var.instance
-  name        = var.name
-  nat_policy  = var.nat_policy
-  project     = var.project
-  zone        = var.zone
+  # instance - (required) is a type of string
+  instance = var.instance
+  # name - (required) is a type of string
+  name = var.name
+  # nat_policy - (optional) is a type of string
+  nat_policy = var.nat_policy
+  # project - (optional) is a type of string
+  project = var.project
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

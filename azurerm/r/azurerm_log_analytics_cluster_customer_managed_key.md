@@ -76,15 +76,21 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_log_analytics_cluster_customer_managed_key" "this" {
-  key_vault_key_id         = var.key_vault_key_id
+  # key_vault_key_id - (required) is a type of string
+  key_vault_key_id = var.key_vault_key_id
+  # log_analytics_cluster_id - (required) is a type of string
   log_analytics_cluster_id = var.log_analytics_cluster_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

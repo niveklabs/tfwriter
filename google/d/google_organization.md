@@ -58,7 +58,9 @@ variable "organization" {
 
 ```terraform
 data "google_organization" "this" {
-  domain       = var.domain
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # organization - (optional) is a type of string
   organization = var.organization
 }
 ```

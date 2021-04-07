@@ -49,6 +49,7 @@ variable "run_id" {
 
 ```terraform
 data "oci_dataflow_invoke_run" "this" {
+  # run_id - (required) is a type of string
   run_id = var.run_id
 }
 ```

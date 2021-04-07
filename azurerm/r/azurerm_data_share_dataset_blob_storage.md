@@ -114,27 +114,38 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_data_share_dataset_blob_storage" "this" {
+  # container_name - (required) is a type of string
   container_name = var.container_name
-  data_share_id  = var.data_share_id
-  file_path      = var.file_path
-  folder_path    = var.folder_path
-  name           = var.name
+  # data_share_id - (required) is a type of string
+  data_share_id = var.data_share_id
+  # file_path - (optional) is a type of string
+  file_path = var.file_path
+  # folder_path - (optional) is a type of string
+  folder_path = var.folder_path
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "storage_account" {
     for_each = var.storage_account
     content {
-      name                = storage_account.value["name"]
+      # name - (required) is a type of string
+      name = storage_account.value["name"]
+      # resource_group_name - (required) is a type of string
       resource_group_name = storage_account.value["resource_group_name"]
-      subscription_id     = storage_account.value["subscription_id"]
+      # subscription_id - (required) is a type of string
+      subscription_id = storage_account.value["subscription_id"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

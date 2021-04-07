@@ -49,6 +49,7 @@ variable "log_group_id" {
 
 ```terraform
 data "oci_logging_log_group" "this" {
+  # log_group_id - (required) is a type of string
   log_group_id = var.log_group_id
 }
 ```

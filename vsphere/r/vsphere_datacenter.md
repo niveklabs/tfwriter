@@ -73,10 +73,14 @@ variable "tags" {
 
 ```terraform
 resource "vsphere_datacenter" "this" {
+  # custom_attributes - (optional) is a type of map of string
   custom_attributes = var.custom_attributes
-  folder            = var.folder
-  name              = var.name
-  tags              = var.tags
+  # folder - (optional) is a type of string
+  folder = var.folder
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 }
 ```
 

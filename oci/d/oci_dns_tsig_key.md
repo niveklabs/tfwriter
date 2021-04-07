@@ -49,6 +49,7 @@ variable "tsig_key_id" {
 
 ```terraform
 data "oci_dns_tsig_key" "this" {
+  # tsig_key_id - (required) is a type of string
   tsig_key_id = var.tsig_key_id
 }
 ```

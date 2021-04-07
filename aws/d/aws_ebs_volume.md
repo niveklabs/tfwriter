@@ -74,13 +74,17 @@ variable "filter" {
 
 ```terraform
 data "aws_ebs_volume" "this" {
+  # most_recent - (optional) is a type of bool
   most_recent = var.most_recent
-  tags        = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

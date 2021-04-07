@@ -56,7 +56,9 @@ variable "queue_url" {
 
 ```terraform
 resource "aws_sqs_queue_policy" "this" {
-  policy    = var.policy
+  # policy - (required) is a type of string
+  policy = var.policy
+  # queue_url - (required) is a type of string
   queue_url = var.queue_url
 }
 ```

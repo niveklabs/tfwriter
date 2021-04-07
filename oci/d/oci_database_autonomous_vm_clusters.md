@@ -91,16 +91,23 @@ variable "filter" {
 
 ```terraform
 data "oci_database_autonomous_vm_clusters" "this" {
-  compartment_id            = var.compartment_id
-  display_name              = var.display_name
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # exadata_infrastructure_id - (optional) is a type of string
   exadata_infrastructure_id = var.exadata_infrastructure_id
-  state                     = var.state
+  # state - (optional) is a type of string
+  state = var.state
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

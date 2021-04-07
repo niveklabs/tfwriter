@@ -135,18 +135,30 @@ variable "username" {
 
 ```terraform
 resource "vsphere_host" "this" {
-  cluster         = var.cluster
+  # cluster - (optional) is a type of string
+  cluster = var.cluster
+  # cluster_managed - (optional) is a type of bool
   cluster_managed = var.cluster_managed
-  connected       = var.connected
-  datacenter      = var.datacenter
-  force           = var.force
-  hostname        = var.hostname
-  license         = var.license
-  lockdown        = var.lockdown
-  maintenance     = var.maintenance
-  password        = var.password
-  thumbprint      = var.thumbprint
-  username        = var.username
+  # connected - (optional) is a type of bool
+  connected = var.connected
+  # datacenter - (optional) is a type of string
+  datacenter = var.datacenter
+  # force - (optional) is a type of bool
+  force = var.force
+  # hostname - (required) is a type of string
+  hostname = var.hostname
+  # license - (optional) is a type of string
+  license = var.license
+  # lockdown - (optional) is a type of string
+  lockdown = var.lockdown
+  # maintenance - (optional) is a type of bool
+  maintenance = var.maintenance
+  # password - (required) is a type of string
+  password = var.password
+  # thumbprint - (optional) is a type of string
+  thumbprint = var.thumbprint
+  # username - (required) is a type of string
+  username = var.username
 }
 ```
 

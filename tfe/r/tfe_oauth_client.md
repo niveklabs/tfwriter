@@ -85,11 +85,17 @@ variable "service_provider" {
 
 ```terraform
 resource "tfe_oauth_client" "this" {
-  api_url          = var.api_url
-  http_url         = var.http_url
-  oauth_token      = var.oauth_token
-  organization     = var.organization
-  private_key      = var.private_key
+  # api_url - (required) is a type of string
+  api_url = var.api_url
+  # http_url - (required) is a type of string
+  http_url = var.http_url
+  # oauth_token - (required) is a type of string
+  oauth_token = var.oauth_token
+  # organization - (required) is a type of string
+  organization = var.organization
+  # private_key - (optional) is a type of string
+  private_key = var.private_key
+  # service_provider - (required) is a type of string
   service_provider = var.service_provider
 }
 ```

@@ -99,17 +99,25 @@ variable "reservation_plan_settings" {
 
 ```terraform
 resource "aws_media_convert_queue" "this" {
-  description  = var.description
-  name         = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # pricing_plan - (optional) is a type of string
   pricing_plan = var.pricing_plan
-  status       = var.status
-  tags         = var.tags
+  # status - (optional) is a type of string
+  status = var.status
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "reservation_plan_settings" {
     for_each = var.reservation_plan_settings
     content {
-      commitment     = reservation_plan_settings.value["commitment"]
-      renewal_type   = reservation_plan_settings.value["renewal_type"]
+      # commitment - (required) is a type of string
+      commitment = reservation_plan_settings.value["commitment"]
+      # renewal_type - (required) is a type of string
+      renewal_type = reservation_plan_settings.value["renewal_type"]
+      # reserved_slots - (required) is a type of number
       reserved_slots = reservation_plan_settings.value["reserved_slots"]
     }
   }

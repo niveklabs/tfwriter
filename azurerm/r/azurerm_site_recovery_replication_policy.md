@@ -97,18 +97,27 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_site_recovery_replication_policy" "this" {
+  # application_consistent_snapshot_frequency_in_minutes - (required) is a type of number
   application_consistent_snapshot_frequency_in_minutes = var.application_consistent_snapshot_frequency_in_minutes
-  name                                                 = var.name
-  recovery_point_retention_in_minutes                  = var.recovery_point_retention_in_minutes
-  recovery_vault_name                                  = var.recovery_vault_name
-  resource_group_name                                  = var.resource_group_name
+  # name - (required) is a type of string
+  name = var.name
+  # recovery_point_retention_in_minutes - (required) is a type of number
+  recovery_point_retention_in_minutes = var.recovery_point_retention_in_minutes
+  # recovery_vault_name - (required) is a type of string
+  recovery_vault_name = var.recovery_vault_name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

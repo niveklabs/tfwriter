@@ -152,23 +152,37 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_subnet" "this" {
+  # assign_ipv6_address_on_creation - (optional) is a type of bool
   assign_ipv6_address_on_creation = var.assign_ipv6_address_on_creation
-  availability_zone               = var.availability_zone
-  availability_zone_id            = var.availability_zone_id
-  cidr_block                      = var.cidr_block
-  customer_owned_ipv4_pool        = var.customer_owned_ipv4_pool
-  ipv6_cidr_block                 = var.ipv6_cidr_block
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # availability_zone_id - (optional) is a type of string
+  availability_zone_id = var.availability_zone_id
+  # cidr_block - (required) is a type of string
+  cidr_block = var.cidr_block
+  # customer_owned_ipv4_pool - (optional) is a type of string
+  customer_owned_ipv4_pool = var.customer_owned_ipv4_pool
+  # ipv6_cidr_block - (optional) is a type of string
+  ipv6_cidr_block = var.ipv6_cidr_block
+  # map_customer_owned_ip_on_launch - (optional) is a type of bool
   map_customer_owned_ip_on_launch = var.map_customer_owned_ip_on_launch
-  map_public_ip_on_launch         = var.map_public_ip_on_launch
-  outpost_arn                     = var.outpost_arn
-  tags                            = var.tags
-  tags_all                        = var.tags_all
-  vpc_id                          = var.vpc_id
+  # map_public_ip_on_launch - (optional) is a type of bool
+  map_public_ip_on_launch = var.map_public_ip_on_launch
+  # outpost_arn - (optional) is a type of string
+  outpost_arn = var.outpost_arn
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # tags_all - (optional) is a type of map of string
+  tags_all = var.tags_all
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

@@ -77,15 +77,21 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_security_center_subscription_pricing" "this" {
+  # resource_type - (optional) is a type of string
   resource_type = var.resource_type
-  tier          = var.tier
+  # tier - (required) is a type of string
+  tier = var.tier
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -82,15 +82,21 @@ variable "filter" {
 
 ```terraform
 data "oci_objectstorage_preauthrequests" "this" {
-  bucket             = var.bucket
-  namespace          = var.namespace
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # namespace - (required) is a type of string
+  namespace = var.namespace
+  # object_name_prefix - (optional) is a type of string
   object_name_prefix = var.object_name_prefix
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

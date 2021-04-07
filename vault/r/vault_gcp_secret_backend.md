@@ -90,12 +90,18 @@ variable "path" {
 
 ```terraform
 resource "vault_gcp_secret_backend" "this" {
-  credentials               = var.credentials
+  # credentials - (optional) is a type of string
+  credentials = var.credentials
+  # default_lease_ttl_seconds - (optional) is a type of number
   default_lease_ttl_seconds = var.default_lease_ttl_seconds
-  description               = var.description
-  local                     = var.local
-  max_lease_ttl_seconds     = var.max_lease_ttl_seconds
-  path                      = var.path
+  # description - (optional) is a type of string
+  description = var.description
+  # local - (optional) is a type of bool
+  local = var.local
+  # max_lease_ttl_seconds - (optional) is a type of number
+  max_lease_ttl_seconds = var.max_lease_ttl_seconds
+  # path - (optional) is a type of string
+  path = var.path
 }
 ```
 

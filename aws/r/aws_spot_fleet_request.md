@@ -346,63 +346,107 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_spot_fleet_request" "this" {
-  allocation_strategy                 = var.allocation_strategy
-  excess_capacity_termination_policy  = var.excess_capacity_termination_policy
-  fleet_type                          = var.fleet_type
-  iam_fleet_role                      = var.iam_fleet_role
-  instance_interruption_behaviour     = var.instance_interruption_behaviour
-  instance_pools_to_use_count         = var.instance_pools_to_use_count
-  load_balancers                      = var.load_balancers
-  replace_unhealthy_instances         = var.replace_unhealthy_instances
-  spot_price                          = var.spot_price
-  tags                                = var.tags
-  target_capacity                     = var.target_capacity
-  target_group_arns                   = var.target_group_arns
+  # allocation_strategy - (optional) is a type of string
+  allocation_strategy = var.allocation_strategy
+  # excess_capacity_termination_policy - (optional) is a type of string
+  excess_capacity_termination_policy = var.excess_capacity_termination_policy
+  # fleet_type - (optional) is a type of string
+  fleet_type = var.fleet_type
+  # iam_fleet_role - (required) is a type of string
+  iam_fleet_role = var.iam_fleet_role
+  # instance_interruption_behaviour - (optional) is a type of string
+  instance_interruption_behaviour = var.instance_interruption_behaviour
+  # instance_pools_to_use_count - (optional) is a type of number
+  instance_pools_to_use_count = var.instance_pools_to_use_count
+  # load_balancers - (optional) is a type of set of string
+  load_balancers = var.load_balancers
+  # replace_unhealthy_instances - (optional) is a type of bool
+  replace_unhealthy_instances = var.replace_unhealthy_instances
+  # spot_price - (optional) is a type of string
+  spot_price = var.spot_price
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # target_capacity - (required) is a type of number
+  target_capacity = var.target_capacity
+  # target_group_arns - (optional) is a type of set of string
+  target_group_arns = var.target_group_arns
+  # terminate_instances_with_expiration - (optional) is a type of bool
   terminate_instances_with_expiration = var.terminate_instances_with_expiration
-  valid_from                          = var.valid_from
-  valid_until                         = var.valid_until
-  wait_for_fulfillment                = var.wait_for_fulfillment
+  # valid_from - (optional) is a type of string
+  valid_from = var.valid_from
+  # valid_until - (optional) is a type of string
+  valid_until = var.valid_until
+  # wait_for_fulfillment - (optional) is a type of bool
+  wait_for_fulfillment = var.wait_for_fulfillment
 
   dynamic "launch_specification" {
     for_each = var.launch_specification
     content {
-      ami                         = launch_specification.value["ami"]
+      # ami - (required) is a type of string
+      ami = launch_specification.value["ami"]
+      # associate_public_ip_address - (optional) is a type of bool
       associate_public_ip_address = launch_specification.value["associate_public_ip_address"]
-      availability_zone           = launch_specification.value["availability_zone"]
-      ebs_optimized               = launch_specification.value["ebs_optimized"]
-      iam_instance_profile        = launch_specification.value["iam_instance_profile"]
-      iam_instance_profile_arn    = launch_specification.value["iam_instance_profile_arn"]
-      instance_type               = launch_specification.value["instance_type"]
-      key_name                    = launch_specification.value["key_name"]
-      monitoring                  = launch_specification.value["monitoring"]
-      placement_group             = launch_specification.value["placement_group"]
-      placement_tenancy           = launch_specification.value["placement_tenancy"]
-      spot_price                  = launch_specification.value["spot_price"]
-      subnet_id                   = launch_specification.value["subnet_id"]
-      tags                        = launch_specification.value["tags"]
-      user_data                   = launch_specification.value["user_data"]
-      vpc_security_group_ids      = launch_specification.value["vpc_security_group_ids"]
-      weighted_capacity           = launch_specification.value["weighted_capacity"]
+      # availability_zone - (optional) is a type of string
+      availability_zone = launch_specification.value["availability_zone"]
+      # ebs_optimized - (optional) is a type of bool
+      ebs_optimized = launch_specification.value["ebs_optimized"]
+      # iam_instance_profile - (optional) is a type of string
+      iam_instance_profile = launch_specification.value["iam_instance_profile"]
+      # iam_instance_profile_arn - (optional) is a type of string
+      iam_instance_profile_arn = launch_specification.value["iam_instance_profile_arn"]
+      # instance_type - (required) is a type of string
+      instance_type = launch_specification.value["instance_type"]
+      # key_name - (optional) is a type of string
+      key_name = launch_specification.value["key_name"]
+      # monitoring - (optional) is a type of bool
+      monitoring = launch_specification.value["monitoring"]
+      # placement_group - (optional) is a type of string
+      placement_group = launch_specification.value["placement_group"]
+      # placement_tenancy - (optional) is a type of string
+      placement_tenancy = launch_specification.value["placement_tenancy"]
+      # spot_price - (optional) is a type of string
+      spot_price = launch_specification.value["spot_price"]
+      # subnet_id - (optional) is a type of string
+      subnet_id = launch_specification.value["subnet_id"]
+      # tags - (optional) is a type of map of string
+      tags = launch_specification.value["tags"]
+      # user_data - (optional) is a type of string
+      user_data = launch_specification.value["user_data"]
+      # vpc_security_group_ids - (optional) is a type of set of string
+      vpc_security_group_ids = launch_specification.value["vpc_security_group_ids"]
+      # weighted_capacity - (optional) is a type of string
+      weighted_capacity = launch_specification.value["weighted_capacity"]
 
       dynamic "ebs_block_device" {
         for_each = launch_specification.value.ebs_block_device
         content {
+          # delete_on_termination - (optional) is a type of bool
           delete_on_termination = ebs_block_device.value["delete_on_termination"]
-          device_name           = ebs_block_device.value["device_name"]
-          encrypted             = ebs_block_device.value["encrypted"]
-          iops                  = ebs_block_device.value["iops"]
-          kms_key_id            = ebs_block_device.value["kms_key_id"]
-          snapshot_id           = ebs_block_device.value["snapshot_id"]
-          throughput            = ebs_block_device.value["throughput"]
-          volume_size           = ebs_block_device.value["volume_size"]
-          volume_type           = ebs_block_device.value["volume_type"]
+          # device_name - (required) is a type of string
+          device_name = ebs_block_device.value["device_name"]
+          # encrypted - (optional) is a type of bool
+          encrypted = ebs_block_device.value["encrypted"]
+          # iops - (optional) is a type of number
+          iops = ebs_block_device.value["iops"]
+          # kms_key_id - (optional) is a type of string
+          kms_key_id = ebs_block_device.value["kms_key_id"]
+          # snapshot_id - (optional) is a type of string
+          snapshot_id = ebs_block_device.value["snapshot_id"]
+          # throughput - (optional) is a type of number
+          throughput = ebs_block_device.value["throughput"]
+          # volume_size - (optional) is a type of number
+          volume_size = ebs_block_device.value["volume_size"]
+          # volume_type - (optional) is a type of string
+          volume_type = ebs_block_device.value["volume_type"]
         }
       }
 
       dynamic "ephemeral_block_device" {
         for_each = launch_specification.value.ephemeral_block_device
         content {
-          device_name  = ephemeral_block_device.value["device_name"]
+          # device_name - (required) is a type of string
+          device_name = ephemeral_block_device.value["device_name"]
+          # virtual_name - (required) is a type of string
           virtual_name = ephemeral_block_device.value["virtual_name"]
         }
       }
@@ -410,13 +454,20 @@ resource "aws_spot_fleet_request" "this" {
       dynamic "root_block_device" {
         for_each = launch_specification.value.root_block_device
         content {
+          # delete_on_termination - (optional) is a type of bool
           delete_on_termination = root_block_device.value["delete_on_termination"]
-          encrypted             = root_block_device.value["encrypted"]
-          iops                  = root_block_device.value["iops"]
-          kms_key_id            = root_block_device.value["kms_key_id"]
-          throughput            = root_block_device.value["throughput"]
-          volume_size           = root_block_device.value["volume_size"]
-          volume_type           = root_block_device.value["volume_type"]
+          # encrypted - (optional) is a type of bool
+          encrypted = root_block_device.value["encrypted"]
+          # iops - (optional) is a type of number
+          iops = root_block_device.value["iops"]
+          # kms_key_id - (optional) is a type of string
+          kms_key_id = root_block_device.value["kms_key_id"]
+          # throughput - (optional) is a type of number
+          throughput = root_block_device.value["throughput"]
+          # volume_size - (optional) is a type of number
+          volume_size = root_block_device.value["volume_size"]
+          # volume_type - (optional) is a type of string
+          volume_type = root_block_device.value["volume_type"]
         }
       }
 
@@ -430,8 +481,11 @@ resource "aws_spot_fleet_request" "this" {
       dynamic "launch_template_specification" {
         for_each = launch_template_config.value.launch_template_specification
         content {
-          id      = launch_template_specification.value["id"]
-          name    = launch_template_specification.value["name"]
+          # id - (optional) is a type of string
+          id = launch_template_specification.value["id"]
+          # name - (optional) is a type of string
+          name = launch_template_specification.value["name"]
+          # version - (optional) is a type of string
           version = launch_template_specification.value["version"]
         }
       }
@@ -439,11 +493,17 @@ resource "aws_spot_fleet_request" "this" {
       dynamic "overrides" {
         for_each = launch_template_config.value.overrides
         content {
+          # availability_zone - (optional) is a type of string
           availability_zone = overrides.value["availability_zone"]
-          instance_type     = overrides.value["instance_type"]
-          priority          = overrides.value["priority"]
-          spot_price        = overrides.value["spot_price"]
-          subnet_id         = overrides.value["subnet_id"]
+          # instance_type - (optional) is a type of string
+          instance_type = overrides.value["instance_type"]
+          # priority - (optional) is a type of number
+          priority = overrides.value["priority"]
+          # spot_price - (optional) is a type of string
+          spot_price = overrides.value["spot_price"]
+          # subnet_id - (optional) is a type of string
+          subnet_id = overrides.value["subnet_id"]
+          # weighted_capacity - (optional) is a type of number
           weighted_capacity = overrides.value["weighted_capacity"]
         }
       }
@@ -458,6 +518,7 @@ resource "aws_spot_fleet_request" "this" {
       dynamic "capacity_rebalance" {
         for_each = spot_maintenance_strategies.value.capacity_rebalance
         content {
+          # replacement_strategy - (optional) is a type of string
           replacement_strategy = capacity_rebalance.value["replacement_strategy"]
         }
       }
@@ -468,7 +529,9 @@ resource "aws_spot_fleet_request" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

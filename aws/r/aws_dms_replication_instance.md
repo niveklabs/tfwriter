@@ -178,27 +178,45 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_dms_replication_instance" "this" {
-  allocated_storage            = var.allocated_storage
-  allow_major_version_upgrade  = var.allow_major_version_upgrade
-  apply_immediately            = var.apply_immediately
-  auto_minor_version_upgrade   = var.auto_minor_version_upgrade
-  availability_zone            = var.availability_zone
-  engine_version               = var.engine_version
-  kms_key_arn                  = var.kms_key_arn
-  multi_az                     = var.multi_az
+  # allocated_storage - (optional) is a type of number
+  allocated_storage = var.allocated_storage
+  # allow_major_version_upgrade - (optional) is a type of bool
+  allow_major_version_upgrade = var.allow_major_version_upgrade
+  # apply_immediately - (optional) is a type of bool
+  apply_immediately = var.apply_immediately
+  # auto_minor_version_upgrade - (optional) is a type of bool
+  auto_minor_version_upgrade = var.auto_minor_version_upgrade
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # engine_version - (optional) is a type of string
+  engine_version = var.engine_version
+  # kms_key_arn - (optional) is a type of string
+  kms_key_arn = var.kms_key_arn
+  # multi_az - (optional) is a type of bool
+  multi_az = var.multi_az
+  # preferred_maintenance_window - (optional) is a type of string
   preferred_maintenance_window = var.preferred_maintenance_window
-  publicly_accessible          = var.publicly_accessible
-  replication_instance_class   = var.replication_instance_class
-  replication_instance_id      = var.replication_instance_id
-  replication_subnet_group_id  = var.replication_subnet_group_id
-  tags                         = var.tags
-  vpc_security_group_ids       = var.vpc_security_group_ids
+  # publicly_accessible - (optional) is a type of bool
+  publicly_accessible = var.publicly_accessible
+  # replication_instance_class - (required) is a type of string
+  replication_instance_class = var.replication_instance_class
+  # replication_instance_id - (required) is a type of string
+  replication_instance_id = var.replication_instance_id
+  # replication_subnet_group_id - (optional) is a type of string
+  replication_subnet_group_id = var.replication_subnet_group_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_security_group_ids - (optional) is a type of set of string
+  vpc_security_group_ids = var.vpc_security_group_ids
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

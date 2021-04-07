@@ -64,9 +64,12 @@ variable "policy_names" {
 
 ```terraform
 resource "aws_load_balancer_listener_policy" "this" {
+  # load_balancer_name - (required) is a type of string
   load_balancer_name = var.load_balancer_name
+  # load_balancer_port - (required) is a type of number
   load_balancer_port = var.load_balancer_port
-  policy_names       = var.policy_names
+  # policy_names - (optional) is a type of set of string
+  policy_names = var.policy_names
 }
 ```
 

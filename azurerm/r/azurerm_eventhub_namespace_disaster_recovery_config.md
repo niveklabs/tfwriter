@@ -98,18 +98,27 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_eventhub_namespace_disaster_recovery_config" "this" {
-  alternate_name       = var.alternate_name
-  name                 = var.name
-  namespace_name       = var.namespace_name
+  # alternate_name - (optional) is a type of string
+  alternate_name = var.alternate_name
+  # name - (required) is a type of string
+  name = var.name
+  # namespace_name - (required) is a type of string
+  namespace_name = var.namespace_name
+  # partner_namespace_id - (required) is a type of string
   partner_namespace_id = var.partner_namespace_id
-  resource_group_name  = var.resource_group_name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

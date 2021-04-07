@@ -65,8 +65,11 @@ variable "most_recent" {
 
 ```terraform
 data "google_sql_backup_run" "this" {
-  backup_id   = var.backup_id
-  instance    = var.instance
+  # backup_id - (optional) is a type of number
+  backup_id = var.backup_id
+  # instance - (required) is a type of string
+  instance = var.instance
+  # most_recent - (optional) is a type of bool
   most_recent = var.most_recent
 }
 ```

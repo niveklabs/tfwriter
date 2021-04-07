@@ -101,15 +101,21 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_security_center_assessment" "this" {
-  additional_data      = var.additional_data
+  # additional_data - (optional) is a type of map of string
+  additional_data = var.additional_data
+  # assessment_policy_id - (required) is a type of string
   assessment_policy_id = var.assessment_policy_id
-  target_resource_id   = var.target_resource_id
+  # target_resource_id - (required) is a type of string
+  target_resource_id = var.target_resource_id
 
   dynamic "status" {
     for_each = var.status
     content {
-      cause       = status.value["cause"]
-      code        = status.value["code"]
+      # cause - (optional) is a type of string
+      cause = status.value["cause"]
+      # code - (required) is a type of string
+      code = status.value["code"]
+      # description - (optional) is a type of string
       description = status.value["description"]
     }
   }
@@ -117,9 +123,13 @@ resource "azurerm_security_center_assessment" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

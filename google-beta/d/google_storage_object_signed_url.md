@@ -104,14 +104,22 @@ variable "path" {
 
 ```terraform
 data "google_storage_object_signed_url" "this" {
-  bucket            = var.bucket
-  content_md5       = var.content_md5
-  content_type      = var.content_type
-  credentials       = var.credentials
-  duration          = var.duration
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # content_md5 - (optional) is a type of string
+  content_md5 = var.content_md5
+  # content_type - (optional) is a type of string
+  content_type = var.content_type
+  # credentials - (optional) is a type of string
+  credentials = var.credentials
+  # duration - (optional) is a type of string
+  duration = var.duration
+  # extension_headers - (optional) is a type of map of string
   extension_headers = var.extension_headers
-  http_method       = var.http_method
-  path              = var.path
+  # http_method - (optional) is a type of string
+  http_method = var.http_method
+  # path - (required) is a type of string
+  path = var.path
 }
 ```
 

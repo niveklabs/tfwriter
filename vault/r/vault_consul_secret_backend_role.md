@@ -104,14 +104,22 @@ variable "ttl" {
 
 ```terraform
 resource "vault_consul_secret_backend_role" "this" {
-  backend    = var.backend
-  local      = var.local
-  max_ttl    = var.max_ttl
-  name       = var.name
-  path       = var.path
-  policies   = var.policies
+  # backend - (optional) is a type of string
+  backend = var.backend
+  # local - (optional) is a type of bool
+  local = var.local
+  # max_ttl - (optional) is a type of number
+  max_ttl = var.max_ttl
+  # name - (required) is a type of string
+  name = var.name
+  # path - (optional) is a type of string
+  path = var.path
+  # policies - (required) is a type of list of string
+  policies = var.policies
+  # token_type - (optional) is a type of string
   token_type = var.token_type
-  ttl        = var.ttl
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
 }
 ```
 

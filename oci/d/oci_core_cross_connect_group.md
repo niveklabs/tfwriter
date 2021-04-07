@@ -49,6 +49,7 @@ variable "cross_connect_group_id" {
 
 ```terraform
 data "oci_core_cross_connect_group" "this" {
+  # cross_connect_group_id - (required) is a type of string
   cross_connect_group_id = var.cross_connect_group_id
 }
 ```

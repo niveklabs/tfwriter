@@ -56,8 +56,10 @@ variable "policy_data" {
 
 ```terraform
 resource "google_privateca_certificate_authority_iam_policy" "this" {
+  # certificate_authority - (required) is a type of string
   certificate_authority = var.certificate_authority
-  policy_data           = var.policy_data
+  # policy_data - (required) is a type of string
+  policy_data = var.policy_data
 }
 ```
 

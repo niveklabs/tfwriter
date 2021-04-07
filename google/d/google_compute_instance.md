@@ -74,10 +74,14 @@ variable "zone" {
 
 ```terraform
 data "google_compute_instance" "this" {
-  name      = var.name
-  project   = var.project
+  # name - (optional) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # self_link - (optional) is a type of string
   self_link = var.self_link
-  zone      = var.zone
+  # zone - (optional) is a type of string
+  zone = var.zone
 }
 ```
 

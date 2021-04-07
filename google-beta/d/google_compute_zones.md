@@ -66,9 +66,12 @@ variable "status" {
 
 ```terraform
 data "google_compute_zones" "this" {
+  # project - (optional) is a type of string
   project = var.project
-  region  = var.region
-  status  = var.status
+  # region - (optional) is a type of string
+  region = var.region
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

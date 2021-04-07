@@ -137,21 +137,33 @@ variable "inline_policy" {
 
 ```terraform
 resource "aws_iam_role" "this" {
-  assume_role_policy    = var.assume_role_policy
-  description           = var.description
+  # assume_role_policy - (required) is a type of string
+  assume_role_policy = var.assume_role_policy
+  # description - (optional) is a type of string
+  description = var.description
+  # force_detach_policies - (optional) is a type of bool
   force_detach_policies = var.force_detach_policies
-  managed_policy_arns   = var.managed_policy_arns
-  max_session_duration  = var.max_session_duration
-  name                  = var.name
-  name_prefix           = var.name_prefix
-  path                  = var.path
-  permissions_boundary  = var.permissions_boundary
-  tags                  = var.tags
+  # managed_policy_arns - (optional) is a type of set of string
+  managed_policy_arns = var.managed_policy_arns
+  # max_session_duration - (optional) is a type of number
+  max_session_duration = var.max_session_duration
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # path - (optional) is a type of string
+  path = var.path
+  # permissions_boundary - (optional) is a type of string
+  permissions_boundary = var.permissions_boundary
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "inline_policy" {
     for_each = var.inline_policy
     content {
-      name   = inline_policy.value["name"]
+      # name - (optional) is a type of string
+      name = inline_policy.value["name"]
+      # policy - (optional) is a type of string
       policy = inline_policy.value["policy"]
     }
   }

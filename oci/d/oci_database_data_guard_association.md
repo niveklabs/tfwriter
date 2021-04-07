@@ -56,8 +56,10 @@ variable "database_id" {
 
 ```terraform
 data "oci_database_data_guard_association" "this" {
+  # data_guard_association_id - (required) is a type of string
   data_guard_association_id = var.data_guard_association_id
-  database_id               = var.database_id
+  # database_id - (required) is a type of string
+  database_id = var.database_id
 }
 ```
 

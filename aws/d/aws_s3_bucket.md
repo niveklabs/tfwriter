@@ -49,6 +49,7 @@ variable "bucket" {
 
 ```terraform
 data "aws_s3_bucket" "this" {
+  # bucket - (required) is a type of string
   bucket = var.bucket
 }
 ```

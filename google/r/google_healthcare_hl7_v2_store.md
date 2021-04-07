@@ -130,13 +130,17 @@ variable "timeouts" {
 
 ```terraform
 resource "google_healthcare_hl7_v2_store" "this" {
+  # dataset - (required) is a type of string
   dataset = var.dataset
-  labels  = var.labels
-  name    = var.name
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "notification_config" {
     for_each = var.notification_config
     content {
+      # pubsub_topic - (required) is a type of string
       pubsub_topic = notification_config.value["pubsub_topic"]
     }
   }
@@ -144,7 +148,9 @@ resource "google_healthcare_hl7_v2_store" "this" {
   dynamic "notification_configs" {
     for_each = var.notification_configs
     content {
-      filter       = notification_configs.value["filter"]
+      # filter - (optional) is a type of string
+      filter = notification_configs.value["filter"]
+      # pubsub_topic - (required) is a type of string
       pubsub_topic = notification_configs.value["pubsub_topic"]
     }
   }
@@ -152,8 +158,11 @@ resource "google_healthcare_hl7_v2_store" "this" {
   dynamic "parser_config" {
     for_each = var.parser_config
     content {
-      allow_null_header  = parser_config.value["allow_null_header"]
-      schema             = parser_config.value["schema"]
+      # allow_null_header - (optional) is a type of bool
+      allow_null_header = parser_config.value["allow_null_header"]
+      # schema - (optional) is a type of string
+      schema = parser_config.value["schema"]
+      # segment_terminator - (optional) is a type of string
       segment_terminator = parser_config.value["segment_terminator"]
     }
   }
@@ -161,8 +170,11 @@ resource "google_healthcare_hl7_v2_store" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

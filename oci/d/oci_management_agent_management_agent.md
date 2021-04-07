@@ -49,6 +49,7 @@ variable "management_agent_id" {
 
 ```terraform
 data "oci_management_agent_management_agent" "this" {
+  # management_agent_id - (required) is a type of string
   management_agent_id = var.management_agent_id
 }
 ```

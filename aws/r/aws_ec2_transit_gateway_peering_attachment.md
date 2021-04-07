@@ -79,11 +79,16 @@ variable "transit_gateway_id" {
 
 ```terraform
 resource "aws_ec2_transit_gateway_peering_attachment" "this" {
-  peer_account_id         = var.peer_account_id
-  peer_region             = var.peer_region
+  # peer_account_id - (optional) is a type of string
+  peer_account_id = var.peer_account_id
+  # peer_region - (required) is a type of string
+  peer_region = var.peer_region
+  # peer_transit_gateway_id - (required) is a type of string
   peer_transit_gateway_id = var.peer_transit_gateway_id
-  tags                    = var.tags
-  transit_gateway_id      = var.transit_gateway_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # transit_gateway_id - (required) is a type of string
+  transit_gateway_id = var.transit_gateway_id
 }
 ```
 

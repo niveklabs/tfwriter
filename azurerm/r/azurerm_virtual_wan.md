@@ -131,22 +131,35 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_virtual_wan" "this" {
-  allow_branch_to_branch_traffic    = var.allow_branch_to_branch_traffic
-  allow_vnet_to_vnet_traffic        = var.allow_vnet_to_vnet_traffic
-  disable_vpn_encryption            = var.disable_vpn_encryption
-  location                          = var.location
-  name                              = var.name
+  # allow_branch_to_branch_traffic - (optional) is a type of bool
+  allow_branch_to_branch_traffic = var.allow_branch_to_branch_traffic
+  # allow_vnet_to_vnet_traffic - (optional) is a type of bool
+  allow_vnet_to_vnet_traffic = var.allow_vnet_to_vnet_traffic
+  # disable_vpn_encryption - (optional) is a type of bool
+  disable_vpn_encryption = var.disable_vpn_encryption
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # office365_local_breakout_category - (optional) is a type of string
   office365_local_breakout_category = var.office365_local_breakout_category
-  resource_group_name               = var.resource_group_name
-  tags                              = var.tags
-  type                              = var.type
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

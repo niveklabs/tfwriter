@@ -49,6 +49,7 @@ variable "profile_id" {
 
 ```terraform
 data "oci_optimizer_profile" "this" {
+  # profile_id - (required) is a type of string
   profile_id = var.profile_id
 }
 ```

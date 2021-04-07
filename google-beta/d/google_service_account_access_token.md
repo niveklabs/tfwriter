@@ -72,9 +72,13 @@ variable "target_service_account" {
 
 ```terraform
 data "google_service_account_access_token" "this" {
-  delegates              = var.delegates
-  lifetime               = var.lifetime
-  scopes                 = var.scopes
+  # delegates - (optional) is a type of set of string
+  delegates = var.delegates
+  # lifetime - (optional) is a type of string
+  lifetime = var.lifetime
+  # scopes - (required) is a type of set of string
+  scopes = var.scopes
+  # target_service_account - (required) is a type of string
   target_service_account = var.target_service_account
 }
 ```

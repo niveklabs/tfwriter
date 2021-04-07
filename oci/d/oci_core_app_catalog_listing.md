@@ -49,6 +49,7 @@ variable "listing_id" {
 
 ```terraform
 data "oci_core_app_catalog_listing" "this" {
+  # listing_id - (required) is a type of string
   listing_id = var.listing_id
 }
 ```

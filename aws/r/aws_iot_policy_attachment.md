@@ -56,7 +56,9 @@ variable "target" {
 
 ```terraform
 resource "aws_iot_policy_attachment" "this" {
+  # policy - (required) is a type of string
   policy = var.policy
+  # target - (required) is a type of string
   target = var.target
 }
 ```

@@ -57,7 +57,9 @@ variable "license_key" {
 
 ```terraform
 resource "vsphere_license" "this" {
-  labels      = var.labels
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # license_key - (required) is a type of string
   license_key = var.license_key
 }
 ```

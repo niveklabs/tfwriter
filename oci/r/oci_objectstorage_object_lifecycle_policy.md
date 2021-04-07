@@ -110,24 +110,35 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_objectstorage_object_lifecycle_policy" "this" {
-  bucket    = var.bucket
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # namespace - (required) is a type of string
   namespace = var.namespace
 
   dynamic "rules" {
     for_each = var.rules
     content {
-      action      = rules.value["action"]
-      is_enabled  = rules.value["is_enabled"]
-      name        = rules.value["name"]
-      target      = rules.value["target"]
+      # action - (required) is a type of string
+      action = rules.value["action"]
+      # is_enabled - (required) is a type of bool
+      is_enabled = rules.value["is_enabled"]
+      # name - (required) is a type of string
+      name = rules.value["name"]
+      # target - (optional) is a type of string
+      target = rules.value["target"]
+      # time_amount - (required) is a type of string
       time_amount = rules.value["time_amount"]
-      time_unit   = rules.value["time_unit"]
+      # time_unit - (required) is a type of string
+      time_unit = rules.value["time_unit"]
 
       dynamic "object_name_filter" {
         for_each = rules.value.object_name_filter
         content {
+          # exclusion_patterns - (optional) is a type of set of string
           exclusion_patterns = object_name_filter.value["exclusion_patterns"]
+          # inclusion_patterns - (optional) is a type of set of string
           inclusion_patterns = object_name_filter.value["inclusion_patterns"]
+          # inclusion_prefixes - (optional) is a type of set of string
           inclusion_prefixes = object_name_filter.value["inclusion_prefixes"]
         }
       }
@@ -138,8 +149,11 @@ resource "oci_objectstorage_object_lifecycle_policy" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

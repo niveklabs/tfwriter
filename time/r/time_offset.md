@@ -106,14 +106,22 @@ variable "triggers" {
 
 ```terraform
 resource "time_offset" "this" {
-  base_rfc3339   = var.base_rfc3339
-  offset_days    = var.offset_days
-  offset_hours   = var.offset_hours
+  # base_rfc3339 - (optional) is a type of string
+  base_rfc3339 = var.base_rfc3339
+  # offset_days - (optional) is a type of number
+  offset_days = var.offset_days
+  # offset_hours - (optional) is a type of number
+  offset_hours = var.offset_hours
+  # offset_minutes - (optional) is a type of number
   offset_minutes = var.offset_minutes
-  offset_months  = var.offset_months
+  # offset_months - (optional) is a type of number
+  offset_months = var.offset_months
+  # offset_seconds - (optional) is a type of number
   offset_seconds = var.offset_seconds
-  offset_years   = var.offset_years
-  triggers       = var.triggers
+  # offset_years - (optional) is a type of number
+  offset_years = var.offset_years
+  # triggers - (optional) is a type of map of string
+  triggers = var.triggers
 }
 ```
 

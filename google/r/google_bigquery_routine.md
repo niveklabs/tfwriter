@@ -157,32 +157,49 @@ variable "timeouts" {
 
 ```terraform
 resource "google_bigquery_routine" "this" {
-  dataset_id         = var.dataset_id
-  definition_body    = var.definition_body
-  description        = var.description
-  determinism_level  = var.determinism_level
+  # dataset_id - (required) is a type of string
+  dataset_id = var.dataset_id
+  # definition_body - (required) is a type of string
+  definition_body = var.definition_body
+  # description - (optional) is a type of string
+  description = var.description
+  # determinism_level - (optional) is a type of string
+  determinism_level = var.determinism_level
+  # imported_libraries - (optional) is a type of list of string
   imported_libraries = var.imported_libraries
-  language           = var.language
-  project            = var.project
-  return_type        = var.return_type
-  routine_id         = var.routine_id
-  routine_type       = var.routine_type
+  # language - (optional) is a type of string
+  language = var.language
+  # project - (optional) is a type of string
+  project = var.project
+  # return_type - (optional) is a type of string
+  return_type = var.return_type
+  # routine_id - (required) is a type of string
+  routine_id = var.routine_id
+  # routine_type - (optional) is a type of string
+  routine_type = var.routine_type
 
   dynamic "arguments" {
     for_each = var.arguments
     content {
+      # argument_kind - (optional) is a type of string
       argument_kind = arguments.value["argument_kind"]
-      data_type     = arguments.value["data_type"]
-      mode          = arguments.value["mode"]
-      name          = arguments.value["name"]
+      # data_type - (optional) is a type of string
+      data_type = arguments.value["data_type"]
+      # mode - (optional) is a type of string
+      mode = arguments.value["mode"]
+      # name - (optional) is a type of string
+      name = arguments.value["name"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -64,9 +64,12 @@ variable "tags" {
 
 ```terraform
 resource "aws_codestarconnections_connection" "this" {
-  name          = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # provider_type - (required) is a type of string
   provider_type = var.provider_type
-  tags          = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

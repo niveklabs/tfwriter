@@ -129,19 +129,29 @@ variable "validator" {
 
 ```terraform
 resource "oci_identity_tag" "this" {
-  defined_tags     = var.defined_tags
-  description      = var.description
-  freeform_tags    = var.freeform_tags
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # description - (required) is a type of string
+  description = var.description
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # is_cost_tracking - (optional) is a type of bool
   is_cost_tracking = var.is_cost_tracking
-  is_retired       = var.is_retired
-  name             = var.name
+  # is_retired - (optional) is a type of bool
+  is_retired = var.is_retired
+  # name - (required) is a type of string
+  name = var.name
+  # tag_namespace_id - (required) is a type of string
   tag_namespace_id = var.tag_namespace_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -149,8 +159,10 @@ resource "oci_identity_tag" "this" {
   dynamic "validator" {
     for_each = var.validator
     content {
+      # validator_type - (required) is a type of string
       validator_type = validator.value["validator_type"]
-      values         = validator.value["values"]
+      # values - (required) is a type of list of string
+      values = validator.value["values"]
     }
   }
 

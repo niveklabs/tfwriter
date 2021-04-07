@@ -107,18 +107,27 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_ssl_policy" "this" {
+  # custom_features - (optional) is a type of set of string
   custom_features = var.custom_features
-  description     = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # min_tls_version - (optional) is a type of string
   min_tls_version = var.min_tls_version
-  name            = var.name
-  profile         = var.profile
-  project         = var.project
+  # name - (required) is a type of string
+  name = var.name
+  # profile - (optional) is a type of string
+  profile = var.profile
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

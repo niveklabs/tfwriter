@@ -107,25 +107,35 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_nosql_index" "this" {
-  compartment_id   = var.compartment_id
+  # compartment_id - (optional) is a type of string
+  compartment_id = var.compartment_id
+  # is_if_not_exists - (optional) is a type of bool
   is_if_not_exists = var.is_if_not_exists
-  name             = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # table_name_or_id - (required) is a type of string
   table_name_or_id = var.table_name_or_id
 
   dynamic "keys" {
     for_each = var.keys
     content {
-      column_name     = keys.value["column_name"]
+      # column_name - (required) is a type of string
+      column_name = keys.value["column_name"]
+      # json_field_type - (optional) is a type of string
       json_field_type = keys.value["json_field_type"]
-      json_path       = keys.value["json_path"]
+      # json_path - (optional) is a type of string
+      json_path = keys.value["json_path"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

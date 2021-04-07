@@ -77,13 +77,17 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_backup_policy_vm" "this" {
-  name                = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # recovery_vault_name - (required) is a type of string
   recovery_vault_name = var.recovery_vault_name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

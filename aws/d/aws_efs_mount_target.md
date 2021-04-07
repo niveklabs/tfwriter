@@ -49,6 +49,7 @@ variable "mount_target_id" {
 
 ```terraform
 data "aws_efs_mount_target" "this" {
+  # mount_target_id - (required) is a type of string
   mount_target_id = var.mount_target_id
 }
 ```

@@ -71,10 +71,14 @@ variable "plaintext" {
 
 ```terraform
 data "oci_kms_encrypted_data" "this" {
+  # associated_data - (optional) is a type of map of string
   associated_data = var.associated_data
+  # crypto_endpoint - (required) is a type of string
   crypto_endpoint = var.crypto_endpoint
-  key_id          = var.key_id
-  plaintext       = var.plaintext
+  # key_id - (required) is a type of string
+  key_id = var.key_id
+  # plaintext - (required) is a type of string
+  plaintext = var.plaintext
 }
 ```
 

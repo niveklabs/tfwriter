@@ -115,20 +115,30 @@ variable "hcl2" {
 
 ```terraform
 resource "nomad_job" "this" {
-  deregister_on_destroy   = var.deregister_on_destroy
+  # deregister_on_destroy - (optional) is a type of bool
+  deregister_on_destroy = var.deregister_on_destroy
+  # deregister_on_id_change - (optional) is a type of bool
   deregister_on_id_change = var.deregister_on_id_change
-  detach                  = var.detach
-  jobspec                 = var.jobspec
-  json                    = var.json
-  policy_override         = var.policy_override
-  purge_on_destroy        = var.purge_on_destroy
+  # detach - (optional) is a type of bool
+  detach = var.detach
+  # jobspec - (required) is a type of string
+  jobspec = var.jobspec
+  # json - (optional) is a type of bool
+  json = var.json
+  # policy_override - (optional) is a type of bool
+  policy_override = var.policy_override
+  # purge_on_destroy - (optional) is a type of bool
+  purge_on_destroy = var.purge_on_destroy
 
   dynamic "hcl2" {
     for_each = var.hcl2
     content {
+      # allow_fs - (optional) is a type of bool
       allow_fs = hcl2.value["allow_fs"]
-      enabled  = hcl2.value["enabled"]
-      vars     = hcl2.value["vars"]
+      # enabled - (optional) is a type of bool
+      enabled = hcl2.value["enabled"]
+      # vars - (optional) is a type of map of string
+      vars = hcl2.value["vars"]
     }
   }
 

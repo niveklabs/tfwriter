@@ -115,29 +115,43 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_netapp_account" "this" {
-  location            = var.location
-  name                = var.name
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  tags                = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "active_directory" {
     for_each = var.active_directory
     content {
-      dns_servers         = active_directory.value["dns_servers"]
-      domain              = active_directory.value["domain"]
+      # dns_servers - (required) is a type of list of string
+      dns_servers = active_directory.value["dns_servers"]
+      # domain - (required) is a type of string
+      domain = active_directory.value["domain"]
+      # organizational_unit - (optional) is a type of string
       organizational_unit = active_directory.value["organizational_unit"]
-      password            = active_directory.value["password"]
-      smb_server_name     = active_directory.value["smb_server_name"]
-      username            = active_directory.value["username"]
+      # password - (required) is a type of string
+      password = active_directory.value["password"]
+      # smb_server_name - (required) is a type of string
+      smb_server_name = active_directory.value["smb_server_name"]
+      # username - (required) is a type of string
+      username = active_directory.value["username"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

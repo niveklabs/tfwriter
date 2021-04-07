@@ -56,7 +56,9 @@ variable "policy_data" {
 
 ```terraform
 resource "google_healthcare_dataset_iam_policy" "this" {
-  dataset_id  = var.dataset_id
+  # dataset_id - (required) is a type of string
+  dataset_id = var.dataset_id
+  # policy_data - (required) is a type of string
   policy_data = var.policy_data
 }
 ```

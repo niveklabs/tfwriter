@@ -135,13 +135,17 @@ variable "timeouts" {
 
 ```terraform
 resource "google_binary_authorization_policy" "this" {
-  description                   = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # global_policy_evaluation_mode - (optional) is a type of string
   global_policy_evaluation_mode = var.global_policy_evaluation_mode
-  project                       = var.project
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "admission_whitelist_patterns" {
     for_each = var.admission_whitelist_patterns
     content {
+      # name_pattern - (required) is a type of string
       name_pattern = admission_whitelist_patterns.value["name_pattern"]
     }
   }
@@ -149,9 +153,13 @@ resource "google_binary_authorization_policy" "this" {
   dynamic "cluster_admission_rules" {
     for_each = var.cluster_admission_rules
     content {
-      cluster                 = cluster_admission_rules.value["cluster"]
-      enforcement_mode        = cluster_admission_rules.value["enforcement_mode"]
-      evaluation_mode         = cluster_admission_rules.value["evaluation_mode"]
+      # cluster - (required) is a type of string
+      cluster = cluster_admission_rules.value["cluster"]
+      # enforcement_mode - (required) is a type of string
+      enforcement_mode = cluster_admission_rules.value["enforcement_mode"]
+      # evaluation_mode - (required) is a type of string
+      evaluation_mode = cluster_admission_rules.value["evaluation_mode"]
+      # require_attestations_by - (optional) is a type of set of string
       require_attestations_by = cluster_admission_rules.value["require_attestations_by"]
     }
   }
@@ -159,8 +167,11 @@ resource "google_binary_authorization_policy" "this" {
   dynamic "default_admission_rule" {
     for_each = var.default_admission_rule
     content {
-      enforcement_mode        = default_admission_rule.value["enforcement_mode"]
-      evaluation_mode         = default_admission_rule.value["evaluation_mode"]
+      # enforcement_mode - (required) is a type of string
+      enforcement_mode = default_admission_rule.value["enforcement_mode"]
+      # evaluation_mode - (required) is a type of string
+      evaluation_mode = default_admission_rule.value["evaluation_mode"]
+      # require_attestations_by - (optional) is a type of set of string
       require_attestations_by = default_admission_rule.value["require_attestations_by"]
     }
   }
@@ -168,8 +179,11 @@ resource "google_binary_authorization_policy" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

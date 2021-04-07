@@ -89,17 +89,24 @@ variable "condition" {
 
 ```terraform
 resource "google_api_gateway_api_iam_binding" "this" {
-  api     = var.api
+  # api - (required) is a type of string
+  api = var.api
+  # members - (required) is a type of set of string
   members = var.members
+  # project - (optional) is a type of string
   project = var.project
-  role    = var.role
+  # role - (required) is a type of string
+  role = var.role
 
   dynamic "condition" {
     for_each = var.condition
     content {
+      # description - (optional) is a type of string
       description = condition.value["description"]
-      expression  = condition.value["expression"]
-      title       = condition.value["title"]
+      # expression - (required) is a type of string
+      expression = condition.value["expression"]
+      # title - (required) is a type of string
+      title = condition.value["title"]
     }
   }
 

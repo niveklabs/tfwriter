@@ -344,44 +344,82 @@ variable "use_csr_sans" {
 
 ```terraform
 resource "vault_pki_secret_backend_role" "this" {
-  allow_any_name                     = var.allow_any_name
-  allow_bare_domains                 = var.allow_bare_domains
-  allow_glob_domains                 = var.allow_glob_domains
-  allow_ip_sans                      = var.allow_ip_sans
-  allow_localhost                    = var.allow_localhost
-  allow_subdomains                   = var.allow_subdomains
-  allowed_domains                    = var.allowed_domains
-  allowed_domains_template           = var.allowed_domains_template
-  allowed_other_sans                 = var.allowed_other_sans
-  allowed_uri_sans                   = var.allowed_uri_sans
-  backend                            = var.backend
+  # allow_any_name - (optional) is a type of bool
+  allow_any_name = var.allow_any_name
+  # allow_bare_domains - (optional) is a type of bool
+  allow_bare_domains = var.allow_bare_domains
+  # allow_glob_domains - (optional) is a type of bool
+  allow_glob_domains = var.allow_glob_domains
+  # allow_ip_sans - (optional) is a type of bool
+  allow_ip_sans = var.allow_ip_sans
+  # allow_localhost - (optional) is a type of bool
+  allow_localhost = var.allow_localhost
+  # allow_subdomains - (optional) is a type of bool
+  allow_subdomains = var.allow_subdomains
+  # allowed_domains - (optional) is a type of list of string
+  allowed_domains = var.allowed_domains
+  # allowed_domains_template - (optional) is a type of bool
+  allowed_domains_template = var.allowed_domains_template
+  # allowed_other_sans - (optional) is a type of list of string
+  allowed_other_sans = var.allowed_other_sans
+  # allowed_uri_sans - (optional) is a type of list of string
+  allowed_uri_sans = var.allowed_uri_sans
+  # backend - (required) is a type of string
+  backend = var.backend
+  # basic_constraints_valid_for_non_ca - (optional) is a type of bool
   basic_constraints_valid_for_non_ca = var.basic_constraints_valid_for_non_ca
-  client_flag                        = var.client_flag
-  code_signing_flag                  = var.code_signing_flag
-  country                            = var.country
-  email_protection_flag              = var.email_protection_flag
-  enforce_hostnames                  = var.enforce_hostnames
-  ext_key_usage                      = var.ext_key_usage
-  generate_lease                     = var.generate_lease
-  key_bits                           = var.key_bits
-  key_type                           = var.key_type
-  key_usage                          = var.key_usage
-  locality                           = var.locality
-  max_ttl                            = var.max_ttl
-  name                               = var.name
-  no_store                           = var.no_store
-  not_before_duration                = var.not_before_duration
-  organization                       = var.organization
-  ou                                 = var.ou
-  policy_identifiers                 = var.policy_identifiers
-  postal_code                        = var.postal_code
-  province                           = var.province
-  require_cn                         = var.require_cn
-  server_flag                        = var.server_flag
-  street_address                     = var.street_address
-  ttl                                = var.ttl
-  use_csr_common_name                = var.use_csr_common_name
-  use_csr_sans                       = var.use_csr_sans
+  # client_flag - (optional) is a type of bool
+  client_flag = var.client_flag
+  # code_signing_flag - (optional) is a type of bool
+  code_signing_flag = var.code_signing_flag
+  # country - (optional) is a type of list of string
+  country = var.country
+  # email_protection_flag - (optional) is a type of bool
+  email_protection_flag = var.email_protection_flag
+  # enforce_hostnames - (optional) is a type of bool
+  enforce_hostnames = var.enforce_hostnames
+  # ext_key_usage - (optional) is a type of list of string
+  ext_key_usage = var.ext_key_usage
+  # generate_lease - (optional) is a type of bool
+  generate_lease = var.generate_lease
+  # key_bits - (optional) is a type of number
+  key_bits = var.key_bits
+  # key_type - (optional) is a type of string
+  key_type = var.key_type
+  # key_usage - (optional) is a type of list of string
+  key_usage = var.key_usage
+  # locality - (optional) is a type of list of string
+  locality = var.locality
+  # max_ttl - (optional) is a type of string
+  max_ttl = var.max_ttl
+  # name - (required) is a type of string
+  name = var.name
+  # no_store - (optional) is a type of bool
+  no_store = var.no_store
+  # not_before_duration - (optional) is a type of string
+  not_before_duration = var.not_before_duration
+  # organization - (optional) is a type of list of string
+  organization = var.organization
+  # ou - (optional) is a type of list of string
+  ou = var.ou
+  # policy_identifiers - (optional) is a type of list of string
+  policy_identifiers = var.policy_identifiers
+  # postal_code - (optional) is a type of list of string
+  postal_code = var.postal_code
+  # province - (optional) is a type of list of string
+  province = var.province
+  # require_cn - (optional) is a type of bool
+  require_cn = var.require_cn
+  # server_flag - (optional) is a type of bool
+  server_flag = var.server_flag
+  # street_address - (optional) is a type of list of string
+  street_address = var.street_address
+  # ttl - (optional) is a type of string
+  ttl = var.ttl
+  # use_csr_common_name - (optional) is a type of bool
+  use_csr_common_name = var.use_csr_common_name
+  # use_csr_sans - (optional) is a type of bool
+  use_csr_sans = var.use_csr_sans
 }
 ```
 

@@ -181,9 +181,12 @@ variable "timeouts" {
 
 ```terraform
 resource "google_data_loss_prevention_stored_info_type" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
   display_name = var.display_name
-  parent       = var.parent
+  # parent - (required) is a type of string
+  parent = var.parent
 
   dynamic "dictionary" {
     for_each = var.dictionary
@@ -192,6 +195,7 @@ resource "google_data_loss_prevention_stored_info_type" "this" {
       dynamic "cloud_storage_path" {
         for_each = dictionary.value.cloud_storage_path
         content {
+          # path - (required) is a type of string
           path = cloud_storage_path.value["path"]
         }
       }
@@ -199,6 +203,7 @@ resource "google_data_loss_prevention_stored_info_type" "this" {
       dynamic "word_list" {
         for_each = dictionary.value.word_list
         content {
+          # words - (required) is a type of list of string
           words = word_list.value["words"]
         }
       }
@@ -217,6 +222,7 @@ resource "google_data_loss_prevention_stored_info_type" "this" {
           dynamic "field" {
             for_each = big_query_field.value.field
             content {
+              # name - (required) is a type of string
               name = field.value["name"]
             }
           }
@@ -224,9 +230,12 @@ resource "google_data_loss_prevention_stored_info_type" "this" {
           dynamic "table" {
             for_each = big_query_field.value.table
             content {
+              # dataset_id - (required) is a type of string
               dataset_id = table.value["dataset_id"]
+              # project_id - (required) is a type of string
               project_id = table.value["project_id"]
-              table_id   = table.value["table_id"]
+              # table_id - (required) is a type of string
+              table_id = table.value["table_id"]
             }
           }
 
@@ -236,6 +245,7 @@ resource "google_data_loss_prevention_stored_info_type" "this" {
       dynamic "cloud_storage_file_set" {
         for_each = large_custom_dictionary.value.cloud_storage_file_set
         content {
+          # url - (required) is a type of string
           url = cloud_storage_file_set.value["url"]
         }
       }
@@ -243,6 +253,7 @@ resource "google_data_loss_prevention_stored_info_type" "this" {
       dynamic "output_path" {
         for_each = large_custom_dictionary.value.output_path
         content {
+          # path - (required) is a type of string
           path = output_path.value["path"]
         }
       }
@@ -253,16 +264,21 @@ resource "google_data_loss_prevention_stored_info_type" "this" {
   dynamic "regex" {
     for_each = var.regex
     content {
+      # group_indexes - (optional) is a type of list of number
       group_indexes = regex.value["group_indexes"]
-      pattern       = regex.value["pattern"]
+      # pattern - (required) is a type of string
+      pattern = regex.value["pattern"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

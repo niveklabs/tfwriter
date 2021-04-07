@@ -128,35 +128,49 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_iothub_dps" "this" {
-  location            = var.location
-  name                = var.name
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  tags                = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "linked_hub" {
     for_each = var.linked_hub
     content {
-      allocation_weight       = linked_hub.value["allocation_weight"]
+      # allocation_weight - (optional) is a type of number
+      allocation_weight = linked_hub.value["allocation_weight"]
+      # apply_allocation_policy - (optional) is a type of bool
       apply_allocation_policy = linked_hub.value["apply_allocation_policy"]
-      connection_string       = linked_hub.value["connection_string"]
-      location                = linked_hub.value["location"]
+      # connection_string - (required) is a type of string
+      connection_string = linked_hub.value["connection_string"]
+      # location - (required) is a type of string
+      location = linked_hub.value["location"]
     }
   }
 
   dynamic "sku" {
     for_each = var.sku
     content {
+      # capacity - (required) is a type of number
       capacity = sku.value["capacity"]
-      name     = sku.value["name"]
+      # name - (required) is a type of string
+      name = sku.value["name"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

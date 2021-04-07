@@ -152,18 +152,27 @@ variable "timeouts" {
 
 ```terraform
 resource "google_iam_workload_identity_pool_provider" "this" {
-  attribute_condition                = var.attribute_condition
-  attribute_mapping                  = var.attribute_mapping
-  description                        = var.description
-  disabled                           = var.disabled
-  display_name                       = var.display_name
-  project                            = var.project
-  workload_identity_pool_id          = var.workload_identity_pool_id
+  # attribute_condition - (optional) is a type of string
+  attribute_condition = var.attribute_condition
+  # attribute_mapping - (optional) is a type of map of string
+  attribute_mapping = var.attribute_mapping
+  # description - (optional) is a type of string
+  description = var.description
+  # disabled - (optional) is a type of bool
+  disabled = var.disabled
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # project - (optional) is a type of string
+  project = var.project
+  # workload_identity_pool_id - (required) is a type of string
+  workload_identity_pool_id = var.workload_identity_pool_id
+  # workload_identity_pool_provider_id - (required) is a type of string
   workload_identity_pool_provider_id = var.workload_identity_pool_provider_id
 
   dynamic "aws" {
     for_each = var.aws
     content {
+      # account_id - (required) is a type of string
       account_id = aws.value["account_id"]
     }
   }
@@ -171,16 +180,21 @@ resource "google_iam_workload_identity_pool_provider" "this" {
   dynamic "oidc" {
     for_each = var.oidc
     content {
+      # allowed_audiences - (optional) is a type of list of string
       allowed_audiences = oidc.value["allowed_audiences"]
-      issuer_uri        = oidc.value["issuer_uri"]
+      # issuer_uri - (required) is a type of string
+      issuer_uri = oidc.value["issuer_uri"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

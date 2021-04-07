@@ -184,30 +184,47 @@ variable "insight_selector" {
 
 ```terraform
 resource "aws_cloudtrail" "this" {
-  cloud_watch_logs_group_arn    = var.cloud_watch_logs_group_arn
-  cloud_watch_logs_role_arn     = var.cloud_watch_logs_role_arn
-  enable_log_file_validation    = var.enable_log_file_validation
-  enable_logging                = var.enable_logging
+  # cloud_watch_logs_group_arn - (optional) is a type of string
+  cloud_watch_logs_group_arn = var.cloud_watch_logs_group_arn
+  # cloud_watch_logs_role_arn - (optional) is a type of string
+  cloud_watch_logs_role_arn = var.cloud_watch_logs_role_arn
+  # enable_log_file_validation - (optional) is a type of bool
+  enable_log_file_validation = var.enable_log_file_validation
+  # enable_logging - (optional) is a type of bool
+  enable_logging = var.enable_logging
+  # include_global_service_events - (optional) is a type of bool
   include_global_service_events = var.include_global_service_events
-  is_multi_region_trail         = var.is_multi_region_trail
-  is_organization_trail         = var.is_organization_trail
-  kms_key_id                    = var.kms_key_id
-  name                          = var.name
-  s3_bucket_name                = var.s3_bucket_name
-  s3_key_prefix                 = var.s3_key_prefix
-  sns_topic_name                = var.sns_topic_name
-  tags                          = var.tags
+  # is_multi_region_trail - (optional) is a type of bool
+  is_multi_region_trail = var.is_multi_region_trail
+  # is_organization_trail - (optional) is a type of bool
+  is_organization_trail = var.is_organization_trail
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # name - (required) is a type of string
+  name = var.name
+  # s3_bucket_name - (required) is a type of string
+  s3_bucket_name = var.s3_bucket_name
+  # s3_key_prefix - (optional) is a type of string
+  s3_key_prefix = var.s3_key_prefix
+  # sns_topic_name - (optional) is a type of string
+  sns_topic_name = var.sns_topic_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "event_selector" {
     for_each = var.event_selector
     content {
+      # include_management_events - (optional) is a type of bool
       include_management_events = event_selector.value["include_management_events"]
-      read_write_type           = event_selector.value["read_write_type"]
+      # read_write_type - (optional) is a type of string
+      read_write_type = event_selector.value["read_write_type"]
 
       dynamic "data_resource" {
         for_each = event_selector.value.data_resource
         content {
-          type   = data_resource.value["type"]
+          # type - (required) is a type of string
+          type = data_resource.value["type"]
+          # values - (required) is a type of list of string
           values = data_resource.value["values"]
         }
       }
@@ -218,6 +235,7 @@ resource "aws_cloudtrail" "this" {
   dynamic "insight_selector" {
     for_each = var.insight_selector
     content {
+      # insight_type - (required) is a type of string
       insight_type = insight_selector.value["insight_type"]
     }
   }

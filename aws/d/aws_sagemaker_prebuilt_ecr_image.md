@@ -73,9 +73,13 @@ variable "repository_name" {
 
 ```terraform
 data "aws_sagemaker_prebuilt_ecr_image" "this" {
-  dns_suffix      = var.dns_suffix
-  image_tag       = var.image_tag
-  region          = var.region
+  # dns_suffix - (optional) is a type of string
+  dns_suffix = var.dns_suffix
+  # image_tag - (optional) is a type of string
+  image_tag = var.image_tag
+  # region - (optional) is a type of string
+  region = var.region
+  # repository_name - (required) is a type of string
   repository_name = var.repository_name
 }
 ```

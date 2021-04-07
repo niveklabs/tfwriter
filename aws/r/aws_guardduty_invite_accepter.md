@@ -70,12 +70,15 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_guardduty_invite_accepter" "this" {
-  detector_id       = var.detector_id
+  # detector_id - (required) is a type of string
+  detector_id = var.detector_id
+  # master_account_id - (required) is a type of string
   master_account_id = var.master_account_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

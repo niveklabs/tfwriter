@@ -56,8 +56,10 @@ variable "web_acl_arn" {
 
 ```terraform
 resource "aws_wafv2_web_acl_association" "this" {
+  # resource_arn - (required) is a type of string
   resource_arn = var.resource_arn
-  web_acl_arn  = var.web_acl_arn
+  # web_acl_arn - (required) is a type of string
+  web_acl_arn = var.web_acl_arn
 }
 ```
 

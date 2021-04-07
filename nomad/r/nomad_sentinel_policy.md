@@ -78,11 +78,16 @@ variable "scope" {
 
 ```terraform
 resource "nomad_sentinel_policy" "this" {
-  description       = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # enforcement_level - (required) is a type of string
   enforcement_level = var.enforcement_level
-  name              = var.name
-  policy            = var.policy
-  scope             = var.scope
+  # name - (required) is a type of string
+  name = var.name
+  # policy - (required) is a type of string
+  policy = var.policy
+  # scope - (required) is a type of string
+  scope = var.scope
 }
 ```
 

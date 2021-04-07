@@ -75,14 +75,19 @@ variable "filter" {
 
 ```terraform
 data "oci_blockchain_osns" "this" {
+  # blockchain_platform_id - (required) is a type of string
   blockchain_platform_id = var.blockchain_platform_id
-  display_name           = var.display_name
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

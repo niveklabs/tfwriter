@@ -153,21 +153,33 @@ variable "timeouts" {
 
 ```terraform
 resource "google_vpc_access_connector" "this" {
-  ip_cidr_range  = var.ip_cidr_range
-  machine_type   = var.machine_type
-  max_instances  = var.max_instances
+  # ip_cidr_range - (optional) is a type of string
+  ip_cidr_range = var.ip_cidr_range
+  # machine_type - (optional) is a type of string
+  machine_type = var.machine_type
+  # max_instances - (optional) is a type of number
+  max_instances = var.max_instances
+  # max_throughput - (optional) is a type of number
   max_throughput = var.max_throughput
-  min_instances  = var.min_instances
+  # min_instances - (optional) is a type of number
+  min_instances = var.min_instances
+  # min_throughput - (optional) is a type of number
   min_throughput = var.min_throughput
-  name           = var.name
-  network        = var.network
-  project        = var.project
-  region         = var.region
+  # name - (required) is a type of string
+  name = var.name
+  # network - (optional) is a type of string
+  network = var.network
+  # project - (optional) is a type of string
+  project = var.project
+  # region - (optional) is a type of string
+  region = var.region
 
   dynamic "subnet" {
     for_each = var.subnet
     content {
-      name       = subnet.value["name"]
+      # name - (optional) is a type of string
+      name = subnet.value["name"]
+      # project_id - (optional) is a type of string
       project_id = subnet.value["project_id"]
     }
   }
@@ -175,7 +187,9 @@ resource "google_vpc_access_connector" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

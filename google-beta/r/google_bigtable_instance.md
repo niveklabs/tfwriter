@@ -109,20 +109,30 @@ variable "cluster" {
 
 ```terraform
 resource "google_bigtable_instance" "this" {
+  # deletion_protection - (optional) is a type of bool
   deletion_protection = var.deletion_protection
-  display_name        = var.display_name
-  instance_type       = var.instance_type
-  labels              = var.labels
-  name                = var.name
-  project             = var.project
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # instance_type - (optional) is a type of string
+  instance_type = var.instance_type
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "cluster" {
     for_each = var.cluster
     content {
-      cluster_id   = cluster.value["cluster_id"]
-      num_nodes    = cluster.value["num_nodes"]
+      # cluster_id - (required) is a type of string
+      cluster_id = cluster.value["cluster_id"]
+      # num_nodes - (optional) is a type of number
+      num_nodes = cluster.value["num_nodes"]
+      # storage_type - (optional) is a type of string
       storage_type = cluster.value["storage_type"]
-      zone         = cluster.value["zone"]
+      # zone - (optional) is a type of string
+      zone = cluster.value["zone"]
     }
   }
 

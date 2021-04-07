@@ -119,36 +119,49 @@ variable "policy_details" {
 
 ```terraform
 resource "aws_dlm_lifecycle_policy" "this" {
-  description        = var.description
+  # description - (required) is a type of string
+  description = var.description
+  # execution_role_arn - (required) is a type of string
   execution_role_arn = var.execution_role_arn
-  state              = var.state
-  tags               = var.tags
+  # state - (optional) is a type of string
+  state = var.state
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "policy_details" {
     for_each = var.policy_details
     content {
+      # resource_types - (required) is a type of list of string
       resource_types = policy_details.value["resource_types"]
-      target_tags    = policy_details.value["target_tags"]
+      # target_tags - (required) is a type of map of string
+      target_tags = policy_details.value["target_tags"]
 
       dynamic "schedule" {
         for_each = policy_details.value.schedule
         content {
-          copy_tags   = schedule.value["copy_tags"]
-          name        = schedule.value["name"]
+          # copy_tags - (optional) is a type of bool
+          copy_tags = schedule.value["copy_tags"]
+          # name - (required) is a type of string
+          name = schedule.value["name"]
+          # tags_to_add - (optional) is a type of map of string
           tags_to_add = schedule.value["tags_to_add"]
 
           dynamic "create_rule" {
             for_each = schedule.value.create_rule
             content {
-              interval      = create_rule.value["interval"]
+              # interval - (required) is a type of number
+              interval = create_rule.value["interval"]
+              # interval_unit - (optional) is a type of string
               interval_unit = create_rule.value["interval_unit"]
-              times         = create_rule.value["times"]
+              # times - (optional) is a type of list of string
+              times = create_rule.value["times"]
             }
           }
 
           dynamic "retain_rule" {
             for_each = schedule.value.retain_rule
             content {
+              # count - (required) is a type of number
               count = retain_rule.value["count"]
             }
           }

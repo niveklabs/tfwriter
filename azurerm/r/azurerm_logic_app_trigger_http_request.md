@@ -99,18 +99,27 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_logic_app_trigger_http_request" "this" {
-  logic_app_id  = var.logic_app_id
-  method        = var.method
-  name          = var.name
+  # logic_app_id - (required) is a type of string
+  logic_app_id = var.logic_app_id
+  # method - (optional) is a type of string
+  method = var.method
+  # name - (required) is a type of string
+  name = var.name
+  # relative_path - (optional) is a type of string
   relative_path = var.relative_path
-  schema        = var.schema
+  # schema - (required) is a type of string
+  schema = var.schema
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

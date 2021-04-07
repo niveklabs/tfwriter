@@ -154,25 +154,37 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_global_forwarding_rule" "this" {
-  description           = var.description
-  ip_address            = var.ip_address
-  ip_protocol           = var.ip_protocol
-  ip_version            = var.ip_version
+  # description - (optional) is a type of string
+  description = var.description
+  # ip_address - (optional) is a type of string
+  ip_address = var.ip_address
+  # ip_protocol - (optional) is a type of string
+  ip_protocol = var.ip_protocol
+  # ip_version - (optional) is a type of string
+  ip_version = var.ip_version
+  # load_balancing_scheme - (optional) is a type of string
   load_balancing_scheme = var.load_balancing_scheme
-  name                  = var.name
-  port_range            = var.port_range
-  project               = var.project
-  target                = var.target
+  # name - (required) is a type of string
+  name = var.name
+  # port_range - (optional) is a type of string
+  port_range = var.port_range
+  # project - (optional) is a type of string
+  project = var.project
+  # target - (required) is a type of string
+  target = var.target
 
   dynamic "metadata_filters" {
     for_each = var.metadata_filters
     content {
+      # filter_match_criteria - (required) is a type of string
       filter_match_criteria = metadata_filters.value["filter_match_criteria"]
 
       dynamic "filter_labels" {
         for_each = metadata_filters.value.filter_labels
         content {
-          name  = filter_labels.value["name"]
+          # name - (required) is a type of string
+          name = filter_labels.value["name"]
+          # value - (required) is a type of string
           value = filter_labels.value["value"]
         }
       }
@@ -183,8 +195,11 @@ resource "google_compute_global_forwarding_rule" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

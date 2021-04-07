@@ -57,7 +57,9 @@ variable "version" {
 
 ```terraform
 data "vault_generic_secret" "this" {
-  path    = var.path
+  # path - (required) is a type of string
+  path = var.path
+  # version - (optional) is a type of number
   version = var.version
 }
 ```

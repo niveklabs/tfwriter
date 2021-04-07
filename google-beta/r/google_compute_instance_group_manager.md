@@ -223,19 +223,29 @@ variable "version" {
 
 ```terraform
 resource "google_compute_instance_group_manager" "this" {
+  # base_instance_name - (required) is a type of string
   base_instance_name = var.base_instance_name
-  description        = var.description
-  name               = var.name
-  project            = var.project
-  target_pools       = var.target_pools
-  target_size        = var.target_size
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # target_pools - (optional) is a type of set of string
+  target_pools = var.target_pools
+  # target_size - (optional) is a type of number
+  target_size = var.target_size
+  # wait_for_instances - (optional) is a type of bool
   wait_for_instances = var.wait_for_instances
-  zone               = var.zone
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "auto_healing_policies" {
     for_each = var.auto_healing_policies
     content {
-      health_check      = auto_healing_policies.value["health_check"]
+      # health_check - (required) is a type of string
+      health_check = auto_healing_policies.value["health_check"]
+      # initial_delay_sec - (required) is a type of number
       initial_delay_sec = auto_healing_policies.value["initial_delay_sec"]
     }
   }
@@ -243,7 +253,9 @@ resource "google_compute_instance_group_manager" "this" {
   dynamic "named_port" {
     for_each = var.named_port
     content {
+      # name - (required) is a type of string
       name = named_port.value["name"]
+      # port - (required) is a type of number
       port = named_port.value["port"]
     }
   }
@@ -251,7 +263,9 @@ resource "google_compute_instance_group_manager" "this" {
   dynamic "stateful_disk" {
     for_each = var.stateful_disk
     content {
+      # delete_rule - (optional) is a type of string
       delete_rule = stateful_disk.value["delete_rule"]
+      # device_name - (required) is a type of string
       device_name = stateful_disk.value["device_name"]
     }
   }
@@ -259,8 +273,11 @@ resource "google_compute_instance_group_manager" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -268,27 +285,39 @@ resource "google_compute_instance_group_manager" "this" {
   dynamic "update_policy" {
     for_each = var.update_policy
     content {
-      max_surge_fixed         = update_policy.value["max_surge_fixed"]
-      max_surge_percent       = update_policy.value["max_surge_percent"]
-      max_unavailable_fixed   = update_policy.value["max_unavailable_fixed"]
+      # max_surge_fixed - (optional) is a type of number
+      max_surge_fixed = update_policy.value["max_surge_fixed"]
+      # max_surge_percent - (optional) is a type of number
+      max_surge_percent = update_policy.value["max_surge_percent"]
+      # max_unavailable_fixed - (optional) is a type of number
+      max_unavailable_fixed = update_policy.value["max_unavailable_fixed"]
+      # max_unavailable_percent - (optional) is a type of number
       max_unavailable_percent = update_policy.value["max_unavailable_percent"]
-      min_ready_sec           = update_policy.value["min_ready_sec"]
-      minimal_action          = update_policy.value["minimal_action"]
-      replacement_method      = update_policy.value["replacement_method"]
-      type                    = update_policy.value["type"]
+      # min_ready_sec - (optional) is a type of number
+      min_ready_sec = update_policy.value["min_ready_sec"]
+      # minimal_action - (required) is a type of string
+      minimal_action = update_policy.value["minimal_action"]
+      # replacement_method - (optional) is a type of string
+      replacement_method = update_policy.value["replacement_method"]
+      # type - (required) is a type of string
+      type = update_policy.value["type"]
     }
   }
 
   dynamic "version" {
     for_each = var.version
     content {
+      # instance_template - (required) is a type of string
       instance_template = version.value["instance_template"]
-      name              = version.value["name"]
+      # name - (optional) is a type of string
+      name = version.value["name"]
 
       dynamic "target_size" {
         for_each = version.value.target_size
         content {
-          fixed   = target_size.value["fixed"]
+          # fixed - (optional) is a type of number
+          fixed = target_size.value["fixed"]
+          # percent - (optional) is a type of number
           percent = target_size.value["percent"]
         }
       }

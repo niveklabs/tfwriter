@@ -85,14 +85,19 @@ variable "routing_config" {
 
 ```terraform
 resource "aws_lambda_alias" "this" {
-  description      = var.description
-  function_name    = var.function_name
+  # description - (optional) is a type of string
+  description = var.description
+  # function_name - (required) is a type of string
+  function_name = var.function_name
+  # function_version - (required) is a type of string
   function_version = var.function_version
-  name             = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "routing_config" {
     for_each = var.routing_config
     content {
+      # additional_version_weights - (optional) is a type of map of number
       additional_version_weights = routing_config.value["additional_version_weights"]
     }
   }

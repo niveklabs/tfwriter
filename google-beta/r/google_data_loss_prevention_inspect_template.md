@@ -305,23 +305,32 @@ variable "timeouts" {
 
 ```terraform
 resource "google_data_loss_prevention_inspect_template" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
   display_name = var.display_name
-  parent       = var.parent
+  # parent - (required) is a type of string
+  parent = var.parent
 
   dynamic "inspect_config" {
     for_each = var.inspect_config
     content {
-      content_options    = inspect_config.value["content_options"]
+      # content_options - (optional) is a type of list of string
+      content_options = inspect_config.value["content_options"]
+      # exclude_info_types - (optional) is a type of bool
       exclude_info_types = inspect_config.value["exclude_info_types"]
-      include_quote      = inspect_config.value["include_quote"]
-      min_likelihood     = inspect_config.value["min_likelihood"]
+      # include_quote - (optional) is a type of bool
+      include_quote = inspect_config.value["include_quote"]
+      # min_likelihood - (optional) is a type of string
+      min_likelihood = inspect_config.value["min_likelihood"]
 
       dynamic "custom_info_types" {
         for_each = inspect_config.value.custom_info_types
         content {
+          # exclusion_type - (optional) is a type of string
           exclusion_type = custom_info_types.value["exclusion_type"]
-          likelihood     = custom_info_types.value["likelihood"]
+          # likelihood - (optional) is a type of string
+          likelihood = custom_info_types.value["likelihood"]
 
           dynamic "dictionary" {
             for_each = custom_info_types.value.dictionary
@@ -330,6 +339,7 @@ resource "google_data_loss_prevention_inspect_template" "this" {
               dynamic "cloud_storage_path" {
                 for_each = dictionary.value.cloud_storage_path
                 content {
+                  # path - (required) is a type of string
                   path = cloud_storage_path.value["path"]
                 }
               }
@@ -337,6 +347,7 @@ resource "google_data_loss_prevention_inspect_template" "this" {
               dynamic "word_list" {
                 for_each = dictionary.value.word_list
                 content {
+                  # words - (required) is a type of list of string
                   words = word_list.value["words"]
                 }
               }
@@ -347,6 +358,7 @@ resource "google_data_loss_prevention_inspect_template" "this" {
           dynamic "info_type" {
             for_each = custom_info_types.value.info_type
             content {
+              # name - (required) is a type of string
               name = info_type.value["name"]
             }
           }
@@ -354,14 +366,17 @@ resource "google_data_loss_prevention_inspect_template" "this" {
           dynamic "regex" {
             for_each = custom_info_types.value.regex
             content {
+              # group_indexes - (optional) is a type of list of number
               group_indexes = regex.value["group_indexes"]
-              pattern       = regex.value["pattern"]
+              # pattern - (required) is a type of string
+              pattern = regex.value["pattern"]
             }
           }
 
           dynamic "stored_type" {
             for_each = custom_info_types.value.stored_type
             content {
+              # name - (required) is a type of string
               name = stored_type.value["name"]
             }
           }
@@ -372,6 +387,7 @@ resource "google_data_loss_prevention_inspect_template" "this" {
       dynamic "info_types" {
         for_each = inspect_config.value.info_types
         content {
+          # name - (required) is a type of string
           name = info_types.value["name"]
         }
       }
@@ -379,17 +395,21 @@ resource "google_data_loss_prevention_inspect_template" "this" {
       dynamic "limits" {
         for_each = inspect_config.value.limits
         content {
-          max_findings_per_item    = limits.value["max_findings_per_item"]
+          # max_findings_per_item - (required) is a type of number
+          max_findings_per_item = limits.value["max_findings_per_item"]
+          # max_findings_per_request - (required) is a type of number
           max_findings_per_request = limits.value["max_findings_per_request"]
 
           dynamic "max_findings_per_info_type" {
             for_each = limits.value.max_findings_per_info_type
             content {
+              # max_findings - (required) is a type of number
               max_findings = max_findings_per_info_type.value["max_findings"]
 
               dynamic "info_type" {
                 for_each = max_findings_per_info_type.value.info_type
                 content {
+                  # name - (required) is a type of string
                   name = info_type.value["name"]
                 }
               }
@@ -407,6 +427,7 @@ resource "google_data_loss_prevention_inspect_template" "this" {
           dynamic "info_types" {
             for_each = rule_set.value.info_types
             content {
+              # name - (required) is a type of string
               name = info_types.value["name"]
             }
           }
@@ -418,6 +439,7 @@ resource "google_data_loss_prevention_inspect_template" "this" {
               dynamic "exclusion_rule" {
                 for_each = rules.value.exclusion_rule
                 content {
+                  # matching_type - (required) is a type of string
                   matching_type = exclusion_rule.value["matching_type"]
 
                   dynamic "dictionary" {
@@ -427,6 +449,7 @@ resource "google_data_loss_prevention_inspect_template" "this" {
                       dynamic "cloud_storage_path" {
                         for_each = dictionary.value.cloud_storage_path
                         content {
+                          # path - (required) is a type of string
                           path = cloud_storage_path.value["path"]
                         }
                       }
@@ -434,6 +457,7 @@ resource "google_data_loss_prevention_inspect_template" "this" {
                       dynamic "word_list" {
                         for_each = dictionary.value.word_list
                         content {
+                          # words - (required) is a type of list of string
                           words = word_list.value["words"]
                         }
                       }
@@ -448,6 +472,7 @@ resource "google_data_loss_prevention_inspect_template" "this" {
                       dynamic "info_types" {
                         for_each = exclude_info_types.value.info_types
                         content {
+                          # name - (required) is a type of string
                           name = info_types.value["name"]
                         }
                       }
@@ -458,8 +483,10 @@ resource "google_data_loss_prevention_inspect_template" "this" {
                   dynamic "regex" {
                     for_each = exclusion_rule.value.regex
                     content {
+                      # group_indexes - (optional) is a type of list of number
                       group_indexes = regex.value["group_indexes"]
-                      pattern       = regex.value["pattern"]
+                      # pattern - (required) is a type of string
+                      pattern = regex.value["pattern"]
                     }
                   }
 
@@ -473,15 +500,19 @@ resource "google_data_loss_prevention_inspect_template" "this" {
                   dynamic "hotword_regex" {
                     for_each = hotword_rule.value.hotword_regex
                     content {
+                      # group_indexes - (optional) is a type of list of number
                       group_indexes = hotword_regex.value["group_indexes"]
-                      pattern       = hotword_regex.value["pattern"]
+                      # pattern - (required) is a type of string
+                      pattern = hotword_regex.value["pattern"]
                     }
                   }
 
                   dynamic "likelihood_adjustment" {
                     for_each = hotword_rule.value.likelihood_adjustment
                     content {
-                      fixed_likelihood    = likelihood_adjustment.value["fixed_likelihood"]
+                      # fixed_likelihood - (optional) is a type of string
+                      fixed_likelihood = likelihood_adjustment.value["fixed_likelihood"]
+                      # relative_likelihood - (optional) is a type of number
                       relative_likelihood = likelihood_adjustment.value["relative_likelihood"]
                     }
                   }
@@ -489,7 +520,9 @@ resource "google_data_loss_prevention_inspect_template" "this" {
                   dynamic "proximity" {
                     for_each = hotword_rule.value.proximity
                     content {
-                      window_after  = proximity.value["window_after"]
+                      # window_after - (optional) is a type of number
+                      window_after = proximity.value["window_after"]
+                      # window_before - (optional) is a type of number
                       window_before = proximity.value["window_before"]
                     }
                   }
@@ -509,8 +542,11 @@ resource "google_data_loss_prevention_inspect_template" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

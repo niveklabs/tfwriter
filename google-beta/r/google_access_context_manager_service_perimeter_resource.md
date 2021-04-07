@@ -72,13 +72,17 @@ variable "timeouts" {
 
 ```terraform
 resource "google_access_context_manager_service_perimeter_resource" "this" {
+  # perimeter_name - (required) is a type of string
   perimeter_name = var.perimeter_name
-  resource       = var.resource
+  # resource - (required) is a type of string
+  resource = var.resource
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

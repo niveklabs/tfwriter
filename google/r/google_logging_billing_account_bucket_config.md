@@ -79,11 +79,16 @@ variable "retention_days" {
 
 ```terraform
 resource "google_logging_billing_account_bucket_config" "this" {
+  # billing_account - (required) is a type of string
   billing_account = var.billing_account
-  bucket_id       = var.bucket_id
-  description     = var.description
-  location        = var.location
-  retention_days  = var.retention_days
+  # bucket_id - (required) is a type of string
+  bucket_id = var.bucket_id
+  # description - (optional) is a type of string
+  description = var.description
+  # location - (required) is a type of string
+  location = var.location
+  # retention_days - (optional) is a type of number
+  retention_days = var.retention_days
 }
 ```
 

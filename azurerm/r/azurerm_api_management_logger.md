@@ -137,16 +137,23 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_api_management_logger" "this" {
+  # api_management_name - (required) is a type of string
   api_management_name = var.api_management_name
-  buffered            = var.buffered
-  description         = var.description
-  name                = var.name
+  # buffered - (optional) is a type of bool
+  buffered = var.buffered
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  resource_id         = var.resource_id
+  # resource_id - (optional) is a type of string
+  resource_id = var.resource_id
 
   dynamic "application_insights" {
     for_each = var.application_insights
     content {
+      # instrumentation_key - (required) is a type of string
       instrumentation_key = application_insights.value["instrumentation_key"]
     }
   }
@@ -154,17 +161,23 @@ resource "azurerm_api_management_logger" "this" {
   dynamic "eventhub" {
     for_each = var.eventhub
     content {
+      # connection_string - (required) is a type of string
       connection_string = eventhub.value["connection_string"]
-      name              = eventhub.value["name"]
+      # name - (required) is a type of string
+      name = eventhub.value["name"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

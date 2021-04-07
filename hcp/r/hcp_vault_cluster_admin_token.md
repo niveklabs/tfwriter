@@ -67,14 +67,18 @@ variable "timeouts" {
 
 ```terraform
 resource "hcp_vault_cluster_admin_token" "this" {
+  # cluster_id - (required) is a type of string
   cluster_id = var.cluster_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

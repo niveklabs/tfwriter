@@ -49,6 +49,7 @@ variable "app_id" {
 
 ```terraform
 data "google_firebase_web_app" "this" {
+  # app_id - (required) is a type of string
   app_id = var.app_id
 }
 ```

@@ -56,7 +56,9 @@ variable "snapshot_id" {
 
 ```terraform
 resource "aws_snapshot_create_volume_permission" "this" {
-  account_id  = var.account_id
+  # account_id - (required) is a type of string
+  account_id = var.account_id
+  # snapshot_id - (required) is a type of string
   snapshot_id = var.snapshot_id
 }
 ```

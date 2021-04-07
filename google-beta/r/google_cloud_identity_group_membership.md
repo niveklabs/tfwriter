@@ -112,12 +112,15 @@ variable "timeouts" {
 
 ```terraform
 resource "google_cloud_identity_group_membership" "this" {
+  # group - (required) is a type of string
   group = var.group
 
   dynamic "member_key" {
     for_each = var.member_key
     content {
-      id        = member_key.value["id"]
+      # id - (required) is a type of string
+      id = member_key.value["id"]
+      # namespace - (optional) is a type of string
       namespace = member_key.value["namespace"]
     }
   }
@@ -125,7 +128,9 @@ resource "google_cloud_identity_group_membership" "this" {
   dynamic "preferred_member_key" {
     for_each = var.preferred_member_key
     content {
-      id        = preferred_member_key.value["id"]
+      # id - (required) is a type of string
+      id = preferred_member_key.value["id"]
+      # namespace - (optional) is a type of string
       namespace = preferred_member_key.value["namespace"]
     }
   }
@@ -133,6 +138,7 @@ resource "google_cloud_identity_group_membership" "this" {
   dynamic "roles" {
     for_each = var.roles
     content {
+      # name - (required) is a type of string
       name = roles.value["name"]
     }
   }
@@ -140,8 +146,11 @@ resource "google_cloud_identity_group_membership" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

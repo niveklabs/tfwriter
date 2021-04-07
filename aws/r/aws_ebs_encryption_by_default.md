@@ -50,6 +50,7 @@ variable "enabled" {
 
 ```terraform
 resource "aws_ebs_encryption_by_default" "this" {
+  # enabled - (optional) is a type of bool
   enabled = var.enabled
 }
 ```

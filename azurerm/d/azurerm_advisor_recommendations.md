@@ -72,12 +72,15 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_advisor_recommendations" "this" {
-  filter_by_category        = var.filter_by_category
+  # filter_by_category - (optional) is a type of set of string
+  filter_by_category = var.filter_by_category
+  # filter_by_resource_groups - (optional) is a type of set of string
   filter_by_resource_groups = var.filter_by_resource_groups
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

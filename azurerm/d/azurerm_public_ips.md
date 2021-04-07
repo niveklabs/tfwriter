@@ -87,14 +87,19 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_public_ips" "this" {
-  allocation_type     = var.allocation_type
-  attached            = var.attached
-  name_prefix         = var.name_prefix
+  # allocation_type - (optional) is a type of string
+  allocation_type = var.allocation_type
+  # attached - (optional) is a type of bool
+  attached = var.attached
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

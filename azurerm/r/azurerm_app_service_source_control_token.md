@@ -84,16 +84,23 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_app_service_source_control_token" "this" {
-  token        = var.token
+  # token - (required) is a type of string
+  token = var.token
+  # token_secret - (optional) is a type of string
   token_secret = var.token_secret
-  type         = var.type
+  # type - (required) is a type of string
+  type = var.type
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

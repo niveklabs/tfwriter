@@ -81,15 +81,20 @@ variable "classification_type" {
 
 ```terraform
 resource "aws_macie_s3_bucket_association" "this" {
-  bucket_name       = var.bucket_name
+  # bucket_name - (required) is a type of string
+  bucket_name = var.bucket_name
+  # member_account_id - (optional) is a type of string
   member_account_id = var.member_account_id
-  prefix            = var.prefix
+  # prefix - (optional) is a type of string
+  prefix = var.prefix
 
   dynamic "classification_type" {
     for_each = var.classification_type
     content {
+      # continuous - (optional) is a type of string
       continuous = classification_type.value["continuous"]
-      one_time   = classification_type.value["one_time"]
+      # one_time - (optional) is a type of string
+      one_time = classification_type.value["one_time"]
     }
   }
 

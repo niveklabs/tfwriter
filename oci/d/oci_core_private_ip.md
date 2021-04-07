@@ -49,6 +49,7 @@ variable "private_ip_id" {
 
 ```terraform
 data "oci_core_private_ip" "this" {
+  # private_ip_id - (required) is a type of string
   private_ip_id = var.private_ip_id
 }
 ```

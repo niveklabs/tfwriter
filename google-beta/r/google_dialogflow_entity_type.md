@@ -106,24 +106,33 @@ variable "timeouts" {
 
 ```terraform
 resource "google_dialogflow_entity_type" "this" {
-  display_name            = var.display_name
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # enable_fuzzy_extraction - (optional) is a type of bool
   enable_fuzzy_extraction = var.enable_fuzzy_extraction
-  kind                    = var.kind
-  project                 = var.project
+  # kind - (required) is a type of string
+  kind = var.kind
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "entities" {
     for_each = var.entities
     content {
+      # synonyms - (required) is a type of list of string
       synonyms = entities.value["synonyms"]
-      value    = entities.value["value"]
+      # value - (required) is a type of string
+      value = entities.value["value"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

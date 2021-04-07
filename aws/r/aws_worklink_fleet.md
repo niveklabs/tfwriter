@@ -115,26 +115,36 @@ variable "network" {
 
 ```terraform
 resource "aws_worklink_fleet" "this" {
-  audit_stream_arn               = var.audit_stream_arn
-  device_ca_certificate          = var.device_ca_certificate
-  display_name                   = var.display_name
-  name                           = var.name
+  # audit_stream_arn - (optional) is a type of string
+  audit_stream_arn = var.audit_stream_arn
+  # device_ca_certificate - (optional) is a type of string
+  device_ca_certificate = var.device_ca_certificate
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # name - (required) is a type of string
+  name = var.name
+  # optimize_for_end_user_location - (optional) is a type of bool
   optimize_for_end_user_location = var.optimize_for_end_user_location
 
   dynamic "identity_provider" {
     for_each = var.identity_provider
     content {
+      # saml_metadata - (required) is a type of string
       saml_metadata = identity_provider.value["saml_metadata"]
-      type          = identity_provider.value["type"]
+      # type - (required) is a type of string
+      type = identity_provider.value["type"]
     }
   }
 
   dynamic "network" {
     for_each = var.network
     content {
+      # security_group_ids - (required) is a type of set of string
       security_group_ids = network.value["security_group_ids"]
-      subnet_ids         = network.value["subnet_ids"]
-      vpc_id             = network.value["vpc_id"]
+      # subnet_ids - (required) is a type of set of string
+      subnet_ids = network.value["subnet_ids"]
+      # vpc_id - (required) is a type of string
+      vpc_id = network.value["vpc_id"]
     }
   }
 

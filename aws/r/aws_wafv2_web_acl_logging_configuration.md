@@ -124,8 +124,10 @@ variable "redacted_fields" {
 
 ```terraform
 resource "aws_wafv2_web_acl_logging_configuration" "this" {
+  # log_destination_configs - (required) is a type of set of string
   log_destination_configs = var.log_destination_configs
-  resource_arn            = var.resource_arn
+  # resource_arn - (required) is a type of string
+  resource_arn = var.resource_arn
 
   dynamic "redacted_fields" {
     for_each = var.redacted_fields
@@ -158,6 +160,7 @@ resource "aws_wafv2_web_acl_logging_configuration" "this" {
       dynamic "single_header" {
         for_each = redacted_fields.value.single_header
         content {
+          # name - (required) is a type of string
           name = single_header.value["name"]
         }
       }
@@ -165,6 +168,7 @@ resource "aws_wafv2_web_acl_logging_configuration" "this" {
       dynamic "single_query_argument" {
         for_each = redacted_fields.value.single_query_argument
         content {
+          # name - (required) is a type of string
           name = single_query_argument.value["name"]
         }
       }

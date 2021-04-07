@@ -84,17 +84,24 @@ variable "vhost" {
 
 ```terraform
 resource "vault_rabbitmq_secret_backend_role" "this" {
+  # backend - (required) is a type of string
   backend = var.backend
-  name    = var.name
-  tags    = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of string
+  tags = var.tags
 
   dynamic "vhost" {
     for_each = var.vhost
     content {
+      # configure - (required) is a type of string
       configure = vhost.value["configure"]
-      host      = vhost.value["host"]
-      read      = vhost.value["read"]
-      write     = vhost.value["write"]
+      # host - (required) is a type of string
+      host = vhost.value["host"]
+      # read - (required) is a type of string
+      read = vhost.value["read"]
+      # write - (required) is a type of string
+      write = vhost.value["write"]
     }
   }
 

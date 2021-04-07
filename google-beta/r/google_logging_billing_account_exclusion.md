@@ -79,11 +79,16 @@ variable "name" {
 
 ```terraform
 resource "google_logging_billing_account_exclusion" "this" {
+  # billing_account - (required) is a type of string
   billing_account = var.billing_account
-  description     = var.description
-  disabled        = var.disabled
-  filter          = var.filter
-  name            = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # disabled - (optional) is a type of bool
+  disabled = var.disabled
+  # filter - (required) is a type of string
+  filter = var.filter
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

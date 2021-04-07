@@ -49,6 +49,7 @@ variable "network_source_id" {
 
 ```terraform
 data "oci_identity_network_source" "this" {
+  # network_source_id - (required) is a type of string
   network_source_id = var.network_source_id
 }
 ```

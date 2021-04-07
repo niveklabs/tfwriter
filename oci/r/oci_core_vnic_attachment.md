@@ -114,31 +114,47 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_vnic_attachment" "this" {
+  # display_name - (optional) is a type of string
   display_name = var.display_name
-  instance_id  = var.instance_id
-  nic_index    = var.nic_index
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # nic_index - (optional) is a type of number
+  nic_index = var.nic_index
 
   dynamic "create_vnic_details" {
     for_each = var.create_vnic_details
     content {
-      assign_public_ip       = create_vnic_details.value["assign_public_ip"]
-      defined_tags           = create_vnic_details.value["defined_tags"]
-      display_name           = create_vnic_details.value["display_name"]
-      freeform_tags          = create_vnic_details.value["freeform_tags"]
-      hostname_label         = create_vnic_details.value["hostname_label"]
-      nsg_ids                = create_vnic_details.value["nsg_ids"]
-      private_ip             = create_vnic_details.value["private_ip"]
+      # assign_public_ip - (optional) is a type of string
+      assign_public_ip = create_vnic_details.value["assign_public_ip"]
+      # defined_tags - (optional) is a type of map of string
+      defined_tags = create_vnic_details.value["defined_tags"]
+      # display_name - (optional) is a type of string
+      display_name = create_vnic_details.value["display_name"]
+      # freeform_tags - (optional) is a type of map of string
+      freeform_tags = create_vnic_details.value["freeform_tags"]
+      # hostname_label - (optional) is a type of string
+      hostname_label = create_vnic_details.value["hostname_label"]
+      # nsg_ids - (optional) is a type of set of string
+      nsg_ids = create_vnic_details.value["nsg_ids"]
+      # private_ip - (optional) is a type of string
+      private_ip = create_vnic_details.value["private_ip"]
+      # skip_source_dest_check - (optional) is a type of bool
       skip_source_dest_check = create_vnic_details.value["skip_source_dest_check"]
-      subnet_id              = create_vnic_details.value["subnet_id"]
-      vlan_id                = create_vnic_details.value["vlan_id"]
+      # subnet_id - (optional) is a type of string
+      subnet_id = create_vnic_details.value["subnet_id"]
+      # vlan_id - (optional) is a type of string
+      vlan_id = create_vnic_details.value["vlan_id"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

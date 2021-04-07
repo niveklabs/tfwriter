@@ -153,25 +153,41 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_stream_analytics_job" "this" {
-  compatibility_level                      = var.compatibility_level
-  data_locale                              = var.data_locale
+  # compatibility_level - (optional) is a type of string
+  compatibility_level = var.compatibility_level
+  # data_locale - (optional) is a type of string
+  data_locale = var.data_locale
+  # events_late_arrival_max_delay_in_seconds - (optional) is a type of number
   events_late_arrival_max_delay_in_seconds = var.events_late_arrival_max_delay_in_seconds
+  # events_out_of_order_max_delay_in_seconds - (optional) is a type of number
   events_out_of_order_max_delay_in_seconds = var.events_out_of_order_max_delay_in_seconds
-  events_out_of_order_policy               = var.events_out_of_order_policy
-  location                                 = var.location
-  name                                     = var.name
-  output_error_policy                      = var.output_error_policy
-  resource_group_name                      = var.resource_group_name
-  streaming_units                          = var.streaming_units
-  tags                                     = var.tags
-  transformation_query                     = var.transformation_query
+  # events_out_of_order_policy - (optional) is a type of string
+  events_out_of_order_policy = var.events_out_of_order_policy
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # output_error_policy - (optional) is a type of string
+  output_error_policy = var.output_error_policy
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # streaming_units - (required) is a type of number
+  streaming_units = var.streaming_units
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # transformation_query - (required) is a type of string
+  transformation_query = var.transformation_query
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -98,16 +98,23 @@ variable "filter" {
 
 ```terraform
 data "aws_instance" "this" {
+  # get_password_data - (optional) is a type of bool
   get_password_data = var.get_password_data
-  get_user_data     = var.get_user_data
-  instance_id       = var.instance_id
-  instance_tags     = var.instance_tags
-  tags              = var.tags
+  # get_user_data - (optional) is a type of bool
+  get_user_data = var.get_user_data
+  # instance_id - (optional) is a type of string
+  instance_id = var.instance_id
+  # instance_tags - (optional) is a type of map of string
+  instance_tags = var.instance_tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

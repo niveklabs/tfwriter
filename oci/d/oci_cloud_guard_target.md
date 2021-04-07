@@ -49,6 +49,7 @@ variable "target_id" {
 
 ```terraform
 data "oci_cloud_guard_target" "this" {
+  # target_id - (required) is a type of string
   target_id = var.target_id
 }
 ```

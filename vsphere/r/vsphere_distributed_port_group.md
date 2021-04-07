@@ -416,56 +416,103 @@ variable "vlan_range" {
 
 ```terraform
 resource "vsphere_distributed_port_group" "this" {
-  active_uplinks                         = var.active_uplinks
-  allow_forged_transmits                 = var.allow_forged_transmits
-  allow_mac_changes                      = var.allow_mac_changes
-  allow_promiscuous                      = var.allow_promiscuous
-  auto_expand                            = var.auto_expand
-  block_all_ports                        = var.block_all_ports
-  block_override_allowed                 = var.block_override_allowed
-  check_beacon                           = var.check_beacon
-  custom_attributes                      = var.custom_attributes
-  description                            = var.description
-  directpath_gen2_allowed                = var.directpath_gen2_allowed
-  distributed_virtual_switch_uuid        = var.distributed_virtual_switch_uuid
-  egress_shaping_average_bandwidth       = var.egress_shaping_average_bandwidth
-  egress_shaping_burst_size              = var.egress_shaping_burst_size
-  egress_shaping_enabled                 = var.egress_shaping_enabled
-  egress_shaping_peak_bandwidth          = var.egress_shaping_peak_bandwidth
-  failback                               = var.failback
-  ingress_shaping_average_bandwidth      = var.ingress_shaping_average_bandwidth
-  ingress_shaping_burst_size             = var.ingress_shaping_burst_size
-  ingress_shaping_enabled                = var.ingress_shaping_enabled
-  ingress_shaping_peak_bandwidth         = var.ingress_shaping_peak_bandwidth
-  lacp_enabled                           = var.lacp_enabled
-  lacp_mode                              = var.lacp_mode
-  live_port_moving_allowed               = var.live_port_moving_allowed
-  name                                   = var.name
-  netflow_enabled                        = var.netflow_enabled
-  netflow_override_allowed               = var.netflow_override_allowed
-  network_resource_pool_key              = var.network_resource_pool_key
+  # active_uplinks - (optional) is a type of list of string
+  active_uplinks = var.active_uplinks
+  # allow_forged_transmits - (optional) is a type of bool
+  allow_forged_transmits = var.allow_forged_transmits
+  # allow_mac_changes - (optional) is a type of bool
+  allow_mac_changes = var.allow_mac_changes
+  # allow_promiscuous - (optional) is a type of bool
+  allow_promiscuous = var.allow_promiscuous
+  # auto_expand - (optional) is a type of bool
+  auto_expand = var.auto_expand
+  # block_all_ports - (optional) is a type of bool
+  block_all_ports = var.block_all_ports
+  # block_override_allowed - (optional) is a type of bool
+  block_override_allowed = var.block_override_allowed
+  # check_beacon - (optional) is a type of bool
+  check_beacon = var.check_beacon
+  # custom_attributes - (optional) is a type of map of string
+  custom_attributes = var.custom_attributes
+  # description - (optional) is a type of string
+  description = var.description
+  # directpath_gen2_allowed - (optional) is a type of bool
+  directpath_gen2_allowed = var.directpath_gen2_allowed
+  # distributed_virtual_switch_uuid - (required) is a type of string
+  distributed_virtual_switch_uuid = var.distributed_virtual_switch_uuid
+  # egress_shaping_average_bandwidth - (optional) is a type of number
+  egress_shaping_average_bandwidth = var.egress_shaping_average_bandwidth
+  # egress_shaping_burst_size - (optional) is a type of number
+  egress_shaping_burst_size = var.egress_shaping_burst_size
+  # egress_shaping_enabled - (optional) is a type of bool
+  egress_shaping_enabled = var.egress_shaping_enabled
+  # egress_shaping_peak_bandwidth - (optional) is a type of number
+  egress_shaping_peak_bandwidth = var.egress_shaping_peak_bandwidth
+  # failback - (optional) is a type of bool
+  failback = var.failback
+  # ingress_shaping_average_bandwidth - (optional) is a type of number
+  ingress_shaping_average_bandwidth = var.ingress_shaping_average_bandwidth
+  # ingress_shaping_burst_size - (optional) is a type of number
+  ingress_shaping_burst_size = var.ingress_shaping_burst_size
+  # ingress_shaping_enabled - (optional) is a type of bool
+  ingress_shaping_enabled = var.ingress_shaping_enabled
+  # ingress_shaping_peak_bandwidth - (optional) is a type of number
+  ingress_shaping_peak_bandwidth = var.ingress_shaping_peak_bandwidth
+  # lacp_enabled - (optional) is a type of bool
+  lacp_enabled = var.lacp_enabled
+  # lacp_mode - (optional) is a type of string
+  lacp_mode = var.lacp_mode
+  # live_port_moving_allowed - (optional) is a type of bool
+  live_port_moving_allowed = var.live_port_moving_allowed
+  # name - (required) is a type of string
+  name = var.name
+  # netflow_enabled - (optional) is a type of bool
+  netflow_enabled = var.netflow_enabled
+  # netflow_override_allowed - (optional) is a type of bool
+  netflow_override_allowed = var.netflow_override_allowed
+  # network_resource_pool_key - (optional) is a type of string
+  network_resource_pool_key = var.network_resource_pool_key
+  # network_resource_pool_override_allowed - (optional) is a type of bool
   network_resource_pool_override_allowed = var.network_resource_pool_override_allowed
-  notify_switches                        = var.notify_switches
-  number_of_ports                        = var.number_of_ports
-  port_config_reset_at_disconnect        = var.port_config_reset_at_disconnect
-  port_name_format                       = var.port_name_format
-  port_private_secondary_vlan_id         = var.port_private_secondary_vlan_id
-  security_policy_override_allowed       = var.security_policy_override_allowed
-  shaping_override_allowed               = var.shaping_override_allowed
-  standby_uplinks                        = var.standby_uplinks
-  tags                                   = var.tags
-  teaming_policy                         = var.teaming_policy
-  traffic_filter_override_allowed        = var.traffic_filter_override_allowed
-  tx_uplink                              = var.tx_uplink
-  type                                   = var.type
-  uplink_teaming_override_allowed        = var.uplink_teaming_override_allowed
-  vlan_id                                = var.vlan_id
-  vlan_override_allowed                  = var.vlan_override_allowed
+  # notify_switches - (optional) is a type of bool
+  notify_switches = var.notify_switches
+  # number_of_ports - (optional) is a type of number
+  number_of_ports = var.number_of_ports
+  # port_config_reset_at_disconnect - (optional) is a type of bool
+  port_config_reset_at_disconnect = var.port_config_reset_at_disconnect
+  # port_name_format - (optional) is a type of string
+  port_name_format = var.port_name_format
+  # port_private_secondary_vlan_id - (optional) is a type of number
+  port_private_secondary_vlan_id = var.port_private_secondary_vlan_id
+  # security_policy_override_allowed - (optional) is a type of bool
+  security_policy_override_allowed = var.security_policy_override_allowed
+  # shaping_override_allowed - (optional) is a type of bool
+  shaping_override_allowed = var.shaping_override_allowed
+  # standby_uplinks - (optional) is a type of list of string
+  standby_uplinks = var.standby_uplinks
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # teaming_policy - (optional) is a type of string
+  teaming_policy = var.teaming_policy
+  # traffic_filter_override_allowed - (optional) is a type of bool
+  traffic_filter_override_allowed = var.traffic_filter_override_allowed
+  # tx_uplink - (optional) is a type of bool
+  tx_uplink = var.tx_uplink
+  # type - (optional) is a type of string
+  type = var.type
+  # uplink_teaming_override_allowed - (optional) is a type of bool
+  uplink_teaming_override_allowed = var.uplink_teaming_override_allowed
+  # vlan_id - (optional) is a type of number
+  vlan_id = var.vlan_id
+  # vlan_override_allowed - (optional) is a type of bool
+  vlan_override_allowed = var.vlan_override_allowed
 
   dynamic "vlan_range" {
     for_each = var.vlan_range
     content {
+      # max_vlan - (required) is a type of number
       max_vlan = vlan_range.value["max_vlan"]
+      # min_vlan - (required) is a type of number
       min_vlan = vlan_range.value["min_vlan"]
     }
   }

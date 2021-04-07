@@ -49,6 +49,7 @@ variable "database_software_image_id" {
 
 ```terraform
 data "oci_database_database_software_image" "this" {
+  # database_software_image_id - (required) is a type of string
   database_software_image_id = var.database_software_image_id
 }
 ```

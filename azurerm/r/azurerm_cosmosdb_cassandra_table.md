@@ -145,14 +145,19 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_cosmosdb_cassandra_table" "this" {
+  # cassandra_keyspace_id - (required) is a type of string
   cassandra_keyspace_id = var.cassandra_keyspace_id
-  default_ttl           = var.default_ttl
-  name                  = var.name
-  throughput            = var.throughput
+  # default_ttl - (optional) is a type of number
+  default_ttl = var.default_ttl
+  # name - (required) is a type of string
+  name = var.name
+  # throughput - (optional) is a type of number
+  throughput = var.throughput
 
   dynamic "autoscale_settings" {
     for_each = var.autoscale_settings
     content {
+      # max_throughput - (optional) is a type of number
       max_throughput = autoscale_settings.value["max_throughput"]
     }
   }
@@ -164,7 +169,9 @@ resource "azurerm_cosmosdb_cassandra_table" "this" {
       dynamic "cluster_key" {
         for_each = schema.value.cluster_key
         content {
-          name     = cluster_key.value["name"]
+          # name - (required) is a type of string
+          name = cluster_key.value["name"]
+          # order_by - (required) is a type of string
           order_by = cluster_key.value["order_by"]
         }
       }
@@ -172,7 +179,9 @@ resource "azurerm_cosmosdb_cassandra_table" "this" {
       dynamic "column" {
         for_each = schema.value.column
         content {
+          # name - (required) is a type of string
           name = column.value["name"]
+          # type - (required) is a type of string
           type = column.value["type"]
         }
       }
@@ -180,6 +189,7 @@ resource "azurerm_cosmosdb_cassandra_table" "this" {
       dynamic "partition_key" {
         for_each = schema.value.partition_key
         content {
+          # name - (required) is a type of string
           name = partition_key.value["name"]
         }
       }
@@ -190,9 +200,13 @@ resource "azurerm_cosmosdb_cassandra_table" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

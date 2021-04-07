@@ -57,8 +57,10 @@ variable "key_id" {
 
 ```terraform
 data "aws_kms_key" "this" {
+  # grant_tokens - (optional) is a type of list of string
   grant_tokens = var.grant_tokens
-  key_id       = var.key_id
+  # key_id - (required) is a type of string
+  key_id = var.key_id
 }
 ```
 

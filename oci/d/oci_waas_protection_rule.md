@@ -56,8 +56,10 @@ variable "waas_policy_id" {
 
 ```terraform
 data "oci_waas_protection_rule" "this" {
+  # protection_rule_key - (required) is a type of string
   protection_rule_key = var.protection_rule_key
-  waas_policy_id      = var.waas_policy_id
+  # waas_policy_id - (required) is a type of string
+  waas_policy_id = var.waas_policy_id
 }
 ```
 

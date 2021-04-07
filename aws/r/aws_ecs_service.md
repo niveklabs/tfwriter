@@ -329,37 +329,59 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_ecs_service" "this" {
-  cluster                            = var.cluster
-  deployment_maximum_percent         = var.deployment_maximum_percent
+  # cluster - (optional) is a type of string
+  cluster = var.cluster
+  # deployment_maximum_percent - (optional) is a type of number
+  deployment_maximum_percent = var.deployment_maximum_percent
+  # deployment_minimum_healthy_percent - (optional) is a type of number
   deployment_minimum_healthy_percent = var.deployment_minimum_healthy_percent
-  desired_count                      = var.desired_count
-  enable_ecs_managed_tags            = var.enable_ecs_managed_tags
-  enable_execute_command             = var.enable_execute_command
-  force_new_deployment               = var.force_new_deployment
-  health_check_grace_period_seconds  = var.health_check_grace_period_seconds
-  iam_role                           = var.iam_role
-  launch_type                        = var.launch_type
-  name                               = var.name
-  platform_version                   = var.platform_version
-  propagate_tags                     = var.propagate_tags
-  scheduling_strategy                = var.scheduling_strategy
-  tags                               = var.tags
-  task_definition                    = var.task_definition
-  wait_for_steady_state              = var.wait_for_steady_state
+  # desired_count - (optional) is a type of number
+  desired_count = var.desired_count
+  # enable_ecs_managed_tags - (optional) is a type of bool
+  enable_ecs_managed_tags = var.enable_ecs_managed_tags
+  # enable_execute_command - (optional) is a type of bool
+  enable_execute_command = var.enable_execute_command
+  # force_new_deployment - (optional) is a type of bool
+  force_new_deployment = var.force_new_deployment
+  # health_check_grace_period_seconds - (optional) is a type of number
+  health_check_grace_period_seconds = var.health_check_grace_period_seconds
+  # iam_role - (optional) is a type of string
+  iam_role = var.iam_role
+  # launch_type - (optional) is a type of string
+  launch_type = var.launch_type
+  # name - (required) is a type of string
+  name = var.name
+  # platform_version - (optional) is a type of string
+  platform_version = var.platform_version
+  # propagate_tags - (optional) is a type of string
+  propagate_tags = var.propagate_tags
+  # scheduling_strategy - (optional) is a type of string
+  scheduling_strategy = var.scheduling_strategy
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # task_definition - (optional) is a type of string
+  task_definition = var.task_definition
+  # wait_for_steady_state - (optional) is a type of bool
+  wait_for_steady_state = var.wait_for_steady_state
 
   dynamic "capacity_provider_strategy" {
     for_each = var.capacity_provider_strategy
     content {
-      base              = capacity_provider_strategy.value["base"]
+      # base - (optional) is a type of number
+      base = capacity_provider_strategy.value["base"]
+      # capacity_provider - (required) is a type of string
       capacity_provider = capacity_provider_strategy.value["capacity_provider"]
-      weight            = capacity_provider_strategy.value["weight"]
+      # weight - (optional) is a type of number
+      weight = capacity_provider_strategy.value["weight"]
     }
   }
 
   dynamic "deployment_circuit_breaker" {
     for_each = var.deployment_circuit_breaker
     content {
-      enable   = deployment_circuit_breaker.value["enable"]
+      # enable - (required) is a type of bool
+      enable = deployment_circuit_breaker.value["enable"]
+      # rollback - (required) is a type of bool
       rollback = deployment_circuit_breaker.value["rollback"]
     }
   }
@@ -367,6 +389,7 @@ resource "aws_ecs_service" "this" {
   dynamic "deployment_controller" {
     for_each = var.deployment_controller
     content {
+      # type - (optional) is a type of string
       type = deployment_controller.value["type"]
     }
   }
@@ -374,9 +397,13 @@ resource "aws_ecs_service" "this" {
   dynamic "load_balancer" {
     for_each = var.load_balancer
     content {
-      container_name   = load_balancer.value["container_name"]
-      container_port   = load_balancer.value["container_port"]
-      elb_name         = load_balancer.value["elb_name"]
+      # container_name - (required) is a type of string
+      container_name = load_balancer.value["container_name"]
+      # container_port - (required) is a type of number
+      container_port = load_balancer.value["container_port"]
+      # elb_name - (optional) is a type of string
+      elb_name = load_balancer.value["elb_name"]
+      # target_group_arn - (optional) is a type of string
       target_group_arn = load_balancer.value["target_group_arn"]
     }
   }
@@ -384,41 +411,53 @@ resource "aws_ecs_service" "this" {
   dynamic "network_configuration" {
     for_each = var.network_configuration
     content {
+      # assign_public_ip - (optional) is a type of bool
       assign_public_ip = network_configuration.value["assign_public_ip"]
-      security_groups  = network_configuration.value["security_groups"]
-      subnets          = network_configuration.value["subnets"]
+      # security_groups - (optional) is a type of set of string
+      security_groups = network_configuration.value["security_groups"]
+      # subnets - (required) is a type of set of string
+      subnets = network_configuration.value["subnets"]
     }
   }
 
   dynamic "ordered_placement_strategy" {
     for_each = var.ordered_placement_strategy
     content {
+      # field - (optional) is a type of string
       field = ordered_placement_strategy.value["field"]
-      type  = ordered_placement_strategy.value["type"]
+      # type - (required) is a type of string
+      type = ordered_placement_strategy.value["type"]
     }
   }
 
   dynamic "placement_constraints" {
     for_each = var.placement_constraints
     content {
+      # expression - (optional) is a type of string
       expression = placement_constraints.value["expression"]
-      type       = placement_constraints.value["type"]
+      # type - (required) is a type of string
+      type = placement_constraints.value["type"]
     }
   }
 
   dynamic "service_registries" {
     for_each = var.service_registries
     content {
+      # container_name - (optional) is a type of string
       container_name = service_registries.value["container_name"]
+      # container_port - (optional) is a type of number
       container_port = service_registries.value["container_port"]
-      port           = service_registries.value["port"]
-      registry_arn   = service_registries.value["registry_arn"]
+      # port - (optional) is a type of number
+      port = service_registries.value["port"]
+      # registry_arn - (required) is a type of string
+      registry_arn = service_registries.value["registry_arn"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

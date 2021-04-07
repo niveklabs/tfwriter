@@ -122,19 +122,29 @@ variable "filter" {
 
 ```terraform
 data "aws_subnet" "this" {
-  availability_zone    = var.availability_zone
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # availability_zone_id - (optional) is a type of string
   availability_zone_id = var.availability_zone_id
-  cidr_block           = var.cidr_block
-  default_for_az       = var.default_for_az
-  ipv6_cidr_block      = var.ipv6_cidr_block
-  state                = var.state
-  tags                 = var.tags
-  vpc_id               = var.vpc_id
+  # cidr_block - (optional) is a type of string
+  cidr_block = var.cidr_block
+  # default_for_az - (optional) is a type of bool
+  default_for_az = var.default_for_az
+  # ipv6_cidr_block - (optional) is a type of string
+  ipv6_cidr_block = var.ipv6_cidr_block
+  # state - (optional) is a type of string
+  state = var.state
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of set of string
       values = filter.value["values"]
     }
   }

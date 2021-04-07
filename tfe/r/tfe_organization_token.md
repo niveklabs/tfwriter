@@ -57,8 +57,10 @@ variable "organization" {
 
 ```terraform
 resource "tfe_organization_token" "this" {
+  # force_regenerate - (optional) is a type of bool
   force_regenerate = var.force_regenerate
-  organization     = var.organization
+  # organization - (required) is a type of string
+  organization = var.organization
 }
 ```
 

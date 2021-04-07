@@ -108,14 +108,23 @@ variable "validity_period_hours" {
 
 ```terraform
 resource "tls_locally_signed_cert" "this" {
-  allowed_uses          = var.allowed_uses
-  ca_cert_pem           = var.ca_cert_pem
-  ca_key_algorithm      = var.ca_key_algorithm
-  ca_private_key_pem    = var.ca_private_key_pem
-  cert_request_pem      = var.cert_request_pem
-  early_renewal_hours   = var.early_renewal_hours
-  is_ca_certificate     = var.is_ca_certificate
-  set_subject_key_id    = var.set_subject_key_id
+  # allowed_uses - (required) is a type of list of string
+  allowed_uses = var.allowed_uses
+  # ca_cert_pem - (required) is a type of string
+  ca_cert_pem = var.ca_cert_pem
+  # ca_key_algorithm - (required) is a type of string
+  ca_key_algorithm = var.ca_key_algorithm
+  # ca_private_key_pem - (required) is a type of string
+  ca_private_key_pem = var.ca_private_key_pem
+  # cert_request_pem - (required) is a type of string
+  cert_request_pem = var.cert_request_pem
+  # early_renewal_hours - (optional) is a type of number
+  early_renewal_hours = var.early_renewal_hours
+  # is_ca_certificate - (optional) is a type of bool
+  is_ca_certificate = var.is_ca_certificate
+  # set_subject_key_id - (optional) is a type of bool
+  set_subject_key_id = var.set_subject_key_id
+  # validity_period_hours - (required) is a type of number
   validity_period_hours = var.validity_period_hours
 }
 ```

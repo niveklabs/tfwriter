@@ -106,14 +106,22 @@ variable "triggers" {
 
 ```terraform
 resource "time_rotating" "this" {
-  rfc3339          = var.rfc3339
-  rotation_days    = var.rotation_days
-  rotation_hours   = var.rotation_hours
+  # rfc3339 - (optional) is a type of string
+  rfc3339 = var.rfc3339
+  # rotation_days - (optional) is a type of number
+  rotation_days = var.rotation_days
+  # rotation_hours - (optional) is a type of number
+  rotation_hours = var.rotation_hours
+  # rotation_minutes - (optional) is a type of number
   rotation_minutes = var.rotation_minutes
-  rotation_months  = var.rotation_months
+  # rotation_months - (optional) is a type of number
+  rotation_months = var.rotation_months
+  # rotation_rfc3339 - (optional) is a type of string
   rotation_rfc3339 = var.rotation_rfc3339
-  rotation_years   = var.rotation_years
-  triggers         = var.triggers
+  # rotation_years - (optional) is a type of number
+  rotation_years = var.rotation_years
+  # triggers - (optional) is a type of map of string
+  triggers = var.triggers
 }
 ```
 

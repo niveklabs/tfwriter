@@ -162,22 +162,35 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_automation_schedule" "this" {
+  # automation_account_name - (required) is a type of string
   automation_account_name = var.automation_account_name
-  description             = var.description
-  expiry_time             = var.expiry_time
-  frequency               = var.frequency
-  interval                = var.interval
-  month_days              = var.month_days
-  name                    = var.name
-  resource_group_name     = var.resource_group_name
-  start_time              = var.start_time
-  timezone                = var.timezone
-  week_days               = var.week_days
+  # description - (optional) is a type of string
+  description = var.description
+  # expiry_time - (optional) is a type of string
+  expiry_time = var.expiry_time
+  # frequency - (required) is a type of string
+  frequency = var.frequency
+  # interval - (optional) is a type of number
+  interval = var.interval
+  # month_days - (optional) is a type of set of number
+  month_days = var.month_days
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # start_time - (optional) is a type of string
+  start_time = var.start_time
+  # timezone - (optional) is a type of string
+  timezone = var.timezone
+  # week_days - (optional) is a type of set of string
+  week_days = var.week_days
 
   dynamic "monthly_occurrence" {
     for_each = var.monthly_occurrence
     content {
-      day        = monthly_occurrence.value["day"]
+      # day - (required) is a type of string
+      day = monthly_occurrence.value["day"]
+      # occurrence - (required) is a type of number
       occurrence = monthly_occurrence.value["occurrence"]
     }
   }
@@ -185,9 +198,13 @@ resource "azurerm_automation_schedule" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

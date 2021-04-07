@@ -115,20 +115,31 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_media_asset" "this" {
-  alternate_id                = var.alternate_id
-  container                   = var.container
-  description                 = var.description
+  # alternate_id - (optional) is a type of string
+  alternate_id = var.alternate_id
+  # container - (optional) is a type of string
+  container = var.container
+  # description - (optional) is a type of string
+  description = var.description
+  # media_services_account_name - (required) is a type of string
   media_services_account_name = var.media_services_account_name
-  name                        = var.name
-  resource_group_name         = var.resource_group_name
-  storage_account_name        = var.storage_account_name
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # storage_account_name - (optional) is a type of string
+  storage_account_name = var.storage_account_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

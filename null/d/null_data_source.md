@@ -58,8 +58,10 @@ variable "inputs" {
 
 ```terraform
 data "null_data_source" "this" {
+  # has_computed_default - (optional) is a type of string
   has_computed_default = var.has_computed_default
-  inputs               = var.inputs
+  # inputs - (optional) is a type of map of string
+  inputs = var.inputs
 }
 ```
 

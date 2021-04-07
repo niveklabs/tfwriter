@@ -149,27 +149,39 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_firewall_policy" "this" {
-  base_policy_id           = var.base_policy_id
-  location                 = var.location
-  name                     = var.name
-  resource_group_name      = var.resource_group_name
-  sku                      = var.sku
-  tags                     = var.tags
+  # base_policy_id - (optional) is a type of string
+  base_policy_id = var.base_policy_id
+  # location - (required) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # sku - (optional) is a type of string
+  sku = var.sku
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # threat_intelligence_mode - (optional) is a type of string
   threat_intelligence_mode = var.threat_intelligence_mode
 
   dynamic "dns" {
     for_each = var.dns
     content {
+      # network_rule_fqdn_enabled - (optional) is a type of bool
       network_rule_fqdn_enabled = dns.value["network_rule_fqdn_enabled"]
-      proxy_enabled             = dns.value["proxy_enabled"]
-      servers                   = dns.value["servers"]
+      # proxy_enabled - (optional) is a type of bool
+      proxy_enabled = dns.value["proxy_enabled"]
+      # servers - (optional) is a type of set of string
+      servers = dns.value["servers"]
     }
   }
 
   dynamic "threat_intelligence_allowlist" {
     for_each = var.threat_intelligence_allowlist
     content {
-      fqdns        = threat_intelligence_allowlist.value["fqdns"]
+      # fqdns - (optional) is a type of set of string
+      fqdns = threat_intelligence_allowlist.value["fqdns"]
+      # ip_addresses - (optional) is a type of set of string
       ip_addresses = threat_intelligence_allowlist.value["ip_addresses"]
     }
   }
@@ -177,9 +189,13 @@ resource "azurerm_firewall_policy" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

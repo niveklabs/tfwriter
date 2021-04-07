@@ -49,6 +49,7 @@ variable "bds_instance_id" {
 
 ```terraform
 data "oci_bds_bds_instance" "this" {
+  # bds_instance_id - (required) is a type of string
   bds_instance_id = var.bds_instance_id
 }
 ```

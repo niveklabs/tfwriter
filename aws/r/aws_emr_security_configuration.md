@@ -65,9 +65,12 @@ variable "name_prefix" {
 
 ```terraform
 resource "aws_emr_security_configuration" "this" {
+  # configuration - (required) is a type of string
   configuration = var.configuration
-  name          = var.name
-  name_prefix   = var.name_prefix
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
 }
 ```
 

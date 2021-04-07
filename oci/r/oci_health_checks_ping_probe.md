@@ -105,18 +105,27 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_health_checks_ping_probe" "this" {
-  compartment_id      = var.compartment_id
-  port                = var.port
-  protocol            = var.protocol
-  targets             = var.targets
-  timeout_in_seconds  = var.timeout_in_seconds
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # port - (optional) is a type of number
+  port = var.port
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # targets - (required) is a type of list of string
+  targets = var.targets
+  # timeout_in_seconds - (optional) is a type of number
+  timeout_in_seconds = var.timeout_in_seconds
+  # vantage_point_names - (optional) is a type of list of string
   vantage_point_names = var.vantage_point_names
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

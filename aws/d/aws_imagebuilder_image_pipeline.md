@@ -57,7 +57,9 @@ variable "tags" {
 
 ```terraform
 data "aws_imagebuilder_image_pipeline" "this" {
-  arn  = var.arn
+  # arn - (required) is a type of string
+  arn = var.arn
+  # tags - (optional) is a type of map of string
   tags = var.tags
 }
 ```

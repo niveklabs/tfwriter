@@ -97,18 +97,23 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_load_balancer_path_route_set" "this" {
+  # load_balancer_id - (required) is a type of string
   load_balancer_id = var.load_balancer_id
-  name             = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "path_routes" {
     for_each = var.path_routes
     content {
+      # backend_set_name - (required) is a type of string
       backend_set_name = path_routes.value["backend_set_name"]
-      path             = path_routes.value["path"]
+      # path - (required) is a type of string
+      path = path_routes.value["path"]
 
       dynamic "path_match_type" {
         for_each = path_routes.value.path_match_type
         content {
+          # match_type - (required) is a type of string
           match_type = path_match_type.value["match_type"]
         }
       }
@@ -119,8 +124,11 @@ resource "oci_load_balancer_path_route_set" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

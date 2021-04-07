@@ -93,12 +93,19 @@ variable "username_format" {
 
 ```terraform
 resource "vault_mfa_duo" "this" {
-  api_hostname    = var.api_hostname
+  # api_hostname - (required) is a type of string
+  api_hostname = var.api_hostname
+  # integration_key - (required) is a type of string
   integration_key = var.integration_key
-  mount_accessor  = var.mount_accessor
-  name            = var.name
-  push_info       = var.push_info
-  secret_key      = var.secret_key
+  # mount_accessor - (required) is a type of string
+  mount_accessor = var.mount_accessor
+  # name - (required) is a type of string
+  name = var.name
+  # push_info - (optional) is a type of string
+  push_info = var.push_info
+  # secret_key - (required) is a type of string
+  secret_key = var.secret_key
+  # username_format - (optional) is a type of string
   username_format = var.username_format
 }
 ```

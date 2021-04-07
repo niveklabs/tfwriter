@@ -49,6 +49,7 @@ variable "db_system_id" {
 
 ```terraform
 data "oci_mysql_mysql_db_system" "this" {
+  # db_system_id - (required) is a type of string
   db_system_id = var.db_system_id
 }
 ```

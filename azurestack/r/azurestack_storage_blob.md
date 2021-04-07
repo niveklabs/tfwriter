@@ -117,16 +117,26 @@ variable "type" {
 
 ```terraform
 resource "azurestack_storage_blob" "this" {
-  attempts               = var.attempts
-  name                   = var.name
-  parallelism            = var.parallelism
-  resource_group_name    = var.resource_group_name
-  size                   = var.size
-  source                 = var.source
-  source_uri             = var.source_uri
-  storage_account_name   = var.storage_account_name
+  # attempts - (optional) is a type of number
+  attempts = var.attempts
+  # name - (required) is a type of string
+  name = var.name
+  # parallelism - (optional) is a type of number
+  parallelism = var.parallelism
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # size - (optional) is a type of number
+  size = var.size
+  # source - (optional) is a type of string
+  source = var.source
+  # source_uri - (optional) is a type of string
+  source_uri = var.source_uri
+  # storage_account_name - (required) is a type of string
+  storage_account_name = var.storage_account_name
+  # storage_container_name - (required) is a type of string
   storage_container_name = var.storage_container_name
-  type                   = var.type
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

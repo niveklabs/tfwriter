@@ -344,30 +344,51 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_instance_from_machine_image" "this" {
+  # allow_stopping_for_update - (optional) is a type of bool
   allow_stopping_for_update = var.allow_stopping_for_update
-  can_ip_forward            = var.can_ip_forward
-  deletion_protection       = var.deletion_protection
-  description               = var.description
-  desired_status            = var.desired_status
-  enable_display            = var.enable_display
-  guest_accelerator         = var.guest_accelerator
-  hostname                  = var.hostname
-  labels                    = var.labels
-  machine_type              = var.machine_type
-  metadata                  = var.metadata
-  metadata_startup_script   = var.metadata_startup_script
-  min_cpu_platform          = var.min_cpu_platform
-  name                      = var.name
-  project                   = var.project
-  resource_policies         = var.resource_policies
-  service_account           = var.service_account
-  source_machine_image      = var.source_machine_image
-  tags                      = var.tags
-  zone                      = var.zone
+  # can_ip_forward - (optional) is a type of bool
+  can_ip_forward = var.can_ip_forward
+  # deletion_protection - (optional) is a type of bool
+  deletion_protection = var.deletion_protection
+  # description - (optional) is a type of string
+  description = var.description
+  # desired_status - (optional) is a type of string
+  desired_status = var.desired_status
+  # enable_display - (optional) is a type of bool
+  enable_display = var.enable_display
+  # guest_accelerator - (optional) is a type of list of object
+  guest_accelerator = var.guest_accelerator
+  # hostname - (optional) is a type of string
+  hostname = var.hostname
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # machine_type - (optional) is a type of string
+  machine_type = var.machine_type
+  # metadata - (optional) is a type of map of string
+  metadata = var.metadata
+  # metadata_startup_script - (optional) is a type of string
+  metadata_startup_script = var.metadata_startup_script
+  # min_cpu_platform - (optional) is a type of string
+  min_cpu_platform = var.min_cpu_platform
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # resource_policies - (optional) is a type of list of string
+  resource_policies = var.resource_policies
+  # service_account - (optional) is a type of list of object
+  service_account = var.service_account
+  # source_machine_image - (required) is a type of string
+  source_machine_image = var.source_machine_image
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "confidential_instance_config" {
     for_each = var.confidential_instance_config
     content {
+      # enable_confidential_compute - (required) is a type of bool
       enable_confidential_compute = confidential_instance_config.value["enable_confidential_compute"]
     }
   }
@@ -375,12 +396,19 @@ resource "google_compute_instance_from_machine_image" "this" {
   dynamic "network_interface" {
     for_each = var.network_interface
     content {
-      access_config      = network_interface.value["access_config"]
-      alias_ip_range     = network_interface.value["alias_ip_range"]
-      network            = network_interface.value["network"]
-      network_ip         = network_interface.value["network_ip"]
-      nic_type           = network_interface.value["nic_type"]
-      subnetwork         = network_interface.value["subnetwork"]
+      # access_config - (optional) is a type of list of object
+      access_config = network_interface.value["access_config"]
+      # alias_ip_range - (optional) is a type of list of object
+      alias_ip_range = network_interface.value["alias_ip_range"]
+      # network - (optional) is a type of string
+      network = network_interface.value["network"]
+      # network_ip - (optional) is a type of string
+      network_ip = network_interface.value["network_ip"]
+      # nic_type - (optional) is a type of string
+      nic_type = network_interface.value["nic_type"]
+      # subnetwork - (optional) is a type of string
+      subnetwork = network_interface.value["subnetwork"]
+      # subnetwork_project - (optional) is a type of string
       subnetwork_project = network_interface.value["subnetwork_project"]
     }
   }
@@ -388,17 +416,24 @@ resource "google_compute_instance_from_machine_image" "this" {
   dynamic "scheduling" {
     for_each = var.scheduling
     content {
-      automatic_restart   = scheduling.value["automatic_restart"]
-      min_node_cpus       = scheduling.value["min_node_cpus"]
+      # automatic_restart - (optional) is a type of bool
+      automatic_restart = scheduling.value["automatic_restart"]
+      # min_node_cpus - (optional) is a type of number
+      min_node_cpus = scheduling.value["min_node_cpus"]
+      # on_host_maintenance - (optional) is a type of string
       on_host_maintenance = scheduling.value["on_host_maintenance"]
-      preemptible         = scheduling.value["preemptible"]
+      # preemptible - (optional) is a type of bool
+      preemptible = scheduling.value["preemptible"]
 
       dynamic "node_affinities" {
         for_each = scheduling.value.node_affinities
         content {
-          key      = node_affinities.value["key"]
+          # key - (required) is a type of string
+          key = node_affinities.value["key"]
+          # operator - (required) is a type of string
           operator = node_affinities.value["operator"]
-          values   = node_affinities.value["values"]
+          # values - (required) is a type of set of string
+          values = node_affinities.value["values"]
         }
       }
 
@@ -408,17 +443,23 @@ resource "google_compute_instance_from_machine_image" "this" {
   dynamic "shielded_instance_config" {
     for_each = var.shielded_instance_config
     content {
+      # enable_integrity_monitoring - (optional) is a type of bool
       enable_integrity_monitoring = shielded_instance_config.value["enable_integrity_monitoring"]
-      enable_secure_boot          = shielded_instance_config.value["enable_secure_boot"]
-      enable_vtpm                 = shielded_instance_config.value["enable_vtpm"]
+      # enable_secure_boot - (optional) is a type of bool
+      enable_secure_boot = shielded_instance_config.value["enable_secure_boot"]
+      # enable_vtpm - (optional) is a type of bool
+      enable_vtpm = shielded_instance_config.value["enable_vtpm"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

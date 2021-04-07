@@ -203,10 +203,14 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_media_streaming_policy" "this" {
+  # default_content_key_policy_name - (optional) is a type of string
   default_content_key_policy_name = var.default_content_key_policy_name
-  media_services_account_name     = var.media_services_account_name
-  name                            = var.name
-  resource_group_name             = var.resource_group_name
+  # media_services_account_name - (required) is a type of string
+  media_services_account_name = var.media_services_account_name
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
 
   dynamic "common_encryption_cbcs" {
     for_each = var.common_encryption_cbcs
@@ -215,7 +219,9 @@ resource "azurerm_media_streaming_policy" "this" {
       dynamic "default_content_key" {
         for_each = common_encryption_cbcs.value.default_content_key
         content {
-          label       = default_content_key.value["label"]
+          # label - (optional) is a type of string
+          label = default_content_key.value["label"]
+          # policy_name - (optional) is a type of string
           policy_name = default_content_key.value["policy_name"]
         }
       }
@@ -223,7 +229,9 @@ resource "azurerm_media_streaming_policy" "this" {
       dynamic "drm_fairplay" {
         for_each = common_encryption_cbcs.value.drm_fairplay
         content {
-          allow_persistent_license                = drm_fairplay.value["allow_persistent_license"]
+          # allow_persistent_license - (optional) is a type of bool
+          allow_persistent_license = drm_fairplay.value["allow_persistent_license"]
+          # custom_license_acquisition_url_template - (optional) is a type of string
           custom_license_acquisition_url_template = drm_fairplay.value["custom_license_acquisition_url_template"]
         }
       }
@@ -231,9 +239,13 @@ resource "azurerm_media_streaming_policy" "this" {
       dynamic "enabled_protocols" {
         for_each = common_encryption_cbcs.value.enabled_protocols
         content {
-          dash             = enabled_protocols.value["dash"]
-          download         = enabled_protocols.value["download"]
-          hls              = enabled_protocols.value["hls"]
+          # dash - (optional) is a type of bool
+          dash = enabled_protocols.value["dash"]
+          # download - (optional) is a type of bool
+          download = enabled_protocols.value["download"]
+          # hls - (optional) is a type of bool
+          hls = enabled_protocols.value["hls"]
+          # smooth_streaming - (optional) is a type of bool
           smooth_streaming = enabled_protocols.value["smooth_streaming"]
         }
       }
@@ -244,12 +256,15 @@ resource "azurerm_media_streaming_policy" "this" {
   dynamic "common_encryption_cenc" {
     for_each = var.common_encryption_cenc
     content {
+      # drm_widevine_custom_license_acquisition_url_template - (optional) is a type of string
       drm_widevine_custom_license_acquisition_url_template = common_encryption_cenc.value["drm_widevine_custom_license_acquisition_url_template"]
 
       dynamic "default_content_key" {
         for_each = common_encryption_cenc.value.default_content_key
         content {
-          label       = default_content_key.value["label"]
+          # label - (optional) is a type of string
+          label = default_content_key.value["label"]
+          # policy_name - (optional) is a type of string
           policy_name = default_content_key.value["policy_name"]
         }
       }
@@ -257,7 +272,9 @@ resource "azurerm_media_streaming_policy" "this" {
       dynamic "drm_playready" {
         for_each = common_encryption_cenc.value.drm_playready
         content {
-          custom_attributes                       = drm_playready.value["custom_attributes"]
+          # custom_attributes - (optional) is a type of string
+          custom_attributes = drm_playready.value["custom_attributes"]
+          # custom_license_acquisition_url_template - (optional) is a type of string
           custom_license_acquisition_url_template = drm_playready.value["custom_license_acquisition_url_template"]
         }
       }
@@ -265,9 +282,13 @@ resource "azurerm_media_streaming_policy" "this" {
       dynamic "enabled_protocols" {
         for_each = common_encryption_cenc.value.enabled_protocols
         content {
-          dash             = enabled_protocols.value["dash"]
-          download         = enabled_protocols.value["download"]
-          hls              = enabled_protocols.value["hls"]
+          # dash - (optional) is a type of bool
+          dash = enabled_protocols.value["dash"]
+          # download - (optional) is a type of bool
+          download = enabled_protocols.value["download"]
+          # hls - (optional) is a type of bool
+          hls = enabled_protocols.value["hls"]
+          # smooth_streaming - (optional) is a type of bool
           smooth_streaming = enabled_protocols.value["smooth_streaming"]
         }
       }
@@ -278,9 +299,13 @@ resource "azurerm_media_streaming_policy" "this" {
   dynamic "no_encryption_enabled_protocols" {
     for_each = var.no_encryption_enabled_protocols
     content {
-      dash             = no_encryption_enabled_protocols.value["dash"]
-      download         = no_encryption_enabled_protocols.value["download"]
-      hls              = no_encryption_enabled_protocols.value["hls"]
+      # dash - (optional) is a type of bool
+      dash = no_encryption_enabled_protocols.value["dash"]
+      # download - (optional) is a type of bool
+      download = no_encryption_enabled_protocols.value["download"]
+      # hls - (optional) is a type of bool
+      hls = no_encryption_enabled_protocols.value["hls"]
+      # smooth_streaming - (optional) is a type of bool
       smooth_streaming = no_encryption_enabled_protocols.value["smooth_streaming"]
     }
   }
@@ -288,9 +313,12 @@ resource "azurerm_media_streaming_policy" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

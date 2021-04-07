@@ -49,6 +49,7 @@ variable "rule_id" {
 
 ```terraform
 data "oci_events_rule" "this" {
+  # rule_id - (required) is a type of string
   rule_id = var.rule_id
 }
 ```

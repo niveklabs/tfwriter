@@ -80,14 +80,19 @@ variable "parameter" {
 
 ```terraform
 resource "aws_elasticache_parameter_group" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  family      = var.family
-  name        = var.name
+  # family - (required) is a type of string
+  family = var.family
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "parameter" {
     for_each = var.parameter
     content {
-      name  = parameter.value["name"]
+      # name - (required) is a type of string
+      name = parameter.value["name"]
+      # value - (required) is a type of string
       value = parameter.value["value"]
     }
   }

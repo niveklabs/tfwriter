@@ -56,7 +56,9 @@ variable "value" {
 
 ```terraform
 resource "ciscoasa_network_object" "this" {
-  name  = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # value - (required) is a type of string
   value = var.value
 }
 ```

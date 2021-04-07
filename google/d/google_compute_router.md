@@ -72,10 +72,14 @@ variable "region" {
 
 ```terraform
 data "google_compute_router" "this" {
-  name    = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # network - (required) is a type of string
   network = var.network
+  # project - (optional) is a type of string
   project = var.project
-  region  = var.region
+  # region - (optional) is a type of string
+  region = var.region
 }
 ```
 

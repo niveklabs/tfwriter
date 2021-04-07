@@ -71,9 +71,13 @@ variable "server_properties" {
 
 ```terraform
 resource "aws_msk_configuration" "this" {
-  description       = var.description
-  kafka_versions    = var.kafka_versions
-  name              = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # kafka_versions - (required) is a type of set of string
+  kafka_versions = var.kafka_versions
+  # name - (required) is a type of string
+  name = var.name
+  # server_properties - (required) is a type of string
   server_properties = var.server_properties
 }
 ```

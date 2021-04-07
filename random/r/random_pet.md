@@ -74,9 +74,13 @@ variable "separator" {
 
 ```terraform
 resource "random_pet" "this" {
-  keepers   = var.keepers
-  length    = var.length
-  prefix    = var.prefix
+  # keepers - (optional) is a type of map of string
+  keepers = var.keepers
+  # length - (optional) is a type of number
+  length = var.length
+  # prefix - (optional) is a type of string
+  prefix = var.prefix
+  # separator - (optional) is a type of string
   separator = var.separator
 }
 ```

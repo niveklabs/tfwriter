@@ -105,14 +105,19 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_cosmosdb_cassandra_keyspace" "this" {
-  account_name        = var.account_name
-  name                = var.name
+  # account_name - (required) is a type of string
+  account_name = var.account_name
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  throughput          = var.throughput
+  # throughput - (optional) is a type of number
+  throughput = var.throughput
 
   dynamic "autoscale_settings" {
     for_each = var.autoscale_settings
     content {
+      # max_throughput - (optional) is a type of number
       max_throughput = autoscale_settings.value["max_throughput"]
     }
   }
@@ -120,9 +125,13 @@ resource "azurerm_cosmosdb_cassandra_keyspace" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -56,7 +56,9 @@ variable "rest_api_id" {
 
 ```terraform
 resource "aws_api_gateway_rest_api_policy" "this" {
-  policy      = var.policy
+  # policy - (required) is a type of string
+  policy = var.policy
+  # rest_api_id - (required) is a type of string
   rest_api_id = var.rest_api_id
 }
 ```

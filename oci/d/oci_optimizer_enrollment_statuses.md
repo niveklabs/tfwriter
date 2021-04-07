@@ -83,15 +83,21 @@ variable "filter" {
 
 ```terraform
 data "oci_optimizer_enrollment_statuses" "this" {
+  # compartment_id - (required) is a type of string
   compartment_id = var.compartment_id
-  state          = var.state
-  status         = var.status
+  # state - (optional) is a type of string
+  state = var.state
+  # status - (optional) is a type of string
+  status = var.status
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

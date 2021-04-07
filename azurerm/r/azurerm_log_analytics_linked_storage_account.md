@@ -90,17 +90,25 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_log_analytics_linked_storage_account" "this" {
-  data_source_type      = var.data_source_type
-  resource_group_name   = var.resource_group_name
-  storage_account_ids   = var.storage_account_ids
+  # data_source_type - (required) is a type of string
+  data_source_type = var.data_source_type
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # storage_account_ids - (required) is a type of set of string
+  storage_account_ids = var.storage_account_ids
+  # workspace_resource_id - (required) is a type of string
   workspace_resource_id = var.workspace_resource_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

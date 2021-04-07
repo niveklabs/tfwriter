@@ -56,8 +56,10 @@ variable "load_balancer" {
 
 ```terraform
 resource "aws_proxy_protocol_policy" "this" {
+  # instance_ports - (required) is a type of set of string
   instance_ports = var.instance_ports
-  load_balancer  = var.load_balancer
+  # load_balancer - (required) is a type of string
+  load_balancer = var.load_balancer
 }
 ```
 

@@ -97,18 +97,27 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_log_analytics_datasource_windows_event" "this" {
-  event_log_name      = var.event_log_name
-  event_types         = var.event_types
-  name                = var.name
+  # event_log_name - (required) is a type of string
+  event_log_name = var.event_log_name
+  # event_types - (required) is a type of set of string
+  event_types = var.event_types
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  workspace_name      = var.workspace_name
+  # workspace_name - (required) is a type of string
+  workspace_name = var.workspace_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

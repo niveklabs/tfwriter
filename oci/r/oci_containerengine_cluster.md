@@ -178,29 +178,39 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_containerengine_cluster" "this" {
-  compartment_id     = var.compartment_id
-  kms_key_id         = var.kms_key_id
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # kubernetes_version - (required) is a type of string
   kubernetes_version = var.kubernetes_version
-  name               = var.name
-  vcn_id             = var.vcn_id
+  # name - (required) is a type of string
+  name = var.name
+  # vcn_id - (required) is a type of string
+  vcn_id = var.vcn_id
 
   dynamic "endpoint_config" {
     for_each = var.endpoint_config
     content {
+      # is_public_ip_enabled - (optional) is a type of bool
       is_public_ip_enabled = endpoint_config.value["is_public_ip_enabled"]
-      nsg_ids              = endpoint_config.value["nsg_ids"]
-      subnet_id            = endpoint_config.value["subnet_id"]
+      # nsg_ids - (optional) is a type of set of string
+      nsg_ids = endpoint_config.value["nsg_ids"]
+      # subnet_id - (required) is a type of string
+      subnet_id = endpoint_config.value["subnet_id"]
     }
   }
 
   dynamic "image_policy_config" {
     for_each = var.image_policy_config
     content {
+      # is_policy_enabled - (optional) is a type of bool
       is_policy_enabled = image_policy_config.value["is_policy_enabled"]
 
       dynamic "key_details" {
         for_each = image_policy_config.value.key_details
         content {
+          # kms_key_id - (optional) is a type of string
           kms_key_id = key_details.value["kms_key_id"]
         }
       }
@@ -211,19 +221,23 @@ resource "oci_containerengine_cluster" "this" {
   dynamic "options" {
     for_each = var.options
     content {
+      # service_lb_subnet_ids - (optional) is a type of list of string
       service_lb_subnet_ids = options.value["service_lb_subnet_ids"]
 
       dynamic "add_ons" {
         for_each = options.value.add_ons
         content {
+          # is_kubernetes_dashboard_enabled - (optional) is a type of bool
           is_kubernetes_dashboard_enabled = add_ons.value["is_kubernetes_dashboard_enabled"]
-          is_tiller_enabled               = add_ons.value["is_tiller_enabled"]
+          # is_tiller_enabled - (optional) is a type of bool
+          is_tiller_enabled = add_ons.value["is_tiller_enabled"]
         }
       }
 
       dynamic "admission_controller_options" {
         for_each = options.value.admission_controller_options
         content {
+          # is_pod_security_policy_enabled - (optional) is a type of bool
           is_pod_security_policy_enabled = admission_controller_options.value["is_pod_security_policy_enabled"]
         }
       }
@@ -231,7 +245,9 @@ resource "oci_containerengine_cluster" "this" {
       dynamic "kubernetes_network_config" {
         for_each = options.value.kubernetes_network_config
         content {
-          pods_cidr     = kubernetes_network_config.value["pods_cidr"]
+          # pods_cidr - (optional) is a type of string
+          pods_cidr = kubernetes_network_config.value["pods_cidr"]
+          # services_cidr - (optional) is a type of string
           services_cidr = kubernetes_network_config.value["services_cidr"]
         }
       }
@@ -242,8 +258,11 @@ resource "oci_containerengine_cluster" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

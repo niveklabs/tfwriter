@@ -64,9 +64,12 @@ variable "project" {
 
 ```terraform
 resource "google_binary_authorization_attestor_iam_policy" "this" {
-  attestor    = var.attestor
+  # attestor - (required) is a type of string
+  attestor = var.attestor
+  # policy_data - (required) is a type of string
   policy_data = var.policy_data
-  project     = var.project
+  # project - (optional) is a type of string
+  project = var.project
 }
 ```
 

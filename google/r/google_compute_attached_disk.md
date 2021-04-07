@@ -104,17 +104,25 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_attached_disk" "this" {
+  # device_name - (optional) is a type of string
   device_name = var.device_name
-  disk        = var.disk
-  instance    = var.instance
-  mode        = var.mode
-  project     = var.project
-  zone        = var.zone
+  # disk - (required) is a type of string
+  disk = var.disk
+  # instance - (required) is a type of string
+  instance = var.instance
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # project - (optional) is a type of string
+  project = var.project
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

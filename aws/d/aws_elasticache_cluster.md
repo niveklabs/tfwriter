@@ -57,8 +57,10 @@ variable "tags" {
 
 ```terraform
 data "aws_elasticache_cluster" "this" {
+  # cluster_id - (required) is a type of string
   cluster_id = var.cluster_id
-  tags       = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

@@ -104,14 +104,22 @@ variable "start_time" {
 
 ```terraform
 resource "aws_autoscaling_schedule" "this" {
+  # autoscaling_group_name - (required) is a type of string
   autoscaling_group_name = var.autoscaling_group_name
-  desired_capacity       = var.desired_capacity
-  end_time               = var.end_time
-  max_size               = var.max_size
-  min_size               = var.min_size
-  recurrence             = var.recurrence
-  scheduled_action_name  = var.scheduled_action_name
-  start_time             = var.start_time
+  # desired_capacity - (optional) is a type of number
+  desired_capacity = var.desired_capacity
+  # end_time - (optional) is a type of string
+  end_time = var.end_time
+  # max_size - (optional) is a type of number
+  max_size = var.max_size
+  # min_size - (optional) is a type of number
+  min_size = var.min_size
+  # recurrence - (optional) is a type of string
+  recurrence = var.recurrence
+  # scheduled_action_name - (required) is a type of string
+  scheduled_action_name = var.scheduled_action_name
+  # start_time - (optional) is a type of string
+  start_time = var.start_time
 }
 ```
 

@@ -65,9 +65,12 @@ variable "tags" {
 
 ```terraform
 resource "aws_redshift_snapshot_copy_grant" "this" {
-  kms_key_id               = var.kms_key_id
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # snapshot_copy_grant_name - (required) is a type of string
   snapshot_copy_grant_name = var.snapshot_copy_grant_name
-  tags                     = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

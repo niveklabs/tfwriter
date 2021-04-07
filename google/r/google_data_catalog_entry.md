@@ -154,19 +154,29 @@ variable "timeouts" {
 
 ```terraform
 resource "google_data_catalog_entry" "this" {
-  description           = var.description
-  display_name          = var.display_name
-  entry_group           = var.entry_group
-  entry_id              = var.entry_id
-  linked_resource       = var.linked_resource
-  schema                = var.schema
-  type                  = var.type
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # entry_group - (required) is a type of string
+  entry_group = var.entry_group
+  # entry_id - (required) is a type of string
+  entry_id = var.entry_id
+  # linked_resource - (optional) is a type of string
+  linked_resource = var.linked_resource
+  # schema - (optional) is a type of string
+  schema = var.schema
+  # type - (optional) is a type of string
+  type = var.type
+  # user_specified_system - (optional) is a type of string
   user_specified_system = var.user_specified_system
-  user_specified_type   = var.user_specified_type
+  # user_specified_type - (optional) is a type of string
+  user_specified_type = var.user_specified_type
 
   dynamic "gcs_fileset_spec" {
     for_each = var.gcs_fileset_spec
     content {
+      # file_patterns - (required) is a type of list of string
       file_patterns = gcs_fileset_spec.value["file_patterns"]
     }
   }
@@ -174,8 +184,11 @@ resource "google_data_catalog_entry" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

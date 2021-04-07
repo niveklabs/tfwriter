@@ -80,14 +80,19 @@ variable "timeouts" {
 
 ```terraform
 resource "google_kms_key_ring" "this" {
+  # location - (required) is a type of string
   location = var.location
-  name     = var.name
-  project  = var.project
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

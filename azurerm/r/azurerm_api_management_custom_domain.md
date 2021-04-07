@@ -181,15 +181,21 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_api_management_custom_domain" "this" {
+  # api_management_id - (required) is a type of string
   api_management_id = var.api_management_id
 
   dynamic "developer_portal" {
     for_each = var.developer_portal
     content {
-      certificate                  = developer_portal.value["certificate"]
-      certificate_password         = developer_portal.value["certificate_password"]
-      host_name                    = developer_portal.value["host_name"]
-      key_vault_id                 = developer_portal.value["key_vault_id"]
+      # certificate - (optional) is a type of string
+      certificate = developer_portal.value["certificate"]
+      # certificate_password - (optional) is a type of string
+      certificate_password = developer_portal.value["certificate_password"]
+      # host_name - (required) is a type of string
+      host_name = developer_portal.value["host_name"]
+      # key_vault_id - (optional) is a type of string
+      key_vault_id = developer_portal.value["key_vault_id"]
+      # negotiate_client_certificate - (optional) is a type of bool
       negotiate_client_certificate = developer_portal.value["negotiate_client_certificate"]
     }
   }
@@ -197,10 +203,15 @@ resource "azurerm_api_management_custom_domain" "this" {
   dynamic "management" {
     for_each = var.management
     content {
-      certificate                  = management.value["certificate"]
-      certificate_password         = management.value["certificate_password"]
-      host_name                    = management.value["host_name"]
-      key_vault_id                 = management.value["key_vault_id"]
+      # certificate - (optional) is a type of string
+      certificate = management.value["certificate"]
+      # certificate_password - (optional) is a type of string
+      certificate_password = management.value["certificate_password"]
+      # host_name - (required) is a type of string
+      host_name = management.value["host_name"]
+      # key_vault_id - (optional) is a type of string
+      key_vault_id = management.value["key_vault_id"]
+      # negotiate_client_certificate - (optional) is a type of bool
       negotiate_client_certificate = management.value["negotiate_client_certificate"]
     }
   }
@@ -208,10 +219,15 @@ resource "azurerm_api_management_custom_domain" "this" {
   dynamic "portal" {
     for_each = var.portal
     content {
-      certificate                  = portal.value["certificate"]
-      certificate_password         = portal.value["certificate_password"]
-      host_name                    = portal.value["host_name"]
-      key_vault_id                 = portal.value["key_vault_id"]
+      # certificate - (optional) is a type of string
+      certificate = portal.value["certificate"]
+      # certificate_password - (optional) is a type of string
+      certificate_password = portal.value["certificate_password"]
+      # host_name - (required) is a type of string
+      host_name = portal.value["host_name"]
+      # key_vault_id - (optional) is a type of string
+      key_vault_id = portal.value["key_vault_id"]
+      # negotiate_client_certificate - (optional) is a type of bool
       negotiate_client_certificate = portal.value["negotiate_client_certificate"]
     }
   }
@@ -219,11 +235,17 @@ resource "azurerm_api_management_custom_domain" "this" {
   dynamic "proxy" {
     for_each = var.proxy
     content {
-      certificate                  = proxy.value["certificate"]
-      certificate_password         = proxy.value["certificate_password"]
-      default_ssl_binding          = proxy.value["default_ssl_binding"]
-      host_name                    = proxy.value["host_name"]
-      key_vault_id                 = proxy.value["key_vault_id"]
+      # certificate - (optional) is a type of string
+      certificate = proxy.value["certificate"]
+      # certificate_password - (optional) is a type of string
+      certificate_password = proxy.value["certificate_password"]
+      # default_ssl_binding - (optional) is a type of bool
+      default_ssl_binding = proxy.value["default_ssl_binding"]
+      # host_name - (required) is a type of string
+      host_name = proxy.value["host_name"]
+      # key_vault_id - (optional) is a type of string
+      key_vault_id = proxy.value["key_vault_id"]
+      # negotiate_client_certificate - (optional) is a type of bool
       negotiate_client_certificate = proxy.value["negotiate_client_certificate"]
     }
   }
@@ -231,10 +253,15 @@ resource "azurerm_api_management_custom_domain" "this" {
   dynamic "scm" {
     for_each = var.scm
     content {
-      certificate                  = scm.value["certificate"]
-      certificate_password         = scm.value["certificate_password"]
-      host_name                    = scm.value["host_name"]
-      key_vault_id                 = scm.value["key_vault_id"]
+      # certificate - (optional) is a type of string
+      certificate = scm.value["certificate"]
+      # certificate_password - (optional) is a type of string
+      certificate_password = scm.value["certificate_password"]
+      # host_name - (required) is a type of string
+      host_name = scm.value["host_name"]
+      # key_vault_id - (optional) is a type of string
+      key_vault_id = scm.value["key_vault_id"]
+      # negotiate_client_certificate - (optional) is a type of bool
       negotiate_client_certificate = scm.value["negotiate_client_certificate"]
     }
   }
@@ -242,9 +269,13 @@ resource "azurerm_api_management_custom_domain" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

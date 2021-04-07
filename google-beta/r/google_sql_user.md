@@ -114,19 +114,29 @@ variable "timeouts" {
 
 ```terraform
 resource "google_sql_user" "this" {
+  # deletion_policy - (optional) is a type of string
   deletion_policy = var.deletion_policy
-  host            = var.host
-  instance        = var.instance
-  name            = var.name
-  password        = var.password
-  project         = var.project
-  type            = var.type
+  # host - (optional) is a type of string
+  host = var.host
+  # instance - (required) is a type of string
+  instance = var.instance
+  # name - (required) is a type of string
+  name = var.name
+  # password - (optional) is a type of string
+  password = var.password
+  # project - (optional) is a type of string
+  project = var.project
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

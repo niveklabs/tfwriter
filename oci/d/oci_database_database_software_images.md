@@ -107,18 +107,27 @@ variable "filter" {
 
 ```terraform
 data "oci_database_database_software_images" "this" {
-  compartment_id       = var.compartment_id
-  display_name         = var.display_name
-  image_shape_family   = var.image_shape_family
-  image_type           = var.image_type
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # image_shape_family - (optional) is a type of string
+  image_shape_family = var.image_shape_family
+  # image_type - (optional) is a type of string
+  image_type = var.image_type
+  # is_upgrade_supported - (optional) is a type of bool
   is_upgrade_supported = var.is_upgrade_supported
-  state                = var.state
+  # state - (optional) is a type of string
+  state = var.state
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
-      regex  = filter.value["regex"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # regex - (optional) is a type of bool
+      regex = filter.value["regex"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

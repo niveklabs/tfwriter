@@ -65,8 +65,11 @@ variable "version" {
 
 ```terraform
 data "google_secret_manager_secret_version" "this" {
+  # project - (optional) is a type of string
   project = var.project
-  secret  = var.secret
+  # secret - (required) is a type of string
+  secret = var.secret
+  # version - (optional) is a type of string
   version = var.version
 }
 ```

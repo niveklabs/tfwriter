@@ -79,14 +79,19 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_database_autonomous_container_database_dataguard_association_operation" "this" {
+  # autonomous_container_database_dataguard_association_id - (required) is a type of string
   autonomous_container_database_dataguard_association_id = var.autonomous_container_database_dataguard_association_id
-  autonomous_container_database_id                       = var.autonomous_container_database_id
-  operation                                              = var.operation
+  # autonomous_container_database_id - (required) is a type of string
+  autonomous_container_database_id = var.autonomous_container_database_id
+  # operation - (required) is a type of string
+  operation = var.operation
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

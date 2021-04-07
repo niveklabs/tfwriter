@@ -49,6 +49,7 @@ variable "vlan_id" {
 
 ```terraform
 data "oci_core_vlan" "this" {
+  # vlan_id - (required) is a type of string
   vlan_id = var.vlan_id
 }
 ```

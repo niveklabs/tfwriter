@@ -64,9 +64,12 @@ variable "query_string" {
 
 ```terraform
 resource "aws_cloudwatch_query_definition" "this" {
+  # log_group_names - (optional) is a type of list of string
   log_group_names = var.log_group_names
-  name            = var.name
-  query_string    = var.query_string
+  # name - (required) is a type of string
+  name = var.name
+  # query_string - (required) is a type of string
+  query_string = var.query_string
 }
 ```
 

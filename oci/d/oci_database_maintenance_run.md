@@ -49,6 +49,7 @@ variable "maintenance_run_id" {
 
 ```terraform
 data "oci_database_maintenance_run" "this" {
+  # maintenance_run_id - (required) is a type of string
   maintenance_run_id = var.maintenance_run_id
 }
 ```

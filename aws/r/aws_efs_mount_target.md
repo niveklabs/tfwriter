@@ -72,10 +72,14 @@ variable "subnet_id" {
 
 ```terraform
 resource "aws_efs_mount_target" "this" {
-  file_system_id  = var.file_system_id
-  ip_address      = var.ip_address
+  # file_system_id - (required) is a type of string
+  file_system_id = var.file_system_id
+  # ip_address - (optional) is a type of string
+  ip_address = var.ip_address
+  # security_groups - (optional) is a type of set of string
   security_groups = var.security_groups
-  subnet_id       = var.subnet_id
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
 }
 ```
 

@@ -154,24 +154,39 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_dataintegration_workspace" "this" {
-  compartment_id             = var.compartment_id
-  defined_tags               = var.defined_tags
-  description                = var.description
-  display_name               = var.display_name
-  dns_server_ip              = var.dns_server_ip
-  dns_server_zone            = var.dns_server_zone
-  freeform_tags              = var.freeform_tags
-  is_force_operation         = var.is_force_operation
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # dns_server_ip - (optional) is a type of string
+  dns_server_ip = var.dns_server_ip
+  # dns_server_zone - (optional) is a type of string
+  dns_server_zone = var.dns_server_zone
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # is_force_operation - (optional) is a type of bool
+  is_force_operation = var.is_force_operation
+  # is_private_network_enabled - (optional) is a type of bool
   is_private_network_enabled = var.is_private_network_enabled
-  quiesce_timeout            = var.quiesce_timeout
-  subnet_id                  = var.subnet_id
-  vcn_id                     = var.vcn_id
+  # quiesce_timeout - (optional) is a type of number
+  quiesce_timeout = var.quiesce_timeout
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # vcn_id - (optional) is a type of string
+  vcn_id = var.vcn_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

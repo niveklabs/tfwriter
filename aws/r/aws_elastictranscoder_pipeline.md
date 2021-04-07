@@ -168,16 +168,23 @@ variable "thumbnail_config_permissions" {
 
 ```terraform
 resource "aws_elastictranscoder_pipeline" "this" {
+  # aws_kms_key_arn - (optional) is a type of string
   aws_kms_key_arn = var.aws_kms_key_arn
-  input_bucket    = var.input_bucket
-  name            = var.name
-  output_bucket   = var.output_bucket
-  role            = var.role
+  # input_bucket - (required) is a type of string
+  input_bucket = var.input_bucket
+  # name - (optional) is a type of string
+  name = var.name
+  # output_bucket - (optional) is a type of string
+  output_bucket = var.output_bucket
+  # role - (required) is a type of string
+  role = var.role
 
   dynamic "content_config" {
     for_each = var.content_config
     content {
-      bucket        = content_config.value["bucket"]
+      # bucket - (optional) is a type of string
+      bucket = content_config.value["bucket"]
+      # storage_class - (optional) is a type of string
       storage_class = content_config.value["storage_class"]
     }
   }
@@ -185,8 +192,11 @@ resource "aws_elastictranscoder_pipeline" "this" {
   dynamic "content_config_permissions" {
     for_each = var.content_config_permissions
     content {
-      access       = content_config_permissions.value["access"]
-      grantee      = content_config_permissions.value["grantee"]
+      # access - (optional) is a type of list of string
+      access = content_config_permissions.value["access"]
+      # grantee - (optional) is a type of string
+      grantee = content_config_permissions.value["grantee"]
+      # grantee_type - (optional) is a type of string
       grantee_type = content_config_permissions.value["grantee_type"]
     }
   }
@@ -194,17 +204,23 @@ resource "aws_elastictranscoder_pipeline" "this" {
   dynamic "notifications" {
     for_each = var.notifications
     content {
-      completed   = notifications.value["completed"]
-      error       = notifications.value["error"]
+      # completed - (optional) is a type of string
+      completed = notifications.value["completed"]
+      # error - (optional) is a type of string
+      error = notifications.value["error"]
+      # progressing - (optional) is a type of string
       progressing = notifications.value["progressing"]
-      warning     = notifications.value["warning"]
+      # warning - (optional) is a type of string
+      warning = notifications.value["warning"]
     }
   }
 
   dynamic "thumbnail_config" {
     for_each = var.thumbnail_config
     content {
-      bucket        = thumbnail_config.value["bucket"]
+      # bucket - (optional) is a type of string
+      bucket = thumbnail_config.value["bucket"]
+      # storage_class - (optional) is a type of string
       storage_class = thumbnail_config.value["storage_class"]
     }
   }
@@ -212,8 +228,11 @@ resource "aws_elastictranscoder_pipeline" "this" {
   dynamic "thumbnail_config_permissions" {
     for_each = var.thumbnail_config_permissions
     content {
-      access       = thumbnail_config_permissions.value["access"]
-      grantee      = thumbnail_config_permissions.value["grantee"]
+      # access - (optional) is a type of list of string
+      access = thumbnail_config_permissions.value["access"]
+      # grantee - (optional) is a type of string
+      grantee = thumbnail_config_permissions.value["grantee"]
+      # grantee_type - (optional) is a type of string
       grantee_type = thumbnail_config_permissions.value["grantee_type"]
     }
   }

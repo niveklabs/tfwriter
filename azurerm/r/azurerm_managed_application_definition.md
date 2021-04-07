@@ -161,22 +161,35 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_managed_application_definition" "this" {
+  # create_ui_definition - (optional) is a type of string
   create_ui_definition = var.create_ui_definition
-  description          = var.description
-  display_name         = var.display_name
-  location             = var.location
-  lock_level           = var.lock_level
-  main_template        = var.main_template
-  name                 = var.name
-  package_enabled      = var.package_enabled
-  package_file_uri     = var.package_file_uri
-  resource_group_name  = var.resource_group_name
-  tags                 = var.tags
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # location - (required) is a type of string
+  location = var.location
+  # lock_level - (required) is a type of string
+  lock_level = var.lock_level
+  # main_template - (optional) is a type of string
+  main_template = var.main_template
+  # name - (required) is a type of string
+  name = var.name
+  # package_enabled - (optional) is a type of bool
+  package_enabled = var.package_enabled
+  # package_file_uri - (optional) is a type of string
+  package_file_uri = var.package_file_uri
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "authorization" {
     for_each = var.authorization
     content {
-      role_definition_id   = authorization.value["role_definition_id"]
+      # role_definition_id - (required) is a type of string
+      role_definition_id = authorization.value["role_definition_id"]
+      # service_principal_id - (required) is a type of string
       service_principal_id = authorization.value["service_principal_id"]
     }
   }
@@ -184,9 +197,13 @@ resource "azurerm_managed_application_definition" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -71,10 +71,14 @@ variable "url" {
 
 ```terraform
 resource "aws_iam_openid_connect_provider" "this" {
-  client_id_list  = var.client_id_list
-  tags            = var.tags
+  # client_id_list - (required) is a type of list of string
+  client_id_list = var.client_id_list
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # thumbprint_list - (required) is a type of list of string
   thumbprint_list = var.thumbprint_list
-  url             = var.url
+  # url - (required) is a type of string
+  url = var.url
 }
 ```
 

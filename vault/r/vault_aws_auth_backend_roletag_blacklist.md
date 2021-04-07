@@ -65,9 +65,12 @@ variable "safety_buffer" {
 
 ```terraform
 resource "vault_aws_auth_backend_roletag_blacklist" "this" {
-  backend               = var.backend
+  # backend - (required) is a type of string
+  backend = var.backend
+  # disable_periodic_tidy - (optional) is a type of bool
   disable_periodic_tidy = var.disable_periodic_tidy
-  safety_buffer         = var.safety_buffer
+  # safety_buffer - (optional) is a type of number
+  safety_buffer = var.safety_buffer
 }
 ```
 

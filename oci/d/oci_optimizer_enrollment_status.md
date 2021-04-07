@@ -49,6 +49,7 @@ variable "enrollment_status_id" {
 
 ```terraform
 data "oci_optimizer_enrollment_status" "this" {
+  # enrollment_status_id - (required) is a type of string
   enrollment_status_id = var.enrollment_status_id
 }
 ```

@@ -142,16 +142,23 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_dns_resolver" "this" {
+  # compartment_id - (optional) is a type of string
   compartment_id = var.compartment_id
-  defined_tags   = var.defined_tags
-  display_name   = var.display_name
-  freeform_tags  = var.freeform_tags
-  resolver_id    = var.resolver_id
-  scope          = var.scope
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # resolver_id - (required) is a type of string
+  resolver_id = var.resolver_id
+  # scope - (required) is a type of string
+  scope = var.scope
 
   dynamic "attached_views" {
     for_each = var.attached_views
     content {
+      # view_id - (required) is a type of string
       view_id = attached_views.value["view_id"]
     }
   }
@@ -159,19 +166,27 @@ resource "oci_dns_resolver" "this" {
   dynamic "rules" {
     for_each = var.rules
     content {
-      action                    = rules.value["action"]
+      # action - (required) is a type of string
+      action = rules.value["action"]
+      # client_address_conditions - (optional) is a type of list of string
       client_address_conditions = rules.value["client_address_conditions"]
-      destination_addresses     = rules.value["destination_addresses"]
-      qname_cover_conditions    = rules.value["qname_cover_conditions"]
-      source_endpoint_name      = rules.value["source_endpoint_name"]
+      # destination_addresses - (required) is a type of list of string
+      destination_addresses = rules.value["destination_addresses"]
+      # qname_cover_conditions - (optional) is a type of list of string
+      qname_cover_conditions = rules.value["qname_cover_conditions"]
+      # source_endpoint_name - (required) is a type of string
+      source_endpoint_name = rules.value["source_endpoint_name"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -147,29 +147,48 @@ variable "subject" {
 
 ```terraform
 resource "tls_self_signed_cert" "this" {
-  allowed_uses          = var.allowed_uses
-  dns_names             = var.dns_names
-  early_renewal_hours   = var.early_renewal_hours
-  ip_addresses          = var.ip_addresses
-  is_ca_certificate     = var.is_ca_certificate
-  key_algorithm         = var.key_algorithm
-  private_key_pem       = var.private_key_pem
-  set_subject_key_id    = var.set_subject_key_id
-  uris                  = var.uris
+  # allowed_uses - (required) is a type of list of string
+  allowed_uses = var.allowed_uses
+  # dns_names - (optional) is a type of list of string
+  dns_names = var.dns_names
+  # early_renewal_hours - (optional) is a type of number
+  early_renewal_hours = var.early_renewal_hours
+  # ip_addresses - (optional) is a type of list of string
+  ip_addresses = var.ip_addresses
+  # is_ca_certificate - (optional) is a type of bool
+  is_ca_certificate = var.is_ca_certificate
+  # key_algorithm - (required) is a type of string
+  key_algorithm = var.key_algorithm
+  # private_key_pem - (required) is a type of string
+  private_key_pem = var.private_key_pem
+  # set_subject_key_id - (optional) is a type of bool
+  set_subject_key_id = var.set_subject_key_id
+  # uris - (optional) is a type of list of string
+  uris = var.uris
+  # validity_period_hours - (required) is a type of number
   validity_period_hours = var.validity_period_hours
 
   dynamic "subject" {
     for_each = var.subject
     content {
-      common_name         = subject.value["common_name"]
-      country             = subject.value["country"]
-      locality            = subject.value["locality"]
-      organization        = subject.value["organization"]
+      # common_name - (optional) is a type of string
+      common_name = subject.value["common_name"]
+      # country - (optional) is a type of string
+      country = subject.value["country"]
+      # locality - (optional) is a type of string
+      locality = subject.value["locality"]
+      # organization - (optional) is a type of string
+      organization = subject.value["organization"]
+      # organizational_unit - (optional) is a type of string
       organizational_unit = subject.value["organizational_unit"]
-      postal_code         = subject.value["postal_code"]
-      province            = subject.value["province"]
-      serial_number       = subject.value["serial_number"]
-      street_address      = subject.value["street_address"]
+      # postal_code - (optional) is a type of string
+      postal_code = subject.value["postal_code"]
+      # province - (optional) is a type of string
+      province = subject.value["province"]
+      # serial_number - (optional) is a type of string
+      serial_number = subject.value["serial_number"]
+      # street_address - (optional) is a type of list of string
+      street_address = subject.value["street_address"]
     }
   }
 

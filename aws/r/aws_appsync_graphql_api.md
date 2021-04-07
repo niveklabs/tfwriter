@@ -178,33 +178,46 @@ variable "user_pool_config" {
 
 ```terraform
 resource "aws_appsync_graphql_api" "this" {
+  # authentication_type - (required) is a type of string
   authentication_type = var.authentication_type
-  name                = var.name
-  schema              = var.schema
-  tags                = var.tags
-  xray_enabled        = var.xray_enabled
+  # name - (required) is a type of string
+  name = var.name
+  # schema - (optional) is a type of string
+  schema = var.schema
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # xray_enabled - (optional) is a type of bool
+  xray_enabled = var.xray_enabled
 
   dynamic "additional_authentication_provider" {
     for_each = var.additional_authentication_provider
     content {
+      # authentication_type - (required) is a type of string
       authentication_type = additional_authentication_provider.value["authentication_type"]
 
       dynamic "openid_connect_config" {
         for_each = additional_authentication_provider.value.openid_connect_config
         content {
-          auth_ttl  = openid_connect_config.value["auth_ttl"]
+          # auth_ttl - (optional) is a type of number
+          auth_ttl = openid_connect_config.value["auth_ttl"]
+          # client_id - (optional) is a type of string
           client_id = openid_connect_config.value["client_id"]
-          iat_ttl   = openid_connect_config.value["iat_ttl"]
-          issuer    = openid_connect_config.value["issuer"]
+          # iat_ttl - (optional) is a type of number
+          iat_ttl = openid_connect_config.value["iat_ttl"]
+          # issuer - (required) is a type of string
+          issuer = openid_connect_config.value["issuer"]
         }
       }
 
       dynamic "user_pool_config" {
         for_each = additional_authentication_provider.value.user_pool_config
         content {
+          # app_id_client_regex - (optional) is a type of string
           app_id_client_regex = user_pool_config.value["app_id_client_regex"]
-          aws_region          = user_pool_config.value["aws_region"]
-          user_pool_id        = user_pool_config.value["user_pool_id"]
+          # aws_region - (optional) is a type of string
+          aws_region = user_pool_config.value["aws_region"]
+          # user_pool_id - (required) is a type of string
+          user_pool_id = user_pool_config.value["user_pool_id"]
         }
       }
 
@@ -214,29 +227,40 @@ resource "aws_appsync_graphql_api" "this" {
   dynamic "log_config" {
     for_each = var.log_config
     content {
+      # cloudwatch_logs_role_arn - (required) is a type of string
       cloudwatch_logs_role_arn = log_config.value["cloudwatch_logs_role_arn"]
-      exclude_verbose_content  = log_config.value["exclude_verbose_content"]
-      field_log_level          = log_config.value["field_log_level"]
+      # exclude_verbose_content - (optional) is a type of bool
+      exclude_verbose_content = log_config.value["exclude_verbose_content"]
+      # field_log_level - (required) is a type of string
+      field_log_level = log_config.value["field_log_level"]
     }
   }
 
   dynamic "openid_connect_config" {
     for_each = var.openid_connect_config
     content {
-      auth_ttl  = openid_connect_config.value["auth_ttl"]
+      # auth_ttl - (optional) is a type of number
+      auth_ttl = openid_connect_config.value["auth_ttl"]
+      # client_id - (optional) is a type of string
       client_id = openid_connect_config.value["client_id"]
-      iat_ttl   = openid_connect_config.value["iat_ttl"]
-      issuer    = openid_connect_config.value["issuer"]
+      # iat_ttl - (optional) is a type of number
+      iat_ttl = openid_connect_config.value["iat_ttl"]
+      # issuer - (required) is a type of string
+      issuer = openid_connect_config.value["issuer"]
     }
   }
 
   dynamic "user_pool_config" {
     for_each = var.user_pool_config
     content {
+      # app_id_client_regex - (optional) is a type of string
       app_id_client_regex = user_pool_config.value["app_id_client_regex"]
-      aws_region          = user_pool_config.value["aws_region"]
-      default_action      = user_pool_config.value["default_action"]
-      user_pool_id        = user_pool_config.value["user_pool_id"]
+      # aws_region - (optional) is a type of string
+      aws_region = user_pool_config.value["aws_region"]
+      # default_action - (required) is a type of string
+      default_action = user_pool_config.value["default_action"]
+      # user_pool_id - (required) is a type of string
+      user_pool_id = user_pool_config.value["user_pool_id"]
     }
   }
 

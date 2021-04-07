@@ -94,13 +94,20 @@ variable "tags" {
 
 ```terraform
 resource "aws_mq_configuration" "this" {
+  # authentication_strategy - (optional) is a type of string
   authentication_strategy = var.authentication_strategy
-  data                    = var.data
-  description             = var.description
-  engine_type             = var.engine_type
-  engine_version          = var.engine_version
-  name                    = var.name
-  tags                    = var.tags
+  # data - (required) is a type of string
+  data = var.data
+  # description - (optional) is a type of string
+  description = var.description
+  # engine_type - (required) is a type of string
+  engine_type = var.engine_type
+  # engine_version - (required) is a type of string
+  engine_version = var.engine_version
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

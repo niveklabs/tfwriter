@@ -134,18 +134,30 @@ variable "tags" {
 
 ```terraform
 resource "aws_ssm_maintenance_window" "this" {
+  # allow_unassociated_targets - (optional) is a type of bool
   allow_unassociated_targets = var.allow_unassociated_targets
-  cutoff                     = var.cutoff
-  description                = var.description
-  duration                   = var.duration
-  enabled                    = var.enabled
-  end_date                   = var.end_date
-  name                       = var.name
-  schedule                   = var.schedule
-  schedule_offset            = var.schedule_offset
-  schedule_timezone          = var.schedule_timezone
-  start_date                 = var.start_date
-  tags                       = var.tags
+  # cutoff - (required) is a type of number
+  cutoff = var.cutoff
+  # description - (optional) is a type of string
+  description = var.description
+  # duration - (required) is a type of number
+  duration = var.duration
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # end_date - (optional) is a type of string
+  end_date = var.end_date
+  # name - (required) is a type of string
+  name = var.name
+  # schedule - (required) is a type of string
+  schedule = var.schedule
+  # schedule_offset - (optional) is a type of number
+  schedule_offset = var.schedule_offset
+  # schedule_timezone - (optional) is a type of string
+  schedule_timezone = var.schedule_timezone
+  # start_date - (optional) is a type of string
+  start_date = var.start_date
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

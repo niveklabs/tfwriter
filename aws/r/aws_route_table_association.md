@@ -65,9 +65,12 @@ variable "subnet_id" {
 
 ```terraform
 resource "aws_route_table_association" "this" {
-  gateway_id     = var.gateway_id
+  # gateway_id - (optional) is a type of string
+  gateway_id = var.gateway_id
+  # route_table_id - (required) is a type of string
   route_table_id = var.route_table_id
-  subnet_id      = var.subnet_id
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
 }
 ```
 

@@ -64,9 +64,12 @@ variable "name" {
 
 ```terraform
 data "google_storage_bucket_object_content" "this" {
-  bucket  = var.bucket
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # content - (optional) is a type of string
   content = var.content
-  name    = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

@@ -161,26 +161,43 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_storage_blob" "this" {
-  access_tier            = var.access_tier
-  content_md5            = var.content_md5
-  content_type           = var.content_type
-  metadata               = var.metadata
-  name                   = var.name
-  parallelism            = var.parallelism
-  size                   = var.size
-  source                 = var.source
-  source_content         = var.source_content
-  source_uri             = var.source_uri
-  storage_account_name   = var.storage_account_name
+  # access_tier - (optional) is a type of string
+  access_tier = var.access_tier
+  # content_md5 - (optional) is a type of string
+  content_md5 = var.content_md5
+  # content_type - (optional) is a type of string
+  content_type = var.content_type
+  # metadata - (optional) is a type of map of string
+  metadata = var.metadata
+  # name - (required) is a type of string
+  name = var.name
+  # parallelism - (optional) is a type of number
+  parallelism = var.parallelism
+  # size - (optional) is a type of number
+  size = var.size
+  # source - (optional) is a type of string
+  source = var.source
+  # source_content - (optional) is a type of string
+  source_content = var.source_content
+  # source_uri - (optional) is a type of string
+  source_uri = var.source_uri
+  # storage_account_name - (required) is a type of string
+  storage_account_name = var.storage_account_name
+  # storage_container_name - (required) is a type of string
   storage_container_name = var.storage_container_name
-  type                   = var.type
+  # type - (required) is a type of string
+  type = var.type
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

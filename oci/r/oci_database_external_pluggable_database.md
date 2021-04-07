@@ -105,18 +105,27 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_database_external_pluggable_database" "this" {
-  compartment_id                 = var.compartment_id
-  defined_tags                   = var.defined_tags
-  display_name                   = var.display_name
+  # compartment_id - (required) is a type of string
+  compartment_id = var.compartment_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # external_container_database_id - (required) is a type of string
   external_container_database_id = var.external_container_database_id
-  freeform_tags                  = var.freeform_tags
-  source_id                      = var.source_id
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # source_id - (optional) is a type of string
+  source_id = var.source_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

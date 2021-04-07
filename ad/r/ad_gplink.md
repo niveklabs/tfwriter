@@ -80,10 +80,15 @@ variable "target_dn" {
 
 ```terraform
 resource "ad_gplink" "this" {
-  enabled   = var.enabled
-  enforced  = var.enforced
-  gpo_guid  = var.gpo_guid
-  order     = var.order
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # enforced - (optional) is a type of bool
+  enforced = var.enforced
+  # gpo_guid - (required) is a type of string
+  gpo_guid = var.gpo_guid
+  # order - (optional) is a type of number
+  order = var.order
+  # target_dn - (required) is a type of string
   target_dn = var.target_dn
 }
 ```

@@ -136,22 +136,35 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_budget_alert_rule" "this" {
-  budget_id      = var.budget_id
-  defined_tags   = var.defined_tags
-  description    = var.description
-  display_name   = var.display_name
-  freeform_tags  = var.freeform_tags
-  message        = var.message
-  recipients     = var.recipients
-  threshold      = var.threshold
+  # budget_id - (required) is a type of string
+  budget_id = var.budget_id
+  # defined_tags - (optional) is a type of map of string
+  defined_tags = var.defined_tags
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # freeform_tags - (optional) is a type of map of string
+  freeform_tags = var.freeform_tags
+  # message - (optional) is a type of string
+  message = var.message
+  # recipients - (optional) is a type of string
+  recipients = var.recipients
+  # threshold - (required) is a type of number
+  threshold = var.threshold
+  # threshold_type - (required) is a type of string
   threshold_type = var.threshold_type
-  type           = var.type
+  # type - (required) is a type of string
+  type = var.type
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

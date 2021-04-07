@@ -181,12 +181,18 @@ variable "timeouts" {
 
 ```terraform
 resource "google_logging_metric" "this" {
-  description      = var.description
-  filter           = var.filter
+  # description - (optional) is a type of string
+  description = var.description
+  # filter - (required) is a type of string
+  filter = var.filter
+  # label_extractors - (optional) is a type of map of string
   label_extractors = var.label_extractors
-  name             = var.name
-  project          = var.project
-  value_extractor  = var.value_extractor
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # value_extractor - (optional) is a type of string
+  value_extractor = var.value_extractor
 
   dynamic "bucket_options" {
     for_each = var.bucket_options
@@ -195,6 +201,7 @@ resource "google_logging_metric" "this" {
       dynamic "explicit_buckets" {
         for_each = bucket_options.value.explicit_buckets
         content {
+          # bounds - (required) is a type of list of number
           bounds = explicit_buckets.value["bounds"]
         }
       }
@@ -202,18 +209,24 @@ resource "google_logging_metric" "this" {
       dynamic "exponential_buckets" {
         for_each = bucket_options.value.exponential_buckets
         content {
-          growth_factor      = exponential_buckets.value["growth_factor"]
+          # growth_factor - (optional) is a type of number
+          growth_factor = exponential_buckets.value["growth_factor"]
+          # num_finite_buckets - (optional) is a type of number
           num_finite_buckets = exponential_buckets.value["num_finite_buckets"]
-          scale              = exponential_buckets.value["scale"]
+          # scale - (optional) is a type of number
+          scale = exponential_buckets.value["scale"]
         }
       }
 
       dynamic "linear_buckets" {
         for_each = bucket_options.value.linear_buckets
         content {
+          # num_finite_buckets - (optional) is a type of number
           num_finite_buckets = linear_buckets.value["num_finite_buckets"]
-          offset             = linear_buckets.value["offset"]
-          width              = linear_buckets.value["width"]
+          # offset - (optional) is a type of number
+          offset = linear_buckets.value["offset"]
+          # width - (optional) is a type of number
+          width = linear_buckets.value["width"]
         }
       }
 
@@ -223,17 +236,24 @@ resource "google_logging_metric" "this" {
   dynamic "metric_descriptor" {
     for_each = var.metric_descriptor
     content {
+      # display_name - (optional) is a type of string
       display_name = metric_descriptor.value["display_name"]
-      metric_kind  = metric_descriptor.value["metric_kind"]
-      unit         = metric_descriptor.value["unit"]
-      value_type   = metric_descriptor.value["value_type"]
+      # metric_kind - (required) is a type of string
+      metric_kind = metric_descriptor.value["metric_kind"]
+      # unit - (optional) is a type of string
+      unit = metric_descriptor.value["unit"]
+      # value_type - (required) is a type of string
+      value_type = metric_descriptor.value["value_type"]
 
       dynamic "labels" {
         for_each = metric_descriptor.value.labels
         content {
+          # description - (optional) is a type of string
           description = labels.value["description"]
-          key         = labels.value["key"]
-          value_type  = labels.value["value_type"]
+          # key - (required) is a type of string
+          key = labels.value["key"]
+          # value_type - (optional) is a type of string
+          value_type = labels.value["value_type"]
         }
       }
 
@@ -243,8 +263,11 @@ resource "google_logging_metric" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -77,13 +77,17 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_blueprint_published_version" "this" {
+  # blueprint_name - (required) is a type of string
   blueprint_name = var.blueprint_name
-  scope_id       = var.scope_id
-  version        = var.version
+  # scope_id - (required) is a type of string
+  scope_id = var.scope_id
+  # version - (required) is a type of string
+  version = var.version
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

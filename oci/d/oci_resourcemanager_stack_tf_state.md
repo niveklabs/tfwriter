@@ -56,8 +56,10 @@ variable "stack_id" {
 
 ```terraform
 data "oci_resourcemanager_stack_tf_state" "this" {
+  # local_path - (required) is a type of string
   local_path = var.local_path
-  stack_id   = var.stack_id
+  # stack_id - (required) is a type of string
+  stack_id = var.stack_id
 }
 ```
 

@@ -78,13 +78,17 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_storage_container" "this" {
-  metadata             = var.metadata
-  name                 = var.name
+  # metadata - (optional) is a type of map of string
+  metadata = var.metadata
+  # name - (required) is a type of string
+  name = var.name
+  # storage_account_name - (required) is a type of string
   storage_account_name = var.storage_account_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

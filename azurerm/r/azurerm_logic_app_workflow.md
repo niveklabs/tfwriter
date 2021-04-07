@@ -131,22 +131,35 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_logic_app_workflow" "this" {
+  # integration_service_environment_id - (optional) is a type of string
   integration_service_environment_id = var.integration_service_environment_id
-  location                           = var.location
-  logic_app_integration_account_id   = var.logic_app_integration_account_id
-  name                               = var.name
-  parameters                         = var.parameters
-  resource_group_name                = var.resource_group_name
-  tags                               = var.tags
-  workflow_schema                    = var.workflow_schema
-  workflow_version                   = var.workflow_version
+  # location - (required) is a type of string
+  location = var.location
+  # logic_app_integration_account_id - (optional) is a type of string
+  logic_app_integration_account_id = var.logic_app_integration_account_id
+  # name - (required) is a type of string
+  name = var.name
+  # parameters - (optional) is a type of map of string
+  parameters = var.parameters
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # workflow_schema - (optional) is a type of string
+  workflow_schema = var.workflow_schema
+  # workflow_version - (optional) is a type of string
+  workflow_version = var.workflow_version
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

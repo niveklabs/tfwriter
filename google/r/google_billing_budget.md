@@ -159,30 +159,40 @@ variable "timeouts" {
 
 ```terraform
 resource "google_billing_budget" "this" {
+  # billing_account - (required) is a type of string
   billing_account = var.billing_account
-  display_name    = var.display_name
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
 
   dynamic "all_updates_rule" {
     for_each = var.all_updates_rule
     content {
-      disable_default_iam_recipients   = all_updates_rule.value["disable_default_iam_recipients"]
+      # disable_default_iam_recipients - (optional) is a type of bool
+      disable_default_iam_recipients = all_updates_rule.value["disable_default_iam_recipients"]
+      # monitoring_notification_channels - (optional) is a type of list of string
       monitoring_notification_channels = all_updates_rule.value["monitoring_notification_channels"]
-      pubsub_topic                     = all_updates_rule.value["pubsub_topic"]
-      schema_version                   = all_updates_rule.value["schema_version"]
+      # pubsub_topic - (optional) is a type of string
+      pubsub_topic = all_updates_rule.value["pubsub_topic"]
+      # schema_version - (optional) is a type of string
+      schema_version = all_updates_rule.value["schema_version"]
     }
   }
 
   dynamic "amount" {
     for_each = var.amount
     content {
+      # last_period_amount - (optional) is a type of bool
       last_period_amount = amount.value["last_period_amount"]
 
       dynamic "specified_amount" {
         for_each = amount.value.specified_amount
         content {
+          # currency_code - (optional) is a type of string
           currency_code = specified_amount.value["currency_code"]
-          nanos         = specified_amount.value["nanos"]
-          units         = specified_amount.value["units"]
+          # nanos - (optional) is a type of number
+          nanos = specified_amount.value["nanos"]
+          # units - (optional) is a type of string
+          units = specified_amount.value["units"]
         }
       }
 
@@ -192,19 +202,27 @@ resource "google_billing_budget" "this" {
   dynamic "budget_filter" {
     for_each = var.budget_filter
     content {
-      credit_types           = budget_filter.value["credit_types"]
+      # credit_types - (optional) is a type of list of string
+      credit_types = budget_filter.value["credit_types"]
+      # credit_types_treatment - (optional) is a type of string
       credit_types_treatment = budget_filter.value["credit_types_treatment"]
-      labels                 = budget_filter.value["labels"]
-      projects               = budget_filter.value["projects"]
-      services               = budget_filter.value["services"]
-      subaccounts            = budget_filter.value["subaccounts"]
+      # labels - (optional) is a type of map of string
+      labels = budget_filter.value["labels"]
+      # projects - (optional) is a type of list of string
+      projects = budget_filter.value["projects"]
+      # services - (optional) is a type of list of string
+      services = budget_filter.value["services"]
+      # subaccounts - (optional) is a type of list of string
+      subaccounts = budget_filter.value["subaccounts"]
     }
   }
 
   dynamic "threshold_rules" {
     for_each = var.threshold_rules
     content {
-      spend_basis       = threshold_rules.value["spend_basis"]
+      # spend_basis - (optional) is a type of string
+      spend_basis = threshold_rules.value["spend_basis"]
+      # threshold_percent - (required) is a type of number
       threshold_percent = threshold_rules.value["threshold_percent"]
     }
   }
@@ -212,8 +230,11 @@ resource "google_billing_budget" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -65,9 +65,12 @@ variable "url" {
 
 ```terraform
 data "aws_ip_ranges" "this" {
-  regions  = var.regions
+  # regions - (optional) is a type of set of string
+  regions = var.regions
+  # services - (required) is a type of set of string
   services = var.services
-  url      = var.url
+  # url - (optional) is a type of string
+  url = var.url
 }
 ```
 

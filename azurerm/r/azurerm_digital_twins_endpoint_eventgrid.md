@@ -105,19 +105,29 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_digital_twins_endpoint_eventgrid" "this" {
-  dead_letter_storage_secret           = var.dead_letter_storage_secret
-  digital_twins_id                     = var.digital_twins_id
-  eventgrid_topic_endpoint             = var.eventgrid_topic_endpoint
-  eventgrid_topic_primary_access_key   = var.eventgrid_topic_primary_access_key
+  # dead_letter_storage_secret - (optional) is a type of string
+  dead_letter_storage_secret = var.dead_letter_storage_secret
+  # digital_twins_id - (required) is a type of string
+  digital_twins_id = var.digital_twins_id
+  # eventgrid_topic_endpoint - (required) is a type of string
+  eventgrid_topic_endpoint = var.eventgrid_topic_endpoint
+  # eventgrid_topic_primary_access_key - (required) is a type of string
+  eventgrid_topic_primary_access_key = var.eventgrid_topic_primary_access_key
+  # eventgrid_topic_secondary_access_key - (required) is a type of string
   eventgrid_topic_secondary_access_key = var.eventgrid_topic_secondary_access_key
-  name                                 = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

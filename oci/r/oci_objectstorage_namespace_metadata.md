@@ -83,15 +83,21 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_objectstorage_namespace_metadata" "this" {
-  default_s3compartment_id     = var.default_s3compartment_id
+  # default_s3compartment_id - (optional) is a type of string
+  default_s3compartment_id = var.default_s3compartment_id
+  # default_swift_compartment_id - (optional) is a type of string
   default_swift_compartment_id = var.default_swift_compartment_id
-  namespace                    = var.namespace
+  # namespace - (required) is a type of string
+  namespace = var.namespace
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

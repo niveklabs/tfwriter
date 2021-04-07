@@ -56,7 +56,9 @@ variable "certificate_authority_arn" {
 
 ```terraform
 data "aws_acmpca_certificate" "this" {
-  arn                       = var.arn
+  # arn - (required) is a type of string
+  arn = var.arn
+  # certificate_authority_arn - (required) is a type of string
   certificate_authority_arn = var.certificate_authority_arn
 }
 ```

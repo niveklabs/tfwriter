@@ -70,12 +70,15 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_docdb_cluster_snapshot" "this" {
-  db_cluster_identifier          = var.db_cluster_identifier
+  # db_cluster_identifier - (required) is a type of string
+  db_cluster_identifier = var.db_cluster_identifier
+  # db_cluster_snapshot_identifier - (required) is a type of string
   db_cluster_snapshot_identifier = var.db_cluster_snapshot_identifier
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

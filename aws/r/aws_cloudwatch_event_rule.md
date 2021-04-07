@@ -114,15 +114,24 @@ variable "tags" {
 
 ```terraform
 resource "aws_cloudwatch_event_rule" "this" {
-  description         = var.description
-  event_bus_name      = var.event_bus_name
-  event_pattern       = var.event_pattern
-  is_enabled          = var.is_enabled
-  name                = var.name
-  name_prefix         = var.name_prefix
-  role_arn            = var.role_arn
+  # description - (optional) is a type of string
+  description = var.description
+  # event_bus_name - (optional) is a type of string
+  event_bus_name = var.event_bus_name
+  # event_pattern - (optional) is a type of string
+  event_pattern = var.event_pattern
+  # is_enabled - (optional) is a type of bool
+  is_enabled = var.is_enabled
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # role_arn - (optional) is a type of string
+  role_arn = var.role_arn
+  # schedule_expression - (optional) is a type of string
   schedule_expression = var.schedule_expression
-  tags                = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

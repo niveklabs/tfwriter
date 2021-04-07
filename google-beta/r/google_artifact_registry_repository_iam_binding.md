@@ -97,18 +97,26 @@ variable "condition" {
 
 ```terraform
 resource "google_artifact_registry_repository_iam_binding" "this" {
-  location   = var.location
-  members    = var.members
-  project    = var.project
+  # location - (optional) is a type of string
+  location = var.location
+  # members - (required) is a type of set of string
+  members = var.members
+  # project - (optional) is a type of string
+  project = var.project
+  # repository - (required) is a type of string
   repository = var.repository
-  role       = var.role
+  # role - (required) is a type of string
+  role = var.role
 
   dynamic "condition" {
     for_each = var.condition
     content {
+      # description - (optional) is a type of string
       description = condition.value["description"]
-      expression  = condition.value["expression"]
-      title       = condition.value["title"]
+      # expression - (required) is a type of string
+      expression = condition.value["expression"]
+      # title - (required) is a type of string
+      title = condition.value["title"]
     }
   }
 

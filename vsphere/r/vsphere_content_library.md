@@ -110,29 +110,42 @@ variable "subscription" {
 
 ```terraform
 resource "vsphere_content_library" "this" {
-  description     = var.description
-  name            = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # storage_backing - (required) is a type of set of string
   storage_backing = var.storage_backing
 
   dynamic "publication" {
     for_each = var.publication
     content {
+      # authentication_method - (optional) is a type of string
       authentication_method = publication.value["authentication_method"]
-      password              = publication.value["password"]
-      published             = publication.value["published"]
-      username              = publication.value["username"]
+      # password - (optional) is a type of string
+      password = publication.value["password"]
+      # published - (optional) is a type of bool
+      published = publication.value["published"]
+      # username - (optional) is a type of string
+      username = publication.value["username"]
     }
   }
 
   dynamic "subscription" {
     for_each = var.subscription
     content {
+      # authentication_method - (optional) is a type of string
       authentication_method = subscription.value["authentication_method"]
-      automatic_sync        = subscription.value["automatic_sync"]
-      on_demand             = subscription.value["on_demand"]
-      password              = subscription.value["password"]
-      subscription_url      = subscription.value["subscription_url"]
-      username              = subscription.value["username"]
+      # automatic_sync - (optional) is a type of bool
+      automatic_sync = subscription.value["automatic_sync"]
+      # on_demand - (optional) is a type of bool
+      on_demand = subscription.value["on_demand"]
+      # password - (optional) is a type of string
+      password = subscription.value["password"]
+      # subscription_url - (optional) is a type of string
+      subscription_url = subscription.value["subscription_url"]
+      # username - (optional) is a type of string
+      username = subscription.value["username"]
     }
   }
 

@@ -57,7 +57,9 @@ variable "signing_status" {
 
 ```terraform
 resource "aws_route53_hosted_zone_dnssec" "this" {
+  # hosted_zone_id - (required) is a type of string
   hosted_zone_id = var.hosted_zone_id
+  # signing_status - (optional) is a type of string
   signing_status = var.signing_status
 }
 ```

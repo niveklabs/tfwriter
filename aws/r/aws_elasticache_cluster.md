@@ -225,29 +225,52 @@ variable "tags" {
 
 ```terraform
 resource "aws_elasticache_cluster" "this" {
-  apply_immediately            = var.apply_immediately
-  availability_zone            = var.availability_zone
-  az_mode                      = var.az_mode
-  cluster_id                   = var.cluster_id
-  engine                       = var.engine
-  engine_version               = var.engine_version
-  final_snapshot_identifier    = var.final_snapshot_identifier
-  maintenance_window           = var.maintenance_window
-  node_type                    = var.node_type
-  notification_topic_arn       = var.notification_topic_arn
-  num_cache_nodes              = var.num_cache_nodes
-  parameter_group_name         = var.parameter_group_name
-  port                         = var.port
+  # apply_immediately - (optional) is a type of bool
+  apply_immediately = var.apply_immediately
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # az_mode - (optional) is a type of string
+  az_mode = var.az_mode
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # engine - (optional) is a type of string
+  engine = var.engine
+  # engine_version - (optional) is a type of string
+  engine_version = var.engine_version
+  # final_snapshot_identifier - (optional) is a type of string
+  final_snapshot_identifier = var.final_snapshot_identifier
+  # maintenance_window - (optional) is a type of string
+  maintenance_window = var.maintenance_window
+  # node_type - (optional) is a type of string
+  node_type = var.node_type
+  # notification_topic_arn - (optional) is a type of string
+  notification_topic_arn = var.notification_topic_arn
+  # num_cache_nodes - (optional) is a type of number
+  num_cache_nodes = var.num_cache_nodes
+  # parameter_group_name - (optional) is a type of string
+  parameter_group_name = var.parameter_group_name
+  # port - (optional) is a type of number
+  port = var.port
+  # preferred_availability_zones - (optional) is a type of list of string
   preferred_availability_zones = var.preferred_availability_zones
-  replication_group_id         = var.replication_group_id
-  security_group_ids           = var.security_group_ids
-  security_group_names         = var.security_group_names
-  snapshot_arns                = var.snapshot_arns
-  snapshot_name                = var.snapshot_name
-  snapshot_retention_limit     = var.snapshot_retention_limit
-  snapshot_window              = var.snapshot_window
-  subnet_group_name            = var.subnet_group_name
-  tags                         = var.tags
+  # replication_group_id - (optional) is a type of string
+  replication_group_id = var.replication_group_id
+  # security_group_ids - (optional) is a type of set of string
+  security_group_ids = var.security_group_ids
+  # security_group_names - (optional) is a type of set of string
+  security_group_names = var.security_group_names
+  # snapshot_arns - (optional) is a type of list of string
+  snapshot_arns = var.snapshot_arns
+  # snapshot_name - (optional) is a type of string
+  snapshot_name = var.snapshot_name
+  # snapshot_retention_limit - (optional) is a type of number
+  snapshot_retention_limit = var.snapshot_retention_limit
+  # snapshot_window - (optional) is a type of string
+  snapshot_window = var.snapshot_window
+  # subnet_group_name - (optional) is a type of string
+  subnet_group_name = var.subnet_group_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

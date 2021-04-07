@@ -99,17 +99,25 @@ variable "timeouts" {
 
 ```terraform
 resource "google_iam_workload_identity_pool" "this" {
-  description               = var.description
-  disabled                  = var.disabled
-  display_name              = var.display_name
-  project                   = var.project
+  # description - (optional) is a type of string
+  description = var.description
+  # disabled - (optional) is a type of bool
+  disabled = var.disabled
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # project - (optional) is a type of string
+  project = var.project
+  # workload_identity_pool_id - (required) is a type of string
   workload_identity_pool_id = var.workload_identity_pool_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
