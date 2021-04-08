@@ -4,3 +4,14 @@ show_downloads: "true"
 # show_clipboard: "true"
 
 google_analytics: UA-186284773-1
+
+plugins:
+  - jekyll-sitemap
+
+sitemap: true
+
+defaults:
+  - scope:
+      path: "assets/**/*.*"
+    values:
+      sitemap: false
