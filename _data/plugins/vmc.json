@@ -1,0 +1,1 @@
+{"type":"providers","attributes":{"name":"vmc","full-name":"vmware/vmc","version":"1.5.1","namespace":"vmware","source":"https://github.com/vmware/terraform-provider-vmc","tier":"partner"}}

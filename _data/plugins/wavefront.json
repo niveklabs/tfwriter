@@ -1,0 +1,1 @@
+{"type":"providers","attributes":{"name":"wavefront","full-name":"vmware/wavefront","version":"2.8.3","namespace":"vmware","source":"https://github.com/vmware/terraform-provider-wavefront","tier":"partner"}}

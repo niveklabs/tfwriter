@@ -1,0 +1,1 @@
+{"type":"providers","attributes":{"name":"vcd","full-name":"vmware/vcd","version":"3.2.0","namespace":"vmware","source":"https://github.com/vmware/terraform-provider-vcd","tier":"partner"}}

@@ -1,0 +1,1 @@
+{"type":"providers","attributes":{"name":"venafi","full-name":"Venafi/venafi","version":"0.11.2","namespace":"Venafi","source":"https://github.com/Venafi/terraform-provider-venafi","tier":"partner"}}

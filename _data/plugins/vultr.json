@@ -1,0 +1,1 @@
+{"type":"providers","attributes":{"name":"vultr","full-name":"vultr/vultr","version":"2.2.0","namespace":"vultr","source":"https://github.com/vultr/terraform-provider-vultr","tier":"partner"}}
