@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fastly = ">= 0.27.0"
+    fastly = ">= 0.28.1"
   }
 }
 ```
@@ -37,6 +37,8 @@ module "fastly_tls_subscription" {
   domains = []
   # force_destroy - (optional) is a type of bool
   force_destroy = null
+  # force_update - (optional) is a type of bool
+  force_update = null
 }
 ```
 
@@ -72,6 +74,12 @@ variable "force_destroy" {
   type        = bool
   default     = null
 }
+
+variable "force_update" {
+  description = "(optional) - Force update the subscription even if it has active domains. Warning: this can disable production traffic if used incorrectly."
+  type        = bool
+  default     = null
+}
 ```
 
 [top](#index)
@@ -90,6 +98,8 @@ resource "fastly_tls_subscription" "this" {
   domains = var.domains
   # force_destroy - (optional) is a type of bool
   force_destroy = var.force_destroy
+  # force_update - (optional) is a type of bool
+  force_update = var.force_update
 }
 ```
 

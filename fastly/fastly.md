@@ -15,7 +15,7 @@ resource: fastly
 
 ```terraform
 provider "fastly" {
-  version = "0.27.0"
+  version = "0.28.1"
 
   # api_key - (optional) is a type of string
   api_key = null
