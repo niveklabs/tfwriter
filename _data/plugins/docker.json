@@ -1,0 +1,1 @@
+{"type":"providers","attributes":{"name":"docker","full-name":"kreuzwerker/docker","version":"2.7.2","namespace":"kreuzwerker","source":"https://github.com/kreuzwerker/terraform-provider-docker","tier":"community"}}
